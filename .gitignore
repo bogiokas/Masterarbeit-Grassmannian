@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.out
+*.pdf
+*.toc
+*.bcf
+*.bbl
+*.blg
+howtogit
+./material/
