@@ -5,4 +5,5 @@
 *.toc
 *.bcf
 *.bbl
+*.gz
 ./material/
