@@ -1,9 +1,35 @@
 \chapter{Grassmann Spaces}
-The goal of this chapter is to present the basic properties of the Grassmann spaces. This chapter will be self-contained and used as a point of reference for the rest of the thesis. Our aim is for the reader to get to know the combinatorial structure of a Grassmannian and be able to do basic computations using the Schubert decomposition of these manifolds.
+The goal of this chapter is to present the basic properties of the Grassmann spaces. This chapter will be self-contained and used as a point of reference for the rest of the thesis. Our aim is for the reader to get to know the combinatorial structure of a Grassmannian and be able to do basic computations using the Schubert decomposition of these manifolds. 
+
 \section{Definition of the Grassmann Manifold}
-Since the topology of projective spaces has been thoroughly studied and fully characterized, the natural question is if we can impose a natural topology on the set of $k$-dimensional subspaces of a vector space for some $k>1$ and what nice properties this space could have.
+Since the topology of projective spaces has been thoroughly studied and fully characterized, the natural question is if we can impose a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$ and what nice properties this space could have. Although we are only interested in the real case, we will comment, that the complex case is completely analogous.
 
-\begin{definition} Let $\mathbb{F}$ be a field and $0<k<n$ be some natural numbers. Then, the Grassmann topological space $Gr_{\mathbb{F}}(k,n)$ is the set of all linear $k$-dimensional subspaces of $\mathbb{F}^n$. This is to be topologized as the following quotient space.\end{definition}
+Recall the definition of the real projective spaces as topological spaces:
+$$P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}$$
+where two vectors are equivalent, if they span the same line. Notice that we need to take an open subset of the whole vector space, in order for the quotient to be well defined. Namely we need the set of all vectors, which span a line. In accordance with that, for the general case, we first need to define the \ul{Stiefel spaces}:
 
+\begin{definition} Let $0<k<n$ be some natural numbers. Then, the real Stiefel space $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ as the following open subspace of $\left(\mathbb{R}^n\right)^k$:
+$$\St{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in\left(\mathbb{F}^n\right)^k:\dim\left<v_1,\ldots,v_k\right>=k\right\}$$
+equipped with the subspace topology.
+\end{definition}
 
+This means that the Stiefel space is the space of all vector $k$-tuples that are linearly independent and thus span a subspace of dimension $k$, which is the analog that we need in order to define the Grassmann topological spaces:
+
+\begin{definition} Let $0<k<n$ be some natural numbers. Then, the real Grassmann space $\Gr{k}{n}{\mathbb{R}}=\Gr{k}{n}$ is the set of all linear $k$-dimensional subspaces of $\mathbb{R}^n$, equipped with the following quotient topology:
+$$\Gr{k}{n}{\mathbb{R}}:=\faktor{\St{k}{n}{\mathbb{R}}}{\sim}$$
+where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<\vec{v}_1,\ldots,\vec{v}_k\right>=\left<\vec{u}_1,\ldots,\vec{u}_k\right>$.
+\end{definition}
+
+If the reader has still in mind the case of the projective spaces, it would be of no surprise that we are about to give an alternative definition of the Grassmann manifolds. We know that the projective spaces could be defined as quotient over the unit sphere, rather than over the set of every nonzero vector. The analog of the set of all unit vectors would be here the space of all \ul{orthonormal} frames:
+$$\StO{k}{n}=\StO{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in\left(\mathbb{R}^n\right)^k:\vec{v}_i\cdot\vec{v}_j=\delta_{i,j}\right\}$$
+Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map which maps each $k$-tuple to the $k$-dim subspace it is spanning, and $q_0$ its restriction in $\StO{k}{n}$. Then, the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+\StO{k}{n}\ar[r,hook,"inc"]\ar[rd,"q_0"']&\St{k}{n}\ar[rrr,"\text{Gramm-Schmidt}"]\ar[d,"q"']&&&\StO{k}{n}\ar[dlll,"q_0"]\\
+&\Gr{k}{n}\\
+\end{tikzcd}
+\end{center}
+This proves that one could use $q_0$ to define the same topology on $\Gr{k}{n}$.
+
+Our goal for now will be to show that the Grassmann space is in fact a compact topological manifold of dimension $nk$, i.e. a compact Hausdorff space, locally homeomorphic to $\mathbb{R}^{nk}$.
 

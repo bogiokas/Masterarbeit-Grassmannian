@@ -1,0 +1,3 @@
+#!/bin/sh
+zathura ./Cohomology\ of\ Grassmann\ Manifold.pdf &
+vim ./Cohomology\ of\ Grassmann\ Manifold.tex ./chapters/intro.tex ./chapters/grass_def.tex

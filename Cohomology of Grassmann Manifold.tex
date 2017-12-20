@@ -3,6 +3,7 @@
 %%%%%%%%%%%  MATH  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath,amsthm,amssymb} %math
 \usepackage{xfrac} %sfrac
+\usepackage{faktor}
 \usepackage{dutchcal} %some font for mathcal
 %\everymath{\displaystyle} %to show every math big
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,6 +18,7 @@
 \usepackage{hyperref} %cross reference
  \hypersetup{colorlinks=true,linkcolor=MidnightBlue,citecolor=BrickRed} %setup hyper
 \usepackage{xstring} %manipulate strings
+\usepackage{xparse} %define overloaded commands
 \usepackage{titlesec} %customize chapters/sections/...
 \usepackage{remreset} %remove control of a counter over another
 \usepackage{blindtext} %produce crap
@@ -33,7 +35,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  CUSTOMIZE THE LOOKS  %%%%%%%%%%%%%%%%%%%
 \geometry{headheight=15pt}
-%\setlength\parindent{0pt} %no indentation
+\setlength\parindent{0pt} %no indentation
+\setlength\parskip{1em} %no indentation
 \renewcommand{\theequation}{\arabic{equation}}
 \titleformat{\chapter}[hang]{\bfseries\Huge}{}{0pt}{\thechapter. }
 \titleformat{name=\chapter,numberless}[hang]{\bfseries\Huge}{}{0pt}{}
@@ -85,6 +88,15 @@
 \newcommand\coim{\mathrm{coim }}
 \newcommand\coker{\mathrm{coker }}
 \newcommand\cupdot{\mathbin{\mathaccent\cdot\cup}}
+\NewDocumentCommand\StO{mgg}{
+  \mathrm{V_0}\IfNoValueTF{#3}{}{_{,#3}}\left(#1\IfNoValueTF{#2}{}{,#2}\right)
+}
+\NewDocumentCommand\St{mgg}{
+  \mathrm{V}\IfNoValueTF{#3}{}{_{#3}}\left(#1\IfNoValueTF{#2}{}{,#2}\right)
+}
+\NewDocumentCommand\Gr{mgg}{
+  \mathrm{Gr}\IfNoValueTF{#3}{}{_{#3}}\left(#1\IfNoValueTF{#2}{}{,#2}\right)
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  OTHER NOTATIONS  %%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\ul[1]{\emph{#1}}
