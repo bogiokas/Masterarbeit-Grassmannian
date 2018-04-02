@@ -2,15 +2,15 @@
 The goal of this chapter is to present the basic properties of the Grassmann spaces. This chapter will be self-contained and used as a point of reference for the rest of the thesis. Our aim is for the reader to get to know the combinatorial structure of a Grassmannian and be able to do basic computations using the Schubert decomposition of these manifolds. 
 
 \section{Definition of the Grassmann Manifold}
-Since the topology of projective spaces has been thoroughly studied and fully characterized, the natural question is if we can impose a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$ and what nice properties this space could have. Although we are only interested in the real case, we will comment, that the complex case is completely analogous.
+Since the topology of projective spaces has been thoroughly studied and fully characterized, the natural question is if we can impose a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$ and what nice properties this space could have.
 
 Recall the definition of the real projective spaces as topological spaces:
 $$P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}$$
 where two vectors are equivalent, if they span the same line. Notice that we need to take an open subset of the whole vector space, in order for the quotient to be well defined. Namely we need the set of all vectors, which span a line. In accordance with that, for the general case, we first need to define the \ul{Stiefel spaces}:
 
-\begin{definition} Let $0<k<n$ be some natural numbers. Then, the real Stiefel space $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ as the following open subspace of $\left(\mathbb{R}^n\right)^k$:
+\begin{definition} Let $0<k<n$ be some natural numbers. Then, the real Stiefel space $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ is the following open subspace of $\left(\mathbb{R}^n\right)^k$:
 $$\St{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in\left(\mathbb{F}^n\right)^k:\dim\left<v_1,\ldots,v_k\right>=k\right\}$$
-equipped with the subspace topology.
+equipped with the subspace topology. Every point in this set is called a \ul{$k$-frame} of $\mathbb{R}^n$.
 \end{definition}
 
 This means that the Stiefel space is the space of all vector $k$-tuples that are linearly independent and thus span a subspace of dimension $k$, which is the analog that we need in order to define the Grassmann topological spaces:
@@ -20,16 +20,95 @@ $$\Gr{k}{n}{\mathbb{R}}:=\faktor{\St{k}{n}{\mathbb{R}}}{\sim}$$
 where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<\vec{v}_1,\ldots,\vec{v}_k\right>=\left<\vec{u}_1,\ldots,\vec{u}_k\right>$.
 \end{definition}
 
-If the reader has still in mind the case of the projective spaces, it would be of no surprise that we are about to give an alternative definition of the Grassmann manifolds. We know that the projective spaces could be defined as quotient over the unit sphere, rather than over the set of every nonzero vector. The analog of the set of all unit vectors would be here the space of all \ul{orthonormal} frames:
+If the reader has still in mind the case of the projective spaces, it would be of no surprise that we are about to give an alternative definition of the Grassmann manifolds. We know that the projective spaces could be defined as quotient over the unit sphere, rather than over the set of every nonzero vector. The analog of the set of all unit vectors would be here the space of all \ul{orthonormal} $k$-frames:
 $$\StO{k}{n}=\StO{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in\left(\mathbb{R}^n\right)^k:\vec{v}_i\cdot\vec{v}_j=\delta_{i,j}\right\}$$
-Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map which maps each $k$-tuple to the $k$-dim subspace it is spanning, and $q_0$ its restriction in $\StO{k}{n}$. Then, the following diagram commutes:
+Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map which maps each $k$-tuple to the $k$-dim subspace it is spanning, and $q_0$ its restriction in $\StO{k}{n}$. Then, if we let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $p:\St{k}{n}\to\StO{k}{n}$ be the Gramm-Schmidt process, the following diagram commutes:
 \begin{center}
 \begin{tikzcd}
-\StO{k}{n}\ar[r,hook,"inc"]\ar[rd,"q_0"']&\St{k}{n}\ar[rrr,"\text{Gramm-Schmidt}"]\ar[d,"q"']&&&\StO{k}{n}\ar[dlll,"q_0"]\\
+\StO{k}{n}\ar[r,hook,"i"]\ar[rd,"q_0"']&\St{k}{n}\ar[r,two heads,"p"]\ar[d,"q"']&\StO{k}{n}\ar[dl,"q_0"]\\
 &\Gr{k}{n}\\
 \end{tikzcd}
 \end{center}
-This proves that one could use $q_0$ to define the same topology on $\Gr{k}{n}$.
+The left part of this diagram implies $q_0=q\circ i$, which means in particular that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ p$, which gives us that $q_0$ is a surjective map as well, since $q$ is surjective. Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ induce the same quotient topology on the set of all $k$-dim spaces.
 
-Our goal for now will be to show that the Grassmann space is in fact a compact topological manifold of dimension $nk$, i.e. a compact Hausdorff space, locally homeomorphic to $\mathbb{R}^{nk}$.
+Our next goal is to prove that that the Grassmann space is in fact a compact topological manifold of dimension $k(n-k)$:
+\begin{lemma} For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is compact, Hausdorff and locally homeomorphic to $\mathbb{R}^{k(n-k)}$. 
+\end{lemma}
 
+\begin{proof} \begin{b_item}
+\item The set $\StO{k}{n}$ is closed and bounded in the euclidean space $\left(\mathbb{R}^n\right)^k$, i.e. it is a compact topological space. Thus, $\Gr{k}{n}=q_0\left(\StO{k}{n}\right)$ is also compact.
+\item In order to show that $\Gr{k}{n}$ is Hausdorff, it suffices to show that it is completely Hausdorff, i.e. that any two distinct points in $\Gr{k}{n}$ can be separated by a continuous function $\Gr{k}{n}\to\mathbb{R}$. First, for every vector $v\in\mathbb{R}^n$, we define the map $\phi_v:\StO{k}{n}\to\mathbb{R}$ which takes each orthogonal $k$-frame $(v_1,\ldots,v_k)$ to the square of the distance between $v$ and the linear space spanned by $(v_1,\ldots,v_k)$, i.e.:
+$$\phi_v(v_1,\ldots,v_k)=v\cdot v-\sum_{i=1}^k\left(v\cdot v_i\right)^2$$
+This is a continuous map, which depends only on the spanned $k$-plane, i.e. if two $k$-frames have the same image under $q_0$, they also have the same image under $\phi_v$. The universal property of the quotient map $q_0$ implies that there exists a unique continuous map $\psi_v$ making the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+\StO{k}{n}\ar[d,"q_0"']\ar[dr,"\phi_v"]\\
+\Gr{k}{n}\ar[r,"\psi_v"',dotted]&\mathbb{R}\\
+\end{tikzcd}
+\end{center}
+Moreover, since $\phi_v(v_1,\ldots,v_k)=0$ iff $v\in\left<v_1,\ldots,v_k\right>$, we have that $\psi_v(H)=0$ iff $v\in H$. Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$. Then, we get $\psi_v(H_1)=0\neq\psi_v(H_2)$, proving that $\Gr{k}{n}$ is completely Hausdorff.
+
+
+\item We will prove that for every $H\in\Gr{k}{n}$, the following subset of $\mathbb{R}^n$ is a neighboorhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$:
+$$\mathcal{U}_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}$$
+First of all, one can fix an orthonormal basis $\{u_1,\ldots,u_k\}$ of $H$ and an orthonormal basis $\{v_1,\ldots,v_{n-k}\}$ of $H^{\perp}$. It will be also convenient to regard $\mathbb{R}^n$ as the direct sum $H\oplus H^{\perp}$ for this proof. We also define the orthogonal projections $p_H,p_{H^{\perp}}$ from $H\oplus H^{\perp}$ to each component.
+
+One can now consider $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, if and only if $\left.p_H\right|_K$ is not injective, if and only if $\left.p_H\right|_K$ is not surjective.
+
+Each $K\in\mathcal{U}_H$ can now be considered as the graph of some linear transformation $T_K$ inside $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$, which has the desired dimension as a vector space over $\mathbb{R}$. Our goal is to define rigorously the function taking $K$ to $T_K$ and proving that this is bicontinuous. We urge the reader to convince herself at this point that $T_K$ depends continuously on $K$ and vice verca, because our approach is going to be rather technical.
+
+In particular, we are going to construct the desired function using the universal property of the quotient map $q:\St{k}{n}\to\Gr{k}{n}$. Moreover, since we need the topology of $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$, we are going to use the fact that its topology is also an induced topology by an isomorphism to $\mathbb{R}^{k(n-k)}$. Finally, this last space, being a direct product, is also topologized through the initial topology with respect to the orthogonal projections on each coordinate. One can summarize these steps in the following commutative diagramm:
+\begin{center}
+\begin{tikzcd}
+&[-2em]&[-2em](a_1,\ldots,a_k)\ar[rr,mapsto]&[-1em]&[-7em]v_j^t\cdot p_{H^{\perp}}\circ\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)^{-1}\left(u_i\right)&[-7em]\\[-2em]
+\left(\mathbb{R}^n\right)^k\ar[r,phantom,"\supseteq"]&\St{k}{n}\ar[d,"q"]\ar[r,phantom,"\supseteq"]&q^{-1}\left(\mathcal{U}_H\right)\ar[d,"\left.q\right|"]\ar[dr,dotted,"\tilde T"']\ar[drrr,dotted,"f"']\ar[rrr,"f_{i,j}"']&&&\mathbb{R}\\[2em]
+&\Gr{k}{n}\ar[r,phantom,"\supseteq"]&\mathcal{U}_H\ar[r,dotted,"T"]&\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)\ar[rr,"\phi","\cong"']&&\mathbb{R}^{[k]\times[n-k]}\ar[u,"\pi_{i,j}"]\\[-2em]
+&&K\ar[r,mapsto,dotted]&p_{H^{\perp}}\circ\left(\left.p_H\right|_K\right)^{-1}\\
+\end{tikzcd}
+\end{center}
+Remember that we are trying to define the map $T$ taking each $k$-space $K$ to the function with graph $K$. Thus, we first should define the map $\tilde T$ which is later going to be equal with $T\circ\left.q\right|$. For now we just define it to be:
+$$\tilde T(a_1,\ldots,a_k)=p_{H^{\perp}}\circ\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)^{-1}$$
+Notice that $\tilde T$ is well defined, since $q^{-1}\left(\mathcal{U}_H\right)$ is exactly the set of all $k$-frames, for which the map $\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}$ is a homeomorphism. Also, notice that $\tilde T$ is going to have the same value for any two $k$-frames that span the same $k$-space, since on input $(a_1,\ldots,a_k)$ the output only depends on $\left<a_1,\ldots,a_k\right>$.
+
+Next, we want to argue that $\tilde T$ is a continuous map. In order to do this, we need to remember how $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is topologized. Having fixed the bases $\{u_i\}_{i\in[k]}$ and $\{v_j\}_{j\in[n-k]}$, we can define an isomorphism of vector spaces $\phi$, which takes a linear map $L$ to
+$$\phi(L)=\left(v_j^t\cdot L(u_i)\right)_{(i,j)\in[k]\times[n-k]}\in\mathbb{R}^{[k]\times[n-k]}$$
+Then, the natural topology on $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is the induced topology by $\phi$. This means in particular, that our $\tilde T$ is continuous if and only if $f:=\phi\circ\tilde T$ is continuous.
+
+Finally, since $\mathbb{R}^{[k]\times[n-k]}=\prod_{(i,j)\in[k]\times[n-k]}\mathbb{R}$ is a categorical product, $\mathbb{R}^{[k]\times[n-k]}$ is equipped with the initial topology, with respect to all orthogonal projections $\left(\pi_{i,j}\right)_{(i,j)\in[k]\times[n-k]}$. This means in particular, that the function $f$ that interests us is continuous if and only if every $f_{i,j}:=\pi_{i,j}\circ f$ is continuous. In order to show that every $f_{i,j}$ is a continuous map, we have to write it down in the language of linear algebra:
+
+First, define $A$ to be the matrix of the linear function taking $u_i$ to $a_i$ for each $i\in[k]$, expressed in the bases $\{u_i\}$ and $\{v_j\}$:
+$$A=\left(\begin{array}{ccc}
+a^t_1\cdot u_1&\cdots&a^t_k\cdot u_1\\
+\vdots&\ddots&\vdots\\
+a^t_1\cdot u_k&\cdots&a^t_k\cdot u_k\\
+\hline
+a^t_1\cdot v_1&\cdots&a^t_k\cdot v_1\\
+\vdots&\ddots&\vdots\\
+a^t_1\cdot v_{n-k}&\cdots&a^t_k\cdot v_{n-k}\\
+\end{array}\right)=:
+\left(\begin{array}{c}A_H\\\hline A_{H^{\perp}}\\
+\end{array}\right)
+\in\mathbb{R}^{n\times k}$$
+The two blocks $A_H\in\mathbb{R}^{k\times k}$ and $A_{H^{\perp}}\in\mathbb{R}^{(n-k)\times k}$ of $A$ correspond to the maps taking $u_i$ to the projections of $a_i$ inside $H$ and inside $H^{\perp}$ respectively.
+
+Notice that the matrix corresponding to the linear map $p_{H^{\perp}}$, with regard to the bases we have fixed is
+$$\left(0_{(n-k)\times k}|I_{n-k}\right)\in\mathbb{R}^{(n-k)\times n}$$
+and the matrix corresponding to the linear map $\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)^{-1}$, with regard to the same bases is
+$$A\cdot A_H^{-1}=\left(\begin{array}{c}I_k\\\hline A_{H^{\perp}}\cdot A_H^{-1}\\\end{array}\right)\in\mathbb{R}^{n\times k}$$
+
+Indeed, since $\left<a_1,\ldots,a_k\right>\in\mathcal{U}_H$, we know that $\left\{p_H(a_1),\ldots,p_H(a_k)\right\}$ is a basis of $K$, which means that $A_H$ is invertible and thus $A\cdot A_H^{-1}$ is well defined. Moreover, we can easily compute that the application of this matrix to any $p_H(a_r)$ gives us $a_r$ which is exactly what the map $\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)^{-1}$ does to the same basis, which proves our assertion.
+
+This means, that the map $f_{ij}$ takes the element $\left(a_1,\ldots,a_k\right)$ to the real number
+$$\begin{array}{rcl}f_{ij}\left(a_1,\ldots,a_k\right)
+&=&v_j^t\cdot p_{H^{\perp}}\circ\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)^{-1}(u_i)\\
+&=&v_j^t\cdot\left(\left.0_{(n-k)\times k}\right|I_{n-k}\right)\cdot\left(\begin{array}{c}I_k\\\hline A_{H^{\perp}}\cdot A_H^{-1}\\\end{array}\right)\cdot u_i\\
+&=&v_j^t\cdot A_{H^{\perp}}\cdot A_H^{-1}\cdot u_i\\
+\end{array}$$
+
+Since inner products, matrix multiplication and inversions are continuous, $f_{ij}$ is a continuous function for every $i,j\in[k]\times[n-k]$. This proves that $f$ is continuous as well, which proves that $\tilde T$ is also continuous. Since $\tilde T$ is a continuous function which depends only on the $k$-plane spanned by its input, the universal property of the quotient spaces ensures the existance of a continuous map $T:\mathcal{U}_H\to\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ such that $T\circ \left.q\right|=\tilde T$. The uniqueness part of this property ensures that the map $T$ is the one taking $K$ to $p_{H^{\perp}}\circ\left(\left.p_H\right|_K\right)^{-1}$, as we wanted.
+
+If we think again this function as taking $K$ to the linear function, whose graph is $K$, we can easily see that this function is both one to one and onto, since two linear maps are different if and only if they have different graphs. This makes $T$ a homeomorphism, proving that finally there exists the homeomorphism
+$$\mathcal{U}_H\overset{\phi\circ T}{\cong}\mathbb{R}^{n(n-k)}$$
+which finishes the proof of the lemma.
+\end{b_item}
+\end{proof}
