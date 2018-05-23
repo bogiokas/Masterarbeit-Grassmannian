@@ -1,5 +1,5 @@
 \chapter{Grassmann Spaces}
-The goal of this chapter is to present the basic properties of the Grassmann spaces. This chapter will be self-contained and used as a point of reference for the rest of the thesis. Our aim is for the reader to get to know the combinatorial structure of a Grassmannian and be able to do basic computations using the Schubert decomposition of these manifolds. 
+The goal of this chapter is to present the basic properties of the Grassmann spaces, or Grassmannians. This chapter will be self-contained and used as a point of reference for the rest of the thesis. Our aim is for the reader to get to know the combinatorial structure of a Grassmannian and be able to do basic computations using the Schubert decomposition of these manifolds. 
 
 \section{Definition of the Grassmann Manifolds}
 Since the topology of projective spaces has been thoroughly studied and fully characterized, the natural question is if we can impose a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$ and what nice properties this space could have.
@@ -136,6 +136,27 @@ The union is over all $k$-planes spanned by any $k$ vectors among $\{e_1,\ldots,
 \end{proof} 
 
 \section{Cell Structure of Grassmann Manifolds}
+In the previous section we proved that the finite Grassmann spaces are compact topological manifolds. Our goal now is to prove that they are in fact finite CW complexes. For this, we need to define a cell decomposition of each Grassmannian, which we are going to do next. Before we start laying out the formal definition, it would be best for the reader to have in mind the analogous cell decomposition of the projective space $\mathbb{P}^{n-1}\cong\Gr{1}{n}$, consisting of the following $n$ cells:
+$$\left\{l\subseteq\mathbb{R}^1\right\}\cong\mathbb{R}^0\ ,\ \left\{l\subseteq\mathbb{R}^2\setminus\mathbb{R}^1\right\}\cong\mathbb{R}^1\ ,\ \ldots\ ,\ \left\{l\subseteq\mathbb{R}^n\setminus\mathbb{R}^{n-1}\right\}\cong\mathbb{R}^{n-1}$$
+This cell decomposition seems natural, but it depends heavily on our basis choice for $\mathbb{R}^n$. This fact does not bother us, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role though, towards the end of this chapter, when we are going to use different decompositions (i.e. depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmanians. Thus, we first need to define what are flags in an $n$-dimensional vector space:
+
+\begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \ul{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and:
+$$0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=V$$
+\end{definition}
+
+An obvious example of flag is the one we used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\left<e_1,\ldots,e_i\right>$. This is sometimes refered to as \ul{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, we are going to treat every flag equally.
+
+Notice, that the role of the flags on our example above is to distinguice between all the different ways a line can intersect this flag. This is exactly the role a flag is going to play in the general definition of Schubert cells:
+
+\begin{definition} Let $k,n\in\mathbb{N}$ with $0<k<n$. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}$ of $[n]$ the \ul{Schubert cell} $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is defined to be the following subset of $\Gr{k}{n}$:
+$$\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right):=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_{j_{l}}\right)=l\ \ \ \forall l\in[k]\big\}$$
+where $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$.
+\end{definition}
+
+
+
+
+
 
 
 
