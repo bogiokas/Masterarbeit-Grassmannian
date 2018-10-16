@@ -2,6 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  MATH  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath,amsthm,amssymb} %math
+\usepackage{array}
 \usepackage{xfrac} %sfrac
 \usepackage{faktor}
 \usepackage{dutchcal} %some font for mathcal
@@ -35,8 +36,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  CUSTOMIZE THE LOOKS  %%%%%%%%%%%%%%%%%%%
 \geometry{headheight=15pt}
-%\setlength\parindent{0pt} %no indentation
-%\setlength\parskip{1em} %no indentation
+\setlength\parindent{0pt} %no indentation
+\setlength\parskip{0.5em} %hspace between par
 \renewcommand{\theequation}{\arabic{equation}}
 \titleformat{\chapter}[hang]{\bfseries\Huge}{}{0pt}{\thechapter. }
 \titleformat{name=\chapter,numberless}[hang]{\bfseries\Huge}{}{0pt}{}
@@ -63,7 +64,7 @@
 %%%%%%%%%%%  ENUMERATE / ITEMIZE  %%%%%%%%%%%%%%%%%%%
 \usepackage{enumerate} %enumerate/itemize (has to be first)
 \usepackage{enumitem} %customize enumerate/itemize
- \setlist{nolistsep} %<=> [nosep] <=> Kills vert sep <=> ![listsep]
+% \setlist{nolistsep} %<=> [nosep] <=> Kills vert sep <=> ![listsep]
 % \setlist{noitemsep} % <=> itemsep=0pt, parsep=0pt
 % \setlist{topsep=0pt} %before and after list
 % \setlist{partopsep=0pt} %before and after list if it starts new paragraph
@@ -124,6 +125,9 @@
 \theoremstyle{remark}
 \newtheorem{goals}{Goals}
 \newtheorem{remark}[common]{Remark}
+\newtheorem{remarks}[common]{Remarks}
+\newtheorem{note}[common]{Note}
+\newtheorem{notes}[common]{Notes}
 \makeatletter %for the @ in next line
 \@removefromreset{equation}{chapter} %ch-nmb not resetting eq-nmb
 \makeatother %for the @ in previous line
