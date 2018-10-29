@@ -1,9 +1,8 @@
 *.aux
 *.log
 *.out
-*.pdf
 *.toc
 *.bcf
 *.bbl
 *.gz
-./material/
+./tools/*
