@@ -5,4 +5,4 @@
 *.bcf
 *.bbl
 *.gz
-./tools/*
+tools/*
