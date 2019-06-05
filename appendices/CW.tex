@@ -1,0 +1,35 @@
+\chapter{CW Complexes}
+
+A CW structure on some space $X$ is usually defined recursively, as an inductive ``glueing'' of cells of some dimension $k$ to the previous, lower dimensional, skeleton of $X$, forming a new, $k$-dimensional, skeleton of $X$. A space $X$ may exhibit many different CW structures, but the existence of one suffices in order for $X$ to be characterized as CW complex. Here, we are going to use the following formal formulation of the above definition.
+
+\begin{definition} A topological space $X$ is a \ul{CW-complex}, if there exists some filtration
+\[\emptyset=X_{-1}\subseteq X_0\subseteq X_1\subseteq X_2\subseteq\cdots\subseteq X\]
+such that:
+\begin{b_item}
+\item $X=\varinjlim X_i$ with respect to all inclusion maps.
+\item For every $n\geq0$ there exists a pushout diagram in the category of topological spaces:
+\begin{center}
+\begin{tikzcd}
+\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}S^{n-1}\ar[r,"\coprod_e\phi_e"]\ar[d,hook,"\coprod_ej_e"']\ar[dr,phantom, very near start,"\ulcorner"]&[4em]X_{n-1}\ar[d,hook,"i_n"]\\[2em]
+\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}D^n\ar[r,"\coprod_e\Phi_e"']&X_n\\
+\end{tikzcd}
+\end{center}
+where $j_e:S^{n-1}\to D^n$ is the usuall inclusion map and $i_n:X_{n-1}\to X_n$ is the inclusion map given by the filtration.
+\end{b_item}
+\end{definition}
+
+A filtration of a topological space $X$, making $X$ a CW-complex is called a \ul{CW-structure} of $X$. Moreover, given a filtration of $X$ like in the above definition, the sets $\Phi_e\large({(D^n)}^{\circ}\large)$ (resp. $\Phi_e(D^n)$) are called the $n$-dimensional \ul{open} (resp. \ul{closed}) \ul{cells} of this CW-structure. Recall the following known facts regarding the dependencies between CW-complexes, structures and cells.
+
+\begin{notes}
+\begin{i_enum}
+\item A CW-complex $X$ can have more than one CW-structures, even structures having different number of $n$-dimensional open cells each.
+\item For a particular CW-structure of $X$, the maps $\phi_e$ and $\Phi_e$ are not predetermined by the structure, which means that there can be more than one choices for them. For example, one could always precompose $\Phi_e$ with a disc homeomorphism.
+\item Even if the maps $\phi_e$ and $\Phi_e$ can vary, the open and closed cells of a CW-structure are part of the structure (i.e.\ independent of the choice of the maps)
+\end{i_enum} \end{notes}
+
+\begin{remarks}
+\begin{i_enum}
+\item The property $X=\varinjlim X_i$ is equivallent to $X=\bigcup_{i\geq-1}X_i$ as a set, equipped with the final topology, with respect to all inclusion maps. In particular, a set $A$ is open (closed) in $X$, iff $A\cap X_i$ is open (closed) in $X_i$ for all $i\geq-1$, or equivallently, $A\cap\sigma$ is open (closed) in $\sigma$ for every open cell $\sigma$ of the CW structure. This property is what we usually refer to as the ``weak topology'' of $X$ (the ``W'' part of the CW).
+\item 
+\end{i_enum}
+\end{remarks}

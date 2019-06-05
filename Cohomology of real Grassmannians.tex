@@ -1,0 +1,245 @@
+\documentclass[12pt]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  MATH  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath,amssymb,amsthm,amsfonts} %math
+\usepackage{array}
+\usepackage{xfrac} %sfrac
+\usepackage{faktor}
+%\everymath{\displaystyle} %to show every math big
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  OTHER PACKAGES  %%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc} %encoding
+\usepackage{makeidx} %indexing
+\usepackage{tabularx} %tabular + expand cols
+\usepackage{booktabs} %hlines in tabular
+\usepackage{colortbl} %color table background
+\usepackage{graphicx} %inclusion of graphics
+\usepackage{subcaption} %manages subcaptions
+\usepackage{wrapfig} %wrap text around figures
+\usepackage[usenames,dvipsnames,svgnames]{xcolor} %colornames
+\usepackage{hyperref} %cross reference
+ \hypersetup{colorlinks=true,linkcolor=MidnightBlue,citecolor=BrickRed} %setup hyper
+\usepackage{xstring} %manipulate strings
+\usepackage{xparse} %define overloaded commands
+\usepackage{remreset} %remove control of a counter over another
+\usepackage{blindtext} %produce crap
+\usepackage{mfirstuc} %make first upper case
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  TIKZ 4 LIFE  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usetikzlibrary{cd} %commutative diagrams
+\usetikzlibrary{decorations} %curved lines
+\usetikzlibrary{positioning} %coordinates positioning
+\usetikzlibrary{3d,calc} %coordinate calculations & 3d
+\usetikzlibrary{backgrounds} %bg of tikzpicture
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  GEOMETRY  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[Glenn]{fncychap} %fancy chapters, with option Glenn
+%\ChNameVar{\bfseries\Large} %edits word "chapter"
+\usepackage{geometry} %page size and margins
+\geometry{headheight=15pt}
+\setlength\parindent{0pt} %no indentation
+\setlength\parskip{0.5em} %hspace between par
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  TITLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec} %customize chapters/sections/...
+\usepackage[nottoc]{tocbibind} %add bibliography to toc
+\usepackage[titletoc]{appendix} %add appendix to toc
+%\usepackage{biblatex}
+% \addbibresource{bibliography/bibsample.bib}
+\renewcommand\theequation{\arabic{equation}}
+\newcommand\mychapter{\thechapter\quad} %for titleformat
+\newcommand\mysection{\thesection\quad} %and chaptermark
+\titleformat{\chapter}[hang]{\bfseries\Huge}{}{0pt}{\mychapter}
+\titleformat{name=\chapter,numberless}[hang]{\bfseries\Huge}{}{0pt}{}
+\titleformat{\section}[hang]{\bfseries\Large}{}{0pt}{\mysection}
+\titleformat{name=\section,numberless}[hang]{\bfseries\Large}{}{0pt}{}
+\newenvironment{myappendix}{%
+	\appendix%
+	\renewcommand\chaptername{Appendix}%
+	\renewcommand\mychapter{\chaptername\ \thechapter\\}%
+	\begin{appendices}
+}{%
+	\end{appendices}%
+	\renewcommand\chaptername{Chapter}%
+	\renewcommand\mychapter{\thechapter\quad}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  FOOTER / HEADER  %%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr} %control of footers/headers
+\pagestyle{fancy} %change style to fancy
+\renewcommand\chaptermark[1]{\markboth{\mychapter #1}{}}
+\renewcommand\sectionmark[1]{\markright{\mysection #1}}
+\fancyhf{} %clear header/footer
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\nouppercase{\textit{\leftmark}}}
+\fancyhead[RE]{\nouppercase{\textit{\rightmark}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%define plain page style
+	\fancyhf{}
+	\fancyfoot[LE,RO]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  ENUMERATE / ITEMIZE  %%%%%%%%%%%%%%%%%%%
+\usepackage{enumerate} %enumerate/itemize (has to be first)
+\usepackage{enumitem} %customize enumerate/itemize
+% \setlist{nolistsep} %<=> [nosep] <=> Kills vert sep <=> ![listsep]
+% \setlist{noitemsep} % <=> itemsep=0pt, parsep=0pt
+% \setlist{topsep=0pt} %before and after list
+% \setlist{partopsep=0pt} %before and after list if it starts new paragraph
+% \setlist{itemsep=0pt} %between items
+% \setlist{parsep=0pt} %between paragaphs inside list
+\newenvironment{n_enum}{%
+	\begin{enumerate}[label=(\arabic{*})]
+}{%
+	\end{enumerate}
+}%1,2,3,...
+\newenvironment{i_enum}{%
+	\begin{enumerate}[label=(\roman{*})]
+}{%
+	\end{enumerate}
+} %i,ii,iii,...
+\newenvironment{a_enum}{%
+	\begin{enumerate}[label=(\alph{*})]
+}{%
+	\end{enumerate}
+} %a,b,c,...
+\newenvironment{b_item}{%
+	\begin{itemize}
+}{%
+	\end{itemize}
+} %bullets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  MATH NOTATIONS  %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\conv{\mathrm{conv }}
+\newcommand\Hom{\mathrm{Hom}}
+\newcommand\Tor{\mathrm{Tor}}
+\newcommand\Ext{\mathrm{Ext}}
+\newcommand\Mod{\mathrm{Mod}}
+\newcommand\Ab{\mathrm{Ab}}
+\newcommand\map{\mathrm{map }}
+\newcommand\im{\mathrm{im }}
+\newcommand\tensor{\otimes}
+%\newcommand\ker{\mathrm{ker}}
+\newcommand\coim{\mathrm{coim }}
+\newcommand\coker{\mathrm{coker }}
+\newcommand\cupdot{\mathbin{\mathaccent\cdot\cup}}
+\NewDocumentCommand\StO{mgg}{%
+	\mathrm{V_0}
+	\IfNoValueTF{#3}{}{_{,#3}}
+	\left(#1\IfNoValueTF{#2}{}{,#2}\right)
+}
+\NewDocumentCommand\St{mgg}{%
+	\mathrm{V}
+	\IfNoValueTF{#3}{}{_{#3}}
+	\left(#1\IfNoValueTF{#2}{}{,#2}\right)
+}
+\NewDocumentCommand\Gr{mgg}{%
+	\mathrm{Gr}
+	\IfNoValueTF{#3}{}{_{#3}}
+	\left(#1\IfNoValueTF{#2}{}{,#2}\right)
+}
+\newcommand\tworows[8]{\left(\begin{array}{cccc}#1&#2&#3&#4\\{#5}&#6&#7&#8\\\end{array}\right)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  OTHER NOTATIONS  %%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\ul[1]{\emph{#1}}
+\newcommand\nospace{\hspace*{-0.5em}}
+\newcommand\HRule{\rule{\linewidth}{0.1mm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  COUNTERS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{aliascnt} %alias between counters
+\newtheorem{common}{}[chapter] %the common counter
+\newcommand\mynewtheorem[1]{
+	\newaliascnt{#1}{common} %counter = common_counter
+	\newtheorem{#1}[#1]{\makefirstuc{#1}}
+	\aliascntresetthe{#1} %???
+	\expandafter\def\csname #1autorefname\endcsname{\makefirstuc{#1}}
+}%\def\lemmaautorefname{Lemma}
+\mynewtheorem{conjecture}
+\mynewtheorem{conjectures}
+\mynewtheorem{corollary}
+\mynewtheorem{corollaries}
+\mynewtheorem{example}
+\mynewtheorem{examples}
+\mynewtheorem{exercise}
+\mynewtheorem{exercises}
+\mynewtheorem{fact}
+\mynewtheorem{facts}
+\mynewtheorem{lemma}
+\mynewtheorem{lemmata}
+\mynewtheorem{observation}
+\mynewtheorem{observations}
+\mynewtheorem{problem}
+\mynewtheorem{problems}
+\mynewtheorem{proposition}
+\mynewtheorem{propositions}
+\mynewtheorem{question}
+\mynewtheorem{questions}
+\mynewtheorem{reminder}
+\mynewtheorem{reminders}
+\mynewtheorem{theorem}
+\mynewtheorem{theorems}
+\theoremstyle{definition}
+\mynewtheorem{definition}
+\mynewtheorem{definitions}
+\theoremstyle{remark}
+\mynewtheorem{goal}
+\mynewtheorem{goals}
+\mynewtheorem{remark}
+\mynewtheorem{remarks}
+\mynewtheorem{note}
+\mynewtheorem{notes}
+\makeatletter %for the @ in next line
+\@removefromreset{equation}{chapter} %ch-nmb not resetting eq-nmb
+\makeatother %for the @ in previous line
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  MAKE TITLE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\title{\vspace{-30pt}\rule{320pt}{0.5mm}\\\vspace{10pt}Cohomology of Grassmann Manifold\\\rule{320pt}{0.5mm}}
+%\author{}
+%\date{}
+\newcommand\mytitle{Cohomology ring of the real Grassmannians\\
+with coefficients from $\mathbb{F}_2$}
+\renewcommand{\maketitle}{%
+	\begin{titlepage}
+	\newgeometry{left=0cm, right=0cm, top=0cm, bottom=0cm}
+	\vspace*{0.3\textheight}
+	\begin{center}
+	\rule{400pt}{.5mm}\\
+	\vspace{10pt}
+	\LARGE\mytitle\\
+	\rule{400pt}{.5mm}\\
+	\end{center}
+	\end{titlepage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  BEGIN DOCUMENT  %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%cover
+	\renewcommand{\thepage}{C\arabic{page}}
+	\thispagestyle{empty}
+	\maketitle
+	\newpage
+	\thispagestyle{empty}
+%everything that goes in the beginning
+\frontmatter
+	\pagenumbering{roman}
+	%\\\vspace{100pt}\include{intro}
+	\tableofcontents
+%main document
+\mainmatter
+	\include{chapters/intro}
+	\include{chapters/grassmannian}
+	\include{chapters/vector_bundles}
+	\include{chapters/cohomology}
+	\begin{myappendix}
+	\include{appendices/stiefel}
+	\include{appendices/CW}
+	\include{appendices/fiber_bundles}
+	\end{myappendix}
+\backmatter
+	\bibliographystyle{alpha}
+	\bibliography{bibliography/bibsample}
+\end{document}

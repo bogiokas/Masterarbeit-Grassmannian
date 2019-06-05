@@ -1,2 +1,3 @@
 program:
-	pdflatex ./Cohomology\ of\ Grassmann\ Manifold.tex
+	bibtex ./Cohomology\ of\ real\ Grassmannians.aux
+	pdflatex ./Cohomology\ of\ real\ Grassmannians.tex

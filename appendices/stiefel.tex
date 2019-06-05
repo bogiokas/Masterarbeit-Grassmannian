@@ -1,0 +1,60 @@
+\chapter{Stiefel Manifolds}\label{app:stiefel}
+This appendix is devoted to the study of the well-known \ul{Stiefel Spaces}. Our discussion begins at the space of all $k$-frames inside the $\mathbb{R}$-vector space $\mathbb{R}^n$:
+\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ as:
+\[\St{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim\left<v_1,\ldots,v_k\right>=k\right\}\]
+equipped with the subspace topology. Every point in this set is called a \ul{$k$-frame} of $\mathbb{R}^n$.
+\end{definition}
+This is actually an open subspace of the space of all $k$-tuples of vectors in $\mathbb{R}^n$. Indeed, imagine slightly perturbing any one of the vectors in a $k$-frame. Then the resulting $k$-tuple is still going to be a $k$-frame. Let us also prove this fact formally.
+\begin{proposition}\label{prop:St_open} Let $0<k\leq n$ be some natural numbers. Then $\St{k}{n}$ is an open submanifold of ${\left(\mathbb{R}^n\right)}^k$.
+\end{proposition}
+\begin{proof} Define the map $\Phi$ taking a $k$-tuple of vectors in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{n\times k}$ having these vectors as columns:
+\begin{align*}
+\Phi:{\left(\mathbb{R}^n\right)}^k&\to \mathbb{R}^{n\times k}\\[1em]
+(v_1,\ldots,v_k)&\mapsto \left(\begin{array}{ccc}
+|&&|\\[-.3em]
+v_1&\cdots&v_k\\[-.3em]
+|&&|\\
+\end{array}\right)
+\end{align*}
+Since the topology on both spaces is the product topology and $\Phi$ respects it, $\Phi$ is a homeomorphism.
+
+Define now the subset $D$ of all $n\times k$ matrices having at least one non-zero $k\times k$ minor:
+\[D:=\left\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\text{ s.t. }\det(A_I)\neq0\right\}\]
+where, given some $I\in\binom{[n]}{k}$, $A_I\in\mathbb{R}^{k\times k}$ is the matrix formed from the $k$ rows of $A$ indexed by $I$. Then, we have:
+\[\St{k}{n}=\Phi^{-1}(D)\cong D\]
+and since $D$ is an open submanifold of $\mathbb{R}^{n\times k}$, we also get that $\St{k}{n}$ is an open submanifold of ${\left(\mathbb{R}^n\right)}^k$.
+\end{proof}
+%TODO%%Maybe use that $St is open, in order to prove that (St+H)^- = St+H^-
+
+\begin{remark} In particular, this proves that $\St{k}{n}$ is a real manifold of dimension $kn$.
+\end{remark}
+
+We can now define the Stiefel manifold as the space of all \ul{orthonormal} $k$-frames:
+\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define the \ul{Stiefel} space $\StO{k}{n}{\mathbb{R}}=\StO{k}{n}$ as:
+\[\StO{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\vec{v}_i\cdot\vec{v}_j=\delta_{i,j}\right\}\]
+equipped with the subspace topology. Every point in this set is called an \ul{orthonormal $k$-frame} of $\mathbb{R}^n$.
+\end{definition}
+Notice that we obviously have $\StO{k}{n}\subseteq\St{k}{n}$.
+
+\begin{proposition}\label{prop:StO_dim_closed} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of dimension $nk-\frac{k(k+1)}{2}$.
+\end{proposition}
+
+%%TODO: Write this better
+\begin{proof}
+We need again the homeomorphism $\Phi:{\left(\mathbb{R}^n\right)}^k\to\mathbb{R}^{n\times k}$ taking a $k$-tuple in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{k\times n}$ having these vectors as columns. This time, define the subset $S$ of all $n\times k$ semi-orthogonal matrices:
+\[S:=\left\{A\in\mathbb{R}^{n\times k}:A^t A=I_k\right\}\]
+Then, we have:
+\[\StO{k}{n}=\Phi^{-1}(S)\cong S\]
+$S$ is a subset of $\mathbb{R}^{n\times}$, defined by $\binom{k+1}{2}$ (linearly independant) equations. This makes $S$ a closed submanifold of $\mathbb{R}^{n\times k}$, of dimension $nk-\binom{k+1}{2}$. Thus, $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of the same dimension.
+\end{proof}
+
+In this thesis $\St{k}{n}$ and $\StO{k}{n}$ are used in a similar way with $\St{k}{n}$ having the advantage of being open and the Stiefel manifold having the advantage of being compact.
+\begin{remark} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is a bounded subset of ${\left(\mathbb{R}^n\right)}^k$, with the metric induced by the isomorphism ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$. Indeed, if $f=(v_1,\ldots,v_k)\in{\left(\mathbb{R}^n\right)}^k$ is an orthonormal $k$-frame of $\mathbb{R}^n$, then:
+\[\left\|f\right\|_2^2=\sum_{i=1}^k\left\|v_i\right\|_2^2=k\]
+\end{remark}
+
+\begin{lemma}\label{lem:StO_compact} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is compact. Indeed the previous Proposition and Remark prove that $\StO{k}{n}$ is a closed and bounded subset of ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$, which proves the asertion.
+\end{lemma}
+%TODO(needed in Lemma 1.3)
+
+

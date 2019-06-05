@@ -1,3 +1,3 @@
 #!/bin/sh
-zathura ./Cohomology\ of\ Grassmann\ Manifold.pdf &
-vim ./Cohomology\ of\ Grassmann\ Manifold.tex ./chapters/intro.tex ./chapters/grass_def.tex
+zathura ./Cohomology\ of\ real\ Grassmannians.pdf &
+vim ./Cohomology\ of\ real\ Grassmannians.tex ./chapters/intro.tex ./chapters/grassmannian.tex ./appendices/stiefel.tex ./appendices/CW.tex ./appendices/fiber_bundles.tex
