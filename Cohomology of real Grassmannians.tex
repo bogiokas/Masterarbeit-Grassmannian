@@ -112,6 +112,11 @@
 }{%
 	\end{itemize}
 } %bullets
+%\newenvironment{equivproof}{%
+%	\begin{itemize}[($\Rightarrow$),($\Leftarrow$)]
+%}{%
+%	\end{itemize}
+%}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  MATH NOTATIONS  %%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\conv{\mathrm{conv }}
@@ -158,6 +163,7 @@
 	\aliascntresetthe{#1} %???
 	\expandafter\def\csname #1autorefname\endcsname{\makefirstuc{#1}}
 }%\def\lemmaautorefname{Lemma}
+%%theoremstyle
 \mynewtheorem{conjecture}
 \mynewtheorem{conjectures}
 \mynewtheorem{corollary}
@@ -170,6 +176,8 @@
 \mynewtheorem{facts}
 \mynewtheorem{lemma}
 \mynewtheorem{lemmata}
+\mynewtheorem{notation}
+\mynewtheorem{notations}
 \mynewtheorem{observation}
 \mynewtheorem{observations}
 \mynewtheorem{problem}
@@ -182,9 +190,11 @@
 \mynewtheorem{reminders}
 \mynewtheorem{theorem}
 \mynewtheorem{theorems}
+%%theoremstyle
 \theoremstyle{definition}
 \mynewtheorem{definition}
 \mynewtheorem{definitions}
+%%theoremstyle
 \theoremstyle{remark}
 \mynewtheorem{goal}
 \mynewtheorem{goals}
@@ -192,6 +202,7 @@
 \mynewtheorem{remarks}
 \mynewtheorem{note}
 \mynewtheorem{notes}
+
 \makeatletter %for the @ in next line
 \@removefromreset{equation}{chapter} %ch-nmb not resetting eq-nmb
 \makeatother %for the @ in previous line

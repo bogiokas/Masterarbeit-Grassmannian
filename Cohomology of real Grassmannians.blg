@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2018/Arch Linux)
+This is BibTeX, Version 0.99d (TeX Live 2019/Arch Linux)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: ./Cohomology of real Grassmannians.aux
 A level-1 auxiliary file: chapters/intro.aux
@@ -10,44 +10,46 @@ A level-1 auxiliary file: appendices/CW.aux
 A level-1 auxiliary file: appendices/fiber_bundles.aux
 The style file: alpha.bst
 Database file #1: bibliography/bibsample.bib
-You've used 1 entry,
+Warning--empty publisher in vec_bundles
+You've used 2 entries,
             2543 wiz_defined-function locations,
-            570 strings with 4781 characters,
-and the built_in function-call counts, 352 in all, are:
-= -- 29
-> -- 19
-< -- 0
-+ -- 6
-- -- 6
-* -- 21
-:= -- 69
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 5
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 15
-empty$ -- 26
-format.name$ -- 7
-if$ -- 68
+            574 strings with 4840 characters,
+and the built_in function-call counts, 623 in all, are:
+= -- 51
+> -- 27
+< -- 1
++ -- 8
+- -- 8
+* -- 36
+:= -- 115
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 9
+chr.to.int$ -- 2
+cite$ -- 3
+duplicate$ -- 31
+empty$ -- 51
+format.name$ -- 11
+if$ -- 122
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 8
-num.names$ -- 3
-pop$ -- 9
+missing$ -- 4
+newline$ -- 13
+num.names$ -- 6
+pop$ -- 19
 preamble$ -- 1
-purify$ -- 7
+purify$ -- 13
 quote$ -- 0
-skip$ -- 13
+skip$ -- 22
 stack$ -- 0
-substring$ -- 7
-swap$ -- 1
-text.length$ -- 0
-text.prefix$ -- 0
+substring$ -- 14
+swap$ -- 2
+text.length$ -- 1
+text.prefix$ -- 1
 top$ -- 0
-type$ -- 4
-warning$ -- 0
-while$ -- 3
-width$ -- 2
-write$ -- 14
+type$ -- 8
+warning$ -- 1
+while$ -- 5
+width$ -- 4
+write$ -- 25
+(There was 1 warning)

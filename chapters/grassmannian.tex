@@ -14,7 +14,7 @@ where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<
 
 If the reader has still in mind the case of the projective spaces, it would be of no surprise that we are about to give an alternative definition of the Grassmannians. We know that the projective space of some dimension could alternatively be defined as the quotient over the unit sphere, rather than over the set of every nonzero vector. The analog of the set of all unit vectors would be here the Stiefel manifold $\StO{k}{n}$, which is the space of all \ul{orthonormal} $k$-frames, as defined and discussed again in Appendix~\ref{app:stiefel}.
 
-\begin{proposition} Let $0<k<n$ be some natural numbers. Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map used in the definition of the Grassmanians and let $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ be its restriction to the Stiefel manifold. Then $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
+\begin{proposition} Let $0<k<n$ be some natural numbers. Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map used in the definition of the Grassmannians and let $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ be its restriction to the Stiefel manifold. Then $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
 \end{proposition}
 \begin{proof}
 Let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ be the Gram-Schmidt process. Then, the following diagram commutes:
@@ -138,14 +138,14 @@ After establishing the continuity of $\left.\perp\right|_{\mathcal{U}_H}$ for ev
 The union is over all $k$-planes spanned by any $k$ vectors among $\{e_1,\ldots,e_n\}$, where $e_1,\ldots,e_n$ is the standard basis of $\mathbb{R}^n$. This means that $\#\binom{\{e_1,\ldots,e_n\}}{k}=\binom{n}{k}<\infty$ sets are participating in the union and thus one can use the pasting lemma, proving that $\perp$ is continuous as a function from the whole space $\Gr{k}{n}$ to $\Gr{n-k}{n}$.
 \end{proof} 
 
-It would be helpfull at this point to mention what are the ``small'' examples of Grassmannians. We already know that of course $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and because of the last lemma we also know that $\Gr{n-1}{n}\cong\mathbb{P}^{n-1}$. This already takes care of the cases $n=2,3$:
+It would be helpful at this point to mention what are the ``small'' examples of Grassmannians. We already know that of course $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and because of the last lemma we also know that $\Gr{n-1}{n}\cong\mathbb{P}^{n-1}$. This already takes care of the cases $n=2,3$:
 \[\Gr{1}{2}\cong\mathbb{P}^1\qquad\Gr{1}{3}\cong\Gr{2}{3}\cong\mathbb{P}^2\]
 This forces us to always consider $\Gr{2}{4}$ as the smallest non-trivial case in our further discussion.
 
 \section{They are also CW-Complexes}
 In the previous section we proved that the finite Grassmannians are compact topological manifolds. Our goal now is to prove that they are in fact finite CW complexes. For this, we need to define a cell decomposition of each Grassmannian, which we are going to do next. Before we start laying out the formal definition, it would be best for the reader to have in mind the analogous cell decomposition of the projective space $\mathbb{P}^{n-1}\cong\Gr{1}{n}$, consisting of the following $n$ cells:
 \[\left\{l\subseteq\mathbb{R}^1\right\}\cong\mathbb{R}^0\ ,\ \left\{l\subseteq\mathbb{R}^2\setminus\mathbb{R}^1\right\}\cong\mathbb{R}^1\ ,\ \ldots\ ,\ \left\{l\subseteq\mathbb{R}^n\setminus\mathbb{R}^{n-1}\right\}\cong\mathbb{R}^{n-1}\]
-This cell decomposition seems natural, but it depends heavily on our basis choice for $\mathbb{R}^n$. This fact does not bother us, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role though, towards the end of this chapter, when we are going to use different decompositions (i.e.\ depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmanians. Thus, we first need to define what flags are in an $n$-dimensional vector space.
+This cell decomposition seems natural, but it depends heavily on our basis choice for $\mathbb{R}^n$. This fact does not bother us, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role though, towards the end of this chapter, when we are going to use different decompositions (i.e.\ depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmannians. Thus, we first need to define what flags are in an $n$-dimensional vector space.
 
 \begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \ul{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and:
 \[0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=V\]
@@ -156,11 +156,11 @@ for every $i\in[n]$.
 
 In the future we are going to use the non-standard notation ${[n]}_0$ to denote the set $[n]\cup\{0\}=\{0,1,\ldots,n\}$.
 
-An obvious example of flag is the one we used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\left<e_1,\ldots,e_i\right>$. This is sometimes refered to as \ul{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, we are going to treat every flag equally.
+An obvious example of flag is the one we used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\left<e_1,\ldots,e_i\right>$. This is sometimes referred to as \ul{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, we are going to treat every flag equally.
 
 An obvious remark is that given a flag, one can always find a compatible basis with this flag. In fact, there always exist $2^n$ different compatible orthonormal bases and fixing one is like fixing an ``orientation'' of the flag.
 
-Notice, that the role of the flags on our example above is to distinguice between all the different ways a line can intersect this flag. This is exactly the role a flag is going to play in the general definition of Schubert cells.
+Notice, that the role of the flags on our example above is to distinguish between all the different ways a line can intersect this flag. This is exactly the role a flag is going to play in the general definition of Schubert cells.
 
 \begin{definition} Let $k,n\in\mathbb{N}$ with $0<k<n$. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$ of $[n]$ the \ul{Schubert cell} $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is defined to be the following subset of $\Gr{k}{n}$:
 \[\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right):=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{l\in{[k]}_0:j_l\leq i\}\ \ \forall i\in{[n]}_0\big\}\]
@@ -195,7 +195,7 @@ Although we see that there exist dimension restrictions in the definitions of th
 \end{array}\]
 We can easily predict how the general Schubert cell (with respect to some flag $\mathbb{F}_{\bullet}$) of any projective space looks like: It will be the set of all lines contained in $\mathbb{F}_k\setminus\mathbb{F}_{k-1}$. This gives us a serial way to think of the cells of a particular projective space, which is the result of the total order that the set $\binom{[n]}{1}$ naturally has. Since $\binom{[n]}{k}$ is in general naturally a poset (inheriting the coordinate-wise ordering on the set of $k$ element sequences ${[n]}^k$), it is now of no surprise that the same poset structure lies behind the Schubert decomposition. We are going to more precisely investigate into this structure, when we examine the closure of these cells we just defined.
 
-Our goal now is to convince the reader that this is a meaningful decomposition of the Grassmannians, i.e.\ to prove eventually that this makes every $\Gr{k}{n}$ into a CW complex. Let us start with proving that ${\left\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is indeed a decomposition. The following proof makes sense, if one conceptulizes a $k$-subset of $[n]$, as the $k$ ``jump points'' of the dimension of the intersections $H\cap\mathbb{F}_i$, for the various $i$.
+Our goal now is to convince the reader that this is a meaningful decomposition of the Grassmannians, i.e.\ to prove eventually that this makes every $\Gr{k}{n}$ into a CW complex. Let us start with proving that ${\left\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is indeed a decomposition. The following proof makes sense, if one conceptualizes a $k$-subset of $[n]$, as the $k$ ``jump points'' of the dimension of the intersections $H\cap\mathbb{F}_i$, for the various $i$.
 
 \begin{lemma} For any integers $0<k<n$ and for every flag $\mathbb{F}_{\bullet}$ for $\mathbb{R}^n$, the set of all Schubert cells ${\left\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is a partition of the Grassmannian $\Gr{k}{n}$.
 \end{lemma}
@@ -214,7 +214,7 @@ with the last vector space being obviously a subspace of $\faktor{\mathbb{F}_i}{
 Which means that there exist exactly $k$ jump points in the sequence of the dimensions of $H\cap\mathbb{F}_0,\ldots,H\cap\mathbb{F}_n$, putting $H$ in some Schubert cell.
 \end{proof}
 
-We now want to prove that these cells are indeed building blocks we can use, i.e.\ that they are in fact homeomorphic to open balls of various dimensions. Before writing down the formula for the dimension of a general Schubert cell, les us revisit the case of $\Gr{2}{4}$ and try to compute the dimension of the cells by hand-waving:
+We now want to prove that these cells are indeed building blocks we can use, i.e.\ that they are in fact homeomorphic to open balls of various dimensions. Before writing down the formula for the dimension of a general Schubert cell, let us revisit the case of $\Gr{2}{4}$ and try to compute the dimension of the cells by hand-waving:
 
 \begin{example} In $\Gr{2}{4}$ we have the Schubert decomposition we discussed earlier, w.r.t.\ the standard flag. Let us represent each plane $H$ in $\mathbb{R}^4$ by the unique corresponding $2\times 4$ matrix whose rows span $H$ and the matrix is in its reduced echelon form. Then, we get the following picture if we look at the form of the matrices for each cell. Remember, the index $\mathbf{j}\subseteq\binom{[4]}{2}$ refers to the dimension jump points:
 \begin{center}
@@ -229,13 +229,19 @@ In fact, every matrix of a given form gives a unique plane in the according cell
 
 We are now going to compute the dimension in general. Given a set $\mathbf{j}=\{j_1<\cdots<j_k\}\in\binom{[n]}{k}$, define the number
 \[d(\mathbf{j})=(j_1-1)+(j_2-2)+\cdots+(j_k-k)\]
-Using the reduced echelon form for a matrix written in a suitable base of $\mathbb{R}^n$, depending on the flag $\mathbb{F}_{\bullet}$, one can easily argue that $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is an open cell of dimension $d(\mathbf{j})$, for any $\mathbf{j}\in\binom{[n]}{k}$, but our goal is to eventually prove that these open cells also give the grassmannian a CW structure. For this we need to find maps from the closed cells of the appropriate dimensions into the grassmannian and unfortunatelly it is not easy to work with the compactification of the matrices defined above. Thus, the approach in the bibliography may seem more artificial and it is also the one we employ here:
+Using the reduced echelon form for a matrix written in a suitable base of $\mathbb{R}^n$, depending on the flag $\mathbb{F}_{\bullet}$, one can easily argue that $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is an open cell of dimension $d(\mathbf{j})$, for any $\mathbf{j}\in\binom{[n]}{k}$, but our goal is to eventually prove that these open cells also give the Grassmannian a CW structure. For this we need to find maps from the closed cells of the appropriate dimensions into the Grassmannian and unfortunately it is not easy to work with the compactification of the matrices defined above. Thus, the approach in the bibliography may seem more artificial and it is also the one we employ here:
 
-Our main goal is to prove Lemma~\ref{lem:dim_of_cells}. The approach is first to define appropriate sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ living in the Stiefel manifold, each one ``above'' the matching Schubert cell, then to prove that each closure $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet}\right)}^-$ is homeomorphic with a closed disk of the right dimension and, finally, to prove that $q_0$ maps $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ homeomorphically onto $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Let us begin with the definition:
+Our main goal is to prove Lemma~\ref{lem:dim_of_cells}. The approach is:
+\begin{i_enum}
+\item First to define appropriate sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ living in the Stiefel manifold, each one ``above'' the matching Schubert cell. (Definition~\ref{def:lift_of_Schubert_cells})
+\item Then to prove that each closure $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet}\right)}^-$ is homeomorphic with a closed disk of the right dimension. (Lemma~\ref{lem:shub_dim})
+\item Finally, to prove that $q_0$ maps $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ homeomorphically onto $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. (Lemma~\ref{lem:back_to_Schubert_cells})
+\end{i_enum}
+Let us begin with the definition:
 
-\begin{definition} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ an orthonormal basis of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}=\{j_1<j_2<\cdots<j_k\}\in\binom{[n]}{k}$ define $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})=\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ to be the following subset of $\StO{k}{n}$:
+\begin{definition}\label{def:lift_of_Schubert_cells} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ an orthonormal basis of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}=\{j_1<j_2<\cdots<j_k\}\in\binom{[n]}{k}$ define $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})=\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ to be the following subset of $\StO{k}{n}$:
 \[\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet}):=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_l\in\mathbb{H}_{j_l}(\mathbb{F}_{\bullet},f_{\bullet})\ \forall l\in[k]\right\}\]
-where $\mathbb{H}_i(\mathbb{F}_{\bullet},f_{\bullet})$ is defined to be the ``postitive open halfspace'' of $\mathbb{F}_{i}$, w.r.t.\ the orientation defined by $f_i$:
+where $\mathbb{H}_i(\mathbb{F}_{\bullet},f_{\bullet})$ is defined to be the ``positive open halfspace'' of $\mathbb{F}_{i}$, w.r.t.\ the orientation defined by $f_i$:
 \[\mathbb{H}_i(\mathbb{F}_{\bullet},f_{\bullet}):=\left\{v\in\mathbb{F}_i:v\cdot f_i>0\right\}\]
 for every $i\in[n]$.
 \end{definition}
@@ -281,13 +287,25 @@ which proves the desired inclusion.
 \begin{lemma}\label{lem:shub_dim} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, there exists a homeomorphism
 \[\tilde{\Phi}_{\mathbf{j}}:D^{d(\mathbf{j})}\to\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\]
 \end{lemma}
-\begin{proof}
+\begin{proof} For this proof we are going to use the approach of Hatcher~\cite{vec_bundles} (p.37), in order to already familiarize ourselves with the notion of a trivial fiber bundle. 
+
+
+
+
+
+%%%%%%%TODO
+
+
+
+
+
+
 We will construct the desired homeomorphism inductively in $k$. For $k=1$ we have:
-\[\tilde{C}_{\{j_1\}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-=\left\{v\in\mathbb{F}_{j_1}:v\cdot v=1\ ,\ v\cdot f_{j_1}\geq0\right\}\]
+\[\tilde{\mathcal{C}}_{\{j_1\}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-=\left\{v\in\mathbb{F}_{j_1}:v\cdot v=1\ ,\ v\cdot f_{j_1}\geq0\right\}\]
 
 It is known that the closed unit semisphere of $\mathbb{R}^p$ is homeomorphic to the closed disc $D^{p-1}$ for every $p\in\mathbb{N}$. Let us fix now once and for all, for every $p\in\mathbb{N}$, a homeomorphism
 \[\psi_p:D^{p-1}\to\left\{v\in\mathbb{R}^p:v\cdot v=1\ ,\ v\cdot e_p\geq 0\right\}\]
-One such homeomorphism would be the inverse of the restriction of the usuall projection $\mathbb{R}^p\to\mathbb{R}^{p-1}$.
+One such homeomorphism would be the inverse of the restriction of the usual projection $\mathbb{R}^p\to\mathbb{R}^{p-1}$.
 
 \[\St{k}{n}\cap\cdots=
 \{(v_1,\ldots,v_k):(v_1,\ldots,v_{k-1})\in\St{k}{n}{F}\ v_l\in F_{j_l}\ v_k\cdot v_l=\delta_{k,l}\}\]
