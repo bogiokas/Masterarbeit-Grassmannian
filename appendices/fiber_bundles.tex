@@ -193,9 +193,13 @@ i.e.\ that $\psi$ is a good candidate to be a bundle map. We only have to prove 
 Now that we have defined what an isomorphism of two fiber bundles is, let us examine what it means for a fiber bundle to be isomorphic to the trivial bundle.
 
 \begin{remark}
-Let $p:E\to B$ be a \emph{trivial} fiber bundle with fiber $F$. Then, there exists a continuous map
+Let $p:E\to B$ be a fiber bundle with fiber $F$. Then, $p$ is isomorphic to a trivial fiber bundle, if and only if there exists a map
 \[\phi:F\times B\to E\]
-with $p\circ\phi(a,x)=x$.
+such that, for every $x\in B$:
+\begin{i_enum}
+\item $p\circ\phi(a,x)=x$ (i.e. $\phi$ is a bundle map), and
+\item The restriction map $p_x:F\times\{x\}\to p^{-1}(\{x\})$ is an homeomorphism. (i.e. $\phi$ is a bundle isomorphism).
+\end{i_enum}
 \end{remark}
 
 
