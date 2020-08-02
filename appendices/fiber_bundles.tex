@@ -13,7 +13,7 @@ E\ar[r,"\supseteq",phantom]&p^{-1}(U)\ar[r,"p|_{p^{-1}(U)}"']&U\ar[r,"\subseteq"
 \end{center}
 i.e.\ if $p\circ f_U=\pi_2$
 \end{i_enum}
-$B$ is then called \ul{base space} and $E$ \ul{total space} of the fibration. Moreover, for every $x\in B$, the space $p^{-1}(\{x\})$ is called \ul{the fiber over $x$} and is denoted by $F_x$. Notice, that, sometimes, we refer to the fibration just by its total space, if the definition of $p$ is clear.
+$B$ is then called \ul{base space} and $E$ \ul{total space} of the fiber bundle. Moreover, for every $x\in B$, the space $p^{-1}(\{x\})$ is called \ul{the fiber over $x$} and is denoted by $F_x$. Notice, that, sometimes, we refer to the fiber bundle just by its total space, if the definition of $p$ is clear.
 \end{definition}
 
 \begin{notation}
@@ -39,9 +39,9 @@ Define now the map $f_x:F\to F_x=p^{-1}(\{x\})$ with:
 \[f_x(a):=f_U(a,x)\]
 this function is well defined, since $f_U(a,x)\in p^{-1}(\{x\})$ for every $a\in F$, as we just showed. Not only that, but in fact $f_x(F)=p^{-1}(\{x\})$. Indeed, let $\tilde{x}\in p^{-1}(\{x\})$. Then, $\pi_2\circ f_U^{-1}(\tilde{x})=p(\tilde{x})=x$, i.e. $f_U^{-1}(\tilde{x})=(a_x,x)$ for some $a_x\in F$. This gives:
 \[f_x(a_x)=f_U(a_x,x)=\tilde{x}\]
-which proves that $\tilde{x}\in f_x(F)$. This means that
-\[f_x=i_1\circ f_U|_{F\times\{x\}}\]
-with $i_2:F\to F\times\{x\}$ being trivially a homeomorphism. A restriction of a homeomorphism is also a homeomorphism, so $f_x$ is a homeomorphism as well.
+which proves that $\tilde{x}\in f_x(F)$. Also, $f_x$ is injective, since
+\[f_x=f_U|_{F\times\{x\}}\circ i_2\]
+where $i_2:F\to F\times\{x\}$ is trivially a homeomorphism and a restriction of a homeomorphism is injective. This means that $f_x$ is a homeomorphism like we wanted to show.
 \end{proof}
 
 Now, one can see how bundles generalize products. Formally, one just needs to choose $U=B$ for every $x$ and $\phi_B=id$. In fact, products are in this setup the ``trivial'' example.
@@ -59,10 +59,10 @@ Notice how this fiber bundle is not the ``same'' as the trivial bundle over the 
 
 \begin{examples}
 \begin{i_enum}
-\item For $F=\{0,1\}$, and $(x,0)\sim(1-x,1)$, $E$ is obviously the boundary of the M\"obius strip, which is topologically a circle. The image of $p$ then traces the circle with twice the speed of the input variable. Notice, that this is different from the triviall bundle with the same fiber over $B$, since the trivial bundle is a disjoint union of two circles.
+\item For $F=\{0,1\}$, and $(x,0)\sim(1-x,1)$, $E$ is obviously the boundary of the M\"obius strip, which is topologically a circle. The image of $p$ then traces the circle with twice the speed of the input variable. Notice, that this is different from the trivial bundle with the same fiber over $B$, since the trivial bundle is a disjoint union of two circles.
 \item $F=\mathbb{R}$ or $F=(0,1)$, and again $(x,0)\sim(1-x,1)$. This is the open version of the M\"obius strip.
 \item $F=S^1\subseteq\mathbb{C}$, and $(z,0)\sim(\overline{z},1)$. This is maybe the second non-trivial example one usually sees, namely the Klein bottle.
-\item $F=S^1$ again, but this time $(z,0)\sim(-z,1)$. Notice that this bundle contains the boundary of the M\"obius strip (and in fact the boundary of every rotation of the M\"obius strip around $B$). Moreover, notice that ``turning'' the circle $S^1\times\{1\}$ by $\pi$, before glueing it back to $S^1\times\{0\}$, seems to just produce a total space, which is topologically a torus, i.e.\ $E$ seems to be the ``same'' as the trivial bundle (although it contains a non-trivial one).
+\item $F=S^1$ again, but this time $(z,0)\sim(-z,1)$. Notice that this bundle contains the boundary of the M\"obius strip (and in fact the boundary of every rotation of the M\"obius strip around $B$). Moreover, notice that ``turning'' the circle $S^1\times\{1\}$ by $\pi$, before glueing it back to $S^1\times\{0\}$, just produces a total space, which is topologically a torus, i.e.\ $E$ is the ``same'' as the trivial bundle (although it contains a non-trivial one).
 \end{i_enum}
 \end{examples}
 
@@ -80,7 +80,7 @@ E_1\ar[rd,"p_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"p_2"]\\
 \begin{proposition}
 Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles and $\phi:E_1\to E_2$ be any continuous map, then $\phi$ is a bundle map, if and only if
 \[\phi\big({(F_1)}_x\big)\subseteq{(F_2)}_x,\qquad\forall x\in B\]
-i.e.\ iff $\phi$ maps every fiber over $x$, of the left fibration, to the fiber over the same $x$, of the right fibration.
+i.e.\ iff $\phi$ maps every fiber over $x$, of the left fiber bundle, to the fiber over the same $x$, of the right fiber bundle.
 \end{proposition}
 \begin{proof}
 \begin{b_item}
