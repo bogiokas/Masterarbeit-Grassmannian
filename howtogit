@@ -1,6 +1,0 @@
-bibtex ./<file>.aux
-pdflatex ./<file>.tex
-
-git add .
-git commit -m "<message>"
-git push -u origin master
