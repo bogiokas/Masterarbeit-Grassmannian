@@ -1,0 +1,94 @@
+\chapter{Cohomology computation}
+\begin{definition} Let $k\in\mathbb{N}$. Define then the following graded commutative $\mathbb{Z}_2$-algebra:
+\[A_k=\mathbb{Z}_2[w_1,\ldots,w_k]\]
+with $\deg(w_i)=i$ for every $i\in[k]$.
+\end{definition}
+\begin{theorem} For any $k\in\mathbb{N}$, there exists a graded algebra isomorphism:
+\[\phi_k:A_k\to H^*(\Gr{k};\mathbb{Z}_2)\]
+with $\phi_k(w_i)=w_i(\gamma^k)$.
+\end{theorem}
+\begin{proof} TODO - Chapter 7 in \cite{char_class}.
+\end{proof}
+\begin{definition} Let $0<k<n$ be some natural numbers. Then, define the following graded commutative $\mathbb{Z}_2$-algebra:
+\[A_{k,n}=\sfrac{\mathbb{Z}_2[w_1,\ldots,w_k,\bar{w}_1,\ldots,\bar{w}_{n-k}]}{I_{k,n}}\]
+where $\deg(w_i)=i$ for every $i\in[k]$, $\deg(\bar{w}_j)=j$ for every $j\in[n-k]$ and
+\[I_{k,n}=\big((1+w_1+\cdots+w_k)(1+\bar{w}_1+\cdots+\bar{w}_{n-k})+1\big)\]
+\end{definition}
+\begin{proposition} We can also think of $A_{k,n}$ as:
+\[A_{k,n}=\sfrac{\mathbb{Z}_2[w_1,w_2,\ldots,w_k,\bar{w}_1,\bar{w}_2,\ldots]}{I_k+(\bar{w}_{n-k+1})+(\bar{w}_{n-k+2})+\cdots+(\bar{w}_{n})}\]
+where
+\[I_k=\big((1+w_1+w_2+\cdots+w_k)(1+\bar{w}_1+\bar{w}_2+\cdots)+1\]
+\end{proposition}
+\begin{proof} Notice that for fixed $k$, for any $j\in[n-k]$, the graded ideal $I_{k,n}$ gives:
+\[\bar{w}_j+\bar{w}_{j-1}w_1+\cdots+\bar{w}_{j-k}w_k=0\]
+i.e. if $k$ consecutive $\bar{w}_j$ are zero, then all $\bar{w}_j$ are zero from that point on.
+\end{proof}
+\begin{theorem} For any natural numbers $0<k<n$, there exists a graded algebra isomorphism:
+\[\phi_{k,n}:A_{k,n}\to H^*(\Gr{k}{n};\mathbb{Z}_2)\]
+with $\phi_{k,n}(w_i)=w_i(\gamma^k_n)$ and $\phi_{k,n}(\bar{w}_j)=w_j({\gamma^k_n}^{\perp})$.
+\end{theorem}
+\begin{proof}\begin{b_item}
+\item $\phi_{k,n}$ is well defined, since the Stiefel-Whitney classes satisfy $I_{k,n}$.
+\item $\phi_{k,n}$ is surjective. TODO Indeed, first of all for the Manifold $\Gr{k}{n}$, we have
+\[|C_i|=|H_i|=|C^i|=|H^i|\]
+for every $i\in[k(n-k)]$. Moreover, one can prove that the inclusion map
+\[i_{k,n}:\Gr{k}{n}\to\Gr{k}\] is a cell map, taking a shubert cell to one with the same symbol. This makes the induced map on the cohomologies surjective:
+\[i^*_{k,n}:H^*(\Gr{k})\to H^*(\Gr{k}{n})\] This inclusion map induces a bundle map $\gamma^k_n\to\gamma^k$ and because of naturality of the SW classes, we get $i^*(w_i)=w_i$, which means that $i^*_{k,n}$ factors through $\phi_{k,n}$.
+\item $\phi_{k,n}$ is injective. For this, it suffices to show that
+\[\dim_{\mathbb{Z}_2}(A_{k,n}^i)=\dim_{\mathbb{Z}_2}(H^i(\Gr{k}{n}))\] for every $i\geq0$, which will be proven in the next lemma.
+\end{b_item}
+\end{proof}
+\begin{lemma} The Hilbert series of the graded algebras $A_{k,n}$ and $H^*(\Gr{k}{n})$ are equal.
+\end{lemma}
+\begin{proof} Let
+\begin{align*}
+p_{k,n}^i:=&\dim_{\mathbb{Z}_2}(H^i(\Gr{k}{n}))=|C_i|\\
+=&\#\{\text{Young tableau of at most }k\text{ rows and at most }n-k\text{ columns.}\}
+\end{align*}
+Which makes its Hilbert series:
+\[P_{k,n}(t):=\sum_{i\geq0}p_{k,n}^it^i=\binom{n}{k}_t\]
+as proven in the Lemma \ref{lem:hilbert_series_of_young}. On the other hand, let
+\[H_{k,n}(t)=\sum_{i\geq0}\dim_{\mathbb{Z}_2}(A_{k,n}^i)t^i\]
+It suffices to prove that $H_{k,n}(t)$ satisfies the same recursive conditions as $P_{k,n}(t)$. First of all, we easily get $H_{1,n}(t)=P_{1,n}(t)$ and then, using the additivity of the following SES:
+\begin{center}
+\begin{tikzcd}
+0\ar[r]& A_{k,n-1}^{[-k]}\ar[r,"\cdot w_k", "f"']&A_{k,n}\ar[r,"w_k\mapsto0","g"']&A_{k-1,n-1}\ar[r]&0
+\end{tikzcd}
+\end{center}
+we get:
+\[H_{k,n}(t)=t^kH_{k,n-1}(t)+H_{k-1,n-1}(t)\]
+which is the same recursion that defines $P_{k,n}(t)$. The fact that this is indeed a SES is proven in the following lemma:
+\end{proof}
+\begin{lemma} The following is a SES of graded commutative $\mathbb{Z}_2$-algebras:
+\begin{center}
+\begin{tikzcd}
+0\ar[r]& A_{k,n-1}^{[-k]}\ar[r,"\cdot w_k", "f"']&A_{k,n}\ar[r,"w_k\mapsto0","g"']&A_{k-1,n-1}\ar[r]&0
+\end{tikzcd}
+\end{center}
+where ${A_{k,n}^{[-k]}}^i:=A_{k,n}^{i-k}$ is the proper shift to make $f$ a homomorphism of graded algebras.
+\end{lemma}
+\begin{proof}
+Let
+\[R_{k,n}:=\sfrac{\mathbb{Z}_2[w_1,w_2,\ldots,w_k,\bar{w}_1,\bar{w}_2,\ldots]}{I_k+(\bar{w}_{n-k+1})+(\bar{w}_{n-k+2})+\cdots+(\bar{w}_{n-1})}\]
+then, the algebras can be written as:
+\begin{center}
+\begin{tikzcd}
+0\ar[r]& \sfrac{R_{k,n}}{(\bar{w}_{n-k})}^{[-k]}\ar[r,"\cdot w_k", "f"']&\sfrac{R_{k,n}}{(\bar{w}_{n})}\ar[r,"w_k\mapsto0","g"']&\sfrac{R_{k,n}}{(w_k)}\ar[r]&0
+\end{tikzcd}
+\end{center}
+\begin{b_item}
+\item $f,g$ are well defined. Indeed, notice that
+\[\bar{w}_{n}=\bar{w}_{n-1}w_1+\bar{w}_{n-2}w_2+\cdots+\bar{w}_{n-k+1}w_{k-1}+\bar{w}_{n-k}w_k=\bar{w}_{n-k}w_k,\text{ inside }R_{k,n}\]
+\item $g$ is surjective and $\im(f)\subseteq\ker(g)$ are easy to prove.
+\item $f$ is injective and $\im(f)\supseteq\ker(g)$ -- TODO!!
+\end{b_item}
+\end{proof}
+
+
+\begin{definition} We write:
+\[\binom{n}{k}_t:=\frac{[n]_t!}{[k]_t!\cdot[n-k]_t!}\]
+where:
+\[[x]_t:=\sum_{i=0}^{x-1}t^i=\frac{t^x-1}{t-1}\]
+and:
+\[[x]_t!=[x]_t\cdot[x-1]_t\cdots[1]_t\]
+\end{definition}
