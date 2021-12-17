@@ -29,7 +29,7 @@ The left part of this diagram implies $q_0=q\circ i$, which means in particular 
 
 \section{Grassmannians are Manifolds}
 Our first real goal is to prove that the Grassmannians are in fact compact topological manifolds.
-\begin{lemma} For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is compact, Hausdorff and locally homeomorphic to $\mathbb{R}^{k(n-k)}$. 
+\begin{lemma} For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is compact, Hausdorff and locally homeomorphic to $\mathbb{R}^{k(n-k)}$.
 \end{lemma}
 
 \begin{proof} \begin{b_item}
@@ -54,7 +54,7 @@ First of all, one can fix an orthonormal basis $\{u_1,\ldots,u_k\}$ of $H$ and a
 
 One can now consider $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, if and only if $\left.p_H\right|_K$ is not injective, if and only if $\left.p_H\right|_K$ is not surjective.
 
-Each $K\in\mathcal{U}_H$ can now be considered as the graph of some linear transformation $T_K$ inside $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ (which has the desired dimension as a vector space over $\mathbb{R}$). Our goal is to define rigorously the function taking $K$ to $T_K$ and prove that this is bicontinuous. We urge the reader to convince herself at this point that $T_K$ depends continuously on $K$ and vice versa, because our approach towards proving this fact is going to be rather technical.
+Each $K\in\mathcal{U}_H$ can now be considered as the graph of some linear transformation $T_K$ inside $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ (which has the desired dimension as a vector space over $\mathbb{R}$). Our goal is to define rigorously the function taking $K$ to $T_K$ and prove that this is bicontinuous. We urge the reader to convince themselves at this point that $T_K$ depends continuously on $K$ and vice versa, because our approach towards proving this fact is going to be rather technical.
 
 In particular, we are going to construct the desired function using the universal property of the quotient map $q:\St{k}{n}\to\Gr{k}{n}$. Moreover, since we need the topology of $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$, we are going to use the fact that its topology is also an induced topology by an isomorphism to $\mathbb{R}^{k(n-k)}$. Finally, this last space, being a direct product, is also topologized through the initial topology with respect to the orthogonal projections on each coordinate. One can summarize these steps in the following commutative diagram:
 
@@ -136,7 +136,7 @@ In this diagram, $\mathfrak{gs}'$ is the function that takes an orthonormal $k$-
 After establishing the continuity of $\left.\perp\right|_{\mathcal{U}_H}$ for every $H$, notice that
 \[\Gr{k}{n} = \bigcup_{H\in\left\{\left<B\right>:B\in\binom{\{e_1,\ldots,e_n\}}{k}\right\}}\mathcal{U}_H\]
 The union is over all $k$-planes spanned by any $k$ vectors among $\{e_1,\ldots,e_n\}$, where $e_1,\ldots,e_n$ is the standard basis of $\mathbb{R}^n$. This means that $\#\binom{\{e_1,\ldots,e_n\}}{k}=\binom{n}{k}<\infty$ sets are participating in the union and thus one can use the pasting lemma, proving that $\perp$ is continuous as a function from the whole space $\Gr{k}{n}$ to $\Gr{n-k}{n}$.
-\end{proof} 
+\end{proof}
 
 It would be helpful at this point to mention what are the ``small'' examples of Grassmannians. We already know that of course $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and because of the last lemma we also know that $\Gr{n-1}{n}\cong\mathbb{P}^{n-1}$. This already takes care of the cases $n=2,3$:
 \[\Gr{1}{2}\cong\mathbb{P}^1\qquad\Gr{1}{3}\cong\Gr{2}{3}\cong\mathbb{P}^2\]
@@ -283,7 +283,7 @@ which proves the desired inclusion.
 \begin{lemma}\label{lem:shub_dim} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, there exists a homeomorphism
 \[\tilde{\Phi}_{\mathbf{j}}:D^{d(\mathbf{j})}\to\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\]
 \end{lemma}
-\begin{proof} For this proof we are going to use the approach of Hatcher~\cite{vec_bundles} (p.37), in order to already familiarize ourselves with the notion of a trivial fiber bundle. 
+\begin{proof} TODO - For this proof we are going to use the approach of Hatcher~\cite{vec_bundles} (p.37), in order to already familiarize ourselves with the notion of a trivial fiber bundle.
 
 
 
@@ -296,17 +296,17 @@ which proves the desired inclusion.
 
 
 
-We will construct the desired homeomorphism inductively in $k$. For $k=1$ we have:
-\[\tilde{\mathcal{C}}_{\{j_1\}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-=\left\{v\in\mathbb{F}_{j_1}:v\cdot v=1\ ,\ v\cdot f_{j_1}\geq0\right\}\]
-
-It is known that the closed unit semisphere of $\mathbb{R}^p$ is homeomorphic to the closed disc $D^{p-1}$ for every $p\in\mathbb{N}$. Let us fix now once and for all, for every $p\in\mathbb{N}$, a homeomorphism
-\[\psi_p:D^{p-1}\to\left\{v\in\mathbb{R}^p:v\cdot v=1\ ,\ v\cdot e_p\geq 0\right\}\]
-One such homeomorphism would be the inverse of the restriction of the usual projection $\mathbb{R}^p\to\mathbb{R}^{p-1}$.
-
-\[\St{k}{n}\cap\cdots=
-\{(v_1,\ldots,v_k):(v_1,\ldots,v_{k-1})\in\St{k}{n}{F}\ v_l\in F_{j_l}\ v_k\cdot v_l=\delta_{k,l}\}\]
-
-
+%We will construct the desired homeomorphism inductively in $k$. For $k=1$ we have:
+%\[\tilde{\mathcal{C}}_{\{j_1\}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-=\left\{v\in\mathbb{F}_{j_1}:v\cdot v=1\ ,\ v\cdot f_{j_1}\geq0\right\}\]
+%
+%It is known that the closed unit semisphere of $\mathbb{R}^p$ is homeomorphic to the closed disc $D^{p-1}$ for every $p\in\mathbb{N}$. Let us fix now once and for all, for every $p\in\mathbb{N}$, a homeomorphism
+%\[\psi_p:D^{p-1}\to\left\{v\in\mathbb{R}^p:v\cdot v=1\ ,\ v\cdot e_p\geq 0\right\}\]
+%One such homeomorphism would be the inverse of the restriction of the usual projection $\mathbb{R}^p\to\mathbb{R}^{p-1}$.
+%
+%\[\St{k}{n}\cap\cdots=
+%\{(v_1,\ldots,v_k):(v_1,\ldots,v_{k-1})\in\St{k}{n}{F}\ v_l\in F_{j_l}\ v_k\cdot v_l=\delta_{k,l}\}\]
+%
+%
 
 \end{proof}
 
