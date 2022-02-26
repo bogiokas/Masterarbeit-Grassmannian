@@ -1,17 +1,17 @@
 \chapter{Fiber Bundles}
 The Fiber Bundle is a topological object generalizing the notion of the product space. A fiber bundle $E$ can be thought like a ``twisted product'' of a base topological space $B$ and a fiber space $F$. This means that locally it always looks like the product of the two, but globally $F$ may (homeomorphically) change, while one is going ``around'' $B$. Before we give some explicit examples, we need the formal definition of a fiber bundle.
 
-\begin{definition} Let $F$, $E$ and $B$ be some topological spaces. A continuous map $p:E\to B$ is called a \ul{fiber bundle with fiber $F$}, if for every $x\in B$ there exists a neighbourhood $x\in U\subseteq B$, and a function $f_U:F\times U\to p^{-1}(U)$ s.t.
+\begin{definition} Let $F$, $E$ and $B$ be some topological spaces. A continuous map $p:E\to B$ is called a \ul{fiber bundle with fiber $F$}, if for every $x\in B$ there exists a neighborhood $x\in U\subseteq B$, and a function $f_U:p^{-1}(U)\to U\times F$ (where $p^{-1}(U)$ has the subspace topology and $U\times F$ the product topology), such that:
 \begin{i_enum}
 \item $f_U$ is a homeomorphism.
 \item The following diagram commutes:
 \begin{center}
 \begin{tikzcd}
-&[-2em]F\times{U}\ar[d,"f_U"']\ar[dr,"\pi_2"]&&[-2em]\\
-E\ar[r,"\supseteq",phantom]&p^{-1}(U)\ar[r,"p|_{p^{-1}(U)}"']&U\ar[r,"\subseteq",phantom]&B
+E\ar[r,"\supseteq",phantom]&[-1em]p^{-1}(U)\ar[d,"p|_{p^{-1}(U)}"']\ar[r,"f_U"]&U\times F\ar[dl,"\pi_1"]\\[2em]
+B\ar[r,"\supseteq",phantom]&U
 \end{tikzcd}
 \end{center}
-i.e.\ if $p\circ f_U=\pi_2$
+i.e. $p|_{p^{-1}(U)}=\pi_1\circ f_U$.
 \end{i_enum}
 $B$ is then called \ul{base space} and $E$ \ul{total space} of the fiber bundle. Moreover, for every $x\in B$, the space $p^{-1}(\{x\})$ is called \ul{the fiber over $x$} and is denoted by $F_x$. Notice, that, sometimes, we refer to the fiber bundle just by its total space, if the definition of $p$ is clear.
 \end{definition}
@@ -21,48 +21,46 @@ It is very common to denote a fiber bundle as:
 \[F\to E\overset{p}{\to}B\]
 which may remind to the reader the notion of a short exact sequence.
 %%%%TODO: elaborate on the connection
-%%%%Waiting For: mathematics stackexchange post to be answered
 \end{notation}
 
-Notice that this is the smallest set of requirements one can demand of a fiber bundle. Most of the time though, people are interested in fiber bundles with additional structure imposed on the fiber space $F$, with the most noticable example being a group action on $F$. These fiber bundles are said to then be equipped with a ``structure group'' $G$. Another interesting structure one can require is discussed on Chapter~\ref{chap:vec_bundles}, where we define and examine the notion of ``vector bundles'', i.e.\ fiber bundles having vector spaces as bundles.
+Notice that this is the smallest set of requirements one can demand of a fiber bundle. Most of the time though, people are interested in fiber bundles with additional structure imposed on the fiber space $F$, with the most noticeable example being a group action on $F$. These fiber bundles are said to then be equipped with a ``structure group'' $G$. Another interesting structure one can require is discussed on Chapter~\ref{chap:vec_bundles}, where we define and examine the notion of ``vector bundles'', i.e.\ fiber bundles having vector spaces as bundles.
 
 It is worth noting at this point that the definition of the ``characteristic classes'' one will see in~\ref{def:char_class} originated from the study of ``sphere bundles'', which is the particular subclass of fiber bundles where the fibers are topologically spheres of some dimension.
 
-The reader should thus keep in mind that all the definitions she will encounter in this chapter are (in a more specific setting) usually enriched. So, questions of bundle isomorphisms should always be answered carefully, by determining the underlying setting. For example, we will encounter fiber bundles which will be proven isomorphic in this simple setting, whereas one can distinguise between them in the setting of fiber bundles equipped with a structure group $G$.
+The reader should thus keep in mind that all the definitions she will encounter in this chapter are (in a more specific setting) usually enriched. So, questions of bundle isomorphisms should always be answered carefully, by determining the underlying setting. For example, we will encounter fiber bundles which will be proven isomorphic in this simple setting, whereas one can distinguish between them in the setting of fiber bundles equipped with a structure group $G$.
 
 \begin{proposition}\label{prop:same_fiber} Let $p:E\to B$ be a fiber bundle with fiber $F$, then $F_x\cong F$ for all $x\in B$.
 \end{proposition}
 \begin{proof}
-Indeed, let $x\in B$. Then, there exists a neighbourhood $U$ of $x$ inside $B$ and a homeomorphism $f_U:F\times U\to p^{-1}(U)$, such that
-\[p\circ f_U(a,x)=x\qquad \forall a\in F\]
-Define now the map $f_x:F\to F_x=p^{-1}(\{x\})$ with:
-\[f_x(a):=f_U(a,x)\]
-this function is well defined, since $f_U(a,x)\in p^{-1}(\{x\})$ for every $a\in F$, as we just showed. Not only that, but in fact $f_x(F)=p^{-1}(\{x\})$. Indeed, let $\tilde{x}\in p^{-1}(\{x\})$. Then, $\pi_2\circ f_U^{-1}(\tilde{x})=p(\tilde{x})=x$, i.e. $f_U^{-1}(\tilde{x})=(a_x,x)$ for some $a_x\in F$. This gives:
-\[f_x(a_x)=f_U(a_x,x)=\tilde{x}\]
-which proves that $\tilde{x}\in f_x(F)$. Also, $f_x$ is injective, since
-\[f_x=f_U|_{F\times\{x\}}\circ i_2\]
-where $i_2:F\to F\times\{x\}$ is trivially a homeomorphism and a restriction of a homeomorphism is injective. This means that $f_x$ is a homeomorphism like we wanted to show.
+Let $x\in B$. Then, there exists a neighborhood $U$ of $x$ inside $B$ and a homeomorphism $f_U:p^{-1}(U)\to U\times F$, such that
+\[p|_{p^{-1}(U)}=\pi_1\circ f_U\]
+Then, $f_U|_{F_x}:F_x\to f_U(F_x)$ is also a homeomorphism, as a restriction of a homeomorphism. Moreover, it is easy to see that $f_U(F_x)=\{x\}\times F$:
+\begin{itemize}
+\item Let $(x',a)\in f_U(F_x)$. This means that there exists some $v\in F_x$ with $f_U(v)=(x',a)$. Since $v\in F_x$, $p(v)=x$ by definition. Then, $x=p(v)=\pi_1\circ f_U(v)=\pi_1(x',a)=x'$, which means, $(x',a)=(x,a)\in\{x\}\times F$.
+\item Let $(x,a)\in\{x\}\times F$. Since $f_U$ is surjective, there exists some $v\in p^{-1}(U)$ with $f_U(v)=(x,a)$. Then, $p(v)=\pi_1\circ f_U(v)=\pi_1(x,a)=x$ which means that $v\in p^{-1}(\{x\})=F_x$.
+\end{itemize}
+$\{x\}\times F$ is trivially homeomorphic to $F$, which proves the assertion.
 \end{proof}
 
-Now, one can see how bundles generalize products. Formally, one just needs to choose $U=B$ for every $x$ and $\phi_B=id$. In fact, products are in this setup the ``trivial'' example.
+Now, one can see how bundles generalize products. Formally, one just needs to choose $U=B$ for every $x$ and $f_B=id$. In fact, products are in this setup the ``trivial'' example.
 \begin{definition} Let $F, B$ be two topological spaces, then the projection
-\[\pi_2:F\times B\to B\]
-is called the \ul{trivial bundle over $B$ with fiber $F$}, where $\pi_2$ is the projection on the second coordinate, i.e.\ $\pi_2(a,x)=x$.
+\[\pi_1:B\times F\to B\]
+is called the \ul{trivial bundle over $B$ with fiber $F$}, where $\pi_1$ is the projection on the first coordinate, i.e.\ $\pi_1(x,a)=x$.
 \end{definition}
 
 Historically, the most famous non-trivial example of a fiber bundle has been the M\"obius strip:
-\begin{example} Let $F=[0,1]$, $B=S^1$ and $E=\sfrac{{[0,1]}^2}{(x,0)\sim(1-x,1)}$. Then $p:E\to B$, with:
-\[p([(x,y)]):= y,\qquad\forall [(x,y)]\in E\]
+\begin{example} Let $B=S^1$, $F=[0,1]$ and $E=\sfrac{[0,1]\times F}{(0,a)\sim(1,1-a)}$. Then $p:E\to B$, with:
+\[p([(x,a)]):= x,\qquad\forall [(x,a)]\in E\]
 is a fiber bundle.
 \end{example}
-Notice how this fiber bundle is not the ``same'' as the trivial bundle over the circle with the same fiber. We are going to soon define stricter the notion of bundle maps and isomorphisms, but before going into that let us try the same M\"obius like constructions, i.e.\ let us fix $B=S^1$ and examine how the bundles look like for different choices of fibers $F$ and different equivallence relations $\sim$, which define $E=\sfrac{F\times B}{\sim}$. The bundle in these examples will always be $p:E\to B$ with $p([(x,y)])=y$.
+Notice how this fiber bundle is not the ``same'' as the trivial bundle over the circle with the same fiber. We are going to soon define the notion of bundle maps and isomorphisms, but before going into that let us try the same M\"obius like constructions, i.e.\ let us fix $B=S^1$ and examine how the bundles look like for different choices of fibers $F$ and different equivalence relations $\sim$, which define $E=\sfrac{[0,1]\times F}{\sim}$. The bundle in these examples will always be $p:E\to B$ with $p([(x,a)])=x$.
 
 \begin{examples}
 \begin{i_enum}
-\item For $F=\{0,1\}$, and $(x,0)\sim(1-x,1)$, $E$ is obviously the boundary of the M\"obius strip, which is topologically a circle. The image of $p$ then traces the circle with twice the speed of the input variable. Notice, that this is different from the trivial bundle with the same fiber over $B$, since the trivial bundle is a disjoint union of two circles.
-\item $F=\mathbb{R}$ or $F=(0,1)$, and again $(x,0)\sim(1-x,1)$. This is the open version of the M\"obius strip.
-\item $F=S^1\subseteq\mathbb{C}$, and $(z,0)\sim(\overline{z},1)$. This is maybe the second non-trivial example one usually sees, namely the Klein bottle.
-\item $F=S^1$ again, but this time $(z,0)\sim(-z,1)$. Notice that this bundle contains the boundary of the M\"obius strip (and in fact the boundary of every rotation of the M\"obius strip around $B$). Moreover, notice that ``turning'' the circle $S^1\times\{1\}$ by $\pi$, before glueing it back to $S^1\times\{0\}$, just produces a total space, which is topologically a torus, i.e.\ $E$ is the ``same'' as the trivial bundle (although it contains a non-trivial one).
+\item For $F=\{0,1\}$, and $(0,a)\sim(1,1-a)$, $E$ is obviously the boundary of the M\"obius strip, which is topologically a circle. The image of $p$ then traces the circle with twice the speed of the input variable. Notice, that this is different from the trivial bundle with the same fiber over $B$, since the trivial bundle is a disjoint union of two circles.
+\item $F=\mathbb{R}$ or $F=(0,1)$, and again $(0,a)\sim(1,1-a)$. This is the open version of the M\"obius strip.
+\item $F=S^1\subseteq\mathbb{C}$, and $(0,z)\sim(1,\overline{z})$. This is maybe the second non-trivial example one usually sees, namely the Klein bottle.
+\item $F=S^1$ again, but this time $(0,z)\sim(1,-z)$. Notice that this bundle contains the boundary of the M\"obius strip (and in fact the boundary of every rotation of the M\"obius strip around $B$). Moreover, notice that ``turning'' the circle $\{1\}\times S^1$ by $\pi$, before gluing it back to $\{0\}\times S^1$, just produces a total space, which is topologically a torus, i.e.\ $E$ is the ``same'' as the trivial bundle (although it contains a non-trivial one).
 \end{i_enum}
 \end{examples}
 
@@ -75,9 +73,10 @@ E_1\ar[rd,"p_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"p_2"]\\
 &B
 \end{tikzcd}
 \end{center}
+i.e. if $p_1=p_2\circ\phi$.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:fiberwise}
 Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles and $\phi:E_1\to E_2$ be any continuous map, then $\phi$ is a bundle map, if and only if
 \[\phi\big({(F_1)}_x\big)\subseteq{(F_2)}_x,\qquad\forall x\in B\]
 i.e.\ iff $\phi$ maps every fiber over $x$, of the left fiber bundle, to the fiber over the same $x$, of the right fiber bundle.
@@ -92,6 +91,48 @@ i.e.\ iff $\phi$ maps every fiber over $x$, of the left fiber bundle, to the fib
 \begin{definition}
 Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively and let $\phi:E_1\to E_2$ be a bundle map from $p_1$ to $p_2$ over $B$. The map $\phi$ is called a \ul{bundle isomorphism}, if $\phi$ is a homeomorphism.
 \end{definition}
+
+\begin{proposition}
+Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively and let $\phi:E_1\to E_2$ be a bundle isomorphism map from $p_1$ to $p_2$ over $B$. Then, for every $x\in B$, the map
+\[\phi_x:{\left(F_1\right)}_x\to{\left(F_2\right)}_x\]
+with $\phi_x(v)=\phi(v)$ for every $v\in\left(F_1\right)_x$ is a homeomorphism with $(\phi_x)^{-1}=\big(\phi^{-1}\big)_x$.
+\end{proposition}
+\begin{proof} First of all, the map $\phi_x$ is well defined because of Proposition~\ref{prop:fiberwise}. Moreover, $\phi_x$ is surjective. Indeed, let $v_2\in (F_2)_x$. Since $\phi$ is surjective, there exists some $v_1\in E_1$ such that $\phi(v_1)=v_2$. Since $\phi$ is a bundle map, it is true that $p_1(v_1)=p_2\circ\phi(v_1)=p_2(v_2)=x$, which means that $v_1\in(F_1)_x$. This proves that
+\[\phi_x=\phi|_{{(F_1)}_x}:{(F_1)}_x\to\phi\big({(F_1)}_x\big)\]
+and thus is a homeomorphism as a restriction of one. The fact that $\phi_x^{-1}$ is the restriction of $\phi^{-1}$ on ${(F_2)}_x$ follows by symmetry.
+\end{proof}
+
+%Let $\phi:E_1\to E_2$ be a bundle isomorphism, and $x\in B$. Since $\phi:E_1\to E_2$ is a homeomorphism, there exists a continuous map $\psi:E_2\to E_1$, s.t.
+%\[\psi\circ\phi=id_{E_1}\quad\text{and}\quad\phi\circ\psi=id_{E_2}\]
+%It is trivial to see that such a $\psi$ is also a bundle map. This means that, for every $x\in B$, $\psi\left({(F_2)}_x\right)\subseteq{(F_1)}_x$. Thus, the following map is well defined for every $x\in B$:
+%\[\psi_x:{\left(F_2\right)}_x\to{\left(F_1\right)}_x\]
+%with $\psi_x(v)=\psi(v)$ for every $v\in E_2$. Let us now fix a $x\in B$ and let $v_1\in{(F_1)}_x$ and $v_2\in{(F_2)}_x$. Then:
+%\begin{align*}
+%\left(\psi_x\circ\phi_x\right)(v_1)&=\left(\psi\circ\phi\right)(v_1)=v_1\\
+%\left(\phi_x\circ\psi_x\right)(v_2)&=\left(\phi\circ\psi\right)(v_2)=v_2
+%\end{align*}
+%which proves that for every $x\in B$:
+%\[\psi_x\circ\phi_x=id_{{(F_1)}_x}\quad\text{and}\quad\phi_x\circ\psi_x=id_{{(F_2)}_x}\qedhere\]
+%\end{proof}
+
+We want now to investigate if the opposite is true. Given two fiber bundles $p_1, p_2$ over some space $B$ that have isomorphic fibers over each $b\in B$, could we ``glue'' these isomorphisms to a global one between the fiber bundles themselves? We immediately see that the information we get only from the fibers is not enough to reconstruct the whole bundle, since it is clear from the above examples that there are non-isomorphic fiber bundles $E_1, E_2$ over a space $B$, which have the same fiber $F$. In such cases, we cannot even construct a map $\phi:E_1\to E_2$ making the following diagram commutative, let alone construct an isomorphism.
+\begin{center}
+\begin{tikzcd}
+E_1\ar[rd,"p_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"p_2"]\\
+&B
+\end{tikzcd}
+\end{center}
+In order to resolve this, we should at least require that there already exists some bundle map $\phi$, the slices of which are the fiber-wise isomorphisms and ask if this is enough for $\phi$ to be an isomorphism.
+
+\begin{example} Define the topological spaces $B=(\mathbb{R}, \tau)$ and $B'=(\mathbb{R}, \tau')$, where $\tau$ is the usual topology on $\mathbb{R}$ generated by the open intervals and $\tau'$ is the topology on $\mathbb{R}$ generated by the semi-open intervals, i.e. of all intervals of the form $[a,b)$. Then examine the following diagram:
+\begin{center}
+\begin{tikzcd}
+B'\ar[rd,"p_1\ =\ id_{\mathbb{R}}"']\ar[rr,"\phi\ =\ id_{\mathbb{R}}"]&[-1.5em]&[-1.5em]B\ar[ld,"p_2\ =\ id_{\mathbb{R}}"]\\
+&B
+\end{tikzcd}
+\end{center}
+\end{example}
+$p_1$ and $p_2$ are
 
 %%%%%%%%% UNTIL HERE ITS RIGHT %%%%%%%%%%%%%%
 
@@ -153,17 +194,6 @@ with $\phi_x(v)=\phi(v)$ for every $v\in E_1$ is a homeomorphism for every $x\in
 \end{proposition}
 \begin{proof}
 \begin{itemize}
-\item[($\Rightarrow$)] Let $\phi:E_1\to E_2$ be a bundle isomorphism, and $x\in B$. Since $\phi:E_1\to E_2$ is a homeomorphism, there exists a continuous map $\psi:E_2\to E_1$, s.t.
-\[\psi\circ\phi=id_{E_1}\quad\text{and}\quad\phi\circ\psi=id_{E_2}\]
-It is trivial to see that such a $\psi$ is also a bundle map. This means that, for every $x\in B$, $\psi\left({(F_2)}_x\right)\subseteq{(F_1)}_x$. Thus, the following map is well defined for every $x\in B$:
-\[\psi_x:{\left(F_2\right)}_x\to{\left(F_1\right)}_x\]
-with $\psi_x(v)=\psi(v)$ for every $v\in E_2$. Let us now fix a $x\in B$ and let $v_1\in{(F_1)}_x$ and $v_2\in{(F_2)}_x$. Then:
-\begin{align*}
-\left(\psi_x\circ\phi_x\right)(v_1)&=\left(\psi\circ\phi\right)(v_1)=v_1\\
-\left(\phi_x\circ\psi_x\right)(v_2)&=\left(\phi\circ\psi\right)(v_2)=v_2
-\end{align*}
-which proves that for every $x\in B$:
-\[\psi_x\circ\phi_x=id_{{(F_1)}_x}\quad\text{and}\quad\phi_x\circ\psi_x=id_{{(F_2)}_x}\]
 \item[($\Leftarrow$)] Let $\phi:E_1\to E_2$ be a bundle map, with $\phi_x:{(F_1)}_x\to{(F_2)}_x$ being a homeomorphism, for every $x\in B$. This means that for every $x\in B$,  there exists a continuous map $\psi_x:{(F_2)}_x\to{(F_1)}_x$ s.t.
 \[\psi_x\circ\phi_x=id_{{(F_1)}_x}\quad\text{and}\quad\phi_x\circ\psi_x=id_{{(F_2)}_x}\]
 Define now $\psi:E_2\to E_1$ with $\left.\psi\right|_{{(F_2)}_x}=\psi_x$ for every $x\in B$. Since the collection of all fibers is always a partition of the total space, $\psi$ is well defined. In fact, we can write:
