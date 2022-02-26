@@ -102,19 +102,6 @@ with $\phi_x(v)=\phi(v)$ for every $v\in\left(F_1\right)_x$ is a homeomorphism w
 and thus is a homeomorphism as a restriction of one. The fact that $\phi_x^{-1}$ is the restriction of $\phi^{-1}$ on ${(F_2)}_x$ follows by symmetry.
 \end{proof}
 
-%Let $\phi:E_1\to E_2$ be a bundle isomorphism, and $x\in B$. Since $\phi:E_1\to E_2$ is a homeomorphism, there exists a continuous map $\psi:E_2\to E_1$, s.t.
-%\[\psi\circ\phi=id_{E_1}\quad\text{and}\quad\phi\circ\psi=id_{E_2}\]
-%It is trivial to see that such a $\psi$ is also a bundle map. This means that, for every $x\in B$, $\psi\left({(F_2)}_x\right)\subseteq{(F_1)}_x$. Thus, the following map is well defined for every $x\in B$:
-%\[\psi_x:{\left(F_2\right)}_x\to{\left(F_1\right)}_x\]
-%with $\psi_x(v)=\psi(v)$ for every $v\in E_2$. Let us now fix a $x\in B$ and let $v_1\in{(F_1)}_x$ and $v_2\in{(F_2)}_x$. Then:
-%\begin{align*}
-%\left(\psi_x\circ\phi_x\right)(v_1)&=\left(\psi\circ\phi\right)(v_1)=v_1\\
-%\left(\phi_x\circ\psi_x\right)(v_2)&=\left(\phi\circ\psi\right)(v_2)=v_2
-%\end{align*}
-%which proves that for every $x\in B$:
-%\[\psi_x\circ\phi_x=id_{{(F_1)}_x}\quad\text{and}\quad\phi_x\circ\psi_x=id_{{(F_2)}_x}\qedhere\]
-%\end{proof}
-
 We want now to investigate if the opposite is true. Given two fiber bundles $p_1, p_2$ over some space $B$ that have isomorphic fibers over each $b\in B$, could we ``glue'' these isomorphisms to a global one between the fiber bundles themselves? We immediately see that the information we get only from the fibers is not enough to reconstruct the whole bundle, since it is clear from the above examples that there are non-isomorphic fiber bundles $E_1, E_2$ over a space $B$, which have the same fiber $F$. In such cases, we cannot even construct a map $\phi:E_1\to E_2$ making the following diagram commutative, let alone construct an isomorphism.
 \begin{center}
 \begin{tikzcd}
@@ -132,93 +119,6 @@ B'\ar[rd,"p_1\ =\ id_{\mathbb{R}}"']\ar[rr,"\phi\ =\ id_{\mathbb{R}}"]&[-1.5em]&
 \end{tikzcd}
 \end{center}
 \end{example}
-$p_1$ and $p_2$ are
-
-%%%%%%%%% UNTIL HERE ITS RIGHT %%%%%%%%%%%%%%
-
-
-\begin{lemma}\label{lem:open_fiberwise}
-Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively and let $\phi:E_1\to E_2$ be a bundle map from $p_1$ to $p_2$ over $B$. Moreover, assume that for every $x\in B$ the map:
-\[\phi_x:{\left(F_1\right)}_x\to{\left(F_2\right)}_x\]
-with $\phi_x(v)=\phi(v)$ for every $v\in E_1$ is an open map. Then $\phi$ is an open map as well.
-\end{lemma}
-\begin{proof}
-%TODO TODO TODO
-Unfortunately\\[3em]
-I DON'T KNOW IF THAT IS TRUE.\\[3em]
-The End.
-\end{proof}
-
-%\begin{proposition}
-%Let $p_1:F_1\times B\to B$ and $p_2:F_2\times B\to B$ be two trivial fiber bundles and let $\phi:F_1\times B\to F_2\times B$ be any bundle map, then $\phi$ is a bundle isomorphism, if and only if
-%\[\left.\phi\right|_{F_1\times\{x\}}:F_1\times\{x\}\to F_2\times\{x\}\]
-%is a homeomorphism for all $x\in B$.
-%\end{proposition}
-%\begin{proof} Before we start with the actual proof, let us note that, since $\phi$ is a bundle map, $\phi\big({(F_1)}_x\big)\subseteq{(F_2)}_x$ and since the two fiber bundles are trivial, these fibers are, respectively, equal to $F_1\times\{x\}$ and $F_2\times\{x\}$. This means that the map we are going to examine is well defined for every $x\in B$.
-%\begin{b_item}
-%\item[($\Rightarrow$)] Let $\phi:E_1\to E_2$ be a bundle isomorphism, and $x\in B$. Since $\phi:E_1\to E_2$ is a homeomorphism, there exists a continuous map $\psi:E_2\to E_1$, s.t.
-%\[\psi\circ\phi=id_{E_1}\quad\text{and}\quad\phi\circ\psi=id_{E_2}\]
-%It is trivial to see that such a $\psi$ is also a bundle map. This means that, for every $x\in B$, $\psi\left({(F_2)}_x\right)\subseteq{(F_1)}_x$. Thus, the following map is well defined for every $x\in B$:
-%\[\left.\psi\right|_{{(F_2)}_x}:{(F_2)}_x\to{(F_1)}_x\]
-%Let us now fix a $x\in B$ and let $v_1\in{(F_1)}_x$ and $v_2\in{(F_2)}_x$. Then:
-%\begin{align*}
-%\left(\left.\psi\right|_{{(F_2)}_x}\circ\left.\phi\right|_{{(F_1)}_x}\right)(v_1)&=\left(\psi\circ\phi\right)(v_1)=v_1\\
-%\left(\left.\phi\right|_{{(F_1)}_x}\circ\left.\psi\right|_{{(F_2)}_x}\right)(v_2)&=\left(\phi\circ\psi\right)(v_2)=v_2\\
-%\end{align*}
-%which proves that for every $x\in B$:
-%\[\left.\psi\right|_{{(F_2)}_x}\circ\left.\phi\right|_{{(F_1)}_x}=id_{{(F_1)}_x}\quad\text{and}\quad\left.\phi\right|_{{(F_1)}_x}\circ\left.\psi\right|_{{(F_2)}_x}=id_{{(F_2)}_x}\]
-%\item[($\Leftarrow$)] Let $\phi:E_1\to E_2$ be a bundle map, with $\left.\phi\right|_{{(F_1)}_x}:{(F_1)}_x\to{(F_2)}_x$ being a homeomorphism, for every $x\in B$. This means that for every $x\in B$,  there exists a continuous map $\psi_x:{(F_2)}_x\to{(F_1)}_x$ s.t.
-%\[\psi_x\circ\left.\phi\right|_{{(F_1)}_x}=id_{{(F_1)}_x}\quad\text{and}\quad\left.\phi\right|_{{(F_1)}_x}\circ\psi_x=id_{{(F_2)}_x}\]
-%Define now $\psi:E_2\to E_1$ with $\left.\psi\right|_{{(F_2)}_x}=\psi_x$ for every $x\in B$. Since the collection of all fibers is always a partition of the total space, $\psi$ is well defined. In fact, we can write:
-%
-%%%%%%%%% HERE %%%%%
-%
-%\[\psi(a_2,x)=\psi_x(a_2,x)\qquad\forall v_2\in E_2\]
-%Using the definition of $\psi$, it is easy to see that
-%\[\psi\circ\phi=id_{{(F_1)}_x}\quad\text{and}\quad\phi\circ\psi=id_{{(F_2)}_x}\]
-%i.e.\ that $\phi$ is a bijection and that
-%\[p_1\circ\psi=p_2\]
-%i.e.\ that $\psi$ is a good candidate to be a bundle map. We only have to prove now that $\psi$ is also a continuous map. We are going to prove first that there exists an open cover of $E_2$, such that the restriction of $\psi$ on each element of this cover is a continouus function.
-%
-%
-%\end{b_item}
-%\end{proof}
-
-
-
-
-\begin{proposition}
-Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively and let $\phi:E_1\to E_2$ be a bundle map from $p_1$ to $p_2$ over $B$. Then $\phi$ is a bundle isomorphism, if and only if the map
-\[\phi_x:{\left(F_1\right)}_x\to{\left(F_2\right)}_x\]
-with $\phi_x(v)=\phi(v)$ for every $v\in E_1$ is a homeomorphism for every $x\in B$.
-\end{proposition}
-\begin{proof}
-\begin{itemize}
-\item[($\Leftarrow$)] Let $\phi:E_1\to E_2$ be a bundle map, with $\phi_x:{(F_1)}_x\to{(F_2)}_x$ being a homeomorphism, for every $x\in B$. This means that for every $x\in B$,  there exists a continuous map $\psi_x:{(F_2)}_x\to{(F_1)}_x$ s.t.
-\[\psi_x\circ\phi_x=id_{{(F_1)}_x}\quad\text{and}\quad\phi_x\circ\psi_x=id_{{(F_2)}_x}\]
-Define now $\psi:E_2\to E_1$ with $\left.\psi\right|_{{(F_2)}_x}=\psi_x$ for every $x\in B$. Since the collection of all fibers is always a partition of the total space, $\psi$ is well defined. In fact, we can write:
-\[\psi(v_2)=\psi_{p_2(v_2)}(v_2)\qquad\forall v_2\in E_2\]
-Using the definition of $\psi$, it is easy to see that
-\[\psi\circ\phi=id_{{(F_1)}_x}\quad\text{and}\quad\phi\circ\psi=id_{{(F_2)}_x}\]
-i.e.\ that $\phi$ is a bijection and that
-\[p_1\circ\psi=p_2\]
-i.e.\ that $\psi$ is a good candidate to be a bundle map. We only have to prove now that $\psi$ is also a continuous map. Since $\phi_x$ is a homeomorphism for every $x$, it is also, in particular, an open map for every $x\in B$. Thus, Lemma~\ref{lem:open_fiberwise} gives that $\phi$ is an open map as well. Since $\phi$ is an open bijection, it is also a homeomorphism. In particular, $\psi$ is continuous.
-\end{itemize}
-\end{proof}
-%We are going to prove first that there exists an open cover of $E_2$, such that the restriction of $\psi$ on each element of this cover is a continouus function.
-%
-%Since $p_1$ and $p_2$ are fiber bundles, for every point $x\in B$, there exist $U_1,U_2\subseteq B$ open neighbourhoods of $x$, such that the restrictions of $p_1$ and $p_2$ are isomorphic with the trivial bundles over $U_1$ and $U_2$ respectively. Let us now take $U=U_1\cap U_2$. Then, the following diagram commutes:
-%\begin{center}
-%\begin{tikzcd}
-%F_1\times{U}\ar[dd,"{(f_1)}_U"']\ar[drr,"\pi_2"]\ar[rrrr,dotted,"{(f_2)}_U^{-1}\circ\left.\phi\right|_{p_1^{-1}(U)}\circ{(f_1)}_U"]&&&&F_2\times{U}\ar[dd,"{(f_2)}_U"]\ar[dll,"\pi_2"']\\
-%&&U\\
-%p_1^{-1}(U)\ar[urr,"\left.p_1\right|_{p_1^{-1}(U)}"]\ar[rrrr,"\left.\phi\right|_{p_1^{-1}(U)}"']&&&&p_2^{-1}(U)\ar[ull,"\left.p_2\right|_{p_2^{-1}(U)}"']\ar[llll,bend left,dotted,"\psi_U"]
-%\end{tikzcd}
-%\end{center}
-%where the vertical homeomorphisms are defined like in proposition~\ref{prop:same_fiber}. Let now the dotted map $\psi_U$ be defined as:
-%\[\psi_U:={(f_1)}_U\circ\big({(f_1)}_x\times id\big)\circ\big(\psi_x\times id\big)\circ\big({(f_2)}_x^{-1}\times id\big)\circ{(f_2)}_U^{-1}\]
-%Then, $\psi_U$ is obviously continuous. We only have to prove now that
-%\[\psi_U=\left.\psi\right|_{p_2^{-1}(U)}\]
 
 Now that we have defined what an isomorphism of two fiber bundles is, let us examine what it means for a fiber bundle to be isomorphic to the trivial bundle.
 
