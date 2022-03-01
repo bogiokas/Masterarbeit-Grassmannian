@@ -111,6 +111,120 @@ E_1\ar[rd,"p_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"p_2"]\\
 \end{center}
 In order to resolve this, we should at least require that there already exists some bundle map $\phi$, the slices of which are the fiber-wise isomorphisms and ask if this is enough for $\phi$ to be an isomorphism.
 
+\begin{example} This is an example of a fiber bundle involving nice spaces, that shows the converse to be false. It is based on an example given in \cite{counterexample} of an exponentiable space, whose set of homeomorphisms does not form a topological group, because the inverse map isn't continuous.
+
+Let $B\subseteq[0,1]$ be a converging sequence, together with its limit:
+\[B=\left\{\frac{1}{n}:n\in\mathbb{N}\right\}\cup\left\{0\right\}\]
+and $F\subseteq[0,1]$ be a Cantor set, without its leftmost point:
+\[F=\left\{\sum_{i=1}^{\infty}\frac{\alpha_n}{3^n}:\alpha_n\in\{0,2\}\right\}\setminus\{0\}\]
+both equipped with the subspace topology. Moreover let $E_1,E_2$ be the trivial bundle over $B$, with fiber $F$, i.e. $E_1=E_2=B\times F$. Define now the following function $f:E_1\to E_2$:
+\begin{center}
+\begin{tabular}{ccc}
+\begin{tikzcd}
+f\ar[r,phantom,":"]&[-.8cm]B\times F\ar[r]&B\times F\\[-1.2em]
+&(b,x)\ar[r,mapsto]&(b,f_b(x))
+\end{tikzcd}
+&,&
+$\displaystyle f_b=\left\{\begin{array}{ll}
+1_F&,b=0\\[1.2em]
+h_n&,b=\frac{1}{n}
+\end{array}\right.$
+\end{tabular}
+\end{center}
+where $h_n:F\to F$ is defined as follows:
+\begin{center}
+\begin{tabular}{cc}
+$\displaystyle h_b(x)=\left\{\begin{array}{ll}
+3x&,x\in\left(0,\frac{1}{3^{n+1}}\right]\cap F\\[1em]
+x+1-\frac{1}{3^n}&,x\in\left[\frac{2}{3^{n+1}},\frac{1}{3^n}\right]\cap F\\[1em]
+x&,x\in\left[\frac{2}{3^n},1-\frac{2}{3^n}\right]\cap F\\[1em]
+\frac{1}{3}x+\frac{2}{3}-\frac{2}{3^{n+1}}&,x\in\left[1-\frac{1}{3^n},1\right]\cap F
+\end{array}\right.$
+&
+\end{tabular}
+\begin{tikzpicture}[baseline=0, decoration=Cantor set]
+\def\d{5}
+\node at (0,0) {$h_2$};
+\coordinate (O) at (-\d/2,-\d/2);
+%\draw[->,very thin,gray,dotted] (O) + (-.2,0) -- +(\d+0.2,0);
+%\draw[->,very thin,gray,dotted] (O) + (0,-.2) -- +(0,\d+0.2);
+\draw[thick] decorate{ decorate{ decorate{ decorate{ (O) -- +(\d,0) }}}};
+\draw[thick] decorate{ decorate{ decorate{ decorate{ (O) -- +(0,\d) }}}};
+
+\draw[red, thick] decorate{ decorate{ (O) -- +(\d/27,\d/9) }};
+\draw[red, thick] decorate{ (O) +(2*\d/27,\d-\d/27) -- +(\d/9,\d) };
+\draw[red, thick] decorate{ decorate{ (O) +(2*\d/9,2*\d/9) -- +(\d/3,\d/3) }};
+\draw[red, thick] decorate{ decorate{ (O) +(\d-\d/3,\d-\d/3) -- +(\d-2*\d/9,\d-2*\d/9) }};
+\draw[red, thick] decorate{ decorate{ (O) +(\d-\d/9,\d-\d/9) -- +(\d,\d-2*\d/27) }};
+
+\draw[very thin, gray, dotted] (O) +(\d/27,0) -- +(\d/27,\d/9);
+\draw[very thin, gray, dotted] (O) +(2*\d/27,0) -- +(2*\d/27,\d-\d/27);
+\draw[very thin, gray, dotted] (O) +(\d/9,0) -- +(\d/9,\d);
+\draw[very thin, gray, dotted] (O) +(2*\d/9,0) -- +(2*\d/9,2*\d/9);
+\draw[very thin, gray, dotted] (O) +(\d-2*\d/9,0) -- +(\d-2*\d/9,\d-2*\d/9);
+\draw[very thin, gray, dotted] (O) +(\d-\d/9,0) -- +(\d-\d/9,\d-\d/9);
+\draw[very thin, gray, dotted] (O) +(\d,0) -- +(\d,\d-2*\d/27);
+
+\draw[very thin, gray, dotted] (O) +(0,\d/9) -- +(\d/27,\d/9);
+\draw[very thin, gray, dotted] (O) +(0,\d-\d/27) -- +(2*\d/27,\d-\d/27);
+\draw[very thin, gray, dotted] (O) +(0,\d) -- +(\d/9,\d);
+\draw[very thin, gray, dotted] (O) +(0,2*\d/9) -- +(2*\d/9,2*\d/9);
+\draw[very thin, gray, dotted] (O) +(0,\d-2*\d/9) -- +(\d-2*\d/9,\d-2*\d/9);
+\draw[very thin, gray, dotted] (O) +(0,\d-\d/9) -- +(\d-\d/9,\d-\d/9);
+\draw[very thin, gray, dotted] (O) +(0,\d-2*\d/27) -- +(\d,\d-2*\d/27);
+\end{tikzpicture}
+\end{center}
+We will prove that $f$ is a bundle map, but it isn't a homeomorphism, although $f_b$ is a homeomorphism for every $b\in B$.
+
+First of all, $f_0$ is trivially a homeomorphism and it is easy to see that $h_n$ is always a homeomorphism, since it is bijective and linear on disconnected subsets of $F$. Now, let us prove that $f$ is continuous. It then immediately will follow that $f$ is also a bundle map, since $\pi_1\circ f=\pi_1$. We will first examine the function $g_f:B\times F\to F$, with $g_f:=\pi_2\circ f$. Since $F$ is Hausdorff and locally compact, the space $Top(F,F)$, topologised with the compact-open topology has the following properties, as we proved in Proposition~\ref{prop:exponential_object}:
+\begin{itemize}
+\item The evaluation map $\mathrm{Top}(F,F)\times F\overset{ev}{\to}F$, defined by $(f,x)\mapsto f(x)$ is continuous.
+\item For every topological space $T$ and continuous map $g:T\times F\to F$, there exists a unique $g^{\#}:T\to\mathrm{Top}(F,F)$ making the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+T\times F\ar[r,"g^{\#}\times 1_F"]\ar[d,"g"]&\mathrm{Top}(F,F)\times F\ar[dl,"ev"]\\
+F
+\end{tikzcd}
+\end{center}
+\end{itemize}
+In such cases, $g$ is continuous if and only if $g^{\#}$ is continuous, as we proved in Theorem~\ref{th:associated_map}.
+
+In our example, if we let $\tilde{g}_f:B\to\mathrm{Top}(F,F)$ to be the function taking $b$ to $f_b$, we have the following commutative diagram:
+\begin{center}
+\begin{tikzcd}
+B\times F\ar[r,"\tilde{g}_f\times 1_F"]\ar[d,"g_f"]&\mathrm{Top}(F,F)\times F\ar[dl,"ev"]\\
+F
+\end{tikzcd}
+\end{center}
+which proves that $g_f^{\#}=\tilde{g}_f$, due to the uniqueness property. Thus, $g_f$ is continuous, if and only if $\tilde{g}_f$ is continuous., which is equivalent to $\lim_{n\to\infty}h_n=1_F$ in $\mathrm{Top}(F,F)$. The sets
+\[\Big\{S(K,O):=\{f:K\to O\,|\,f(K)\subseteq O\}\ \Big|\ K,O\subseteq F,\ K\text{ compact},\ O\text{ open}\Big\}\]
+form a subbasis of the topology of $\mathrm{Top}(F,F)$.
+Let $S(K,O)$ be such a set in the neighborhood of $1_F$. This means that moreover $K\subseteq O$. We will prove that $h_n\in S(K,O)$ for every big enough $n$. First of all, notice, that there exists some $n_1\in\mathbb{N}$ such that $\frac{1}{3^n}<\min K$ for all $n\geq n_1$. If $K\not\ni 1$, then there exists also a $n_2\in\mathbb{N}$ such that $1-\frac{1}{3^n}>\max K$ for all $n\geq n_2$. This means that $K\subseteq[\frac{2}{3^n},1-\frac{2}{3^n}]$ for all $n\geq\max\{n_1,n_2\}$, which means that $h_n(K)=K\subseteq O$, i.e. $h_n\in S(K,O)$. Else, if $K\ni 1$, then there exists some $n_2'\in\mathbb{N}$ such that $V_n:=[1-\frac{1}{3^n},1]\cap F\subseteq O$ for every $n\geq n_2'$. Then, $h_n(V_n\cap K)\subseteq h_n(V_n)\subseteq V_n\subseteq O$ for every $n\geq n_2'$ and also, like in the previous case, $h_n(K\setminus V_n)= h_n(K\cap[\frac{2}{3^n},1-\frac{2}{3^n}]\cap F)=K\cap[\frac{2}{3^n},1-\frac{2}{3^n}]\cap F\subseteq O$ for every $n\geq n_1$. Thus, $h_n\in S(K,O)$ for every $n\geq\max\{n_1,n_2'\}$. This proves the continuity of $\tilde{g}_f$, which implies the continuity of $g$. So, we now have the following commutative diagram:
+\begin{center}
+\begin{tikzcd}
+B&B\times F\ar[l,"\pi_1"']\ar[r,"\pi_2"]&F\\
+&B\times F\ar[ul,"1_B"]\ar[u,"f"]\ar[ur,"g_f"']
+\end{tikzcd}
+\end{center}
+i.e. $f=1_B\times g$ by the universal property of the product, which means in particular that $f$ is continuous.
+
+The functions $f_b^{-1}$ are also continuous and we again have that $f^{-1}$ is continuous if and only if $g_{f^{-1}}$ is continuous, which in turn is the case if and only if $g_{f^{-1}}^{\#}=\tilde{g}_{f^{-1}}:B\to\mathrm{Top}(F,F)$, taking $b$ to $f_b^{-1}$ is continuous, which isn't. Indeed, let $V_n:=[1-\frac{1}{3^n},1]\cap F$. This is both open and compact, so $S(V_n,V_n)$ is a subbasic neighborhood of $1_F$. For every $n\in\mathbb{N}$ we have that $h_n^{-1}(K)\ni h_n^{-1}(1)=\frac{1}{3^n}<1-\frac{1}{3^n}=\min O$, which means that for every $n\in\mathbb{N}$, $h^{-1}_n\not\in S(V_n,V_n)$.
+\end{example}
+
+The above example fails because $F$ although Hausdorff and locally compact, wasn't locally connected. We will now prove the following theorem, which is based on Theorem~4 in \cite{top_group} which proves the continuity of the inverse operator on $\mathrm{Top}(F,F)$, provided that $F$ has some good properties
+
+\begin{theorem} Let $F$ be a Hausdorff, locally compact, locally connected topological space and let $p_1: E_1\to B$ and $p_2: E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively, both isomorphic to $F$. Moreover, let $\phi:E_1\to E_2$ be a bundle map such that its restriction
+\[\phi_x:(F_1)_x\to (F_2)_x\]
+with $\phi_x(v)=\phi(v)$ is a homeomorphism for every $x\in B$. Then $\phi$ is also a homeomorphism.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
 \begin{example} Define the topological spaces $B=(\mathbb{R}, \tau)$ and $B'=(\mathbb{R}, \tau')$, where $\tau$ is the usual topology on $\mathbb{R}$ generated by the open intervals and $\tau'$ is the topology on $\mathbb{R}$ generated by the semi-open intervals, i.e. of all intervals of the form $[a,b)$. Then examine the following diagram:
 \begin{center}
 \begin{tikzcd}
