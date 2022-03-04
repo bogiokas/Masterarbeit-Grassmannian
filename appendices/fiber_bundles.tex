@@ -138,7 +138,7 @@ h_n&,b=\frac{1}{n}
 where $h_n:F\to F$ is defined as follows:
 \begin{center}
 \begin{tabular}{cc}
-$\displaystyle h_b(x)=\left\{\begin{array}{ll}
+$\displaystyle h_n(x)=\left\{\begin{array}{ll}
 3x&,x\in\left(0,\frac{1}{3^{n+1}}\right]\cap F\\[1em]
 x+1-\frac{1}{3^n}&,x\in\left[\frac{2}{3^{n+1}},\frac{1}{3^n}\right]\cap F\\[1em]
 x&,x\in\left[\frac{2}{3^n},1-\frac{2}{3^n}\right]\cap F\\[1em]
@@ -180,18 +180,14 @@ x&,x\in\left[\frac{2}{3^n},1-\frac{2}{3^n}\right]\cap F\\[1em]
 \end{center}
 We will prove that $f$ is a bundle map, but it isn't a homeomorphism, although $f_b$ is a homeomorphism for every $b\in B$.
 
-First of all, $f_0$ is trivially a homeomorphism and it is easy to see that $h_n$ is always a homeomorphism, since it is bijective and linear on disconnected subsets of $F$. Now, let us prove that $f$ is continuous. It then immediately will follow that $f$ is also a bundle map, since $\pi_1\circ f=\pi_1$. We will first examine the function $g_f:B\times F\to F$, with $g_f:=\pi_2\circ f$. Since $F$ is Hausdorff and locally compact, the space $Top(F,F)$, topologised with the compact-open topology has the following properties, as we proved in Proposition~\ref{prop:exponential_object}:
+First of all, $f_0$ is trivially a homeomorphism and it is easy to see that $h_n$ is always a homeomorphism, since it is bijective and linear on clopen subsets of $F$. Now, let us prove that $f$ is continuous. It then will immediately follow that $f$ is also a bundle map, since $\pi_1\circ f=\pi_1$.
+
+We will first define the function $g_f:B\times F\to F$, with $g_f:=\pi_2\circ f$. Notice that $g_f(x,a)=f_x(a)$ for every $(x,a)\in B\times F$. Since $F$ is Hausdorff and locally compact, the space $Top(F,F)$, topologised with the compact-open topology has the following properties, as we proved in Proposition~\ref{prop:exponential_object}:
 \begin{itemize}
-\item The evaluation map $\mathrm{Top}(F,F)\times F\overset{ev}{\to}F$, defined by $(f,x)\mapsto f(x)$ is continuous.
-\item For every topological space $T$ and continuous map $g:T\times F\to F$, there exists a unique $g^{\#}:T\to\mathrm{Top}(F,F)$ making the following diagram commute:
-\begin{center}
-\begin{tikzcd}
-T\times F\ar[r,"g^{\#}\times 1_F"]\ar[d,"g"]&\mathrm{Top}(F,F)\times F\ar[dl,"ev"]\\
-F
-\end{tikzcd}
-\end{center}
+\item The evaluation map $ev:\mathrm{Top}(F,F)\times F\to F$, defined by $(f,x)\mapsto f(x)$ is continuous.
+\item For every topological space $T$ and any function $g:T\times F\to F$, there exists a unique function $g^{\#}:T\to\mathrm{Top}(F,F)$ such that $g=ev\circ(g^{\#}\times 1_F)$.
+\item $g$ is continuous if and only if $g^{\#}$ is continuous.
 \end{itemize}
-In such cases, $g$ is continuous if and only if $g^{\#}$ is continuous, as we proved in Theorem~\ref{th:associated_map}.
 
 In our example, if we let $\tilde{g}_f:B\to\mathrm{Top}(F,F)$ to be the function taking $b$ to $f_b$, we have the following commutative diagram:
 \begin{center}
@@ -200,22 +196,30 @@ B\times F\ar[r,"\tilde{g}_f\times 1_F"]\ar[d,"g_f"]&\mathrm{Top}(F,F)\times F\ar
 F
 \end{tikzcd}
 \end{center}
-which proves that $g_f^{\#}=\tilde{g}_f$, due to the uniqueness property. Thus, $g_f$ is continuous, if and only if $\tilde{g}_f$ is continuous., which is equivalent to $\lim_{n\to\infty}h_n=1_F$ in $\mathrm{Top}(F,F)$. The sets
+which proves that $g_f^{\#}=\tilde{g}_f$, due to the uniqueness property. Thus, $g_f$ is continuous, if and only if $\tilde{g}_f$ is continuous., which is equivalent to $\lim_{n\to\infty}h_n=1_F$ in $\mathrm{Top}(F,F)$.
+
+In order to show this, we need to prove that every open neighborhood of $1_F$ contains every $h_n$ for some big enough $n$. In fact, it suffices to check this only for these neighborhoods of $1_F$ that are elements in a subbasis of the topology of $\mathrm{Top}(F,F)$, so we will only regard open sets in the following family:
 \[\Big\{S(K,O):=\{f:K\to O\,|\,f(K)\subseteq O\}\ \Big|\ K,O\subseteq F,\ K\text{ compact},\ O\text{ open}\Big\}\]
-form a subbasis of the topology of $\mathrm{Top}(F,F)$.
-Let $S(K,O)$ be such a set in the neighborhood of $1_F$. This means that moreover $K\subseteq O$. We will prove that $h_n\in S(K,O)$ for every big enough $n$. First of all, notice, that there exists some $n_1\in\mathbb{N}$ such that $\frac{1}{3^n}<\min K$ for all $n\geq n_1$. If $K\not\ni 1$, then there exists also a $n_2\in\mathbb{N}$ such that $1-\frac{1}{3^n}>\max K$ for all $n\geq n_2$. This means that $K\subseteq[\frac{2}{3^n},1-\frac{2}{3^n}]$ for all $n\geq\max\{n_1,n_2\}$, which means that $h_n(K)=K\subseteq O$, i.e. $h_n\in S(K,O)$. Else, if $K\ni 1$, then there exists some $n_2'\in\mathbb{N}$ such that $V_n:=[1-\frac{1}{3^n},1]\cap F\subseteq O$ for every $n\geq n_2'$. Then, $h_n(V_n\cap K)\subseteq h_n(V_n)\subseteq V_n\subseteq O$ for every $n\geq n_2'$ and also, like in the previous case, $h_n(K\setminus V_n)= h_n(K\cap[\frac{2}{3^n},1-\frac{2}{3^n}]\cap F)=K\cap[\frac{2}{3^n},1-\frac{2}{3^n}]\cap F\subseteq O$ for every $n\geq n_1$. Thus, $h_n\in S(K,O)$ for every $n\geq\max\{n_1,n_2'\}$. This proves the continuity of $\tilde{g}_f$, which implies the continuity of $g$. So, we now have the following commutative diagram:
+Let $S(K,O)$ be such a set in the neighborhood of $1_F$. This means that $K\subseteq O$. First of all, notice, that there exists some $n_1\in\mathbb{N}$ such that $\frac{1}{3^n}<\min K$ for all $n\geq n_1$. We now examine the following two cases:
+\begin{itemize}
+\item[$1\not\in K$:] In this case, there exists also a $n_2\in\mathbb{N}$ such that $1-\frac{1}{3^n}>\max K$ for all $n\geq n_2$. This means that $K\subseteq[\frac{2}{3^n},1-\frac{2}{3^n}]$ for all $n\geq\max\{n_1,n_2\}$, which means that $h_n(K)=K\subseteq O$, i.e. $h_n\in S(K,O)$.
+\item[$1\in K$] In this case, there exists some $n_2'\in\mathbb{N}$ such that $V_n:=[1-\frac{1}{3^n},1]\cap F\subseteq O$ for every $n\geq n_2'$. Then, $h_n(V_n\cap K)\subseteq h_n(V_n)\subseteq V_n\subseteq O$ for every $n\geq n_2'$ and also, like in the previous case, $h_n(K\setminus V_n)= h_n(K\cap[\frac{2}{3^n},1-\frac{2}{3^n}]\cap F)=K\cap[\frac{2}{3^n},1-\frac{2}{3^n}]\cap F\subseteq O$ for every $n\geq n_1$. Thus, $h_n\in S(K,O)$ for every $n\geq\max\{n_1,n_2'\}$.
+\end{itemize}
+This proves the continuity of $\tilde{g}_f$, which implies the continuity of $g_f$. So, by the universal property of the product, there exists a unique continuous $\left<\pi_1,g_f\right>:B\times F\to B\times F$ as in the following commutative diagram:
 \begin{center}
 \begin{tikzcd}
-B&B\times F\ar[l,"\pi_1"']\ar[r,"\pi_2"]&F\\
-&B\times F\ar[ul,"1_B"]\ar[u,"f"]\ar[ur,"g_f"']
+B&B\times F\ar[l,"\pi_1"']\ar[r,"\pi_2"]&F\\[1em]
+&B\times F\ar[ul,"\pi_1"]\ar[u,dotted,"\left<\pi_1{,}g_f\right>" description,background color=none]\ar[ur,"g_f"']
 \end{tikzcd}
 \end{center}
-i.e. $f=1_B\times g$ by the universal property of the product, which means in particular that $f$ is continuous.
+Notice that $\left<\pi_1,g_f\right>(x,a)=(x,f_x(a))=f(x,a)$, which proves that $f$ is continuous.
 
-The functions $f_b^{-1}$ are also continuous and we again have that $f^{-1}$ is continuous if and only if $g_{f^{-1}}$ is continuous, which in turn is the case if and only if $g_{f^{-1}}^{\#}=\tilde{g}_{f^{-1}}:B\to\mathrm{Top}(F,F)$, taking $b$ to $f_b^{-1}$ is continuous, which isn't. Indeed, let $V_n:=[1-\frac{1}{3^n},1]\cap F$. This is both open and compact, so $S(V_n,V_n)$ is a subbasic neighborhood of $1_F$. For every $n\in\mathbb{N}$ we have that $h_n^{-1}(K)\ni h_n^{-1}(1)=\frac{1}{3^n}<1-\frac{1}{3^n}=\min O$, which means that for every $n\in\mathbb{N}$, $h^{-1}_n\not\in S(V_n,V_n)$.
+Lastly, we will prove that $f^{-1}$ is not continuous using the same machinery. So, $f^{-1}$ is continuous if and only if $g_{f^{-1}}:B\times F\to F$, with $g_{f^{-1}}(x,a)=f^{-1}_x(a)$ is continuous. This, again, is the case if and only if $g_{f^{-1}}^{\#}=\tilde{g}_{f^{-1}}:B\to\mathrm{Top}(F,F)$, taking $b$ to $f_b^{-1}$ is continuous, which is equivalent to $\lim_{n\to\infty}h_n^{-1}=1_F^{-1}=1_F$ in $\mathrm{Top}(F,F)$. So, it remains to prove that this limit doesn't converge to $1_F$.
+
+Let $V_n:=[1-\frac{1}{3^n},1]\cap F$. This is both open and compact, so $S(V_n,V_n)$ is a subbasic neighborhood of $1_F$. For every $n\in\mathbb{N}$ we have that $h_n^{-1}(1)=\frac{1}{3^n}<1-\frac{1}{3^n}=\min V_n$, which means that for every $n\in\mathbb{N}$, $h_n^{-1}(V_n)\not\subseteq V_n$, i.e. $h^{-1}_n\not\in S(V_n,V_n)$.
 \end{example}
 
-As we've seen in Theorem~\ref{thm:inverse}, we know some sufficient conditions in order to lift the pathogen of the inverse mapping not being continuous. We can now prove that the above example wouldn't fail if $F$ was also locally connected in addition to being Hausdorff and locally compact:
+As we've seen in Theorem~\ref{thm:inverse}, we know some sufficient conditions in order to lift the pathogen of the inverse mapping not being continuous, so we will now prove that the above example wouldn't fail if $F$ was also locally connected in addition to being Hausdorff and locally compact:
 
 %We will now prove the following theorem, which is based on Theorem~4 in \cite{top_group} which proves the continuity of the inverse operator on $\mathrm{Top}(F,F)$, provided that $F$ has some good properties
 
@@ -238,18 +242,18 @@ p_2^{-1}(U_x)\ar[d,"p_2|_{p_2^{-1}(U_x)}"']\ar[r,"(f_2)_{U_x}"]&U_x\times F_2\ar
 U_x&&&U_x
 \end{tikzcd}
 \end{center}
-Let $\mathcal{U}=\{U_x:x\in B\}$. Since $\{p_2^{-1}(U):U\in\mathcal{U}\}$ forms an open cover of $E_2$, it suffices to show that $\phi^{-1}|_{p_2^{-1}(U)}$ is continuous, for every $U\in\mathcal{U}$ and then apply the glueing lemma. Let us fix such a $U\in\mathcal{U}$. Then, the above commutative diagrams let us define the map $\psi:U\times F\to U\times F$ as the following composition:
+Let $\mathcal{U}=\{U_x:x\in B\}$. Since $\{p_2^{-1}(U):U\in\mathcal{U}\}$ forms an open cover of $E_2$, it suffices to show that $\phi^{-1}|_{p_2^{-1}(U)}$ is continuous for every $U\in\mathcal{U}$ and then apply the glueing lemma. Let us fix such a $U\in\mathcal{U}$. Then, the above commutative diagrams let us define the map $\psi:U\times F\to U\times F$ as the following composition:
 \vspace*{-1em}
 \begin{center}
 \begin{tikzcd}
-U\times F\ar[r,"\cong"']\ar[drrr,"\pi_1"',near start]\ar[rrrrrr,bend left=10,dotted,"\psi"]&U\times F_1\ar[r,"\cong"',"(f_1)_U^{-1}"]\ar[drr,"\pi_1"',near start]&p_1^{-1}(U)\ar[rr,"\phi|_{p^{-1}(U)}"]\ar[dr,"p_1"',near start]&[-2em]&p_2^{-1}(U)\ar[r,"\cong"',"(f_2)_U"]\ar[dl,"p_2",near start]&U\times F_2\ar[r,"\cong"']\ar[dll,"\pi_1",near start]&U\times F\ar[dlll,"\pi_1",near start]\\[2em]
+U\times F\ar[r,"\cong"']\ar[drrr,"\pi_1"',near start]\ar[rrrrrr,bend left=10,dotted,"\psi"]&U\times F_1\ar[r,"\cong"',"(f_1)_U^{-1}"]\ar[drr,"\pi_1"',near start]&p_1^{-1}(U)\ar[rr,"\phi|_{p_1^{-1}(U)}"]\ar[dr,"p_1"',near start]&[-2em]&p_2^{-1}(U)\ar[r,"\cong"',"(f_2)_U"]\ar[dl,"p_2",near start]&U\times F_2\ar[r,"\cong"']\ar[dll,"\pi_1",near start]&U\times F\ar[dlll,"\pi_1",near start]\\[2em]
 &&&U
 \end{tikzcd}
 \end{center}
 This means that the map $\psi$ has the following properties:
 \begin{itemize}
 \item $\psi$ is continuous and a bijection.
-\item For every $x\in U$ there exists some map $\psi_x:F\to F$ such that $\psi(x,a)=(x,\psi_x(a))$, which is a homeomorphism, since it makes the following diagram commute:
+\item For every $x\in U$ there exists some map $\psi_x:F\to F$ such that $\psi(x,a)=(x,\psi_x(a))$. These $\psi_x$ are homeomorphisms, since the following diagram commutes for every $x\in U$:
 \vspace*{-1em}
 \begin{center}
 \begin{tikzcd}
@@ -258,7 +262,9 @@ F\ar[r,"\cong"']\ar[rrrrr,bend left=15,"\psi_x"]&\{x\}\times F_1\ar[r,"\cong"']&
 \end{center}
 \item $\phi^{-1}|_{p_2^{-1}(U)}=(\phi|_{p_1^{-1}(U)})^{-1}$ is continuous if and only if $\psi^{-1}$ is continuous.
 \end{itemize}
-Essentially, we have reduced the problem to the case of $E_1,E_2$ both being the trivial bundle $U\times F$. Now, we follow the same arguments we used in the Example~\ref{ex:counterexample}. First, define the continuous $g_{\psi}:U\times F\to F$ with $g_{\psi}=\pi_2\circ\psi$, i.e. $g_{\psi}(x,a)=\psi_x(a)$. Since $F$ is Hausdorff and locally compact, the space $\mathrm{Top}(F,F)$, topologised with the compact-open topology, together with the map $ev:\mathrm{Top}(F,F)\times F\to F$ has the final property proved in Proposition~\ref{prop:exponential_object}. So, there exists a unique continuous $g_{\psi}^{\#}:U\to\mathrm{Top}(F,F)$ making the following diagram commute:
+Essentially, we have reduced the problem to the case of $E_1,E_2$ both being the trivial bundle $U\times F$ and $\psi:U\times F\to U\times F$.
+
+Now, we follow the same arguments we used in the Example~\ref{ex:counterexample}. First, define the continuous $g_{\psi}:U\times F\to F$ with $g_{\psi}=\pi_2\circ\psi$, i.e. $g_{\psi}(x,a)=\psi_x(a)$. Since $F$ is Hausdorff and locally compact, the space $\mathrm{Top}(F,F)$, topologised with the compact-open topology, together with the map $ev:\mathrm{Top}(F,F)\times F\to F$ has the final property proved in Proposition~\ref{prop:exponential_object}. So, there exists a unique continuous $g_{\psi}^{\#}:U\to\mathrm{Top}(F,F)$ making the following diagram commute:
 \begin{center}
 \begin{tikzcd}
 U\times F\ar[r,"g_{\psi}^{\#}\times 1_F"]\ar[d,"g_{\psi}"']&\mathrm{Top}(F,F)\times F\ar[dl,"ev"]\\
@@ -279,14 +285,14 @@ U\times F\ar[r,"h_{\psi}\times 1_F"]\ar[d,"h_{\psi}^{\flat}"']&\mathrm{Top}(F,F)
 F
 \end{tikzcd}
 \end{center}
-Notice that $h_{\psi}^{\flat}(x,a)=ev(\psi^{-1}_x,a)=\psi^{-1}_x(a)$. By the universal property of the product, we now get a unique continuous map $\pi_1\times h_{\psi}^{\flat}:U\times F\to U\times F$:
+Notice that $h_{\psi}^{\flat}(x,a)=ev(\psi^{-1}_x,a)=\psi^{-1}_x(a)$. By the universal property of the product, we now get a unique continuous map $\left<\pi_1,h_{\psi}^{\flat}\right>:U\times F\to U\times F$ as in the diagram:
 \begin{center}
 \begin{tikzcd}
-U&U\times F&F\\
-&U\times F\ar[ul,"\pi_1"]\ar[u,dotted,"\pi_1\times h_{\psi}^{\flat}"]\ar[ur,"h_{\psi}^{\flat}"]
+U&U\times F\ar[l,"\pi_1"']\ar[r,"\pi_2"]&F\\[1em]
+&U\times F\ar[ul,"\pi_1"]\ar[u,dotted,"\left<\pi_1{,}h_{\psi}^{\flat}\right>" description,background color=none]\ar[ur,"h_{\psi}^{\flat}"']
 \end{tikzcd}
 \end{center}
-where $\pi_1\times h_{\psi}^{\flat}(x,a)=(x,\psi_x^{-1}(a))=\psi^{-1}(x,a)$, which proves finally that $\psi^{-1}$ is continuous.
+where $\left<\pi_1,h_{\psi}^{\flat}\right>(x,a)=\big(x,\psi_x^{-1}(a)\big)=\psi^{-1}(x,a)$, for every $(x,a)\in U\times F$, which proves finally that $\psi^{-1}$ is continuous.
 \end{proof}
 
 
