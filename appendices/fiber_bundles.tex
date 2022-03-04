@@ -1,33 +1,40 @@
 \chapter{Fiber Bundles}
-The Fiber Bundle is a topological object generalizing the notion of the product space. A fiber bundle $E$ can be thought like a ``twisted product'' of a base topological space $B$ and a fiber space $F$. This means that locally it always looks like the product of the two, but globally $F$ may (homeomorphically) change, while one is going ``around'' $B$. Before we give some explicit examples, we need the formal definition of a fiber bundle.
+The Fiber Bundle is a topological object generalizing the notion of the product space. A fiber bundle $E$ can be thought like a ``twisted product'' of a base topological space $B$ and a fiber space $F$. This means that locally it always looks like a product, but globally it may (homeomorphically) change, while we move in $B$. This is called local triviallity and is the least we can demand of a fiber bundle. Most of the time though, people are interested in fiber bundles with additional structure imposed on the fiber space $F$, such as a group action on $F$. These fiber bundles are said to then be equipped with a ``structure group'' $G<\mathrm{Aut}(F)$. On Chapter~\ref{chap:vec_bundles} we examine the notion of ``vector bundles'', which require that $F$ has the structure of a vector space. Also, it is worth noting at this point that the definition of the ``characteristic classes'' one sees in~\ref{def:char_class} originated from the study of ``sphere bundles'', requiring the fiber to be a sphere.
 
-\begin{definition} Let $F$, $E$ and $B$ be some topological spaces. A continuous map $p:E\to B$ is called a \ul{fiber bundle with fiber $F$}, if for every $x\in B$ there exists a neighborhood $x\in U\subseteq B$, and a function $f_U:p^{-1}(U)\to U\times F$ (where $p^{-1}(U)$ has the subspace topology and $U\times F$ the product topology), such that:
+\begin{definition}\label{def:fiber_bundle} Let $F$, $E$ and $B$ be some topological spaces. A continuous map $p:E\to B$ is called a \ul{fiber bundle with fiber $F$}, if for every $x\in B$ there exists an open neighborhood $x\in U\subseteq B$, and a function $f_U:p^{-1}(U)\to U\times F$ (where $p^{-1}(U)$ has the subspace topology and $U\times F$ the product topology), such that:
 \begin{i_enum}
 \item $f_U$ is a homeomorphism.
-\item The following diagram commutes:
+\item  $p|_{p^{-1}(U)}=\pi_1\circ f_U$, i.e. the following diagram commutes:
 \begin{center}
 \begin{tikzcd}
 E\ar[r,"\supseteq",phantom]&[-1em]p^{-1}(U)\ar[d,"p|_{p^{-1}(U)}"']\ar[r,"f_U"]&U\times F\ar[dl,"\pi_1"]\\[2em]
 B\ar[r,"\supseteq",phantom]&U
 \end{tikzcd}
 \end{center}
-i.e. $p|_{p^{-1}(U)}=\pi_1\circ f_U$.
 \end{i_enum}
-$B$ is then called \ul{base space} and $E$ \ul{total space} of the fiber bundle. Moreover, for every $x\in B$, the space $p^{-1}(\{x\})$ is called \ul{the fiber over $x$} and is denoted by $F_x$. Notice, that, sometimes, we refer to the fiber bundle just by its total space, if the definition of $p$ is clear.
+$B$ is then called \ul{base space} and $E$ \ul{total space} of the fiber bundle. Moreover, for every $x\in B$, the space $p^{-1}(\{x\})$ is called \ul{the fiber over $x$} and is denoted by $F_x$. Notice, that, sometimes, we refer to the fiber bundle just by its total space, if the definition of $p$ is clear, or by the notation $F\to E\overset{p}{\to}B$.
 \end{definition}
 
-\begin{notation}
-It is very common to denote a fiber bundle as:
-\[F\to E\overset{p}{\to}B\]
-which may remind to the reader the notion of a short exact sequence.
-%%%%TODO: elaborate on the connection
-\end{notation}
-
-Notice that this is the smallest set of requirements one can demand of a fiber bundle. Most of the time though, people are interested in fiber bundles with additional structure imposed on the fiber space $F$, with the most noticeable example being a group action on $F$. These fiber bundles are said to then be equipped with a ``structure group'' $G$. Another interesting structure one can require is discussed on Chapter~\ref{chap:vec_bundles}, where we define and examine the notion of ``vector bundles'', i.e.\ fiber bundles having vector spaces as bundles.
-
-It is worth noting at this point that the definition of the ``characteristic classes'' one will see in~\ref{def:char_class} originated from the study of ``sphere bundles'', which is the particular subclass of fiber bundles where the fibers are topologically spheres of some dimension.
-
-The reader should thus keep in mind that all the definitions she will encounter in this chapter are (in a more specific setting) usually enriched. So, questions of bundle isomorphisms should always be answered carefully, by determining the underlying setting. For example, we will encounter fiber bundles which will be proven isomorphic in this simple setting, whereas one can distinguish between them in the setting of fiber bundles equipped with a structure group $G$.
+\begin{remark}\label{rem:fiber_subcover} Let $E\overset{p}{\to} B$ be a fiber bundle, $x\in B$ and $U\subseteq B$ an open neighborhood of $x$, $f_U:p^{-1}(U)\to U\times F$ a homeomorphism as in the Definition~\ref{def:fiber_bundle}, i.e. it makes the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+p^{-1}(U)\ar[d,"p|_{p^{-1}(U)}"']\ar[r,"f_U"]&U\times F\ar[dl,"\pi_1"]\\
+U
+\end{tikzcd}
+\end{center}
+Moreover, let $V\subseteq U$ be some other open neighborhood of $x$. Then, $f_V:=f_U|_{p^{-1}(V)}$ is also a homeomorphism between $p^{-1}(V)$ and $V\times F$ as in the Definition~\ref{def:fiber_bundle}, i.e. it makes its associated diagram commute. Indeed, since $V\subseteq U$, $p^{-1}(V)\subseteq p^{-1}(U)$, the restriction $f_U|_{p^{-1}(V)}$ is first of all well defined. Moreover, we will prove that $f_V(p^{-1}(V))=V\times F$:
+\begin{itemize}
+\item[($\subseteq$)] Let $u\in p^{-1}(V)$. Then, since $f_U$ makes the above diagram commute, $f_V(u)=f_U(u)=(p(u),a)$ for some $a\in F$. Since $p(u)\in V$, $f_V(u)\in V\times F$.
+\item[($\supseteq$)] Let $(b,a)\in V\times F$. Then, $p\circ f_U^{-1}(b,a)=b\in V$, thus $f_U^{-1}(b,a)\in p^{-1}(V)$ and $f_V(f_U^{-1}(b,a))=(b,a)$.
+\end{itemize}
+So, the function $f_V:p^{-1}(V)\to V\times F$ is well defined and a homeomorphism as a restriction of the homeomorphism $f_U$. Also, for every $u\in p^{-1}(V)$, we trivially have $\pi_1\circ f_V(u)=\pi_1\circ f_U(u)=p(u)$, which means that the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+p^{-1}(V)\ar[d,"p|_{p^{-1}(V)}"']\ar[r,"f_V"]&V\times F\ar[dl,"\pi_1"]\\
+U
+\end{tikzcd}
+\end{center}
+\end{remark}
 
 \begin{proposition}\label{prop:same_fiber} Let $p:E\to B$ be a fiber bundle with fiber $F$, then $F_x\cong F$ for all $x\in B$.
 \end{proposition}
@@ -66,14 +73,13 @@ Notice how this fiber bundle is not the ``same'' as the trivial bundle over the 
 
 Notice how in the above discussion we first fixed a base space $B$, before starting to ask questions about similarity of bundles. This is so common, that the first definition of a maps between bundles assumes that both involved bundles have the same base space.
 \begin{definition}
-Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. A continuous map $\phi:E_1\to E_2$ is a \ul{bundle map from $p_1$ to $p_2$ over $B$}, if the following diagram commutes:
+Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. A continuous map $\phi:E_1\to E_2$ is a \ul{bundle map from $p_1$ to $p_2$ over $B$}, if $p_1=p_2\circ\phi$, i.e. if the following diagram commutes:
 \begin{center}
 \begin{tikzcd}
 E_1\ar[rd,"p_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"p_2"]\\
 &B
 \end{tikzcd}
 \end{center}
-i.e. if $p_1=p_2\circ\phi$.
 \end{definition}
 
 \begin{proposition}\label{prop:fiberwise}
@@ -109,11 +115,9 @@ E_1\ar[rd,"p_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"p_2"]\\
 &B
 \end{tikzcd}
 \end{center}
-In order to resolve this, we should at least require that there already exists some bundle map $\phi$, the slices of which are the fiber-wise isomorphisms and ask if this is enough for $\phi$ to be an isomorphism.
+In order to resolve this, we should at least require that there already exists some bundle map $\phi$, the slices of which are the fiber-wise isomorphisms and ask if this is enough for $\phi$ to be an isomorphism. Remarkably, this is in general not true, as we exhibit in the following example. It is based on an example given in \cite{counterexample} of an exponentiable space, whose set of homeomorphisms does not form a topological group, because the inverse map isn't continuous.
 
-\begin{example} This is an example of a fiber bundle involving nice spaces, that shows the converse to be false. It is based on an example given in \cite{counterexample} of an exponentiable space, whose set of homeomorphisms does not form a topological group, because the inverse map isn't continuous.
-
-Let $B\subseteq[0,1]$ be a converging sequence, together with its limit:
+\begin{example}\label{ex:counterexample} Let $B\subseteq[0,1]$ be a converging sequence, together with its limit:
 \[B=\left\{\frac{1}{n}:n\in\mathbb{N}\right\}\cup\left\{0\right\}\]
 and $F\subseteq[0,1]$ be a Cantor set, without its leftmost point:
 \[F=\left\{\sum_{i=1}^{\infty}\frac{\alpha_n}{3^n}:\alpha_n\in\{0,2\}\right\}\setminus\{0\}\]
@@ -211,14 +215,78 @@ i.e. $f=1_B\times g$ by the universal property of the product, which means in pa
 The functions $f_b^{-1}$ are also continuous and we again have that $f^{-1}$ is continuous if and only if $g_{f^{-1}}$ is continuous, which in turn is the case if and only if $g_{f^{-1}}^{\#}=\tilde{g}_{f^{-1}}:B\to\mathrm{Top}(F,F)$, taking $b$ to $f_b^{-1}$ is continuous, which isn't. Indeed, let $V_n:=[1-\frac{1}{3^n},1]\cap F$. This is both open and compact, so $S(V_n,V_n)$ is a subbasic neighborhood of $1_F$. For every $n\in\mathbb{N}$ we have that $h_n^{-1}(K)\ni h_n^{-1}(1)=\frac{1}{3^n}<1-\frac{1}{3^n}=\min O$, which means that for every $n\in\mathbb{N}$, $h^{-1}_n\not\in S(V_n,V_n)$.
 \end{example}
 
-The above example fails because $F$ although Hausdorff and locally compact, wasn't locally connected. We will now prove the following theorem, which is based on Theorem~4 in \cite{top_group} which proves the continuity of the inverse operator on $\mathrm{Top}(F,F)$, provided that $F$ has some good properties
+As we've seen in Theorem~\ref{thm:inverse}, we know some sufficient conditions in order to lift the pathogen of the inverse mapping not being continuous. We can now prove that the above example wouldn't fail if $F$ was also locally connected in addition to being Hausdorff and locally compact:
+
+%We will now prove the following theorem, which is based on Theorem~4 in \cite{top_group} which proves the continuity of the inverse operator on $\mathrm{Top}(F,F)$, provided that $F$ has some good properties
 
 \begin{theorem} Let $F$ be a Hausdorff, locally compact, locally connected topological space and let $p_1: E_1\to B$ and $p_2: E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively, both isomorphic to $F$. Moreover, let $\phi:E_1\to E_2$ be a bundle map such that its restriction
 \[\phi_x:(F_1)_x\to (F_2)_x\]
 with $\phi_x(v)=\phi(v)$ is a homeomorphism for every $x\in B$. Then $\phi$ is also a homeomorphism.
 \end{theorem}
-\begin{proof}
-
+\begin{proof} First of all, it is easy to see that $\phi$ is a bijection:
+\begin{itemize}
+\item Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a bundle map, we have:
+\[p_1(u_1)=p_2(\phi(u_1))=p_2(\phi(u_2))=p_1(u_2)=:x_0\]
+So, $u_1,u_2\in\left(F_1\right)_{x_0}$ and $\phi_{x_0}(u_1)=\phi(u_1)=\phi(u_2)=\phi_{x_0}(u_2)$. Since $\phi_{x_0}$ is injective, $u_1=u_2$, which proves that $\phi$ is injective as well.
+\item Let $v\in E_2$. For $x_0:=p_2(v)$, we have that $v\in\left(F_2\right)_{x_0}$. Since $\phi_{x_0}$ is surjective, there exists some $u\in\left(F_1\right)_{x_0}\subseteq E_1$ with $\phi(u)=\phi_{x_0}(u)=v$, proving that $\phi$ is also surjective.
+\end{itemize}
+It now remains to prove that $\phi^{-1}$ is continuous as well. For every $x\in B$, there exist open neighborhoods ${(U_1)}_x,{(U_2)}_x$ of $x$, such that $p_1^{-1}({(U_1)}_x)$ is isomorphic to $U_1\times F_1$ and $p_2^{-1}({(U_2)}_x)$ is isomorphic to $U_2\times F_2$, satisfying the commutative diagrams of the Definition~\ref{def:fiber_bundle}. Let $U_x:=(U_1)_x\cap(U_2)_x$. Then, as seen in Remark~\ref{rem:fiber_subcover}, $U_x$ satisfies the requirements of the \ref{def:fiber_bundle}, which means there exist homeomorphisms $(f_1)_{U_x}:p_1^{-1}(U_x)\to U_x\times F_1$ and $(f_2)_{U_x}:p_2^{-1}(U_x)\to U_x\times F_2$ making the following diagrams commute:
+\begin{center}
+\begin{tikzcd}
+p_1^{-1}(U_x)\ar[d,"p_1|_{p_1^{-1}(U_x)}"']\ar[r,"(f_1)_{U_x}"]&U_x\times F_1\ar[dl,"\pi_1"]&&
+p_2^{-1}(U_x)\ar[d,"p_2|_{p_2^{-1}(U_x)}"']\ar[r,"(f_2)_{U_x}"]&U_x\times F_2\ar[dl,"\pi_1"]\\
+U_x&&&U_x
+\end{tikzcd}
+\end{center}
+Let $\mathcal{U}=\{U_x:x\in B\}$. Since $\{p_2^{-1}(U):U\in\mathcal{U}\}$ forms an open cover of $E_2$, it suffices to show that $\phi^{-1}|_{p_2^{-1}(U)}$ is continuous, for every $U\in\mathcal{U}$ and then apply the glueing lemma. Let us fix such a $U\in\mathcal{U}$. Then, the above commutative diagrams let us define the map $\psi:U\times F\to U\times F$ as the following composition:
+\vspace*{-1em}
+\begin{center}
+\begin{tikzcd}
+U\times F\ar[r,"\cong"']\ar[drrr,"\pi_1"',near start]\ar[rrrrrr,bend left=10,dotted,"\psi"]&U\times F_1\ar[r,"\cong"',"(f_1)_U^{-1}"]\ar[drr,"\pi_1"',near start]&p_1^{-1}(U)\ar[rr,"\phi|_{p^{-1}(U)}"]\ar[dr,"p_1"',near start]&[-2em]&p_2^{-1}(U)\ar[r,"\cong"',"(f_2)_U"]\ar[dl,"p_2",near start]&U\times F_2\ar[r,"\cong"']\ar[dll,"\pi_1",near start]&U\times F\ar[dlll,"\pi_1",near start]\\[2em]
+&&&U
+\end{tikzcd}
+\end{center}
+This means that the map $\psi$ has the following properties:
+\begin{itemize}
+\item $\psi$ is continuous and a bijection.
+\item For every $x\in U$ there exists some map $\psi_x:F\to F$ such that $\psi(x,a)=(x,\psi_x(a))$, which is a homeomorphism, since it makes the following diagram commute:
+\vspace*{-1em}
+\begin{center}
+\begin{tikzcd}
+F\ar[r,"\cong"']\ar[rrrrr,bend left=15,"\psi_x"]&\{x\}\times F_1\ar[r,"\cong"']&(F_1)_x\ar[r,"\cong"',"\phi_x"]&(F_2)_x\ar[r,"\cong"']&\{x\}\times F_2\ar[r,"\cong"']&F
+\end{tikzcd}
+\end{center}
+\item $\phi^{-1}|_{p_2^{-1}(U)}=(\phi|_{p_1^{-1}(U)})^{-1}$ is continuous if and only if $\psi^{-1}$ is continuous.
+\end{itemize}
+Essentially, we have reduced the problem to the case of $E_1,E_2$ both being the trivial bundle $U\times F$. Now, we follow the same arguments we used in the Example~\ref{ex:counterexample}. First, define the continuous $g_{\psi}:U\times F\to F$ with $g_{\psi}=\pi_2\circ\psi$, i.e. $g_{\psi}(x,a)=\psi_x(a)$. Since $F$ is Hausdorff and locally compact, the space $\mathrm{Top}(F,F)$, topologised with the compact-open topology, together with the map $ev:\mathrm{Top}(F,F)\times F\to F$ has the final property proved in Proposition~\ref{prop:exponential_object}. So, there exists a unique continuous $g_{\psi}^{\#}:U\to\mathrm{Top}(F,F)$ making the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+U\times F\ar[r,"g_{\psi}^{\#}\times 1_F"]\ar[d,"g_{\psi}"']&\mathrm{Top}(F,F)\times F\ar[dl,"ev"]\\
+F
+\end{tikzcd}
+\end{center}
+Notice that $g_{\psi}^{\#}(x)=\psi_x$, since this makes the above diagram commute and $g_{\psi}^{\#}$ is unique. This also means in particular that $g_{\psi}^{\#}(U)\subseteq\mathrm{Hom}(F)$. Since $F$ is additionally locally connected, the map $(-)^{-1}:\mathrm{Hom}(F)\to\mathrm{Hom}(F)$ is continuous, as we proved in Theorem~\ref{thm:inverse}, where $\mathrm{Hom}(F)\subseteq\mathrm{Top}(F,F)$ is equipped with the subspace topology. Thus, we have a continuous map $h_{\psi}:U\to\mathrm{Top}(F)$ defined by the following composition:
+\vspace*{-1em}
+\begin{center}
+\begin{tikzcd}
+U\ar[r,"g_{\psi}^{\#}"]\ar[rrr,bend left=15, dotted, "h_{\psi}"]&\mathrm{Hom}(F)\ar[r,"(-)^{-1}"]&\mathrm{Hom}(F)\ar[r,"i",hook]&\mathrm{Top}(F,F)
+\end{tikzcd}
+\end{center}
+i.e. $h_{\psi}(x)=(g_{\psi}^{\#}(x))^{-1}=\psi^{-1}_x$. This lets us define next the continuous map $h_{\psi}^{\flat}:U\times F\to F$, as the following composition:
+\begin{center}
+\begin{tikzcd}
+U\times F\ar[r,"h_{\psi}\times 1_F"]\ar[d,"h_{\psi}^{\flat}"']&\mathrm{Top}(F,F)\times F\ar[dl,"ev"]\\
+F
+\end{tikzcd}
+\end{center}
+Notice that $h_{\psi}^{\flat}(x,a)=ev(\psi^{-1}_x,a)=\psi^{-1}_x(a)$. By the universal property of the product, we now get a unique continuous map $\pi_1\times h_{\psi}^{\flat}:U\times F\to U\times F$:
+\begin{center}
+\begin{tikzcd}
+U&U\times F&F\\
+&U\times F\ar[ul,"\pi_1"]\ar[u,dotted,"\pi_1\times h_{\psi}^{\flat}"]\ar[ur,"h_{\psi}^{\flat}"]
+\end{tikzcd}
+\end{center}
+where $\pi_1\times h_{\psi}^{\flat}(x,a)=(x,\psi_x^{-1}(a))=\psi^{-1}(x,a)$, which proves finally that $\psi^{-1}$ is continuous.
 \end{proof}
 
 
