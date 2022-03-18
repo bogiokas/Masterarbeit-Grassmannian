@@ -1,34 +1,235 @@
-\chapter{CW Complexes}
-A CW structure on some space $X$ is usually defined recursively, as an inductive ``glueing'' of cells of some dimension $k$ to the previous, lower dimensional, skeleton of $X$, forming a new, $k$-dimensional, skeleton of $X$. A space $X$ may exhibit many different CW structures, but the existence of one suffices in order for $X$ to be characterized as CW complex. Here, we are going to use the following formal formulation of the above definition.
+\chapter{Bits and Pieces in Topology}
+\section{Some Categorical Notions}
+The goal of this small section is to motivate the definition of the categorical exponential object. In order to arrive there, we first go through the Yoneda lemma and then through the notion of the adjoint functors. For a more thorough introduction to the topics discussed here, refer to \cite{basic_cat}, or any other introductory category book. We will only present the ideas for the proofs of the theorems stated here and point to the corresponding proofs in the book.
 
-\begin{definition} A topological space $X$ is a \ul{CW-complex}, if there exists some filtration
-\[\emptyset=X_{-1}\subseteq X_0\subseteq X_1\subseteq X_2\subseteq\cdots\subseteq X\]
-such that:
-\begin{b_item}
-\item $X=\varinjlim X_i$ with respect to all inclusion maps.
-\item For every $n\geq0$ there exists a pushout diagram in the category of topological spaces:
-\begin{center}
-\begin{tikzcd}
-\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}S^{n-1}\ar[r,"\coprod_e\phi_e"]\ar[d,hook,"\coprod_ej_e"']\ar[dr,phantom, very near start,"\ulcorner"]&[4em]X_{n-1}\ar[d,hook,"i_n"]\\[2em]
-\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}D^n\ar[r,"\coprod_e\Phi_e"']&X_n\\
-\end{tikzcd}
-\end{center}
-where $j_e:S^{n-1}\to D^n$ is the usual inclusion map and $i_n:X_{n-1}\to X_n$ is the inclusion map given by the filtration.
-\end{b_item}
+In this section, we will use the notation $\mathrm{ob}(\mathcal{C})$ for the objects of $\mathcal{C}$ and $\mathcal{C}(A,B)$ for the morphisms from $A$ to $B$ in $\mathcal{C}$. Moreover, the following few statements will be about locally small categories:
+\begin{definition} A category $\mathcal{C}$ is called \emph{locally small}, if for every two objects $A,B$ in $\mathcal{C}$, the morphisms $\mathcal{C}(A,B)$ form a set.
 \end{definition}
 
-A filtration of a topological space $X$, making $X$ a CW-complex is called a \ul{CW-structure} of $X$. Moreover, given a filtration of $X$ like in the above definition, the sets $\Phi_e\large({(D^n)}^{\circ}\large)$ (resp. $\Phi_e(D^n)$) are called the $n$-dimensional \ul{open} (resp. \ul{closed}) \ul{cells} of this CW-structure. Recall the following known facts regarding the dependencies between CW-complexes, structures and cells.
+\begin{definition} Let $\mathcal{C}$ be any locally small category. Then, we denote by $\mathrm{Set}^{\mathcal{C}}$ the \emph{category of set valued functors of $\mathcal{C}$}, which is defined as follows:
+\begin{itemize}
+\item $\mathrm{ob}\left(\mathrm{Set}^{\mathcal{C}}\right)$ is the class of all functors $F$ from $\mathcal{C}$ to $\mathrm{Set}$.
+\item $\mathrm{Set}^{\mathcal{C}}(F,G)$ is the class of all natural transformations $F\overset{\eta}{\Rightarrow}G$.
+\item For $G\overset{\eta}{\Rightarrow}H$ and $F\overset{\theta}{\Rightarrow}G$, the composition $F\overset{\eta\circ\theta}{\Rightarrow}H$ is the usual composition of natural transformations.
+\end{itemize}
+\end{definition}
+\begin{remark} In the above definition, $\mathrm{Set}^{\mathcal{C}}$ need not be locally small. Indeed, let $\mathcal{C}$ be any large discrete category. Let for example, $\mathrm{ob}(\mathcal{C})$ be the same as $\mathrm{ob}(\mathrm{Set})$ and let
+\[\mathcal{C}(A,B)=\left\{\begin{array}{ll}\left\{1_A\right\}&,A=B\\\emptyset&,A\neq B\end{array}\right.\]
+This is obviously a locally small category. Moreover, define the functors $F,G$:
+\begin{center}
+\begin{tikzcd}
+\mathcal{C}\ar[r,bend left=25, "F"{name=F}]\ar[r,bend right=25, "G"'{name=G}]&[2em]\mathrm{Set}
+\end{tikzcd}
+\end{center}
+both to be the identity on $\mathrm{ob}(\mathcal{C})$. The only morphisms in $\mathcal{C}$ are the identity morphisms, for which there is no choice for $F,G$, since they are functors. They have to satisfy $F1_A=G1_A=1_A$ for every set $A$.
 
-\begin{notes}
-\begin{i_enum}
-\item A CW-complex $X$ can have more than one CW-structures, even structures having different number of $n$-dimensional open cells each.
-\item For a particular CW-structure of $X$, the maps $\phi_e$ and $\Phi_e$ are not predetermined by the structure, which means that there can be more than one choices for them. For example, one could always precompose $\Phi_e$ with a disc homeomorphism.
-\item Even if the maps $\phi_e$ and $\Phi_e$ can vary, the open and closed cells of a CW-structure are part of the structure (i.e.\ independent of the choice of the maps)
-\end{i_enum} \end{notes}
+A natural transformation $\eta:F\Rightarrow G$ is a collection of choices $\eta_A:F(A)\to G(A)$, such that $(Ge)\circ\eta_A=\eta_B\circ(Fe)$ for every morphism $e\in\mathcal{C}(A,B)$. The only such morphisms are the identity arrows, so there aren't any restrictions on the choices when constructing $\eta$. This means that $\mathrm{Set}^{\mathcal{C}}(F,G)$ is the class of all $\eta$, each one determined by a collection of choices $\eta_A\in\mathrm{Set}(A,A)$ over all sets $A$. Since the class of all sets is a proper class, so is the class of all such collection of choices, which makes $\mathrm{Set}^{\mathcal{C}}$ not locally small.
+\end{remark}
 
-\begin{remarks}
-\begin{i_enum}
-\item The property $X=\varinjlim X_i$ is equivalent to $X=\bigcup_{i\geq-1}X_i$ as a set, equipped with the final topology, with respect to all inclusion maps. In particular, a set $A$ is open (closed) in $X$, iff $A\cap X_i$ is open (closed) in $X_i$ for all $i\geq-1$, or equivalently, $A\cap\sigma$ is open (closed) in $\sigma$ for every open cell $\sigma$ of the CW structure. This property is what we usually refer to as the ``weak topology'' of $X$ (the ``W'' part of the CW).
-\item 
-\end{i_enum}
-\end{remarks}
+We start with some definitions and results from Chapter~4 in \cite{basic_cat}.
+\begin{definition}[4.1.16] Let $\mathcal{C}$ be a locally small category. Moreover, let $X$ be any object of $\mathcal{C}$. We define the functor
+\[H_X:\mathcal{C}^{\mathrm{op}}\to\mathrm{Set}\]
+as follows:
+\begin{itemize}
+\item For any object $A$ of $\mathcal{C}^{\mathrm{op}}$, we define $H_X(A):=\mathcal{C}(A,X)$.
+\item For any morphism $g^{\mathrm{op}}\in\mathcal{C}^{\mathrm{op}}(A,B)$, i.e. any morphism $g\in\mathcal{C}(B,A)$, we define $H_X(g):=g^*\in\mathrm{Set}(H_X(A),H_X(B))$ taking any $p\in\mathcal{C}(A,X)$ to $p\circ g\in\mathcal{C}(B,X)$, like in the following diagram:
+\begin{center}
+\begin{tikzcd}
+A\ar[d,"g^{\mathrm{op}}"']&&A&&H_X(A)\ar[d,"H_X(g)"']\ar[r,phantom,":="]&[-1.5em]\mathcal{C}(A,X)\ar[r,phantom,"\ni"]&[-1.8em]p\ar[d,mapsto,"g^*"]\\
+B&&B\ar[u,"g"]&&H_X(B)\ar[r,phantom,":="]&\mathcal{C}(B,X)\ar[r,phantom,"\ni"]&p\circ g
+\end{tikzcd}
+\end{center}
+\end{itemize}
+\end{definition}
+
+\begin{definition}[4.1.21]\label{def:functor} Let $\mathcal{C}$ be a locally small category. We define the functor
+\[H_{\bullet}:\mathcal{C}\to\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}\]
+as follows:
+\begin{itemize}
+\item For any object $X$ of $\mathcal{C}$, we define $H_{\bullet}(X):=H_X$.
+\item For any morphism $f\in\mathcal{C}(X,Y)$, we define $H_{\bullet}(f)=H_f\in\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,H_Y)$ to be the natural transformation with components $(H_f)_A:=f_*\in\mathrm{Set}(H_X(A),H_Y(A))$ taking any $p\in\mathcal{C}(A,X)$ to $f\circ p\in\mathcal{C}(A,Y)$, like in the following diagram:
+\begin{center}
+\begin{tikzcd}
+X\ar[dd,"f"']&[-1em]&[4em]&[-1em]H_X(A)\ar[dd,"(H_f)_A"]\ar[r,phantom,"\ni"]&[-1.8em]p\ar[dd,mapsto,"f_*"]\\[-1em]
+&\mathcal{C}^{\mathrm{op}}\ar[r,bend left=30,"H_X"{name=HX}]\ar[r,bend right=30,"H_Y"'{name=HY}]&\mathrm{Set}\ar[from=HX, to=HY, Rightarrow, "H_f"]\\[-1em]
+Y&&&H_Y(A)\ar[r,phantom,"\ni"]&f\circ p
+\end{tikzcd}
+\end{center}
+\end{itemize}
+\end{definition}
+\begin{remark} We have to prove that in the above definition, for every $f\in\mathcal{C}(X,Y)$, $H_f$ is indeed a natural transformation, i.e. that for every $g^{\mathrm{op}}\in\mathcal{C}^{\mathrm{op}}(A,B)$, the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+A&&H_X(A)\ar[d,"H_X(g)"']\ar[r,"(H_f)_A"]&H_Y(A)\ar[d,"H_Y(g)"]\\
+B\ar[u,"g"]&&H_X(B)\ar[r,"(H_f)_B"]&H_Y(B)
+\end{tikzcd}
+\end{center}
+which does, since both directions take $p\in\mathcal{C}(A,X)$ to $f\circ p\circ g\in\mathcal{C}(B,Y)$.
+\end{remark}
+
+\begin{theorem}[Yoneda, 4.2.1] Let $\mathcal{C}$ be a locally small category. Moreover, let $X$ be any object of $\mathcal{C}$ and $F:\mathcal{C}^{\mathrm{op}}\to\mathrm{Set}$ be any functor. Then:
+\[\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\cong F(X)\]
+naturally in $(X,F)$ in $\mathcal{C}^{op}\times\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$.
+\end{theorem}
+\begin{proof}[Sketch of the Proof] To remove some clutter in the notation, we just write $FX$ instead of $F(X)$ and $Fp$ instead of $F(p)$ for every functor.
+
+First of all, the ``$\cong$'' in the theorem is inside the category $\mathrm{Set}$, so it is a bijection. It being natural in $(X,F)$ means that we need to define a bijection
+\[\psi_{X,F}:\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\to FX\]
+and prove that it is a natural transformation between the following two functors:
+\begin{center}
+\begin{tikzcd}
+\mathcal{C}^{op}\times\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}\ar[r,shift left,"(X{,}F)\mapsto\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X{,}F)"]\ar[r,shift right, "(X{,}F)\mapsto FX"']&[10em]\mathrm{Set}
+\end{tikzcd}
+\end{center}
+In order to prove that this is a bijection, it suffices to define a function
+\[\phi_{X,F}:FX\to\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\]
+and prove that it is the inverse of $\psi$.
+
+So, the proof is going to have four steps: First we are going to define $\psi_{X,F}$, then we are going to define $\phi_{X,F}$, then we are going to prove that these are inverses and finally we are going to prove that they are natural:
+\begin{itemize}
+\item There is the following ``natural'' choice for $\psi_{X,F}$. Let $\eta$ be any natural transformation $H_X\Rightarrow F$. Then define:
+\[\psi_{X,F}(\eta):=\eta_X(1_X)\in FX\]
+Let us unpack this: $\eta$ being a natural transformation means that it has components $\eta_A:H_XA\to FA$ for every $A$ in $\mathcal{C}$, but $H_XA$ is just $\mathcal{C}(A,X)$. Choosing $A=X$, we also get an obvious element $1_X\in\mathcal{C}(X,X)$, whose image under $\eta_X$ lies in the desired set $FX$.
+
+\item There exists also a ``natural'' choice for $\phi_{X,F}$. Let $x\in FX$ be any element of the set $FX$. We have to define a natural transformation $\phi_{X,F}(x)=\theta^x$ from $H_X$ to $F$. Let us first define each component $\theta^x_A:H_XA\to FA$ as follows:
+\[\theta^x_A(p)=(Fp)(x)\in FA\]
+Let us also unpack this definition as well: We want to define $\theta^x_A$ on every element $p\in\mathcal{C}(A,X)$. We already have some element $x\in FX$ and for every such $p$, we can create $Fp\in\mathrm{Set}(FX,FA)$, since $F$ is a functor $\mathcal{C}^{\mathrm{op}}\to\mathrm{Set}$. So, the image of $x$ under $Fp$ lies in the desired set $FA$.
+
+The definition of $\phi$ is not over yet, since we have to prove that $\theta^x$ is indeed natural in $A$, i.e. that for every morphism $f^{\mathrm{op}}\in\mathcal{C}(A,B)$ the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+A&&H_XA\ar[d,"H_Xf"']\ar[r,"\theta^x_A"]&FA\ar[d,"Ff"]\\
+B\ar[u,"f"]&&H_XB\ar[r,"\theta^x_B"]&FB
+\end{tikzcd}
+\end{center}
+which does, since both directions take $q$ to $(F(q\circ f))(x)$.
+
+\item The next step is to prove that $\psi_{X,F}$ and $\phi_{X,F}$ are inverse functions in the category of sets. The one direction is easy. Let $x\in FX$. Then:
+\[\psi_{X,F}\big(\phi_{X,F}(x)\big)=\psi_{X,F}(\theta^x)=\theta^x_X(1_X)=(F1_X)(x)=1_{FX}(x)=x\]
+
+For the other direction, let $\eta$ be any natural transformation $H_X\to F$. Then:
+\[\phi_{X,F}\big(\psi_{X,F}(\eta)\big)=\phi_{X,F}(\eta_X(1_X))=\theta^{\eta_X(1_X)}\]
+In order to show that this is equal to $\eta$, we need to check the equality in every component. Let $A$ be any object of $\mathcal{C}$ and $p\in\mathcal{C}(A,X)$ any function. Then:
+\[\theta^{\eta_X(1_X)}_A(p)=(Fp)\big(\eta_X(1_X)\big)\overset{(*)}{=}\eta_A\big((H_Xp)(1_X)\big)=\eta_A(1_X\circ p)=\eta_A(p)\]
+where the $(*)$ holds because of the naturality of $\eta$, i.e. because this diagram commutes:
+\begin{center}
+\begin{tikzcd}
+X&&H_XX\ar[r,"\eta_X"]\ar[d,"H_Xp"']&FX\ar[d,"Fp"]\\
+A\ar[u,"p"]&&H_XA\ar[r,"\eta_A"]&FA
+\end{tikzcd}
+\end{center}
+
+\item Now, it only remains to prove that $\psi$ and $\phi$ are natural transformations. It suffices to prove this just for one of the two, say $\psi$. Also, being natural in $(X,F)\in\mathcal{C}^{\mathrm{op}}\times\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$ is equivalent to being natural in $X\in\mathcal{C}^{\mathrm{op}}$ for every fixed $F$ and at the same time being natural in $F\in\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$, for every fixed $X$.
+
+Let $F$ be fixed and $g^{op}\in\mathcal{C}^{op}(X,Y)$. Then, we want to show that the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+X&&H_X&&\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\ar[d,"-\circ H_g"']\ar[r,"\psi_{X,F}"]&FX\ar[d,"Fg"]\\
+Y\ar[u,"g"]&&H_Y\ar[u,"H_g"]&&\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_Y,F)\ar[r,"\psi_{Y,F}"]&FY
+\end{tikzcd}
+\end{center}
+which is true, since for any natural transformation $\eta\in\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)$, both directions lead to $\eta_Y(g)$. To prove this, use the naturality of $\eta$ and the definition of $H_g$.
+
+Let now $X$ be fixed and $\alpha\in\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(F,G)$. Then, we want to show that the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+F\ar[d,"\alpha"]&&\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\ar[d,"\alpha\circ-"']\ar[r,"\psi_{X,F}"]&FX\ar[d,"\alpha_X"]\\
+G&&\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,G)\ar[r,"\psi_{X,G}"]&GX
+\end{tikzcd}
+\end{center}
+which is true, since for any natural transformation $\eta\in\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)$, both directions lead to $(\alpha\circ\eta)_X(1_X)$.\qedhere
+\end{itemize}
+\end{proof}
+\begin{corollary} Let $\mathcal{C}$ be a locally small category. Moreover, let $X,Y$ be any two objects of $\mathcal{C}$. Then:
+\[\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,H_Y)\cong\mathcal{C}(X,Y)\]
+naturally in $(X,Y)$ in $\mathcal{C}^{\mathrm{op}}\times \mathcal{C}^{\mathrm{op}}$.
+\end{corollary}
+\begin{proof} First of all, the bijection is trivially obtained from the Yoneda lemma, for $F=H_Y$. Moreover, since the map $Y\mapsto H_Y$ is functorial, as defined in Definition~\ref{def:functor}, the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+Y_1\ar[d,"h"]&&H_{Y_1}\ar[d,"H_h"]&&\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,H_{Y_1})\ar[d,"H_h\circ-"']\ar[r,"\psi_{X,H_{Y_1}}"]&H_{Y_1}X\ar[d,"(H_h)_X"]\\
+Y_2&&H_{Y_2}&&\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,H_{Y_2})\ar[r,"\psi_{X,H_{Y_2}}"]&H_{Y_2}X
+\end{tikzcd}
+\end{center}
+just like in the proof of the Yoneda lemma.
+\end{proof}
+\begin{corollary}[4.3.7]\label{cor:ful_faith} Let $\mathcal{C}$ be a locally small category. Then, the functor
+\[H_{\bullet}:\mathcal{C}\to\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}\]
+as defined in Definition~\ref{def:functor} is full and faithful.
+\end{corollary}
+\begin{proof} $H_{\bullet}$ being full and faithful means that for every two objects $X,Y$ in $\mathcal{C}$, the map
+\begin{center}
+\begin{tikzcd}
+\mathcal{C}(X,Y)\ar[r,"H_{\bullet}"]&\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,H_Y)\\[-2em]
+g\ar[r,mapsto]&H_g
+\end{tikzcd}
+\end{center}
+is a bijection. We already know that $\phi_{X,H_Y}$ is a bijection from the proof of the Yoneda lemma, so it suffices to show that $\phi_{X,H_Y}(g)=H_g$ for every $g\in\mathcal{C}(X,Y)$, or equivalently $\psi_{X,H_Y}(H_g)=g$:
+\[\psi_{X,H_Y}(H_g)=(H_g)_X(1_X)=g\circ 1_X=g\qedhere\]
+\end{proof}
+\begin{proposition}[4.3.10] Let $\mathcal{C}$ be a locally small category. Moreover, let $X,Y$ be any two objects of $\mathcal{C}$. Then:
+\[H_X\cong H_Y \Longleftrightarrow X\cong Y\]
+\end{proposition}
+\begin{proof} Since $H_{\bullet}$ is a functor, it takes an isomorphism to an isomorphism. For the other direction, it is easy to see that for any full and faithful functor $F$, $FA\cong FB$ gives $A\cong B$ and $H_{\bullet}$ was proven to be full and faithful in Corollary~\ref{cor:ful_faith}
+\end{proof}
+
+This is all we need related to Chapter~4 of the book and the Yoneda lemma. Let us now go through some definitions and results regarding the adjoints. Our reference will be the Chapter~2 of \cite{basic_cat}.
+
+\begin{definition} Let $\mathcal{C},\mathcal{D}$ be two categories and $L:\mathcal{D}\to\mathcal{C},\ R:\mathcal{C}\to\mathcal{D}$ be two functors. Then we say that \emph{$R$ is the right adjoint to $L$} and \emph{$L$ is the left adjoint to $R$}, if there exist a isomorphisms
+\[\mathcal{C}(L(A),X)\cong\mathcal{D}(A,R(X))\]
+natural in $(A,X)\in\mathcal{D}^{op}\times\mathcal{C}$. We usually denote this by $L\dashv R$ and
+\vspace*{-0.2em}
+\begin{center}
+\begin{tikzcd}
+\mathcal{C}\ar[r,bend right=30, "R"'{name=R}]&[3em]\mathcal{D}\ar[l,bend right=30, "L"'{name=L}]
+\ar[phantom, from=L, to=R, "\dashv" rotate=-90]
+\end{tikzcd}
+\end{center}
+\end{definition}
+
+\begin{proposition}
+The left (resp. right) adjoint functor
+\end{proposition}
+
+The next proposition is an alternative characterization of the right adjoint functor of some functor $L$
+
+\begin{proposition}
+
+\end{proposition}
+
+
+
+%\section{CW Complexes}
+%A CW structure on some space $X$ is usually defined recursively, as an inductive ``glueing'' of cells of some dimension $k$ to the previous, lower dimensional, skeleton of $X$, forming a new, $k$-dimensional, skeleton of $X$. A space $X$ may exhibit many different CW structures, but the existence of one suffices in order for $X$ to be characterized as CW complex. Here, we are going to use the following formal formulation of the above definition.
+%
+%\begin{definition} A topological space $X$ is a \ul{CW-complex}, if there exists some filtration
+%\[\emptyset=X_{-1}\subseteq X_0\subseteq X_1\subseteq X_2\subseteq\cdots\subseteq X\]
+%such that:
+%\begin{b_item}
+%\item $X=\varinjlim X_i$ with respect to all inclusion maps.
+%\item For every $n\geq0$ there exists a pushout diagram in the category of topological spaces:
+%\begin{center}
+%\begin{tikzcd}
+%\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}S^{n-1}\ar[r,"\coprod_e\phi_e"]\ar[d,hook,"\coprod_ej_e"']\ar[dr,phantom, very near start,"\ulcorner"]&[4em]X_{n-1}\ar[d,hook,"i_n"]\\[2em]
+%\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}D^n\ar[r,"\coprod_e\Phi_e"']&X_n\\
+%\end{tikzcd}
+%\end{center}
+%where $j_e:S^{n-1}\to D^n$ is the usual inclusion map and $i_n:X_{n-1}\to X_n$ is the inclusion map given by the filtration.
+%\end{b_item}
+%\end{definition}
+%
+%A filtration of a topological space $X$, making $X$ a CW-complex is called a \ul{CW-structure} of $X$. Moreover, given a filtration of $X$ like in the above definition, the sets $\Phi_e\large({(D^n)}^{\circ}\large)$ (resp. $\Phi_e(D^n)$) are called the $n$-dimensional \ul{open} (resp. \ul{closed}) \ul{cells} of this CW-structure. Recall the following known facts regarding the dependencies between CW-complexes, structures and cells.
+%
+%\begin{notes}
+%\begin{i_enum}
+%\item A CW-complex $X$ can have more than one CW-structures, even structures having different number of $n$-dimensional open cells each.
+%\item For a particular CW-structure of $X$, the maps $\phi_e$ and $\Phi_e$ are not predetermined by the structure, which means that there can be more than one choices for them. For example, one could always precompose $\Phi_e$ with a disc homeomorphism.
+%\item Even if the maps $\phi_e$ and $\Phi_e$ can vary, the open and closed cells of a CW-structure are part of the structure (i.e.\ independent of the choice of the maps)
+%\end{i_enum} \end{notes}
+%
+%\begin{remarks}
+%\begin{i_enum}
+%\item The property $X=\varinjlim X_i$ is equivalent to $X=\bigcup_{i\geq-1}X_i$ as a set, equipped with the final topology, with respect to all inclusion maps. In particular, a set $A$ is open (closed) in $X$, iff $A\cap X_i$ is open (closed) in $X_i$ for all $i\geq-1$, or equivalently, $A\cap\sigma$ is open (closed) in $\sigma$ for every open cell $\sigma$ of the CW structure. This property is what we usually refer to as the ``weak topology'' of $X$ (the ``W'' part of the CW).
+%\item
+%\end{i_enum}
+%\end{remarks}

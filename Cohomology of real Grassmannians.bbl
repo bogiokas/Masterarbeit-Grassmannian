@@ -1,10 +1,5 @@
 \begin{thebibliography}{Hat17}
 
-\bibitem[Are46]{top_group}
-Richard Arens.
-\newblock {Topologies for Homeomorphism Groups}.
-\newblock {\em American Journal of Mathematics}, 68(4):593--610, 1946.
-
 \bibitem[Dij05]{counterexample}
 Jan Dijkstra.
 \newblock {On Homeomorphism Groups and the Compact-Open Topology}.
@@ -14,6 +9,11 @@ Jan Dijkstra.
 Allen Hatcher.
 \newblock {\em {Vector Bundles and K-Theory}}.
 \newblock 2017.
+
+\bibitem[Lei16]{basic_cat}
+Tom Leinster.
+\newblock {\em {Basic category theory}}.
+\newblock Cambridge University Press, 2016.
 
 \bibitem[MS74]{char_class}
 John Milnor and James Stasheff.
