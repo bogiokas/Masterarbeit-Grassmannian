@@ -71,7 +71,7 @@ which does, since both directions take $p\in\mathcal{C}(A,X)$ to $f\circ p\circ 
 \[\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\cong F(X)\]
 naturally in $(X,F)$ in $\mathcal{C}^{op}\times\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$.
 \end{theorem}
-\begin{proof}[Sketch of the Proof] To remove some clutter in the notation, we just write $FX$ instead of $F(X)$ and $Fp$ instead of $F(p)$ for every functor.
+\begin{proof}[Sketch of the Proof] To remove some clutter in the notation, we just write $SP$ instead of $S(P)$ and $Su$ instead of $S(u)$ for every functor $S$, object $P$ and morphism $u$.
 
 First of all, the ``$\cong$'' in the theorem is inside the category $\mathrm{Set}$, so it is a bijection. It being natural in $(X,F)$ means that we need to define a bijection
 \[\psi_{X,F}:\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\to FX\]
@@ -167,7 +167,7 @@ g\ar[r,mapsto]&H_g
 is a bijection. We already know that $\phi_{X,H_Y}$ is a bijection from the proof of the Yoneda lemma, so it suffices to show that $\phi_{X,H_Y}(g)=H_g$ for every $g\in\mathcal{C}(X,Y)$, or equivalently $\psi_{X,H_Y}(H_g)=g$:
 \[\psi_{X,H_Y}(H_g)=(H_g)_X(1_X)=g\circ 1_X=g\qedhere\]
 \end{proof}
-\begin{proposition}[4.3.10] Let $\mathcal{C}$ be a locally small category. Moreover, let $X,Y$ be any two objects of $\mathcal{C}$. Then:
+\begin{proposition}[4.3.10]\label{prop:unique} Let $\mathcal{C}$ be a locally small category. Moreover, let $X,Y$ be any two objects of $\mathcal{C}$. Then:
 \[H_X\cong H_Y \Longleftrightarrow X\cong Y\]
 \end{proposition}
 \begin{proof} Since $H_{\bullet}$ is a functor, it takes an isomorphism to an isomorphism. For the other direction, it is easy to see that for any full and faithful functor $F$, $FA\cong FB$ gives $A\cong B$ and $H_{\bullet}$ was proven to be full and faithful in Corollary~\ref{cor:ful_faith}
@@ -175,9 +175,9 @@ is a bijection. We already know that $\phi_{X,H_Y}$ is a bijection from the proo
 
 This is all we need related to Chapter~4 of the book and the Yoneda lemma. Let us now go through some definitions and results regarding the adjoints. Our reference will be the Chapter~2 of \cite{basic_cat}.
 
-\begin{definition} Let $\mathcal{C},\mathcal{D}$ be two categories and $L:\mathcal{D}\to\mathcal{C},\ R:\mathcal{C}\to\mathcal{D}$ be two functors. Then we say that \emph{$R$ is the right adjoint to $L$} and \emph{$L$ is the left adjoint to $R$}, if there exist a isomorphisms
+\begin{definition}[2.1.1]\label{def:adj} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C},\ R:\mathcal{C}\to\mathcal{D}$ be two functors. Then we say that \emph{$R$ is the right adjoint to $L$} and \emph{$L$ is the left adjoint to $R$}, if there exist a isomorphisms
 \[\mathcal{C}(L(A),X)\cong\mathcal{D}(A,R(X))\]
-natural in $(A,X)\in\mathcal{D}^{op}\times\mathcal{C}$. We usually denote this by $L\dashv R$ and
+natural in $(A,X)\in\mathcal{D}^{op}\times\mathcal{C}$. We usually denote this by $L\dashv R$ or equivalently:
 \vspace*{-0.2em}
 \begin{center}
 \begin{tikzcd}
@@ -186,17 +186,66 @@ natural in $(A,X)\in\mathcal{D}^{op}\times\mathcal{C}$. We usually denote this b
 \end{tikzcd}
 \end{center}
 \end{definition}
+\begin{notation} Just like in the proof of Yoneda lemma, we will for the remaining section, sometimes use the notation $FP$ (resp. $Fu$) to denote $F(P)$ (resp. $F(u)$) for functors $F$, objects $P$, and morphisms $u$. Moreover we will use $FG$ to denote the composition of some functors $F$ and $G$. In order to avoid confusion as much as possible, we sometimes may use the parenthesis like that $FG(P)$ to emphasize what the object is.
+\end{notation}
 
-\begin{proposition}
-The left (resp. right) adjoint functor
+\begin{proposition}[4.3.13] Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$. If $L$ has a right adjoint functor $R$, then $R$ is unique, up to isomorphism.
 \end{proposition}
+\begin{proof} Let $R,R'$ be two right adjoint functors of $L$. Then, for fixed $X$, there exist isomorphisms
+\[\mathcal{D}(A,RX)\cong\mathcal{C}(LA,X)\cong\mathcal{D}(A,R'X)\]
+natural in $A$. This means that there is an isomorphism $H_{RX}(A)\cong H_{R'X}(A)$ natural in $A$, which means $H_{RX}\cong H_{R'X}$ in $\mathrm{Set}^{\mathcal{D}^{\mathrm{op}}}$. Using Proposition~\ref{prop:unique}, we conclude that there exists an isomorphism $RX\cong R'X$. This construction is natural in $X$, so $R\cong R'$ as functors.
+\end{proof}
 
-The next proposition is an alternative characterization of the right adjoint functor of some functor $L$
+Let us now unravel the Definition~\ref{def:adj}. Let $L$ and $R$ be an adjoint pair $L\dashv R$. This means that there exist some natural transformations $\psi$ and $\phi$ with components:
+\[\begin{aligned}
+\psi_{A,X}&:\mathcal{C}(LA,X)\to\mathcal{D}(A,RX)\\[0.8em]
+\phi_{A,X}&:\mathcal{D}(A,RX)\to\mathcal{C}(LA,X)
+\end{aligned}\qquad\text{ satisfying: }\qquad
+\left\{\begin{aligned}
+\psi_{A,X}\circ\phi_{A,X}&=1_{\mathcal{D}(A,RX)}\\[0.8em]
+\phi_{A,X}\circ\psi_{A,X}&=1_{\mathcal{C}(LA,X)}
+\end{aligned}\right.\]
+To express the two naturality conditions, we fix some $p^{\mathrm{op}}\in\mathcal{D}^{\mathrm{op}}(A,B)$ and some $f\in\mathcal{C}(X,Y)$. Then, we have the following two commutative diagrams:
+\begin{center}
+\begin{tikzcd}
+A&[-1em]\mathcal{C}(LA,X)\ar[d,"-\circ Lp"']&\mathcal{D}(A,RX)\ar[l,"\phi_{A,X}"',"\cong"]\ar[d,"-\circ p"]&[1.5em]
+X\ar[d,"f"]&[-1em]\mathcal{C}(LA,X)\ar[d,"f\circ-"']\ar[r,"\psi_{A,X}","\cong"']&\mathcal{D}(A,RX)\ar[d,"Rf\circ-"]\\
+B\ar[u,"p"']&\mathcal{C}(LB,X)&\mathcal{D}(B,RX)\ar[l,"\phi_{B,X}"',"\cong"]&
+Y&\mathcal{C}(LA,Y)\ar[r,"\psi_{A,Y}","\cong"']&\mathcal{D}(A,RY)
+\end{tikzcd}
+\end{center}
+i.e. for any $q\in\mathcal{D}(A,RX)$ and $f\in\mathcal{C}(LA,X)$, we have:
+\[\phi_{B,X}(q\circ p)=\phi_{A,X}(q)\circ(Lp)\qquad\text{ and }\qquad\psi_{A,Y}(f\circ g)=(Rf)\circ\psi_{A,X}(g)\]
+which we also write schematically as:
+\begin{align*}
+\phi_{B,X}\left(B\overset{p}{\longrightarrow}A\overset{q}{\longrightarrow}RX\right)&=LB\overset{Lp}{\longrightarrow}LA\overset{\phi_{A,X}(q)}{\longrightarrow}X\\[1em]
+\psi_{A,Y}\left(LA\overset{g}{\longrightarrow}X\overset{f}{\longrightarrow}Y\right)&=A\overset{\psi_{A,X}(g)}{\longrightarrow}RX\overset{Rf}{\longrightarrow}RY
+\end{align*}
+Interestingly, this hints towards the following fact: The values of $\phi$ (resp. $\psi$) on any $q\circ p$ (resp. $f\circ g$) only depend on $L$ (resp. $R$) and $\phi_{A,X}(q)$ (resp. $\psi_{A,X}(g)$). So, by choosing $q$ (resp. $g$) as ``naturally'' as possible, we can describe what exactly $\phi$ (resp. $\psi$) does on every other input. We thus choose $A=RX$, $q=1_{RX}$ for the equation involving $\phi$ and $X=LA$, $g=1_{LA}$ for the equation involving $\psi$. This gives:
+\begin{align*}
+\phi_{B,X}\left(B\overset{p}{\longrightarrow}RX\right)&=\phi_{B,X}\left(B\overset{p}{\longrightarrow}RX\xrightarrow{1_{RX}}RX\right)=LB\overset{Lp}{\longrightarrow}LRX\xrightarrow{\phi_{RX,X}(1_{RX})}X\\[1em]
+\psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX}{LA\overset{f}{\longrightarrow}Y}\right)&=\psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX\xrightarrow{1_{RX}}RX}{LA\xrightarrow{1_{LA}}LA\overset{f}{\longrightarrow}Y}\right)=\mask{LB\overset{Lp}{\longrightarrow}LRX\xrightarrow{\phi_{RX,X}(1_{RX})}X}{A\xrightarrow{\psi_{A,LA}(1_{LA})}RLA\overset{Rf}{\longrightarrow}RY}
+\end{align*}
+\begin{definition} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ a pair of adjoint functors $L\dashv R$. Then the natural transformations
+\[\varepsilon:LR\Rightarrow 1_{\mathcal{C}}\qquad\text{ and }\qquad\eta:1_{\mathcal{D}}\Rightarrow RL\]
+defined by:
+\[\varepsilon_X:=\phi_{RX,X}(1_{RX})\qquad\text{ and }\qquad\eta_A:=\psi_{A,LA}(1_{LA})\]
+are called the \emph{counit} and the \emph{unit} of the adjunction, respectively.
+\end{definition}
+\begin{remark} In order for the counit and the unit to be well defined, we need to prove that they are indeed natural transformations, i.e. that for any $f\in\mathcal{C}(X,Y)$ and $p\in\mathcal{D}(A,B)$ the following diagrams commute:
+\begin{center}
+\begin{tikzcd}
+X\ar[d,"f"']&[-1em]LR(X)\ar[r,"\varepsilon_X"]\ar[d,"LR(f)"']&X\ar[d,"f"]&[1.5em]
+A\ar[d,"p"']&[-1em]A\ar[r,"\eta_A"]\ar[d,"p"']&RL(A)\ar[d,"RL(p)"]\\
+Y&LR(Y)\ar[r,"\varepsilon_Y"]&Y&
+B&B\ar[r,"\eta_B"]&RL(B)
+\end{tikzcd}
+\end{center}
+\end{remark}
 
-\begin{proposition}
 
-\end{proposition}
 
+\section{Compact-Open Topology}
 
 
 %\section{CW Complexes}

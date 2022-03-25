@@ -154,6 +154,12 @@
 \newcommand\ul[1]{\emph{#1}}
 \newcommand\nospace{\hspace*{-0.5em}}
 \newcommand\HRule{\rule{\linewidth}{0.1mm}}
+%% Usage: \mask{long text creating space}{actual test}
+\newlength\wantedwidth
+\newcommand{\mask}[2]{%
+  \settowidth{\wantedwidth}{\ensuremath{#1}}%
+  \makebox[\wantedwidth]{\ensuremath{#2}}%
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  COUNTERS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{aliascnt} %alias between counters
