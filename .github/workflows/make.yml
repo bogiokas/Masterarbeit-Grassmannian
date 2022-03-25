@@ -21,3 +21,10 @@ jobs:
           sudo apt-get install biber
       - name: run Makefile
         run: make
+
+      - name: upload pdf
+        uses: actions/upload-artifact@v3
+        with:
+          name: Cohmology_of_real_Grassmannians
+          path: "Cohomology of real Grassmannians.pdf"
+          retention-days: 20
