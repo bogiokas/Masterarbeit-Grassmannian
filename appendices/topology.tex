@@ -1,11 +1,12 @@
 \chapter{Bits and Pieces in Topology}
 \section{Some Categorical Notions}
-The goal of this small section is to motivate the definition of the categorical exponential object. In order to arrive there, we first go through the Yoneda lemma and then through the notion of the adjoint functors. For a more thorough introduction to the topics discussed here, refer to \cite{basic_cat}, or any other introductory category book. We will only present the ideas for the proofs of the theorems stated here and point to the corresponding proofs in the book.
+The goal of this small section is to motivate the definition of the categorical exponential object. In order to arrive there, we first go through the Yoneda lemma and then through the notion of the adjoint functors. For a more thorough introduction to the topics discussed here, refer to \cite{basic_cat}, or any other introductory category book.
 
-In this section, we will use the notation $\mathrm{ob}(\mathcal{C})$ for the objects of $\mathcal{C}$ and $\mathcal{C}(A,B)$ for the morphisms from $A$ to $B$ in $\mathcal{C}$. Moreover, the following few statements will be about locally small categories:
+We will use the notation $\mathrm{ob}(\mathcal{C})$ for the objects of $\mathcal{C}$ and $\mathcal{C}(A,B)$ for the morphisms from $A$ to $B$ in $\mathcal{C}$. Moreover, the following few statements will be about locally small categories:
 \begin{definition} A category $\mathcal{C}$ is called \emph{locally small}, if for every two objects $A,B$ in $\mathcal{C}$, the morphisms $\mathcal{C}(A,B)$ form a set.
 \end{definition}
 
+\subsection{Yoneda Lemma}
 \begin{definition} Let $\mathcal{C}$ be any locally small category. Then, we denote by $\mathrm{Set}^{\mathcal{C}}$ the \emph{category of set valued functors of $\mathcal{C}$}, which is defined as follows:
 \begin{itemize}
 \item $\mathrm{ob}\left(\mathrm{Set}^{\mathcal{C}}\right)$ is the class of all functors $F$ from $\mathcal{C}$ to $\mathrm{Set}$.
@@ -173,10 +174,13 @@ is a bijection. We already know that $\phi_{X,H_Y}$ is a bijection from the proo
 \begin{proof} Since $H_{\bullet}$ is a functor, it takes an isomorphism to an isomorphism. For the other direction, it is easy to see that for any full and faithful functor $F$, $FA\cong FB$ gives $A\cong B$ and $H_{\bullet}$ was proven to be full and faithful in Corollary~\ref{cor:ful_faith}
 \end{proof}
 
-This is all we need related to Chapter~4 of the book and the Yoneda lemma. Let us now go through some definitions and results regarding the adjoints. Our reference will be the Chapter~2 of \cite{basic_cat}.
+\subsection{Adjoint functors}
+Let us now go through some definitions and results regarding the adjoints. Our reference for this subsection will mainly be the Chapter~2 of \cite{basic_cat}, but be warned that we heavily changed the notations and the proofs of this section to cover our needs.
 
 \begin{definition}[2.1.1]\label{def:adj} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C},\ R:\mathcal{C}\to\mathcal{D}$ be two functors. Then we say that \emph{$R$ is the right adjoint to $L$} and \emph{$L$ is the left adjoint to $R$}, if there exist a isomorphisms
-\[\mathcal{C}(L(A),X)\cong\mathcal{D}(A,R(X))\]
+\begin{equation}
+\mathcal{C}(L(A),X)\cong\mathcal{D}(A,R(X))\label{adj}
+\end{equation}
 natural in $(A,X)\in\mathcal{D}^{op}\times\mathcal{C}$. We usually denote this by $L\dashv R$ or equivalently:
 \vspace*{-0.2em}
 \begin{center}
@@ -186,7 +190,7 @@ natural in $(A,X)\in\mathcal{D}^{op}\times\mathcal{C}$. We usually denote this b
 \end{tikzcd}
 \end{center}
 \end{definition}
-\begin{notation} Just like in the proof of Yoneda lemma, we will for the remaining section, sometimes use the notation $FP$ (resp. $Fu$) to denote $F(P)$ (resp. $F(u)$) for functors $F$, objects $P$, and morphisms $u$. Moreover we will use $FG$ to denote the composition of some functors $F$ and $G$. In order to avoid confusion as much as possible, we sometimes may use the parenthesis like that $FG(P)$ to emphasize what the object is.
+\begin{notation} Just like in the proof of Yoneda lemma, we will try in this subsection to omit the parenthesis when using a functor and write $FP$ instead of $F(P)$ etc. In order to avoid confusion as much as possible, we may reintroduce the parenthesis, sometimes when more than one functors are involved, as in $FG(P)$.
 \end{notation}
 
 \begin{proposition}[4.3.13] Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$. If $L$ has a right adjoint functor $R$, then $R$ is unique, up to isomorphism.
@@ -205,18 +209,39 @@ Let us now unravel the Definition~\ref{def:adj}. Let $L$ and $R$ be an adjoint p
 \psi_{A,X}\circ\phi_{A,X}&=1_{\mathcal{D}(A,RX)}\\[0.8em]
 \phi_{A,X}\circ\psi_{A,X}&=1_{\mathcal{C}(LA,X)}
 \end{aligned}\right.\]
-To express the two naturality conditions, we fix some $p^{\mathrm{op}}\in\mathcal{D}^{\mathrm{op}}(A,B)$ and some $f\in\mathcal{C}(X,Y)$. Then, we have the following two commutative diagrams:
+To express the two naturality conditions, we fix some $p^{\mathrm{op}}\in\mathcal{D}^{\mathrm{op}}(A,B)$ and some $f\in\mathcal{C}(X,Y)$. Then, we have the following four commutative diagrams:
 \begin{center}
 \begin{tikzcd}
-A&[-1em]\mathcal{C}(LA,X)\ar[d,"-\circ Lp"']&\mathcal{D}(A,RX)\ar[l,"\phi_{A,X}"',"\cong"]\ar[d,"-\circ p"]&[1.5em]
-X\ar[d,"f"]&[-1em]\mathcal{C}(LA,X)\ar[d,"f\circ-"']\ar[r,"\psi_{A,X}","\cong"']&\mathcal{D}(A,RX)\ar[d,"Rf\circ-"]\\
-B\ar[u,"p"']&\mathcal{C}(LB,X)&\mathcal{D}(B,RX)\ar[l,"\phi_{B,X}"',"\cong"]&
-Y&\mathcal{C}(LA,Y)\ar[r,"\psi_{A,Y}","\cong"']&\mathcal{D}(A,RY)
+A&[1.2em]
+\mathcal{C}(LA,X)\ar[d,"-\circ Lp"']\ar[r,"\psi_{A,X}","\cong"']&\mathcal{D}(A,RX)\ar[d,"-\circ p"]&[1.2em]
+\mathcal{C}(LA,X)\ar[d,"-\circ Lp"']&\mathcal{D}(A,RX)\ar[l,"\phi_{A,X}"',"\cong"]\ar[d,"-\circ p"]\\
+B\ar[u,"p"']&
+\mathcal{C}(LB,X)\ar[r,"\psi_{B,X}","\cong"']&\mathcal{D}(B,RX)&
+\mathcal{C}(LB,X)&\mathcal{D}(B,RX)\ar[l,"\phi_{B,X}"',"\cong"]\\
+X\ar[d,"f"]&
+\mathcal{C}(LA,X)\ar[d,"f\circ -"']\ar[r,"\psi_{A,X}","\cong"']&\mathcal{D}(A,RX)\ar[d,"Rf\circ -"]&
+\mathcal{C}(LA,X)\ar[d,"f\circ -"']&\mathcal{D}(A,RX)\ar[l,"\phi_{A,X}"',"\cong"]\ar[d,"Rf\circ -"]\\
+Y&
+\mathcal{C}(LA,Y)\ar[r,"\psi_{A,Y}","\cong"']&\mathcal{D}(A,RY)&
+\mathcal{C}(LA,Y)&\mathcal{D}(A,RY)\ar[l,"\phi_{A,Y}"',"\cong"]\\
 \end{tikzcd}
 \end{center}
-i.e. for any $q\in\mathcal{D}(A,RX)$ and $f\in\mathcal{C}(LA,X)$, we have:
-\[\phi_{B,X}(q\circ p)=\phi_{A,X}(q)\circ(Lp)\qquad\text{ and }\qquad\psi_{A,Y}(f\circ g)=(Rf)\circ\psi_{A,X}(g)\]
-which we also write schematically as:
+i.e. for any $q\in\mathcal{D}(A,RX)$ and $g\in\mathcal{C}(LA,X)$, we have:
+\begin{center}
+\begin{minipage}{0.5\linewidth}
+%\makeatletter\tagsleft@true\makeatother
+\begin{align}
+\psi_{B,X}(g\circ Lp)&=\psi_{A,X}(g)\circ p\label{psiL}\\[1em]
+\psi_{A,Y}(f\circ g)&=Rf\circ \psi_{A,X}(g)\label{psiR}
+\end{align}
+\end{minipage}\begin{minipage}{0.5\linewidth}
+\begin{align}
+\phi_{B,X}(q\circ p)&=\phi_{A,X}(q)\circ Lp\label{phiL}\\[1em]
+\phi_{A,Y}(Rf\circ q)&=f\circ \phi_{A,X}(q)\label{phiR}
+\end{align}
+\end{minipage}
+\end{center}
+Right now, we will focus on equations \eqref{phiL} and \eqref{psiR}, which we also write schematically as:
 \begin{align*}
 \phi_{B,X}\left(B\overset{p}{\longrightarrow}A\overset{q}{\longrightarrow}RX\right)&=LB\overset{Lp}{\longrightarrow}LA\overset{\phi_{A,X}(q)}{\longrightarrow}X\\[1em]
 \psi_{A,Y}\left(LA\overset{g}{\longrightarrow}X\overset{f}{\longrightarrow}Y\right)&=A\overset{\psi_{A,X}(g)}{\longrightarrow}RX\overset{Rf}{\longrightarrow}RY
@@ -232,16 +257,61 @@ defined by:
 \[\varepsilon_X:=\phi_{RX,X}(1_{RX})\qquad\text{ and }\qquad\eta_A:=\psi_{A,LA}(1_{LA})\]
 are called the \emph{counit} and the \emph{unit} of the adjunction, respectively.
 \end{definition}
-\begin{remark} In order for the counit and the unit to be well defined, we need to prove that they are indeed natural transformations, i.e. that for any $f\in\mathcal{C}(X,Y)$ and $p\in\mathcal{D}(A,B)$ the following diagrams commute:
+\begin{remark} In order for the counit and the unit to be well defined, we need to prove that they are indeed natural transformations, i.e. that for any $f\in\mathcal{C}(X,Y)$ and $p\in\mathcal{D}(B,A)$ the following diagrams commute:
 \begin{center}
 \begin{tikzcd}
 X\ar[d,"f"']&[-1em]LR(X)\ar[r,"\varepsilon_X"]\ar[d,"LR(f)"']&X\ar[d,"f"]&[1.5em]
-A\ar[d,"p"']&[-1em]A\ar[r,"\eta_A"]\ar[d,"p"']&RL(A)\ar[d,"RL(p)"]\\
+B\ar[d,"p"']&[-1em]B\ar[r,"\eta_B"]\ar[d,"p"']&RL(B)\ar[d,"RL(p)"]\\
 Y&LR(Y)\ar[r,"\varepsilon_Y"]&Y&
-B&B\ar[r,"\eta_B"]&RL(B)
+A&A\ar[r,"\eta_A"]&RL(A)
 \end{tikzcd}
 \end{center}
 \end{remark}
+\begin{proof}
+This is a direct consequence of the naturality of $\phi,\psi$:
+\begin{align*}
+f\circ\varepsilon_X&\overset{\eqref{phiR}}{=}\phi_{RX,Y}(1_{RY}\circ Rf\circ 1_{RX})\overset{\eqref{phiL}}{=}\varepsilon_Y\circ LRf\\[0.5em]
+\eta_A\circ p&\overset{\eqref{psiL}}{=}\psi_{B,LA}(1_{LA}\circ Lp\circ 1_{LB})\overset{\eqref{psiR}}{=}RLp\circ\eta_B\qedhere
+\end{align*}
+\end{proof}
+
+So, our discussion leads to the following fact. Let $f\in\mathcal{C}(LA,X)$ and $p\in\mathcal{D}(A,RX)$, then, equations \eqref{phiL} and \eqref{psiR} give:
+\begin{align}
+\begin{split}
+\phi_{A,X}(p)&=\varepsilon_X\circ Lp\\[0.8em]
+\psi_{A,X}(f)&=Rf\circ\eta_A
+\end{split}\label{iso_from_unit}
+\end{align}
+
+This shows that the isomorphism \eqref{adj} can be completely retrieved by its counit and unit. Our goal for the rest of this section is to give an alternative definition for $L\dashv R$, only based on the choice of a particular natural transformation $\varepsilon$ to play the role of the counit, from which we first will construct $\eta$ and then $\phi$ and $\psi$. The reason we want to do this, is because this ``second definition'' will give us a way to more explicitly construct the right adjoint $R$ of a given $L$, if $L$ has a right adjoint.
+
+First of all, notice that \eqref{iso_from_unit} on its own suffices to make $\phi$ and $\psi$ natural, given that $\varepsilon$ and $\eta$ are:
+\begin{proposition} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ any pair of functors. Moreover, let $\varepsilon:LR\Rightarrow1_{\mathcal{C}}$ and $\eta:1_{\mathcal{D}}\Rightarrow RL$ be any two natural transformations. If we define $\phi_{A,X}$ and $\psi_{A,X}$ using the equations \eqref{iso_from_unit}, then $\phi$ and $\psi$ are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$ and additionally the following equations are satisfied:
+\begin{align}
+\begin{split}
+\varepsilon_X=\phi_{RX,X}(1_{RX})\\[0.8em]
+\eta_A=\psi_{A,LA}(1_{LA})
+\end{split}\label{unit_from_iso}
+\end{align}
+\end{proposition}
+\begin{proof} Let us fix some $p^{\mathrm{op}}\in\mathcal{D}^{\mathrm{op}}(A,B)$ and some $f\in\mathcal{C}(X,Y)$. Then it is easy to see that the equations \eqref{psiL}-\eqref{phiR} hold:
+\begin{align*}
+\psi_{B,X}(g\circ Lp)&=Rg\circ RLp\circ\eta_B=Rg\circ\eta_A\circ p=\psi_{A,X}(g)\circ p,&\text{for any } g&\in\mathcal{C}(LA,X)\\
+\psi_{A,Y}(f\circ g)&=Rf\circ Rg\circ\eta_A=Rf\circ\psi_{A,X}(g),&\text{for any } g&\in\mathcal{C}(LA,X)\\
+\phi_{B,X}(q\circ p)&=\varepsilon_X\circ Lq\circ Lp=\phi_{A,X}(q)\circ p,&\text{for any }q&\in\mathcal{D}(A,RX)\\
+\phi_{A,Y}(Rf\circ q)&=\varepsilon_Y\circ LRf\circ Lq=f\circ\varepsilon_X\circ Lq=f\circ\phi_{A,X}(q),&\text{for any }q&\in\mathcal{D}(A,RX)
+\end{align*}
+We only used the equations \eqref{iso_from_unit} and the naturality of $\varepsilon,\eta$ in the first and last case. Moreover, it is again very easy to see that:
+\begin{align*}
+\phi_{RX,X}(1_{RX})&=\varepsilon_X\circ L1_{RX}=\varepsilon_X\\
+\psi_{A,LA}(1_{LA})&=R1_{LA}\circ\eta_A=\eta_A\qedhere
+\end{align*}
+\end{proof}
+
+Our problem now is that if we choose some natural transformations $\varepsilon$ and $\eta$ randomly and construct $\phi$ and $\psi$ using \eqref{iso_from_unit}, it is not at all guaranteed that $\phi$ and $\psi$ are inverses of each other. It so happens that $\varepsilon$ and $\eta$ must satisfy a universal property in order to be the counit and unit of an adjunction. Let's start examining this at the following definition.
+\begin{definition}
+
+\end{definition}
 
 
 
