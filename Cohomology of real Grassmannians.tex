@@ -2,6 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  MATH  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath,amssymb,amsthm,amsfonts} %math
+\usepackage{bbm} %\mathbbm{1}
 \usepackage{array}
 \usepackage{xfrac} %sfrac
 \usepackage{faktor}
@@ -154,6 +155,7 @@
 \newcommand\ul[1]{\emph{#1}}
 \newcommand\nospace{\hspace*{-0.5em}}
 \newcommand\HRule{\rule{\linewidth}{0.1mm}}
+\newcommand\commaCat[2]{#1\mkern-5mu\downarrow\mkern-5mu #2}
 %% Usage: \mask{long text creating space}{actual test}
 \newlength\wantedwidth
 \newcommand{\mask}[2]{%

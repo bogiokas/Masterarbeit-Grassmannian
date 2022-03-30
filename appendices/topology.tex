@@ -252,7 +252,7 @@ Interestingly, this hints towards the following fact: The values of $\phi$ (resp
 \psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX}{LA\overset{f}{\longrightarrow}Y}\right)&=\psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX\xrightarrow{1_{RX}}RX}{LA\xrightarrow{1_{LA}}LA\overset{f}{\longrightarrow}Y}\right)=\mask{LB\overset{Lp}{\longrightarrow}LRX\xrightarrow{\phi_{RX,X}(1_{RX})}X}{A\xrightarrow{\psi_{A,LA}(1_{LA})}RLA\overset{Rf}{\longrightarrow}RY}
 \end{align*}
 \begin{definition} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ a pair of adjoint functors $L\dashv R$. Then the natural transformations
-\[\varepsilon:LR\Rightarrow 1_{\mathcal{C}}\qquad\text{ and }\qquad\eta:1_{\mathcal{D}}\Rightarrow RL\]
+\[\varepsilon:LR\Rightarrow \mathbbm{1}_{\mathcal{C}}\qquad\text{ and }\qquad\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL\]
 defined by:
 \[\varepsilon_X:=\phi_{RX,X}(1_{RX})\qquad\text{ and }\qquad\eta_A:=\psi_{A,LA}(1_{LA})\]
 are called the \emph{counit} and the \emph{unit} of the adjunction, respectively.
@@ -286,7 +286,7 @@ So, our discussion leads to the following fact. Let $f\in\mathcal{C}(LA,X)$ and 
 This shows that the isomorphism \eqref{adj} can be completely retrieved by its counit and unit. Our goal for the rest of this section is to give an alternative definition for $L\dashv R$, only based on the choice of a particular natural transformation $\varepsilon$ to play the role of the counit, from which we first will construct $\eta$ and then $\phi$ and $\psi$. The reason we want to do this, is because this ``second definition'' will give us a way to more explicitly construct the right adjoint $R$ of a given $L$, if $L$ has a right adjoint.
 
 First of all, notice that \eqref{iso_from_unit} on its own suffices to make $\phi$ and $\psi$ natural, given that $\varepsilon$ and $\eta$ are:
-\begin{proposition} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ any pair of functors. Moreover, let $\varepsilon:LR\Rightarrow1_{\mathcal{C}}$ and $\eta:1_{\mathcal{D}}\Rightarrow RL$ be any two natural transformations. If we define $\phi_{A,X}$ and $\psi_{A,X}$ using the equations \eqref{iso_from_unit}, then $\phi$ and $\psi$ are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$ and additionally the following equations are satisfied:
+\begin{proposition}\label{prop:nat_gives_nat} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ any pair of functors. Moreover, let $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ and $\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL$ be any two natural transformations. If we define $\phi_{A,X}$ and $\psi_{A,X}$ using the equations \eqref{iso_from_unit}, then $\phi$ and $\psi$ are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$ and additionally the following equations are satisfied:
 \begin{align}
 \begin{split}
 \varepsilon_X=\phi_{RX,X}(1_{RX})\\[0.8em]
@@ -309,12 +309,146 @@ We only used the equations \eqref{iso_from_unit} and the naturality of $\varepsi
 \end{proof}
 
 Our problem now is that if we choose some natural transformations $\varepsilon$ and $\eta$ randomly and construct $\phi$ and $\psi$ using \eqref{iso_from_unit}, it is not at all guaranteed that $\phi$ and $\psi$ are inverses of each other. It so happens that $\varepsilon$ and $\eta$ must satisfy a universal property in order to be the counit and unit of an adjunction. Let's start examining this at the following definition.
-\begin{definition}
-
+\begin{definition}[2.3.4] Let $\mathcal{A},\mathcal{B}$ be two locally small categories, $F:\mathcal{A}\to\mathcal{B}$ some functor and $P$ any object in $\mathcal{B}$. We then define the category $\commaCat{F}{P}$, as follows:
+\begin{itemize}
+\item $\mathrm{ob}(\commaCat{F}{P})$ is the class of all pairs $(A,f)$, where $A$ is an object of $\mathcal{A}$ and $f:FA\to P$ is a morphism in $\mathcal{B}$.
+\item $(\commaCat{F}{P})\big((A_1,f_1),(A_2,f_2)\big)$ is the set of maps $a:A_1\to A_2$ in $\mathcal{A}$, such that $f_1=f_2\circ Fa$, i.e. making the following diagram commute:
+\begin{center}
+%\begin{tikzcd}
+%&[-1.5em]\mathcal{B}&[-1.5em]&&\mathcal{A}\ar[lll,bend right=20, "F"']\\
+%&&FA_1\ar[dd,"Fa"]\ar[dll,"f_1"']&&A_1\ar[dd,"a"]\\[-1em]
+%P\\[-1em]
+%&&FA_1\ar[ull,"f_2"]&&A_2\\
+%\end{tikzcd}
+\begin{tikzcd}
+&FA_1\ar[dd,"Fa"]\ar[dl,"f_1"']& && &A_1\ar[dd,"a"]\\[-1em]
+P& &\mathcal{B}&&\mathcal{A}\ar[ll,bend right=20, "F"']\\[-1em]
+&FA_1\ar[ul,"f_2"]& && &A_2\\
+\end{tikzcd}
+\end{center}
+\end{itemize}
 \end{definition}
-
-
-
+\begin{proposition}[co-2.3.5] Let $\mathcal{C},\mathcal{D}$ be locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ a pair of adjoint functors $L\dashv R$. Then, the pair $(RX, \varepsilon_X)$ is a terminal object in $\commaCat{L}{X}$, where $\varepsilon$ is the counit of the adjunction.
+\end{proposition}
+\begin{proof} We need to show that for every object $A$ in $\mathcal{D}$ and every morphism $f:LA\to X$ in $\mathcal{C}$, there exists a unique morphism $p\in\mathcal{D}(A,RX)$ such that $f=\varepsilon_X\circ Lp$, i.e. the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+&[-1.5em]\mathcal{C}\ar[rrr,bend right=20,"R"'{name=R}]&[-1.5em]&&\mathcal{D}\ar[lll,bend right=20, "L"'{name=L}]\ar[phantom, from=L, to=R, "\dashv" rotate=-90]\\
+&&LA\ar[dd,"Lp"]\ar[dll,"f"']&&A\ar[dd,"p"]\\[-1em]
+X\\[-1em]
+&&LRX\ar[ull,"\varepsilon_X"]&&RX\\
+\end{tikzcd}
+\end{center}
+Since $L\dashv R$, then there exist mutually inverse isomorphisms $\psi_{A,X}:\mathcal{C}(LA,X)\to\mathcal{D}(A,RX)$ and $\phi_{A,X}:\mathcal{D}(A,RX)\to\mathcal{C}(LA,X)$ like above. If we let $p=\psi_{A,X}(f)\in\mathcal{D}(A,RX)$, then $f=\phi_{A,X}(p)=\varepsilon_X\circ Lp$, since $\psi,\phi$ are inverses and \eqref{iso_from_unit} holds. In order to prove the uniqueness, let $p':A\to RX$ be any other morphism satisfying the same identity. Then, $\phi_{A,X}(p)=\phi_{A,X}(p')$ which gives $p=p'$, since $\phi_{A,X}$ is an isomorphism.
+\end{proof}
+We now want to prove that this is not only a property of the counit, but it fully characterizes it:
+\begin{theorem}[co-2.3.6]\label{th:alternative_def} Let $\mathcal{C},\mathcal{D}$ be locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ be a pair of functors. Moreover, let $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ be some natural transformation, such that for every object $X$ of $\mathcal{C}$, $(RX,\varepsilon_X)$ is a terminal object in $\commaCat{L}{X}$. Then $L\dashv R$ and $\varepsilon$ is the counit of this adjunction.
+\end{theorem}
+\begin{proof} First of all, let $A$ be any object of $\mathcal{D}$. Since $(RLA,\varepsilon_{LA})$ is a terminal object of $\commaCat{R}{LA}$, for $f=1_{LA}$, there exists a unique $\eta_A:A\to RLA$, such that $\varepsilon_{LA}\circ L\eta_A=1_{LA}$, i.e. making the following diagram commutative:
+\begin{center}
+\begin{tikzcd}
+&[-1.5em]\mathcal{C}\ar[rrr,bend right=20,"R"'{name=R}]&[-1.5em]&&\mathcal{D}\ar[lll,bend right=20, "L"'{name=L}]\\
+&&LA\ar[dd,"L\eta_A"]\ar[dll,"1_{LA}"']&&A\ar[dd,"\eta_A"]\\[-1em]
+LA\\[-1em]
+&&LRLA\ar[ull,"\varepsilon_{LA}"]&&RLA\\
+\end{tikzcd}
+\end{center}
+Now the proof will have three steps. First we will prove that $\eta_A$ is natural in $A$. This will be enough to define some natural transformations $\phi$ and $\psi$. The last two steps will be to prove that these two natural transformations are also inverses of each other.
+\begin{itemize}
+\item In order to prove that this $\eta$ we just defined is a natural transformation, fix some $p\in\mathcal{D}(A,B)$. Notice that the five subareas of the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+A\ar[dd,"p"']&&&LA\ar[dl,"Lp"']\ar[d,"1_{LA}"]\ar[r,"L\eta_A"]&LRLA\ar[dl,"\varepsilon_{LA}"]\ar[d,"LRLp"]\\[1em]
+&&LB\ar[d,"L\eta_B"']\ar[dr,"1_{LB}"']&LA\ar[l,"Lp"']\ar[d,"Lp"']&LRLB\ar[dl,"\varepsilon_{LB}"]\\[1em]
+B&&LRLB\ar[r,"\varepsilon_{LB}"']&LB
+\end{tikzcd}
+\end{center}
+Two triangles because of the definition of $\eta$, the other two trivially and the square because of the naturality of $\varepsilon$. This gives us that the outer hexagon also commutes, and:
+\[\varepsilon_{LB}\circ L(\eta_B\circ p)=Lp=\varepsilon_{LB}\circ L(RLp\circ\eta_A)\]
+So, if we let
+\[q=\eta_B\circ p\in\mathcal{D}(A,RLB)\qquad\text{ and }\qquad q'=RLp\circ\eta_A\in\mathcal{D}(A,RLB)\]
+then, both $q$ and $q'$ satisfy the following commutative diagram:
+\begin{center}
+\begin{tikzcd}
+&LA\ar[dd,"Lq=Lq'"]\ar[dl,"Lp"']&&A\ar[dd,shift right,"q"']\ar[dd,shift left,"q'"]\\[-1em]
+LB\\[-1em]
+&LRLB\ar[ul,"\varepsilon_{LB}"]&&RLB
+\end{tikzcd}
+\end{center}
+Because $(RLB,\varepsilon_{LB})$ is terminal in $\commaCat{L}{LB}$, there is a unique morphism $(A,Lp)\to(RLB,\varepsilon_{LB})$, which means $q=q'$, so $\eta_B\circ p=RLp\circ\eta_A$, i.e. the following diagram commutes, as we wanted:
+\begin{center}
+\begin{tikzcd}
+A\ar[d,"p"']&&A\ar[r,"\eta_A"]\ar[d,"p"']&RLA\ar[d,"RLp"]\\
+B&&B\ar[r,"\eta_B"]&RLB
+\end{tikzcd}
+\end{center}
+Since $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ and $\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL$, Proposition~\ref{prop:nat_gives_nat} gives that $\phi,\psi$, defined by the equations \eqref{iso_from_unit} are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$.
+\item Let $f\in\mathcal{C}(LA,X)$. Then, the naturality of $\varepsilon$ and the definition of $\eta$, give:
+\[\phi_{A,X}\big(\psi_{A,X}(f)\big)=\phi_{A,X}(Rf\circ\eta_A)=\varepsilon_X\circ LRf\circ L\eta_A=f\circ\varepsilon_{LA}\circ L\eta_A=f\]
+\item Let $p\in\mathcal{D}(A,RX)$. Then, the fact that
+\begin{equation}\label{duel_eta_eps}
+R\varepsilon_X\circ\eta_{RX}=1_{RX}
+\end{equation}
+and the naturality of $\eta$ give:
+\[\psi_{A,X}\big(\phi_{A,X}(p)\big)=\psi_{A,X}(\varepsilon_X\circ Lp)=R\varepsilon_X\circ RLp\circ\eta_A=R\varepsilon_X\circ\eta_{RX}\circ p=p\]
+It only now remains to show \eqref{duel_eta_eps}. Notice that the triangle in the following diagram commutes because of the definition of $\eta$ and the square commutes because of the naturality of $\varepsilon$:
+\begin{center}
+\begin{tikzcd}
+LRX\ar[d,"L\eta_{RX}"']\ar[dr,"1_{LRX}"]\\
+LRLRX\ar[r,"\varepsilon_{LRX}"]\ar[d,"LR\varepsilon_X"']&LRX\ar[d,"\varepsilon_X"]\\
+LRX\ar[r,"\varepsilon_X"]&X
+\end{tikzcd}
+\end{center}
+This means that the outer pentagon also commutes, i.e.:
+\[\varepsilon_X\circ L(R\varepsilon_X\circ\eta_{RX})=\varepsilon_X=\varepsilon_X\circ L(1_{RX})\]
+So, if we let
+\[q=R\varepsilon_X\circ\eta_{RX}\in\mathcal{D}(RX,RX)\qquad\text{ and }\qquad q'=1_{RX}\circ\eta_A\in\mathcal{D}(RX,RX)\]
+then, both $q$ and $q'$ satisfy the following commutative diagram:
+\begin{center}
+\begin{tikzcd}
+&LRX\ar[dd,"Lq=Lq'"]\ar[dl,"\varepsilon_X"']&&RX\ar[dd,shift right,"q"']\ar[dd,shift left,"q'"]\\[-1em]
+X\\[-1em]
+&LRX\ar[ul,"\varepsilon_X"]&&RX
+\end{tikzcd}
+\end{center}
+Because $(RX,\varepsilon_X)$ is terminal in $\commaCat{L}{X}$, there is a unique morphism $(RX,\varepsilon_X)\to(RX,\varepsilon_X)$, which means $q=q'$, so $R\varepsilon_X\circ\eta_{RX}=1_{RX}$, which was our goal.
+\end{itemize}
+\end{proof}
+Finally, this gives us the following way to construct $R$, given $L$:
+\begin{corollary}[co-2.3.7] Let $\mathcal{C},\mathcal{D}$ be locally small categories and $L:\mathcal{D}\to\mathcal{C}$ be some functor. If $\commaCat{L}{X}$ has a terminal object for every object $X$ of $\mathcal{C}$, say $(\tilde{X},\varepsilon_X)$, then $L$ has a right adjoint functor $R:\mathcal{C}\to\mathcal{D}$ defined by:
+\begin{itemize}
+\item $RX$ to be equal to $\tilde{X}$, for every object $X$ in $\mathcal{C}$
+\item $Rf$ to be equal to the unique morphism in $\commaCat{L}{Y}$ from $(RX,f\circ\varepsilon_X)$ to $(RY,\varepsilon_Y)$, for every $f\in\mathcal{C}(X,Y)$.
+\end{itemize}
+\end{corollary}
+\begin{proof} Given \ref{th:alternative_def}, we only have to show that $R$ is indeed a functor and that $\varepsilon$ is a natural transformation:
+\begin{itemize}
+\item Let $X$ be an object in $\mathcal{C}$. Then $R1_X$ is the unique morphism in $\commaCat{L}{Y}$ from $(RX,\varepsilon_X)$ to $(RX,\varepsilon_X)$. Notice that $1_X$ is such a morphism:
+\begin{center}
+\begin{tikzcd}
+X\ar[d,"1_X"']&LRX\ar[l,"\varepsilon_X"']\ar[d,"L1_{RX}",dashed]&&RX\ar[d,"1_{RX}"]\\
+X&LRX\ar[l,"\varepsilon_X"']&&RX
+\end{tikzcd}
+\end{center}
+Thus, the uniqueness gives $R1_X=1_X$. Moreover, let $f\in\mathcal{C}(X,Y)$ and $g\in\mathcal{C}(Y,Z)$. Then, $R(g\circ f)$ is the unique morphism in $\commaCat{L}{Z}$, from $(RX,g\circ f\circ\varepsilon_X)$ to $(RZ,\varepsilon_Z)$. Notice that $Rg\circ Rf$ is such a morphism:
+\begin{center}
+\begin{tikzcd}
+X\ar[d,"f"']&LRX\ar[l,"\varepsilon_X"']\ar[d,"LRf"]\ar[dd,bend left=60,"L(Rg\circ Rf)",dashed]&&&RX\ar[d,"Rf"]\ar[dd,bend left=60,"Rg\circ Rf"]\\
+Y\ar[d,"g"']&LRY\ar[l,"\varepsilon_Y"']\ar[d,"LRg"]&&&RY\ar[d,"Rg"]\\
+Z&LRZ\ar[l,"\varepsilon_Z"']&&&RZ
+\end{tikzcd}
+\end{center}
+Thus, the uniqueness gives $R(g\circ f)=Rg\circ Rf$.
+\item Let $f\in\mathcal{C}(X,Y)$. Then, by definition of $Rf$, the following square commutes:
+\begin{center}
+\begin{tikzcd}
+X\ar[d,"f"']&LRX\ar[l,"\varepsilon_X"']\ar[d,"LRf"]\\
+Y&LRY\ar[l,"\varepsilon_Y"']
+\end{tikzcd}
+\end{center}
+which means exactly that $\varepsilon$ is a natural transformation.\qedhere
+\end{itemize}
+\end{proof}
 \section{Compact-Open Topology}
 
 
