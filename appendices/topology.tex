@@ -83,20 +83,20 @@ and prove that it is a natural transformation between the following two functors
 \end{tikzcd}
 \end{center}
 In order to prove that this is a bijection, it suffices to define a function
-\[\phi_{X,F}:FX\to\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\]
+\[\varphi_{X,F}:FX\to\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}(H_X,F)\]
 and prove that it is the inverse of $\psi$.
 
-So, the proof is going to have four steps: First we are going to define $\psi_{X,F}$, then we are going to define $\phi_{X,F}$, then we are going to prove that these are inverses and finally we are going to prove that they are natural:
+So, the proof is going to have four steps: First we are going to define $\psi_{X,F}$, then we are going to define $\varphi_{X,F}$, then we are going to prove that these are inverses and finally we are going to prove that they are natural:
 \begin{itemize}
 \item There is the following ``natural'' choice for $\psi_{X,F}$. Let $\eta$ be any natural transformation $H_X\Rightarrow F$. Then define:
 \[\psi_{X,F}(\eta):=\eta_X(1_X)\in FX\]
 Let us unpack this: $\eta$ being a natural transformation means that it has components $\eta_A:H_XA\to FA$ for every $A$ in $\mathcal{C}$, but $H_XA$ is just $\mathcal{C}(A,X)$. Choosing $A=X$, we also get an obvious element $1_X\in\mathcal{C}(X,X)$, whose image under $\eta_X$ lies in the desired set $FX$.
 
-\item There exists also a ``natural'' choice for $\phi_{X,F}$. Let $x\in FX$ be any element of the set $FX$. We have to define a natural transformation $\phi_{X,F}(x)=\theta^x$ from $H_X$ to $F$. Let us first define each component $\theta^x_A:H_XA\to FA$ as follows:
+\item There exists also a ``natural'' choice for $\varphi_{X,F}$. Let $x\in FX$ be any element of the set $FX$. We have to define a natural transformation $\varphi_{X,F}(x)=\theta^x$ from $H_X$ to $F$. Let us first define each component $\theta^x_A:H_XA\to FA$ as follows:
 \[\theta^x_A(p)=(Fp)(x)\in FA\]
 Let us also unpack this definition as well: We want to define $\theta^x_A$ on every element $p\in\mathcal{C}(A,X)$. We already have some element $x\in FX$ and for every such $p$, we can create $Fp\in\mathrm{Set}(FX,FA)$, since $F$ is a functor $\mathcal{C}^{\mathrm{op}}\to\mathrm{Set}$. So, the image of $x$ under $Fp$ lies in the desired set $FA$.
 
-The definition of $\phi$ is not over yet, since we have to prove that $\theta^x$ is indeed natural in $A$, i.e. that for every morphism $f^{\mathrm{op}}\in\mathcal{C}(A,B)$ the following diagram commutes:
+The definition of $\varphi$ is not over yet, since we have to prove that $\theta^x$ is indeed natural in $A$, i.e. that for every morphism $f^{\mathrm{op}}\in\mathcal{C}(A,B)$ the following diagram commutes:
 \begin{center}
 \begin{tikzcd}
 A&&H_XA\ar[d,"H_Xf"']\ar[r,"\theta^x_A"]&FA\ar[d,"Ff"]\\
@@ -105,11 +105,11 @@ B\ar[u,"f"]&&H_XB\ar[r,"\theta^x_B"]&FB
 \end{center}
 which does, since both directions take $q$ to $(F(q\circ f))(x)$.
 
-\item The next step is to prove that $\psi_{X,F}$ and $\phi_{X,F}$ are inverse functions in the category of sets. The one direction is easy. Let $x\in FX$. Then:
-\[\psi_{X,F}\big(\phi_{X,F}(x)\big)=\psi_{X,F}(\theta^x)=\theta^x_X(1_X)=(F1_X)(x)=1_{FX}(x)=x\]
+\item The next step is to prove that $\psi_{X,F}$ and $\varphi_{X,F}$ are inverse functions in the category of sets. The one direction is easy. Let $x\in FX$. Then:
+\[\psi_{X,F}\big(\varphi_{X,F}(x)\big)=\psi_{X,F}(\theta^x)=\theta^x_X(1_X)=(F1_X)(x)=1_{FX}(x)=x\]
 
 For the other direction, let $\eta$ be any natural transformation $H_X\to F$. Then:
-\[\phi_{X,F}\big(\psi_{X,F}(\eta)\big)=\phi_{X,F}(\eta_X(1_X))=\theta^{\eta_X(1_X)}\]
+\[\varphi_{X,F}\big(\psi_{X,F}(\eta)\big)=\varphi_{X,F}(\eta_X(1_X))=\theta^{\eta_X(1_X)}\]
 In order to show that this is equal to $\eta$, we need to check the equality in every component. Let $A$ be any object of $\mathcal{C}$ and $p\in\mathcal{C}(A,X)$ any function. Then:
 \[\theta^{\eta_X(1_X)}_A(p)=(Fp)\big(\eta_X(1_X)\big)\overset{(*)}{=}\eta_A\big((H_Xp)(1_X)\big)=\eta_A(1_X\circ p)=\eta_A(p)\]
 where the $(*)$ holds because of the naturality of $\eta$, i.e. because this diagram commutes:
@@ -120,7 +120,7 @@ A\ar[u,"p"]&&H_XA\ar[r,"\eta_A"]&FA
 \end{tikzcd}
 \end{center}
 
-\item Now, it only remains to prove that $\psi$ and $\phi$ are natural transformations. It suffices to prove this just for one of the two, say $\psi$. Also, being natural in $(X,F)\in\mathcal{C}^{\mathrm{op}}\times\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$ is equivalent to being natural in $X\in\mathcal{C}^{\mathrm{op}}$ for every fixed $F$ and at the same time being natural in $F\in\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$, for every fixed $X$.
+\item Now, it only remains to prove that $\psi$ and $\varphi$ are natural transformations. It suffices to prove this just for one of the two, say $\psi$. Also, being natural in $(X,F)\in\mathcal{C}^{\mathrm{op}}\times\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$ is equivalent to being natural in $X\in\mathcal{C}^{\mathrm{op}}$ for every fixed $F$ and at the same time being natural in $F\in\mathrm{Set}^{\mathcal{C}^{\mathrm{op}}}$, for every fixed $X$.
 
 Let $F$ be fixed and $g^{op}\in\mathcal{C}^{op}(X,Y)$. Then, we want to show that the following diagram commutes:
 \begin{center}
@@ -165,7 +165,7 @@ as defined in Definition~\ref{def:functor} is full and faithful.
 g\ar[r,mapsto]&H_g
 \end{tikzcd}
 \end{center}
-is a bijection. We already know that $\phi_{X,H_Y}$ is a bijection from the proof of the Yoneda lemma, so it suffices to show that $\phi_{X,H_Y}(g)=H_g$ for every $g\in\mathcal{C}(X,Y)$, or equivalently $\psi_{X,H_Y}(H_g)=g$:
+is a bijection. We already know that $\varphi_{X,H_Y}$ is a bijection from the proof of the Yoneda lemma, so it suffices to show that $\varphi_{X,H_Y}(g)=H_g$ for every $g\in\mathcal{C}(X,Y)$, or equivalently $\psi_{X,H_Y}(H_g)=g$:
 \[\psi_{X,H_Y}(H_g)=(H_g)_X(1_X)=g\circ 1_X=g\qedhere\]
 \end{proof}
 \begin{proposition}[4.3.10]\label{prop:unique} Let $\mathcal{C}$ be a locally small category. Moreover, let $X,Y$ be any two objects of $\mathcal{C}$. Then:
@@ -200,30 +200,30 @@ natural in $(A,X)\in\mathcal{D}^{op}\times\mathcal{C}$. We usually denote this b
 natural in $A$. This means that there is an isomorphism $H_{RX}(A)\cong H_{R'X}(A)$ natural in $A$, which means $H_{RX}\cong H_{R'X}$ in $\mathrm{Set}^{\mathcal{D}^{\mathrm{op}}}$. Using Proposition~\ref{prop:unique}, we conclude that there exists an isomorphism $RX\cong R'X$. This construction is natural in $X$, so $R\cong R'$ as functors.
 \end{proof}
 
-Let us now unravel the Definition~\ref{def:adj}. Let $L$ and $R$ be an adjoint pair $L\dashv R$. This means that there exist some natural transformations $\psi$ and $\phi$ with components:
+Let us now unravel the Definition~\ref{def:adj}. Let $L$ and $R$ be an adjoint pair $L\dashv R$. This means that there exist some natural transformations $\psi$ and $\varphi$ with components:
 \[\begin{aligned}
 \psi_{A,X}&:\mathcal{C}(LA,X)\to\mathcal{D}(A,RX)\\[0.8em]
-\phi_{A,X}&:\mathcal{D}(A,RX)\to\mathcal{C}(LA,X)
+\varphi_{A,X}&:\mathcal{D}(A,RX)\to\mathcal{C}(LA,X)
 \end{aligned}\qquad\text{ satisfying: }\qquad
 \left\{\begin{aligned}
-\psi_{A,X}\circ\phi_{A,X}&=1_{\mathcal{D}(A,RX)}\\[0.8em]
-\phi_{A,X}\circ\psi_{A,X}&=1_{\mathcal{C}(LA,X)}
+\psi_{A,X}\circ\varphi_{A,X}&=1_{\mathcal{D}(A,RX)}\\[0.8em]
+\varphi_{A,X}\circ\psi_{A,X}&=1_{\mathcal{C}(LA,X)}
 \end{aligned}\right.\]
 To express the two naturality conditions, we fix some $p^{\mathrm{op}}\in\mathcal{D}^{\mathrm{op}}(A,B)$ and some $f\in\mathcal{C}(X,Y)$. Then, we have the following four commutative diagrams:
 \begin{center}
 \begin{tikzcd}
 A&[1.2em]
 \mathcal{C}(LA,X)\ar[d,"-\circ Lp"']\ar[r,"\psi_{A,X}","\cong"']&\mathcal{D}(A,RX)\ar[d,"-\circ p"]&[1.2em]
-\mathcal{C}(LA,X)\ar[d,"-\circ Lp"']&\mathcal{D}(A,RX)\ar[l,"\phi_{A,X}"',"\cong"]\ar[d,"-\circ p"]\\
+\mathcal{C}(LA,X)\ar[d,"-\circ Lp"']&\mathcal{D}(A,RX)\ar[l,"\varphi_{A,X}"',"\cong"]\ar[d,"-\circ p"]\\
 B\ar[u,"p"']&
 \mathcal{C}(LB,X)\ar[r,"\psi_{B,X}","\cong"']&\mathcal{D}(B,RX)&
-\mathcal{C}(LB,X)&\mathcal{D}(B,RX)\ar[l,"\phi_{B,X}"',"\cong"]\\
+\mathcal{C}(LB,X)&\mathcal{D}(B,RX)\ar[l,"\varphi_{B,X}"',"\cong"]\\
 X\ar[d,"f"]&
 \mathcal{C}(LA,X)\ar[d,"f\circ -"']\ar[r,"\psi_{A,X}","\cong"']&\mathcal{D}(A,RX)\ar[d,"Rf\circ -"]&
-\mathcal{C}(LA,X)\ar[d,"f\circ -"']&\mathcal{D}(A,RX)\ar[l,"\phi_{A,X}"',"\cong"]\ar[d,"Rf\circ -"]\\
+\mathcal{C}(LA,X)\ar[d,"f\circ -"']&\mathcal{D}(A,RX)\ar[l,"\varphi_{A,X}"',"\cong"]\ar[d,"Rf\circ -"]\\
 Y&
 \mathcal{C}(LA,Y)\ar[r,"\psi_{A,Y}","\cong"']&\mathcal{D}(A,RY)&
-\mathcal{C}(LA,Y)&\mathcal{D}(A,RY)\ar[l,"\phi_{A,Y}"',"\cong"]\\
+\mathcal{C}(LA,Y)&\mathcal{D}(A,RY)\ar[l,"\varphi_{A,Y}"',"\cong"]\\
 \end{tikzcd}
 \end{center}
 i.e. for any $q\in\mathcal{D}(A,RX)$ and $g\in\mathcal{C}(LA,X)$, we have:
@@ -236,25 +236,25 @@ i.e. for any $q\in\mathcal{D}(A,RX)$ and $g\in\mathcal{C}(LA,X)$, we have:
 \end{align}
 \end{minipage}\begin{minipage}{0.5\linewidth}
 \begin{align}
-\phi_{B,X}(q\circ p)&=\phi_{A,X}(q)\circ Lp\label{phiL}\\[1em]
-\phi_{A,Y}(Rf\circ q)&=f\circ \phi_{A,X}(q)\label{phiR}
+\varphi_{B,X}(q\circ p)&=\varphi_{A,X}(q)\circ Lp\label{phiL}\\[1em]
+\varphi_{A,Y}(Rf\circ q)&=f\circ \varphi_{A,X}(q)\label{phiR}
 \end{align}
 \end{minipage}
 \end{center}
 Right now, we will focus on equations \eqref{phiL} and \eqref{psiR}, which we also write schematically as:
 \begin{align*}
-\phi_{B,X}\left(B\overset{p}{\longrightarrow}A\overset{q}{\longrightarrow}RX\right)&=LB\overset{Lp}{\longrightarrow}LA\overset{\phi_{A,X}(q)}{\longrightarrow}X\\[1em]
+\varphi_{B,X}\left(B\overset{p}{\longrightarrow}A\overset{q}{\longrightarrow}RX\right)&=LB\overset{Lp}{\longrightarrow}LA\overset{\varphi_{A,X}(q)}{\longrightarrow}X\\[1em]
 \psi_{A,Y}\left(LA\overset{g}{\longrightarrow}X\overset{f}{\longrightarrow}Y\right)&=A\overset{\psi_{A,X}(g)}{\longrightarrow}RX\overset{Rf}{\longrightarrow}RY
 \end{align*}
-Interestingly, this hints towards the following fact: The values of $\phi$ (resp. $\psi$) on any $q\circ p$ (resp. $f\circ g$) only depend on $L$ (resp. $R$) and $\phi_{A,X}(q)$ (resp. $\psi_{A,X}(g)$). So, by choosing $q$ (resp. $g$) as ``naturally'' as possible, we can describe what exactly $\phi$ (resp. $\psi$) does on every other input. We thus choose $A=RX$, $q=1_{RX}$ for the equation involving $\phi$ and $X=LA$, $g=1_{LA}$ for the equation involving $\psi$. This gives:
+Interestingly, this hints towards the following fact: The values of $\varphi$ (resp. $\psi$) on any $q\circ p$ (resp. $f\circ g$) only depend on $L$ (resp. $R$) and $\varphi_{A,X}(q)$ (resp. $\psi_{A,X}(g)$). So, by choosing $q$ (resp. $g$) as ``naturally'' as possible, we can describe what exactly $\varphi$ (resp. $\psi$) does on every other input. We thus choose $A=RX$, $q=1_{RX}$ for the equation involving $\varphi$ and $X=LA$, $g=1_{LA}$ for the equation involving $\psi$. This gives:
 \begin{align*}
-\phi_{B,X}\left(B\overset{p}{\longrightarrow}RX\right)&=\phi_{B,X}\left(B\overset{p}{\longrightarrow}RX\xrightarrow{1_{RX}}RX\right)=LB\overset{Lp}{\longrightarrow}LRX\xrightarrow{\phi_{RX,X}(1_{RX})}X\\[1em]
-\psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX}{LA\overset{f}{\longrightarrow}Y}\right)&=\psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX\xrightarrow{1_{RX}}RX}{LA\xrightarrow{1_{LA}}LA\overset{f}{\longrightarrow}Y}\right)=\mask{LB\overset{Lp}{\longrightarrow}LRX\xrightarrow{\phi_{RX,X}(1_{RX})}X}{A\xrightarrow{\psi_{A,LA}(1_{LA})}RLA\overset{Rf}{\longrightarrow}RY}
+\varphi_{B,X}\left(B\overset{p}{\longrightarrow}RX\right)&=\varphi_{B,X}\left(B\overset{p}{\longrightarrow}RX\xrightarrow{1_{RX}}RX\right)=LB\overset{Lp}{\longrightarrow}LRX\xrightarrow{\varphi_{RX,X}(1_{RX})}X\\[1em]
+\psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX}{LA\overset{f}{\longrightarrow}Y}\right)&=\psi_{A,Y}\left(\mask{B\overset{p}{\longrightarrow}RX\xrightarrow{1_{RX}}RX}{LA\xrightarrow{1_{LA}}LA\overset{f}{\longrightarrow}Y}\right)=\mask{LB\overset{Lp}{\longrightarrow}LRX\xrightarrow{\varphi_{RX,X}(1_{RX})}X}{A\xrightarrow{\psi_{A,LA}(1_{LA})}RLA\overset{Rf}{\longrightarrow}RY}
 \end{align*}
 \begin{definition} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ a pair of adjoint functors $L\dashv R$. Then the natural transformations
 \[\varepsilon:LR\Rightarrow \mathbbm{1}_{\mathcal{C}}\qquad\text{ and }\qquad\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL\]
 defined by:
-\[\varepsilon_X:=\phi_{RX,X}(1_{RX})\qquad\text{ and }\qquad\eta_A:=\psi_{A,LA}(1_{LA})\]
+\[\varepsilon_X:=\varphi_{RX,X}(1_{RX})\qquad\text{ and }\qquad\eta_A:=\psi_{A,LA}(1_{LA})\]
 are called the \emph{counit} and the \emph{unit} of the adjunction, respectively.
 \end{definition}
 \begin{remark} In order for the counit and the unit to be well defined, we need to prove that they are indeed natural transformations, i.e. that for any $f\in\mathcal{C}(X,Y)$ and $p\in\mathcal{D}(B,A)$ the following diagrams commute:
@@ -268,9 +268,9 @@ A&A\ar[r,"\eta_A"]&RL(A)
 \end{center}
 \end{remark}
 \begin{proof}
-This is a direct consequence of the naturality of $\phi,\psi$:
+This is a direct consequence of the naturality of $\varphi,\psi$:
 \begin{align*}
-f\circ\varepsilon_X&\overset{\eqref{phiR}}{=}\phi_{RX,Y}(1_{RY}\circ Rf\circ 1_{RX})\overset{\eqref{phiL}}{=}\varepsilon_Y\circ LRf\\[0.5em]
+f\circ\varepsilon_X&\overset{\eqref{phiR}}{=}\varphi_{RX,Y}(1_{RY}\circ Rf\circ 1_{RX})\overset{\eqref{phiL}}{=}\varepsilon_Y\circ LRf\\[0.5em]
 \eta_A\circ p&\overset{\eqref{psiL}}{=}\psi_{B,LA}(1_{LA}\circ Lp\circ 1_{LB})\overset{\eqref{psiR}}{=}RLp\circ\eta_B\qedhere
 \end{align*}
 \end{proof}
@@ -278,18 +278,18 @@ f\circ\varepsilon_X&\overset{\eqref{phiR}}{=}\phi_{RX,Y}(1_{RY}\circ Rf\circ 1_{
 So, our discussion leads to the following fact. Let $f\in\mathcal{C}(LA,X)$ and $p\in\mathcal{D}(A,RX)$, then, equations \eqref{phiL} and \eqref{psiR} give:
 \begin{align}
 \begin{split}
-\phi_{A,X}(p)&=\varepsilon_X\circ Lp\\[0.8em]
+\varphi_{A,X}(p)&=\varepsilon_X\circ Lp\\[0.8em]
 \psi_{A,X}(f)&=Rf\circ\eta_A
 \end{split}\label{iso_from_unit}
 \end{align}
 
-This shows that the isomorphism \eqref{adj} can be completely retrieved by its counit and unit. Our goal for the rest of this section is to give an alternative definition for $L\dashv R$, only based on the choice of a particular natural transformation $\varepsilon$ to play the role of the counit, from which we first will construct $\eta$ and then $\phi$ and $\psi$. The reason we want to do this, is because this ``second definition'' will give us a way to more explicitly construct the right adjoint $R$ of a given $L$, if $L$ has a right adjoint.
+This shows that the isomorphism \eqref{adj} can be completely retrieved by its counit and unit. Our goal for the rest of this section is to give an alternative definition for $L\dashv R$, only based on the choice of a particular natural transformation $\varepsilon$ to play the role of the counit, from which we first will construct $\eta$ and then $\varphi$ and $\psi$. The reason we want to do this, is because this ``second definition'' will give us a way to more explicitly construct the right adjoint $R$ of a given $L$, if $L$ has a right adjoint.
 
-First of all, notice that \eqref{iso_from_unit} on its own suffices to make $\phi$ and $\psi$ natural, given that $\varepsilon$ and $\eta$ are:
-\begin{proposition}\label{prop:nat_gives_nat} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ any pair of functors. Moreover, let $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ and $\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL$ be any two natural transformations. If we define $\phi_{A,X}$ and $\psi_{A,X}$ using the equations \eqref{iso_from_unit}, then $\phi$ and $\psi$ are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$ and additionally the following equations are satisfied:
+First of all, notice that \eqref{iso_from_unit} on its own suffices to make $\varphi$ and $\psi$ natural, given that $\varepsilon$ and $\eta$ are:
+\begin{proposition}\label{prop:nat_gives_nat} Let $\mathcal{C},\mathcal{D}$ be two locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ any pair of functors. Moreover, let $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ and $\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL$ be any two natural transformations. If we define $\varphi_{A,X}$ and $\psi_{A,X}$ using the equations \eqref{iso_from_unit}, then $\varphi$ and $\psi$ are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$ and additionally the following equations are satisfied:
 \begin{align}
 \begin{split}
-\varepsilon_X=\phi_{RX,X}(1_{RX})\\[0.8em]
+\varepsilon_X=\varphi_{RX,X}(1_{RX})\\[0.8em]
 \eta_A=\psi_{A,LA}(1_{LA})
 \end{split}\label{unit_from_iso}
 \end{align}
@@ -298,17 +298,17 @@ First of all, notice that \eqref{iso_from_unit} on its own suffices to make $\ph
 \begin{align*}
 \psi_{B,X}(g\circ Lp)&=Rg\circ RLp\circ\eta_B=Rg\circ\eta_A\circ p=\psi_{A,X}(g)\circ p,&\text{for any } g&\in\mathcal{C}(LA,X)\\
 \psi_{A,Y}(f\circ g)&=Rf\circ Rg\circ\eta_A=Rf\circ\psi_{A,X}(g),&\text{for any } g&\in\mathcal{C}(LA,X)\\
-\phi_{B,X}(q\circ p)&=\varepsilon_X\circ Lq\circ Lp=\phi_{A,X}(q)\circ p,&\text{for any }q&\in\mathcal{D}(A,RX)\\
-\phi_{A,Y}(Rf\circ q)&=\varepsilon_Y\circ LRf\circ Lq=f\circ\varepsilon_X\circ Lq=f\circ\phi_{A,X}(q),&\text{for any }q&\in\mathcal{D}(A,RX)
+\varphi_{B,X}(q\circ p)&=\varepsilon_X\circ Lq\circ Lp=\varphi_{A,X}(q)\circ p,&\text{for any }q&\in\mathcal{D}(A,RX)\\
+\varphi_{A,Y}(Rf\circ q)&=\varepsilon_Y\circ LRf\circ Lq=f\circ\varepsilon_X\circ Lq=f\circ\varphi_{A,X}(q),&\text{for any }q&\in\mathcal{D}(A,RX)
 \end{align*}
 We only used the equations \eqref{iso_from_unit} and the naturality of $\varepsilon,\eta$ in the first and last case. Moreover, it is again very easy to see that:
 \begin{align*}
-\phi_{RX,X}(1_{RX})&=\varepsilon_X\circ L1_{RX}=\varepsilon_X\\
+\varphi_{RX,X}(1_{RX})&=\varepsilon_X\circ L1_{RX}=\varepsilon_X\\
 \psi_{A,LA}(1_{LA})&=R1_{LA}\circ\eta_A=\eta_A\qedhere
 \end{align*}
 \end{proof}
 
-Our problem now is that if we choose some natural transformations $\varepsilon$ and $\eta$ randomly and construct $\phi$ and $\psi$ using \eqref{iso_from_unit}, it is not at all guaranteed that $\phi$ and $\psi$ are inverses of each other. It so happens that $\varepsilon$ and $\eta$ must satisfy a universal property in order to be the counit and unit of an adjunction. Let's start examining this at the following definition.
+Our problem now is that if we choose some natural transformations $\varepsilon$ and $\eta$ randomly and construct $\varphi$ and $\psi$ using \eqref{iso_from_unit}, it is not at all guaranteed that $\varphi$ and $\psi$ are inverses of each other. It so happens that $\varepsilon$ and $\eta$ must satisfy a universal property in order to be the counit and unit of an adjunction. Let's start examining this at the following definition.
 \begin{definition}[2.3.4] Let $\mathcal{A},\mathcal{B}$ be two locally small categories, $F:\mathcal{A}\to\mathcal{B}$ some functor and $P$ any object in $\mathcal{B}$. We then define the category $\commaCat{F}{P}$, as follows:
 \begin{itemize}
 \item $\mathrm{ob}(\commaCat{F}{P})$ is the class of all pairs $(A,f)$, where $A$ is an object of $\mathcal{A}$ and $f:FA\to P$ is a morphism in $\mathcal{B}$.
@@ -339,7 +339,7 @@ X\\[-1em]
 &&LRX\ar[ull,"\varepsilon_X"]&&RX\\
 \end{tikzcd}
 \end{center}
-Since $L\dashv R$, then there exist mutually inverse isomorphisms $\psi_{A,X}:\mathcal{C}(LA,X)\to\mathcal{D}(A,RX)$ and $\phi_{A,X}:\mathcal{D}(A,RX)\to\mathcal{C}(LA,X)$ like above. If we let $p=\psi_{A,X}(f)\in\mathcal{D}(A,RX)$, then $f=\phi_{A,X}(p)=\varepsilon_X\circ Lp$, since $\psi,\phi$ are inverses and \eqref{iso_from_unit} holds. In order to prove the uniqueness, let $p':A\to RX$ be any other morphism satisfying the same identity. Then, $\phi_{A,X}(p)=\phi_{A,X}(p')$ which gives $p=p'$, since $\phi_{A,X}$ is an isomorphism.
+Since $L\dashv R$, then there exist mutually inverse isomorphisms $\psi_{A,X}:\mathcal{C}(LA,X)\to\mathcal{D}(A,RX)$ and $\varphi_{A,X}:\mathcal{D}(A,RX)\to\mathcal{C}(LA,X)$ like above. If we let $p=\psi_{A,X}(f)\in\mathcal{D}(A,RX)$, then $f=\varphi_{A,X}(p)=\varepsilon_X\circ Lp$, since $\psi,\varphi$ are inverses and \eqref{iso_from_unit} holds. In order to prove the uniqueness, let $p':A\to RX$ be any other morphism satisfying the same identity. Then, $\varphi_{A,X}(p)=\varphi_{A,X}(p')$ which gives $p=p'$, since $\varphi_{A,X}$ is an isomorphism.
 \end{proof}
 We now want to prove that this is not only a property of the counit, but it fully characterizes it:
 \begin{theorem}[co-2.3.6]\label{th:alternative_def} Let $\mathcal{C},\mathcal{D}$ be locally small categories and $L:\mathcal{D}\to\mathcal{C}$, $R:\mathcal{C}\to\mathcal{D}$ be a pair of functors. Moreover, let $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ be some natural transformation, such that for every object $X$ of $\mathcal{C}$, $(RX,\varepsilon_X)$ is a terminal object in $\commaCat{L}{X}$. Then $L\dashv R$ and $\varepsilon$ is the counit of this adjunction.
@@ -353,7 +353,7 @@ LA\\[-1em]
 &&LRLA\ar[ull,"\varepsilon_{LA}"]&&RLA\\
 \end{tikzcd}
 \end{center}
-Now the proof will have three steps. First we will prove that $\eta_A$ is natural in $A$. This will be enough to define some natural transformations $\phi$ and $\psi$. The last two steps will be to prove that these two natural transformations are also inverses of each other.
+Now the proof will have three steps. First we will prove that $\eta_A$ is natural in $A$. This will be enough to define some natural transformations $\varphi$ and $\psi$. The last two steps will be to prove that these two natural transformations are also inverses of each other.
 \begin{itemize}
 \item In order to prove that this $\eta$ we just defined is a natural transformation, fix some $p\in\mathcal{D}(A,B)$. Notice that the five subareas of the following diagram commute:
 \begin{center}
@@ -382,15 +382,15 @@ A\ar[d,"p"']&&A\ar[r,"\eta_A"]\ar[d,"p"']&RLA\ar[d,"RLp"]\\
 B&&B\ar[r,"\eta_B"]&RLB
 \end{tikzcd}
 \end{center}
-Since $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ and $\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL$, Proposition~\ref{prop:nat_gives_nat} gives that $\phi,\psi$, defined by the equations \eqref{iso_from_unit} are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$.
+Since $\varepsilon:LR\Rightarrow\mathbbm{1}_{\mathcal{C}}$ and $\eta:\mathbbm{1}_{\mathcal{D}}\Rightarrow RL$, Proposition~\ref{prop:nat_gives_nat} gives that $\varphi,\psi$, defined by the equations \eqref{iso_from_unit} are natural transformations in $(A,X)\in\mathcal{D}^{\mathrm{op}}\times\mathcal{C}$.
 \item Let $f\in\mathcal{C}(LA,X)$. Then, the naturality of $\varepsilon$ and the definition of $\eta$, give:
-\[\phi_{A,X}\big(\psi_{A,X}(f)\big)=\phi_{A,X}(Rf\circ\eta_A)=\varepsilon_X\circ LRf\circ L\eta_A=f\circ\varepsilon_{LA}\circ L\eta_A=f\]
+\[\varphi_{A,X}\big(\psi_{A,X}(f)\big)=\varphi_{A,X}(Rf\circ\eta_A)=\varepsilon_X\circ LRf\circ L\eta_A=f\circ\varepsilon_{LA}\circ L\eta_A=f\]
 \item Let $p\in\mathcal{D}(A,RX)$. Then, the fact that
 \begin{equation}\label{duel_eta_eps}
 R\varepsilon_X\circ\eta_{RX}=1_{RX}
 \end{equation}
 and the naturality of $\eta$ give:
-\[\psi_{A,X}\big(\phi_{A,X}(p)\big)=\psi_{A,X}(\varepsilon_X\circ Lp)=R\varepsilon_X\circ RLp\circ\eta_A=R\varepsilon_X\circ\eta_{RX}\circ p=p\]
+\[\psi_{A,X}\big(\varphi_{A,X}(p)\big)=\psi_{A,X}(\varepsilon_X\circ Lp)=R\varepsilon_X\circ RLp\circ\eta_A=R\varepsilon_X\circ\eta_{RX}\circ p=p\]
 It only now remains to show \eqref{duel_eta_eps}. Notice that the triangle in the following diagram commutes because of the definition of $\eta$ and the square commutes because of the naturality of $\varepsilon$:
 \begin{center}
 \begin{tikzcd}
@@ -415,7 +415,7 @@ Because $(RX,\varepsilon_X)$ is terminal in $\commaCat{L}{X}$, there is a unique
 \end{itemize}
 \end{proof}
 Finally, this gives us the following way to construct $R$, given $L$:
-\begin{corollary}[co-2.3.7] Let $\mathcal{C},\mathcal{D}$ be locally small categories and $L:\mathcal{D}\to\mathcal{C}$ be some functor. If $\commaCat{L}{X}$ has a terminal object for every object $X$ of $\mathcal{C}$, say $(\tilde{X},\varepsilon_X)$, then $L$ has a right adjoint functor $R:\mathcal{C}\to\mathcal{D}$ defined by:
+\begin{corollary}[co-2.3.7]\label{cor:adj_construction} Let $\mathcal{C},\mathcal{D}$ be locally small categories and $L:\mathcal{D}\to\mathcal{C}$ be some functor. If $\commaCat{L}{X}$ has a terminal object for every object $X$ of $\mathcal{C}$, say $(\tilde{X},\varepsilon_X)$, then $L$ has a right adjoint functor $R:\mathcal{C}\to\mathcal{D}$ defined by:
 \begin{itemize}
 \item $RX$ to be equal to $\tilde{X}$, for every object $X$ in $\mathcal{C}$
 \item $Rf$ to be equal to the unique morphism in $\commaCat{L}{Y}$ from $(RX,f\circ\varepsilon_X)$ to $(RY,\varepsilon_Y)$, for every $f\in\mathcal{C}(X,Y)$.
@@ -449,6 +449,125 @@ Y&LRY\ar[l,"\varepsilon_Y"']
 which means exactly that $\varepsilon$ is a natural transformation.\qedhere
 \end{itemize}
 \end{proof}
+\begin{example} Let $\mathcal{C}$ a category that has binary coproducts and binary products, then:
+\begin{center}
+\begin{tikzcd}
+\mathcal{C}\times\mathcal{C}\ar[d,bend right=50,shift right,"\amalg"'{name=coprod}]\ar[d,bend left=50,shift left,"\times"{name=prod}]\\[2em]
+\mathcal{C}\ar[u,"\Delta"description,""{name=diagL}, ""'{name=diagR}]
+\ar[from=coprod,to=diagL,"\dashv"description,phantom]
+\ar[from=diagR,to=prod,"\dashv"description,phantom]
+\end{tikzcd}
+\end{center}
+where $\Delta$ is the diagonal functor taking $X$ to $(X,X)$.
+\end{example}
+\begin{proof} We will prove the first adjunction using the definition and the second one using the characterization in Corollary~\ref{cor:adj_construction}.
+\begin{itemize}
+\item Let $(A_1,A_2)\in\mathcal{C}\times\mathcal{C}$ and let $A_1\amalg A_2$, together with the maps \[\imath_1:A_1\hookrightarrow A_1\amalg A_2\text{ and }\imath_2:A_2\hookrightarrow A_1\amalg A_2\]
+be their coproduct. Then, for every $(q_1,q_2)\in\mathcal{C}\times\mathcal{C}\big((A_1,A_2),(X,X)\big)$ the universal property of the coproduct asserts the existance of a unique map $[q_1,q_2]:A_1\amalg A_2\to X$ such that $[q_1,q_2]\circ\imath_1=q_1$ and $[q_1,q_2]\circ\imath_2=q_2$, i.e. the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+A_1\ar[r,hook,"\imath_1"]\ar[dr,"q_1"']&A_1\amalg A_2\ar[d,"{[}q_1{,}q_2{]}",near start]&A_2\ar[l,hook',"\imath_2"']\ar[dl,"q_2"]\\[1em]
+&X
+\end{tikzcd}
+\end{center}
+Moreover, for $(p_1,p_2)\in\mathcal{C}\times\mathcal{C}\big((B_1,B_2),(A_1,A_2)\big)$, let $p_1\amalg p_2:B_1\amalg B_2\to A_1\amalg A_2$ be the map $[\imath^A_1\circ p_1,\imath^A_2\circ p_2]$, i.e. the unique map making the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+A_1\ar[r,hook,"\imath^A_1"]&A_1\amalg A_2&A_2\ar[l,hook',"\imath^A_2"']\\[1em]
+B_1\ar[r,hook,"\imath^B_1"]\ar[u,"p_1"']&B_1\amalg B_2\ar[u,"p_1\amalg p_2"]&B_2\ar[l,hook',"\imath^B_2"']\ar[u,"p_2"]
+\end{tikzcd}
+\end{center}
+This defines a functor $L:\mathcal{C}\times\mathcal{C}\to\mathcal{C}$ taking $(A_1,A_2)$ to $A_1\amalg A_2$ and $(p_1,p_2)\in\mathcal{C}\times\mathcal{C}\big((B_1,B_2),(A_1,A_2)\big)$ to $p_1\amalg p_2$. We will prove that $R:\mathcal{C}\to\mathcal{C}\times\mathcal{C}$ taking $X$ to $(X,X)$ and $f\in\mathcal{C}(X,Y)$ to $(f,f):(X,X)\to (Y,Y)$ is the right adjoint of $L$. For this we will construct natural transformations $\psi,\varphi$ as in the Definition~\ref{def:adj}. Let
+\[\psi_{(A_1,A_2),X}:\mathcal{C}(A_1\amalg A_2,X)\to\mathcal{C}\times\mathcal{C}\big((A_1,A_2),(X,X)\big)\]
+be the map taking $g$ to $(g\circ\imath_1,g\circ\imath_2)$. And let
+\[\varphi_{(A_1,A_2),X}:\mathcal{C}\times\mathcal{C}\big((A_1,A_2),(X,X)\big)\to\mathcal{C}(A_1\amalg A_2,X)\]
+be the map taking $(q_1,q_2)$ to $[q_1,q_2]$. It is easy to see that $\psi_{(A_1,A_2),X}$ and $\varphi_{(A_1,A_2),X}$ are inverses of each other, so it remains to show that one of them, say $\varphi_{(A_1,A_2),X}$ is natural in $\big((A_1,A_2),X\big)\in(\mathcal{C}\times\mathcal{C})^{\mathrm{op}}\times\mathcal{C}$. Let
+\[(p_1,p_2)\in\mathcal{C}\times\mathcal{C}\big((B_1,B_2),(A_1,A_2)\big)\text{ and }f\in\mathcal{C}(X,Y)\]
+then the commutativity of the two diagrams defining $[q_1,q_2]$ and $p_1\amalg p_2$ and the uniqueness of $[q_1\circ p_1,q_2\circ p_2]$ gives:
+\[[q_1,q_2]\circ p_1\amalg p_2=[q_1\circ p_1,q_2\circ p_2]\]
+which is exactly the first naturality condition we wanted:
+\begin{center}
+\begin{tikzcd}
+(A_1,A_2)&&\mathcal{C}(A_1\amalg A_2,X)\ar[d,"-\circ p_1\amalg p_2"']&[1.3cm]\mathcal{C}\times\mathcal{C}\big((A_1,A_2),(X,X)\big)\ar[l,"\varphi_{(A_1{,}A_2){,}X}"']\ar[d,"-\circ(p_1{,}p_2)"]\\[1em]
+(B_1,B_2)\ar[u,"(p_1{,}p_2)"]&&\mathcal{C}(B_1\amalg B_2,X)&\mathcal{C}\times\mathcal{C}\big((B_1,B_2),(X,X)\big)\ar[l,"\varphi_{(B_1{,}B_2){,}X}"']
+\end{tikzcd}
+\end{center}
+Moreover, since $[f\circ p_1,f\circ p_2]$ is unique, it is true that:
+\[f\circ[q_1,q_2]=[f\circ q_1,f\circ q_2]\]
+which is the second naturality condition we wanted:
+\begin{center}
+\begin{tikzcd}
+X\ar[d,"f"']&&\mathcal{C}(A_1\amalg A_2,X)\ar[d,"f\circ-"']&[1.3cm]\mathcal{C}\times\mathcal{C}\big((A_1,A_2),(X,X)\big)\ar[l,"\varphi_{(A_1{,}A_2){,}X}"']\ar[d,"(f{,}f)\circ-"]\\[1em]
+Y&&\mathcal{C}(A_1\amalg A_2,Y)&\mathcal{C}\times\mathcal{C}\big((A_1,A_2),(Y,Y)\big)\ar[l,"\varphi_{(A_1{,}A_2){,}Y}"']
+\end{tikzcd}
+\end{center}
+\item For the second adjunction, let $L=\Delta:\mathcal{C}\to\mathcal{C}\times\mathcal{C}$ taking $A$ to $(A,A)$ and $p\in\mathcal{C}(B,A)$ to $(p,p):(B,B)\to(A,A)$. We will now try to construct its right adjoint, using Corollary~\ref{cor:adj_construction}. Let $X=(X_1,X_2)$ be any object of $\mathcal{C}\times\mathcal{C}$ and let $(\tilde{X},\varepsilon_X)$ be a terminal object in the category $\commaCat{L}{(X_1,X_2)}$, which means that $\varepsilon_X\in\mathcal{C}\times\mathcal{C}\big((\tilde{X},\tilde{X}),(X_1,X_2)\big)$, i.e. $\varepsilon_X=(\varepsilon^X_1,\varepsilon^X_2)$ for some maps $\varepsilon^X_1:\tilde{X}\to X_1$ and $\varepsilon^X_2:\tilde{X}\to X_2$. Then, the universal property $(\tilde{X},\varepsilon_X)$ should satisfy is the following:
+
+For every object $A$ and every map $(g_1,g_2):(A,A)\to(X_1,X_2)$, there exists a unique map $\left<g_1,g_2\right>:A\to\tilde{X}$ such that $(g_1,g_2)=(\varepsilon^X_1,\varepsilon^X_2)\circ(\left<g_1,g_2\right>,\left<g_1,g_2\right>)$, which is exactly the universal property that $X_1\times X_2$, together with the projection maps $\pi_1,\pi_2$ satisfy:
+\begin{center}
+\begin{tikzcd}
+&A\ar[dl,"g_1"']\ar[dr,"g_2"]\ar[d,"\left<g_1{,}g_2\right>",near end]\\[1em]
+X_1&X_1\times X_2\ar[l,"\pi_1",two heads]\ar[r,"\pi_2"',two heads]&X_2
+\end{tikzcd}
+\end{center}
+Moreover, let $(f_1,f_2)\in\mathcal{C}\times\mathcal{C}\big((X_1,X_2),(Y_1,Y_2)\big)$. Then, the morphism $f_1\times f_2:=\left<f_1\circ\pi^X_1,f_2\circ\pi^X_2\right>$ is the unique morphism in $\commaCat{L}{(Y_1,Y_2)}$
+\[\big(X_1\times X_2,(f_1\circ\pi^X_1,f_2\circ\pi^X_2)\big)\to\big(Y_1\times Y_2,(\pi^Y_1,\pi^Y_2)\big)\]
+since the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+X_1\ar[d,"f_1"']&X_1\times X_2\ar[l,two heads,"\pi^X_1"']\ar[r,two heads,"\pi^X_2"]\ar[d,"f_1\times f_2"]&X_2\ar[d,"f_2"]\\[1em]
+Y_1&Y_1\times Y_2\ar[l,two heads,"\pi^Y_1"']\ar[r,two heads,"\pi^Y_2"]&Y_2
+\end{tikzcd}
+\end{center}
+This means that the functor $\times:\mathcal{C}\times\mathcal{C}\to\mathcal{C}$ taking $(X_1,X_2)$ to $X_1\times X_2$ and $(f_1,f_2)$ to $f_1\times f_2$ is the right adjoint of $\Delta$.\qedhere
+\end{itemize}
+\end{proof}
+\begin{example} Let $\mathcal{C}$ a locally small category that has binary products and strict initial objects. Moreover, let $\mathcal{C}$ have objects $X_1,X_2$ and $Y$, such that $\mathcal{C}(X_1\times X_2,Y)$ has at least two elements $h_1,h_2$. Then the functor $\times:\mathcal{C}\times\mathcal{C}\to\mathcal{C}$, as defined above, does not have a right adjoint.
+\end{example}
+\begin{proof} An initial object $\varnothing$ is called a strict initial object, if the only morphisms into $\varnothing$ are isomorphisms, i.e. $A\to\varnothing$ implies $A\cong\varnothing$. We are going to use the following two facts:
+\begin{itemize}
+\item If $\varnothing$ is a strict initial object and $A$ any object, then $\varnothing\times A\cong A\times\varnothing\cong\varnothing$.
+\item If $\top$ is a terminal object and $A$ any object, then $\top\times A\cong A\times\top\cong A$.
+\end{itemize}
+Suppose that the functor $\times:\mathcal{C}\times\mathcal{C}\to\mathcal{C}$ has a right adjoint sending $Y$ to $(Y_1,Y_2)$. Then, the characterization of Corollary~\ref{cor:adj_construction} requires $Y_1,Y_2$ to satisfy the following universal property:
+
+There exists some $\varepsilon_Y:Y_1\times Y_2\to Y$ that satisfies the following: For every $(A,B)\in\mathcal{C}\times\mathcal{C}$ and every morphism $f:A\times B\to Y$, there exist unique morphisms $p:A\to Y_1$ and $q:B\to Y_2$ such that $f=\varepsilon_Y\circ(p\times q)$, i.e. the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+&A\times B\ar[dl,"\forall f"']\ar[d,"p\times q"]&&(A,B)\ar[d,"\exists_{!}(p{,}q)"]\\
+Y&Y_1\times Y_2\ar[l,"\varepsilon_Y"]&&(Y_1,Y_2)
+\end{tikzcd}
+\end{center}
+For $A\cong\varnothing$, $A\times B\cong\varnothing$ so there is a unique map $\phi:A\times B\to Y$. The universal property gives us unique maps $\phi:A\to Y_1$ and $q:B\to Y_2$ such that $\phi=\varepsilon\circ(\phi\times q)$. But this equation is true for every choice of $q:B\to Y_2$, so for $q$ to be unique, there should be a unique map $B\to Y_2$ for every object $B$, which means that $Y_2\cong\top$. Then, choosing $B\cong\varnothing$ the same argument gives $Y_1\cong\top$. So, finally we have $Y_1\times Y_2\cong\top$, which means that there exists a unique map $t:X_1\times X_2\to Y_1\times Y_2$. For the maps $h_1,h_2:X_1\times X_2\to Y$ the universal property gives $h_1=\varepsilon_Y\circ t=h_2$, which is against the choice of $h_1,h_2$. This proves that the right adjoint cannot exist.
+\end{proof}
+\begin{remark} If we disregard the trivial cases, where the category $\mathcal{C}$ is so small that can afford the right adjoint to always be a terminal object, the above example shows that if a category has binary products and initial objects and its initial objects are strict, then there is not right adjoint to $\times$. Many categories we are interested in do have these properties, like $\mathrm{Set}$ and $\mathrm{Top}$, where the initial object is the empty set, which is not the codomain of any maps, except for the empty map $\emptyset:\emptyset\to\emptyset$.
+\end{remark}
+Although we failed to continue the line of adjunctions $\amalg\dashv\Delta\dashv\times$, there is a way to (sometimes) construct a right adjoint of the functor $-\times A:\mathcal{C}\to\mathcal{C}$, for some fixed object $A$ of $\mathcal{C}$.
+\begin{definition} Let $\mathcal{C}$ be a locally small category that has binary products and $A$ be some object of $\mathcal{C}$. Let $-\times A:\mathcal{C}\to\mathcal{C}$ be the functor defined by
+$X\mapsto X\times A$ and $f\mapsto f\times1_A$. Its right adjoint, if it exists, is called an \emph{exponential object}, the counit of the adjunction is called an \emph{evaluation map} and they are denoted respectively by:
+\[X^A\qquad\text{ and }\qquad\mathrm{ev}:X^A\times A\to X\]
+\end{definition}
+\begin{remark} The exponential object together with the evaluation map $(X^A,\mathrm{ev})$ satisfy the following universal property (Corollary~\ref{cor:adj_construction}): For every object $Z$ and every morphism $g:Z\times A\to X$, there exists a unique morphism $g^{\#}:Z\to X^A$ such that $g=\mathrm{ev}\circ(g^{\#}\times1_A)$, i.e. the following diagram commutes:
+\begin{center}
+\begin{tikzcd}
+&Z\times A\ar[dl,"g"']\ar[d,"g^{\#}\times1_A"]&&Z\ar[d,"g^{\#}"]\\
+X&X^A\times A\ar[l,"\mathrm{ev}"']&&X^A
+\end{tikzcd}
+\end{center}
+\end{remark}
+\begin{proposition} The category $\mathrm{Set}$ has all exponential objects.
+\end{proposition}
+\begin{proof} Let $A,X$ be any sets. We will prove that the set $\mathrm{Set}(A,X)$ together with the function $\mathrm{eval}:\mathrm{Set}(A,X)\times A\to X$ taking $(f,a)$ to $f(a)$ is an exponential object. Let $Z$ be any set and $g:Z\times A\to X$ be any function. Let $g^{\#}(z)=g_z\in\mathrm{Set}(A,X)$, for any $z\in Z$. We want the following diagram to commute:
+\begin{center}
+\begin{tikzcd}
+&Z\times A\ar[dl,"g"']\ar[d,"g^{\#}\times1_A"]&&Z\ar[d,"g^{\#}"]\\
+X&\mathrm{Set}(A,X)\times A\ar[l,"\mathrm{eval}"']&&\mathrm{Set}(A,X)
+\end{tikzcd}
+\end{center}
+This imposes the following condition for every $(z,a)\in Z\times A$:
+\[g(z,a)=\mathrm{eval}(g^{\#}(z),1_A(a))=\mathrm{eval}(g_z,a)=g_z(a)\]
+so, there is exactly one choice for the function $g_z$ that makes the diagram commute, which is to satisfy $g_z(a)=g(z,a)$ for every input $a\in A$.
+\end{proof}
 \section{Compact-Open Topology}
 
 
@@ -463,21 +582,21 @@ which means exactly that $\varepsilon$ is a natural transformation.\qedhere
 %\item For every $n\geq0$ there exists a pushout diagram in the category of topological spaces:
 %\begin{center}
 %\begin{tikzcd}
-%\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}S^{n-1}\ar[r,"\coprod_e\phi_e"]\ar[d,hook,"\coprod_ej_e"']\ar[dr,phantom, very near start,"\ulcorner"]&[4em]X_{n-1}\ar[d,hook,"i_n"]\\[2em]
-%\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}D^n\ar[r,"\coprod_e\Phi_e"']&X_n\\
+%\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}S^{n-1}\ar[r,"\coprod_e\varphi_e"]\ar[d,hook,"\coprod_ej_e"']\ar[dr,phantom, very near start,"\ulcorner"]&[4em]X_{n-1}\ar[d,hook,"i_n"]\\[2em]
+%\displaystyle\coprod_{e\in\pi_0(X_n\setminus{X_{n-1}})}D^n\ar[r,"\coprod_e\varphi_e"']&X_n\\
 %\end{tikzcd}
 %\end{center}
 %where $j_e:S^{n-1}\to D^n$ is the usual inclusion map and $i_n:X_{n-1}\to X_n$ is the inclusion map given by the filtration.
 %\end{b_item}
 %\end{definition}
 %
-%A filtration of a topological space $X$, making $X$ a CW-complex is called a \ul{CW-structure} of $X$. Moreover, given a filtration of $X$ like in the above definition, the sets $\Phi_e\large({(D^n)}^{\circ}\large)$ (resp. $\Phi_e(D^n)$) are called the $n$-dimensional \ul{open} (resp. \ul{closed}) \ul{cells} of this CW-structure. Recall the following known facts regarding the dependencies between CW-complexes, structures and cells.
+%A filtration of a topological space $X$, making $X$ a CW-complex is called a \ul{CW-structure} of $X$. Moreover, given a filtration of $X$ like in the above definition, the sets $\varphi_e\large({(D^n)}^{\circ}\large)$ (resp. $\varphi_e(D^n)$) are called the $n$-dimensional \ul{open} (resp. \ul{closed}) \ul{cells} of this CW-structure. Recall the following known facts regarding the dependencies between CW-complexes, structures and cells.
 %
 %\begin{notes}
 %\begin{i_enum}
 %\item A CW-complex $X$ can have more than one CW-structures, even structures having different number of $n$-dimensional open cells each.
-%\item For a particular CW-structure of $X$, the maps $\phi_e$ and $\Phi_e$ are not predetermined by the structure, which means that there can be more than one choices for them. For example, one could always precompose $\Phi_e$ with a disc homeomorphism.
-%\item Even if the maps $\phi_e$ and $\Phi_e$ can vary, the open and closed cells of a CW-structure are part of the structure (i.e.\ independent of the choice of the maps)
+%\item For a particular CW-structure of $X$, the maps $\varphi_e$ and $\varphi_e$ are not predetermined by the structure, which means that there can be more than one choices for them. For example, one could always precompose $\varphi_e$ with a disc homeomorphism.
+%\item Even if the maps $\varphi_e$ and $\varphi_e$ can vary, the open and closed cells of a CW-structure are part of the structure (i.e.\ independent of the choice of the maps)
 %\end{i_enum} \end{notes}
 %
 %\begin{remarks}
