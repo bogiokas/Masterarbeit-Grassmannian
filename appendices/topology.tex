@@ -543,11 +543,11 @@ For $A\cong\varnothing$, $A\times B\cong\varnothing$ so there is a unique map $\
 \begin{remark} If we disregard the trivial cases, where the category $\mathcal{C}$ is so small that can afford the right adjoint to always be a terminal object, the above example shows that if a category has binary products and initial objects and its initial objects are strict, then there is not right adjoint to $\times$. Many categories we are interested in do have these properties, like $\mathrm{Set}$ and $\mathrm{Top}$, where the initial object is the empty set, which is not the codomain of any maps, except for the empty map $\emptyset:\emptyset\to\emptyset$.
 \end{remark}
 Although we failed to continue the line of adjunctions $\amalg\dashv\Delta\dashv\times$, there is a way to (sometimes) construct a right adjoint of the functor $-\times A:\mathcal{C}\to\mathcal{C}$, for some fixed object $A$ of $\mathcal{C}$.
-\begin{definition} Let $\mathcal{C}$ be a locally small category that has binary products and $A$ be some object of $\mathcal{C}$. Let $-\times A:\mathcal{C}\to\mathcal{C}$ be the functor defined by
+\begin{definition}\label{def:exp_obj} Let $\mathcal{C}$ be a locally small category that has binary products and $A$ be some object of $\mathcal{C}$. Let $-\times A:\mathcal{C}\to\mathcal{C}$ be the functor defined by
 $X\mapsto X\times A$ and $f\mapsto f\times1_A$. Its right adjoint, if it exists, is called an \emph{exponential object}, the counit of the adjunction is called an \emph{evaluation map} and they are denoted respectively by:
 \[X^A\qquad\text{ and }\qquad\mathrm{ev}:X^A\times A\to X\]
 \end{definition}
-\begin{remark} The exponential object together with the evaluation map $(X^A,\mathrm{ev})$ satisfy the following universal property (Corollary~\ref{cor:adj_construction}): For every object $Z$ and every morphism $g:Z\times A\to X$, there exists a unique morphism $g^{\#}:Z\to X^A$ such that $g=\mathrm{ev}\circ(g^{\#}\times1_A)$, i.e. the following diagram commutes:
+\begin{remark}\label{rem:universal_prop_exp} The exponential object together with the evaluation map $(X^A,\mathrm{ev})$ satisfy the following universal property (Corollary~\ref{cor:adj_construction}): For every object $Z$ and every morphism $g:Z\times A\to X$, there exists a unique morphism $g^{\#}:Z\to X^A$ such that $g=\mathrm{ev}\circ(g^{\#}\times1_A)$, i.e. the following diagram commutes:
 \begin{center}
 \begin{tikzcd}
 &Z\times A\ar[dl,"g"']\ar[d,"g^{\#}\times1_A"]&&Z\ar[d,"g^{\#}"]\\
@@ -555,7 +555,12 @@ X&X^A\times A\ar[l,"\mathrm{ev}"']&&X^A
 \end{tikzcd}
 \end{center}
 \end{remark}
-\begin{proposition} The category $\mathrm{Set}$ has all exponential objects.
+The name and the notation of exponential objects is justified if we examine how they look in $\mathrm{Set}$:
+\begin{proposition} In the category $\mathrm{Set}$ there exist all exponential objects and:
+\begin{itemize}
+\item $X^A$ is the set $\mathrm{Set}(A,X)$.
+\item $\mathrm{ev}:X^A\times A\to X$ is the function taking $(f,a)$ to $f(a)$.
+\end{itemize}
 \end{proposition}
 \begin{proof} Let $A,X$ be any sets. We will prove that the set $\mathrm{Set}(A,X)$ together with the function $\mathrm{eval}:\mathrm{Set}(A,X)\times A\to X$ taking $(f,a)$ to $f(a)$ is an exponential object. Let $Z$ be any set and $g:Z\times A\to X$ be any function. Let $g^{\#}(z)=g_z\in\mathrm{Set}(A,X)$, for any $z\in Z$. We want the following diagram to commute:
 \begin{center}
@@ -568,7 +573,117 @@ This imposes the following condition for every $(z,a)\in Z\times A$:
 \[g(z,a)=\mathrm{eval}(g^{\#}(z),1_A(a))=\mathrm{eval}(g_z,a)=g_z(a)\]
 so, there is exactly one choice for the function $g_z$ that makes the diagram commute, which is to satisfy $g_z(a)=g(z,a)$ for every input $a\in A$.
 \end{proof}
+
+Everything we explored in this section has its dual analog. From the Yoneda Lemma to the alternative characterization of the right adjoint. It would be a good exercise for the reader to dualize everything and eventually get a characterization for the left adjoint of a given functor. The reason we chose to present the results in this asymmetric way is that sometimes this perfect symmetry on the categorical level can be misleading. The categories we are usually interested in are not always symmetrical under dualization. For example, we could categorically dualize the Definition~\ref{def:exp_obj} to get the notion of the \emph{co-exponential object}, but then the categories we are interested in, like $\mathrm{Set}$ and $\mathrm{Top}$ do not have co-exponential objects at all.
+
 \section{Compact-Open Topology}
+In this section we first define a natural way to topologize the set $\mathrm{Top}(A,X)$ and then we are going to restrict our attention to only some good topological spaces $A$, for which there exist the exponential objects $X^A$ for every $X$, i.e. the evaluation map and $g^{\#}$ are continuous. We are going to follow the beginning of Chapter~11 of the book \cite{top_rotman}.
+
+\begin{definition} Let $A,X$ be two topological spaces. For every $A_0\subseteq A$ and $X_0\subseteq X$, define the following set of continuous functions:
+\[S(A_0,X_0):=\big\{f\in\mathrm{Top}(A,X):f(A_0)\subseteq X_0\big\}\]
+The \emph{compact-open topology} on $\mathrm{Top}(A,X)$ is the topology generated by the sub-basis:
+\[\mathcal{B}:=\big\{S(K,U):K\subseteq A\text{ compact},\ U\subseteq X\text{ open}\big\}\]
+\end{definition}
+
+In this section we are going to be interested mostly in locally compact Hausdorff topological spaces:
+\begin{definition} A topological space $X$ is called \emph{locally compact}, if every $x$ has a compact neighborhood. That is, for every $x\in X$ there exists some open $U$ and compact $K$ such that
+\[x\in U\subseteq K\]
+\end{definition}
+
+\begin{lemma}\label{lem:smaller_compact_nbh} Let $X$ be a locally compact, Hausdorff topological space. Moreover, let $x\in X$ and $U$ an open neighborhood of $x$. Then, there exists some open neighborhood $V$ of $x$, such that $V^-$ is compact and:
+\[x\in V\subseteq V^-\subseteq U\]
+\end{lemma}
+\begin{proof} Let $x$ be any point of $X$. Since $X$ is locally compact, there exists some compact set $K$, such that $x\in K^{\circ}$. Define the open set $\tilde{U}:=U\cap K^{\circ}$. Since $X$ is Hausdorff, every compact subset of $X$ is also closed, so $(K^{\circ})^-=K$. This means that $\tilde{U}^-\subseteq U^-\cap K\subseteq K$. Since $X$ is Hausdorff, every closed subset of some compact set is also compact, so $\tilde{U}^-$ is compact. This gives us that $\partial\tilde{U}$ is also compact as a closed subset of $\tilde{U}^-$.
+
+\begin{minipage}{.5\linewidth}
+Since $X$ is Hausdorff, there exist open sets $A,B\subseteq X$ such that $A\cap B=\emptyset$, $x\in A$ and $\partial\tilde{U}\subseteq B$. Let
+\[\tilde{A}:=A\cap\tilde{U}\text{ , }\tilde{B}:=B\cup\tilde{U}^c\]
+and notice that $\partial\tilde{U}\subseteq B$ means that $\tilde{B}=B\cup(\tilde{U}^c)^{\circ}$ and thus $\tilde{B}$ is also open. So, $\tilde{A},\tilde{B}$ are also two open disjoint sets separating $x$ from $\partial\tilde{U}$. This gives:
+\[x\in\tilde{A}\subseteq\tilde{A}^-\subseteq\tilde{B}^c=B^c\cap\tilde{U}\subseteq\tilde{U}\subseteq U\]
+\end{minipage}%\hfill
+\begin{minipage}{.5\linewidth}
+\begin{center}
+\begin{tikzpicture}
+%	\draw[white] (-2,-2)--(5,5);
+	\coordinate (x0) at (0,0) {};
+	\coordinate (x1) at (3.0,0.0) {};
+	\coordinate (x2) at (3.5,3.5) {};
+	\coordinate (x3) at (0.0,3.0) {};
+	\coordinate (x) at (1.5,1.5) {};
+	\node[bag={1.1}{1.4}{1.0cm}] at (x) {};
+	\node[bag={0.5}{0.8}{-0.5cm}] at (x) {};
+	\node[circle, thick, draw=black, fill, inner sep=0, outer sep=0, minimum height=0.1cm] at (x) {};
+	\draw[dashed] (x0)--(x1)--(x2)--(x3)--cycle;
+	\begin{pgfonlayer}{background}
+		\draw[bubble={0.7cm}{0.02cm}] plot[closed hobby] coordinates {(x0) (x1) (x2) (x3)};
+	\end{pgfonlayer}
+	\node at (4.6,1.5) {$X$};
+	\node at (3.7,2.8) {$\partial\tilde{U}$};
+	\node[right] at (x) {$\tilde{A}$};
+	\node[fill=transparent!2,opacity=0.8] at (1.6, 3.3) {$\tilde{B}$};
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+which proves the assertion for $V=\tilde{A}$.
+\end{proof}
+
+\begin{theorem}\label{thm:top_exponential} Let $A$ be a locally compact, Hausdorff topological space. Then all exponential objects $(-)^A$ exist and:
+\begin{itemize}
+\item $X^A$ is the space $\mathrm{Top}(A,X)$ equipped with the compact-open topology.
+\item $\mathrm{ev}:X^A\times A\to X$ is the map taking $(f,a)$ to $f(a)$.
+\end{itemize}
+\end{theorem}
+\begin{proof} We are going to prove this in the following two steps:
+\begin{enumerate}
+\item The first step is to show that the map $\mathrm{ev}:\mathrm{Top}(A,X)\times A\to X$ is continuous. Let $(f,a)\in\mathrm{Top}(A,X)\times A$ and let $U\subseteq X$ be an open neighborhood of $\mathrm{ev}(f,a)=f(a)\in X$. Since $f$ is continuous, $f^{-1}(U)$ is open in $A$. Since $A$ is locally compact Hausdorff, we can use lemma~\ref{lem:smaller_compact_nbh} to find an open set $V$ such that $V^-$ is compact and $x\in V\subseteq V^-\subseteq f^{-1}(U)$. So, the set $W:=S(V^-,U)\times V$ is an open neighborhood of $(f,a)\in\mathrm{Top}(A,X)\times A$ and for any $(f',a')\in W$ we have:
+\[\mathrm{ev}(f',a')=f'(a')\in f'(V)\subseteq f'(V^-)\subseteq U\]
+which means that $\mathrm{ev}(W)\subseteq U$ and thus proves that $\mathrm{ev}$ is continuous.
+\item The second step is to show that these choices for $X^A$ and $\mathrm{ev}$ satisfy the universal property of the remark~\ref{rem:universal_prop_exp}. Let $Z$ be any topological space and let $g:Z\times A\to X$ to be any continuous map. We then define $g^{\sharp}:Z\to\mathrm{Top}(A,X)$ to be the map taking $z$ to $g_z\in\mathrm{Top}(A,X)$, where $g_z$ is defined to be the unique map for which it is true that $g_z(a)=g(z,a)$ for every $a\in A$. Let us further divide the proof into steps:
+\begin{enumerate}
+\item First, we should show that $g^{\sharp}$ is well defined, i.e. that $g_z$ is a continuous function from $A$ to $X$, for every $z\in Z$. It is clear that $g_z$ has the right domain and codomain, so we only have to show that it is indeed continuous. Let us fix some $z\in Z$ and define $i_z:A\to Z\times A$ to be the function taking $a$ to $(z,a)$. This is continuous, as the composition of the isomorphism $\pi_2^{-1}:A\to\{z\}\times A$ and the inclusion $\{z\}\times A\to Z\times A$. So, $g_z$ is also continuous, as it is the composition $g_z=g\circ i_z$.
+\item Then, we should show that $g^{\sharp}$ is a continuous map. For that, fix some $z\in Z$ and let $S(K,U)\subseteq\mathrm{Top}(A,X)$ be a subbasic open neighborhood of $g^{\sharp}(z)$. This means that $K\subseteq A$ is compact, $U\subseteq X$ is open and $g_z(K)\subseteq U$, i.e. $g(\{z\}\times K)\subseteq U$. Since $g$ is continuous, $g^{-1}(U)\subseteq Z\times A$ is open. So, for now we know that $\{z\}\times K\subseteq g^{-1}(U)$ and our next goal is to find some open neighborhood $V$ of $z$ such that $V\times K\subseteq g^{-1}(U)$. For every $k\in K$ there exists some subbasic open set $V_k\times A_k\subseteq g^{-1}(U)$ containing $k$. This means that $\{z\}\times K\subseteq\bigcup_{k\in K}V_k\times A_k$ and since $\{z\}\times K\cong K$ is compact, there exists a finite set of indices $\{k_1,\ldots,k_n\}$ such that $\{z\}\times K\subseteq\bigcup_{i=1}^nV_{k_i}\times A_{k_i}$. Define $V:=\bigcap_{i=1}^nV_{k_i}$ and notice that for every $k'\in K$ there exists some $i$ such that $V\times\{k'\}\subseteq V_{k_i}\times A_{k_i}$. It is the same $i$ for which $(z,k')\in V_{k_i}\times A_{k_i}$. This means that $V\times K\subseteq g^{-1}(U)$ and so for every $z'\in V$ we have:
+\[g_{z'}(K)=g(\{z'\}\times K)\subseteq g(V\times K)\subseteq U\]
+and thus $g^{\sharp}(V)\subseteq S(K,U)$, which proves that $g^{\sharp}$ is continuous.\qedhere
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+\begin{corollary}\label{cor:exp_obj_prop} Let $A$ be a locally compact, Hausdorff topological space and $X$ any topological space. If we topologize $\mathrm{Top}(A,X)$ with the compact-open topology, then the map $\mathrm{ev}:\mathrm{Top}(A,X)\times A\to X$ taking $(f,a)$ to $f(a)$ is continuous. Moreover, for every topological space $Z$ and any function $g:Z\times A\to X$, we can define the function $g^{\sharp}:Z\to\mathrm{Top}$ taking $z$ to $g_z:A\to X$ with $g_z(a)=g(z,a)$. It is then true that $g$ is continuous if and only if $g^{\sharp}$ is continuous.
+\end{corollary}
+\begin{proof} We already proved in lemma~\ref{lem:smaller_compact_nbh} that $\mathrm{ev}$ is continuous and that the continuity of $g$ implies the continuity of $g^{\sharp}$. We only have to show that if $g^{\sharp}$ is continuous, $g$ is also continuous, which is true, since $g=\mathrm{ev}\circ(g^{\sharp}\times1_A)$.
+\end{proof}
+
+We have now proved that there exist some sufficient conditions for $A$ in order for the sets $\mathrm{Top}(A,X)$ to have a nice topology, for all $X$. An interesting case arises when $X=A$ and when we restrict ourselves to the topological subspace of the automorphisms of $A$, denoted by $\mathrm{Hom}(A)$ or $\mathrm{Aut}(A)$, i.e. the set of all invertible bicontinuous functions from $A$ to $A$, topologised as a subspace of $\mathrm{Top}(A,A)$. In this set, there exists a natural binary operation, namely the composition:
+\[\circ:\mathrm{Hom}(A)\times\mathrm{Hom}(A)\to\mathrm{Hom}(A)\]
+which is also continuous in the compact-open topology. It is only natural to ask ourselves if $\mathrm{Hom}(A)$ equipped with the compact-open topology, together with the composition is a topological group. For that we only need to check the continuity of the inverse function:
+\[(-)^{-1}:\mathrm{Hom}(A)\to\mathrm{Hom}(A)\]
+Interestingly enough this is not true in general, as exhibited in \cite{counterexample}. Based on their counterexample, we present a somewhat simpler construction in \ref{ex:counterexample} around the same pathology, also involving fiber bundles. Our goal here is to finish this chapter by giving some sufficient conditions for $\Hom(A)$ to be a topological group. The proof is based on the proof of Theorem~4 in \cite{top_group}. We first need the following definition.
+
+\begin{definition} A topological space $X$ is called \emph{locally connected}, if every $x$ has an open connected neighborhood $U$.
+\end{definition}
+\begin{remark} Notice that a connected space is not always locally connected.
+\end{remark}
+
+\begin{theorem}\label{thm:inverse} Let $A$ be a locally connected, locally compact Hausdorff space and let $\mathrm{Hom}(A)$ be topologised with the compact-open topology. Then the inverse function:
+\[(-)^{-1}:\mathrm{Hom}(A)\to\mathrm{Hom}(A)\]
+is continuous.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %\section{CW Complexes}

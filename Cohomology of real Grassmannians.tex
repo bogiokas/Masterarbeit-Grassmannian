@@ -34,6 +34,35 @@
 \usetikzlibrary{positioning} %coordinates positioning
 \usetikzlibrary{3d,calc} %coordinate calculations & 3d
 \usetikzlibrary{backgrounds} %bg of tikzpicture
+\usetikzlibrary{calc}
+\usetikzlibrary{hobby}
+\tikzset{%
+	bag/.style n args={3}{% {minRand}{maxRand}{bleed}
+		append after command={%
+			\pgfextra{%
+				\let\thisNode\tikzlastnode
+				\foreach\a in {0,60,...,300} {%
+					\pgfmathparse{#1 + (#2 - #1)*random()}
+					\coordinate (\thisNode\a) at ($(\thisNode) + (\a:\pgfmathresult)$);
+					\coordinate (\thisNode\a-Bleed) at ($(\thisNode\a) + (\a:#3)$);
+				}
+				\ifdim#3>0cm\relax%
+				\filldraw[draw=white,thick,closed hobby,inner color=transparent!10, outer color=transparent!0] plot coordinates {(\thisNode0-Bleed) (\thisNode60-Bleed) (\thisNode120-Bleed) (\thisNode180-Bleed) (\thisNode240-Bleed) (\thisNode300-Bleed)};
+				\draw[closed hobby, fill=white] plot coordinates {(\thisNode0) (\thisNode60) (\thisNode120) (\thisNode180) (\thisNode240) (\thisNode300)};
+				\else%
+				\filldraw[closed hobby,inner color=transparent!0, outer color=transparent!3] plot coordinates {(\thisNode0) (\thisNode60) (\thisNode120) (\thisNode180) (\thisNode240) (\thisNode300)};
+				\filldraw[draw=white,thick,closed hobby, fill=white] plot coordinates {(\thisNode0-Bleed) (\thisNode60-Bleed) (\thisNode120-Bleed) (\thisNode180-Bleed) (\thisNode240-Bleed) (\thisNode300-Bleed)};
+				\fi
+			}
+		}
+	},%
+	bubble/.style 2 args={% {buffer}{linewidth}
+		preaction={draw,line width=#1 + #2},
+		white,fill,draw,line width=#1,
+	},%
+}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  GEOMETRY  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage[Glenn]{fncychap} %fancy chapters, with option Glenn
