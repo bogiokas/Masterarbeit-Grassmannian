@@ -586,7 +586,7 @@ The \emph{compact-open topology} on $\mathrm{Top}(A,X)$ is the topology generate
 \end{definition}
 
 In this section we are going to be interested mostly in locally compact Hausdorff topological spaces:
-\begin{definition} A topological space $X$ is called \emph{locally compact}, if every $x$ has a compact neighborhood. That is, for every $x\in X$ there exists some open $U$ and compact $K$ such that
+\begin{definition} A topological space $X$ is called \emph{locally compact}, if every point has a compact neighborhood. That is, for every $x\in X$ there exists some open $U$ and compact $K$ such that
 \[x\in U\subseteq K\]
 \end{definition}
 
@@ -612,7 +612,7 @@ and notice that $\partial\tilde{U}\subseteq B$ means that $\tilde{B}=B\cup(\tild
 	\coordinate (x) at (1.5,1.5) {};
 	\node[bag={1.1}{1.4}{1.0cm}] at (x) {};
 	\node[bag={0.5}{0.8}{-0.5cm}] at (x) {};
-	\node[circle, thick, draw=black, fill, inner sep=0, outer sep=0, minimum height=0.1cm] at (x) {};
+	\node[vertex] at (x) {};
 	\draw[dashed] (x0)--(x1)--(x2)--(x3)--cycle;
 	\begin{pgfonlayer}{background}
 		\draw[bubble={0.7cm}{0.02cm}] plot[closed hobby] coordinates {(x0) (x1) (x2) (x3)};
@@ -620,6 +620,7 @@ and notice that $\partial\tilde{U}\subseteq B$ means that $\tilde{B}=B\cup(\tild
 	\node at (4.6,1.5) {$X$};
 	\node at (3.7,2.8) {$\partial\tilde{U}$};
 	\node[right] at (x) {$\tilde{A}$};
+	\node[left] at (x) {$x$};
 	\node[fill=transparent!2,opacity=0.8] at (1.6, 3.3) {$\tilde{B}$};
 \end{tikzpicture}
 \end{center}
@@ -627,7 +628,12 @@ and notice that $\partial\tilde{U}\subseteq B$ means that $\tilde{B}=B\cup(\tild
 
 which proves the assertion for $V=\tilde{A}$.
 \end{proof}
-
+\begin{corollary}\label{cor:sandwitch} Let $X$ be a locally compact Hausdorff space. Moreover, let $K,U\subseteq X$ such that $K$ is compact, $U$ is open and $K\subseteq U$. Then, there exists some open $V$, such that $V^-$ is compact and
+\[K\subseteq V\subseteq V^-\subseteq U\]
+\end{corollary}
+\begin{proof}
+For every $x\in K$, we can use lemma~\ref{lem:smaller_compact_nbh} and find some open neighborhood $V_x$ of $x$, such that $V_x^-$ is compact and $x\in V_x\subseteq V_x^-\subseteq U$. So, we have that $K\subseteq\bigcup_{x\in K}V_x$ and because $K$ is compact, there exists a finite set of indices $\{x_1,\ldots,x_n\}$, such that $K\subseteq\bigcup_{i=1}^nV_{x_i}$. Define $V=\bigcup_{i=1}^nV_{x_i}$ and notice that $V^-=\bigcup_{i=1}^nV_{x_i}^-$ is compact.
+\end{proof}
 \begin{theorem}\label{thm:top_exponential} Let $A$ be a locally compact, Hausdorff topological space. Then all exponential objects $(-)^A$ exist and:
 \begin{itemize}
 \item $X^A$ is the space $\mathrm{Top}(A,X)$ equipped with the compact-open topology.
@@ -659,30 +665,99 @@ We have now proved that there exist some sufficient conditions for $A$ in order 
 \[\circ:\mathrm{Hom}(A)\times\mathrm{Hom}(A)\to\mathrm{Hom}(A)\]
 is continuous.
 \end{proposition}
-\begin{proof} Let $f,g\in\mathrm{Hom}(A)$ and let $S(K,U)$ be a subbasic neighborhood of $f\circ g$. This means that $K$ is compact, $U$ is open and $g(K)\subseteq f^{-1}(U)$. Our goal is to find some open $V$ and some compact $L$ such that
-\[g(K)\subseteq V\subseteq L\subseteq f^{-1}(U)\]
-Then, $S(L,U)\times S(K,V)$ would be an open neighborhood of $(f,g)$ for which $(f',g')\in S(L,U)\times S(K,V)$ would imply that $f'\circ g'\in S(K,U)$, i.e. that $\circ$ is continuous.
-
-Let us now find $V,L$. Notice that since $f$ is continuous, $f^{-1}(U)$ is open. So, for every $x\in g(K)$, we can use lemma~\ref{lem:smaller_compact_nbh} and find some open neighborhood $V_x$ of $x$, such that $V_x^-$ is compact and $x\in V_x\subseteq V_x^-\subseteq f^{-1}(U)$. So, we have that $K\subseteq\bigcup_{x\in g(K)}V_x$. Notice that since $g$ is continuous, $g(K)$ is compact, so there exists a finite set of indices $\{x_1,\ldots,x_n\}$, such that $g(K)\subseteq\bigcup_{i=1}^nV_{x_i}$. Define $V=\bigcup_{i=1}^nV_{x_i}$ and notice that $V^-=\bigcup_{i=1}^nV_{x_i}^-$ is compact.
+\begin{proof} Let $f,g\in\mathrm{Hom}(A)$ and let $S(K,U)$ be a subbasic neighborhood of $f\circ g$. This means that $K$ is compact, $U$ is open and $g(K)\subseteq f^{-1}(U)$. Notice that $f^{-1}(U)$ is open and $g(K)$ is compact because $f,g$ are continuous. Thus, corollary~\ref{cor:sandwitch} gives us an open $V$, such that $V^-$ is compact and
+\[g(K)\subseteq V\subseteq V^-\subseteq f^{-1}(U)\]
+Then, $S(V^-,U)\times S(K,V)$ is an open neighborhood of $(f,g)$ and for every $(f',g')\in S(V^-,U)\times S(K,V)$ we have that $f'\circ g'\in S(K,U)$, which proves the assertion.
 \end{proof}
-
-
 
 It is only natural to ask ourselves if $\mathrm{Hom}(A)$ equipped with the compact-open topology, together with the composition is a topological group. For that we only need to check the continuity of the inverse function:
 \[(-)^{-1}:\mathrm{Hom}(A)\to\mathrm{Hom}(A)\]
 Interestingly enough this is not true in general, as exhibited in \cite{counterexample}. Based on their counterexample, we present a somewhat simpler construction in \ref{ex:counterexample} around the same pathology, also involving fiber bundles. Our goal here is to finish this chapter by giving some sufficient conditions for $\Hom(A)$ to be a topological group. The proof is based on the proof of Theorem~4 in \cite{top_group}. We first need the following definition.
 
-\begin{definition} A topological space $X$ is called \emph{locally connected}, if for every $x\in X$ and every neighborhood $N$ of $x$, there exists some open connected neighborhood $U$ of $x$, such that $U\subseteq N$.
+\begin{definition} A topological space $X$ is called \emph{locally connected}, if for every $x\in X$ and $U$ an open neighborhood of $x$, there exists some open neighborhood $V$ of $x$, such that $V$ is connected and:
+\[x\in V\subseteq U\]
 \end{definition}
 \begin{remark} Of course, local connectedness does not imply connectedness, but notice that the reverse isn't true as well. Take for example this subset of $\mathbb{R}^2$: \[\big([0,1]\times\{0\}\big)\cup\big(\{0\}\times[0,1]\big)\cup\bigcup_{n=1}^{\infty}\left(\left\{\frac{1}{n}\right\}\times[0,1]\right)\]
 equipped with the subspace topology. Then, it is connected, but all open neighborhoods of $(1,0)$ contained in the open upper half-space are not connected.
 \end{remark}
-
+Notice that we can combine all properties in the following way:
+\begin{lemma}\label{lem:nice_local_base} Let $X$ be a locally connected, locally compact Hausdorff space. Moreover, let $x\in X$ and $U$ an open neighborhood of $x$. Then there exists some open neighborhood $V$ of $x$, such that $V$ is connected, $V^-$ is compact and:
+\[x\in V\subseteq V^-\subseteq U\]
+\end{lemma}
+\begin{proof} Indeed, since $X$ is locally compact Hausdorff, lemma~\ref{lem:smaller_compact_nbh} gives us some open $V_1$ such that $V_1^-$ is compact and $x\in V_1\subseteq V_1^-\subseteq U$. Then, since $X$ is locally connected we can find some open $V$ such that $V$ is connected and $V\subseteq V_1$, i.e.
+\[x\in V\subseteq V^-\subseteq V_1^-\subseteq U\]
+Then, since $X$ is Hausdorff and $V^-$ is a closed subset of the compact $V_1^-$, $V^-$ is also compact, which proves the assertion.
+\end{proof}
+In order to prove the final result, it will be useful to work with the following smaller subbase for the topology of $\mathrm{Hom}(A)$:
+\begin{lemma}\label{lem:alt_subbasis} Let $A$ be locally connected, locally compact Hausdorff space. Then, the following set is a subbase of the compact-open topology of $\mathrm{Hom}(A)$:
+\[\big\{S(V^-,U):U,V\subseteq A,\ V\neq\emptyset\text{ open and connected},\ V^-\text{ compact},\ U\text{ open}\big\}\]
+\end{lemma}
+\begin{proof} Let $f_0\in\mathrm{Hom}(A)$ and $S(K,U)$ be an open neighborhood of $f_0$ in the usual subbase. For every $x\in K$, since $A$ is locally connected, locally compact Hausdorff, lemma~\ref{lem:nice_local_base} gives us an open neighborhood $V_x$ of $x$, with $V_x$ being connected and $V_x^-$ being compact, such that $V_x^-\subseteq f_0^{-1}(U)$. So, we have $K\subseteq\bigcup_{x\in K}V_x$ and since $K$ is compact, there exists a finite set of indices $\{x_1,\ldots,x_n\}$ such that $K\subseteq\bigcup_{i=1}^nV_{x_i}$. It suffices now to prove that:
+\[f_0\in\bigcup_{i=1}^nS(V_{x_i}^-,U)\subseteq S(K,U)\]
+First, due to the choice of $V_x$, it is trivially true that $f_0\in S(V_{x_i})$ for every $i\in[n]$. Moreover, let $f\in\bigcup_{i=1}^nS(V_{x_i}^-,U)$ and $x\in K$. Then, there is some $i\in[n]$ such that $x\in V_{x_i}$ and thus $f(x)\in f(V_{x_i})\subseteq U$. So, $f(K)\subseteq U$ which proves the assertion.
+\end{proof}
 \begin{theorem}\label{thm:inverse} Let $A$ be a locally connected, locally compact Hausdorff space and let $\mathrm{Hom}(A)$ be topologised with the compact-open topology. Then the inverse function:
 \[(-)^{-1}:\mathrm{Hom}(A)\to\mathrm{Hom}(A)\]
 is continuous.
 \end{theorem}
-\begin{proof}
+\begin{proof} Let $f\in\mathrm{Hom}(A)$ and let $S(V^-,U)$ be a subbasic open set in the neighborhood of $f^{-1}$, using the alternative subbasis defined in lemma~\ref{lem:alt_subbasis}. This means that $V$ is non-empty, open and connected, $V^-$ is compact, $U$ is open and $f^{-1}(V^-)\subseteq U$. Since $V\neq\emptyset$, there exists some $x\in V$ we are going to fix. Moreover, since $f^{-1}$ is continuous, $f^{-1}(V^-)$ is compact and using corollary~\ref{cor:sandwitch} twice we get some open $W,Y$ such that $W^-,Y^-$ are compact and a chain between $f^{-1}(V^-)$ and $U$, like this:
+\[f^{-1}(x)\in f^{-1}(V)\subseteq f^{-1}(V^-)\subseteq W\subseteq W^-\subseteq Y\subseteq Y^-\subseteq U\]
+We then define the open set
+\[O:=S\big(W^c\cap Y^-,(V^-)^c\cap f(U)\big)\cap S\big(\{f^{-1}(x)\},V\big)\subseteq\mathrm{Hom}(A)\]
+It is trivially true that $f\in O$ and it remains to show that for every $g\in O$ we have $g^{-1}\in S(V^-,U)$. Let us indeed choose some $g\in O$. The restrictions it satisfies are captured in the following picture:
+\begin{center}
+\begin{tikzpicture}[yscale=0.7]
+\def\colorInside{red!40!white}
+\def\colorAround{gray!50!white}
+\coordinate (x)  at ( 0.0, 0.0);
+\coordinate (V1) at ( 0.8,-0.2);
+\coordinate (V2) at (-1.2, 1.0);
+\coordinate (V3) at (-2.0,-0.7);
+\coordinate (W1) at ( 3.2,-0.5);
+\coordinate (W2) at ( 1.6, 1.4);
+\coordinate (W3) at (-2.7, 1.2);
+\coordinate (W4) at (-1.9,-2.0);
+\coordinate (Y1) at ( 4.5,-0.4);
+\coordinate (Y2) at ( 4.0, 2.5);
+\coordinate (Y3) at ( 0.7, 1.6);
+\coordinate (Y4) at (-3.0, 2.3);
+\coordinate (Y5) at (-4.2,-1.7);
+\coordinate (Y6) at (-0.4,-2.6);
+
+\draw[bubble={1.5cm}{1pt}] plot[closed hobby] coordinates {(6,-1) (6,1) (0,3.2) (-6,1) (-6,-1) (0,-3.2)};
+\node (A1) at (7.2,0) {$A$};
+\draw[bubble={1.5cm}{1pt}] plot[closed hobby] coordinates {(Y1) (Y2) (Y3) (Y4) (Y5) (Y6)};
+\node at (6,1) {$U$};
+\draw[fill=\colorAround] (Y1)--(Y2)--(Y3)--(Y4)--(Y5)--(Y6)--cycle;
+\node[right] at (Y1) {$Y^-$};
+\draw[fill=white] (W1)--(W2)--(W3)--(W4)--cycle;
+\node[above right] at (W1) {$W^-$};
+\draw (V1)--(V2)--(V3)--cycle;
+\node[right] at (V1) {$f^{-1}(V^-)$};
+\node[vertex,label={left:$f^{-1}(x)$},draw=\colorInside,fill=\colorInside] at (x) {};
+
+\begin{scope}[yshift=-9.5cm]
+%\coordinate (ax)  at ( 1.0, 1.0);
+\coordinate (aV1) at ( 2.0,-0.2);
+\coordinate (aV2) at ( 1.7, 2.0);
+\coordinate (aV3) at (-1.0, 0.9);
+\coordinate (aV4) at (-2.0,-0.7);
+
+\draw[bubble={1.5cm}{1pt}] plot[closed hobby] coordinates {(6,-1) (6,1) (0,3.2) (-6,1) (-6,-1) (0,-3.2)};
+\node (A2) at (7.2,0) {$A$};
+\draw[bubble={1.5cm}{1pt},fill=\colorAround,draw=\colorAround] plot[closed hobby] coordinates {(2.5,-2) (2,1) (0,2) (-2,0) (-2.5, -1) (0,-2)};
+\node at (4,0.5) {$f(U)$};
+\draw[fill=\colorInside] (aV1)--(aV2)--(aV3)--(aV4)--cycle;
+\node[below] at (aV1) {$V^-$};
+%\node[vertex,label={below:$x$}] at (ax) {};
+\end{scope}
+
+\draw[->] (A1)--(A2) node [midway,left=3pt] {$g$};
+\end{tikzpicture}
+\end{center}
+The first restriction on $g$ is that $g\big(W^c\cap Y^-\big)\subseteq(V^-)^c\cap f(U)$. By taking the complement, we get that $g\big(W\cup(Y^-)^c\big)\supseteq V^-\cup f(U)^c$, i.e:
+\[V^-\subseteq V^-\cup f(U)^c\subseteq g\big(W\cup(Y^-)^c\big)=g(W)\cup g\big((Y^-)^c\big) \]
+Since $W\subseteq Y^-$ and $g$ is injective, $g(W)$ and $g\big((Y^-)^c\big)$ are two disjoint open subsets in $A$. Notice that $V^-$ is also connected, since $V$ is connected, which means that $V^-$ lies inside one of them. In order to choose, we check the second restriction on $g$, which is that $g(f^{-1}(x))\in V^-$. Since $f^{-1}(x)\in f^{-1}(V^-)\subseteq W$, we deduce that $V^-\cap g(W)\neq\emptyset$, which means that $V^-\subseteq g(U)$, or equivalently $g^{-1}\in S(V^-,U)$, which proves that $(-)^{-1}$ is continuous.
 \end{proof}
 
 

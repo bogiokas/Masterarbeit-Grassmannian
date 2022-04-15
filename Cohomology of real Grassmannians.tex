@@ -37,6 +37,9 @@
 \usetikzlibrary{calc}
 \usetikzlibrary{hobby}
 \tikzset{%
+	vertex/.style={%
+		circle, thick, draw=black, fill, inner sep=0, outer sep=0, minimum height=0.1cm
+	},%
 	bag/.style n args={3}{% {minRand}{maxRand}{bleed}
 		append after command={%
 			\pgfextra{%
