@@ -14,10 +14,6 @@ where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<
 
 If the reader has still in mind the case of the projective spaces, it would be of no surprise that we are about to give an alternative definition of the Grassmannians. We know that the projective space of some dimension could alternatively be defined as the quotient over the unit sphere, rather than over the set of every nonzero vector. The analog of the set of all unit vectors would be here the Stiefel manifold $\StO{k}{n}$, which is the space of all \ul{orthonormal} $k$-frames, as defined and discussed again in Appendix~\ref{app:stiefel}.
 
-
-% TODO-WRONG: p:X->Y is a quotient map iff i) p cont. ii) p surj. iii) p strongly cont. (suffices open)
-
-
 \begin{proposition} Let $0<k<n$ be some natural numbers. Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map used in the definition of the Grassmannians and let $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ be its restriction to the Stiefel manifold. Then $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
 \end{proposition}
 \begin{proof}
@@ -28,7 +24,9 @@ Let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $\mathfrak{gs}:\St{k}{n}\to\
 &\Gr{k}{n}
 \end{tikzcd}
 \end{center}
-The left part of this diagram implies $q_0=q\circ i$, which means in particular that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ\mathfrak{gs}$, which gives us that $q_0$ is a surjective map as well, since $q$ is surjective. Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ induce the same quotient topology on the set of all $k$-dim subspaces of $\mathbb{R}^n$.
+The left part of this diagram implies $q_0=q\circ i$, which means in particular that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ\mathfrak{gs}$, which gives us two things: First that $q_0$ is a surjective map as well, since $q$ is surjective and second that $q_0$ is an open map, since $q$ is open and $\mathfrak{gs}$ is surjective.
+
+Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ induce the same quotient topology on the set of all $k$-dim subspaces of $\mathbb{R}^n$.
 \end{proof}
 
 \section{Grassmannians are Manifolds}
