@@ -219,7 +219,13 @@ Lastly, we will prove that $f^{-1}$ is not continuous using the same machinery. 
 Let $V_n:=[1-\frac{1}{3^n},1]\cap F$. This is both open and compact, so $S(V_n,V_n)$ is a subbasic neighborhood of $1_F$. For every $n\in\mathbb{N}$ we have that $h_n^{-1}(1)=\frac{1}{3^n}<1-\frac{1}{3^n}=\min V_n$, which means that for every $n\in\mathbb{N}$, $h_n^{-1}(V_n)\not\subseteq V_n$, i.e. $h^{-1}_n\not\in S(V_n,V_n)$.
 \end{example}
 
-As we've seen in Theorem~\ref{thm:inverse}, we know some sufficient conditions in order to lift the pathology of the inverse mapping not being continuous, so we will now prove that the above example wouldn't fail if $F$ was also locally connected in addition to being Hausdorff and locally compact:
+If we restrict $E_1,E_2$ enough, such pathologies do not arise, since we can use the following topology fact:
+\begin{proposition}\label{prop:extend_fb} Let $X$ be a compact topological space, $Y$ a Hausdorff topological space and $f:X\to Y$ any continuous bijection. Then $f$ is a homeomorphism.
+\end{proposition}
+\begin{proof} Let $K\subseteq Y$ be compact. Then, since $Y$ is Hausdorff, $K$ is closed and thus $f^{-1}(K)$ is also closed, since $f$ is continuous. This means that $f^{-1}(K)$ is compact, since $X$ is compact, which proves that $f^{-1}$ is continuous.
+\end{proof}
+
+The total space being compact is an unnecessarily heavy restriction, which doesn't hold even for vector bundles, so here we try to arrive at a similar result, only restricting the fiber $F$, using Theorem~\ref{thm:inverse}, keeping in mind the approach in the counterexample:
 
 \begin{theorem} Let $F$ be a Hausdorff, locally compact, locally connected topological space and let $p_1: E_1\to B$ and $p_2: E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively, both isomorphic to $F$. Moreover, let $\phi:E_1\to E_2$ be a bundle map such that its restriction
 \[\phi_x:(F_1)_x\to (F_2)_x\]
