@@ -242,9 +242,9 @@ Our main goal is to prove Lemma~\ref{lem:dim_of_cells}. The approach is:
 Let us begin with the definition:
 
 \begin{definition}\label{def:lift_of_Schubert_cells} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ an orthonormal basis of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}=\{j_1<j_2<\cdots<j_k\}\in\binom{[n]}{k}$ define $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})=\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ to be the following subset of $\StO{k}{n}$:
-\[\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet}):=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}(\mathbb{F}_{\bullet},f_{\bullet})\ \forall\ell\in[k]\right\}\]
-where $\mathbb{H}_i(\mathbb{F}_{\bullet},f_{\bullet})$ is defined to be the ``positive open halfspace'' of $\mathbb{F}_{i}$, w.r.t.\ the orientation defined by $f_i$:
-\[\mathbb{H}_i(\mathbb{F}_{\bullet},f_{\bullet}):=\left\{v\in\mathbb{F}_i:v^tf_i>0\right\}\]
+\[\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet}):=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})\ \forall\ell\in[k]\right\}\]
+where $\mathbb{H}(F,f)$ is defined to be the ``positive open halfspace'' of the vector space $F$, w.r.t.\ the orientation defined by $f\in F$:
+\[\mathbb{H}(F,f):=\left\{v\in F:v^tf>0\right\}\]
 for every $i\in[n]$.
 \end{definition}
 
@@ -253,55 +253,55 @@ Although we are going to prove that the images of these subspaces of $\StO{k}{n}
 Let us prove now that these sets have the right dimension and that their closure (now much easier to handle than the matrices in echelon form) is homeomorphic to a closed cell of this dimension. In order to do so in Lemma~\ref{lem:shub_dim}, we first need the following trivial (but lengthy) assertion:
 
 \begin{lemma}\label{lem:closure_of_cells} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$ the closure of $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}$ inside ${\left(\mathbb{R}^n\right)}^k$ is:
-\[{\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}_{j_{\ell}}(\mathbb{F}_{\bullet},f_{\bullet})}^-\ \forall\ell\in[k]\right\}\]
+\[{\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\]
 where:
-\[{\mathbb{H}_i(\mathbb{F}_{\bullet},f_{\bullet})}^-:=\left\{v\in\mathbb{F}_i:v^tf_i\geq 0\right\}\]
+\[{\mathbb{H}(F,f)}^-:=\left\{v\in F:v^tf\geq 0\right\}\]
 \end{lemma}
 \begin{proof} Using simple point-set topology and the fact that $\StO{k}{n}$ is closed inside ${\left(\mathbb{R}^n\right)}^k$ as proven in Proposition~\ref{prop:StO_dim_closed}, we have:
 \[\begin{array}{rcl}\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-
-&=&{\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}(\mathbb{F}_{\bullet},f_{\bullet})\ \forall\ell\in[k]\right\}}^-\\
-&=&{\big(\StO{k}{n}\cap\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})\big)}^-\\
-&\subseteq&\StO{k}{n}\cap{\big(\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})\big)}^-\\
-&=&\StO{k}{n}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\times\cdots\times\mathbb{H}_{j_k}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\\
-&=&\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}_{j_{\ell}}(\mathbb{F}_{\bullet},f_{\bullet})}^-\ \forall\ell\in[k]\right\}\\
+&=&{\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})\ \forall\ell\in[k]\right\}}^-\\
+&=&{\big(\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\\
+&\subseteq&\StO{k}{n}\cap{\big(\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\\
+&=&\StO{k}{n}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\times\cdots\times\mathbb{H}{\left(\mathbb{F}_{j_k},f_{j_k}\right)}^-\\
+&=&\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\\
 \end{array}\]
-The inclusion in the third line is actually an equality, as we are going to prove. Indeed, let $(v_1,\ldots,v_k)\in\StO{k}{n}\cap{\big(\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})\big)}^-$. This means that there exists a sequence ${(v_1^m,\ldots,v_k^m)}_m\in\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})$ converging to $(v_1,\ldots,v_k)\in\StO{k}{n}\subseteq\St{k}{n}$, inside ${\left(\mathbb{R}^n\right)}^k$. Since $\St{k}{n}$ is open, as proven in Proposition~\ref{prop:St_open}, there exists some $m_0\in\mathbb{N}$, such that ${(v_1^m,\ldots,v_k^m)}_m\in\St{k}{n}$ for all $m\geq m_0$. For each such tuple, define now ${(w_1^m,\ldots,w_k^m)}_m\in\StO{k}{n}$ to be the result of the Gram-Schmidt process on input ${(v_1^m,\ldots,v_k^m)}_m$ for every $m\geq m_0$:
+The inclusion in the third line is actually an equality, as we are going to prove. Indeed, let $(v_1,\ldots,v_k)\in\StO{k}{n}\cap{\big(\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-$. This means that there exists a sequence ${(v_1^m,\ldots,v_k^m)}_m\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ converging to $(v_1,\ldots,v_k)\in\StO{k}{n}\subseteq\St{k}{n}$, inside ${\left(\mathbb{R}^n\right)}^k$. Since $\St{k}{n}$ is open, as proven in Proposition~\ref{prop:St_open}, there exists some $m_0\in\mathbb{N}$, such that ${(v_1^m,\ldots,v_k^m)}_m\in\St{k}{n}$ for all $m\geq m_0$. For each such tuple, define now ${(w_1^m,\ldots,w_k^m)}_m\in\StO{k}{n}$ to be the result of the Gram-Schmidt process on input ${(v_1^m,\ldots,v_k^m)}_m$ for every $m\geq m_0$:
 \[{(w_1^m,\ldots,w_k^m)}_m:=\mathfrak{gs}\big({(v_1^m,\ldots,v_k^m)}_m\big)\]
 First of all, $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ is a continuous map, which means that
 \[{(w_1^m,\ldots,w_k^m)}_m=\mathfrak{gs}\big({(v_1^m,\ldots,v_k^m)}_m\big)\overset{m\to\infty}{\to}\mathfrak{gs}(v_1,\ldots,v_k)=(v_1,\ldots,v_k)\]
-It now suffices to show that $\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})$ for any $(v_1',\ldots,v_k')\in\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})$. We are going to show this recursively, using the recursive nature of the Gram-Schmidt process. Assume that the assertion holds for every dimension between $1$ and $k-1$, let $(v_1',\ldots,v_k')\in\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})$ and let also $(w_1',\ldots,w_{k-1}')=\mathfrak{gs}(v_1',\ldots,v_{k-1}')$. Then:
+It now suffices to show that $\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ for any $(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$. We are going to show this recursively, using the recursive nature of the Gram-Schmidt process. Assume that the assertion holds for every dimension between $1$ and $k-1$, let $(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ and let also $(w_1',\ldots,w_{k-1}')=\mathfrak{gs}(v_1',\ldots,v_{k-1}')$. Then:
 \[\mathfrak{gs}(v_1',\ldots,v_k')=\left(w_1',\ldots,w_{k-1}',\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^t v_k')w_{\ell}'\right\|}\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right)\right)\]
 Because of the inductive hypothesis, we only need to take care of the last vector, which we will denote as $w_k'$. Because $\mathbb{F}_{\bullet}$ is a flag, we have that $\mathbb{F}_{j_1}\subseteq\mathbb{F}_{j_2}\subseteq\cdots\subseteq\mathbb{F}_{j_k}$ and thus: $w_1',w_2',\ldots,w_{k-1}'\in\mathbb{F}_{j_k}$. Since $v_k'\in\mathbb{F}_{j_k}$ as well, we have that:
 \[w_k'=\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right\|}\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^t v_k')w_{\ell}'\right)\in\mathbb{F}_{j_k}\]
 Moreover, it is true that $v^tf_i=0$, if $v\in\mathbb{F}_{i-1}$ for some $i\in[n]$. Indeed, $f_{\bullet}$ is compatible with $\mathbb{F}_{\bullet}$, which means that $v\perp f_i$ for every $v\in\mathbb{F}_{i-1}$. Since $w_1',\ldots,w_{k-1}'\in\mathbb{F}_{j_{k-1}}$, we have:
 \[(w_k')^tf_{j_k}=\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right\|}(v_k')^tf_{j_k}>0\]
-This proves that $w_k'\in\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})$, which proves in turn:
-\[\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})\]
-Thus, the sequence ${(w_1^m,\ldots,w_k^m)}_m$ is a sequence inside $\StO{k}{n}\cap\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})$ converging to $(v_1,\ldots,v_k)$, which means, finally that:
-\[(v_1,\ldots,v_k)\in{\big(\StO{k}{n}\cap\mathbb{H}_{j_1}(\mathbb{F}_{\bullet},f_{\bullet})\times\cdots\times\mathbb{H}_{j_k}(\mathbb{F}_{\bullet},f_{\bullet})\big)}^-\]
+This proves that $w_k'\in\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$, which proves in turn:
+\[\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\]
+Thus, the sequence ${(w_1^m,\ldots,w_k^m)}_m$ is a sequence inside $\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ converging to $(v_1,\ldots,v_k)$, which means, finally that:
+\[(v_1,\ldots,v_k)\in{\big(\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\]
 which proves the desired inclusion.
 \end{proof}
 
 For the proof of Lemma~\ref{lem:shub_dim} we are going to use the approach of Hatcher~\cite{vec_bundles} (p.37), in order to already familiarize ourselves with the notion of a trivial fiber bundle. For this we are going to use the following lemma:
 \begin{lemma} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, the projection to the first coordinate
-\[\pi_1:\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\to S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\]
+\[\pi_1:\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\to S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\]
 is a trivial fiber bundle.
 \end{lemma}
-\begin{proof} First of all, the map $\pi_1$ is well defined, since it takes $(v_1,\ldots,v_k)$ to $v_1$, which is a unit vector and also an element of $\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$, by Lemma~\ref{lem:closure_of_cells}. Notice that since $f_{j_1}\in\mathbf{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$, it suffices to prove that there exists a homeomorphism $\phi$ making the following diagram commute:
+\begin{proof} First of all, the map $\pi_1$ is well defined, since it takes $(v_1,\ldots,v_k)$ to $v_1$, which is a unit vector and also an element of $\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$, by Lemma~\ref{lem:closure_of_cells}. Notice that since $f_{j_1}\in\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$, it suffices to prove that there exists a homeomorphism $\phi$ making the following diagram commute:
 \begin{center}
 \begin{tikzcd}
-\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r,"\phi","\cong"']\ar[d,"\pi_1"']&\big(S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
-S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-
+\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r,"\phi","\cong"']\ar[d,"\pi_1"']&\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
+S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-
 \end{tikzcd}
 \end{center}
-First, we are going to define a transformation $\rho_{v}\in SO(n)$ for every $v\in S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$, which takes $v$ to $f_{j_1}$ and is the identity in the orthogonal complement of the plane spanned by $v$ and $f_{j_1}$. Next we are going to define $\phi$ and argue that it is continuous. We will then use $\rho_{v}$ to map homeomorphically $\pi_1^{-1}(v)$ to $\pi_1^{-1}(f_{j_1})$ for each $v$. Finally we will glue all of $\rho_v$ to a homeomorphism $\phi$.
+First, we are going to define a transformation $\rho_{v}\in SO(n)$ for every $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$, which takes $v$ to $f_{j_1}$ and is the identity in the orthogonal complement of the plane spanned by $v$ and $f_{j_1}$. Next we are going to define $\phi$ and argue that it is continuous. We will then use $\rho_{v}$ to map homeomorphically $\pi_1^{-1}(v)$ to $\pi_1^{-1}(f_{j_1})$ for each $v$. Finally we will glue all of $\rho_v$ to a homeomorphism $\phi$.
 
-As we prove in Computation~\ref{com:rotation}, for any $v\in S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\setminus\{f_{j_1}\}$, the rotation on the plane $\mathrm{span}\{v,f_{j_1}\}$ in $\mathbb{R}^n$ which takes $v$ to $f_{j_1}$ is given by:
+As we prove in Computation~\ref{com:rotation}, for any $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\setminus\{f_{j_1}\}$, the rotation on the plane $\mathrm{span}\{v,f_{j_1}\}$ in $\mathbb{R}^n$ which takes $v$ to $f_{j_1}$ is given by:
 \[\rho_v:=\rho_{v\to f_{j_1}}=I_n+2f_{j_1}v^t-\frac{(v+f_{j_1})(v+f_{j_1})^t}{v^tf_{j_1}+1}\in SO(n)\]
 Notice that this depends continuously on $v$. Moreover, if we define $\rho_{f_{j_1}}=I_n$, it is true that $\lim_{v\to f_{j_1}}\rho_v=\rho_{f_{j_1}}$. These mean that the following map is continuous
 \begin{center}
 \begin{tikzcd}
-S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r,"\rho"]&[2em]SO(n)\\[-1.5em]
+S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\ar[r,"\rho"]&[2em]SO(n)\\[-1.5em]
 v\ar[r,mapsto]&\rho_v
 \end{tikzcd}
 \end{center}
@@ -323,16 +323,16 @@ We will now prove that the image of this map is contained in $\pi_1^{-1}(f_{j_1}
 \[\rho_{v_1}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+\rho_{v_1}P_{H^{\perp}}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}\in H+\mathbb{F}_{j_{\ell}}=\mathbb{F}_{j_{\ell}}\]
 Next, notice that in general $\rho_{x\to y}^t=\rho_{x\to y}^{-1}=\rho_{y\to x}$, so we have that $\rho_{v_1}^ta=a$ for every $a\in H^{\perp}$. Thus:
 \[(\rho_{v_1}v_{\ell})^tf_{j_{\ell}}=v_{\ell}^t\rho_{v_1}^tf_{j_{\ell}}=v_{\ell}^tf_{j_{\ell}}\geq0\]
-since $v_{\ell}\in\mathbb{H}_{j_{\ell}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also true that $\pi_1(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)=f_{j_1}$, which proves the claim.
+since $v_{\ell}\in\mathbb{H}{\left(\mathbb{F}_{j_{\ell}},f_{j_{\ell}}\right)}^-$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also true that $\pi_1(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)=f_{j_1}$, which proves the claim.
 
 Let us now define $\phi=\left<\pi_1,\mathrm{ev}^k\circ\left<\rho\circ\pi_1,id\right>\right>$, i.e.:
-\begin{center}
+\begin{equation}\label{eq:trivial_fb}
 \begin{tikzcd}
-\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r, "\left<\pi_1{,}\mathrm{ev}^k\circ\left<\rho\circ\pi_1{,}id\right>\right>"]&[4em]\big(S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\\[-1.5em]
+\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r, "\left<\pi_1{,}\mathrm{ev}^k\circ\left<\rho\circ\pi_1{,}id\right>\right>"]&[4em]\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\\[-1.5em]
 (v_1,\ldots,v_k)\ar[r,mapsto]&\big(v_1,(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\big)
 \end{tikzcd}
-\end{center}
-This is well defined and continuous. We will now prove that its restriction on each fiber $\pi_1^{-1}(v)$ is a homeomorphism. So, we will show that the following map is a homeomorphism for each $v\in S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$:
+\end{equation}
+This is well defined and continuous. We will now prove that its restriction on each fiber $\pi_1^{-1}(v)$ is a homeomorphism. So, we will show that the following map is a homeomorphism for each $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$:
 \begin{center}
 \begin{tikzcd}
 \pi_1^{-1}(v)\ar[r, "\mathrm{ev}^k\circ\left<\rho\circ\pi_1{,}id\right>"]&[3em]\pi_1^{-1}(f_{j_1})\\[-1.5em]
@@ -348,7 +348,7 @@ We can easily see that the above arguments let us also construct a continuous ma
 \end{center}
 and notice that these two are inverses of each other. Thus $\phi|_{\pi^{-1}(v)}$ is a homeomorphism for each $v$.
 
-Since $\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$ is a closed subset of the compact $\StO{k}{n}$, it is also compact. The space $\big(S^{n-1}\cap\mathbb{H}_{j_1}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})$ is obviously Hausdorff, so using Proposition~\ref{prop:extend_fb}, we have that $\phi$ is also a homeomorphism, i.e. $\pi_1$ is a trivial fiber bundle.
+Since $\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$ is a closed subset of the compact $\StO{k}{n}$, it is also compact. The space $\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})$ is obviously Hausdorff, so using Proposition~\ref{prop:extend_fb}, we have that $\phi$ is also a homeomorphism, i.e. $\pi_1$ is a trivial fiber bundle.
 \end{proof}
 
 \begin{computation}\label{com:rotation} Let $x,y\in S^{n-1}$ be any two unit vectors in $\mathbb{R}^n$ such that $x\neq y$ and $x\neq -y$. Let $\rho_{x\to y}$ be the rotation taking $x$ to $y$ and fixing the $n-2$ dimension subspace $\mathrm{span}\{x,y\}^{\perp}$. Then:
@@ -412,30 +412,32 @@ which proves finally that $\rho_{x\to y}\in SO(n)$.
 \[\tilde{\Phi}_{\mathbf{j}}:D^{d(\mathbf{j})}\to\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\]
 \end{lemma}
 \begin{proof}
-
-
-
-
-%%%%%%%TODO
-\newpage
-
-
-
-
-
-%We will construct the desired homeomorphism inductively in $k$. For $k=1$ we have:
-%\[\tilde{\mathcal{C}}_{\{j_1\}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-=\left\{v\in\mathbb{F}_{j_1}:v\cdot v=1\ ,\ v\cdot f_{j_1}\geq0\right\}\]
-%
-%It is known that the closed unit semisphere of $\mathbb{R}^p$ is homeomorphic to the closed disc $D^{p-1}$ for every $p\in\mathbb{N}$. Let us fix now once and for all, for every $p\in\mathbb{N}$, a homeomorphism
-%\[\psi_p:D^{p-1}\to\left\{v\in\mathbb{R}^p:v\cdot v=1\ ,\ v\cdot e_p\geq 0\right\}\]
-%One such homeomorphism would be the inverse of the restriction of the usual projection $\mathbb{R}^p\to\mathbb{R}^{p-1}$.
-%
-%\[\St{k}{n}\cap\cdots=
-%\{(v_1,\ldots,v_k):(v_1,\ldots,v_{k-1})\in\St{k}{n}{F}\ v_{\ell}\in F_{j_{\ell}}\ v_k\cdot v_{\ell}=\delta_{k,l}\}\]
-%
-%
-
+Notice that
+\[S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\cong D^{j_1-1}
+\]
+with a homeomorphism being the linear projection on $\mathbb{F}_{j_1-1}$. Moreover
+\begin{align*}
+\pi_1^{-1}(f_{j_1})&=\big\{(f_{j_1},v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})^-\ \forall\ell\in[k]\setminus\{1\}\big\}\\
+&\cong\Big\{(v'_2,\ldots,v'_k)\in\StO{k-1}{n-1}\\
+&\qquad\qquad\qquad\qquad\qquad\qquad:v'_{\ell}\in\mathbb{H}\left(\sfrac{\mathbb{F}_{j_{\ell}}}{\left<f_{j_1}\right>},\pi_{\hat{j}_1}(f_{j_{\ell}})\right)^-\ \forall\ell\in[k]\setminus\{1\}\Big\}\\
+&=\tilde{C}_{\mathbf{j}'}{\left(\mathbb{F}'_{\bullet},f'_{\bullet}\right)}^-
+\end{align*}
+where $\pi_{\hat{j}_1}$ is the projection on the $n-1$ coordinates $\{1,\ldots,j_1-1,j_1+1,\ldots,n\}$ and
+\begin{align*}
+\mathbf{j}'&:=\{1\leq j_2-1<\cdots<j_k-1\leq n-1\}\\
+\mathbb{F}'_i&:=\left\{\begin{array}{ll}\mathbb{F}_i&,0\leq i<j_1\\\sfrac{\mathbb{F}_{i+1}}{\left<f_{j_1}\right>}&,j_1\leq i<n\end{array}\right.\\
+f'_i&:=\left\{\begin{array}{ll}\pi_{\hat{j}_1}(f_i)&,0\leq i<j_1\\\pi_{\hat{j}_1}(f_{i+1})&,j_1\leq i<n\end{array}\right.
+\end{align*}
+So, we construct $\tilde{\Phi}_{\mathbf{j}}$ inductively, using \eqref{eq:trivial_fb}:
+\begin{align*}
+\tilde{C}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-&\cong D^{j_1-1}\times\tilde{C}_{\mathbf{j}'}{\left(\mathbb{F}_{\bullet}',f_{\bullet}'\right)}^-\\
+&\cong D^{j_1-1}\times D^{j_2-2}\times \tilde{C}_{\mathbf{j}''}{\left(\mathbb{F}_{\bullet}'',f_{\bullet}''\right)}^-\\
+&\ \,\vdots\\
+&\cong D^{j_1-1}\times D^{j_2-2}\times\cdots\times D^{j_k-k}\\
+&\cong D^{\mathrm{d(\mathbf{j})}}
+\end{align*}
 \end{proof}
+
 \begin{lemma}\label{lem:dim_of_cells} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$ and for any set $\mathbf{j}\in\binom{[n]}{k}$ there exists a map
 \[\Phi_{\mathbf{j}}:D^{d(\mathbf{j})}\to\Gr{k}{n}\]
 such that:
