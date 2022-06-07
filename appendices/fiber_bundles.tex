@@ -1,5 +1,5 @@
-\chapter{Fiber Bundles}
-The Fiber Bundle is a topological object generalizing the notion of the product space. A fiber bundle $E$ can be thought like a ``twisted product'' of a base topological space $B$ and a fiber space $F$. This means that locally it always looks like a product, but globally it may (homeomorphically) change, while we move in $B$. This is called local triviallity and is the least we can demand of a fiber bundle. Most of the time though, people are interested in fiber bundles with additional structure imposed on the fiber space $F$, such as a group action on $F$. These fiber bundles are said to then be equipped with a ``structure group'' $G<\mathrm{Aut}(F)$. On Chapter~\ref{chap:vec_bundles} we examine the notion of ``vector bundles'', which require that $F$ has the structure of a vector space. Also, it is worth noting at this point that the definition of the ``characteristic classes'' one sees in~\ref{def:char_class} originated from the study of ``sphere bundles'', requiring the fiber to be a sphere.
+\chapter{Fiber Bundles}\label{app:fiber_bundles}
+The Fiber Bundle is a topological object generalizing the notion of the product space. A fiber bundle $E$ can be thought like a ``twisted product'' of a base topological space $B$ and a fiber space $F$. This means that locally it always looks like a product, but globally it may (homeomorphically) change, while we move in $B$. This is called local triviallity and is the least we can demand of a fiber bundle. Most of the time though, people are interested in fiber bundles with additional structure imposed on the fiber space $F$, such as a group action on $F$. These fiber bundles are said to then be equipped with a ``structure group'' $G<\mathrm{Aut}(F)$. On Chapter~\ref{chap:vector_bundles} we examine the notion of ``vector bundles'', which require that $F$ has the structure of a vector space. Also, it is worth noting at this point that the definition of the ``characteristic classes'' one sees in~\ref{def:char_class} originated from the study of ``sphere bundles'', requiring the fiber to be a sphere.
 
 \begin{definition}\label{def:fiber_bundle} Let $F$, $E$ and $B$ be some topological spaces. A continuous map $p:E\to B$ is called a \ul{fiber bundle with fiber $F$}, if for every $x\in B$ there exists an open neighborhood $x\in U\subseteq B$, and a function $f_U:p^{-1}(U)\to U\times F$ (where $p^{-1}(U)$ has the subspace topology and $U\times F$ the product topology), such that:
 \begin{i_enum}
@@ -52,7 +52,7 @@ $\{x\}\times F$ is trivially homeomorphic to $F$, which proves the assertion.
 Now, one can see how bundles generalize products. Formally, one just needs to choose $U=B$ for every $x$ and $f_B=id$. In fact, products are in this setup the ``trivial'' example.
 \begin{definition} Let $F, B$ be two topological spaces, then the projection
 \[\pi_1:B\times F\to B\]
-is called the \ul{trivial bundle over $B$ with fiber $F$}, where $\pi_1$ is the projection on the first coordinate, i.e.\ $\pi_1(x,a)=x$.
+is called the \ul{trivial bundle over $B$ with fiber $F$}, where $\pi_1$ is the projection on the first coordinate, i.e.\ $\pi_1(x,a)=x$. After defining the notion of isomorphism in Definition~\ref{def:fb_iso}, every fiber bundle isomorphic to the trivial one is also going to be called trivial.
 \end{definition}
 
 Historically, the most famous non-trivial example of a fiber bundle has been the M\"obius strip:
@@ -72,7 +72,7 @@ Notice how this fiber bundle is not the ``same'' as the trivial bundle over the 
 \end{examples}
 
 Notice how in the above discussion we first fixed a base space $B$, before starting to ask questions about similarity of bundles. This is so common, that the first definition of a maps between bundles assumes that both involved bundles have the same base space.
-\begin{definition}
+\begin{definition}\label{def:bundle_map}
 Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. A continuous map $\phi:E_1\to E_2$ is a \ul{bundle map from $p_1$ to $p_2$ over $B$}, if $p_1=p_2\circ\phi$, i.e. if the following diagram commutes:
 \begin{center}
 \begin{tikzcd}
@@ -94,11 +94,11 @@ i.e.\ iff $\phi$ maps every fiber over $x$, of the left fiber bundle, to the fib
 \end{b_item}
 \end{proof}
 
-\begin{definition}
+\begin{definition}\label{def:fb_iso}
 Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively and let $\phi:E_1\to E_2$ be a bundle map from $p_1$ to $p_2$ over $B$. The map $\phi$ is called a \ul{bundle isomorphism}, if $\phi$ is a homeomorphism.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:global_to_local_iso}
 Let $p_1:E_1\to B$ and $p_2:E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively and let $\phi:E_1\to E_2$ be a bundle isomorphism map from $p_1$ to $p_2$ over $B$. Then, for every $x\in B$, the map
 \[\phi_x:{\left(F_1\right)}_x\to{\left(F_2\right)}_x\]
 with $\phi_x(v)=\phi(v)$ for every $v\in\left(F_1\right)_x$ is a homeomorphism with $(\phi_x)^{-1}=\big(\phi^{-1}\big)_x$.
@@ -227,9 +227,9 @@ If we restrict $E_1,E_2$ enough, such pathologies do not arise, since we can use
 
 The total space being compact is an unnecessarily heavy restriction, which doesn't hold even for vector bundles, so here we try to arrive at a similar result, only restricting the fiber $F$, using Theorem~\ref{thm:inverse}, keeping in mind the approach in the counterexample:
 
-\begin{theorem} Let $F$ be a Hausdorff, locally compact, locally connected topological space and let $p_1: E_1\to B$ and $p_2: E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively, both isomorphic to $F$. Moreover, let $\phi:E_1\to E_2$ be a bundle map such that its restriction
+\begin{theorem}\label{thm:local_to_global_iso} Let $F$ be a Hausdorff, locally compact, locally connected topological space and let $p_1: E_1\to B$ and $p_2: E_2\to B$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively, both isomorphic to $F$. Moreover, let $\phi:E_1\to E_2$ be a bundle map such that its restriction
 \[\phi_x:(F_1)_x\to (F_2)_x\]
-with $\phi_x(v)=\phi(v)$ is a homeomorphism for every $x\in B$. Then $\phi$ is also a homeomorphism.
+with $\phi_x(v)=\phi(v)$ is a homeomorphism for every $x\in B$. Then $\phi$ is also a homeomorphism and thus a fiber bundle isomorphism.
 \end{theorem}
 \begin{proof} First of all, it is easy to see that $\phi$ is a bijection:
 \begin{itemize}
@@ -250,7 +250,7 @@ Let $\mathcal{U}=\{U_x:x\in B\}$. Since $\{p_2^{-1}(U):U\in\mathcal{U}\}$ forms 
 \vspace*{-1em}
 \begin{center}
 \begin{tikzcd}
-U\times F\ar[r,"\cong"']\ar[drrr,"\pi_1"',near start]\ar[rrrrrr,bend left=10,dotted,"\psi"]&U\times F_1\ar[r,"\cong"',"(f_1)_U^{-1}"]\ar[drr,"\pi_1"',near start]&p_1^{-1}(U)\ar[rr,"\phi|_{p_1^{-1}(U)}"]\ar[dr,"p_1"',near start]&[-2em]&p_2^{-1}(U)\ar[r,"\cong"',"(f_2)_U"]\ar[dl,"p_2",near start]&U\times F_2\ar[r,"\cong"']\ar[dll,"\pi_1",near start]&U\times F\ar[dlll,"\pi_1",near start]\\[2em]
+U\times F\ar[r,"\cong"']\ar[drrr,"\pi_1"',near start]\ar[rrrrrr,bend left=10,dotted,"\psi"]&U\times F_1\ar[r,"\cong"',"(f_1)_U^{-1}"]\ar[drr,"\pi_1"',near start]&p_1^{-1}(U)\ar[rr,"\phi|_{p_1^{-1}(U)}"]\ar[dr,"p_1"',near start]&[-1em]&[-1em]p_2^{-1}(U)\ar[r,"\cong"',"(f_2)_U"]\ar[dl,"p_2",near start]&U\times F_2\ar[r,"\cong"']\ar[dll,"\pi_1",near start]&U\times F\ar[dlll,"\pi_1",near start]\\[2em]
 &&&U
 \end{tikzcd}
 \end{center}
