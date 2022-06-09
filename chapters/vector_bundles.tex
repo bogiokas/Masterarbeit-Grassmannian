@@ -201,7 +201,74 @@ Notice now that for any $v\in\mathbb{R}^n$
 i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^n$ is connected and the existance of such a continuous $t$ leads to a contradiction due to the intermediate value theorem. Notice that this is the easiest case of the (BU1b)-version of the Borsuk Ulam theorem as stated in Theorem~2.1.1 in \cite{BU_Matousek}.
 \end{proof}
 
+* questions about parallelizable spheres?
 
+\section{Creating new bundles}
+Our goal is now to describe some ways to create new bundles by combining the data of already known ones. First we construct new bundles based on continuous maps between the base spaces, disregarding the vector space structure on the fibers and then we construct new bundles by fixing the base space and doing operations on the vector spaces fiber-wise.
 
+\subsection{By combining the base spaces}
+In order to briefly ignore the vector space structure of the fibers we will describe the next few constructions in terms of fiber bundles, in general:
 
+\begin{definition} Let $p:E\to B$ be a fiber bundle with fiber $F$, let $B'$ be any topological space and let $f:B'\to B$ be any continuous map. Then we can define the \emph{induced} fiber bundle $f^*p:E'\to B'$ with fiber $F$, making the following diagram a pullback square:
+\begin{center}
+\begin{tikzcd}
+E'\ar[r,dotted,"\bar{f}"]\ar[d,dotted,"f^*p"']\ar[rd,phantom,"\lrcorner",near start]&E\ar[d,"p"]\\
+B'\ar[r,"f"]&B
+\end{tikzcd}
+\end{center}
+Explicitly, it is $E':=\{(x,a)\in B'\times E:f(x)=p(a)\}$, $f^*p(x,a)=x$ and $\bar{f}(x,a)=a$.
+\end{definition}
+The way to imagine the pullback fiber bundle is that we attach to a point $x\in B'$ a copy of $F$ ``in the same way'' it is attached to $f(x)$.
 
+\begin{definition} Let $p:E\to B$ be a fiber bundle and $A\subseteq B$ any subset of $B$. Then, the \emph{restriction} of $p$ is denoted by $p|A:D\to A$ and is the induced fiber bundle of the inclusion map $i:A\hookrightarrow B$. Explicitly, we have that $D:=p^{-1}(A)$ and $p|A:=p|_D$. \end{definition}
+Notice that $p|A$ has again fiber $F$, i.e. we restricted $B$ but not $F$.
+
+\begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. Then, the \emph{product} bundle $p_1\times p_2:E_1\times E_2\to B_1\times B_2$ with fiber $F_1\times F_2$ is defined to be the usual product map.
+\end{definition}
+
+\begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles both with fiber $F$. Then, the \emph{coproduct} bundle $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$ with fiber $F$ is defined to be the usual coproduct map.
+\end{definition}
+
+Notice that the product of the base spaces always defines a product of fiber bundles, but the disjoint union of two base spaces defines a fiber bundle only if the fibers of the two components were already isomorphic.
+
+* examples with tangent and normal?
+
+\subsection{By combining the fibers}
+Here we want to exploit the vector space structure of the fibers, so we fix some base space $B$ and define new bundles over $B$ using fiber-wise operations.
+
+\begin{definition} Let $\xi:E\to B$ be a vector bundle. Then $\eta:E'\to B$ is a \emph{subbundle} of $\xi$ if $E'\subseteq E$ and for every $x\in B$, $\eta^{-1}(x)<\xi^{-1}(x)$ as vector spaces.
+\end{definition}
+
+\begin{definition} Let $\xi_1:E_1\to B$ be an $n$-plane vector bundle and $\xi_2:E_2\to B$ be an $m$-plane vector bundle. Their \emph{whitney sum} $\xi_1\oplus\xi_2:E\to B$ is the $(n+m)$-plane vector bundle with
+\[E=\left\{(a_1,a_2)\in E_1\times E_2:\xi_1(a_1)=\xi_2(a_2)\right\}\]
+and $(\xi_1\oplus\xi_2)(a_1,a_2)=\xi_1(a_1)$.
+\end{definition}
+\begin{remark} Notice that $\xi_1\oplus\xi_2=d^*(\xi_1\times\xi_2)$.
+\end{remark}
+
+\begin{lemma} Let $\eta:E\to B$ be a vector bundle and $\xi_1:E_1\to B,\ \xi_2:E_2\to B$ be two subbundles of $\eta$, such that $\eta^{-1}(x)=\xi_1^{-1}(x)\times\xi_2^{-1}(x)$. Then $\eta\cong\xi_1\oplus\xi_2$.
+\end{lemma}
+\begin{proof} TODO - use local to global lemma.
+\end{proof}
+
+\begin{definition} Let $\eta:E\to B$ be an $n$-plane vector bundle and $\xi:E'\to B$ a $k$-plane vector subbundle of $\eta$. Then, the \emph{quotient bundle} $\faktor{\eta}{\xi}:D\to B$ is the $(n-k)$-plane vector bundle with
+\[D=\left\{TODO\right\}\]
+\end{definition}
+
+TODO: separate definitions from arguments that they are indeed vb.
+\section{Do we always have a dot product?}
+--Not sure if I need these\\
+* def Euclidean VB\\
+* lem trivial iff orthonormal sections\\
+* prop if paracompact then euclidean VB\\
+* def if euclidean VB and xi subb. eta, then perp(xi)\\
+* lem perp(xi)+xi=eta\\
+* lem perp(xi)=eta/xi
+
+\section{Stiefel-Whitney classes}
+* 4 axioms\\
+* lem invariant under cong\\
+* def total SW class\\
+* lem cohomology ring with a0=1 inverting total classes\\
+* examples: tangent of sphere, tautological, tangent of projective
+* thm: existance
