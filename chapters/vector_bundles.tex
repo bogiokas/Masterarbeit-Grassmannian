@@ -207,57 +207,122 @@ i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^
 Our goal is now to describe some ways to create new bundles by combining the data of already known ones. First we construct new bundles based on continuous maps between the base spaces, disregarding the vector space structure on the fibers and then we construct new bundles by fixing the base space and doing operations on the vector spaces fiber-wise.
 
 \subsection{By combining the base spaces}
-In order to briefly ignore the vector space structure of the fibers we will describe the next few constructions in terms of fiber bundles, in general:
+In order to briefly ignore the vector space structure of the fibers we will describe the next few constructions in terms of fiber bundles, in general.
 
-\begin{definition} Let $p:E\to B$ be a fiber bundle with fiber $F$, let $B'$ be any topological space and let $f:B'\to B$ be any continuous map. Then we can define the \emph{induced} fiber bundle $f^*p:E'\to B'$ with fiber $F$, making the following diagram a pullback square:
+\begin{proposition} Let $p:E\to B$ be a fiber bundle with fiber $F$, let $B'$ be any topological space and let $g:B'\to B$ be any continuous map. Moreover, let $E':=\{(x,v)\in B'\times E:g(x)=p(v)\}$, $g^*p(x,v)=x$ and $\bar{g}(x,v)=v$ be the space and the maps making the following a pullback square of topological spaces:
 \begin{center}
 \begin{tikzcd}
-E'\ar[r,dotted,"\bar{f}"]\ar[d,dotted,"f^*p"']\ar[rd,phantom,"\lrcorner",near start]&E\ar[d,"p"]\\
-B'\ar[r,"f"]&B
+E'\ar[r,dotted,"\bar{f}"]\ar[d,dotted,"g^*p"']\ar[rd,phantom,"\lrcorner",near start]&E\ar[d,"p"]\\
+B'\ar[r,"g"]&B
 \end{tikzcd}
 \end{center}
-Explicitly, it is $E':=\{(x,a)\in B'\times E:f(x)=p(a)\}$, $f^*p(x,a)=x$ and $\bar{f}(x,a)=a$.
+Then $g^*p:E'\to B'$ is a fiber bundle with fiber $F$.
+\end{proposition}
+\begin{proof} We have to show that $g^*p$ as defined above is locally trivial. Let $x\in B'$, then, since $p$ is a fiber bundle, there exists some open $U$ with $g(x)\in U\subseteq B$ and a homeomorphism $f_U:p^{-1}(U)\to U\times F$ such that $p=\pi_1\circ f_U$. Let $U':=g^{-1}(U)$. This contains $x$ and is open, since $g$ is continuous. Notice that
+\begin{align*}
+(g^*p)^{-1}(U')&=\{(x,v)\in U'\times E: g(x)=p(v)\}\\
+&=\{(x,v)\in U'\times p^{-1}(U):g(x)=p(v)\}
+\end{align*}
+So, we can define $f'_{U'}:= id\times(\pi_2\circ f_U):(g^*p)^{-1}(U')\to U'\times F$. This is a continuous map and obviously satisfies the equation $g^*p(x,a)=x=\pi_1\circ f'_{U'}$. In order to prove that it is also a homeomorphism, we will prove that it has a continuous inverse map. Define $h_{U'}:U'\times F\to (g^*p)^{-1}(U')$ as follows:
+\begin{center}
+\begin{tikzcd}
+h_{U'}\ar[r,phantom,":"]&[-2em]U'\times F\ar[r,"\left<id_{U'}{,}g\right>\times id_F"]&[3em]U'\times U\times F\ar[r,"id_{U'}\times f_U^{-1}"]&[3em](g^*p)^{-1}(U')\\[-1.5em]
+&(x,a)\ar[r,mapsto]&(x,g(x),a)\ar[r,mapsto]&(x,f_U^{-1}(g(x),a))
+\end{tikzcd}
+\end{center}
+This map is continuous well defined. Indeed, $p\big(f_U^{-1}(g(x),a)\big)=\pi_1(g(x),a)=g(x)$, so $(x,f_U^{-1}(g(x),a))\in (g^*p)^{-1}(U')$ for every $(x,a)\in U'\times F$. Moreover, notice that $(f'_{U'}\circ h_{U'})(x,a)=f'_{U'}(x,f_U^{-1}(g(x),a))=(x,\pi_2\circ f_U\circ f_U^{-1}(g(x),a))=(x,a)$ for every $(x,a)\in U'\times F$. Also, for every $(x,v)\in (g^*p)^{-1}(U')$, we have:
+\begin{align*}
+(h_{U'}\circ f'_{U'})(x,v)&=h_{U'}(x,\pi_2\circ f_U(v))=\big(x,f_U^{-1}(g(x),\pi_2\circ f_U(v))\big)\\
+&=\big(x,f_U^{-1}(p(v),\pi_2\circ f_U(v))\big)=\big(x,f_U^{-1}(\pi_1\circ f_U(v),\pi_2\circ f_U(v))\big)\\
+&=\big(x,f_U^{-1}\circ f_U(v)\big)=(x,v)
+\end{align*}
+which finishes the proof that $(f'_{U'})^{-1}=h_{U'}$
+\end{proof}
+
+\begin{definition} Let $p:E\to B$ be a fiber bundle with fiber $F$ and $g:B'\to B$ any continuous map as in the above proposition. The \emph{induced} fiber bundle of $p$ over $g$ is $g^*p:E'\to B'$, where $E':=\{(x,a)\in B'\times E:g(x)=p(a)\}$ and $g^*p(x,a)=x$.
 \end{definition}
-The way to imagine the pullback fiber bundle is that we attach to a point $x\in B'$ a copy of $F$ ``in the same way'' it is attached to $f(x)$.
+The way to imagine the pullback fiber bundle is that we attach to a point $x\in B'$ a copy of $F$ ``in the same way'' it is attached to $g(x)$.
 
-\begin{definition} Let $p:E\to B$ be a fiber bundle and $A\subseteq B$ any subset of $B$. Then, the \emph{restriction} of $p$ is denoted by $p|A:D\to A$ and is the induced fiber bundle of the inclusion map $i:A\hookrightarrow B$. Explicitly, we have that $D:=p^{-1}(A)$ and $p|A:=p|_D$. \end{definition}
-Notice that $p|A$ has again fiber $F$, i.e. we restricted $B$ but not $F$.
+\begin{remark} In the special case where $g:B'\to B$ is injective, then $E'\cong p^{-1}(g(B'))\subseteq E$ and $(g^*p)(v)=g^{-1}(p(v))$ for every $v\in p^{-1}(g(B'))$.
+\end{remark}
+\begin{proof} The function $g$ being injective means that it has a left inverse, which we will denote by $g^{-1}$ here. This means that:
+\begin{align*}
+E'&=\{(x,v)\in B'\times E:g(x)=p(v)\}=\{(x,v)\in B'\times E:x=(g^{-1}\circ p)(v)\}\\
+&\cong\{v\in E:(g^{-1}\circ p)(v)\in B'\}=p^{-1}(g(B))
+\end{align*}
+And factoring $g^*p$ through this homeomorphism we exactly get $(g^*p)(v)=x=g^{-1}(p(v))$, which proves the assertion.
+\end{proof}
 
-\begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. Then, the \emph{product} bundle $p_1\times p_2:E_1\times E_2\to B_1\times B_2$ with fiber $F_1\times F_2$ is defined to be the usual product map.
+\begin{definition} Let $p:E\to B$ be a fiber bundle and $A\subseteq B$ any subset of $B$. Then, the \emph{restriction bundle of $p$ on $A$} is $p|A:E'\to A$, where $E'=p^{-1}(A)$ and $g^*p(v)=p|_{p^{-1}(A)}(v)$.
+\end{definition}
+Notice that $p|A$ has fiber $F$, which means that we restricted $B$ but not $F$.
+
+\begin{proposition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. Then $p_1\times p_2:E_1\times E_2\to B_1\times B_2$ is a fiber bundle with fiber $F_1\times F_2$.
+\end{proposition}
+\begin{proof} We have to show that $p_1\times p_2$ is locally trivial. Let $(x_1,x_2)\in B_1\times B_2$. Then, since $p_1$ and $p_2$ are fiber bundles there exist some open sets $U_1\subseteq E_1$ and $U_2\subseteq E_2$ with $x_1\in U_1$ and $x_2\in U_2$ and homeomorphisms $f_{U_1}:p_1^{-1}(U_1)\to U_1\times F_1$ and $g_{U_2}:p_2^{-1}(U_2)\to U_2\times F_2$ such that $p_1=\pi_1\circ f_{U_1}$ and $p_2=\pi_1\circ g_{U_2}$. Let $U=U_1\times U_2$. This contains $(x_1,x_2)$ and is open. Notice that $(p_1\times p_2)^{-1}(U)=p_1^{-1}(U_1)\times p_2^{-1}(U_2)$. So, we can define $h_U:=\tau_{2,3}\circ(f_{U_1}\times g_{U_2}):(p_1\times p_2)^{-1}(U)\to U_1\times U_2\times F_1\times F_2$, where $\tau_{2,3}:U_1\times F_1\times U_2\times F_2\to U_1\times U_2\times F_1\times F_2$ is the homeomorphism swapping coordinates $2$ and $3$. This makes $h_U$ a homeomorphism and it is easy to check that $\pi_1\circ h_U(v_1,v_2)=(p_1\times p_2)(v_1,v_2)\in B_1\times B_2$, where $\pi_1$ is the projection on the first two coordinates just for this example.
+\end{proof}
+
+\begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. Then, the \emph{product fiber bundle of $p_1$ and $p_2$} is the usual product map $p_1\times p_2:E_1\times E_2\to B_1\times B_2$.
 \end{definition}
 
-\begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles both with fiber $F$. Then, the \emph{coproduct} bundle $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$ with fiber $F$ is defined to be the usual coproduct map.
-\end{definition}
+\begin{proposition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles both with fiber $F$ and $F$ respectively. Then $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$ is a fiber bundle with fiber $F$.
+\end{proposition}
+\begin{proof} We have to show that $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$ is locally trivial. Let $x\in B_1\amalg B_2$. Then $x\in B_i$ for some $i\in\{1,2\}$ and there exists some open $U\subseteq B_i$ containing $x$ and a homeomorphism $f_U:p_i^{-1}(U)\to U\times F$. Notice that $(p_1\amalg p_2)^{-1}(U)=p_i^{-1}(U)$, so $f_U$ itself is a local homeomorphism for $p_1\amalg p_2$.
+\end{proof}
 
+\begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles both with fiber $F$. Then, the \emph{coproduct fiber bundle of $p_1$ and $p_2$} is the usual coproduct map $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$.
+\end{definition}
 Notice that the product of the base spaces always defines a product of fiber bundles, but the disjoint union of two base spaces defines a fiber bundle only if the fibers of the two components were already isomorphic.
 
 * examples with tangent and normal?
 
 \subsection{By combining the fibers}
-Here we want to exploit the vector space structure of the fibers, so we fix some base space $B$ and define new bundles over $B$ using fiber-wise operations.
+Here we want to exploit the vector space structure of the fibers, so we fix some base space $B$ and define new bundles over $B$ using fiber-wise operations. In this section we are going to construct some vector bundle isomorphisms, always by constructing a bundle map that is linear on the fibers, proving that the desired isomorphism is true fiberwise and then using proposition~\ref{prop:local_to_global_iso_vector} to argue that this bundle map is in fact a bundle isomorphism.
 
-\begin{definition} Let $\xi:E\to B$ be a vector bundle. Then $\eta:E'\to B$ is a \emph{subbundle} of $\xi$ if $E'\subseteq E$ and for every $x\in B$, $\eta^{-1}(x)<\xi^{-1}(x)$ as vector spaces.
+\begin{definition} Let $\xi:E\to B$ be an $n$-plane vector bundle and $\eta:E'\to B$ a $k$-plane vector bundle, where $E'\subseteq E$. Then $\eta$ is a \emph{subbundle of $\xi$}, if $\eta^{-1}(x)<\xi^{-1}(x)$ as vector spaces for every $x\in B$. In this case, we write $\eta<\xi$. Notice that in this case $k\leq n$.
 \end{definition}
 
-\begin{definition} Let $\xi_1:E_1\to B$ be an $n$-plane vector bundle and $\xi_2:E_2\to B$ be an $m$-plane vector bundle. Their \emph{whitney sum} $\xi_1\oplus\xi_2:E\to B$ is the $(n+m)$-plane vector bundle with
-\[E=\left\{(a_1,a_2)\in E_1\times E_2:\xi_1(a_1)=\xi_2(a_2)\right\}\]
-and $(\xi_1\oplus\xi_2)(a_1,a_2)=\xi_1(a_1)$.
+\begin{definition} Let $\xi_1:E_1\to B$ be an $n_1$-plane vector bundle, $\xi_2:E_2\to B$ an $n_2$-plane vector bundle and $\eta:E\to B$ an $n$-plane vector bundle, where $E_1,E_2\subseteq E$. Then $\eta$ is the \emph{whitney sum of $\xi_1$ and $\xi_2$}, if $\eta^{-1}(x)=\xi_1^{-1}(x)\oplus\xi_2^{-1}(x)$ as vector spaces, for every $x\in B$. In this case, we write $\eta=\xi_1\oplus\xi_2$. Notice that in this case $n_1+n_2=n$.
 \end{definition}
-\begin{remark} Notice that $\xi_1\oplus\xi_2=d^*(\xi_1\times\xi_2)$.
+
+Next we examine how to explicitly describe the whitney sum of two given bundles:
+\begin{proposition} Let $\xi_1:E_1\to B$ be an $n_1$-plane vector bundle and $\xi_2:E_2\to B$ an $n_2$-plane vector bundle. Then, $\xi_1\oplus\xi_2\cong d^*(\xi_1\times\xi_2)$, where $d:B\to B\times B$ is the diagonal map taking $x\in B$ to $(x,x)\in B\times B$.
+\end{proposition}
+\begin{proof} Let $d^*(\xi_1\times\xi_2):\big\{(x,v_1,v_2)\in B\times E_1\times E_2:(x,x)=(\xi_1(v_1),\xi_2(v_2))\big\}\to B$ and $\eta=\xi_1\otimes\xi_2:E\to B$. Then, we can define the following map:
+\begin{center}
+\begin{tikzcd}
+\big\{(x,v_1,v_2)\in B\times E_1\times E_2:(x,x)=(\xi_1(v_1),\xi_2(v_2))\big\}\ar[r,"\phi"]&[5em]E\\[-1.5em]
+(x,v_1,v_2)\ar[r,mapsto]&v_1+v_2
+\end{tikzcd}
+\end{center}
+It is easy to see that this is a bundle map and linear over each fiber. Next, notice that its restriction on the fibers $\phi_x=\phi|:\big(d^*(\xi_1\times\xi_2)\big)^{-1}(x)\to\eta^{-1}(x)$ is a linear isomorphism. Indeed, for any $x\in B$, its inverse is the map $\psi_x$ taking some $v\in\eta^{-1}(x)$, writing it as $v_1+v_2\in\xi_1^{-1}(x)\oplus\xi_2^{-1}(x)$ and mapping it to $(x,v_1,v_2)\in B\times E_1\times E_2$. We use now Proposition~\ref{prop:local_to_global_iso_vector} to glue all $\psi_x$ in one global $\psi$ inverse of $\phi$, which proves the assertion.
+\end{proof}
+\begin{remark} We can write $\xi_1\oplus\xi_2:\big\{(v_1,v_2)\in E_1\times E_2:\xi_1(v_1)=\xi_2(v_2)\big\}\to B$, where $(\xi_1\oplus\xi_2)(v_1,v_2)=\xi_1(v_1)$.
 \end{remark}
-
-\begin{lemma} Let $\eta:E\to B$ be a vector bundle and $\xi_1:E_1\to B,\ \xi_2:E_2\to B$ be two subbundles of $\eta$, such that $\eta^{-1}(x)=\xi_1^{-1}(x)\times\xi_2^{-1}(x)$. Then $\eta\cong\xi_1\oplus\xi_2$.
-\end{lemma}
-\begin{proof} TODO - use local to global lemma.
+\begin{proof} By the construction of the product and the induced bundle, we have that $d^*(\xi_1\times\xi_2):E\to B$, where
+\begin{align*}
+E&=\big\{(x,v_1,v_2)\in B\times E_1\times E_2:(x,x)=(\xi_1(v_1),\xi_2(v_2))\big\}\\
+&=\big\{(\xi_1(v_1),v_1,v_2)\in B\times E_1\times E_2:\xi_1(v_1)=\xi_2(v_2)\big\}\\
+&\cong\big\{(v_1,v_2)\in E_1\times E_2:\xi_1(v_1)=\xi_2(v_2)\big\}
+\end{align*}
+and factoring $\xi_1\oplus\xi_2$ through this homeomorphism gives exactly $(\xi_1\oplus\xi_2)(v_1,v_2)=x=\xi_1(v_1)$.
 \end{proof}
 
-\begin{definition} Let $\eta:E\to B$ be an $n$-plane vector bundle and $\xi:E'\to B$ a $k$-plane vector subbundle of $\eta$. Then, the \emph{quotient bundle} $\faktor{\eta}{\xi}:D\to B$ is the $(n-k)$-plane vector bundle with
-\[D=\left\{TODO\right\}\]
+\begin{definition} Let $\xi:E\to B$ be an $n$-plane vector bundle, $\xi':E'\to B$ a $k$-plane vector bundle and $\eta:Q\to B$ an $m$-plane vector bundle, where $E'\subseteq E$. Then $\eta$ is the \emph{quotient vector bundle of $\xi$ and $\xi'$}, if $\eta^{-1}(x)=\sfrac{\xi^{-1}(x)}{\xi'^{-1}(x)}$ as vector spaces, for every $x\in B$. In this case, we write $\eta=\sfrac{\xi}{\xi'}$. Notice that in this case $n-k=m$.
 \end{definition}
-
-TODO: separate definitions from arguments that they are indeed vb.
+Next we examine how to explicitly define the quotient bundles given a bundle and a subbundle.
+\begin{proposition} Let $\xi:E\to B$ be an $n$-plane vector bundle and $\xi':E'\to B$ a $k$-plane vector subbundle, i.e. $\xi'\leq\xi$. Then, $\sfrac{\xi}{\xi'}\cong\eta:\sfrac{E}{\sim}\to B$, where $v_1\sim v_2$ iff $\xi(v_1)=\xi(v_2)$ and $v_1-v_2\in\xi'^{-1}(\xi(v))$ and $\left(\sfrac{\xi}{\xi'}\right)([v])=\xi(v)$.
+\end{proposition}
+\begin{proof} First of all notice that this map is well defined, since $\xi(v)$ is the same for every choice of class representative $v$. Let $\sfrac{\xi}{\xi'}:Q\to B$ be the definition of the quotient vector bundle. We define now the following map:
+\begin{center}
+\begin{tikzcd}
+\sfrac{E}{\sim}\ar[r,"\phi"]&Q\\[-1.5em]
+[v]\ar[r,mapsto]&v+\xi'^{-1}(\xi(v))
+\end{tikzcd}
+\end{center}
+Notice that this is continuous and well defined, by the definition of the equivalence relation and also linear over each fiber. Next, we want to prove that it is in fact a vector isomorphism over each fiber. To do this, we will define for every $x\in B$ its inverse $\psi_x$. Let $v+\xi'^{-1}(x)\in\sfrac{\xi^{-1}(x)}{\xi'^{-1}(x)}$, then we define $\psi_x(v+\xi'^{-1}(x))=[v]$. This is again well defined and is easy to see that it is the desired inverse. Remark~\ref{rem:vector_subcover} lets us now glue all $\psi_x$ into one global inverse of $\phi$, which proves that $\phi$ is a vector bundle isomorphism. Factoring $\sfrac{\xi}{\xi'}$ over this homeomorphism, we get $\left(\sfrac{\xi}{\xi'}\right)([v])=x=\xi(v)$ as desired.
+\end{proof}
 \section{Do we always have a dot product?}
---Not sure if I need these\\
 * def Euclidean VB\\
 * lem trivial iff orthonormal sections\\
 * prop if paracompact then euclidean VB\\
@@ -265,7 +330,24 @@ TODO: separate definitions from arguments that they are indeed vb.
 * lem perp(xi)+xi=eta\\
 * lem perp(xi)=eta/xi
 
+
+
+%\begin{lemma} Let $\xi:E\to B$ be an $n$-plane vector bundle and $\xi':E'\to B$ a $k$-plane vector subbundle, i.e. $\xi'\leq\xi$. Then $\xi\cong\sfrac{\xi}{\xi'}\oplus\xi'$.
+%\end{lemma}
+%\begin{proof} Let us define the following map:
+%\begin{center}
+%\begin{tikzcd}
+%\left\{(v_1,[v_2])\in E'\times\faktor{E}{\tilde}:\xi'(v_1)=\xi(v_2)\right\}\times E'\ar[r,"\phi"]&[5em]E\\[-1.5em]
+%(v_1,[v_2],v_3)\ar[r,mapsto]&
+%\end{tikzcd}
+%\end{center}
+%\end{proof}
+
+
 \section{Stiefel-Whitney classes}
+In this section we will follow the approach of ~\cite{husemoller} in Chapter~17, Sections~3-6.
+
+
 * 4 axioms\\
 * lem invariant under cong\\
 * def total SW class\\
