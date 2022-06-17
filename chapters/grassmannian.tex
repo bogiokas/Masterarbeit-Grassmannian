@@ -379,16 +379,16 @@ S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}
 \end{computation}
 \begin{proof} Let $\theta\in(0,\pi)$ be the angle between $x$ and $y$ and $H=\left<x,y\right>$ the plane spanned by $x,y$. It is easy to compute that the following is an orthonormal basis of $H$:
 \[u=x,\qquad v=\frac{1}{\sin\theta}(y-\cos\theta x)\]
-Let $P_H$ be the linear projection on $H$. Then for any $a\in\mathbb{R}^n$, we have:
+Let $P_H$ be the linear projection on $H$. Then for any $a\in\mathbb{R}^n$,
 \begin{align*}
 P_Ha&=(u^ta)u+(v^ta)v\\
 &=(x^ta)x+\frac{1}{\sin^2\theta}\big((y^ta)-(x^ta)\cos\theta)\big)\big(y-\cos\theta x\big)\\
 &=\Big((x^ta)-\frac{\cos\theta}{\sin^2\theta}(y^ta)+\frac{\cos^2\theta}{\sin^2\theta}(x^ta)\Big)x+\Big(\frac{1}{\sin^2\theta}(y^ta)-\frac{\cos\theta}{\sin^2\theta}(x^ta)\Big)y\\
 &=\frac{(x^ta)-(y^ta)\cos\theta}{\sin^2\theta}x+\frac{(y^ta)-(x^ta)\cos\theta}{\sin^2\theta}y
 \end{align*}
-For the rotation $\rho_{x\to y}$ we have:
+For the rotation $\rho_{x\to y}$ we have,
 \[\rho_{x\to y}(a-P_Ha)=a-P_Ha,\qquad\rho_{x\to y}x=y,\qquad\rho_{x\to y}y=z\]
-where we can easily compute that $z=2\cos\theta y-x$. These give:
+where we compute that $z=2\cos\theta y-x$, which give the desired formula,
 \begingroup
 \allowdisplaybreaks
 \begin{align*}
@@ -403,31 +403,31 @@ where we can easily compute that $z=2\cos\theta y-x$. These give:
 &=\left(I_n+2yx^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)a
 \end{align*}
 \endgroup
-which is the desired formula. At this point it is easy to do a sanity check and verify that indeed
+At this point it is easy to do a sanity check and verify that indeed
 \[\rho_{x\to y}x=y,\qquad\rho_{x\to y}y=2\cos\theta y-x,\qquad\forall a\perp H\ \ \rho_{x\to y}a=a\]
-Moreover, we can also verify that
+Moreover, we also verify that
 \begin{align*}
 \rho_{x\to y}\rho_{x\to y}^t&=\left(I_n+2yx^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)\left(I_n+2xy^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)\\
 &=\begin{aligned}[t]&I_n+2xy^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}+2yx^t+4yy^t-2\frac{y(1+\cos\theta)(x+y)^t}{\cos\theta+1}\\
 &-\frac{(x+y)(x+y)^t}{\cos\theta+1}-2\frac{(x+y)(1+\cos\theta)y^t}{\cos\theta+1}+\frac{(x+y)(2+2\cos\theta)(x+y)^t}{(\cos\theta+1)^2}\end{aligned}\\
 &=I_n
 \end{align*}
-which proves that $\rho_{x\to y}\in O(n)$. To compute the determinant of $\rho_{x\to y}$, we first let $A=I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}$ and use the Matrix determinant lemma to get:
+which proves that $\rho_{x\to y}\in O(n)$. To compute the determinant of $\rho_{x\to y}$, first let $A=I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}$ and use the Matrix determinant lemma to get:
 \[\det(A)=\det\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)=1-\frac{(x+y)^t(x+y)}{\cos\theta+1}=-1\]
-which proves that $A$ is invertible. Using the Sherman–Morrison formula we can also compute $A^{-1}$:
+and hence $A$ is invertible. Using the Sherman–Morrison formula we compute $A^{-1}$:
 \begin{align*}
 A^{-1}&=\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)^{-1}\\
 &=I_n+\frac{1}{1-\frac{\mathrm{tr}\left((x+y)(x+y)^t\right)}{\cos\theta+1}}\frac{(x+y)(x+y)^t}{\cos\theta+1}\\
 &=I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}
 \end{align*}
-Lastly, using the Matrix determinant lemma again, we have:
+Lastly, using the Matrix determinant lemma again, we have
 \begin{align*}
 \det(\rho_{x\to y})&=\det\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}+2yx^t\right)\\
 &=\left(1+2x^tA^{-1}y\right)\det(A)\\
 &=-\left(1+2x^t\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)y\right)\\
 &=-1-2\cos\theta+2\frac{(1+\cos\theta)(\cos\theta+1)}{\cos\theta+1}=1
 \end{align*}
-which proves finally that $\rho_{x\to y}\in SO(n)$.
+which proves that $\rho_{x\to y}\in SO(n)$.
 \end{proof}
 
 \begin{lemma}\label{lem:shub_dim} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, there exists a homeomorphism
@@ -456,7 +456,7 @@ where $\pi_{\hat{j}_1}$ is the projection on the $n-1$ coordinates $\{1,\ldots,j
 \mathbb{F}'_i&:=\left\{\begin{array}{ll}\mathbb{F}_i&,0\leq i<j_1\\\faktor{\mathbb{F}_{i+1}}{\left<f_{j_1}\right>}&,j_1\leq i<n\end{array}\right.\\
 f'_i&:=\left\{\begin{array}{ll}\pi_{\hat{j}_1}(f_i)&,0\leq i<j_1\\\pi_{\hat{j}_1}(f_{i+1})&,j_1\leq i<n\end{array}\right.
 \end{align*}
-So, we construct $\tilde{\Phi}_{\mathbf{j}}$ inductively, using \eqref{eq:trivial_fb}:
+So, $\tilde{\Phi}_{\mathbf{j}}$ is constructed inductively, using \eqref{eq:trivial_fb}:
 \begin{align*}
 \tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-&\cong D^{j_1-1}\times\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}_{\bullet}',f_{\bullet}'\right)}^-\\
 &\cong D^{j_1-1}\times D^{j_2-2}\times \tilde{\mathcal{C}}_{\mathbf{j}''}{\left(\mathbb{F}_{\bullet}'',f_{\bullet}''\right)}^-\\
@@ -476,7 +476,7 @@ So, the inductive construction above gives us that
 with the homeomorphism being a restriction of $\tilde{\Phi}_{\mathbf{j}}^{-1}$, which proves the assertion.
 \end{proof}
 
-In order to finally examine the CW structure of $\Gr{k}{n}$, we need to connect the sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ we defined to the cells $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$:
+In order to examine the CW structure of $\Gr{k}{n}$, we need to connect the sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ defined to the cells $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$:
 \begin{lemma}\label{lem:cells_from_stiefel_to_gr} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ be an orthonormal basis of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}\in\binom{[n]}{k}$ the following restriction of $q_0:\StO{k}{n}\to\Gr{k}{n}$ is a homeomorphism:
 \begin{center}
 \begin{tikzcd}
@@ -485,39 +485,39 @@ In order to finally examine the CW structure of $\Gr{k}{n}$, we need to connect 
 \end{tikzcd}
 \end{center}
 \end{lemma}
-\begin{proof} First of all, $q_0$ is well defined. Indeed, let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and let
+\begin{proof} First notice that $q_0$ is well defined. Indeed, let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and
 \[H:=q_0(v_1,\ldots,v_k)=\left<v_1,\ldots,v_k\right>\in\Gr{k}{n}\]
-Fix some $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$, it is true that $v_{\ell}\in\mathbb{F}_{j_{\ell}}\subseteq\mathbb{F}_i$. On the other hand, if $j_{\ell}>i$, it is true that $v_{\ell}\cdot f_{j_{\ell}}>0$, i.e. $v_{\ell}\not\in\mathbb{F}_i$ since $f_{j_{\ell}}\perp\mathbb{F}_i$. This proves that
+Fix some $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$,  $v_{\ell}\in\mathbb{F}_{j_{\ell}}\subseteq\mathbb{F}_i$. On the other hand, if $j_{\ell}>i$, then $v_{\ell}\cdot f_{j_{\ell}}>0$, i.e. $v_{\ell}\not\in\mathbb{F}_i$ since $f_{j_{\ell}}\perp\mathbb{F}_i$. Hence,
 \[\dim(H\cap\mathbb{F}_i)=\dim\left(\left<\big\{v_{\ell}:j_{\ell}\leq i\big\}\right>\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}\]
-where $j_0=0$ as before. This proves that $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$.
+where $j_0=0$ as before, that proves that $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$.
 
-In order to prove that this is a homeomorphism, we will construct its inverse map $r_0:\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Then, for any $\ell\in[k]$, it is true that
+In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Then, for any $\ell\in[k]$, 
 \begin{align*}
 \dim\big(\left(H\cap\mathbb{F}_{j_{\ell}}\right)\cap\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)&=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)+\dim\big(\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)-n\\
 &=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)-\dim\big(H\cap\mathbb{F}_{j_{\ell}-1}\big)=1
 \end{align*}
 so, there exist exactly two vectors $-a,a$ such that
 \[-a,a\in H\cap\mathbb{F}_{j_{\ell}}\qquad\text{ and }\qquad-a,a\perp H\cap\mathbb{F}_{j_{\ell}-1}\qquad\text{ and }\qquad-a,a\in S^{n-1}\]
-Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if we had $a\in\mathbb{F}_{j_{\ell}}$ and $a^tf_{j_{\ell}}=0$, then we'd also have that $a\in\mathbb{F}_{j_{\ell}-1}$, which cannot be true since $a\perp H\cap\mathbb{F}_{j_{\ell}-1}$. We now define $u_{\ell}\in\{a,-a\}$ to be the unique vector that satisfies all the above and $u_{\ell}^tf_{j_{\ell}}>0$ and then we also define $r_0(H):=(u_1,\ldots,u_k)$.
+Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if $a\in\mathbb{F}_{j_{\ell}}$ and $a^tf_{j_{\ell}}=0$, then $a\in\mathbb{F}_{j_{\ell}-1}$, which leads to a contradiction since $a\perp H\cap\mathbb{F}_{j_{\ell}-1}$. We now define $u_{\ell}\in\{a,-a\}$ to be the unique vector that satisfies all the above and $u_{\ell}^tf_{j_{\ell}}>0$ and then also define $r_0(H):=(u_1,\ldots,u_k)$.
 
-We first check that $r_0$ is well defined. Indeed, for $1\leq\ell_1<\ell_2\leq k$, we have that \[u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}\]
-i.e. $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, we have that $u_{\ell}\in S^{n-1}$, i.e. $u_{\ell}^tu_{\ell}=1$. Also, it is true that $v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\tilde{\mathcal{C}}_{\mathbf{j}(\mathbb{F}_{\bullet},f_{\bullet})}$.
+First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$, we have that \[u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}\]
+i.e. $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e. $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\tilde{\mathcal{C}}_{\mathbf{j}(\mathbb{F}_{\bullet},f_{\bullet})}$.
 
-Then, notice that for $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ we have
+Then, notice that for $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$,
 \[q_0(r_0(H))=q_0(u_1,\ldots,u_k)=\left<u_1,\ldots,u_k\right>=H\]
-Moreover, for $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ we have
+Moreover, for $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$,
 \[v_{\ell}\in\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}}\text{ and } v_{\ell}\perp\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}-1}\text{ and }v_{\ell}\in S^{n-1}\text{ and }v_{\ell}^tf_{j_{\ell}}>0\]
 which means that
 \[r_0(q_0(v_1,\ldots,v_k))=r_0(\left<v_1,\ldots,v_k\right>)=(v_1,\ldots,v_k)\]
-since there is a unique choice for $r_0$, as we showed above.
+since there is a unique choice for $r_0$, as proven above.
 \end{proof}
 
 \begin{lemma}\label{lem:q0_on_bdr} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ be an orthonormal basis of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}\in\binom{[n]}{k}$ the restriction of $q_0:\StO{k}{n}\to\Gr{k}{n}$ has the following property:
 \[q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\]
 \end{lemma}
-\begin{proof} Let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and set $H=q_0(v_1,\ldots,v_k)=\left<v_1,\ldots,v_k\right>$. Using Lemma~\ref{lem:jump_pts} we know that there exists some $\mathbf{j}'\in\binom{[n]}{k}$ such that $H\in\mathcal{C}_{\mathbf{j}'}(\mathbb{H}_{\bullet})$. For this $\mathbf{j}'$ it is true that
+\begin{proof} Let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and set $H=q_0(v_1,\ldots,v_k)=\left<v_1,\ldots,v_k\right>$. Due to Lemma~\ref{lem:jump_pts} there exists some $\mathbf{j}'\in\binom{[n]}{k}$ such that $H\in\mathcal{C}_{\mathbf{j}'}(\mathbb{H}_{\bullet})$. For this $\mathbf{j}'$,
 \[j_{\ell}'=\min\{j\in[n]:\dim(H\cap\mathbb{F}_j)\geq\ell\}\]
-Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})^-\setminus\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})$, i.e. $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}<j_{\ell_0}$, i.e. $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we have:
+Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})^-\setminus\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})$, i.e. $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}<j_{\ell_0}$, i.e. $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we get
 \[\mathrm{d}(\mathbf{j}')=\sum_{\ell\in[k]}(j'_{\ell}-\ell)<\sum_{\ell\in[k]}(j_{\ell}-\ell)=\mathrm{d}(\mathbf{j})\qedhere\]
 \end{proof}
 
@@ -528,12 +528,12 @@ such that:
 \item $\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})$
 \end{i_enum}
 \end{theorem}
-\begin{proof} We use the maps in Lemma~\ref{lem:shub_dim} and Lemma~\ref{lem:cells_from_stiefel_to_gr} to define the following map:
+\begin{proof} Through the maps in Lemmata~\ref{lem:shub_dim} and \ref{lem:cells_from_stiefel_to_gr} the following map is defined:
 \[\Phi_{\mathbf{j}}=q_0\circ\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\Gr{k}{n}\]
 \begin{i_enum}
 \item Using these two lemmata we also have that its restriction in the disc interior is a homeomorphism:
 \[\Phi_{\mathbf{j}}|_{D^{\mathrm{d}(\mathbf{j})}}:D^{\mathrm{d}(\mathbf{j})}\to\mathcal{C}_{\mathbf{j}}(\mathbb{H}_{\bullet})\]
-\item Using again Lemma~\ref{lem:shub_dim}, we also get that the boundary of the disc is mapped to $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and then, using Lemma~\ref{lem:q0_on_bdr} we finally get that:
+\item Using again Lemma~\ref{lem:shub_dim}, we also get that the boundary of the disc is mapped to $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and then, using Lemma~\ref{lem:q0_on_bdr} we get that:
 \[\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\qedhere\]
 \end{i_enum}
 \end{proof}
