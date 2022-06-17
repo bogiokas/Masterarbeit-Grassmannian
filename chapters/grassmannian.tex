@@ -35,13 +35,13 @@ Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ in
 \end{proof}
 
 \section{Grassmannians are Manifolds}
-Our first real goal is to prove that the Grassmannians are in fact compact topological manifolds.
+In this section it is proven that Grassmannians are in fact compact topological manifolds.
 \begin{lemma}\label{lem:gr_manifold} For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is compact, Hausdorff and locally homeomorphic to $\mathbb{R}^{k(n-k)}$.
 \end{lemma}
 
 \begin{proof} \begin{b_item}
 \item The Stiefel manifold $\StO{k}{n}$ is a compact topological space, as proven in the Appendix in Lemma~\ref{lem:StO_compact} and $q_0$ is a continuous map. Thus, $\Gr{k}{n}=q_0\left(\StO{k}{n}\right)$ is also compact.
-\item In order to show that $\Gr{k}{n}$ is Hausdorff, it suffices to show that it is completely Hausdorff, i.e.\ that any two distinct points in $\Gr{k}{n}$ can be separated by a continuous function $\Gr{k}{n}\to\mathbb{R}$. First, for every vector $v\in\mathbb{R}^n$, we define the map $\phi_v:\StO{k}{n}\to\mathbb{R}$ which takes each orthonormal $k$-frame $(v_1,\ldots,v_k)$ to the square of the distance between $v$ and the linear space spanned by $(v_1,\ldots,v_k)$, i.e.:
+\item In order to show that $\Gr{k}{n}$ is Hausdorff, it suffices to show that it is completely Hausdorff, i.e.\ that any two distinct points in $\Gr{k}{n}$ can be separated by a continuous function $\Gr{k}{n}\to\mathbb{R}$. First, for every vector $v\in\mathbb{R}^n$, we define $\phi_v:\StO{k}{n}\to\mathbb{R}$ which maps each orthonormal $k$-frame $(v_1,\ldots,v_k)$ to the square of the distance between $v$ and the linear space spanned by $(v_1,\ldots,v_k)$, i.e.:
 \[\phi_v(v_1,\ldots,v_k)=v^tv-\sum_{i=1}^k{\left(v^tv_i\right)}^2\]
 This is a continuous map, which depends only on the spanned $k$-plane, i.e.\ if two $k$-frames have the same image under $q_0$, they also have the same image under $\phi_v$. The universal property of the quotient map $q_0$ implies that there exists a unique continuous map $\psi_v$ making the following diagram commute:
 
@@ -52,18 +52,19 @@ This is a continuous map, which depends only on the spanned $k$-plane, i.e.\ if 
 \end{tikzcd}
 \end{center}
 
-Moreover, since $\phi_v(v_1,\ldots,v_k)=0$ iff $v\in\left<v_1,\ldots,v_k\right>$, we have that $\psi_v(H)=0$ iff $v\in H$. Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$. Then, we get $\psi_v(H_1)=0\neq\psi_v(H_2)$, proving that $\Gr{k}{n}$ is completely Hausdorff.
+Moreover, $\psi_v(H)=0$ iff $v\in H$, because $\phi_v(v_1,\ldots,v_k)=0$ iff $v\in \left<v_1,\ldots,v_k\right>$.
+Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$. 
+Since $\psi_v(H_1)=0\neq\psi_v(H_2)$, $\Gr{k}{n}$ is completely Hausdorff.
 
-
-\item We will prove that for every $H\in\Gr{k}{n}$, the following subset of $\mathbb{R}^n$ is a neighborhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$:
+\item Next it is proven that for every $H\in\Gr{k}{n}$, the following subset of $\mathbb{R}^n$ is a neighborhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$:
 \[\mathcal{U}_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}\]
-First of all, one can fix an orthonormal basis $\{u_1,\ldots,u_k\}$ of $H$ and an orthonormal basis $\{\bar{u}_1,\ldots,\bar{u}_{n-k}\}$ of $H^{\perp}$. It will be also convenient to regard $\mathbb{R}^n$ as the direct sum $H\oplus H^{\perp}$ for this proof. We also define the orthogonal projections $p_H,p_{H^{\perp}}$ from $H\oplus H^{\perp}$ to each component.
+Firstly, one can fix an orthonormal basis $\{u_1,\ldots,u_k\}$ of $H$ and an orthonormal basis $\{\bar{u}_1,\ldots,\bar{u}_{n-k}\}$ of $H^{\perp}$. For the rest of this proof regard $\mathbb{R}^n$ as the direct sum $H\oplus H^{\perp}$. Define also the orthogonal projections $p_H,p_{H^{\perp}}$ from $H\oplus H^{\perp}$ to each component.
+%Dialexe an tha xrhsimopoieis iff h if and only if kai kan to pantou.
+Consider now $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, iff $\left.p_H\right|_K$ is not injective, iff $\left.p_H\right|_K$ is not surjective.
 
-One can now consider $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, if and only if $\left.p_H\right|_K$ is not injective, if and only if $\left.p_H\right|_K$ is not surjective.
+Each $K\in\mathcal{U}_H$ can now be considered as the graph of some linear transformation $T_K$ inside $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ (which has the desired dimension as a vector space over $\mathbb{R}$). We procceed to define rigorously the function taking $K$ to $T_K$ and prove that this is bicontinuous. In particular, we prove that $T_K$ depends continuously on $K$ and vice versa, through a rather technical approach.
 
-Each $K\in\mathcal{U}_H$ can now be considered as the graph of some linear transformation $T_K$ inside $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ (which has the desired dimension as a vector space over $\mathbb{R}$). Our goal is to define rigorously the function taking $K$ to $T_K$ and prove that this is bicontinuous. We urge the reader to convince themselves at this point that $T_K$ depends continuously on $K$ and vice versa, because our approach towards proving this fact is going to be rather technical.
-
-In particular, we are going to construct the desired function using the universal property of the quotient map $q:\St{k}{n}\to\Gr{k}{n}$. Moreover, since we need the topology of $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$, we are going to use the fact that its topology is also an induced topology by an isomorphism to $\mathbb{R}^{k(n-k)}$. Finally, this last space, being a direct product, is also topologized through the initial topology with respect to the orthogonal projections on each coordinate. One can summarize these steps in the following commutative diagram:
+The construction of the desired function is based on the universal property of the quotient map $q:\St{k}{n}\to\Gr{k}{n}$. Moreover, since we need the topology of $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$, we use the fact that its topology is also an induced topology by an isomorphism to $\mathbb{R}^{k(n-k)}$. Finally, this last space, being a direct product, is also topologized through the initial topology with respect to the orthogonal projections on each coordinate. These steps are summarized in the following commutative diagram:
 
 \begin{center}
 \begin{tikzcd}
@@ -73,16 +74,16 @@ In particular, we are going to construct the desired function using the universa
 &&K\ar[r,mapsto,dotted]&p_{H^{\perp}}\circ\left(\left.p_H\right|_K\right)^{-1}
 \end{tikzcd}
 \end{center}
-
-Remember that we are trying to define the map $T$ taking each $k$-space $K$ to the function with graph $K$. Thus, we first should define the map $\tilde T$ which is later going to be equal with $T\circ\left.q\right|$. For now we just define it to be:
+Towards defining the map $T$, which takes each $k$-space $K$ to the function with graph $K$, we first define the map $\tilde T$ which is later going to be equal with $T\circ\left.q\right|$.
 \[\tilde T(a_1,\ldots,a_k)=p_{H^{\perp}}\circ{\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}\]
-Notice that $\tilde T$ is well defined, since $q^{-1}\left(\mathcal{U}_H\right)$ is exactly the set of all $k$-frames, for which the map $\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}$ is a homeomorphism. Also, notice that $\tilde T$ is going to have the same value for any two $k$-frames that span the same $k$-space, since on input $(a_1,\ldots,a_k)$ the output only depends on $\left<a_1,\ldots,a_k\right>$.
+Notice that $\tilde T$ is well defined, since $q^{-1}\left(\mathcal{U}_H\right)$ is exactly the set of all $k$-frames, for which the map $\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}$ is a homeomorphism. Also, notice that $\tilde T$ has the same value for any two $k$-frames that span the same $k$-space, since on input $(a_1,\ldots,a_k)$ the output only depends on $\left<a_1,\ldots,a_k\right>$.
 
-Next, we want to argue that $\tilde T$ is a continuous map. In order to do this, we need to remember how $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is topologized. Having fixed the bases ${\{u_i\}}_{i\in[k]}$ and ${\{\bar{u}_j\}}_{j\in[n-k]}$, we can define an isomorphism of vector spaces $\phi$, which takes a linear map $L$ to
+In order to argue that $\tilde T$ is a continuous map, remember how $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is topologized.
+Having fixed the bases ${\{u_i\}}_{i\in[k]}$ and ${\{\bar{u}_j\}}_{j\in[n-k]}$, we define an isomorphism of vector spaces $\phi$, which takes a linear map $L$ to
 \[\phi(L)={\left(\bar{u}_j^t\cdot L(u_i)\right)}_{(i,j)\in[k]\times[n-k]}\in\mathbb{R}^{[k]\times[n-k]}\]
-Then, the natural topology on $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is the induced topology by $\phi$. This means in particular, that our $\tilde T$ is continuous if and only if $f:=\phi\circ\tilde T$ is continuous.
+Then, the natural topology on $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is the induced topology by $\phi$. This means that our $\tilde T$ is continuous iff $f:=\phi\circ\tilde T$ is continuous.
 
-Finally, since $\mathbb{R}^{[k]\times[n-k]}=\prod_{(i,j)\in[k]\times[n-k]}\mathbb{R}$ is a categorical product, $\mathbb{R}^{[k]\times[n-k]}$ is equipped with the initial topology, with respect to all orthogonal projections ${\left(\pi_{i,j}\right)}_{(i,j)\in[k]\times[n-k]}$. This means in particular, that the function $f$ that interests us is continuous if and only if every $f_{i,j}:=\pi_{i,j}\circ f$ is continuous. In order to show that every $f_{i,j}$ is a continuous map, we have to write it down in the language of linear algebra:
+Finally, since $\mathbb{R}^{[k]\times[n-k]}=\prod_{(i,j)\in[k]\times[n-k]}\mathbb{R}$ is a categorical product, $\mathbb{R}^{[k]\times[n-k]}$ is equipped with the initial topology, with respect to all orthogonal projections ${\left(\pi_{i,j}\right)}_{(i,j)\in[k]\times[n-k]}$. Hence, the function $f$ that interests us is continuous iff every $f_{i,j}:=\pi_{i,j}\circ f$ is continuous. In order to show that every $f_{i,j}$ is a continuous map, we express it through linear algebra:
 
 First, define $A$ to be the matrix of the linear function taking $u_i$ to $a_i$ for each $i\in[k]$, expressed in the bases $\{u_i\}$ and $\{\bar{u}_j\}$:
 \[A=\left(\begin{array}{ccc}
@@ -108,7 +109,7 @@ I_k\\
 A_{H^{\perp}}\cdot A_H^{-1}\\
 \end{array}\right)
 \in\mathbb{R}^{n\times{k}}\]
-Indeed, since $\left<a_1,\ldots,a_k\right>\in\mathcal{U}_H$, we know that $\left\{p_H(a_1),\ldots,p_H(a_k)\right\}$ is a basis of $K$, which means that $A_H$ is invertible and thus $A\cdot A_H^{-1}$ is well defined. Moreover, we can easily compute that the application of this matrix to any $p_H(a_r)$ gives us $a_r$ which is exactly what the map ${\left({\left.p_H\right|}_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}$ does to the same basis, which proves our assertion.
+Indeed, since $\left<a_1,\ldots,a_k\right>\in\mathcal{U}_H$, $\left\{p_H(a_1),\ldots,p_H(a_k)\right\}$ is a basis of $K$, which means that $A_H$ is invertible and thus $A\cdot A_H^{-1}$ is well defined. Moreover, we can easily compute that the application of this matrix to any $p_H(a_r)$ gives us $a_r$ which is exactly what the map ${\left({\left.p_H\right|}_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}$ does to the same basis, which proves our assertion.
 
 This means, that the map $f_{ij}$ takes the element $\left(a_1,\ldots,a_k\right)$ to the real number
 \[\begin{array}{rcl}f_{ij}\left(a_1,\ldots,a_k\right)
@@ -116,21 +117,23 @@ This means, that the map $f_{ij}$ takes the element $\left(a_1,\ldots,a_k\right)
 &=&\bar{u}_j^t\cdot\left(\left.0_{(n-k)\times k}\right|I_{n-k}\right)\cdot\left(\begin{array}{c}I_k\\\midrule A_{H^{\perp}}\cdot A_H^{-1}\\\end{array}\right)\cdot u_i\\
 &=&\bar{u}_j^t\cdot A_{H^{\perp}}\cdot A_H^{-1}\cdot u_i\\
 \end{array}\]
-Since inner product, matrix multiplication and inversion are continuous, $f_{ij}$ is a continuous function for every $i,j\in[k]\times[n-k]$. This proves that $f$ is continuous as well, which proves that $\tilde T$ is also continuous. Since $\tilde T$ is a continuous function which depends only on the $k$-plane spanned by its input, the universal property of the quotient spaces ensures the existence of a continuous map $T:\mathcal{U}_H\to\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ such that $T\circ \left.q\right|=\tilde T$. The uniqueness part of this property ensures that the map $T$ is the one taking $K$ to $p_{H^{\perp}}\circ{\left(\left.p_H\right|_K\right)}^{-1}$, as we wanted.
+Since inner product, matrix multiplication and inversion are continuous, $f_{ij}$ is a continuous function for every $i,j\in[k]\times[n-k]$. This proves that $f$ is continuous as well, and hence $\tilde T$ is also continuous. Since $\tilde T$ is a continuous function which depends only on the $k$-plane spanned by its input, the universal property of the quotient spaces ensures the existence of a continuous map $T:\mathcal{U}_H\to\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ such that $T\circ \left.q\right|=\tilde T$. The uniqueness condition of this property ensures that the map $T$ is indeed the one taking $K$ to $p_{H^{\perp}}\circ{\left(\left.p_H\right|_K\right)}^{-1}$.
 
-If we think again this function as taking $K$ to the linear function, whose graph is $K$, we can easily see that this function is both one to one and onto, since two linear maps are different if and only if they have different graphs. This makes $T$ a homeomorphism, proving that finally there exists the homeomorphism
+Through viewing this function as taking $K$ to the linear function, whose graph is $K$, we see that this function is both one to one and onto, since two linear maps are different iff they have different graphs. This makes $T$ a homeomorphism, proving that there exists the homeomorphism
 \[\mathcal{U}_H\overset{\phi\circ T}{\cong}\mathbb{R}^{n(n-k)}\]
-which finishes the proof of the lemma.\qedhere
+which concludes the proof of this lemma.\qedhere
 \end{b_item}
 \end{proof}
 In the next section we are going to further examine these spaces topologically and build the appropriate language in order to tackle problems regarding their Homology and Cohomology structures. Before we dive in into this topic though, it would be useful to notice a first duality between these spaces, arising from the duality between a $k$-space inside $\mathbb{R}^n$ and its $n-k$ complement.
 
-We urge the reader now to get convinced that the space $K^{\perp}\in\Gr{n-k}{n}$ depends continuously on $K\in\Gr{k}{n}$, because in order to show this fact, we are going to use again the open sets $\mathcal{U}_H$ defined in the proof of the previous lemma.
+In order to prove the following lemma the open sets $\mathcal{U}_H$ defined in the proof of Lemma~\ref{lem:gr_manifold} are used.
 
-\begin{lemma} For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is homeomorphic to $\Gr{n-k}{n}$, with the homeomorphism taking some $k$-space to its orthogonal complement inside $\mathbb{R}^n$.
+
+\begin{lemma} \label{lem:gr_duality}
+	For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is homeomorphic to $\Gr{n-k}{n}$, with the homeomorphism taking some $k$-space to its orthogonal complement inside $\mathbb{R}^n$.
 \end{lemma}
 
-\begin{proof} The orthogonal-complement function $\perp:\Gr{k}{n}\to\Gr{n-k}{n}$ is obviously one to one and onto. Thus, it suffices to show that it is continuous. (Since ${\left(K^{\perp}\right)}^{\perp}=K$, for all spaces, continuity for every $0<k<n$ implies bicontinuity.) We are going to prove first that for any $H\in\Gr{k}{n}$ the restriction of this function in $\mathcal{U}_H$ is continuous. For this proof we are going to use the following commutative diagram:
+\begin{proof} The orthogonal-complement function $\perp:\Gr{k}{n}\to\Gr{n-k}{n}$ is obviously one to one and onto. Thus, it suffices to show that it is continuous, since ${\left(K^{\perp}\right)}^{\perp}=K$, for all spaces, continuity for every $0<k<n$ implies bicontinuity. We are going to prove first that for any $H\in\Gr{k}{n}$ the restriction of this function in $\mathcal{U}_H$ is continuous. For this proof the following commutative diagram comes in handy:
 \begin{center}
 \begin{tikzcd}
 \left(\mathbb{R}^n\right)^k\ar[r,"\supseteq",phantom]&[-2em]q_0^{-1}\left(\mathcal{U}_H\right)\ar[d,"\left.q_0\right|"]\ar[r,"\mathfrak{gs}'"]\ar[rrd,dotted,"\left.\tilde\perp\right|"]&\StO{n}{n}\ar[r,"\pi_{[k+1,n]}"]&[5em]\StO{n-k}{n}\ar[d,"q_0"]\\[2em]
@@ -138,16 +141,16 @@ We urge the reader now to get convinced that the space $K^{\perp}\in\Gr{n-k}{n}$
 &K\ar[rr,mapsto]&&K^{\perp}
 \end{tikzcd}
 \end{center}
-In this diagram, $\mathfrak{gs}'$ is the function that takes an orthonormal $k$-frame $(a_1,\ldots,a_k)$ to the orthonormal $n$-frame constructed after applying the Gram-Schmidt process to the $n$-basis $\left(a_1,\ldots,a_k,\bar{u}_1,\ldots,\bar{u}_{n-k}\right)$ where $\left(\bar{u}_j\right)$ is an orthonormal basis of $H^{\perp}$, just like in the previous Lemma. The next map $\pi_{[k+1,n]}$ is just the orthogonal projection in the last $n-k$ coordinates. Both of these maps are continuous and well defined, and thus we get a continuous map $\left.\tilde{\perp}\right|$, like in the diagram. This map depends only on the plane spanned by the input, and thus the universal property of the quotient spaces ensures the continuity of the map $\left.\perp\right|$.
+In this diagram, $\mathfrak{gs}'$ is the function that takes an orthonormal $k$-frame $(a_1,\ldots,a_k)$ to the orthonormal $n$-frame constructed after applying the Gram-Schmidt process to the $n$-basis $\left(a_1,\ldots,a_k,\bar{u}_1,\ldots,\bar{u}_{n-k}\right)$ where $\left(\bar{u}_j\right)$ is an orthonormal basis of $H^{\perp}$, just like in Lemma~\ref{lem:gr_manifold}. The next map $\pi_{[k+1,n]}$ is just the orthogonal projection in the last $n-k$ coordinates. Both of these maps are continuous and well defined, and thus we get a continuous map $\left.\tilde{\perp}\right|$, like in the diagram. This map depends only on the plane spanned by the input, and thus the universal property of the quotient spaces ensures the continuity of the map $\left.\perp\right|$.
 
 After establishing the continuity of $\left.\perp\right|_{\mathcal{U}_H}$ for every $H$, notice that
 \[\Gr{k}{n} = \bigcup_{H\in\left\{\left<B\right>:B\in\binom{\{e_1,\ldots,e_n\}}{k}\right\}}\mathcal{U}_H\]
 The union is over all $k$-planes spanned by any $k$ vectors among $\{e_1,\ldots,e_n\}$, where $e_1,\ldots,e_n$ is the standard basis of $\mathbb{R}^n$. This means that $\#\binom{\{e_1,\ldots,e_n\}}{k}=\binom{n}{k}<\infty$ sets are participating in the union and thus one can use the pasting lemma, proving that $\perp$ is continuous as a function from the whole space $\Gr{k}{n}$ to $\Gr{n-k}{n}$.
 \end{proof}
 
-It would be helpful at this point to mention what are the ``small'' examples of Grassmannians. We already know that of course $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and because of the last lemma we also know that $\Gr{n-1}{n}\cong\mathbb{P}^{n-1}$. This already takes care of the cases $n=2,3$:
+It would be helpful at this point to mention what are the ``small'' examples of Grassmannians. It is known that $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and due to Lemma~\ref{lem:gr_duality} $\Gr{n-1}{n}\cong\mathbb{P}^{n-1}$ also holds. This already covers the cases $n=2,3$:
 \[\Gr{1}{2}\cong\mathbb{P}^1\qquad\Gr{1}{3}\cong\Gr{2}{3}\cong\mathbb{P}^2\]
-This forces us to always consider $\Gr{2}{4}$ as the smallest non-trivial case in our further discussion.
+Hence, $\Gr{2}{4}$ is considered as the smallest non-trivial case further in this thesis.
 
 \section{They are also CW-Complexes}
 In the previous section we proved that the finite Grassmannians are compact topological manifolds. Our goal now is to prove that they are in fact finite CW complexes. For this, we need to define a cell decomposition of each Grassmannian, which we are going to do next. Before we start laying out the formal definition, it would be best for the reader to have in mind the analogous cell decomposition of the projective space $\mathbb{P}^{n-1}\cong\Gr{1}{n}$, consisting of the following $n$ cells:
