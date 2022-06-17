@@ -1,20 +1,26 @@
+%!TEX root = Cohomology of real Grassmannians.tex
 \chapter{Grassmannians}
-Since the topology of projective spaces has been thoroughly studied and characterized, a logical generalization is imposing a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$, which we are going call a \ul{Grassmannian}.
+Since the topology of projective spaces has been thoroughly studied and characterized, a logical generalization is imposing a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$, which are called a \ul{Grassmannian}.
 
-So, the goal of this chapter is to present the basic properties of the Grassmann spaces, or Grassmannians. This chapter will be self-contained and used as a point of reference for the rest of the thesis. Our aim is for the reader to get to know the combinatorial structure of a Grassmannian and be able to eventually do basic computations using the Schubert decomposition of these manifolds. A good point to start would be with their definition.
+This chapter aims to present basic properties of Grassmannians, and is used as a point of reference throughout this thesis (note also that as claimed in the introduction it is self-contained).
+Through this chapter the reader is able to get to know the combinatorial structure of a Grassmannian and do basic computations using the Schubert decomposition of these manifolds.
+%So, the goal of this chapter is to present the basic properties of the Grassmann spaces, or Grassmannians. This chapter will be self-contained and used as a point of reference for the rest of the thesis. Our aim is for the reader to get to know the combinatorial structure of a Grassmannian and be able to eventually do basic computations using the Schubert decomposition of these manifolds. A good point to start would be with their definition.
 
 Recall the definition of the real projective spaces as topological spaces:
 \[P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}\]
-where two vectors are equivalent, if they span the same line. Notice that in this definition we need to take a proper subset of the whole vector space, in order for the quotient to be well defined. Namely we need the set of all vectors, which span a line. In accordance with that, for the case of the Grassmannians, we need $\St{k}{n}\subsetneq{\left(\mathbb{R}^n\right)}^k$, the space of all $k$-tuples of vectors in $\mathbb{R}^n$, spanning a $k$-dimensional vector space (i.e.\ $k$-frames), as defined and discussed in Appendix~\ref{app:stiefel}.
+where two vectors are equivalent, if they span the same line. Notice that in this definition a proper subset of the whole vector space is required, in order for the quotient to be well defined. Namely the set of all vectors, which span a line. In accordance with that, for the case of the Grassmannians, the requirement is $\St{k}{n}\subsetneq{\left(\mathbb{R}^n\right)}^k$, the space of all $k$-tuples of vectors in $\mathbb{R}^n$, spanning a $k$-dimensional vector space, i.e.\ $k$-frames (for related definitions and further discussion see Appendix~\ref{app:stiefel}).
 
-\begin{definition} Let $0<k<n$ be some natural numbers. Then, the real \ul{Grassmann space} $\Gr{k}{n}{\mathbb{R}}=\Gr{k}{n}$ is the set of all linear $k$-dimensional subspaces of $\mathbb{R}^n$, equipped with the following quotient topology:
+\begin{definition} For $k,n\in\mathbb N^+$ such that $k<n$, the real \ul{Grassmann space} $\Gr{k}{n}{\mathbb{R}}=\Gr{k}{n}$ is the set of all linear $k$-dimensional subspaces of $\mathbb{R}^n$, equipped with the quotient topology:
 \[\Gr{k}{n}{\mathbb{R}}:=\faktor{\St{k}{n}{\mathbb{R}}}{\sim}\]
 where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<\vec{v}_1,\ldots,\vec{v}_k\right>=\left<\vec{u}_1,\ldots,\vec{u}_k\right>$.
 \end{definition}
 
-If the reader has still in mind the case of the projective spaces, it would be of no surprise that we are about to give an alternative definition of the Grassmannians. We know that the projective space of some dimension could alternatively be defined as the quotient over the unit sphere, rather than over the set of every nonzero vector. The analog of the set of all unit vectors would be here the Stiefel manifold $\StO{k}{n}$, which is the space of all \ul{orthonormal} $k$-frames, as defined and discussed again in Appendix~\ref{app:stiefel}.
+Having the case of projective spaces in mind, it is natural to also provide an alternative definition of Grassmannians.
+Specifically, the projective space of some dimension is also defined as the quotient over the unit sphere, rather than over the set of every nonzero vector.
+In this case the Stiefel manifold $\StO{k}{n}$, which is the space of all orthonormal $k$-frames, is the analog of the set of all unit vectors (for further details see Appendix~\ref{app:stiefel}).
+%If the reader has still in mind the case of the projective spaces, it would be of no surprise that we are about to give an alternative definition of the Grassmannians. We know that the projective space of some dimension could alternatively be defined as the quotient over the unit sphere, rather than over the set of every nonzero vector. The analog of the set of all unit vectors would be here the Stiefel manifold $\StO{k}{n}$, which is the space of all \ul{orthonormal} $k$-frames, as defined and discussed again in Appendix~\ref{app:stiefel}.
 
-\begin{proposition} Let $0<k<n$ be some natural numbers. Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map used in the definition of the Grassmannians and let $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ be its restriction to the Stiefel manifold. Then $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
+\begin{proposition} For $k,n\in\mathbb N^+$ such that $k<n$, $q:\St{k}{n}\to\Gr{k}{n}$ being the quotient map used in the definition of the Grassmannians and  $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ its restriction to the Stiefel manifold, $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
 \end{proposition}
 \begin{proof}
 Let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ be the Gram-Schmidt process. Then, the following diagram commutes:
@@ -24,7 +30,7 @@ Let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $\mathfrak{gs}:\St{k}{n}\to\
 &\Gr{k}{n}
 \end{tikzcd}
 \end{center}
-The left part of this diagram implies $q_0=q\circ i$, which means in particular that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ\mathfrak{gs}$, which gives us two things: First that $q_0$ is a surjective map as well, since $q$ is surjective and second that $q_0$ is an open map, since $q$ is open and $\mathfrak{gs}$ is surjective.
+The left part of this diagram implies $q_0=q\circ i$, and hence that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ\mathfrak{gs}$, which results in two conclusions: First that $q_0$ is a surjective map as well, since $q$ is surjective and second that $q_0$ is an open map, since $q$ is open and $\mathfrak{gs}$ is surjective.
 
 Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ induce the same quotient topology on the set of all $k$-dim subspaces of $\mathbb{R}^n$.
 \end{proof}
