@@ -1,6 +1,7 @@
 %!TEX root = Cohomology of real Grassmannians.tex
 \chapter{Vector Bundles}\label{chap:vector_bundles}
 The discussion in this chapter is based on the Chapters 2,3,4 of \cite{char_class} and its goal is first to investigate the notion of vector bundles and the additional structure they provide, when compared to the general fiber bundles (see Appendix~\ref{app:fiber_bundles}). At the end of this chapter, for each vector bundle the associated ``Stiefel-Whitney classes'' is defined to be some sequence of elements in the cohomology ring of the base space, one for each dimension. As they are defined to be invariant under bundle isomorphisms, they can be used to distinguish between non-isomorphic vector bundles.
+%TODO: remove S-W from this intro
 
 \section{Basic Notions}
 Let us begin with the definition of a vector bundle. This will be the same as Definition~\ref{def:fiber_bundle}, differing only on two aspects. First of all the fibers are now vector spaces and secondly the homeomorphisms making the total space locally trivial are now linear isomorphisms over each fiber:
@@ -202,8 +203,6 @@ Notice now that for any $v\in\mathbb{R}^n$
 i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^n$ is connected and the existance of such a continuous $t$ leads to a contradiction due to the intermediate value theorem. Notice that this is the easiest case of the (BU1b)-version of the Borsuk Ulam theorem as stated in Theorem~2.1.1 in \cite{BU_Matousek}.
 \end{proof}
 
-* questions about parallelizable spheres?
-
 \section{Creating new bundles}
 Our goal is now to describe some ways to create new bundles by combining the data of already known ones. First we construct new bundles based on continuous maps between the base spaces, disregarding the vector space structure on the fibers and then we construct new bundles by fixing the base space and doing operations on the vector spaces fiber-wise.
 
@@ -275,8 +274,6 @@ Notice that $p|A$ has fiber $F$, which means that we restricted $B$ but not $F$.
 \end{definition}
 Notice that the product of the base spaces always defines a product of fiber bundles, but the disjoint union of two base spaces defines a fiber bundle only if the fibers of the two components were already isomorphic.
 
-* examples with tangent and normal?
-
 \subsection{By combining the fibers}
 Here we want to exploit the vector space structure of the fibers, so we fix some base space $B$ and define new bundles over $B$ using fiber-wise operations. In this section we are going to construct some vector bundle isomorphisms, always by constructing a bundle map that is linear on the fibers, proving that the desired isomorphism is true fiberwise and then using proposition~\ref{prop:local_to_global_iso_vector} to argue that this bundle map is in fact a bundle isomorphism.
 
@@ -292,7 +289,7 @@ Next we examine how to explicitly describe the whitney sum of two given bundles:
 \begin{proof} Notice that $E(d^*(\xi_1\times\xi_2)=\big\{(x,v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):(x,x)=(\xi_1(v_1),\xi_2(v_2))\big\}$ and define the following map:
 \begin{center}
 \begin{tikzcd}
-E(d^*(\xi_1\times\xi_2)\ar[r,"\phi"]&[5em]E(\xi_1\oplus\xi_2)\\[-1.5em]
+E(d^*(\xi_1\times\xi_2))\ar[r,"\phi"]&[5em]E(\xi_1\oplus\xi_2)\\[-1.5em]
 (x,v_1,v_2)\ar[r,mapsto]&v_1+v_2
 \end{tikzcd}
 \end{center}
@@ -308,6 +305,13 @@ E(d^*(\xi_1\times\xi_2))&=\big\{(x,v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):(
 \end{align*}
 where the homeomorphism is a vector bundle isomorphism.
 \end{proof}
+This is the description used in the remainder of the thesis.
+\begin{proposition} Let $\xi_1,\xi_2,\eta_1,\eta_2$ be vector bundles over $B$ and $\phi_1:E(\xi_1)\to E(\eta_1)$, $\phi_2:E(\xi_2)\to E(\eta_2)$ vector bundle maps. Moreover, let $\phi_1\oplus\phi_2:E(\xi_1\oplus\xi_2)\to E(\eta_1\oplus\eta_2)$ be the function taking $(v_1,v_2)$ to $(\phi_1(v_1),\phi_2(v_2))$. Then $\phi_1\oplus\phi_2$ is a vector bundle map.
+\end{proposition}
+\begin{proof} First of all, $\phi_1\oplus\phi_2$ is well defined, since $(\eta_1\circ\phi_1)(v_1)=\xi_1(v_1)=\xi_2(v_2)=(\eta_2\circ\phi_2)(v_2)$. Also it is a bundle map, since $\big((\eta_1\oplus\eta_2)\circ(\phi_1\oplus\phi_2)\big)(v_1,v_2)=(\eta_1\circ\phi_1)(v_1)=\xi_1(v_1)=(\xi_1\oplus\xi_2)(v_1,v_2)$. It is also trivial to check that $\phi_1\oplus\phi_2$ is linear on each fiber.
+\end{proof}
+\begin{definition}\label{def:wh_sum_map} Let $\xi_1,\xi_2,\eta_1,\eta_2$ be vector bundles over $B$ and $\phi_1:E(\xi_1)\to E(\eta_1)$, $\phi_2:E(\xi_2)\to E(\eta_2)$ vector bundle maps. Then the \emph{whitney sum of $\phi_1,\phi_2$} is $\phi_1\oplus\phi_2:E(\xi_1\oplus\xi_2)\to E(\eta_1\oplus\eta_2)$, where $\phi_1\oplus\phi_2(v_1,v_2)=(\phi_1(v_1),\phi_2(v_2))$.
+\end{definition}
 
 \begin{definition} Let $\eta:E(\eta)\to B$ be an $n$-plane vector bundle, $\xi:E(\xi)\to B$ a $k$-plane vector bundle and $\theta:E(\theta)\to B$ an $m$-plane vector bundle, where $E(\xi)\subseteq E(\eta)$. Then $\theta$ is the \emph{quotient vector bundle of $\eta$ and $\xi$} and we write $\theta=\sfrac{\eta}{\xi}$, if $\theta^{-1}(x)=\sfrac{\eta^{-1}(x)}{\xi^{-1}(x)}$ as vector spaces, for every $x\in B$. Notice that in this case $n-k=m$.
 \end{definition}
@@ -387,25 +391,40 @@ It is easy to see that this is a bundle map which is also a linear isomorphism o
 \begin{remark} For every euclidean vector bundle $\eta$ and for any $\xi\leq\eta$ we have the following decomposition $\eta\cong\xi\oplus\sfrac{\eta}{\xi}$.
 \end{remark}
 
-At this point we answered positively the question about decomposing a vector bundle, provided that the vector bundle in question is a euclidean vector bundle. A very natural question now is how restrictive is the notion of a euclidean vector. As it is shown at the end of the next section, a vector bundle admits a euclidean vector bundle structure at least when the base space is paracompact. Most familiar topological spaces we are paracompact, as we hint in the next section.
+At this point we answered positively the question about decomposing a vector bundle, provided that the vector bundle in question is a euclidean vector bundle. A very natural question now is how restrictive is the notion of a euclidean vector. As it is shown at the end of the next section, a vector bundle admits a euclidean vector bundle structure at least when the base space is paracompact.
 
 \section{Paracompactness}
+\begin{definition} Let $X$ be a topological space and $\mathcal{U}=\{U_i\}_{i\in I}$ be a collection of subsets of $X$. Then $\mathcal{U}$ is \emph{locally finite} if for every $x\in X$ there exists some open $V\subseteq X$ containing $x$ such that $U_i\cap V\neq\emptyset$ only for finitely many $i$.
+\end{definition}
+\begin{definition} Let $X$ be a topological space and $\mathcal{U},\mathcal{V}$ be two collection of subsets of $X$. Then $\mathcal{V}$ is a \emph{refinement of $\mathcal{U}$} if for every $V\in\mathcal{V}$ there exists some $U\in\mathcal{U}$ such that $V\subseteq U$.
+\end{definition}
+\begin{definition} A topological space $X$ is \emph{paracompact} if $X$ is Hausdorff and for every open cover $\mathcal{U}$ of $X$ there exists some locally finite open cover $\mathcal{V}$ of $X$ that is a refinement of $\mathcal{U}$.
+\end{definition}
 
-
-A very important property of paracompact spaces is the connection with the partitions of unity, as presented in the next well-known result. The proof of it is out of the scope of this thesis and the reader can refer to \cite{bredon}, where it is stated and proven as Theorem~12.8 and Proposition~12.9.
-\begin{theorem} Let $X$ be a paracompact topological space and let $\mathcal{U}=\{U_i\}_{i\in I}$ be an open covering of $X$, then there exists some locally finite open covering $\mathcal{V}=\{V_a\}_{a\in A}$ of $X$ and a partition of unity $\{f_a:X\to[0,1]\}_{a\in A}$, such that $A\subseteq I$, $\mathrm{supp}(f_a)\subseteq V_a$ and $V_a^-\subseteq U_a$ for every $a\in A$.
+A very important property of paracompact spaces is the connection with the partitions of unity, as presented in the next well-known result. The proof of it is out of the scope of this thesis and the reader can refer to \cite{bredon}, where it is stated and proven as Theorem~12.8.
+\begin{definition} Let $X$ be a topological space and $\mathcal{F}=\{f_i:X\to[0,1]\}_{i\in I}$ be a collection of continuous maps. Then, $\mathcal{F}$ is a \emph{partition of unity of $X$} if for every $x\in X$ there exists some open $U\subseteq X$ containing $x$ such that $f_i|_U\equiv0$ for all but finitely many $i\in I$ and $\sum_{i\in I}f_i(x)=1$.
+\end{definition}
+\begin{remark} For every $f\in\mathcal{F}$ we are usually interested in the \emph{support of $f$}, which is defined as $\mathrm{supp}(f):=\left\{x\in X:f(x)\neq0\right\}^-$.
+\end{remark}
+\begin{definition} Let $X$ be a topological space, $\mathcal{U}=\{U_i\}_{i\in I}$ be a collection of subsets of $X$ and $\mathcal{F}=\{f_i:X\to[0,1]\}_{i\in I}$ a partition of unity of $X$ on the same indices. Then $\mathcal{F}$ is \emph{subordinate of $\mathcal{U}$}, if $\mathrm{supp}(f_i)\subseteq U_i$ for every $i\in I$.
+\end{definition}
+\begin{theorem}\label{thm:paracompact_partition_of_unity} Let $X$ be a paracompact topological space and let $\mathcal{U}$ be an open cover of $X$, then there exists some locally finite open cover $\mathcal{V}$ of $X$ that is a refinement of $\mathcal{U}$ and a partition of unity $\mathcal{F}$ that is subordinate of $\mathcal{V}$.
 \end{theorem}
 
+\begin{proposition} Let $B$ be a paracompact topological space and $\xi:E(\xi)\to B$ an $n$-plane vector bundle. Then, $\xi$ is a euclidean vector bundle.
+\end{proposition}
+\begin{proof} Our goal is to define a continuous $\beta:E(\xi\oplus\xi)\to\mathbb{R}$, the restriction of which on $(\xi\oplus\xi)^{-1}(x)$ is an inner product in $\xi^{-1}(x)$. For each $x\in B$ there exists some open $U_x\subseteq B$ containing $x$ and a vector bundle isomorphism $f_{U_x}:\xi^{-1}(U_x)\to U_x\times\mathbb{R}^n$. Notice that $\{U_x\}_{x\in B}$ is an open cover of $X$. Since $B$ is paracompact, Theorem~\ref{thm:paracompact_partition_of_unity} gives us a locally finite open cover $\mathcal{V}=\{V_i\}_{i\in I}$ of $X$ that is a refinement of $\{U_x\}_{x\in B}$ and a partition of unity $\mathcal{F}=\{h_i\}_{i\in I}$ that is subordinate of $\mathcal{V}$. Since $\mathcal{V}$ is a refinement, every $V_i\in\mathcal{V}$ is contained inside some $U_x$ and thus, using Remark~\ref{rem:vector_subcover} the restriction $f_{V_i}:\xi^{-1}(V_i)\to V_i\times\mathbb{R}^n$ of $f_{U_x}$ is a vector bundle isomorphism. Recall that we can write $E(\xi\oplus\xi)=\left\{(v_1,v_2)\in E(\xi)\times E(\xi):\xi(v_1)=\xi(v_2)\right\}$ and $(\xi\oplus\xi)(v_1,v_2)=\xi(v_1)$. Then, notice that $(\xi\oplus\xi)^{-1}(V_i)=E(\xi|V_i\oplus\xi|V_i)$ and let $f_{V_i}\oplus f_{V_i}:E(\xi|V_i\oplus\xi|V_i)\to V_i\times\mathbb{R}^n\times\mathbb{R}^n$ as in Definition~\ref{def:wh_sum_map}, taking $(v_1,v_2)$ to $(\xi_1(v_1),(\pi_2\circ f_{V_i})(v_1),(\pi_2\circ f_{V_i})(v_2))$. Moreover, let $\gamma:\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$ be the usual dot product of $\mathbb{R}^n$, i.e. $\gamma(u_1,u_2)=u_1^tu_2$. Then, we can define the following continuous map:
+\begin{center}
+\begin{tikzcd}
+\beta_i\ar[r,phantom,":"]&[-2.5em](\xi\oplus\xi)^{-1}(V_i)\ar[r,"f_{V_i}\oplus f_{V_i}"]&V_i\times\mathbb{R}^n\times\mathbb{R}^n\ar[r,"(h_i\circ\pi_1)\cdot(\gamma\circ\pi_{[2,3]})"]&\mathbb{R}\\[-1.5em]
+&(v_1,v_2)\ar[rr,mapsto]&&h_i(\xi_1(v_1))\cdot(\pi_2\circ f_{V_i})(v_1)^t(\pi_2\circ f_{V_i})(v_2)
+\end{tikzcd}
+\end{center}
+If we fix some $x\in V_i$, $\beta_i$ restricted on $\xi^{-1}(x)\times\xi^{-1}(x)$ is bilinear and symmetric, since $h_i(\xi_1(v_1))$ is constant. Moreover, $\beta_i(v,v)\geq0$, since $h_i(x)\geq0$. Now, we extend $\beta_i$ to be $\equiv0$ for every $v\in E(\xi\oplus\xi)\setminus\big((\xi\oplus\xi)^{-1}(V_i)\big)$. Since $\mathrm{supp}(h_i)\subseteq V_i$, this is a continuous extension, which we will also call $\beta_i$. Now, we can define $\beta:=\sum_{i\in I}\beta_i:E(\xi\oplus\xi)\to\mathbb{R}$, where the sum is finite for each input, since $\mathcal{V}$ is locally finite and $\mathcal{F}$ is subordinate of $\mathcal{V}$. It is also continuous, non-negative and over each fiber symmetric and bilinear. It only remains to show that $\beta(v,v)\neq0$ for every $v\neq0$. Let us fix a $v\in E(\xi)$ and an open $U\subseteq B$ containing $\xi(v)$ such that $U\cap V_i\neq\emptyset$ only for finitely many $i\in I$. Let $V_{i_1},\ldots,V_{i_k}\in\mathcal{V}$ be the only sets non-trivially intersecting $U$. Then, we have that \[\beta(v,v)=\beta_{i_1}(v,v)+\cdots+\beta_{i_k}(v,v)=\sum_{j=1}^kh_{i_j}(\xi_1(v))\cdot\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|^2\]
+Define now $a=\min_{j\in[k]}\left\{\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|\right\}$ and notice that $a>0$, since $\pi_2\circ f_{V_i}$ is a linear isomorphism for every $i\in I$ and $v\neq0$. Hence, we have $\beta(v,v)\geq a^2\sum_{j=1}^kh_{i_j}(\xi(v))=a^2\sum_{i\in I}h_i(\xi(v))=a^2>0$, since $\mathcal{F}$ is a partition of unity.
+\end{proof}
 
-* prop if paracompact then euclidean VB\\
-
-\section{Stiefel-Whitney classes}
-In this section we will follow the approach of ~\cite{husemoller} in Chapter~17, Sections~3-6.
-
-
-* 4 axioms\\
-* lem invariant under cong\\
-* def total SW class\\
-* lem cohomology ring with a0=1 inverting total classes\\
-* examples: tangent of sphere, tautological, tangent of projective
-* thm: existance
+%TODO_MAYBE: tangent and normal vb
+%TODO_MAYBE: define parallelizable spaces
+%TODO_MAYBE: counterexample of vb over non-paracompact space w/o inner product
+%TODO_MAYBE: refer to thms for generality of paracompact spaces

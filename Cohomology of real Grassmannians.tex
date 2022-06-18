@@ -198,6 +198,7 @@
 %%%%%%%%%%%  COUNTERS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{aliascnt} %alias between counters
 \newtheorem{common}{}[chapter] %the common counter
+\numberwithin{common}{section}
 \newcommand\mynewtheorem[1]{
 	\newaliascnt{#1}{common} %counter = common_counter
 	\newtheorem{#1}[#1]{\makefirstuc{#1}}
