@@ -4,7 +4,7 @@ The discussion in this chapter is based on the Chapters 2,3,4 of \cite{char_clas
 %TODO: remove S-W from this intro
 
 \section{Basic Notions}
-Let us begin with the definition of a vector bundle. This will be the same as Definition~\ref{def:fiber_bundle}, differing only on two aspects. First of all the fibers are now vector spaces and secondly the homeomorphisms making the total space locally trivial are now linear isomorphisms over each fiber:
+Let us begin with the definition of a vector bundle. This is the same as Definition~\ref{def:fiber_bundle}, differing only on two aspects. First, the fibers here are vector spaces, and secondly the homeomorphisms making the total space locally trivial are here linear isomorphisms over each fiber:
 
 \begin{definition}\label{def:vector_bundle} Let $E$ and $B$ be some topological spaces and $n\in\mathbb{N}$. A continuous map $\xi:E\to B$ is called an \ul{$\mathbb{R}^n$-vector bundle} or \ul{$n$-plane bundle}, if for every $x\in B$ the set $\xi^{-1}(x)$ is a vector space and also for every $x\in B$ there exists an open neighborhood $x\in U\subseteq B$, and a continuous map $f_U:\xi^{-1}(U)\to U\times\mathbb{R}^n$ (where $\xi^{-1}(U)$ has the subspace topology and $U\times\mathbb{R}^n$ the product topology), such that:
 \begin{i_enum}
@@ -20,7 +20,7 @@ B\ar[r,"\supseteq",phantom]&U
 \end{i_enum}
 $B=B(\xi)$ is then called \ul{base space} and $E=E(\xi)$ \ul{total space} of the vector bundle. Moreover, for every $x\in B$, the space $\xi^{-1}(x)$ is called \ul{the fiber over $x$}.
 \end{definition}
-\begin{remark} Since for every $x\in B$ $f_U:U\to U\times\mathbb{R}^n$ is a homeomorphism, Proposition~\ref{prop:same_fiber} gives us that $\xi^{-1}(x)\cong\mathbb{R}$ as topological spaces through $f_U|_{\xi^{-1}(x)}$ and since $f_U|_{\xi^{-1}(x)}$ is also linear, $\xi^{-1}(x)\cong\mathbb{R}^n$ as vector spaces. So, we can visualize the total space $E$ of the fiber bundle $\xi$ as a collection of $n$-planes, parametrized continuously by elements of $B$.
+\begin{remark} Since for every $x\in B$ $f_U:U\to U\times\mathbb{R}^n$ is a homeomorphism, Proposition~\ref{prop:same_fiber} gives us that $\xi^{-1}(x)\cong\mathbb{R}$ as topological spaces through $f_U|_{\xi^{-1}(x)}$ and since $f_U|_{\xi^{-1}(x)}$ is also linear, $\xi^{-1}(x)\cong\mathbb{R}^n$ as vector spaces. So, the total space $E$ of the fiber bundle $\xi$ can be visualized as a collection of $n$-planes, parametrized continuously by elements of $B$.
 \end{remark}
 
 \begin{remark}\label{rem:vector_subcover} Let $E\overset{\xi}{\to} B$ be a fiber bundle, $x\in B$ and $U\subseteq B$ an open neighborhood of $x$, $f_U:p^{-1}(U)\to U\times\mathbb{R}^n$ a homeomorphism as in the Definition~\ref{def:vector_bundle}, i.e. it makes the following diagram commute and is linear over each fiber:
@@ -39,13 +39,13 @@ Let us now list some examples of vector bundles:
 \item For any topological space $B$ and any $n\in\mathbb{N}$ we have the following \emph{trivial} vector bundle:
 \[\varepsilon_B^n:B\times\mathbb{R}^n\to B\]
 which is the projection on the first coordinate.
-\item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then we define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the following set of equivalence classes:
+\item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the following set of equivalence classes:
 \[T_xM:=\faktor{\left\{\gamma:\mathbb{R}\to M\ |\ \gamma(0)=x\text{ and }\phi\circ\gamma\text{ smooth}\right\}}{\sim}\]
 where $\gamma_1\sim\gamma_2$ iff $(\phi\circ\gamma_1)'(0)=(\phi\circ\gamma_2)'(0)$. This set can be given an $\mathbb{R}$-vector space structure as follows:
 \[\lambda_1\cdot[\gamma_1]+\lambda_2\cdot[\gamma_2]:=\left[\phi^{-1}\circ\big(\lambda_1(\phi\circ\gamma_1)+\lambda_2(\phi\circ\gamma_2)\big)\right]\]
 Notice that $T_xM$ does not depend on the choice of $(U,\phi)\in\mathcal{A}$. Indeed, since the atlas is smooth and $U_{\alpha}$ are open, every transition map $\phi_{\alpha}\circ\phi_{\beta}:\mathbb{R}^n\to\mathbb{R}^n$ has an invertible Jacobi matrix and thus the equivalence relation is the same under any $\phi$. Then, we define the total space of the tangent bundle of $M$ to be the set of all possible tangent vectors at any point of $M$, i.e. the following set:
 \[TM:=\big\{(x,[\gamma]):x\in M\text{ and }[\gamma]\in T_xM\big\}\]
-We now topologize this set as follows: Fix some $(U,\phi)\in\mathbb{A}$, then we define the following map:
+This set is now topologised as follows: Fix some $(U,\phi)\in\mathbb{A}$, then define the following map:
 \begin{center}
 \begin{tikzcd}
 TM\ar[r,phantom,"\supseteq"]&[-2em]\pi_1^{-1}(U)\ar[r]&U\times\mathbb{R}^n\\[-1.5em]
@@ -55,7 +55,7 @@ TM\ar[r,phantom,"\supseteq"]&[-2em]\pi_1^{-1}(U)\ar[r]&U\times\mathbb{R}^n\\[-1.
 This induces a topology on $\pi_1^{-1}(U)$ and since the transition maps are open maps, this topology is well defined on every $U_{\alpha}\cap U_{\beta}$. This defines a topology on $TM$. The vector bundle $\tau_{M}:TM\to M$ is exactly the function $\pi_1(x,[\gamma])=x$ we used above, so the local triviality is true by the definition of the topology.
 \item Let $M$ be a smooth $n$-manifold embedded in $\mathbb{R}^d$. Then its \emph{normal bundle} $\nu_{M,d}:N_dM\to M$ is the $d-n$-plane bundle \emph{orthogonal} to $\tau_M$, i.e.
 \[N_dM:=\big\{(x,v)\in M\times\mathbb{R}^d:x\in M\text{ and }\forall[\gamma]\in T_xM\ v\perp\gamma'(0)\in\mathbb{R}^d\big\}\]
-and it is easy to see how the fibers are vector spaces and how the total space is topologised. The vector bundle $\nu_{M,d}$ is again the projection on the first coordinate, but notice that this vector bundle depends on the ambient space the $M$ lives in, while the tangent bundle we defined above is an intrinsic construction, i.e. independent of any embedding.
+and it is easy to see how the fibers are vector spaces and how the total space is topologised. The vector bundle $\nu_{M,d}$ is again the projection on the first coordinate, but notice that this vector bundle depends on the ambient space the $M$ lives in, while the tangent bundle defined above is an intrinsic construction, i.e. independent of any embedding.
 \item There exists a natural $1$-plane bundle (also: \emph{line bundle}) over each $n$ dimensional real projective space: the \emph{tautological} line bundle
 \begin{center}
 \begin{tikzcd}
@@ -65,13 +65,13 @@ and it is easy to see how the fibers are vector spaces and how the total space i
 \end{center}
 The total space of this bundle is topologised as a subspace of $\mathbb{R}P^n\times\mathbb{R}^{n+1}$, where the $n$-dimensional projective space is defined to be the set of all lines through the origin in $\mathbb{R}^{n+1}$, topologized as the following quotient:
 \[\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong\faktor{S^n}{x\sim-x}\]
-We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one we also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, we can define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as follows:
+We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as follows:
 \[f_U(l',v')=(l',v'^tv)\]
 this is continuous and linear over each fiber and since $v'^tv\neq0$ for $v'\neq0$, $f_U$ is also a homeomorphism.
 \end{i_enum}
 \end{examples}
 
-Now that we have seen some examples for the objects we are interested in, it is time to define morphisms between these objects, in order to be able to differentiate them and construct new ones from old. Compared to the Definition~\ref{def:bundle_map} of the bundle map, we also need for it to respect the vector space structure over each fiber.
+After seeing some examples for the objects we are interested in, it is time to define morphisms between these objects, in order to be able to differentiate them and construct new ones from old. Compared to the Definition~\ref{def:bundle_map} of the bundle map, we also need for it to respect the vector space structure over each fiber.
 
 \begin{definition}
 Let $\xi_1:E_1\to B$ be an $n$-plane vector bundle and $\xi_2:E_2\to B$ be an $m$-plane vector bundle. A continuous map $\phi:E_1\to E_2$ is a \ul{vector bundle map from $\xi_1$ to $\xi_2$ over $B$}, if
@@ -86,7 +86,7 @@ E_1\ar[rd,"\xi_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"\xi_2"]\\
 \item $\phi|_{\xi_1^{-1}(x)}:\xi_1^{-1}(x)\to\xi_2^{-1}(x)$ is linear for every $x\in B$.
 \end{i_enum}
 \end{definition}
-\begin{remark} Using Proposition~\ref{prop:fiberwise}, we can characterize vector bundle maps by their local behavior: Let $\phi:E_1\to E_2$ be a continuous map. Then, $\phi$ is a vector bundle map if and only if
+\begin{remark} Due to Proposition~\ref{prop:fiberwise}, vector bundle maps can be characterized by their local behavior: Let $\phi:E_1\to E_2$ be a continuous map. Then, $\phi$ is a vector bundle map iff
 \begin{i_enum}
 \item $\phi|_{\xi_1^{-1}(x)}(\xi_1^{-1}(x))\subseteq\xi_2^{-1}(x)$ for every $x\in B$ and
 \item $\phi|_{\xi_1^{-1}}:\xi_1^{-1}(x)\to\xi_2^{-1}(x)$ is linear for every $x\in B$.
@@ -95,10 +95,10 @@ E_1\ar[rd,"\xi_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"\xi_2"]\\
 
 \begin{definition} Let $\xi_1:E_1\to B$ be an $n$-plane bundle and $\xi_2:E_2\to B$ be an $m$-plane bundle and let $\phi:E_1\to E_2$ be a vector bundle map from $\xi_1$ to $\xi_2$ over $B$. The map $\phi$ is called a \emph{vector bundle isomorphism} if $\phi$ is a homeomorphism.
 \end{definition}
-\begin{remark}\label{rem:global_to_local_iso_vector} Using Proposition~\ref{prop:global_to_local_iso} we deduce that a vector bundle isomorphism $\phi$ induces a homeomorphism $\xi_1^{-1}(x)\cong\xi_2^{-1}(x)$ over each fiber. Since $\phi|_{\xi_1^{-1}(x)}$ is also linear, $\xi_1^{-1}(x)\cong\xi_2^{-1}(x)$ as vector spaces and thus $n=m$.
+\begin{remark}\label{rem:global_to_local_iso_vector} Due to Proposition~\ref{prop:global_to_local_iso} a vector bundle isomorphism $\phi$ induces a homeomorphism $\xi_1^{-1}(x)\cong\xi_2^{-1}(x)$ over each fiber. Since $\phi|_{\xi_1^{-1}(x)}$ is also linear, $\xi_1^{-1}(x)\cong\xi_2^{-1}(x)$ as vector spaces and thus $n=m$.
 \end{remark}
 
-Up to this point, our discussion about vector bundles mirrors the discussion on the fiber bundles of Appendix~\ref{app:fiber_bundles}. The fact that each fiber is a vector space is just an additional structure we carry around through the definitions. The next proposition however is indicative of how much more restrictive the notion of a vector bundle is. In particular we directly prove that an inverse of Remark~\ref{rem:global_to_local_iso_vector} is always true. Compare this to counterexample~\ref{ex:counterexample} and Theorem~\ref{thm:local_to_global_iso}.
+Up to this point, our discussion about vector bundles mirrors the discussion on the fiber bundles of Appendix~\ref{app:fiber_bundles}. The fact that each fiber is a vector space is just an additional structure carried around through the definitions. The next proposition however is indicative of how much more restrictive the notion of a vector bundle is. In particular we directly prove that an inverse of Remark~\ref{rem:global_to_local_iso_vector} is always true. Compare this to counterexample~\ref{ex:counterexample} and Theorem~\ref{thm:local_to_global_iso}.
 
 \begin{proposition}\label{prop:local_to_global_iso_vector} Let $\xi_1:E_1\to B$ and $\xi_2:E_2\to B$ be two $n$-plane vector bundles. Moreover, let $\phi:E_1\to E_2$ be a vector bundle map such that its restriction
 \[\phi_x:\xi_1^{-1}(x)\to\xi_2^{-1}(x)\]
@@ -106,10 +106,10 @@ with $\phi_x(v)=\phi(v)$ is a vector space isomorphism for every $x\in B$. Then 
 \end{proposition}
 \begin{proof} First of all, it is easy to see that $\phi$ is a bijection:
 \begin{itemize}
-\item Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a vector bundle map, we have:
+\item Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a vector bundle map, 
 \[\xi_1(u_1)=\xi_2(\phi(u_1))=\xi_2(\phi(u_2))=\xi_1(u_2)=:x_0\]
 So, $u_1,u_2\in\xi_1^{-1}(x_0)$ and $\phi_{x_0}(u_1)=\phi(u_1)=\phi(u_2)=\phi_{x_0}(u_2)$. Since $\phi_{x_0}$ is injective, $u_1=u_2$, which proves that $\phi$ is injective as well.
-\item Let $v\in E_2$. For $x_0:=p_2(v)$, we have that $v\in\xi)2^{-1}(x_0)$. Since $\phi_{x_0}$ is surjective, there exists some $u\in\xi_1^{-1}(x_0)\subseteq E_1$ with $\phi(u)=\phi_{x_0}(u)=v$, proving that $\phi$ is also surjective.
+\item Let $v\in E_2$. For $x_0:=p_2(v)$, $v\in\xi)2^{-1}(x_0)$. Since $\phi_{x_0}$ is surjective, there exists some $u\in\xi_1^{-1}(x_0)\subseteq E_1$ with $\phi(u)=\phi_{x_0}(u)=v$, proving that $\phi$ is also surjective.
 \end{itemize}
 It now remains to prove that $\phi^{-1}$ is continuous as well. For every $x\in B$, there exist open neighborhoods $U_1,U_2$ of $x$, such that $\xi_1^{-1}(U_1)$ is isomorphic to $U_1\times\mathbb{R}^n$ and $\xi_2^{-1}(U_2)$ is isomorphic to $U_2\times\mathbb{R}^n$, satisfying the commutative diagrams of the Definition~\ref{def:vector_bundle}. Let $U_x:=U_1\cap U_2$. Then, as seen in Remark~\ref{rem:vector_subcover}, $U$ satisfies the requirements of the \ref{def:vector_bundle}. This means that there exist homeomorphisms $(f_1)_{U_x}:\xi_1^{-1}(U_x)\to U_x\times\mathbb{R}^n$ and $(f_2)_{U_x}:\xi_2^{-1}(U_x)\to U_x\times\mathbb{R}^n$ making the following diagrams commute and being linear over each fiber:
 \begin{center}
@@ -127,21 +127,18 @@ U\times\mathbb{R}^n\ar[r,"\cong"',"(f_1)_U^{-1}"]\ar[drr,"\pi_1"',near start]\ar
 &&U
 \end{tikzcd}
 \end{center}
-This means that the map $\psi$ has the following properties:
-\begin{itemize}
-\item $\psi$ is continuous and a bijection.
-\item For every $x\in U$ there exists some linear map $\psi_x:\mathbb{R}^n\to\mathbb{R}^n$ such that $\psi(x,v)=(x,\psi_x(v))$. Moreover, $\psi_x\in GL(n)$, since the following diagram commutes for every $x\in U$:
+Hence the map $\psi$ is continuous and a bijection. Moreover for every $x\in U$ there exists some linear map $\psi_x:\mathbb{R}^n\to\mathbb{R}^n$ such that $\psi(x,v)=(x,\psi_x(v))$, and $\psi_x\in GL(n)$, since the following diagram commutes for every $x\in U$:
 \vspace*{-1em}
 \begin{center}
 \begin{tikzcd}
 \mathbb{R}^n\ar[r,"\cong"']\ar[rrrrr,bend left=15,"\psi_x"]&\{x\}\times\mathbb{R}^n\ar[r,"\cong"']&\xi_1^{-1}(x)\ar[r,"\cong"',"\phi_x"]&\xi_2^{-1}(x)\ar[r,"\cong"']&\{x\}\times\mathbb{R}^n\ar[r,"\cong"']&\mathbb{R}^n
 \end{tikzcd}
 \end{center}
-\item $\phi^{-1}|_{\xi_2^{-1}(U)}=(\phi|_{\xi_1^{-1}(U)})^{-1}$ is continuous if and only if $\psi^{-1}$ is continuous.
-\end{itemize}
-Essentially, we have reduced the problem to the case of $E_1,E_2$ both being the trivial vector bundle $U\times\mathbb{R}^n$ and $\psi:U\times\mathbb{R}^n\to U\times\mathbb{R}^n$.
+Also, $\phi^{-1}|_{\xi_2^{-1}(U)}=(\phi|_{\xi_1^{-1}(U)})^{-1}$ is continuous iff $\psi^{-1}$ is continuous.
 
-We now want to prove that the function $U\to GL(n)$ with $x\mapsto\psi_x$ is continuous. Let us fix a basis $e_1,\ldots,e_n$ of $\mathbb{R}^n$ and write $\psi_x=(a_{i,j}(x))_{i,j\in[n]}\in GL(n)$ as a matrix in that basis. Then, it suffices to prove that $a_{i,j}:U\to\mathbb{R}$ is continuous for every $i,j\in[n]$, since $GL(n)$ is topologised as a subset of $\mathbb{R}^{n^2}$. This is true, since $a_{i,j}$ can be written as the following composition:
+Essentially, the problem is reduced to the case of $E_1,E_2$ both being the trivial vector bundle $U\times\mathbb{R}^n$ and $\psi:U\times\mathbb{R}^n\to U\times\mathbb{R}^n$.
+
+We now prove that the function $U\to GL(n)$ with $x\mapsto\psi_x$ is continuous. Let us fix a basis $e_1,\ldots,e_n$ of $\mathbb{R}^n$ and write $\psi_x=(a_{i,j}(x))_{i,j\in[n]}\in GL(n)$ as a matrix in that basis. Then, it suffices to prove that $a_{i,j}:U\to\mathbb{R}$ is continuous for every $i,j\in[n]$, since $GL(n)$ is topologised as a subset of $\mathbb{R}^{n^2}$. This holds, since $a_{i,j}$ can be written as the following composition:
 \begin{center}
 \begin{tikzcd}
 U\ar[r,hook]&U\times\mathbb{R}^n\ar[r,"\psi"]&U\times\mathbb{R}^n\ar[r,"\pi_2"]&\mathbb{R}^n\ar[r,two heads,"\pi_i"]&\mathbb{R}\\[-1.5em]
@@ -156,7 +153,7 @@ U\times\mathbb{R}^n\ar[r]&U\times GL(n)\times\mathbb{R}^n\ar[r]&U\times\mathbb{R
 (x,v)\ar[r,mapsto]&(x,\psi_x^{-1},v)\ar[r,mapsto]&(x,\psi_x^{-1}v)\ar[r,phantom,"="]&[-2em]\psi^{-1}(x,v)
 \end{tikzcd}
 \end{center}
-Thus, $\phi^{-1}$ is also continuous, which proves the claim.
+Thus, $\phi^{-1}$ is also continuous, which completes this proof.
 \end{proof}
 
 This means that in order to distinguish between non-isomorphic vector bundles we need to examine them globally and a natural way to start doing this is to introduce the notion of a section. This is a continuous choice of an element inside every fiber over all points of the base space:
@@ -164,7 +161,7 @@ This means that in order to distinguish between non-isomorphic vector bundles we
 \begin{definition} Let $\xi:E\to B$ be a vector bundle. A \emph{cross section} or just \emph{section} $s:B\to E$ is a continuous right inverse of $\xi$, i.e. a continuous function taking each $x\in B$ to an element in $\xi^{-1}(x)$.
 \end{definition}
 
-Notice that the same definition of a section applies generally for fiber bundles, but in the case of vector bundles we can use the vector structure to measure how many independent sections we can find in a space:
+Notice that the same definition of a section applies generally for fiber bundles, but in the case of vector bundles we use the vector structure to measure how many independent sections can be found in a space:
 
 \begin{definition} Let $\xi:E\to B$ be a vector bundle and $s_1,\ldots,s_k:B\to E$ $k$ sections of $\xi$. Then $s_1,\ldots,s_k$ are \emph{nowhere dependent sections} if for each $x\in B$ the vectors $s_1(x),\ldots,s_k(x)$ are linearly independent. In particular, a nowhere dependent section $s$ is also called \emph{nowhere zero section}.
 \end{definition}
@@ -175,7 +172,7 @@ Obviously, an $n$-plane vector bundle cannot have more than $n$ nowhere dependen
 \end{lemma}
 \begin{proof} First of all, it is easy to construct $n$ nowhere dependent sections of $\varepsilon_B^n=B\times\mathbb{R}^n$. Indeed, fix some basis $(e_1,\ldots,e_n)$ of $\mathbb{R}^n$ and let $s_i(x):=(x,e_i)$ for every $x\in B$ and every $i\in[n]$.
 
-On the other hand, let $s_1,\ldots,s_n$ be $n$ nowhere dependent sections of $\xi$. Then, we define $\phi:B\times\mathbb{R}^n\to\varepsilon_B^n$ as follows: Fix $e_1,\ldots,e_n$ to be a base of $\mathbb{R}^n$, define $\phi(x,e_i):=s_i(x)\in\xi^{-1}(x)$ and then extend $\phi$ linearly over each $x\in B$:
+On the other hand, let $s_1,\ldots,s_n$ be $n$ nowhere dependent sections of $\xi$. Then, define $\phi:B\times\mathbb{R}^n\to\varepsilon_B^n$ as follows: Fix $e_1,\ldots,e_n$ to be a base of $\mathbb{R}^n$, define $\phi(x,e_i):=s_i(x)\in\xi^{-1}(x)$ and then extend $\phi$ linearly over each $x\in B$:
 \[\phi\left(x,\sum_{i\in[n]}a_ie_i\right)=\sum_{i\in[n]}a_i\phi(x,e_i)=\sum_{i\in[n]}a_is_i(x)\in\xi^{-1}(x)\]
 $\phi$ is by definition linear over each fiber and continuous, since every section is continuous, i.e. $\phi$ is a vector bundle map. Each restriction $\phi_x:\{x\}\times\mathbb{R}^n\to\xi^{-1}(x)$ is a linear isomorphism, since $s_1(x),\ldots,s_n(x)$ are linearly independent and $\xi^{-1}(x)$ is $n$-dimensional. Thus, using Proposition~\ref{prop:local_to_global_iso_vector} we get that $\phi$ is a vector bundle isomorphism.
 \end{proof}
@@ -184,7 +181,7 @@ Let us now use sections to prove that the tautological bundle of a projective sp
 
 \begin{proposition} Let $n\geq1$ be any natural number, then $\gamma_n^1\not\cong\varepsilon_{\mathbb{R}P^n}^1$.
 \end{proposition}
-\begin{proof} It suffices to prove that there does not exist any section $s$ of $\gamma_n^1$ that is nowhere zero. We will prove this by contradiction: Suppose there exists some continuous map
+\begin{proof} It suffices to prove that there does not exist any section $s$ of $\gamma_n^1$ that is nowhere zero. We prove this by contradiction. Suppose there exists some continuous map
 \begin{center}
 \begin{tikzcd}
 \mathbb{R}P^n\ar[r,"s"]&\mathbb{R}P^n\times\mathbb{R}^{n+1}\\[-1.5em]
@@ -200,7 +197,7 @@ t\ar[r,phantom,":"]&[-2em]S^n\ar[r,"\left<\hat{s}{,}id\right>"]&\mathbb{R}^{n+1}
 \end{center}
 Notice now that for any $v\in\mathbb{R}^n$
 \[t(-v)=\hat{s}(-v)^t(-v)=-\tilde{s}(\mathrm{span}\{-v\})^tv=-\tilde{s}(\mathrm{span}\{v\})^tv=-\hat{s}(v)^tv=-t(v)\]
-i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^n$ is connected and the existance of such a continuous $t$ leads to a contradiction due to the intermediate value theorem. Notice that this is the easiest case of the (BU1b)-version of the Borsuk Ulam theorem as stated in Theorem~2.1.1 in \cite{BU_Matousek}.
+i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^n$ is connected and the existence of such a continuous $t$ leads to a contradiction due to the intermediate value theorem. Notice that this is the easiest case of the (BU1b)-version of the Borsuk Ulam theorem as stated in Theorem~2.1.1 in \cite{BU_Matousek}.
 \end{proof}
 
 \section{Creating new bundles}
