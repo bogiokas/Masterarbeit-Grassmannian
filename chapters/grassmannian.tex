@@ -5,13 +5,13 @@ Since the topology of projective spaces has been thoroughly studied and characte
 This chapter aims to present basic properties of Grassmannians, and is used as a point of reference throughout this thesis.
 Through this chapter the reader is able to get to know the combinatorial structure of a Grassmannian and do basic computations using the Schubert decomposition of these manifolds.
 
-Recall the definition of the real projective spaces as topological spaces:
-\[P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}\]
+Recall the definition of the real projective spaces as topological spaces,
+$P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}$,
 where two vectors are equivalent, if they span the same line. Notice that in this definition a proper subset of the whole vector space is required, in order for the quotient to be well defined. Namely the set of all vectors, which span a line. In accordance with that, for the case of the Grassmannians, the requirement is $\St{k}{n}\subsetneq{\left(\mathbb{R}^n\right)}^k$, the space of all $k$-tuples of vectors in $\mathbb{R}^n$, spanning a $k$-dimensional vector space, i.e.\ $k$-frames (for related definitions and further discussion see Appendix~\ref{app:stiefel}).
 
 %TODO: change to: "Let k,n\in\mathbb N such that 0<k<n"
-\begin{definition} Let $0<k<n$ be some natural numbers. Then, the real \ul{Grassmann space} $\Gr{k}{n}{\mathbb{R}}=\Gr{k}{n}$ is the set of all linear $k$-dimensional subspaces of $\mathbb{R}^n$, equipped with the following quotient topology:
-\[\Gr{k}{n}{\mathbb{R}}:=\faktor{\St{k}{n}{\mathbb{R}}}{\sim}\]
+\begin{definition} Let $0<k<n$ be some natural numbers. Then, the real \ul{Grassmann space} $\Gr{k}{n}{\mathbb{R}}=\Gr{k}{n}$ is the set of all linear $k$-dimensional subspaces of $\mathbb{R}^n$, equipped with the quotient topology,
+$\Gr{k}{n}{\mathbb{R}}:=\faktor{\St{k}{n}{\mathbb{R}}}{\sim}$,
 where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<\vec{v}_1,\ldots,\vec{v}_k\right>=\left<\vec{u}_1,\ldots,\vec{u}_k\right>$.
 \end{definition}
 
@@ -41,8 +41,8 @@ In this section it is proven that Grassmannians are in fact compact topological 
 
 \begin{proof} \begin{b_item}
 \item The Stiefel manifold $\StO{k}{n}$ is a compact topological space, as proven in the Appendix in Lemma~\ref{lem:StO_compact} and $q_0$ is a continuous map. Thus, $\Gr{k}{n}=q_0\left(\StO{k}{n}\right)$ is also compact.
-\item In order to show that $\Gr{k}{n}$ is Hausdorff, it suffices to show that it is completely Hausdorff, i.e.\ that any two distinct points in $\Gr{k}{n}$ can be separated by a continuous function $\Gr{k}{n}\to\mathbb{R}$. First, for every vector $v\in\mathbb{R}^n$, we define $\phi_v:\StO{k}{n}\to\mathbb{R}$ which maps each orthonormal $k$-frame $(v_1,\ldots,v_k)$ to the square of the distance between $v$ and the linear space spanned by $(v_1,\ldots,v_k)$, i.e.:
-\[\phi_v(v_1,\ldots,v_k)=v^tv-\sum_{i=1}^k{\left(v^tv_i\right)}^2\]
+\item In order to show that $\Gr{k}{n}$ is Hausdorff, it suffices to show that it is completely Hausdorff, i.e.\ that any two distinct points in $\Gr{k}{n}$ can be separated by a continuous function $\Gr{k}{n}\to\mathbb{R}$. First, for every vector $v\in\mathbb{R}^n$, we define $\phi_v:\StO{k}{n}\to\mathbb{R}$ which maps each orthonormal $k$-frame $(v_1,\ldots,v_k)$ to the square of the distance between $v$ and the linear space spanned by $(v_1,\ldots,v_k)$, i.e.
+$\phi_v(v_1,\ldots,v_k)=v^tv-\sum_{i=1}^k{\left(v^tv_i\right)}^2$.
 This is a continuous map, which depends only on the spanned $k$-plane, i.e.\ if two $k$-frames have the same image under $q_0$, they also have the same image under $\phi_v$. The universal property of the quotient map $q_0$ implies that there exists a unique continuous map $\psi_v$ making the following diagram commute:
 
 \begin{center}
@@ -56,8 +56,8 @@ Moreover, $\psi_v(H)=0$ iff $v\in H$, because $\phi_v(v_1,\ldots,v_k)=0$ iff $v\
 Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$. 
 Since $\psi_v(H_1)=0\neq\psi_v(H_2)$, $\Gr{k}{n}$ is completely Hausdorff.
 
-\item Next it is proven that for every $H\in\Gr{k}{n}$, the following subset of $\mathbb{R}^n$ is a neighborhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$:
-\[\mathcal{U}_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}\]
+\item Next it is proven that for every $H\in\Gr{k}{n}$, the subset $\mathcal{U}_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}$ of $\mathbb{R}^n$ is a neighborhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$.
+
 Firstly, one can fix an orthonormal basis $\{u_1,\ldots,u_k\}$ of $H$ and an orthonormal basis $\{\bar{u}_1,\ldots,\bar{u}_{n-k}\}$ of $H^{\perp}$. For the rest of this proof regard $\mathbb{R}^n$ as the direct sum $H\oplus H^{\perp}$. Define also the orthogonal projections $p_H,p_{H^{\perp}}$ from $H\oplus H^{\perp}$ to each component.
 %Dialexe an tha xrhsimopoieis iff h if and only if kai kan to pantou.
 Consider now $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, iff $\left.p_H\right|_K$ is not injective, iff $\left.p_H\right|_K$ is not surjective.
@@ -80,7 +80,7 @@ Notice that $\tilde T$ is well defined, since $q^{-1}\left(\mathcal{U}_H\right)$
 
 In order to argue that $\tilde T$ is a continuous map, remember how $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is topologized.
 Having fixed the bases ${\{u_i\}}_{i\in[k]}$ and ${\{\bar{u}_j\}}_{j\in[n-k]}$, we define an isomorphism of vector spaces $\phi$, which takes a linear map $L$ to
-\[\phi(L)={\left(\bar{u}_j^t\cdot L(u_i)\right)}_{(i,j)\in[k]\times[n-k]}\in\mathbb{R}^{[k]\times[n-k]}\]
+$\phi(L)={\left(\bar{u}_j^t\cdot L(u_i)\right)}_{(i,j)\in[k]\times[n-k]}\in\mathbb{R}^{[k]\times[n-k]}$.
 Then, the natural topology on $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is the induced topology by $\phi$. This means that our $\tilde T$ is continuous iff $f:=\phi\circ\tilde T$ is continuous.
 
 Finally, since $\mathbb{R}^{[k]\times[n-k]}=\prod_{(i,j)\in[k]\times[n-k]}\mathbb{R}$ is a categorical product, $\mathbb{R}^{[k]\times[n-k]}$ is equipped with the initial topology, with respect to all orthogonal projections ${\left(\pi_{i,j}\right)}_{(i,j)\in[k]\times[n-k]}$. Hence, the function $f$ that interests us is continuous iff every $f_{i,j}:=\pi_{i,j}\circ f$ is continuous. In order to show that every $f_{i,j}$ is a continuous map, we express it through linear algebra:
@@ -100,7 +100,7 @@ a^t_1\bar{u}_{n-k}&\cdots&a^t_k\bar{u}_{n-k}\\
 \in\mathbb{R}^{n\times{k}}\]
 The two blocks $A_H\in\mathbb{R}^{k\times k}$ and $A_{H^{\perp}}\in\mathbb{R}^{(n-k)\times k}$ of $A$ correspond to the maps taking $u_i$ to the projections of $a_i$ inside $H$ and inside $H^{\perp}$ respectively.
 
-Notice that the matrix corresponding to the linear map $p_{H^{\perp}}$, with regard to the bases we have fixed is
+Notice that the matrix corresponding to the linear map $p_{H^{\perp}}$, with regard to the bases fixed is
 \[\left(0_{(n-k)\times k}|I_{n-k}\right)\in\mathbb{R}^{(n-k)\times n}\]
 and the matrix corresponding to the linear map ${\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}$, with regard to the same bases is
 \[A\cdot A_H^{-1}=\left(\begin{array}{c}
@@ -120,7 +120,7 @@ This means, that the map $f_{ij}$ takes the element $\left(a_1,\ldots,a_k\right)
 Since inner product, matrix multiplication and inversion are continuous, $f_{ij}$ is a continuous function for every $i,j\in[k]\times[n-k]$. This proves that $f$ is continuous as well, and hence $\tilde T$ is also continuous. Since $\tilde T$ is a continuous function which depends only on the $k$-plane spanned by its input, the universal property of the quotient spaces ensures the existence of a continuous map $T:\mathcal{U}_H\to\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ such that $T\circ \left.q\right|=\tilde T$. The uniqueness condition of this property ensures that the map $T$ is indeed the one taking $K$ to $p_{H^{\perp}}\circ{\left(\left.p_H\right|_K\right)}^{-1}$.
 
 Through viewing this function as taking $K$ to the linear function, whose graph is $K$, we see that this function is both one to one and onto, since two linear maps are different iff they have different graphs. This makes $T$ a homeomorphism, proving that there exists the homeomorphism
-\[\mathcal{U}_H\overset{\phi\circ T}{\cong}\mathbb{R}^{n(n-k)}\]
+$\mathcal{U}_H\overset{\phi\circ T}{\cong}\mathbb{R}^{n(n-k)}$
 which concludes the proof of this lemma.\qedhere
 \end{b_item}
 \end{proof}
@@ -144,7 +144,7 @@ In order to prove the following lemma the open sets $\mathcal{U}_H$ defined in t
 In this diagram, $\mathfrak{gs}'$ is the function that takes an orthonormal $k$-frame $(a_1,\ldots,a_k)$ to the orthonormal $n$-frame constructed after applying the Gram-Schmidt process to the $n$-basis $\left(a_1,\ldots,a_k,\bar{u}_1,\ldots,\bar{u}_{n-k}\right)$ where $\left(\bar{u}_j\right)$ is an orthonormal basis of $H^{\perp}$, just like in Lemma~\ref{lem:gr_manifold}. The next map $\pi_{[k+1,n]}$ is just the orthogonal projection in the last $n-k$ coordinates. Both of these maps are continuous and well defined, and thus we get a continuous map $\left.\tilde{\perp}\right|$, like in the diagram. This map depends only on the plane spanned by the input, and thus the universal property of the quotient spaces ensures the continuity of the map $\left.\perp\right|$.
 
 After establishing the continuity of $\left.\perp\right|_{\mathcal{U}_H}$ for every $H$, notice that
-\[\Gr{k}{n} = \bigcup_{H\in\left\{\left<B\right>:B\in\binom{\{e_1,\ldots,e_n\}}{k}\right\}}\mathcal{U}_H\]
+$\Gr{k}{n} = \bigcup_{H\in\left\{\left<B\right>:B\in\binom{\{e_1,\ldots,e_n\}}{k}\right\}}\mathcal{U}_H$.
 The union is over all $k$-planes spanned by any $k$ vectors among $\{e_1,\ldots,e_n\}$, where $e_1,\ldots,e_n$ is the standard basis of $\mathbb{R}^n$. This means that $\#\binom{\{e_1,\ldots,e_n\}}{k}=\binom{n}{k}<\infty$ sets are participating in the union and thus one can use the pasting lemma, proving that $\perp$ is continuous as a function from the whole space $\Gr{k}{n}$ to $\Gr{n-k}{n}$.
 \end{proof}
 
@@ -158,13 +158,13 @@ For this, we define a cell decomposition of each Grassmannian. Before laying out
 \[\left\{l\subseteq\mathbb{R}^1\right\}\cong\mathbb{R}^0\ ,\ \left\{l\subseteq\mathbb{R}^2\setminus\mathbb{R}^1\right\}\cong\mathbb{R}^1\ ,\ \ldots\ ,\ \left\{l\subseteq\mathbb{R}^n\setminus\mathbb{R}^{n-1}\right\}\cong\mathbb{R}^{n-1}\]
 This cell decomposition seems natural, but it depends heavily on our basis choice for $\mathbb{R}^n$. This however doesn't cause a problem, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role towards the end of this chapter, when different decompositions are used (i.e.\ depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmannians. The definition of flags in an $n$-dimensional vector space follows.
 
-\begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \ul{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and:
-\[0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=V\]
+\begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \ul{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and
+$0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=V$.
 Given a flag $\mathbb{F}_{\bullet}$ of $V$, denote an orthonormal basis $f_{\bullet}=(f_1,\ldots,f_n)$ of $V$ to be \ul{compatible} with $\mathbb{F}_{\bullet}$, if
-\[f_i\in\mathbb{F}_i\]
+$f_i\in\mathbb{F}_i$
 for every $i\in[n]$.
 \end{definition}
-
+%giati exei toso megalo keno sto pdf edw? (genika s ayth th selida)
 For the rest of this thesis ${[n]}_0$ is used to denote the set $[n]\cup\{0\}=\{0,1,\ldots,n\}$.
 
 An obvious example of flag is the one used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\left<e_1,\ldots,e_i\right>$. This is sometimes referred to as \ul{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, every flag is treated equally.
@@ -175,7 +175,7 @@ Notice, that the role of the flags on the example above is to distinguish betwee
 
 \begin{definition} Let $k,n\in\mathbb{N}$ with $0<k<n$. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$ of $[n]$ the \ul{Schubert cell} $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is defined to be the following subset of $\Gr{k}{n}$:
 \[\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right):=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{\ell\in{[k]}_0:j_{\ell}\leq i\}\ \ \forall i\in{[n]}_0\big\}\]
-where we define $j_0$ to be $0$.
+where $j_0$ is defined to be $0$.
 \end{definition}
 
 Before examining mathematically this definition, let us write down the Schubert cells of the first non-trivial example, $\Gr{2}{4}$, with respect to the standard flag of $\mathbb{R}^4$:
@@ -215,15 +215,16 @@ ${\left\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\right\}}_{\mathbf{j}\in\
 \end{lemma}
 \begin{proof} It is rather obvious that two cells are disjoint, since each set of $k$ elements in $[n]$ describes uniquely $k$ jump points of the dimensions of $H\cap\mathbb{F}_0,H\cap\mathbb{F}_1,\ldots,H\cap\mathbb{F}_n$. Moreover, the dimensions of a $k$-plane $H$ in this sequence of intersections can increase at most by $1$ in each step. Indeed, because of the short exact sequence
 \[0\to H\cap\mathbb{F}_{i-1}\to H\cap\mathbb{F}_i\to\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\to0\]
-we get, for every $i\in[n]$:
-\[\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_i\right)-\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_{i-1}\right)=\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\]
+we get, for every $i\in[n]$, 
+$\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_i\right)-\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_{i-1}\right)=\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}$.
 Using the second isomorphism theorem for vector spaces, we get:
 \[\begin{array}{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}
 &=&\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_i\cap\mathbb{F}_{i-1}}\cong\faktor{(H\cap\mathbb{F}_i)+\mathbb{F}_{i-1}}{\mathbb{F}_{i-1}}\\[1.5em]
 &\cong&\faktor{(H+\mathbb{F}_{i-1})\cap(\mathbb{F}_i+\mathbb{F}_{i-1})}{\mathbb{F}_{i-1}}\cong\faktor{(H+\mathbb{F}_{i-1})\cap\mathbb{F}_i}{\mathbb{F}_{i-1}}\\
 \end{array}\]
-with the last vector space being obviously a subspace of $\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}$, which gives finally:
-\[\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\leq\dim_{\mathbb{R}}\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}=1\]
+with the last vector space being obviously a subspace of $\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}$, which gives finally,
+$\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\leq\dim_{\mathbb{R}}\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}=1$.
+
 This means that there exist exactly $k$ jump points in the sequence of the dimensions of $H\cap\mathbb{F}_0,\ldots,H\cap\mathbb{F}_n$, putting $H$ in some Schubert cell.
 
 For every $H\in\Gr{k}{n}$ the sequence of its jump points $\mathbf{j}\in\binom{[n]}{k}$, i.e. the $\mathbf{j}$ for which $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ is given explicitly by
@@ -268,8 +269,8 @@ Let us prove now that these sets have the right dimension and that their closure
 
 \begin{lemma}\label{lem:closure_of_cells} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$ the closure of $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}$ inside ${\left(\mathbb{R}^n\right)}^k$ is:
 \[{\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\]
-where:
-\[{\mathbb{H}(F,f)}^-:=\left\{v\in F:v^tf\geq 0\right\}\]
+where
+${\mathbb{H}(F,f)}^-:=\left\{v\in F:v^tf\geq 0\right\}$
 \end{lemma}
 \begin{proof} Using simple point-set topology and the fact that $\StO{k}{n}$ is closed inside ${\left(\mathbb{R}^n\right)}^k$ as proven in Proposition~\ref{prop:StO_dim_closed}, we have:
 \[\begin{array}{rcl}\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-
@@ -279,18 +280,20 @@ where:
 &=&\StO{k}{n}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\times\cdots\times\mathbb{H}{\left(\mathbb{F}_{j_k},f_{j_k}\right)}^-\\
 &=&\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\\
 \end{array}\]
-The inclusion in the third line is actually an equality. Indeed, let $(v_1,\ldots,v_k)\in\StO{k}{n}\cap{\big(\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-$. This means that there exists a sequence ${(v_1^m,\ldots,v_k^m)}_m\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ converging to $(v_1,\ldots,v_k)\in\StO{k}{n}\subseteq\St{k}{n}$, inside ${\left(\mathbb{R}^n\right)}^k$. Since $\St{k}{n}$ is open, as proven in Proposition~\ref{prop:St_open}, there exists some $m_0\in\mathbb{N}$, such that ${(v_1^m,\ldots,v_k^m)}_m\in\St{k}{n}$ for all $m\geq m_0$. For each such tuple, define now ${(w_1^m,\ldots,w_k^m)}_m\in\StO{k}{n}$ to be the result of the Gram-Schmidt process on input ${(v_1^m,\ldots,v_k^m)}_m$ for every $m\geq m_0$:
-\[{(w_1^m,\ldots,w_k^m)}_m:=\mathfrak{gs}\big({(v_1^m,\ldots,v_k^m)}_m\big)\]
+The inclusion in the third line is actually an equality. Indeed, let $(v_1,\ldots,v_k)\in\StO{k}{n}\cap{\big(\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-$. This means that there exists a sequence ${(v_1^m,\ldots,v_k^m)}_m\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ converging to $(v_1,\ldots,v_k)\in\StO{k}{n}\subseteq\St{k}{n}$, inside ${\left(\mathbb{R}^n\right)}^k$. Since $\St{k}{n}$ is open, as proven in Proposition~\ref{prop:St_open}, there exists some $m_0\in\mathbb{N}$, such that ${(v_1^m,\ldots,v_k^m)}_m\in\St{k}{n}$ for all $m\geq m_0$. For each such tuple, define now ${(w_1^m,\ldots,w_k^m)}_m\in\StO{k}{n}$ to be the result of the Gram-Schmidt process on input ${(v_1^m,\ldots,v_k^m)}_m$ for every $m\geq m_0$,
+${(w_1^m,\ldots,w_k^m)}_m:=\mathfrak{gs}\big({(v_1^m,\ldots,v_k^m)}_m\big)$
+
 First of all, $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ is a continuous map, which means that
 \[{(w_1^m,\ldots,w_k^m)}_m=\mathfrak{gs}\big({(v_1^m,\ldots,v_k^m)}_m\big)\overset{m\to\infty}{\to}\mathfrak{gs}(v_1,\ldots,v_k)=(v_1,\ldots,v_k)\]
 It now suffices to show that $\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ for any $(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$. We show this using the recursive nature of the Gram-Schmidt process. Assume that the assertion holds for every dimension between $1$ and $k-1$, let $(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ and let also $(w_1',\ldots,w_{k-1}')=\mathfrak{gs}(v_1',\ldots,v_{k-1}')$. Then:
 \[\mathfrak{gs}(v_1',\ldots,v_k')=\left(w_1',\ldots,w_{k-1}',\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^t v_k')w_{\ell}'\right\|}\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right)\right)\]
 Because of the inductive hypothesis, we only consider the last vector, which we denote as $w_k'$. Because $\mathbb{F}_{\bullet}$ is a flag, we have that $\mathbb{F}_{j_1}\subseteq\mathbb{F}_{j_2}\subseteq\cdots\subseteq\mathbb{F}_{j_k}$ and thus: $w_1',w_2',\ldots,w_{k-1}'\in\mathbb{F}_{j_k}$. Since $v_k'\in\mathbb{F}_{j_k}$ as well,
-\[w_k'=\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right\|}\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^t v_k')w_{\ell}'\right)\in\mathbb{F}_{j_k}\]
+$w_k'=\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right\|}\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^t v_k')w_{\ell}'\right)\in\mathbb{F}_{j_k}$
+
 Moreover, it is true that $v^tf_i=0$, if $v\in\mathbb{F}_{i-1}$ for some $i\in[n]$. Indeed, $f_{\bullet}$ is compatible with $\mathbb{F}_{\bullet}$, which means that $v\perp f_i$ for every $v\in\mathbb{F}_{i-1}$. Since $w_1',\ldots,w_{k-1}'\in\mathbb{F}_{j_{k-1}}$,
 \[(w_k')^tf_{j_k}=\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right\|}(v_k')^tf_{j_k}>0\]
 This proves that $w_k'\in\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$, which due to the induction assumption leads to
-\[\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\]
+$\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$.
 Thus the sequence ${(w_1^m,\ldots,w_k^m)}_m$ is inside $\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ converging to $(v_1,\ldots,v_k)$, which proves the desired inclusion since
 \[(v_1,\ldots,v_k)\in{\big(\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\qedhere\]
 \end{proof}
@@ -334,8 +337,8 @@ So, we define the following continuous map:
 \end{center}
 We now prove that the image of this map is contained in $\pi_1^{-1}(f_{j_1})$. Let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$. Since $\rho_{v_1}\in SO(n)$ and $(v_1,\ldots,v_k)\in\StO{k}{n}$, we have that $(\rho_{v_1}v_i)^t\rho_{v_1}v_j=v_i^tv_j=\delta_{i,j}$, which means that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\StO{k}{n}$. Moreover, for any $\ell\in[k]$, $v_{\ell}\in\mathbb{F}_{j_{\ell}}$. Let us define $H:=\left<v_1,f_{j_1}\right>\subseteq\mathbb{F}_{j_1}\subseteq\mathbb{F}_{j_{\ell}}$ and then express it as the following decomposition $v_{\ell}=P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}$, where $P_H$ and $P_{H^{\perp}}$ are the linear projections on $H$ and $H^{\perp}$ respectively. Since $v_{\ell}\in\mathbb{F}_{j_{\ell}}$ and $H\subseteq\mathbb{F}_{j_{\ell}}$, we have that $P_{H^{\perp}}v_{\ell}\in H^{\perp}\cap\mathbb{F}_{j_{\ell}}$. Moreover, as proved in Computation~\ref{com:rotation}, $\rho_{v_1}P_Hv_{\ell}\in H$ and $\rho_{v_1}P_{H^{\perp}}v_{\ell}=P_{H^{\perp}}v_{\ell}$. By putting all these together we get:
 \[\rho_{v_1}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+\rho_{v_1}P_{H^{\perp}}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}\in H+\mathbb{F}_{j_{\ell}}=\mathbb{F}_{j_{\ell}}\]
-Next, notice that in general $\rho_{x\to y}^t=\rho_{x\to y}^{-1}=\rho_{y\to x}$, so $\rho_{v_1}^ta=a$ for every $a\in H^{\perp}$. Thus:
-\[(\rho_{v_1}v_{\ell})^tf_{j_{\ell}}=v_{\ell}^t\rho_{v_1}^tf_{j_{\ell}}=v_{\ell}^tf_{j_{\ell}}\geq0\]
+Next, notice that in general $\rho_{x\to y}^t=\rho_{x\to y}^{-1}=\rho_{y\to x}$, so $\rho_{v_1}^ta=a$ for every $a\in H^{\perp}$. Thus,
+$(\rho_{v_1}v_{\ell})^tf_{j_{\ell}}=v_{\ell}^t\rho_{v_1}^tf_{j_{\ell}}=v_{\ell}^tf_{j_{\ell}}\geq0$,
 since $v_{\ell}\in\mathbb{H}{\left(\mathbb{F}_{j_{\ell}},f_{j_{\ell}}\right)}^-$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also holds that $\pi_1(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)=f_{j_1}$, which proves the claim.
 
 Let us now define $\phi=\left<\pi_1,\mathrm{ev}^k\circ\left<\rho\circ\pi_1,id\right>\right>$, i.e.:
@@ -412,8 +415,8 @@ Moreover, we also verify that
 &-\frac{(x+y)(x+y)^t}{\cos\theta+1}-2\frac{(x+y)(1+\cos\theta)y^t}{\cos\theta+1}+\frac{(x+y)(2+2\cos\theta)(x+y)^t}{(\cos\theta+1)^2}\end{aligned}\\
 &=I_n
 \end{align*}
-which proves that $\rho_{x\to y}\in O(n)$. To compute the determinant of $\rho_{x\to y}$, first let $A=I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}$ and use the Matrix determinant lemma to get:
-\[\det(A)=\det\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)=1-\frac{(x+y)^t(x+y)}{\cos\theta+1}=-1\]
+which proves that $\rho_{x\to y}\in O(n)$. To compute the determinant of $\rho_{x\to y}$, first let $A=I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}$ and use the Matrix determinant lemma to get,
+$\det(A)=\det\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)=1-\frac{(x+y)^t(x+y)}{\cos\theta+1}=-1$
 and hence $A$ is invertible. Using the Sherman–Morrison formula we compute $A^{-1}$:
 \begin{align*}
 A^{-1}&=\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)^{-1}\\
@@ -465,11 +468,11 @@ So, $\tilde{\Phi}_{\mathbf{j}}$ is constructed inductively, using \eqref{eq:triv
 &\cong D^{\mathrm{d}(\mathbf{j})}
 \end{align*}
 For the second claim, notice that
-\[S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\cong\big(D^{j_1-1}\big)^{\circ}\]
+$S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\cong\big(D^{j_1-1}\big)^{\circ}$
 through the same linear projection as in \eqref{eq:linear_proj_disc} and
-\[\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}^{-1}(f_{j_1})\cong\tilde{\mathcal{C}}_{\mathbf{j}'}(\mathbb{F}_{\bullet}',f_{\bullet}')\]
+$\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}^{-1}(f_{j_1})\cong\tilde{\mathcal{C}}_{\mathbf{j}'}(\mathbb{F}_{\bullet}',f_{\bullet}')$
 through the same map as in \eqref{eq:induction_step}. Using Remark~\ref{rem:trivial_fb_interior} we get
-\[\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\cong\big(S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\big)\times\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}^{-1}(f_{j_1})\]
+$\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\cong\big(S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\big)\times\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}^{-1}(f_{j_1})$
 through the same map as in \eqref{eq:trivial_fb}.
 So, the inductive construction above gives us that
 \[\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\cong\big(D^{\mathrm{d}(\mathbf{j})}\big)^{\circ}\]
@@ -488,7 +491,7 @@ In order to examine the CW structure of $\Gr{k}{n}$, we need to connect the sets
 \begin{proof} First notice that $q_0$ is well defined. Indeed, let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and
 \[H:=q_0(v_1,\ldots,v_k)=\left<v_1,\ldots,v_k\right>\in\Gr{k}{n}\]
 Fix some $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$,  $v_{\ell}\in\mathbb{F}_{j_{\ell}}\subseteq\mathbb{F}_i$. On the other hand, if $j_{\ell}>i$, then $v_{\ell}\cdot f_{j_{\ell}}>0$, i.e. $v_{\ell}\not\in\mathbb{F}_i$ since $f_{j_{\ell}}\perp\mathbb{F}_i$. Hence,
-\[\dim(H\cap\mathbb{F}_i)=\dim\left(\left<\big\{v_{\ell}:j_{\ell}\leq i\big\}\right>\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}\]
+$\dim(H\cap\mathbb{F}_i)=\dim\left(\left<\big\{v_{\ell}:j_{\ell}\leq i\big\}\right>\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$
 where $j_0=0$ as before, that proves that $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$.
 
 In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Then, for any $\ell\in[k]$, 
@@ -500,13 +503,14 @@ so, there exist exactly two vectors $-a,a$ such that
 \[-a,a\in H\cap\mathbb{F}_{j_{\ell}}\qquad\text{ and }\qquad-a,a\perp H\cap\mathbb{F}_{j_{\ell}-1}\qquad\text{ and }\qquad-a,a\in S^{n-1}\]
 Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if $a\in\mathbb{F}_{j_{\ell}}$ and $a^tf_{j_{\ell}}=0$, then $a\in\mathbb{F}_{j_{\ell}-1}$, which leads to a contradiction since $a\perp H\cap\mathbb{F}_{j_{\ell}-1}$. We now define $u_{\ell}\in\{a,-a\}$ to be the unique vector that satisfies all the above and $u_{\ell}^tf_{j_{\ell}}>0$ and then also define $r_0(H):=(u_1,\ldots,u_k)$.
 
-First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$, we have that \[u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}\]
+First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$, 
+$u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}$
 i.e. $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e. $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\tilde{\mathcal{C}}_{\mathbf{j}(\mathbb{F}_{\bullet},f_{\bullet})}$.
 
 Then, notice that for $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$,
 \[q_0(r_0(H))=q_0(u_1,\ldots,u_k)=\left<u_1,\ldots,u_k\right>=H\]
 Moreover, for $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$,
-\[v_{\ell}\in\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}}\text{ and } v_{\ell}\perp\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}-1}\text{ and }v_{\ell}\in S^{n-1}\text{ and }v_{\ell}^tf_{j_{\ell}}>0\]
+$v_{\ell}\in\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}}\text{ and } v_{\ell}\perp\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}-1}\text{ and }v_{\ell}\in S^{n-1}\text{ and }v_{\ell}^tf_{j_{\ell}}>0$
 which means that
 \[r_0(q_0(v_1,\ldots,v_k))=r_0(\left<v_1,\ldots,v_k\right>)=(v_1,\ldots,v_k)\]
 since there is a unique choice for $r_0$, as proven above.
@@ -531,10 +535,10 @@ such that:
 \begin{proof} Through the maps in Lemmata~\ref{lem:shub_dim} and \ref{lem:cells_from_stiefel_to_gr} the following map is defined:
 \[\Phi_{\mathbf{j}}=q_0\circ\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\Gr{k}{n}\]
 \begin{i_enum}
-\item Using these two lemmata we also have that its restriction in the disc interior is a homeomorphism:
-\[\Phi_{\mathbf{j}}|_{D^{\mathrm{d}(\mathbf{j})}}:D^{\mathrm{d}(\mathbf{j})}\to\mathcal{C}_{\mathbf{j}}(\mathbb{H}_{\bullet})\]
-\item Using again Lemma~\ref{lem:shub_dim}, we also get that the boundary of the disc is mapped to $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and then, using Lemma~\ref{lem:q0_on_bdr} we get that:
-\[\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\qedhere\]
+\item Using these two lemmata we also have that its restriction in the disc interior is a homeomorphism,
+$\Phi_{\mathbf{j}}|_{D^{\mathrm{d}(\mathbf{j})}}:D^{\mathrm{d}(\mathbf{j})}\to\mathcal{C}_{\mathbf{j}}(\mathbb{H}_{\bullet})$.
+\item Using again Lemma~\ref{lem:shub_dim}, we also get that the boundary of the disc is mapped to $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and then, using Lemma~\ref{lem:q0_on_bdr} we get that
+$\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\qedhere$.
 \end{i_enum}
 \end{proof}
 
