@@ -201,10 +201,10 @@ i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^
 \end{proof}
 
 \section{Creating new bundles}
-Our goal is now to describe some ways to create new bundles by combining the data of already known ones. First we construct new bundles based on continuous maps between the base spaces, disregarding the vector space structure on the fibers and then we construct new bundles by fixing the base space and doing operations on the vector spaces fiber-wise.
+The goal of this section is to describe some ways to create new bundles by combining the data of already known ones. First new bundles are constructed based on continuous maps between the base spaces, disregarding the vector space structure on the fibers and then we construct new bundles by fixing the base space and doing operations on the vector spaces fiber-wise.
 
 \subsection{By combining the base spaces}
-In order to briefly ignore the vector space structure of the fibers we will describe the next few constructions in terms of fiber bundles, in general.
+In order to briefly ignore the vector space structure of the fibers we describe the next few constructions in terms of fiber bundles, in general.
 
 \begin{proposition} Let $p:E\to B$ be a fiber bundle with fiber $F$, let $B'$ be any topological space and let $g:B'\to B$ be any continuous map. Moreover, let $E':=\{(x,v)\in B'\times E:g(x)=p(v)\}$, $g^*p(x,v)=x$ and $\bar{g}(x,v)=v$ be the space and the maps making the following a pullback square of topological spaces:
 \begin{center}
@@ -220,20 +220,20 @@ Then $g^*p:E'\to B'$ is a fiber bundle with fiber $F$.
 (g^*p)^{-1}(U')&=\{(x,v)\in U'\times E: g(x)=p(v)\}\\
 &=\{(x,v)\in U'\times p^{-1}(U):g(x)=p(v)\}
 \end{align*}
-So, we can define $f'_{U'}:= id\times(\pi_2\circ f_U):(g^*p)^{-1}(U')\to U'\times F$. This is a continuous map and obviously satisfies the equation $g^*p(x,a)=x=\pi_1\circ f'_{U'}$. In order to prove that it is also a homeomorphism, we will prove that it has a continuous inverse map. Define $h_{U'}:U'\times F\to (g^*p)^{-1}(U')$ as follows:
+So, we define $f'_{U'}:= id\times(\pi_2\circ f_U):(g^*p)^{-1}(U')\to U'\times F$. This is a continuous map and obviously satisfies the equation $g^*p(x,a)=x=\pi_1\circ f'_{U'}$. In order to prove that it is also a homeomorphism, we prove that it has a continuous inverse map. Define $h_{U'}:U'\times F\to (g^*p)^{-1}(U')$ as follows:
 \begin{center}
 \begin{tikzcd}
 h_{U'}\ar[r,phantom,":"]&[-2em]U'\times F\ar[r,"\left<id_{U'}{,}g\right>\times id_F"]&[3em]U'\times U\times F\ar[r,"id_{U'}\times f_U^{-1}"]&[3em](g^*p)^{-1}(U')\\[-1.5em]
 &(x,a)\ar[r,mapsto]&(x,g(x),a)\ar[r,mapsto]&(x,f_U^{-1}(g(x),a))
 \end{tikzcd}
 \end{center}
-This map is continuous well defined. Indeed, $p\big(f_U^{-1}(g(x),a)\big)=\pi_1(g(x),a)=g(x)$, so $(x,f_U^{-1}(g(x),a))\in (g^*p)^{-1}(U')$ for every $(x,a)\in U'\times F$. Moreover, notice that $(f'_{U'}\circ h_{U'})(x,a)=f'_{U'}(x,f_U^{-1}(g(x),a))=(x,\pi_2\circ f_U\circ f_U^{-1}(g(x),a))=(x,a)$ for every $(x,a)\in U'\times F$. Also, for every $(x,v)\in (g^*p)^{-1}(U')$, we have:
+This map is continuous well defined. Indeed, $p\big(f_U^{-1}(g(x),a)\big)=\pi_1(g(x),a)=g(x)$, so $(x,f_U^{-1}(g(x),a))\in (g^*p)^{-1}(U')$ for every $(x,a)\in U'\times F$. Moreover, notice that $(f'_{U'}\circ h_{U'})(x,a)=f'_{U'}(x,f_U^{-1}(g(x),a))=(x,\pi_2\circ f_U\circ f_U^{-1}(g(x),a))=(x,a)$ for every $(x,a)\in U'\times F$. Also, for every $(x,v)\in (g^*p)^{-1}(U')$,
 \begin{align*}
 (h_{U'}\circ f'_{U'})(x,v)&=h_{U'}(x,\pi_2\circ f_U(v))=\big(x,f_U^{-1}(g(x),\pi_2\circ f_U(v))\big)\\
 &=\big(x,f_U^{-1}(p(v),\pi_2\circ f_U(v))\big)=\big(x,f_U^{-1}(\pi_1\circ f_U(v),\pi_2\circ f_U(v))\big)\\
 &=\big(x,f_U^{-1}\circ f_U(v)\big)=(x,v)
 \end{align*}
-which finishes the proof that $(f'_{U'})^{-1}=h_{U'}$
+which completes the proof that $(f'_{U'})^{-1}=h_{U'}$
 \end{proof}
 
 \begin{definition} Let $p:E\to B$ be a fiber bundle with fiber $F$ and $g:B'\to B$ any continuous map as in the above proposition. The \emph{induced} fiber bundle of $p$ over $g$ is $g^*p:E'\to B'$, where $E':=\{(x,a)\in B'\times E:g(x)=p(a)\}$ and $g^*p(x,a)=x$.
@@ -242,7 +242,7 @@ The way to imagine the pullback fiber bundle is that we attach to a point $x\in 
 
 \begin{remark} In the special case where $g:B'\to B$ is injective, then $E'\cong p^{-1}(g(B'))\subseteq E$ and $(g^*p)(v)=g^{-1}(p(v))$ for every $v\in p^{-1}(g(B'))$.
 \end{remark}
-\begin{proof} The function $g$ being injective means that it has a left inverse, which we will denote by $g^{-1}$ here. This means that:
+\begin{proof} The function $g$ being injective means that it has a left inverse, which we denote by $g^{-1}$ here. Hence,
 \begin{align*}
 E'&=\{(x,v)\in B'\times E:g(x)=p(v)\}=\{(x,v)\in B'\times E:x=(g^{-1}\circ p)(v)\}\\
 &\cong\{v\in E:(g^{-1}\circ p)(v)\in B'\}=p^{-1}(g(B))
@@ -256,7 +256,7 @@ Notice that $p|A$ has fiber $F$, which means that we restricted $B$ but not $F$.
 
 \begin{proposition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. Then $p_1\times p_2:E_1\times E_2\to B_1\times B_2$ is a fiber bundle with fiber $F_1\times F_2$.
 \end{proposition}
-\begin{proof} We have to show that $p_1\times p_2$ is locally trivial. Let $(x_1,x_2)\in B_1\times B_2$. Then, since $p_1$ and $p_2$ are fiber bundles there exist some open sets $U_1\subseteq E_1$ and $U_2\subseteq E_2$ with $x_1\in U_1$ and $x_2\in U_2$ and homeomorphisms $f_{U_1}:p_1^{-1}(U_1)\to U_1\times F_1$ and $g_{U_2}:p_2^{-1}(U_2)\to U_2\times F_2$ such that $p_1=\pi_1\circ f_{U_1}$ and $p_2=\pi_1\circ g_{U_2}$. Let $U=U_1\times U_2$. This contains $(x_1,x_2)$ and is open. Notice that $(p_1\times p_2)^{-1}(U)=p_1^{-1}(U_1)\times p_2^{-1}(U_2)$. So, we can define $h_U:=\tau_{2,3}\circ(f_{U_1}\times g_{U_2}):(p_1\times p_2)^{-1}(U)\to U_1\times U_2\times F_1\times F_2$, where $\tau_{2,3}:U_1\times F_1\times U_2\times F_2\to U_1\times U_2\times F_1\times F_2$ is the homeomorphism swapping coordinates $2$ and $3$. This makes $h_U$ a homeomorphism and it is easy to check that $\pi_1\circ h_U(v_1,v_2)=(p_1\times p_2)(v_1,v_2)\in B_1\times B_2$, where $\pi_1$ is the projection on the first two coordinates.
+\begin{proof} We have to show that $p_1\times p_2$ is locally trivial. Let $(x_1,x_2)\in B_1\times B_2$. Then, since $p_1$ and $p_2$ are fiber bundles there exist some open sets $U_1\subseteq E_1$ and $U_2\subseteq E_2$ with $x_1\in U_1$ and $x_2\in U_2$ and homeomorphisms $f_{U_1}:p_1^{-1}(U_1)\to U_1\times F_1$ and $g_{U_2}:p_2^{-1}(U_2)\to U_2\times F_2$ such that $p_1=\pi_1\circ f_{U_1}$ and $p_2=\pi_1\circ g_{U_2}$. Let $U=U_1\times U_2$. This contains $(x_1,x_2)$ and is open. Notice that $(p_1\times p_2)^{-1}(U)=p_1^{-1}(U_1)\times p_2^{-1}(U_2)$. So, we define $h_U:=\tau_{2,3}\circ(f_{U_1}\times g_{U_2}):(p_1\times p_2)^{-1}(U)\to U_1\times U_2\times F_1\times F_2$, where $\tau_{2,3}:U_1\times F_1\times U_2\times F_2\to U_1\times U_2\times F_1\times F_2$ is the homeomorphism swapping coordinates $2$ and $3$. This makes $h_U$ a homeomorphism and it is easy to check that $\pi_1\circ h_U(v_1,v_2)=(p_1\times p_2)(v_1,v_2)\in B_1\times B_2$, where $\pi_1$ is the projection on the first two coordinates.
 \end{proof}
 
 \begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. Then, the \emph{product fiber bundle of $p_1$ and $p_2$} is the usual product map $p_1\times p_2:E_1\times E_2\to B_1\times B_2$.
@@ -272,7 +272,7 @@ Notice that $p|A$ has fiber $F$, which means that we restricted $B$ but not $F$.
 Notice that the product of the base spaces always defines a product of fiber bundles, but the disjoint union of two base spaces defines a fiber bundle only if the fibers of the two components were already isomorphic.
 
 \subsection{By combining the fibers}
-Here we want to exploit the vector space structure of the fibers, so we fix some base space $B$ and define new bundles over $B$ using fiber-wise operations. In this section we are going to construct some vector bundle isomorphisms, always by constructing a bundle map that is linear on the fibers, proving that the desired isomorphism is true fiberwise and then using proposition~\ref{prop:local_to_global_iso_vector} to argue that this bundle map is in fact a bundle isomorphism.
+Aiming to exploit the vector space structure of the fibers, we fix some base space $B$ and define new bundles over $B$ using fiber-wise operations. In this section we construct some vector bundle isomorphisms, by constructing a bundle map that is linear on the fibers, proving that the desired isomorphism is true fiberwise and then using proposition~\ref{prop:local_to_global_iso_vector} to argue that this bundle map is in fact a bundle isomorphism.
 
 \begin{definition} Let $\eta:E(\eta)\to B$ be an $n$-plane vector bundle and $\xi:E(\xi)\to B$ a $k$-plane vector bundle, where $E(\xi)\subseteq E(\eta)$. Then $\xi$ is a \emph{subbundle of $\eta$} and we write $\xi\leq\eta$, if $\xi^{-1}(x)<\eta^{-1}(x)$ as vector spaces for every $x\in B$. Notice that in this case $k\leq n$.
 \end{definition}
@@ -290,7 +290,7 @@ E(d^*(\xi_1\times\xi_2))\ar[r,"\phi"]&[5em]E(\xi_1\oplus\xi_2)\\[-1.5em]
 (x,v_1,v_2)\ar[r,mapsto]&v_1+v_2
 \end{tikzcd}
 \end{center}
-It is easy to see that this is a bundle map and linear over each fiber. Next, notice that its restriction on the fibers $\phi_x=\phi|:\big(d^*(\xi_1\times\xi_2)\big)^{-1}(x)\to(\xi_1\oplus\xi_2)^{-1}(x)$ is a linear isomorphism. Indeed, for any $x\in B$, its inverse is the map $\psi_x$ taking some $v=v_1+v_2\in(\xi_1\oplus\xi_2)^{-1}(x)=\xi_1^{-1}(x)\oplus\xi_2^{-1}(x)$ to $(x,v_1,v_2)\in E(d^*(\xi_1\times\xi_2))$. Using Proposition~\ref{prop:local_to_global_iso_vector} we get that $\phi$ is a vector bundle isomorphism.
+It is easy to see that this is a bundle map and linear over each fiber. Next, notice that its restriction on the fibers $\phi_x=\phi|:\big(d^*(\xi_1\times\xi_2)\big)^{-1}(x)\to(\xi_1\oplus\xi_2)^{-1}(x)$ is a linear isomorphism. Indeed, for any $x\in B$, its inverse is the map $\psi_x$ taking some $v=v_1+v_2\in(\xi_1\oplus\xi_2)^{-1}(x)=\xi_1^{-1}(x)\oplus\xi_2^{-1}(x)$ to $(x,v_1,v_2)\in E(d^*(\xi_1\times\xi_2))$. Due to Proposition~\ref{prop:local_to_global_iso_vector}, $\phi$ is a vector bundle isomorphism.
 \end{proof}
 \begin{remark} If we define $\zeta:\big\{(v_1,v_2)\in E(\xi_1)\times E(\xi_2):\xi_1(v_1)=\xi_2(v_2)\big\}\to B$ to be the vector bundle with $\zeta(v_1,v_2)=\xi_1(v_1)$, then $\xi_1\oplus\xi_2\cong\zeta$.
 \end{remark}
@@ -315,17 +315,17 @@ This is the description used in the remainder of the thesis.
 Next we examine how to explicitly define the quotient bundles given a bundle and a subbundle.
 \begin{proposition}\label{prop:quotient_bundle} Let $\eta:E(\eta)\to B$ be an $n$-plane vector bundle and $\xi:E(\xi)\to B$ a $k$-plane vector subbundle, i.e. $\xi\leq\eta$. Moreover, let $\zeta:\sfrac{E(\eta)}{\sim}\to B$, where $v_1\sim v_2$ if and only if $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v))$ be the vector bundle with $\zeta([v])=\xi(v)$. Then, $\sfrac{\eta}{\xi}\cong\zeta$.
 \end{proposition}
-\begin{proof} First of all notice that $\zeta$ is well defined, since $\xi(v)$ is the same for every choice of class representative $v$. Next, we define the following map:
+\begin{proof} First of all notice that $\zeta$ is well defined, since $\xi(v)$ is the same for every choice of class representative $v$. Next, define the following map:
 \begin{center}
 \begin{tikzcd}
 \sfrac{E(\eta)}{\sim}\ar[r,"\phi"]&E(\sfrac{\eta}{\xi})\\[-1.5em]
 [v]\ar[r,mapsto]&v+\xi^{-1}(\eta(v))
 \end{tikzcd}
 \end{center}
-Notice that this is well defined, by the definition of the equivalence relation. Moreover it is easy to see that it is a bundle map and also linear over each fiber. Next, we want to prove that it is in fact a vector isomorphism over each fiber. To do this, we will define for every $x\in B$ a continuous map $\psi_x:(\sfrac{\eta}{\xi})^{-1}(x)\to\zeta^{-1}(x)$ and prove that it is the inverse of $\phi_x$. Let $v+\xi^{-1}(x)\in\sfrac{\eta^{-1}(x)}{\xi^{-1}(x)}$, then we define $\psi_x(v+\xi^{-1}(x))=[v]$. This is again well defined and is easy to see that it is the desired inverse. Using remark~\ref{rem:vector_subcover} we get that $\phi$ is a vector bundle isomorphism.
+Notice that this is well defined, by the definition of the equivalence relation. Moreover it is easy to see that it is a bundle map and also linear over each fiber. Next, we prove that it is in fact a vector isomorphism over each fiber. To do this, we define for every $x\in B$ a continuous map $\psi_x:(\sfrac{\eta}{\xi})^{-1}(x)\to\zeta^{-1}(x)$ and prove that it is the inverse of $\phi_x$. Let $v+\xi^{-1}(x)\in\sfrac{\eta^{-1}(x)}{\xi^{-1}(x)}$, then we define $\psi_x(v+\xi^{-1}(x))=[v]$. This is again well defined and is easy to see that it is the desired inverse. Using remark~\ref{rem:vector_subcover} we get that $\phi$ is a vector bundle isomorphism.
 \end{proof}
 
-At this point it is natural to wonder if given two bundles $\xi\leq\eta$ we can always decompose $\eta$ in the whitney sum of $\xi$ and $\sfrac{\eta}{\xi}$. Trying to build a vector bundle isomorphism from $\xi\sfrac{\eta}{\xi}$ to $\eta$, we see however that we need to be able to choose an inner product on each fiber that changes continuously. So the next question arises naturally:
+At this point it is natural to wonder if given two bundles $\xi\leq\eta$ it is always possible to decompose $\eta$ in the whitney sum of $\xi$ and $\sfrac{\eta}{\xi}$. Trying to build a vector bundle isomorphism from $\xi\sfrac{\eta}{\xi}$ to $\eta$, we see however that we need to be able to choose an inner product on each fiber that changes continuously. So the next question arises naturally:
 
 \section{Do we always have a dot product?}
 \begin{definition} Let $V$ be an $\mathbb{R}$ vector space. Then $V$ is an \emph{Euclidean vector space}, if there exists a symmetric, bilinear function $\beta:V\times V\to\mathbb{R}$ such that $\beta(v,v)\geq0$ and $\beta(v,v)=0$ only if $v=0$. In this case $\beta$ is called \emph{inner product} and $\beta(u,v)$ denoted by $u\cdot v$.
@@ -340,20 +340,20 @@ At this point it is natural to wonder if given two bundles $\xi\leq\eta$ we can 
 \begin{definition} Let $\xi:E\to B$ be a euclidean vector bundle and $s_1,\ldots,s_k:B\to E$ be $k$ sections of $\xi$. Then $s_1,\ldots,s_k$ are \emph{orthonormal sections} if for each $x\in B$ the vectors $s_1(x),\ldots,s_k(x)$ are orthonormal, i.e. $s_i(x)\cdot s_j(x)=\delta_{i,j}$.
 \end{definition}
 
-If $V$ is a finitely dimensional euclidean vector space, then we can always transform a basis of $V$ into an orthonormal basis of $V$ using the Gram-Schmidt process. This is also true for euclidean vector bundles:
+If $V$ is a finitely dimensional euclidean vector space, then we can always transform a basis of $V$ into an orthonormal basis of $V$ using the Gram-Schmidt process. This also holds for euclidean vector bundles:
 \begin{lemma}\label{lem:orthonormal_sections} Let $\xi:E\to B$ be a euclidean $n$-plane vector bundle which has $k$ nowhere dependent sections. Then, there exist $k$ orthonormal sections of $\xi$.
 \end{lemma}
 \begin{proof} Let $s_1,\ldots,s_k:B\to E$ be any $k$ nowhere dependent sections of $\xi$. Then, we define $t_1,\ldots,t_k:B\to E$ inductively by using the Gram-Schmidt process:
 \[t_l(x):=\frac{1}{\left\|s_l(x)-\sum_{i=1}^{l-1}(t_i(x)\cdot s_i(x))t_i(x)\right\|}\left(s_l(x)-\sum_{i=1}^{l-1}(t_i(x)\cdot s_i(x))t_i(x)\right)\]
 where the linear operations are well defined, since $s_i(x),t_i(x)\in\xi^{-1}(x)$. Since $t_i:B\to E$ is continuous for every $i$, $t_1,\ldots,t_k$ are $k$ sections for which $t_i(x)\cdot t_j(x)=\delta_{i,j}$ by the properties of the Gram-Schmidt process, which proves the assertion.
 \end{proof}
-\begin{remark}\label{rem:trivial_euclidian} In particular, using Lemma~\ref{lem:n_sections_makes_trivial}, we get that an $n$-plane euclidean vector bundle $\xi$ is trivial, i.e. $\xi\cong\varepsilon_B^n$ if and only if there exist $n$ orthonormal sections of $\xi$.
+\begin{remark}\label{rem:trivial_euclidian} In particular, using Lemma~\ref{lem:n_sections_makes_trivial}, we get that an $n$-plane euclidean vector bundle $\xi$ is trivial, i.e. $\xi\cong\varepsilon_B^n$ iff there exist $n$ orthonormal sections of $\xi$.
 \end{remark}
 
 In the particular case of euclidean vector bundles, we can always define a natural complementary bundle of a given subbundle:
 \begin{proposition} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Moreover, let $E:=\{v\in E(\eta):\forall u\in\xi^{-1}(\eta(v))\ v\cdot u=0\}$ and $\zeta:E\to B$ the map taking $v\in E$ to $\eta(v)$. Then $\zeta$ is a $(n-k)$-plane vector bundle.
 \end{proposition}
-\begin{proof} We need to show that $\zeta$ is locally trivial. Let us fix some $x_0\in B$. Then, there exist open sets $U_1,U_2\subseteq B$ both containing $x_0$ such that $\eta|U_1$ is an $n$-plane trivial vector bundle and $\xi|U_2$ is a $k$-plane trivial vector bundle. Using Remark~\ref{rem:vector_subcover} we can restrict them further on $U:=U_1\cap U_2$ and they remain trivial. For $\eta$ we use the definition of local triviality, which gives a vector bundle isomorphism $f_U:\eta^{-1}(U)\to U\times\mathbb{R}^n$, whereas for $\xi$ we use Remark~\ref{rem:trivial_euclidian}, which gives $k$ orthonormal sections of $\xi$, namely $s_1,\ldots,s_k:U\to\xi^{-1}(U)$. This means that for each $x\in U$ the vectors $v_1(x):=(\pi_2\circ f_U\circ s_1)(x),\ldots,v_k(x):=(\pi_2\circ f_U\circ s_k)(x)$ are $k$ linearly independent vectors in $\mathbb{R}^n$. We extend this $k$-frame to a basis, specifically at the point $x=x_0$, i.e. we choose any $n-k$ vectors $v_{k+1},\ldots,v_n\in\mathbb{R}^n$ such that
+\begin{proof} We need to show that $\zeta$ is locally trivial. Let us fix some $x_0\in B$. Then, there exist open sets $U_1,U_2\subseteq B$ both containing $x_0$ such that $\eta|U_1$ is an $n$-plane trivial vector bundle and $\xi|U_2$ is a $k$-plane trivial vector bundle. Using Remark~\ref{rem:vector_subcover} we restrict them further on $U:=U_1\cap U_2$ and they remain trivial. For $\eta$ we use the definition of local triviality, which gives a vector bundle isomorphism $f_U:\eta^{-1}(U)\to U\times\mathbb{R}^n$, whereas for $\xi$ we use Remark~\ref{rem:trivial_euclidian}, which gives $k$ orthonormal sections of $\xi$, namely $s_1,\ldots,s_k:U\to\xi^{-1}(U)$. This means that for each $x\in U$ the vectors $v_1(x):=(\pi_2\circ f_U\circ s_1)(x),\ldots,v_k(x):=(\pi_2\circ f_U\circ s_k)(x)$ are $k$ linearly independent vectors in $\mathbb{R}^n$. We extend this $k$-frame to a basis, specifically at the point $x=x_0$, i.e. we choose any $n-k$ vectors $v_{k+1},\ldots,v_n\in\mathbb{R}^n$ such that
 \[\det\big(v_1(x_0),\ldots,v_k(x_0),v_{k+1},\ldots,v_n\big)>0\]
 Define $D:U\to\mathbb{R}$ to be $D(x):=\det\big(v_1(x),\ldots,v_k(x),v_{k+1},\ldots,v_n\big)$ for all $x\in U$. Since the determinant, the $f_U$ and the sections are continuous, $D$ is also continuous and thus there exists some open neighborhood $V\subseteq U$ of $x_0$ such that $D(x)>0$ for every $x\in V$, i.e. $v_1(x),\ldots,v_k(x),v_{k+1},\ldots,v_n$ are linearly independent for every $x\in B$. Define now $\bar{s}_i(x):=f_U^{-1}(x,v_i)\in\eta^{-1}(x)$ for every $x\in B$ and every $i\in\{k+1,\ldots,n\}$. Since $f_U$ is a linear isomorphism on every fiber, $s_1(x),\ldots,s_k(x),\bar{s}_{k+1}(x),\ldots,\bar{s}_n(x)$ are $n$ nowhere dependent sections. Using the Gramm-Schmidt process, as in Lemma~\ref{lem:orthonormal_sections}, we construct $n-k$ sections $s_{k+1},\ldots,s_n$ such that $s_1,\ldots,s_n$ are $n$ orthonormal sections. This means that $s_{k+1},\ldots,s_n$ are $n-k$ orthonormal sections of $\zeta|V$, i.e. $\zeta|V$ is isomorphic to the trivial $(n-k)$-plane vector bundle.
 \end{proof}
@@ -363,17 +363,17 @@ Define $D:U\to\mathbb{R}$ to be $D(x):=\det\big(v_1(x),\ldots,v_k(x),v_{k+1},\ld
 
 \begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\xi^{\perp_{\eta}}\cong\sfrac{\eta}{\xi}$.
 \end{lemma}
-\begin{proof} Using Proposition~\ref{prop:quotient_bundle}, we write $E(\sfrac{\eta}{\xi})=\sfrac{E(\eta)}{\sim}$ for $v_1\sim v_2$ if and only if $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v_1))$. Moreover, we also write $\sfrac{eta}{\xi}([v])=\eta(v)$. Let us then define the following map:
+\begin{proof} Using Proposition~\ref{prop:quotient_bundle}, we write $E(\sfrac{\eta}{\xi})=\sfrac{E(\eta)}{\sim}$ for $v_1\sim v_2$ iff $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v_1))$. Moreover, we also write $\sfrac{eta}{\xi}([v])=\eta(v)$. Let us then define the following map:
 \begin{center}
 \begin{tikzcd}
 E(\xi^{\perp_{\eta}})\ar[r,"\phi"]&\faktor{E}{\sim}\\[-1.5em]
 v\ar[r,mapsto]&\left[v\right]
 \end{tikzcd}
 \end{center}
-This is a bundle map, linear on each fiber. In order to prove that this is in fact a linear isomorphism fiberwise, notice that $\phi_x(v)=0$ means that $v\in\xi^{-1}(x)$, but since $v\in E(\xi^{\perp_{\eta}})$, we also have that $v\cdot u=0$ for every $u\in\xi^{-1}(x)$. Thus, $u=0$. This means that $\ker\phi_x=\{0\}$ and since $\dim_{\mathbb{R}}(\xi^{\perp_{\eta}})^{-1}(x)=\dim_{\mathbb{R}}(\sfrac{\eta}{\xi})^{-1}(x)=n-k$, $\phi_x$ is a linear isomorphism. Hence, Proposition~\ref{prop:local_to_global_iso_vector} gives that $\phi$ is a vector bundle isomorphism.
+This is a bundle map, linear on each fiber. In order to prove that this is in fact a linear isomorphism fiberwise, notice that $\phi_x(v)=0$ means that $v\in\xi^{-1}(x)$, but since $v\in E(\xi^{\perp_{\eta}})$, we also have that $v\cdot u=0$ for every $u\in\xi^{-1}(x)$. Thus, $u=0$. Hence, $\ker\phi_x=\{0\}$ and since $\dim_{\mathbb{R}}(\xi^{\perp_{\eta}})^{-1}(x)=\dim_{\mathbb{R}}(\sfrac{\eta}{\xi})^{-1}(x)=n-k$, $\phi_x$ is a linear isomorphism. Due to Proposition~\ref{prop:local_to_global_iso_vector} $\phi$ is a vector bundle isomorphism.
 \end{proof}
 
-This lets us decompose some euclidean vector bundle to a whitney sum, provided we can find some vector subbundle of it:
+This lets us decompose some euclidean vector bundle to a whitney sum, provided we find some vector subbundle of it:
 \begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\eta\cong\xi\oplus\xi^{\perp_{\eta}}$.
 \end{lemma}
 \begin{proof} Let us define the following map:
@@ -383,12 +383,12 @@ E(\xi\oplus\xi^{\perp_{\eta}})\ar[r,"\phi"]&E(\eta)\\[-1.5em]
 (v_1,v_2)\ar[r,mapsto]&v_1+v_2
 \end{tikzcd}
 \end{center}
-It is easy to see that this is a bundle map which is also a linear isomorphism on each fiber. Thus, Proposition~\ref{prop:local_to_global_iso_vector} gives us that $\phi$ is a vector bundle isomorphism.
+It is easy to see that this is a bundle map which is also a linear isomorphism on each fiber. Thus, due to Proposition~\ref{prop:local_to_global_iso_vector}, $\phi$ is a vector bundle isomorphism.
 \end{proof}
 \begin{remark} For every euclidean vector bundle $\eta$ and for any $\xi\leq\eta$ we have the following decomposition $\eta\cong\xi\oplus\sfrac{\eta}{\xi}$.
 \end{remark}
 
-At this point we answered positively the question about decomposing a vector bundle, provided that the vector bundle in question is a euclidean vector bundle. A very natural question now is how restrictive is the notion of a euclidean vector. As it is shown at the end of the next section, a vector bundle admits a euclidean vector bundle structure at least when the base space is paracompact.
+At this point the question about decomposing a vector bundle is positively answered, provided that the vector bundle in question is a euclidean vector bundle. A very natural question now is how restrictive the notion of a euclidean vector is. As it is shown at the end of the next section, a vector bundle admits a euclidean vector bundle structure at least when the base space is paracompact.
 
 \section{Paracompactness}
 \begin{definition} Let $X$ be a topological space and $\mathcal{U}=\{U_i\}_{i\in I}$ be a collection of subsets of $X$. Then $\mathcal{U}$ is \emph{locally finite} if for every $x\in X$ there exists some open $V\subseteq X$ containing $x$ such that $U_i\cap V\neq\emptyset$ only for finitely many $i$.
@@ -417,8 +417,8 @@ A very important property of paracompact spaces is the connection with the parti
 &(v_1,v_2)\ar[rr,mapsto]&&h_i(\xi_1(v_1))\cdot(\pi_2\circ f_{V_i})(v_1)^t(\pi_2\circ f_{V_i})(v_2)
 \end{tikzcd}
 \end{center}
-If we fix some $x\in V_i$, $\beta_i$ restricted on $\xi^{-1}(x)\times\xi^{-1}(x)$ is bilinear and symmetric, since $h_i(\xi_1(v_1))$ is constant. Moreover, $\beta_i(v,v)\geq0$, since $h_i(x)\geq0$. Now, we extend $\beta_i$ to be $\equiv0$ for every $v\in E(\xi\oplus\xi)\setminus\big((\xi\oplus\xi)^{-1}(V_i)\big)$. Since $\mathrm{supp}(h_i)\subseteq V_i$, this is a continuous extension, which we will also call $\beta_i$. Now, we can define $\beta:=\sum_{i\in I}\beta_i:E(\xi\oplus\xi)\to\mathbb{R}$, where the sum is finite for each input, since $\mathcal{V}$ is locally finite and $\mathcal{F}$ is subordinate of $\mathcal{V}$. It is also continuous, non-negative and over each fiber symmetric and bilinear. It only remains to show that $\beta(v,v)\neq0$ for every $v\neq0$. Let us fix a $v\in E(\xi)$ and an open $U\subseteq B$ containing $\xi(v)$ such that $U\cap V_i\neq\emptyset$ only for finitely many $i\in I$. Let $V_{i_1},\ldots,V_{i_k}\in\mathcal{V}$ be the only sets non-trivially intersecting $U$. Then, we have that \[\beta(v,v)=\beta_{i_1}(v,v)+\cdots+\beta_{i_k}(v,v)=\sum_{j=1}^kh_{i_j}(\xi_1(v))\cdot\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|^2\]
-Define now $a=\min_{j\in[k]}\left\{\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|\right\}$ and notice that $a>0$, since $\pi_2\circ f_{V_i}$ is a linear isomorphism for every $i\in I$ and $v\neq0$. Hence, we have $\beta(v,v)\geq a^2\sum_{j=1}^kh_{i_j}(\xi(v))=a^2\sum_{i\in I}h_i(\xi(v))=a^2>0$, since $\mathcal{F}$ is a partition of unity.
+If we fix some $x\in V_i$, $\beta_i$ restricted on $\xi^{-1}(x)\times\xi^{-1}(x)$ is bilinear and symmetric, since $h_i(\xi_1(v_1))$ is constant. Moreover, $\beta_i(v,v)\geq0$, since $h_i(x)\geq0$. Now, we extend $\beta_i$ to be $\equiv0$ for every $v\in E(\xi\oplus\xi)\setminus\big((\xi\oplus\xi)^{-1}(V_i)\big)$. Since $\mathrm{supp}(h_i)\subseteq V_i$, this is a continuous extension, which we also call $\beta_i$. Now, we define $\beta:=\sum_{i\in I}\beta_i:E(\xi\oplus\xi)\to\mathbb{R}$, where the sum is finite for each input, since $\mathcal{V}$ is locally finite and $\mathcal{F}$ is subordinate of $\mathcal{V}$. It is also continuous, non-negative and over each fiber symmetric and bilinear. It only remains to show that $\beta(v,v)\neq0$ for every $v\neq0$. Let us fix a $v\in E(\xi)$ and an open $U\subseteq B$ containing $\xi(v)$ such that $U\cap V_i\neq\emptyset$ only for finitely many $i\in I$. Let $V_{i_1},\ldots,V_{i_k}\in\mathcal{V}$ be the only sets non-trivially intersecting $U$. Then,  \[\beta(v,v)=\beta_{i_1}(v,v)+\cdots+\beta_{i_k}(v,v)=\sum_{j=1}^kh_{i_j}(\xi_1(v))\cdot\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|^2\]
+Define now $a=\min_{j\in[k]}\left\{\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|\right\}$ and notice that $a>0$, since $\pi_2\circ f_{V_i}$ is a linear isomorphism for every $i\in I$ and $v\neq0$. Hence, $\beta(v,v)\geq a^2\sum_{j=1}^kh_{i_j}(\xi(v))=a^2\sum_{i\in I}h_i(\xi(v))=a^2>0$, since $\mathcal{F}$ is a partition of unity.
 \end{proof}
 
 %TODO_MAYBE: tangent and normal vb
