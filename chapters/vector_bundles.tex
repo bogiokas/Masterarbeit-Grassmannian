@@ -36,16 +36,17 @@ Moreover, let $V\subseteq U$ be some other open neighborhood of $x$. Then, $f_V:
 Let us now list some examples of vector bundles:
 \begin{examples}
 \begin{i_enum}
-\item For any topological space $B$ and any $n\in\mathbb{N}$ we have the following \emph{trivial} vector bundle:
-\[\varepsilon_B^n:B\times\mathbb{R}^n\to B\]
+\item For any topological space $B$ and any $n\in\mathbb{N}$ we have the \emph{trivial} vector bundle
+$\varepsilon_B^n:B\times\mathbb{R}^n\to B$,
 which is the projection on the first coordinate.
-\item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the following set of equivalence classes:
-\[T_xM:=\faktor{\left\{\gamma:\mathbb{R}\to M\ |\ \gamma(0)=x\text{ and }\phi\circ\gamma\text{ smooth}\right\}}{\sim}\]
-where $\gamma_1\sim\gamma_2$ iff $(\phi\circ\gamma_1)'(0)=(\phi\circ\gamma_2)'(0)$. This set can be given an $\mathbb{R}$-vector space structure as follows:
-\[\lambda_1\cdot[\gamma_1]+\lambda_2\cdot[\gamma_2]:=\left[\phi^{-1}\circ\big(\lambda_1(\phi\circ\gamma_1)+\lambda_2(\phi\circ\gamma_2)\big)\right]\]
-Notice that $T_xM$ does not depend on the choice of $(U,\phi)\in\mathcal{A}$. Indeed, since the atlas is smooth and $U_{\alpha}$ are open, every transition map $\phi_{\alpha}\circ\phi_{\beta}:\mathbb{R}^n\to\mathbb{R}^n$ has an invertible Jacobi matrix and thus the equivalence relation is the same under any $\phi$. Then, we define the total space of the tangent bundle of $M$ to be the set of all possible tangent vectors at any point of $M$, i.e. the following set:
-\[TM:=\big\{(x,[\gamma]):x\in M\text{ and }[\gamma]\in T_xM\big\}\]
-This set is now topologised as follows: Fix some $(U,\phi)\in\mathbb{A}$, then define the following map:
+\item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the set of equivalence classes 
+$T_xM:=\faktor{\left\{\gamma:\mathbb{R}\to M\ |\ \gamma(0)=x\text{ and }\phi\circ\gamma\text{ smooth}\right\}}{\sim}$,
+where $\gamma_1\sim\gamma_2$ iff $(\phi\circ\gamma_1)'(0)=(\phi\circ\gamma_2)'(0)$. This set can be given an $\mathbb{R}$-vector space structure as,
+$\lambda_1\cdot[\gamma_1]+\lambda_2\cdot[\gamma_2]:=\left[\phi^{-1}\circ\big(\lambda_1(\phi\circ\gamma_1)+\lambda_2(\phi\circ\gamma_2)\big)\right]$.
+
+Notice that $T_xM$ does not depend on the choice of $(U,\phi)\in\mathcal{A}$. Indeed, since the atlas is smooth and $U_{\alpha}$ are open, every transition map $\phi_{\alpha}\circ\phi_{\beta}:\mathbb{R}^n\to\mathbb{R}^n$ has an invertible Jacobi matrix and thus the equivalence relation is the same under any $\phi$. Then, we define the total space of the tangent bundle of $M$ to be the set of all possible tangent vectors at any point of $M$, i.e. the set
+$TM:=\big\{(x,[\gamma]):x\in M\text{ and }[\gamma]\in T_xM\big\}$
+which is now topologised as follows: Fix some $(U,\phi)\in\mathbb{A}$, then define the following map:
 \begin{center}
 \begin{tikzcd}
 TM\ar[r,phantom,"\supseteq"]&[-2em]\pi_1^{-1}(U)\ar[r]&U\times\mathbb{R}^n\\[-1.5em]
@@ -65,9 +66,9 @@ and it is easy to see how the fibers are vector spaces and how the total space i
 \end{center}
 The total space of this bundle is topologised as a subspace of $\mathbb{R}P^n\times\mathbb{R}^{n+1}$, where the $n$-dimensional projective space is defined to be the set of all lines through the origin in $\mathbb{R}^{n+1}$, topologized as the following quotient:
 \[\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong\faktor{S^n}{x\sim-x}\]
-We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as follows:
-\[f_U(l',v')=(l',v'^tv)\]
-this is continuous and linear over each fiber and since $v'^tv\neq0$ for $v'\neq0$, $f_U$ is also a homeomorphism.
+We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as 
+$f_U(l',v')=(l',v'^tv)$.
+This is continuous and linear over each fiber and since $v'^tv\neq0$ for $v'\neq0$, $f_U$ is also a homeomorphism.
 \end{i_enum}
 \end{examples}
 
@@ -101,13 +102,13 @@ E_1\ar[rd,"\xi_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"\xi_2"]\\
 Up to this point, our discussion about vector bundles mirrors the discussion on the fiber bundles of Appendix~\ref{app:fiber_bundles}. The fact that each fiber is a vector space is just an additional structure carried around through the definitions. The next proposition however is indicative of how much more restrictive the notion of a vector bundle is. In particular we directly prove that an inverse of Remark~\ref{rem:global_to_local_iso_vector} is always true. Compare this to counterexample~\ref{ex:counterexample} and Theorem~\ref{thm:local_to_global_iso}.
 
 \begin{proposition}\label{prop:local_to_global_iso_vector} Let $\xi_1:E_1\to B$ and $\xi_2:E_2\to B$ be two $n$-plane vector bundles. Moreover, let $\phi:E_1\to E_2$ be a vector bundle map such that its restriction
-\[\phi_x:\xi_1^{-1}(x)\to\xi_2^{-1}(x)\]
+$\phi_x:\xi_1^{-1}(x)\to\xi_2^{-1}(x)$
 with $\phi_x(v)=\phi(v)$ is a vector space isomorphism for every $x\in B$. Then $\phi$ is also a homeomorphism and thus a vector bundle isomorphism.
 \end{proposition}
 \begin{proof} First of all, it is easy to see that $\phi$ is a bijection:
 \begin{itemize}
 \item Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a vector bundle map, 
-\[\xi_1(u_1)=\xi_2(\phi(u_1))=\xi_2(\phi(u_2))=\xi_1(u_2)=:x_0\]
+$\xi_1(u_1)=\xi_2(\phi(u_1))=\xi_2(\phi(u_2))=\xi_1(u_2)=:x_0$.
 So, $u_1,u_2\in\xi_1^{-1}(x_0)$ and $\phi_{x_0}(u_1)=\phi(u_1)=\phi(u_2)=\phi_{x_0}(u_2)$. Since $\phi_{x_0}$ is injective, $u_1=u_2$, which proves that $\phi$ is injective as well.
 \item Let $v\in E_2$. For $x_0:=p_2(v)$, $v\in\xi)2^{-1}(x_0)$. Since $\phi_{x_0}$ is surjective, there exists some $u\in\xi_1^{-1}(x_0)\subseteq E_1$ with $\phi(u)=\phi_{x_0}(u)=v$, proving that $\phi$ is also surjective.
 \end{itemize}
@@ -172,9 +173,9 @@ Obviously, an $n$-plane vector bundle cannot have more than $n$ nowhere dependen
 \end{lemma}
 \begin{proof} First of all, it is easy to construct $n$ nowhere dependent sections of $\varepsilon_B^n=B\times\mathbb{R}^n$. Indeed, fix some basis $(e_1,\ldots,e_n)$ of $\mathbb{R}^n$ and let $s_i(x):=(x,e_i)$ for every $x\in B$ and every $i\in[n]$.
 
-On the other hand, let $s_1,\ldots,s_n$ be $n$ nowhere dependent sections of $\xi$. Then, define $\phi:B\times\mathbb{R}^n\to\varepsilon_B^n$ as follows: Fix $e_1,\ldots,e_n$ to be a base of $\mathbb{R}^n$, define $\phi(x,e_i):=s_i(x)\in\xi^{-1}(x)$ and then extend $\phi$ linearly over each $x\in B$:
-\[\phi\left(x,\sum_{i\in[n]}a_ie_i\right)=\sum_{i\in[n]}a_i\phi(x,e_i)=\sum_{i\in[n]}a_is_i(x)\in\xi^{-1}(x)\]
-$\phi$ is by definition linear over each fiber and continuous, since every section is continuous, i.e. $\phi$ is a vector bundle map. Each restriction $\phi_x:\{x\}\times\mathbb{R}^n\to\xi^{-1}(x)$ is a linear isomorphism, since $s_1(x),\ldots,s_n(x)$ are linearly independent and $\xi^{-1}(x)$ is $n$-dimensional. Thus, using Proposition~\ref{prop:local_to_global_iso_vector} we get that $\phi$ is a vector bundle isomorphism.
+On the other hand, let $s_1,\ldots,s_n$ be $n$ nowhere dependent sections of $\xi$. Then, define $\phi:B\times\mathbb{R}^n\to\varepsilon_B^n$ as follows: Fix $e_1,\ldots,e_n$ to be a base of $\mathbb{R}^n$, define $\phi(x,e_i):=s_i(x)\in\xi^{-1}(x)$. Then extend $\phi$ linearly over each $x\in B$,
+$\phi\left(x,\sum_{i\in[n]}a_ie_i\right)=\sum_{i\in[n]}a_i\phi(x,e_i)=\sum_{i\in[n]}a_is_i(x)\in\xi^{-1}(x)$
+which is by definition linear over each fiber and continuous, since every section is continuous, i.e. $\phi$ is a vector bundle map. Each restriction $\phi_x:\{x\}\times\mathbb{R}^n\to\xi^{-1}(x)$ is a linear isomorphism, since $s_1(x),\ldots,s_n(x)$ are linearly independent and $\xi^{-1}(x)$ is $n$-dimensional. Thus, using Proposition~\ref{prop:local_to_global_iso_vector} we get that $\phi$ is a vector bundle isomorphism.
 \end{proof}
 
 Let us now use sections to prove that the tautological bundle of a projective space is not trivial.
@@ -195,8 +196,8 @@ t\ar[r,phantom,":"]&[-2em]S^n\ar[r,"\left<\hat{s}{,}id\right>"]&\mathbb{R}^{n+1}
 &v\ar[r,mapsto]&\left(\hat{s}(v),v\right)\ar[r,mapsto]&\hat{s}(v)^tv
 \end{tikzcd}
 \end{center}
-Notice now that for any $v\in\mathbb{R}^n$
-\[t(-v)=\hat{s}(-v)^t(-v)=-\tilde{s}(\mathrm{span}\{-v\})^tv=-\tilde{s}(\mathrm{span}\{v\})^tv=-\hat{s}(v)^tv=-t(v)\]
+Notice now that for any $v\in\mathbb{R}^n$,
+$t(-v)=\hat{s}(-v)^t(-v)=-\tilde{s}(\mathrm{span}\{-v\})^tv=-\tilde{s}(\mathrm{span}\{v\})^tv=-\hat{s}(v)^tv=-t(v)$,
 i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^n$ is connected and the existence of such a continuous $t$ leads to a contradiction due to the intermediate value theorem. Notice that this is the easiest case of the (BU1b)-version of the Borsuk Ulam theorem as stated in Theorem~2.1.1 in \cite{BU_Matousek}.
 \end{proof}
 
@@ -216,10 +217,8 @@ B'\ar[r,"g"]&B
 Then $g^*p:E'\to B'$ is a fiber bundle with fiber $F$.
 \end{proposition}
 \begin{proof} We have to show that $g^*p$ as defined above is locally trivial. Let $x\in B'$, then, since $p$ is a fiber bundle, there exists some open $U$ with $g(x)\in U\subseteq B$ and a homeomorphism $f_U:p^{-1}(U)\to U\times F$ such that $p=\pi_1\circ f_U$. Let $U':=g^{-1}(U)$. This contains $x$ and is open, since $g$ is continuous. Notice that
-\begin{align*}
-(g^*p)^{-1}(U')&=\{(x,v)\in U'\times E: g(x)=p(v)\}\\
-&=\{(x,v)\in U'\times p^{-1}(U):g(x)=p(v)\}
-\end{align*}
+$(g^*p)^{-1}(U')=\{(x,v)\in U'\times E: g(x)=p(v)\}
+=\{(x,v)\in U'\times p^{-1}(U):g(x)=p(v)\}$.
 So, we define $f'_{U'}:= id\times(\pi_2\circ f_U):(g^*p)^{-1}(U')\to U'\times F$. This is a continuous map and obviously satisfies the equation $g^*p(x,a)=x=\pi_1\circ f'_{U'}$. In order to prove that it is also a homeomorphism, we prove that it has a continuous inverse map. Define $h_{U'}:U'\times F\to (g^*p)^{-1}(U')$ as follows:
 \begin{center}
 \begin{tikzcd}
@@ -243,11 +242,9 @@ The way to imagine the pullback fiber bundle is that we attach to a point $x\in 
 \begin{remark} In the special case where $g:B'\to B$ is injective, then $E'\cong p^{-1}(g(B'))\subseteq E$ and $(g^*p)(v)=g^{-1}(p(v))$ for every $v\in p^{-1}(g(B'))$.
 \end{remark}
 \begin{proof} The function $g$ being injective means that it has a left inverse, which we denote by $g^{-1}$ here. Hence,
-\begin{align*}
-E'&=\{(x,v)\in B'\times E:g(x)=p(v)\}=\{(x,v)\in B'\times E:x=(g^{-1}\circ p)(v)\}\\
-&\cong\{v\in E:(g^{-1}\circ p)(v)\in B'\}=p^{-1}(g(B))
-\end{align*}
-And factoring $g^*p$ through this homeomorphism we exactly get $(g^*p)(v)=x=g^{-1}(p(v))$, which proves the assertion.
+$E'=\{(x,v)\in B'\times E:g(x)=p(v)\}=\{(x,v)\in B'\times E:x=(g^{-1}\circ p)(v)\}
+\cong\{v\in E:(g^{-1}\circ p)(v)\in B'\}=p^{-1}(g(B))$.
+Factoring $g^*p$ through this homeomorphism we exactly get $(g^*p)(v)=x=g^{-1}(p(v))$, which proves the assertion.
 \end{proof}
 
 \begin{definition} Let $p:E\to B$ be a fiber bundle and $A\subseteq B$ any subset of $B$. Then, the \emph{restriction bundle of $p$ on $A$} is $p|A:E'\to A$, where $E'=p^{-1}(A)$ and $g^*p(v)=p|_{p^{-1}(A)}(v)$.
@@ -295,11 +292,9 @@ It is easy to see that this is a bundle map and linear over each fiber. Next, no
 \begin{remark} If we define $\zeta:\big\{(v_1,v_2)\in E(\xi_1)\times E(\xi_2):\xi_1(v_1)=\xi_2(v_2)\big\}\to B$ to be the vector bundle with $\zeta(v_1,v_2)=\xi_1(v_1)$, then $\xi_1\oplus\xi_2\cong\zeta$.
 \end{remark}
 \begin{proof} Notice that
-\begin{align*}
-E(d^*(\xi_1\times\xi_2))&=\big\{(x,v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):(x,x)=(\xi_1(v_1),\xi_2(v_2))\big\}\\
-&=\big\{(\xi_1(v_1),v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):\xi_1(v_1)=\xi_2(v_2)\big\}\\
-&\cong\big\{(v_1,v_2)\in E(\xi_1)\times E(\xi_2):\xi_1(v_1)=\xi_2(v_2)\big\}=E(\zeta)
-\end{align*}
+$E(d^*(\xi_1\times\xi_2))=\big\{(x,v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):(x,x)=(\xi_1(v_1),\xi_2(v_2))\big\}
+=\big\{(\xi_1(v_1),v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):\xi_1(v_1)=\xi_2(v_2)\big\}
+\cong\big\{(v_1,v_2)\in E(\xi_1)\times E(\xi_2):\xi_1(v_1)=\xi_2(v_2)\big\}=E(\zeta)$,
 where the homeomorphism is a vector bundle isomorphism.
 \end{proof}
 This is the description used in the remainder of the thesis.
@@ -354,7 +349,8 @@ In the particular case of euclidean vector bundles, we can always define a natur
 \begin{proposition} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Moreover, let $E:=\{v\in E(\eta):\forall u\in\xi^{-1}(\eta(v))\ v\cdot u=0\}$ and $\zeta:E\to B$ the map taking $v\in E$ to $\eta(v)$. Then $\zeta$ is a $(n-k)$-plane vector bundle.
 \end{proposition}
 \begin{proof} We need to show that $\zeta$ is locally trivial. Let us fix some $x_0\in B$. Then, there exist open sets $U_1,U_2\subseteq B$ both containing $x_0$ such that $\eta|U_1$ is an $n$-plane trivial vector bundle and $\xi|U_2$ is a $k$-plane trivial vector bundle. Using Remark~\ref{rem:vector_subcover} we restrict them further on $U:=U_1\cap U_2$ and they remain trivial. For $\eta$ we use the definition of local triviality, which gives a vector bundle isomorphism $f_U:\eta^{-1}(U)\to U\times\mathbb{R}^n$, whereas for $\xi$ we use Remark~\ref{rem:trivial_euclidian}, which gives $k$ orthonormal sections of $\xi$, namely $s_1,\ldots,s_k:U\to\xi^{-1}(U)$. This means that for each $x\in U$ the vectors $v_1(x):=(\pi_2\circ f_U\circ s_1)(x),\ldots,v_k(x):=(\pi_2\circ f_U\circ s_k)(x)$ are $k$ linearly independent vectors in $\mathbb{R}^n$. We extend this $k$-frame to a basis, specifically at the point $x=x_0$, i.e. we choose any $n-k$ vectors $v_{k+1},\ldots,v_n\in\mathbb{R}^n$ such that
-\[\det\big(v_1(x_0),\ldots,v_k(x_0),v_{k+1},\ldots,v_n\big)>0\]
+$\det\big(v_1(x_0),\ldots,v_k(x_0),v_{k+1},\ldots,v_n\big)>0$.
+
 Define $D:U\to\mathbb{R}$ to be $D(x):=\det\big(v_1(x),\ldots,v_k(x),v_{k+1},\ldots,v_n\big)$ for all $x\in U$. Since the determinant, the $f_U$ and the sections are continuous, $D$ is also continuous and thus there exists some open neighborhood $V\subseteq U$ of $x_0$ such that $D(x)>0$ for every $x\in V$, i.e. $v_1(x),\ldots,v_k(x),v_{k+1},\ldots,v_n$ are linearly independent for every $x\in B$. Define now $\bar{s}_i(x):=f_U^{-1}(x,v_i)\in\eta^{-1}(x)$ for every $x\in B$ and every $i\in\{k+1,\ldots,n\}$. Since $f_U$ is a linear isomorphism on every fiber, $s_1(x),\ldots,s_k(x),\bar{s}_{k+1}(x),\ldots,\bar{s}_n(x)$ are $n$ nowhere dependent sections. Using the Gramm-Schmidt process, as in Lemma~\ref{lem:orthonormal_sections}, we construct $n-k$ sections $s_{k+1},\ldots,s_n$ such that $s_1,\ldots,s_n$ are $n$ orthonormal sections. This means that $s_{k+1},\ldots,s_n$ are $n-k$ orthonormal sections of $\zeta|V$, i.e. $\zeta|V$ is isomorphic to the trivial $(n-k)$-plane vector bundle.
 \end{proof}
 
@@ -417,7 +413,8 @@ A very important property of paracompact spaces is the connection with the parti
 &(v_1,v_2)\ar[rr,mapsto]&&h_i(\xi_1(v_1))\cdot(\pi_2\circ f_{V_i})(v_1)^t(\pi_2\circ f_{V_i})(v_2)
 \end{tikzcd}
 \end{center}
-If we fix some $x\in V_i$, $\beta_i$ restricted on $\xi^{-1}(x)\times\xi^{-1}(x)$ is bilinear and symmetric, since $h_i(\xi_1(v_1))$ is constant. Moreover, $\beta_i(v,v)\geq0$, since $h_i(x)\geq0$. Now, we extend $\beta_i$ to be $\equiv0$ for every $v\in E(\xi\oplus\xi)\setminus\big((\xi\oplus\xi)^{-1}(V_i)\big)$. Since $\mathrm{supp}(h_i)\subseteq V_i$, this is a continuous extension, which we also call $\beta_i$. Now, we define $\beta:=\sum_{i\in I}\beta_i:E(\xi\oplus\xi)\to\mathbb{R}$, where the sum is finite for each input, since $\mathcal{V}$ is locally finite and $\mathcal{F}$ is subordinate of $\mathcal{V}$. It is also continuous, non-negative and over each fiber symmetric and bilinear. It only remains to show that $\beta(v,v)\neq0$ for every $v\neq0$. Let us fix a $v\in E(\xi)$ and an open $U\subseteq B$ containing $\xi(v)$ such that $U\cap V_i\neq\emptyset$ only for finitely many $i\in I$. Let $V_{i_1},\ldots,V_{i_k}\in\mathcal{V}$ be the only sets non-trivially intersecting $U$. Then,  \[\beta(v,v)=\beta_{i_1}(v,v)+\cdots+\beta_{i_k}(v,v)=\sum_{j=1}^kh_{i_j}(\xi_1(v))\cdot\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|^2\]
+If we fix some $x\in V_i$, $\beta_i$ restricted on $\xi^{-1}(x)\times\xi^{-1}(x)$ is bilinear and symmetric, since $h_i(\xi_1(v_1))$ is constant. Moreover, $\beta_i(v,v)\geq0$, since $h_i(x)\geq0$. Now, we extend $\beta_i$ to be $\equiv0$ for every $v\in E(\xi\oplus\xi)\setminus\big((\xi\oplus\xi)^{-1}(V_i)\big)$. Since $\mathrm{supp}(h_i)\subseteq V_i$, this is a continuous extension, which we also call $\beta_i$. Now, we define $\beta:=\sum_{i\in I}\beta_i:E(\xi\oplus\xi)\to\mathbb{R}$, where the sum is finite for each input, since $\mathcal{V}$ is locally finite and $\mathcal{F}$ is subordinate of $\mathcal{V}$. It is also continuous, non-negative and over each fiber symmetric and bilinear. It only remains to show that $\beta(v,v)\neq0$ for every $v\neq0$. Let us fix a $v\in E(\xi)$ and an open $U\subseteq B$ containing $\xi(v)$ such that $U\cap V_i\neq\emptyset$ only for finitely many $i\in I$. Let $V_{i_1},\ldots,V_{i_k}\in\mathcal{V}$ be the only sets non-trivially intersecting $U$. Then,  $\beta(v,v)=\beta_{i_1}(v,v)+\cdots+\beta_{i_k}(v,v)=\sum_{j=1}^kh_{i_j}(\xi_1(v))\cdot\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|^2$.
+
 Define now $a=\min_{j\in[k]}\left\{\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|\right\}$ and notice that $a>0$, since $\pi_2\circ f_{V_i}$ is a linear isomorphism for every $i\in I$ and $v\neq0$. Hence, $\beta(v,v)\geq a^2\sum_{j=1}^kh_{i_j}(\xi(v))=a^2\sum_{i\in I}h_i(\xi(v))=a^2>0$, since $\mathcal{F}$ is a partition of unity.
 \end{proof}
 
