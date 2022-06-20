@@ -100,6 +100,62 @@ The left part of this diagram implies $q_0=q\circ i$, and hence that $q_0$ is co
 Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ induce the same quotient topology on the set of all $k$-dim subspaces of $\mathbb{R}^n$.
 \end{proof}
 
+\section{Infinite Grassmannian}
+So far, we presented the Grassmannians separately for each $k$ and $n$. In fact, there is a natural embedding of $\Gr{k}{n}$ into $\Gr{k}{n+1}$, since every $k$-plane in $\mathbb{R}^n$ is also a $k$-plane in $\mathbb{R}^{n+1}$. This naturally leads to the construction of a so called infinite Grassmannian for each $k$.
+
+\begin{definition} Let $(X,\tau)$ be a topological space and $\{X_i\}_{i\in\mathbb{N}}$ a collection of subsets of $X$, such that $X_1\subseteq X_2\subseteq X_3\subseteq\cdots$. Then, $X$ is the \emph{direct limit} of $X_1,X_2,\ldots$ and $\tau$ is the \emph{direct limit topology on $\mathbb{X}$} if $X=\bigcup_{i=1}^{\infty}X_i$ and $\tau$ is the final topology with respect to all inclusions. In this case, we write $X=\varinjlim X_i$.
+\end{definition}
+\begin{remark} This means that
+\begin{b_item}
+\item for every $x\in X$ there exists some $i\in\mathbb{N}$ with $x\in X_i$ and
+\item for any subset $A\subseteq X$, $A$ is open in $X$ if and only if $A\cap X_i$ is open in $X_i$ for every $i\in\mathbb{N}$.
+\end{b_item}
+\end{remark}
+
+\begin{definition} Let $\mathbb{R}^1\subseteq\mathbb{R}^2\subseteq\cdots$ be the usual inclusions and let $\mathbb{R}^{\infty}:=\bigcup_{i=1}^{\infty}\mathbb{R}^i=\big\{(x_1,x_2,\ldots):\exists i\in\mathbb{N}\text{ s.t. }\forall n\geq i\ x_n=0\big\}$. Then $\mathbb{R}^{\infty}$ equipped with the direct limit topology and the vector space structure inherited by the inclusions is the \emph{infinite coordinate space}.
+\end{definition}
+\begin{remark} Notice that $\mathbb{R}^{\infty}$ does not contain arbitrary sequences of real numbers, i.e. that $\mathbb{R}^{\infty}\cong\bigoplus_{i=1}^{\infty}\mathbb{R}\not\cong\prod_{i=1}^{\infty}\mathbb{R}\cong l_2$ as vector spaces.
+\end{remark}
+
+\begin{lemma} Let $k,n\in\mathbb{N}$ such that $0<k<n$. Then, there exists a natural embedding $i_{k,n}:\St{k}{n}\hookrightarrow\St{k}{n+1}$ induced by $inc_{k,n}:(\mathbb{R}^n)^k\hookrightarrow(\mathbb{R}^{n+1})^k$ with $inc_{k,n}(u_1,\ldots,u_k)=(\bar{u}_1,\ldots,\bar{u}_k)$ and $\bar{u}_i=(u_i^t|0)^t$ for every $i\in[k]$.
+\end{lemma}
+\begin{proof} Let $(u_1,\ldots,u_k)\in\St{k}{n}$. Then $\dim\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=k$, which means that $inc_{k,n}(u_1,\ldots,u_k)\in\St{k}{n}$, so $i_{k,n}=inc_{k,n}|_{\St{k}{n}}:\St{k}{n}\to\St{k}{n+1}$ is well defined. Let $A$ be some open subset of $\St{k}{n}$, i.e. there exists some $B$, open subset of $(\mathbb{R}^n)^k$ such that $A=B\cap\St{k}{n}$. Since $inc_{k,n}$ is an embedding, there exists some $C$, open subset of $(\mathbb{R}^{n+1})^k$ such that $B=inc_{k,n}^{-1}(C)$, i.e. $A=inc_{k,n}^{-1}(C)\cap\St{k}{n}=inc_{k,n}^{-1}(C\cap\St{k}{n+1})=i_{k,n}(C\cap\St{k}{n+1})$ which proves that $i_{k,n}$ is an embedding.
+\end{proof}
+\begin{remark} The same arguments let us define a natural embedding $i_{k,n}:\StO{k}{n}\hookrightarrow\StO{k}{n+1}$.
+\end{remark}
+
+\begin{proposition}\label{prop:gr_embedding} Let $k,n\in\mathbb{N}$ such that $0<k<n$. Then, there exists a natural embedding $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ making the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+\St{k}{n}\ar[d,two heads,"q"]\ar[r,hook,"i_{k,n}"]&\St{k}{n+1}\ar[d,two heads,"q"]\\
+\Gr{k}{n}\ar[r,hook,dotted,"\i_{k,n}"]&\Gr{k}{n+1}
+\end{tikzcd}
+\end{center}
+\end{proposition}
+\begin{proof} Let $(u_1,\ldots,u_k),(u_1',\ldots,u_k')\in\St{k}{n}$ with $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{u_1',\ldots,u_k'\}$, then it is also true that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{u}_1',\ldots,\bar{u}_k'\}$, where $\bar{u}_i=(u^t|0)^t$. Since $q\circ i_{k,n}(u_1,\ldots,u_k)$ depends only on $q(u_1,\ldots,u_k)$, the universal property of the quotient ensures the existence of a unique $\iota_{k,n}:\Gr{k}{n}\to\Gr{k}{n+1}$ making the diagram commute. Let $A$ be an open subset of $\Gr{k}{n}$, then $q^{-1}(A)$ is an open subset of $\St{k}{n}$. Since $i_{k,n}$ is an embedding, there exists some open $B\in\St{k}{n+1}$ with $q^{-1}(A)=i_{k,n}^{-1}(B)$. Since $q$ is an open map, as proved in Lemma~\ref{lem:q_open}, $q(B)$ is also open, which makes $\iota_{k,n}^{-1}(q(B))\subseteq\Gr{k}{n}$ open. It suffices now to show that $A=\iota_{k,n}^{-1}(q(B))$. Let $H\in A$, then $H=q(u_1,\ldots,u_k)$ for some $(u_1,\ldots,u_k)\in q^{-1}(A)=i_{k,n}^{-1}(B)$. Which means that $(\bar{u}_1,\ldots,\bar{u}_k)\in B$, and by the commutativity of the diagram, we get $\iota_{k,n}(H)=(\iota_{k,n}\circ q)(u_1,\ldots,u_k)=q(\bar{u}_1,\ldots,\bar{u}_k)\in q(B)$, i.e. $H\in\iota_{k,n}^{-1}(q(B))$.
+
+For the other direction, let $H\in\iota_{k,n}^{-1}(q(B))$. This means that there exists some $(a_1,\ldots,a_k)\in\St{k}{n+1}$ with $\iota_{k,n}(H)=\mathrm{span}(a_1,\ldots,a_k)$. Since $q$ is a surjection, there exists some $(u_1,\ldots,u_k)\in\St{k}{n}$ such that $\mathrm{span}(u_1,\ldots,u_k)=H$. Because of the commutativity of the diagram, this gives $\mathrm{span}(a_1,\ldots,a_k)=\mathrm{span}(\bar{u}_1,\ldots,\bar{u}_k)$. Notice now that this can only be the case if the last coordinate of each $a_i$ is equal to $0$, i.e. if there exist some $(x_1,\ldots,x_k)\in\St{k}{n}$ with $\bar{x}_i=a_i$ for every $i$. This gives that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{x}_1,\ldots,\bar{x}_k\}$ which can only be the case if $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{x_1,\ldots,x_k\}$. Also, because of the definition of $B$, $(x_1,\ldots,x_k)\in i_{k,n}^{-1}(B)=q^{-1}(A)$ and thus we finally get $H=\mathrm{span}(u_1,\ldots,u_k)=\mathrm{span}(x_1,\ldots,x_k)\in A$.
+\end{proof}
+\begin{remark}\label{rem:gr_inclusions} Topologically there is no difference between an embedding and a subspace, so from now on we are going to write $\Gr{k}{n}\subseteq\Gr{k}{n+1}$ and mean the embedding $\iota_{k,n}$ which, as described in \ref{prop:gr_embedding}, takes a $k$-plane $H\subseteq\mathbb{R}^n$ to $H\subseteq\mathbb{R}^{n+1}$ by embedding $\mathbb{R}^n$ into $\mathbb{R}^{n+1}$ the usual way. Similarly for $\St{k}{n}\subseteq\St{k}{n+1}$ and $\StO{k}{n}\subseteq\StO{k}{n+1}$.
+\end{remark}
+
+\begin{definition} Let $k\in\mathbb{N}$ and $\Gr{k}{k+1}\subseteq\Gr{k}{k+2}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\Gr{k}:=\bigcup_{n=k+1}^{\infty}\Gr{k}{n}$. Then $\Gr{k}$ equipped with the direct limit topology is the \emph{infinite Grassmannian}.
+\end{definition}
+
+\begin{definition} Let $k\in\mathbb{N}$ and $\St{k}{k}\subseteq\St{k}{k+1}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\St{k}:=\bigcup_{n=k}^{\infty}\St{k}{n}$. Then $\St{k}$ equipped with the direct limit topology is the \emph{infinite Stiefel manifold}. Analogously the \emph{infinite compact Stiefel manifold} $\StO{k}=\varinjlim\StO{k}{n}$ is defined.
+\end{definition}
+\begin{remark}\label{rem:st_inclusion} Notice that $\StO{k}\subseteq\St{k}$. Indeed, we define the inclusion map as follows: Let $(u_1,\ldots,u_k)\in\StO{k}$, then there exists some $n\in\mathbb{N}$ such that $(u_1,\ldots,u_k)\in\StO{k}{n}\subseteq\St{k}{n}\subseteq\St{k}$.
+\end{remark}
+
+\begin{proposition} Let $k\in\mathbb{N}$ and also let $q:\St{k}\to\Gr{k}$ be the map induced by all the inclusions, i.e. $q(u_1,\ldots,u_k)=q|_{\St{k}{n}}(u_1,\ldots,u_k)$, for some $n$ sufficiently large. Moreover, let $q_0:\StO{k}\to\Gr{k}$ be the restriction $q|_{\StO{k}}$. Then, $\Gr{k}\cong\faktor{\St{k}}{\sim}\cong\faktor{\StO{k}}{\sim}$, where the equivalence relation is the same as in $\St{k}{n}$ for some large enough $n$.
+\end{proposition}
+\begin{proof} First of all, $q$ is a surjection. Indeed, let $H\in\Gr{k}{n}$, then there exists some $(u_1,\ldots,u_k)\in\St{k}{n}\subseteq\St{k}$ with $q(u_1,\ldots,u_k)=H$. Next, in order to prove that $q$ is in fact a quotient map, let $U\subseteq\Gr{k}$ such that $q^{-1}(U)$ is open in $\St{k}$. We want to prove that $U$ is open in $\Gr{k}$. For that, we will use the definition of the direct limit topology and fix some $n\in\mathbb{N}$ with $n>k$. Then, since $\St{k}$ is equipped with the direct limit topology and $q^{-1}(U)$ is open, $q^{-1}(U)\cap\St{k}{n}=q^{-1}(U\cap\Gr{k}{n})$ is open as well. Since $q$ is a quotient map, this means that $U\cap\Gr{k}{n}$ is open as well. Hence, $U\cap\Gr{k}{n}$ is open for every $n>k$ and thus $U$ is open in $\Gr{k}$.
+
+For the case of $q_0:\StO{k}\to\Gr{k}$ notice that the map is well defined, since Reark~\ref{rem:st_inclusion} guaranties that $\StO{k}\subseteq\St{k}$. Then, the arguments are exactly the same as in the previous case.
+\end{proof}
+\begin{remark} This proves that the infinite Grassmannian is the set of all $k$-planes inside $\mathbb{R}^{\infty}$. Notice that these planes never contain a vector with infinitely many non-zero entries, since such vectors do not exist inside $\mathbb{R}^{\infty}$.
+\end{remark}
+
 \section{Grassmannians are Manifolds}
 In this section it is proven that Grassmannians are in fact compact topological manifolds.
 \begin{lemma}\label{lem:gr_manifold} For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is compact, Hausdorff and locally homeomorphic to $\mathbb{R}^{k(n-k)}$.
@@ -193,7 +249,6 @@ which concludes the proof of this lemma.\qedhere
 In the next section we are going to further examine these spaces topologically and build the appropriate language in order to tackle problems regarding their Homology and Cohomology structures. Before we dive in into this topic though, it would be useful to notice a first duality between these spaces, arising from the duality between a $k$-space inside $\mathbb{R}^n$ and its $n-k$ complement.
 
 In order to prove the following lemma the open sets $\mathcal{U}_H$ defined in the proof of Lemma~\ref{lem:gr_manifold} are used.
-
 
 \begin{lemma} \label{lem:gr_duality}
 	For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is homeomorphic to $\Gr{n-k}{n}$, with the homeomorphism taking some $k$-space to its orthogonal complement inside $\mathbb{R}^n$.
@@ -608,69 +663,11 @@ $\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcu
 \end{i_enum}
 \end{proof}
 
-\section{Infinite Grassmannian}
-So far, we presented the Grassmannians separately for each $k$ and $n$. In fact, there is a natural embedding of $\Gr{k}{n}$ into $\Gr{k}{n+1}$, since every $k$-plane in $\mathbb{R}^n$ is also a $k$-plane in $\mathbb{R}^{n+1}$. This naturally leads to the construction of a so called infinite Grassmannian for each $k$.
-
-\begin{definition} Let $(X,\tau)$ be a topological space and $\{X_i\}_{i\in\mathbb{N}}$ a collection of subsets of $X$, such that $X_1\subseteq X_2\subseteq X_3\subseteq\cdots$. Then, $X$ is the \emph{direct limit} of $X_1,X_2,\ldots$ and $\tau$ is the \emph{direct limit topology on $\mathbb{X}$} if $X=\bigcup_{i=1}^{\infty}X_i$ and $\tau$ is the final topology with respect to all inclusions. In this case, we write $X=\varinjlim X_i$.
-\end{definition}
-\begin{remark} This means that
-\begin{b_item}
-\item for every $x\in X$ there exists some $i\in\mathbb{N}$ with $x\in X_i$ and
-\item for any subset $A\subseteq X$, $A$ is open in $X$ if and only if $A\cap X_i$ is open in $X_i$ for every $i\in\mathbb{N}$.
-\end{b_item}
-\end{remark}
-
-\begin{definition} Let $\mathbb{R}^1\subseteq\mathbb{R}^2\subseteq\cdots$ be the usual inclusions and let $\mathbb{R}^{\infty}:=\bigcup_{i=1}^{\infty}\mathbb{R}^i=\big\{(x_1,x_2,\ldots):\exists i\in\mathbb{N}\text{ s.t. }\forall n\geq i\ x_n=0\big\}$. Then $\mathbb{R}^{\infty}$ equipped with the direct limit topology and the vector space structure inherited by the inclusions is the \emph{infinite coordinate space}.
-\end{definition}
-\begin{remark} Notice that $\mathbb{R}^{\infty}$ does not contain arbitrary sequences of real numbers, i.e. that $\mathbb{R}^{\infty}\cong\bigoplus_{i=1}^{\infty}\mathbb{R}\not\cong\prod_{i=1}^{\infty}\mathbb{R}\cong l_2$ as vector spaces.
-\end{remark}
-
-\begin{lemma} Let $k,n\in\mathbb{N}$ such that $0<k<n$. Then, there exists a natural embedding $i_{k,n}:\St{k}{n}\hookrightarrow\St{k}{n+1}$ induced by $inc_{k,n}:(\mathbb{R}^n)^k\hookrightarrow(\mathbb{R}^{n+1})^k$ with $inc_{k,n}(u_1,\ldots,u_k)=(\bar{u}_1,\ldots,\bar{u}_k)$ and $\bar{u}_i=(u_i^t|0)^t$ for every $i\in[k]$.
-\end{lemma}
-\begin{proof} Let $(u_1,\ldots,u_k)\in\St{k}{n}$. Then $\dim\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=k$, which means that $inc_{k,n}(u_1,\ldots,u_k)\in\St{k}{n}$, so $i_{k,n}=inc_{k,n}|_{\St{k}{n}}:\St{k}{n}\to\St{k}{n+1}$ is well defined. Let $A$ be some open subset of $\St{k}{n}$, i.e. there exists some $B$, open subset of $(\mathbb{R}^n)^k$ such that $A=B\cap\St{k}{n}$. Since $inc_{k,n}$ is an embedding, there exists some $C$, open subset of $(\mathbb{R}^{n+1})^k$ such that $B=inc_{k,n}^{-1}(C)$, i.e. $A=inc_{k,n}^{-1}(C)\cap\St{k}{n}=inc_{k,n}^{-1}(C\cap\St{k}{n+1})=i_{k,n}(C\cap\St{k}{n+1})$ which proves that $i_{k,n}$ is an embedding.
-\end{proof}
-\begin{remark} The same arguments let us define a natural embedding $i_{k,n}:\StO{k}{n}\hookrightarrow\StO{k}{n+1}$.
-\end{remark}
-
-\begin{proposition}\label{prop:gr_embedding} Let $k,n\in\mathbb{N}$ such that $0<k<n$. Then, there exists a natural embedding $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ making the following diagram commute:
-\begin{center}
-\begin{tikzcd}
-\St{k}{n}\ar[d,two heads,"q"]\ar[r,hook,"i_{k,n}"]&\St{k}{n+1}\ar[d,two heads,"q"]\\
-\Gr{k}{n}\ar[r,hook,dotted,"\i_{k,n}"]&\Gr{k}{n+1}
-\end{tikzcd}
-\end{center}
-\end{proposition}
-\begin{proof} Let $(u_1,\ldots,u_k),(u_1',\ldots,u_k')\in\St{k}{n}$ with $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{u_1',\ldots,u_k'\}$, then it is also true that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{u}_1',\ldots,\bar{u}_k'\}$, where $\bar{u}_i=(u^t|0)^t$. Since $q\circ i_{k,n}(u_1,\ldots,u_k)$ depends only on $q(u_1,\ldots,u_k)$, the universal property of the quotient ensures the existence of a unique $\iota_{k,n}:\Gr{k}{n}\to\Gr{k}{n+1}$ making the diagram commute. Let $A$ be an open subset of $\Gr{k}{n}$, then $q^{-1}(A)$ is an open subset of $\St{k}{n}$. Since $i_{k,n}$ is an embedding, there exists some open $B\in\St{k}{n+1}$ with $q^{-1}(A)=i_{k,n}^{-1}(B)$. Since $q$ is an open map, as proved in Lemma~\ref{lem:q_open}, $q(B)$ is also open, which makes $\iota_{k,n}^{-1}(q(B))\subseteq\Gr{k}{n}$ open. It suffices now to show that $A=\iota_{k,n}^{-1}(q(B))$. Let $H\in A$, then $H=q(u_1,\ldots,u_k)$ for some $(u_1,\ldots,u_k)\in q^{-1}(A)=i_{k,n}^{-1}(B)$. Which means that $(\bar{u}_1,\ldots,\bar{u}_k)\in B$, and by the commutativity of the diagram, we get $\iota_{k,n}(H)=(\iota_{k,n}\circ q)(u_1,\ldots,u_k)=q(\bar{u}_1,\ldots,\bar{u}_k)\in q(B)$, i.e. $H\in\iota_{k,n}^{-1}(q(B))$.
-
-For the other direction, let $H\in\iota_{k,n}^{-1}(q(B))$. This means that there exists some $(a_1,\ldots,a_k)\in\St{k}{n+1}$ with $\iota_{k,n}(H)=\mathrm{span}(a_1,\ldots,a_k)$. Since $q$ is a surjection, there exists some $(u_1,\ldots,u_k)\in\St{k}{n}$ such that $\mathrm{span}(u_1,\ldots,u_k)=H$. Because of the commutativity of the diagram, this gives $\mathrm{span}(a_1,\ldots,a_k)=\mathrm{span}(\bar{u}_1,\ldots,\bar{u}_k)$. Notice now that this can only be the case if the last coordinate of each $a_i$ is equal to $0$, i.e. if there exist some $(x_1,\ldots,x_k)\in\St{k}{n}$ with $\bar{x}_i=a_i$ for every $i$. This gives that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{x}_1,\ldots,\bar{x}_k\}$ which can only be the case if $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{x_1,\ldots,x_k\}$. Also, because of the definition of $B$, $(x_1,\ldots,x_k)\in i_{k,n}^{-1}(B)=q^{-1}(A)$ and thus we finally get $H=\mathrm{span}(u_1,\ldots,u_k)=\mathrm{span}(x_1,\ldots,x_k)\in A$.
-\end{proof}
-\begin{remark}\label{rem:gr_inclusions} Topologically there is no difference between an embedding and a subspace, so from now on we are going to write $\Gr{k}{n}\subseteq\Gr{k}{n+1}$ and mean the embedding $\iota_{k,n}$ which, as described in \ref{prop:gr_embedding}, takes a $k$-plane $H\subseteq\mathbb{R}^n$ to $H\subseteq\mathbb{R}^{n+1}$ by embedding $\mathbb{R}^n$ into $\mathbb{R}^{n+1}$ the usual way. Similarly for $\St{k}{n}\subseteq\St{k}{n+1}$ and $\StO{k}{n}\subseteq\StO{k}{n+1}$.
-\end{remark}
-
-\begin{definition} Let $k\in\mathbb{N}$ and $\Gr{k}{k+1}\subseteq\Gr{k}{k+2}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\Gr{k}:=\bigcup_{n=k+1}^{\infty}\Gr{k}{n}$. Then $\Gr{k}$ equipped with the direct limit topology is the \emph{infinite Grassmannian}.
-\end{definition}
-
-\begin{definition} Let $k\in\mathbb{N}$ and $\St{k}{k}\subseteq\St{k}{k+1}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\St{k}:=\bigcup_{n=k}^{\infty}\St{k}{n}$. Then $\St{k}$ equipped with the direct limit topology is the \emph{infinite Stiefel manifold}. Analogously the \emph{infinite compact Stiefel manifold} $\StO{k}=\varinjlim\StO{k}{n}$ is defined.
-\end{definition}
-\begin{remark}\label{rem:st_inclusion} Notice that $\StO{k}\subseteq\St{k}$. Indeed, we define the inclusion map as follows: Let $(u_1,\ldots,u_k)\in\StO{k}$, then there exists some $n\in\mathbb{N}$ such that $(u_1,\ldots,u_k)\in\StO{k}{n}\subseteq\St{k}{n}\subseteq\St{k}$.
-\end{remark}
-
-\begin{proposition} Let $k\in\mathbb{N}$ and also let $q:\St{k}\to\Gr{k}$ be the map induced by all the inclusions, i.e. $q(u_1,\ldots,u_k)=q|_{\St{k}{n}}(u_1,\ldots,u_k)$, for some $n$ sufficiently large. Moreover, let $q_0:\StO{k}\to\Gr{k}$ be the restriction $q|_{\StO{k}}$. Then, $\Gr{k}\cong\faktor{\St{k}}{\sim}\cong\faktor{\StO{k}}{\sim}$, where the equivalence relation is the same as in $\St{k}{n}$ for some large enough $n$.
-\end{proposition}
-\begin{proof} First of all, $q$ is a surjection. Indeed, let $H\in\Gr{k}{n}$, then there exists some $(u_1,\ldots,u_k)\in\St{k}{n}\subseteq\St{k}$ with $q(u_1,\ldots,u_k)=H$. Next, in order to prove that $q$ is in fact a quotient map, let $U\subseteq\Gr{k}$ such that $q^{-1}(U)$ is open in $\St{k}$. We want to prove that $U$ is open in $\Gr{k}$. For that, we will use the definition of the direct limit topology and fix some $n\in\mathbb{N}$ with $n>k$. Then, since $\St{k}$ is equipped with the direct limit topology and $q^{-1}(U)$ is open, $q^{-1}(U)\cap\St{k}{n}=q^{-1}(U\cap\Gr{k}{n})$ is open as well. Since $q$ is a quotient map, this means that $U\cap\Gr{k}{n}$ is open as well. Hence, $U\cap\Gr{k}{n}$ is open for every $n>k$ and thus $U$ is open in $\Gr{k}$.
-
-For the case of $q_0:\StO{k}\to\Gr{k}$ notice that the map is well defined, since Reark~\ref{rem:st_inclusion} guaranties that $\StO{k}\subseteq\St{k}$. Then, the arguments are exactly the same as in the previous case.
-\end{proof}
-\begin{remark} This proves that the infinite Grassmannian is the set of all $k$-planes inside $\mathbb{R}^{\infty}$. Notice that these planes never contain a vector with infinitely many non-zero entries, since such vectors do not exist inside $\mathbb{R}^{\infty}$.
-\end{remark}
-
 \section{Enumerating the cells}
-
-So, $\Gr{k}{n}$ is a CW complex having $\binom{n}{k}$ cells in total and
-
+So, $\Gr{k}{n}$ is a CW complex having $\binom{n}{k}$ cells in total,
 
 
-* Infinite Gr\\
+
 * Young tableaus\\
 * poset structure + images\\
 %* elementary schubert calculus?
