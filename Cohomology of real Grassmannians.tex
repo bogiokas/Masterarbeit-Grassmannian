@@ -79,6 +79,7 @@
 \usepackage{titlesec} %customize chapters/sections/...
 \usepackage[nottoc]{tocbibind} %add bibliography to toc
 \usepackage[titletoc]{appendix} %add appendix to toc
+\setcounter{tocdepth}{1} %only include chapters and sections in toc
 %\usepackage{biblatex}
 % \addbibresource{bibliography/bibsample.bib}
 \renewcommand\theequation{\arabic{equation}}
@@ -291,7 +292,6 @@ with coefficients from $\mathbb{F}_2$}
 	\include{chapters/vector_bundles}
 	\include{chapters/cohomology}
 	\begin{myappendix}
-	\include{appendices/stiefel}
 	\include{appendices/topology}
 	\include{appendices/fiber_bundles}
 	\end{myappendix}

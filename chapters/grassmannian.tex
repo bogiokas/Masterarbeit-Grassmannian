@@ -7,7 +7,59 @@ Through this chapter the reader is able to get to know the combinatorial structu
 
 Recall the definition of the real projective spaces as topological spaces,
 $P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}$,
-where two vectors are equivalent, if they span the same line. Notice that in this definition a proper subset of the whole vector space is required, in order for the quotient to be well defined. Namely the set of all vectors, which span a line. In accordance with that, for the case of the Grassmannians, the requirement is $\St{k}{n}\subsetneq{\left(\mathbb{R}^n\right)}^k$, the space of all $k$-tuples of vectors in $\mathbb{R}^n$, spanning a $k$-dimensional vector space, i.e.\ $k$-frames (for related definitions and further discussion see Appendix~\ref{app:stiefel}).
+where two vectors are equivalent, if they span the same line. Notice that in this definition a proper subset of the whole vector space is required, in order for the quotient to be well defined. Namely the set of all vectors, which span a line. In accordance with that, for the case of the Grassmannians, the discussion starts at the space of all $k$-tuples of vectors in $\mathbb{R}^n$, spanning a $k$-dimensional vector space.
+
+\section{Stiefel Manifolds}
+\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ as:
+\[\St{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim\left<v_1,\ldots,v_k\right>=k\right\}\]
+equipped with the subspace topology. Every point in this set is called a \ul{$k$-frame} of $\mathbb{R}^n$.
+\end{definition}
+This is actually an open subspace of the space of all $k$-tuples of vectors in $\mathbb{R}^n$:
+\begin{proposition}\label{prop:St_open} Let $0<k\leq n$ be some natural numbers. Then $\St{k}{n}$ is an open submanifold of ${\left(\mathbb{R}^n\right)}^k$.
+\end{proposition}
+\begin{proof} Define the map $\Phi$ taking a $k$-tuple of vectors in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{n\times k}$ having these vectors as columns:
+\begin{align*}
+\Phi:{\left(\mathbb{R}^n\right)}^k&\to \mathbb{R}^{n\times k}\\[1em]
+(v_1,\ldots,v_k)&\mapsto \left(\begin{array}{ccc}
+|&&|\\[-.3em]
+v_1&\cdots&v_k\\[-.3em]
+|&&|\\
+\end{array}\right)
+\end{align*}
+Since the topology on both spaces is the product topology and $\Phi$ respects it, $\Phi$ is a homeomorphism.
+
+Define now the subset $D$ of all $n\times k$ matrices having at least one non-zero $k\times k$ minor:
+\[D:=\left\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\text{ s.t. }\det(A_I)\neq0\right\}\]
+where, given some $I\in\binom{[n]}{k}$, $A_I\in\mathbb{R}^{k\times k}$ is the matrix formed from the $k$ rows of $A$ indexed by $I$. Then, we have:
+\[\St{k}{n}=\Phi^{-1}(D)\cong D\]
+and since $D$ is an open submanifold of $\mathbb{R}^{n\times k}$, we also get that $\St{k}{n}$ is an open submanifold of ${\left(\mathbb{R}^n\right)}^k$.
+\end{proof}
+\begin{remark} In particular, this proves that $\St{k}{n}$ is a real manifold of dimension $kn$.
+\end{remark}
+
+We can now define the Stiefel manifold as the space of all \ul{orthonormal} $k$-frames:
+\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define the \ul{Stiefel} space $\StO{k}{n}{\mathbb{R}}=\StO{k}{n}$ as:
+\[\StO{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\vec{v}_i^t\vec{v}_j=\delta_{i,j}\right\}\]
+equipped with the subspace topology. Every point in this set is called an \ul{orthonormal $k$-frame} of $\mathbb{R}^n$.
+\end{definition}
+Notice that we obviously have $\StO{k}{n}\subseteq\St{k}{n}$.
+
+\begin{proposition}\label{prop:StO_dim_closed} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of dimension $nk-\frac{k(k+1)}{2}$.
+\end{proposition}
+%TODO: Write this better
+\begin{proof}
+We need again the homeomorphism $\Phi:{\left(\mathbb{R}^n\right)}^k\to\mathbb{R}^{n\times k}$ taking a $k$-tuple in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{k\times n}$ having these vectors as columns. This time, define the subset $S$ of all $n\times k$ semi-orthogonal matrices:
+\[S:=\left\{A\in\mathbb{R}^{n\times k}:A^t A=I_k\right\}\]
+Then, we have:
+\[\StO{k}{n}=\Phi^{-1}(S)\cong S\]
+$S$ is a subset of $\mathbb{R}^{n\times k}$, defined by $\binom{k+1}{2}$ (linearly independent) equations. This makes $S$ a closed submanifold of $\mathbb{R}^{n\times k}$, of dimension $nk-\binom{k+1}{2}$. Thus, $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of the same dimension.
+\end{proof}
+\begin{remark} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is a bounded subset of ${\left(\mathbb{R}^n\right)}^k$, with the metric induced by the isomorphism ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$. Indeed, if $f=(v_1,\ldots,v_k)\in{\left(\mathbb{R}^n\right)}^k$ is an orthonormal $k$-frame of $\mathbb{R}^n$, then:
+\[\left\|f\right\|_2^2=\sum_{i=1}^k\left\|v_i\right\|_2^2=k\]
+\end{remark}
+
+\begin{lemma}\label{lem:StO_compact} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is compact. Indeed the previous Proposition and Remark prove that $\StO{k}{n}$ is a closed and bounded subset of ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$, which proves the assertion.
+\end{lemma}
 
 %TODO: change to: "Let k,n\in\mathbb N such that 0<k<n"
 \begin{definition} Let $0<k<n$ be some natural numbers. Then, the real \ul{Grassmann space} $\Gr{k}{n}{\mathbb{R}}=\Gr{k}{n}$ is the set of all linear $k$-dimensional subspaces of $\mathbb{R}^n$, equipped with the quotient topology,
@@ -15,9 +67,39 @@ $\Gr{k}{n}{\mathbb{R}}:=\faktor{\St{k}{n}{\mathbb{R}}}{\sim}$,
 where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<\vec{v}_1,\ldots,\vec{v}_k\right>=\left<\vec{u}_1,\ldots,\vec{u}_k\right>$.
 \end{definition}
 
+\begin{lemma}\label{lem:q_open} Let $0<k<n$ be some natural numbers. Then the quotient map $q:\St{k}{n}\to\Gr{k}{n}$ is an open map.
+\end{lemma}
+\begin{proof} Let $U\subseteq\St{k}{n}$ be an open set in $\St{k}{n}$, then $q(U)$ is open in $\Gr{k}{n}$ if and only if $q^{-1}(q(U))$ is open in $\St{k}{n}$, since $q$ is a quotient map. Moreover, $q^{-1}(q(U))$ is open in $\St{k}{n}$ if and only if it is open in $(\mathbb{R}^{n})^k$, since $\St{k}{n}$ is open in $(\mathbb{R}^{n})^k$. This means that it suffices to prove that $\tilde{U}:=q^{-1}(q(U))$ is open in $(\mathbb{R}^{n})^k$. In order to do this, we first construct a linear isomorphism $f_L:(\mathbb{R}^n)^k\to(\mathbb{R}^n)^k$ for every $L\in GL(k)$, as follows: Let $(x_1,\ldots,x_k)\in(\mathbb{R}^n)^k$ and define the linear maps $R_{(x_1,\ldots,x_k)}:\mathbb{R}^n\to\mathbb{R}^k$ and $S_{(x_1,\ldots,x_k)}:\mathbb{R}^k\to\mathbb{R}^n$ such that $R_{(x_1,\ldots,x_k)}(x_i)=e_i$ for every $i\in[k]$, $R_{(x_1,\ldots,x_k)}(v)=0$ for every $v\in\mathrm{span}\{x_1,\ldots,x_k\}^{\perp}$ and $S_{(x_1,\ldots,x_k)}(e_i)=x_i$ for every $i\in[k]$, where $e_1,\ldots,e_k$ is the usual basis of $\mathbb{R}^k$. Then, define
+\begin{center}
+\begin{tikzcd}
+f_L\ar[r,phantom,":"]&[-3.5em](\mathbb{R}^n)^k\ar[r,"R_{(-)}"]&\mathbb{R}^k\ar[r,"L^{\oplus k}"]&\mathbb{R}^k\ar[r,"S_{(-)}"]&(\mathbb{R}^n)^k\\[-1.5em]
+&(x_1,\ldots,x_k)\ar[r,mapsto]&(e_1,\ldots,e_k)\ar[r,mapsto]&(Le_1,\ldots,Le_k)\ar[r,mapsto]&\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}
+\end{tikzcd}
+\end{center}
+and notice that for every fixed $L$, $f_L$ is linear: $f_L\big(\lambda(x_1,\ldots,x_k)+\mu(y_1,\ldots,y_k)\big)=\left(\sum_{j=1}^ke_i^t(Le_j)(\lambda x_j+\mu y_j)\right)_{i\in[k]}=\lambda\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}+\mu\left(\sum_{j=1}^ke_i^t(Le_j)y_j\right)_{i\in[k]}=\lambda f_L(x_1,\ldots,x_k)+\mu f_L(y_1,\ldots,y_k)$. Also, $f_L$ is injective: indeed $f_L(x_1,\ldots,x_k)=0$ means $\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}=0$ which can be written as $\big(x_1|\cdots|x_k\big)\cdot\big(e_i^t(Le_j)\big)=0$. Since the matrix $\big(e_i^t(Le_j)\big)$ is the the matrix of $L$ on the basis $e_1,\ldots,e_k$ which is invertible, this gives $x_1=\cdots=x_k=0$. So, $f_L$ is an injective linear endomorphism and thus a linear isomorphism. Next, we will prove that
+\[\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)\]
+For some $(u_1,\ldots,u_k)\in(\mathbb{R}^n)^k$, we have $(u_1,\ldots,u_k)\in\tilde{U}$ if and only if there exists $(x_1,\ldots,x_k)\in U$ with $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$. This is equivalent to the existence of $\{\lambda_{i,j}\}_{i,j\in[k]}\in\mathbb{R}$ such that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i\in[k]$. On the one hand, if the $\lambda_{i,j}$ are defined, then we can also define $L_0\in GL(k)$ by $L_0e_j:=\sum_{i=1}^k\lambda_{i,j}e_i$ for every $j\in[k]$, which gives $f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}=\left(\sum_{j=1}^k\lambda_{i,j}x_j\right)_{i\in[k]}=(u_i)_{i\in[k]}$, i.e. $(u_1,\ldots,u_k)\in f_{L_0}(U)$. On the other hand, if $(u_1,\ldots,u_k)\in f_{L_0}(U)$ for some $L_0\in GL(k)$, then $(u_1,\ldots,u_k)=f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}$. Hence, we can define $\lambda_{i,j}:=e_i^t(L_0e_j)$ for every $i,j\in[k]$, which gives that $u_i=\sum_{j=1}^ke_i^t(L_0e_j)x_j$.
+\end{proof}
+
+
+%so let $(v_1,\ldots,v_k)\in\tilde{U}$. Since $q(v_1,\ldots,v_k)\in q(U)$, there exists some $(u_1,\ldots,u_k)\in U$ such that $\mathrm{span}\{v_1,\ldots,v_k\}=\mathrm{span}\{u_1,\ldots,u_k\}$. Fix now any $n-k$ vectors $c_{k+1},\ldots,c_n\in\mathbb{R}^n$ such that $\det(u_1,\ldots,u_k,c_{k+1},\ldots,c_n)\neq0$. Such a choice exists, since $u_1,\ldots,u_k$ are linearly independent. We define now the function $U\to\mathbb{R}$ taking some $(x_1,\ldots,x_k)$ to $\det(x_1,\ldots,x_k,c_{k+1},\ldots,c_n)$. This is a continuous function and thus there exists some open $A\subseteq U$, containing $(u_1,\ldots,u_k)$ such that $\det(x_1,\ldots,x_k)\neq0$ for every $(x_1,\ldots,x_k)\in A$. This means that $x_1,\ldots,x_k,c_{k+1},\ldots,c_n$ is a basis of $\mathbb{R}^n$ for every $(x_1,\ldots,x_k)\in A$. Moreover, for every $(x_1,\ldots,x_k)$ we define the linear isomorphism $\phi_{(x_1,\ldots,x_k)}:\mathbb{R}^n\to\mathbb{R}^n$ such that $\phi_{(x_1,\ldots,x_k)}(x_i)=u_i$ for every $i\in[k]$ and $\phi_{(x_1,\ldots,x_k)}(c_i)=c_i$ for every $i\in[n]\setminus[k]$. Moreover, we define the linear functions $R:\mathbb{R}^n\to\mathbb{R}^k$ and $S:\mathbb{R}^k\to\mathbb{R}^n$ such that $R(u_i)=e_i$ for every $i\in[k]$, $R(c_i)=0$ for every $i\in[n]\setminus[k]$ and $S(e_i)=u_i$ for every $i\in[k]$, where $e_1,\ldots,e_k$ is the standard basis of $\mathbb{R}^k$.
+
+
+
+
+
+%and thus the following set of linear isomorphisms is well defined: $\Phi_{(x_1,\ldots,x_k)}:=\big\{\phi\in GL(n):\mathrm{span}\{\phi(x_1),\ldots,\phi(x_k)\}=\mathrm{span}\{x_1,\ldots,x_k\}\text{ and }\forall i\in[n]\setminus[k]\ \phi(c_i)=c_i\big\}$. We can now define:
+%\[V:=\bigcup_{(x_1,\ldots,x_k)\in A}\bigcup_{\phi\in\Phi_{(x_1,\ldots,x_k)}}\phi(A)\]
+
+
+
+%Define now $\phi:\mathbb{R}^n\to\mathbb{R}^n$ to be the linear transformation that maps $u_i$ to $v_i$ for every $i\in[k]$ and $\bar{u}_i$ to $\bar{u}_i$ for every $i\in[n]\setminus[k]$. This is well defined, since $u_1,\ldots,u_k,\bar{u}_{k+1},\ldots,\bar{u}_n$ is a basis of $\mathbb{R}^n$. Moreover, since $\mathrm{span}(v_1,\ldots,v_k)=\mathrm{span}(u_1,\ldots,u_k)$, the vectors $v_1,\ldots,v_k,\bar{u}_{k+1},\ldots,\bar{u}_n$ are also linearly independent. Hence, $\phi$ is a linear isomorphism. This means that there exists a linear isomorphism $\phi^{\oplus k}:(\mathbb{R}^n)^k\to(\mathbb{R}^n)^k$ taking $(x_1,\ldots,x_k)$ to $(\phi(x_1),\ldots,\phi(x_k))$. Thus, $\phi^{\oplus k}(A)$ is an open set containing $(v_1,\ldots,v_k)=\phi^{\oplus k}(u_1,\ldots,u_k)$.
+
+
+
 Having the case of projective spaces in mind, it is natural to also provide an alternative definition of Grassmannians.
 Specifically, the projective space of some dimension is also defined as the quotient over the unit sphere, rather than over the set of every nonzero vector.
-In this case the Stiefel manifold $\StO{k}{n}$, which is the space of all orthonormal $k$-frames, is the analog of the set of all unit vectors (for further details see Appendix~\ref{app:stiefel}).
+In this case the Stiefel manifold $\StO{k}{n}$, is the analog needed.
 
 \begin{proposition} Let $0<k<n$ be some natural numbers. Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map used in the definition of the Grassmannians and let $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ be its restriction to the Stiefel manifold. Then $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
 \end{proposition}
@@ -25,11 +107,11 @@ In this case the Stiefel manifold $\StO{k}{n}$, which is the space of all orthon
 Let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ be the Gram-Schmidt process. Then, the following diagram commutes:
 \begin{center}
 \begin{tikzcd}
-\StO{k}{n}\ar[r,hook,"i"]\ar[rd,"q_0"']&\St{k}{n}\ar[r,two heads,"\mathfrak{gs}"]\ar[d,"q"']&\StO{k}{n}\ar[dl,"q_0"]\\
+\StO{k}{n}\ar[r,hook,"i"]\ar[rd,"q_0"']&\St{k}{n}\ar[r,"\mathfrak{gs}"]\ar[d,two heads,"q"']&\StO{k}{n}\ar[dl,"q_0"]\\
 &\Gr{k}{n}
 \end{tikzcd}
 \end{center}
-The left part of this diagram implies $q_0=q\circ i$, and hence that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ\mathfrak{gs}$, which results in two conclusions: First that $q_0$ is a surjective map as well, since $q$ is surjective and second that $q_0$ is an open map, since $q$ is open and $\mathfrak{gs}$ is surjective.
+The left part of this diagram implies $q_0=q\circ i$, and hence that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ\mathfrak{gs}$, which results in two conclusions: First that $q_0$ is a surjective map as well, since $q$ is surjective and second that $q_0$ is an open map, since $\mathfrak{gs}$ is surjective and $q$ is open, as proved in \ref{lem:q_open}.
 
 Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ induce the same quotient topology on the set of all $k$-dim subspaces of $\mathbb{R}^n$.
 \end{proof}
@@ -53,7 +135,7 @@ This is a continuous map, which depends only on the spanned $k$-plane, i.e.\ if 
 \end{center}
 
 Moreover, $\psi_v(H)=0$ iff $v\in H$, because $\phi_v(v_1,\ldots,v_k)=0$ iff $v\in \left<v_1,\ldots,v_k\right>$.
-Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$. 
+Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$.
 Since $\psi_v(H_1)=0\neq\psi_v(H_2)$, $\Gr{k}{n}$ is completely Hausdorff.
 
 \item Next it is proven that for every $H\in\Gr{k}{n}$, the subset $\mathcal{U}_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}$ of $\mathbb{R}^n$ is a neighborhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$.
@@ -205,7 +287,7 @@ Although there exists dimension restrictions in the definitions of the cells whi
 &=&\big\{l:\ l\not\subseteq\mathbb{R}^3\big\}\\[.6em]
 \end{array}\]
 Notice that the general Schubert cell (with respect to some flag $\mathbb{F}_{\bullet}$) is the set of all lines contained in $\mathbb{F}_k\setminus\mathbb{F}_{k-1}$.
-This gives a serial way to think of the cells of a particular projective space, which is the result of the total order that the set $\binom{[n]}{1}$ naturally has. Since $\binom{[n]}{k}$ is in general naturally a poset (inheriting the coordinate-wise ordering on the set of $k$ element sequences ${[n]}^k$), it is now of no surprise that the same poset structure lies behind the Schubert decomposition. 
+This gives a serial way to think of the cells of a particular projective space, which is the result of the total order that the set $\binom{[n]}{1}$ naturally has. Since $\binom{[n]}{k}$ is in general naturally a poset (inheriting the coordinate-wise ordering on the set of $k$ element sequences ${[n]}^k$), it is now of no surprise that the same poset structure lies behind the Schubert decomposition.
 When examining the closure of these cells, we investigate more precisely this structure.
 
 This decomposition of Grassmannians is meaningful since it is proven that it eventually makes every $\Gr{k}{n}$ into a CW complex. In order to do that we first prove that
@@ -215,7 +297,7 @@ ${\left\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\right\}}_{\mathbf{j}\in\
 \end{lemma}
 \begin{proof} It is rather obvious that two cells are disjoint, since each set of $k$ elements in $[n]$ describes uniquely $k$ jump points of the dimensions of $H\cap\mathbb{F}_0,H\cap\mathbb{F}_1,\ldots,H\cap\mathbb{F}_n$. Moreover, the dimensions of a $k$-plane $H$ in this sequence of intersections can increase at most by $1$ in each step. Indeed, because of the short exact sequence
 \[0\to H\cap\mathbb{F}_{i-1}\to H\cap\mathbb{F}_i\to\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\to0\]
-we get, for every $i\in[n]$, 
+we get, for every $i\in[n]$,
 $\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_i\right)-\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_{i-1}\right)=\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}$.
 Using the second isomorphism theorem for vector spaces, we get:
 \[\begin{array}{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}
@@ -494,7 +576,7 @@ Fix some $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$,  $v_{\ell}\in\
 $\dim(H\cap\mathbb{F}_i)=\dim\left(\left<\big\{v_{\ell}:j_{\ell}\leq i\big\}\right>\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$
 where $j_0=0$ as before, that proves that $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$.
 
-In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Then, for any $\ell\in[k]$, 
+In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Then, for any $\ell\in[k]$,
 \begin{align*}
 \dim\big(\left(H\cap\mathbb{F}_{j_{\ell}}\right)\cap\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)&=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)+\dim\big(\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)-n\\
 &=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)-\dim\big(H\cap\mathbb{F}_{j_{\ell}-1}\big)=1
@@ -503,7 +585,7 @@ so, there exist exactly two vectors $-a,a$ such that
 \[-a,a\in H\cap\mathbb{F}_{j_{\ell}}\qquad\text{ and }\qquad-a,a\perp H\cap\mathbb{F}_{j_{\ell}-1}\qquad\text{ and }\qquad-a,a\in S^{n-1}\]
 Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if $a\in\mathbb{F}_{j_{\ell}}$ and $a^tf_{j_{\ell}}=0$, then $a\in\mathbb{F}_{j_{\ell}-1}$, which leads to a contradiction since $a\perp H\cap\mathbb{F}_{j_{\ell}-1}$. We now define $u_{\ell}\in\{a,-a\}$ to be the unique vector that satisfies all the above and $u_{\ell}^tf_{j_{\ell}}>0$ and then also define $r_0(H):=(u_1,\ldots,u_k)$.
 
-First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$, 
+First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$,
 $u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}$
 i.e. $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e. $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\tilde{\mathcal{C}}_{\mathbf{j}(\mathbb{F}_{\bullet},f_{\bullet})}$.
 
@@ -542,8 +624,77 @@ $\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcu
 \end{i_enum}
 \end{proof}
 
+\section{Infinite Grassmannian}
+So far, we presented the Grassmannians separately for each $k$ and $n$. In fact, there is a natural embedding of $\Gr{k}{n}$ into $\Gr{k}{n+1}$, since every $k$-plane in $\mathbb{R}^n$ is also a $k$-plane in $\mathbb{R}^{n+1}$. This naturally leads to the construction of a so called infinite Grassmannian for each $k$.
+
+\begin{definition} Let $(X,\tau)$ be a topological space and $\{X_i\}_{i\in\mathbb{N}}$ a collection of subsets of $X$, such that $X_1\subseteq X_2\subseteq X_3\subseteq\cdots$. Then, $X$ is the \emph{direct limit} of $X_1,X_2,\ldots$ and $\tau$ is the \emph{direct limit topology on $\mathbb{X}$} if $X=\bigcup_{i=1}^{\infty}X_i$ and $\tau$ is the final topology with respect to all inclusions. In this case, we write $X=\varinjlim X_i$.
+\end{definition}
+\begin{remark} This means that
+\begin{b_item}
+\item for every $x\in X$ there exists some $i\in\mathbb{N}$ with $x\in X_i$ and
+\item for any subset $A\subseteq X$, $A$ is open in $X$ if and only if $A\cap X_i$ is open in $X_i$ for every $i\in\mathbb{N}$.
+\end{b_item}
+\end{remark}
+
+\begin{definition} Let $\mathbb{R}^1\subseteq\mathbb{R}^2\subseteq\cdots$ be the usual inclusions and let $\mathbb{R}^{\infty}:=\bigcup_{i=1}^{\infty}\mathbb{R}^i=\big\{(x_1,x_2,\ldots):\exists i\in\mathbb{N}\text{ s.t. }\forall n\geq i\ x_n=0\big\}$. Then $\mathbb{R}^{\infty}$ equipped with the direct limit topology and the vector space structure inherited by the inclusions is the \emph{infinite coordinate space}.
+\end{definition}
+\begin{remark} Notice that $\mathbb{R}^{\infty}$ does not contain arbitrary sequences of real numbers, i.e. that $\mathbb{R}^{\infty}\cong\bigoplus_{i=1}^{\infty}\mathbb{R}\not\cong\prod_{i=1}^{\infty}\mathbb{R}\cong l_2$ as vector spaces.
+\end{remark}
+
+\begin{lemma} Let $k,n\in\mathbb{N}$ such that $0<k<n$. Then, there exists a natural embedding $i_{k,n}:\St{k}{n}\hookrightarrow\St{k}{n+1}$ induced by $inc_{k,n}:(\mathbb{R}^n)^k\hookrightarrow(\mathbb{R}^{n+1})^k$ with $inc_{k,n}(u_1,\ldots,u_k)=(\bar{u}_1,\ldots,\bar{u}_k)$ and $\bar{u}_i=(u_i^t|0)^t$ for every $i\in[k]$.
+\end{lemma}
+\begin{proof} Let $(u_1,\ldots,u_k)\in\St{k}{n}$. Then $\dim\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=k$, which means that $inc_{k,n}(u_1,\ldots,u_k)\in\St{k}{n}$, so $i_{k,n}=inc_{k,n}|_{\St{k}{n}}:\St{k}{n}\to\St{k}{n+1}$ is well defined. Let $A$ be some open subset of $\St{k}{n}$, i.e. there exists some $B$, open subset of $(\mathbb{R}^n)^k$ such that $A=B\cap\St{k}{n}$. Since $inc_{k,n}$ is an embedding, there exists some $C$, open subset of $(\mathbb{R}^{n+1})^k$ such that $B=inc_{k,n}^{-1}(C)$, i.e. $A=inc_{k,n}^{-1}(C)\cap\St{k}{n}=inc_{k,n}^{-1}(C\cap\St{k}{n+1})=i_{k,n}(C\cap\St{k}{n+1})$ which proves that $i_{k,n}$ is an embedding.
+\end{proof}
+\begin{remark} The same arguments let us define a natural embedding $i_{k,n}:\StO{k}{n}\hookrightarrow\StO{k}{n+1}$.
+\end{remark}
+
+\begin{proposition}\label{prop:gr_embedding} Let $k,n\in\mathbb{N}$ such that $0<k<n$. Then, there exists a natural embedding $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ making the following diagram commute:
+\begin{center}
+\begin{tikzcd}
+\St{k}{n}\ar[d,two heads,"q"]\ar[r,hook,"i_{k,n}"]&\St{k}{n+1}\ar[d,two heads,"q"]\\
+\Gr{k}{n}\ar[r,hook,dotted,"\i_{k,n}"]&\Gr{k}{n+1}
+\end{tikzcd}
+\end{center}
+\end{proposition}
+\begin{proof} Let $(u_1,\ldots,u_k),(u_1',\ldots,u_k')\in\St{k}{n}$ with $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{u_1',\ldots,u_k'\}$, then it is also true that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{u}_1',\ldots,\bar{u}_k'\}$, where $\bar{u}_i=(u^t|0)^t$. Since $q\circ i_{k,n}(u_1,\ldots,u_k)$ depends only on $q(u_1,\ldots,u_k)$, the universal property of the quotient ensures the existence of a unique $\iota_{k,n}:\Gr{k}{n}\to\Gr{k}{n+1}$ making the diagram commute. Let $A$ be an open subset of $\Gr{k}{n}$, then $q^{-1}(A)$ is an open subset of $\St{k}{n}$. Since $i_{k,n}$ is an embedding, there exists some open $B\in\St{k}{n+1}$ with $q^{-1}(A)=i_{k,n}^{-1}(B)$. Since $q$ is an open map, as proved in Lemma~\ref{lem:q_open}, $q(B)$ is also open, which makes $\iota_{k,n}^{-1}(q(B))\subseteq\Gr{k}{n}$ open. It suffices now to show that $A=\iota_{k,n}^{-1}(q(B))$. Let $H\in A$, then $H=q(u_1,\ldots,u_k)$ for some $(u_1,\ldots,u_k)\in q^{-1}(A)=i_{k,n}^{-1}(B)$. Which means that $(\bar{u}_1,\ldots,\bar{u}_k)\in B$, and by the commutativity of the diagram, we get $\iota_{k,n}(H)=(\iota_{k,n}\circ q)(u_1,\ldots,u_k)=q(\bar{u}_1,\ldots,\bar{u}_k)\in q(B)$, i.e. $H\in\iota_{k,n}^{-1}(q(B))$.
+
+For the other direction, let $H\in\iota_{k,n}^{-1}(q(B))$. This means that there exists some $(a_1,\ldots,a_k)\in\St{k}{n+1}$ with $\iota_{k,n}(H)=\mathrm{span}(a_1,\ldots,a_k)$. Since $q$ is a surjection, there exists some $(u_1,\ldots,u_k)\in\St{k}{n}$ such that $\mathrm{span}(u_1,\ldots,u_k)=H$. Because of the commutativity of the diagram, this gives $\mathrm{span}(a_1,\ldots,a_k)=\mathrm{span}(\bar{u}_1,\ldots,\bar{u}_k)$. Notice now that this can only be the case if the last coordinate of each $a_i$ is equal to $0$, i.e. if there exist some $(x_1,\ldots,x_k)\in\St{k}{n}$ with $\bar{x}_i=a_i$ for every $i$. This gives that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{x}_1,\ldots,\bar{x}_k\}$ which can only be the case if $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{x_1,\ldots,x_k\}$. Also, because of the definition of $B$, $(x_1,\ldots,x_k)\in i_{k,n}^{-1}(B)=q^{-1}(A)$ and thus we finally get $H=\mathrm{span}(u_1,\ldots,u_k)=\mathrm{span}(x_1,\ldots,x_k)\in A$.
+\end{proof}
+\begin{remark}\label{rem:gr_inclusions} Topologically there is no difference between an embedding and a subspace, so from now on we are going to write $\Gr{k}{n}\subseteq\Gr{k}{n+1}$ and mean the embedding $\iota_{k,n}$ which, as described in \ref{prop:gr_embedding}, takes a $k$-plane $H\subseteq\mathbb{R}^n$ to $H\subseteq\mathbb{R}^{n+1}$ by embedding $\mathbb{R}^n$ into $\mathbb{R}^{n+1}$ the usual way. Similarly for $\St{k}{n}\subseteq\St{k}{n+1}$ and $\StO{k}{n}\subseteq\StO{k}{n+1}$.
+\end{remark}
+
+\begin{definition} Let $k\in\mathbb{N}$ and $\Gr{k}{k+1}\subseteq\Gr{k}{k+2}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\Gr{k}:=\bigcup_{n=k+1}^{\infty}\Gr{k}{n}$. Then $\Gr{k}$ equipped with the direct limit topology is the \emph{infinite Grassmannian}.
+\end{definition}
+
+\begin{definition} Let $k\in\mathbb{N}$ and $\St{k}{k}\subseteq\St{k}{k+1}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\St{k}:=\bigcup_{n=k}^{\infty}\St{k}{n}$. Then $\St{k}$ equipped with the direct limit topology is the \emph{infinite Stiefel manifold}. Analogously the \emph{infinite compact Stiefel manifold} $\StO{k}=\varinjlim\StO{k}{n}$ is defined.
+\end{definition}
+\begin{remark}\label{rem:st_inclusion} Notice that $\StO{k}\subseteq\St{k}$. Indeed, we define the inclusion map as follows: Let $(u_1,\ldots,u_k)\in\StO{k}$, then there exists some $n\in\mathbb{N}$ such that $(u_1,\ldots,u_k)\in\StO{k}{n}\subseteq\St{k}{n}\subseteq\St{k}$.
+\end{remark}
+
+\begin{proposition} Let $k\in\mathbb{N}$ and also let $q:\St{k}\to\Gr{k}$ be the map induced by all the inclusions, i.e. $q(u_1,\ldots,u_k)=q|_{\St{k}{n}}(u_1,\ldots,u_k)$, for some $n$ sufficiently large. Moreover, let $q_0:\StO{k}\to\Gr{k}$ be the restriction $q|_{\StO{k}}$. Then, $\Gr{k}\cong\faktor{\St{k}}{\sim}\cong\faktor{\StO{k}}{\sim}$, where the equivalence relation is the same as in $\St{k}{n}$ for some large enough $n$.
+\end{proposition}
+\begin{proof} First of all, $q$ is a surjection. Indeed, let $H\in\Gr{k}{n}$, then there exists some $(u_1,\ldots,u_k)\in\St{k}{n}\subseteq\St{k}$ with $q(u_1,\ldots,u_k)=H$. Next, in order to prove that $q$ is in fact a quotient map, let $U\subseteq\Gr{k}$ such that $q^{-1}(U)$ is open in $\St{k}$. We want to prove that $U$ is open in $\Gr{k}$. For that, we will use the definition of the direct limit topology and fix some $n\in\mathbb{N}$ with $n>k$. Then, since $\St{k}$ is equipped with the direct limit topology and $q^{-1}(U)$ is open, $q^{-1}(U)\cap\St{k}{n}=q^{-1}(U\cap\Gr{k}{n})$ is open as well. Since $q$ is a quotient map, this means that $U\cap\Gr{k}{n}$ is open as well. Hence, $U\cap\Gr{k}{n}$ is open for every $n>k$ and thus $U$ is open in $\Gr{k}$.
+
+For the case of $q_0:\StO{k}\to\Gr{k}$ notice that the map is well defined, since Reark~\ref{rem:st_inclusion} guaranties that $\StO{k}\subseteq\St{k}$. Then, the arguments are exactly the same as in the previous case.
+\end{proof}
+\begin{remark} This proves that the infinite Grassmannian is the set of all $k$-planes inside $\mathbb{R}^{\infty}$. Notice that these planes never contain a vector with infinitely many non-zero entries, since such vectors do not exist inside $\mathbb{R}^{\infty}$.
+\end{remark}
+
 \section{Enumerating the cells}
+
+So, $\Gr{k}{n}$ is a CW complex having $\binom{n}{k}$ cells in total and
+
+
+
 * Infinite Gr\\
 * Young tableaus\\
 * poset structure + images\\
-* elementary schubert calculus?
+%* elementary schubert calculus?
+
+
+%TODO: remove $\vec{}$
+%TODO: ake span uniform
+%TODO: name the stiefel consistently
+%TODO: make old proofs smaller and less categorical
+%TODO: spellcheck - decide on the spelling of Gr
+%TODO: Introduce paragraphs during big proofs?
