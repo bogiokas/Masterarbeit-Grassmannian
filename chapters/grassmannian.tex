@@ -81,22 +81,6 @@ and notice that for every fixed $L$, $f_L$ is linear: $f_L\big(\lambda(x_1,\ldot
 For some $(u_1,\ldots,u_k)\in(\mathbb{R}^n)^k$, we have $(u_1,\ldots,u_k)\in\tilde{U}$ if and only if there exists $(x_1,\ldots,x_k)\in U$ with $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$. This is equivalent to the existence of $\{\lambda_{i,j}\}_{i,j\in[k]}\in\mathbb{R}$ such that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i\in[k]$. On the one hand, if the $\lambda_{i,j}$ are defined, then we can also define $L_0\in GL(k)$ by $L_0e_j:=\sum_{i=1}^k\lambda_{i,j}e_i$ for every $j\in[k]$, which gives $f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}=\left(\sum_{j=1}^k\lambda_{i,j}x_j\right)_{i\in[k]}=(u_i)_{i\in[k]}$, i.e. $(u_1,\ldots,u_k)\in f_{L_0}(U)$. On the other hand, if $(u_1,\ldots,u_k)\in f_{L_0}(U)$ for some $L_0\in GL(k)$, then $(u_1,\ldots,u_k)=f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}$. Hence, we can define $\lambda_{i,j}:=e_i^t(L_0e_j)$ for every $i,j\in[k]$, which gives that $u_i=\sum_{j=1}^ke_i^t(L_0e_j)x_j$.
 \end{proof}
 
-
-%so let $(v_1,\ldots,v_k)\in\tilde{U}$. Since $q(v_1,\ldots,v_k)\in q(U)$, there exists some $(u_1,\ldots,u_k)\in U$ such that $\mathrm{span}\{v_1,\ldots,v_k\}=\mathrm{span}\{u_1,\ldots,u_k\}$. Fix now any $n-k$ vectors $c_{k+1},\ldots,c_n\in\mathbb{R}^n$ such that $\det(u_1,\ldots,u_k,c_{k+1},\ldots,c_n)\neq0$. Such a choice exists, since $u_1,\ldots,u_k$ are linearly independent. We define now the function $U\to\mathbb{R}$ taking some $(x_1,\ldots,x_k)$ to $\det(x_1,\ldots,x_k,c_{k+1},\ldots,c_n)$. This is a continuous function and thus there exists some open $A\subseteq U$, containing $(u_1,\ldots,u_k)$ such that $\det(x_1,\ldots,x_k)\neq0$ for every $(x_1,\ldots,x_k)\in A$. This means that $x_1,\ldots,x_k,c_{k+1},\ldots,c_n$ is a basis of $\mathbb{R}^n$ for every $(x_1,\ldots,x_k)\in A$. Moreover, for every $(x_1,\ldots,x_k)$ we define the linear isomorphism $\phi_{(x_1,\ldots,x_k)}:\mathbb{R}^n\to\mathbb{R}^n$ such that $\phi_{(x_1,\ldots,x_k)}(x_i)=u_i$ for every $i\in[k]$ and $\phi_{(x_1,\ldots,x_k)}(c_i)=c_i$ for every $i\in[n]\setminus[k]$. Moreover, we define the linear functions $R:\mathbb{R}^n\to\mathbb{R}^k$ and $S:\mathbb{R}^k\to\mathbb{R}^n$ such that $R(u_i)=e_i$ for every $i\in[k]$, $R(c_i)=0$ for every $i\in[n]\setminus[k]$ and $S(e_i)=u_i$ for every $i\in[k]$, where $e_1,\ldots,e_k$ is the standard basis of $\mathbb{R}^k$.
-
-
-
-
-
-%and thus the following set of linear isomorphisms is well defined: $\Phi_{(x_1,\ldots,x_k)}:=\big\{\phi\in GL(n):\mathrm{span}\{\phi(x_1),\ldots,\phi(x_k)\}=\mathrm{span}\{x_1,\ldots,x_k\}\text{ and }\forall i\in[n]\setminus[k]\ \phi(c_i)=c_i\big\}$. We can now define:
-%\[V:=\bigcup_{(x_1,\ldots,x_k)\in A}\bigcup_{\phi\in\Phi_{(x_1,\ldots,x_k)}}\phi(A)\]
-
-
-
-%Define now $\phi:\mathbb{R}^n\to\mathbb{R}^n$ to be the linear transformation that maps $u_i$ to $v_i$ for every $i\in[k]$ and $\bar{u}_i$ to $\bar{u}_i$ for every $i\in[n]\setminus[k]$. This is well defined, since $u_1,\ldots,u_k,\bar{u}_{k+1},\ldots,\bar{u}_n$ is a basis of $\mathbb{R}^n$. Moreover, since $\mathrm{span}(v_1,\ldots,v_k)=\mathrm{span}(u_1,\ldots,u_k)$, the vectors $v_1,\ldots,v_k,\bar{u}_{k+1},\ldots,\bar{u}_n$ are also linearly independent. Hence, $\phi$ is a linear isomorphism. This means that there exists a linear isomorphism $\phi^{\oplus k}:(\mathbb{R}^n)^k\to(\mathbb{R}^n)^k$ taking $(x_1,\ldots,x_k)$ to $(\phi(x_1),\ldots,\phi(x_k))$. Thus, $\phi^{\oplus k}(A)$ is an open set containing $(v_1,\ldots,v_k)=\phi^{\oplus k}(u_1,\ldots,u_k)$.
-
-
-
 Having the case of projective spaces in mind, it is natural to also provide an alternative definition of Grassmannians.
 Specifically, the projective space of some dimension is also defined as the quotient over the unit sphere, rather than over the set of every nonzero vector.
 In this case the Stiefel manifold $\StO{k}{n}$, is the analog needed.
