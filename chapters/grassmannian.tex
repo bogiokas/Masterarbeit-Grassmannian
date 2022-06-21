@@ -499,7 +499,6 @@ S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}
 \end{center}
 \end{remark}
 
-
 \begin{computation}\label{com:rotation} Let $x,y\in S^{n-1}$ be any two unit vectors in $\mathbb{R}^n$ such that $x\neq y$ and $x\neq -y$. Let $\rho_{x\to y}$ be the rotation taking $x$ to $y$ and fixing the $n-2$ dimension subspace $\left<x,y\right>^{\perp}$. Then:
 \[\rho_{x\to y}=I_n+2yx^t-\frac{(x+y)(x+y)^t}{x^ty+1}\in SO(n)\]
 \end{computation}
@@ -648,31 +647,211 @@ Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly indep
 \[\mathrm{d}(\mathbf{j}')=\sum_{\ell\in[k]}(j'_{\ell}-\ell)<\sum_{\ell\in[k]}(j_{\ell}-\ell)=\mathrm{d}(\mathbf{j})\qedhere\]
 \end{proof}
 
-\begin{theorem}\label{thm:cw_complex} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, the Schubert cell decomposition makes $\Gr{k}{n}$ into a CW-complex, i.e. for every $\mathbf{j}\in\binom{[n]}{k}$ there exists a map
-\[\Phi_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\Gr{k}{n}\]
-such that:
-\begin{i_enum} \item $\Phi_{\mathbf{j}}\big({\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\big)\subseteq\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ and $\Phi_{\mathbf{j}}|_{{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}}:{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\to\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ is a homeomorphism
-\item $\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})$
-\end{i_enum}
+\begin{theorem}\label{thm:gr_is_cw} Let $k,n\in\mathbb{N}$ such that $0<k<n$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^n$. Moreover for every integer $m\in[k(n-k)]_0\cup\{-1\}$ let \[X_m^{k,n}:=\bigcup_{\substack{\mathbf{j}\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j})\leq m}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\]
+Then, the filtration $\emptyset=X_{-1}^{k,n}\subseteq X_0^{k,n}\subseteq\cdots\subseteq X_{k(n-k)}^{k,n}=\Gr{k}{n}$ is a CW structure of $\Gr{k}{n}$. It is helpful for later to define $X_m^{k,n}:=X_{k(n-k)}^{k,n}$ for every $m>k(n-k)$.
 \end{theorem}
-\begin{proof} Through the maps in Lemmata~\ref{lem:shub_dim} and \ref{lem:cells_from_stiefel_to_gr} the following map is defined:
-\[\Phi_{\mathbf{j}}=q_0\circ\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\Gr{k}{n}\]
+\begin{proof}
+Since the filtration is finite, $\Gr{k}{n}$ trivially has the direct limit topology with respect to the filtration, so we only need to prove the existence of a pushout square for every $m\in[k(n-k)]$:
+\begin{center}
+\begin{tikzcd}
+\coprod_{\mathbf{j}\in I_m}S^{m-1}\ar[d,hook,"\amalg_{\mathbf{j}\in I_m}inc_{\mathbf{j}}"']\ar[r,"\amalg_{\mathbf{j}\in I_m}\phi_{\mathbf{j}}"]\ar[dr,phantom,near end,"\ulcorner"]&[3em]X_{m-1}^{k,n}\ar[d,hook,"inc_m"]\\[2em]
+\coprod_{\mathbf{j}\in I_m}D^m\ar[r,"\amalg_{\mathbf{j}\in I_m}\Phi_{\mathbf{j}}"']&X_m^{k,n}
+\end{tikzcd}
+\end{center}
+Let $I_m=\big\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})=m\big\}$ be the set of indices. Moreover, let $\Phi_{\mathbf{j}}=q_0\circ\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to \Gr{k}{n}$ be the characteristic maps, where $\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\subseteq\StO{k}{n}$ are the homeomorphisms defined in Lemma~\ref{lem:shub_dim} and $q_0:\StO{k}{n}\to\Gr{k}{n}$ is the usual quotient map. Also, let $\phi_{\mathbf{j}}=\Phi_{\mathbf{j}}|_{\partial D^{\mathrm{d}(\mathbf{j})}}$ just be the restriction on the boundary of the closed disk.
+
+First, the maps in the diagram are well defined:
 \begin{i_enum}
-\item Using these two lemmata we also have that its restriction in the disc interior is a homeomorphism,
-$\Phi_{\mathbf{j}}|_{D^{\mathrm{d}(\mathbf{j})}}:D^{\mathrm{d}(\mathbf{j})}\to\mathcal{C}_{\mathbf{j}}(\mathbb{H}_{\bullet})$.
-\item Using again Lemma~\ref{lem:shub_dim}, we also get that the boundary of the disc is mapped to $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and then, using Lemma~\ref{lem:q0_on_bdr} we get that
-$\Phi_{\mathbf{j}}\big({\partial D^{\mathrm{d}(\mathbf{j})}}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\qedhere$.
+\item $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$. Indeed, $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)=q_0\big(\tilde{\Phi}_{\mathrm{j}}(D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemmata~\ref{lem:cells_from_stiefel_to_gr} and~\ref{lem:q0_on_bdr}, we get that $q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\big)=q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\cup q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\cup\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$.
+\item $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$. Indeed, $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)=q_0\big(\tilde{\Phi}_{\mathbf{j}}(\partial D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemma~\ref{lem:q0_on_bdr}, we get that $q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$.
 \end{i_enum}
+Next, the commutativity of the diagram is clear, since $\phi_{\mathbf{j}}$ is a restriction of $\Phi_{\mathbf{j}}$ and the two vertical maps are inclusions.
+
+Last, using Lemma~\ref{lem:shub_dim} and Lemma~\ref{lem:cells_from_stiefel_to_gr}, we get that both of the functions involved in the following composition are homeomorphisms
+\begin{center}
+\begin{tikzcd}
+\Phi_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}\ar[r,phantom,":"]&[-2.6em](D^{\mathrm{d}(\mathbf{j})})^{\circ}\ar[r,"\tilde{\Phi}_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}","\cong"']&[3em]\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\ar[r,"q_0|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}","\cong"']&[3em]\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})
+\end{tikzcd}
+\end{center}
+Also, $\Phi_{\mathbf{j}}((D^{\mathrm{d}(\mathbf{j})})^{\circ})=\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq X_m\setminus X_{m-1}$, which proves that it is a pushout diagram.
 \end{proof}
 
+\begin{proposition}\label{prop:included_cell} For $k,n\in\mathbb{N}$, the inclusion $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ respects the cell structure, i.e. for every $\mathbf{j}\in\binom{[n]}{k}$, it is also true that $\mathbf{j}\in\binom{[n+1]}{k}$ and then $\iota_{k,n}(\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet}))=\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n+1}$.
+\end{proposition}
+\begin{proof} If $\mathbf{j}=\{1\leq j_1<j_2<\cdots<j_k\leq n\}$, then trivially $j_k\leq n+1$, i.e. $\{1\leq j_1<\cdots<j_k\leq n+1\}\in\binom{[n+1]}{k}$. Moreover, if $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n}$ then $\dim(H\cap\mathbb{F}_{n+1})=j_k=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$, i.e. $\iota_{k,n}(H)=H\subseteq\mathbb{R}^{n+1}$ is an element of $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n+1}$. Inversely, for $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n+1}$, then $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n}$ since $j_k\leq n$ and thus $\iota_{k,n}(H)=H$.
+\end{proof}
+
+\begin{lemma}\label{lem:stable_filtration} Let $k,m\in\mathbb{N}$, then there exists some $n_0\in\mathbb{N}$ such that
+\[X_m^{k,k+1}\subseteq X_m^{k,k+2}\subseteq\cdots\subseteq X_m^{k,n_0}=X_m^{k,n_0+1}=X_m^{k,n_0+2}=\cdots\]
+i.e. $X_m^{k,n}=X_m^{k,n_0}$ for every $n\geq n_0$.
+\end{lemma}
+\begin{proof} If $I_m^{k,n}=\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})\leq m\}$, then $X_m^{k,n}=\bigcup_{\mathbf{j}\in I_m^{k,n}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Using Proposition~\ref{prop:included_cell}, we have $X_m^{k,n}=\bigcup_{I_m^{k,n}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\bigcup_{I_m^{k,n+1}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})=X_m^{k,n+1}$ for every $n\in\mathbb{N}$. Let $n>m+k$ and $\mathbf{j}\in I_m^{k,n}$. Notice then that $j_1-1+j_2-2+\cdots+j_k-k\leq m$ i.e. $j_k\leq m+k-\big((j_1-1)+\cdots+(j_{k-1}-k+1)\big)\leq m+k<n$, since for every $i\in[k-1]$ $j_i\geq i$. This means that $\mathbf{j}\in I_m^{k,n-1}$ and so $X_m^{k,n-1}\subseteq X_m^{k,n}$. This means that for $n_0:=m+k$ the assertion is true.
+\end{proof}
+
+\begin{theorem} Let $k\in\mathbb{N}$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^{\infty}$. Moreover, for every integer $m\geq-1$ let $X_m^k:=\bigcup_{n=k+1}^{\infty}X_m^{k,n}$. Then, the filtration
+\[\emptyset=X_{-1}^k\subseteq X_0^k\subseteq X_1^k\subseteq X_2^k\subseteq\cdots\subseteq\Gr{k}\]
+is a CW structure of $\Gr{k}$.
+\end{theorem}
+\begin{proof} Let $m\geq-1$ be any integer. Then, using Lemma~\ref{lem:stable_filtration} we get that there exists some $n_0$ such that $X_m^k=X_m^{k,n_0}$ and $X_{m-1}^k=X_{m-1}^{k,n_0}$. This means that there exists a pushout square involving $X_{m-1}^k$ and $X_m^k$, namely exactly the same we used in the proof of Theorem~\ref{thm:gr_is_cw}.
+
+It remains to show that $\Gr{k}$ has the direct limit topology with respect to the filtration $X_m^k$. Notice that $\bigcup_{m=-1}^{\infty}X_m^k=\bigcup_{m=-1}^{\infty}\bigcup_{n=k+1}^{\infty}X_m^{k,n}=\bigcup_{n=k+1}^{\infty}\bigcup_{m=-1}^{\infty}X_m^{k,n}=\bigcup_{n=k+1}\Gr{k}{n}=\Gr{k}$. Moreover, let $U\in\Gr{k}$ be any open set, fix some integer $m\geq-1$ and notice that $X_m^k=X_m^{k,n_0}$ for some $n_0$. So, we get that $U\cap X_m^k=U\cap X_m^{k,n_0}=U\cap\Gr{k}{n_0}\cap X_m^{k,n_0}$ which is open in $X_m^{k,n_0}=X_m^k$, since $U\cap\Gr{k}{n_0}$ is open in $\Gr{k}{n_0}$ and $X_m^{k,n_0}\subseteq\Gr{k}{n_0}$. For the inverse direction, let $U\subseteq\Gr{k}$ be some set such that $U\cap X_m^k$ is open in $X_m^k$ for every integer $m\geq-1$. Then, we get that $U\cap\Gr{k}{n}=U\cap X_{k(n-k)}^{k,n-k}=U\cap X_{k(n-k)}^k\cap X_{k(n-k)}^{k,n-k}$ which is open in $X_{k(n-k)}^{k,n-k}=\Gr{k}{n}$, since $U\cap X_{k(n-k)}^k$ is open in $X_{k(n-k)}^k$ and $X_{k(n-k)}^{k,n-k}\subseteq X_{k(n-k)}^k$. Since this is true for every integer $n>0$, $U$ is open in $\Gr{k}$, because it is topologised with the direct limit topology with respect to the filtration $\Gr{k}{n}$.
+\end{proof}
+
+So, $\Gr{k}{n}$ is a CW complex and each cell is indexed by some $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, while $\Gr{k}$ is a CW complex and each cell is indexed by some $\mathbf{j}=\{1\leq j_1<j_2<\cdots\}\in\binom{\mathbb{N}}{k}$. In either case the dimension of the cell indexed by $\mathbf{j}$ is equal to $\mathrm{d}(\mathbf{j})=(j_1-1)+(j_2-2)+\cdots+(j_k-k)$.
+
 \section{Enumerating the cells}
-So, $\Gr{k}{n}$ is a CW complex having $\binom{n}{k}$ cells in total,
+\begin{definition} For $m,r\in\mathbb{N}$, $\lambda=(\lambda_1,\ldots,\lambda_r)\in\mathbb{N}^r$ is a \emph{partition of $m$ of size $r$} if $\lambda_1\geq\lambda_2\geq\cdots\geq\lambda_r\geq1$ and $\lambda_1+\lambda_2+\cdots+\lambda_r=m$. In this case, we write $\lambda\vdash m$ and $|\lambda|=r$. For $m=0$, we define $P_0:=\{\lambda_{\emptyset}\}$, where $\lambda_{\emptyset}:=()$ is the \emph{empty partition} with $\lambda_{\emptyset}\vdash0$ and $|\lambda|=0$. Let $P_m$ be the set of all partitions of $m$ and $P:=\bigcup_{m=0}^{\infty}P_m$ the set of all partitions.
+\end{definition}
+\begin{remark}
+In order to make the notation easier, any number of trailing zeros at the end of a partition are allowed, without this affecting the size of the partition, i.e. $\lambda=(5,4,4,2,0,0,0)=(5,4,4,2)$, with $\lambda\vdash15$ and $|\lambda|=4$.
+\end{remark}
+\begin{example} There are exactly $7$ partitions of $m=5$:
+\[(5),\ (4,1),\ (3,2),\ (3,1,1),\ (2,2,1),\ (2,1,1,1),\ (1,1,1,1,1)\]
+\end{example}
 
+\begin{notation} For every partition $\lambda$ of $m$ in $r$ parts, we define the \emph{Young diagram} corresponding to $\lambda$ to be the shape consisting of $r$ left-justified rows of boxes, where row $i$ has $\lambda_i$ boxes.
+\end{notation}
+\begin{example} The young diagrams of the $7$ partitions of $m=5$ are:
+\begin{center}
+\ytableausetup{boxsize=0.7em,aligntableaux=top}\ydiagram{5}\qquad\ydiagram{4,1}\qquad\ydiagram{3,2}\qquad\ydiagram{3,1,1}\qquad\ydiagram{2,2,1}\qquad\ydiagram{2,1,1,1}\qquad\ydiagram{1,1,1,1,1}
+\end{center}
+\end{example}
 
+\begin{proposition}\label{prop:poset_bijection} For $k,n\in\mathbb{N}$ such that $0<k<n$, the map
+\begin{center}
+\begin{tikzcd}
+b_{k,n}\ar[r,phantom,":"]&[-7em]\binom{[n]}{k}\ar[r]&\big\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\big\}\\[-1.5em]
+&\big\{1\leq j_1<\cdots<j_k\leq n\big\}\ar[r,mapsto]&\big(j_k-k\ ,\ j_{k-1}-(k-1)\ ,\ \ldots\ ,\ j_1-1\big)
+\end{tikzcd}
+\end{center}
+is a bijection with $b_{k,n}(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
+\end{proposition}
+\begin{proof} First of all notice that for $\lambda=b_{k,n}(\mathbf{j})$ we have $|\lambda|\leq|\mathbf{j}|=k$, $\lambda_1=j_k-k\leq n-k$, $\lambda_k=j_1-1\geq 0$ and for every $i\in[k-1]$ $\lambda_i=j_{k-i+1}-(k-i+1)>j_{k-i}-(k-i)-1=\lambda_{i+1}-1$, i.e. $\lambda_i\geq\lambda_{i+1}$. These mean that $b_{k,n}$ is well defined.
 
-* Young tableaus\\
-* poset structure + images\\
-%* elementary schubert calculus?
+In order to prove that $b_{k,n}$ is a bijection, we will prove that this is its inverse map:
+\begin{center}
+\begin{tikzcd}
+c_{n,k}\ar[r,phantom,":"]&[-2.5em]\big\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\big\}\ar[r]&[-1em]\binom{[n]}{k}\\[-1.5em]
+&(\lambda_1,\lambda_2,\ldots,\lambda_k)\ar[r,mapsto]&\{\lambda_k+1,\lambda_{k-1}+2,\ldots,\lambda_1+k\}
+\end{tikzcd}
+\end{center}
+Notice that for $\mathbf{j}=c_{k,n}(\lambda)$ we have $|\mathbf{j}|=k$, $j_1=\lambda_k+1\geq1$, $j_k=\lambda_1+k\leq n$ and for ever $i\in[k-1]$ $j_i=\lambda_{k-i+1}+i\leq\lambda_{k-i}+(i+1)-1=j_{i+1}-1$, i.e. $j_i<j_{i+1}$. These mean that $c_{k,n}$ is well defined.
+
+Moreover $c_{k,n}=b_{k,n}^{-1}$, since $c_{k,n}\big(b_{k,n}(\mathbf{j})\big)=c_{k,n}(j_k-k,\ldots,j_1-1)=\{j_1<\cdots<j_k\}=\mathbf{j}$ and $b_{k,n}\big(c_{k,n}(\lambda)\big)=b_{k,n}\big(\{\lambda_k+1<\cdots<\lambda_1+k\}\big)=(\lambda_1,\ldots,\lambda_k)=\lambda$.
+
+Finally, we have that $b_{k,n}(\mathbf{j})\vdash (j_k-k)+(j_{k-1}-(k-1))+\cdots+(j_1-1)=\mathrm{d}(\mathbf{j})$.
+\end{proof}
+\begin{remark} Fix some $k\in\mathbb{N}$ and notice that if $\mathbf{j}\in\binom{[n]}{k}$ and $j_k\leq n-1$, then $b_{k,n}(\mathbf{j})=b_{k,n-1}(\mathbf{j})$, so for $n\geq n_0$, $b_{k,n}|_{\binom{[n_0]}{k}}=b_{k,n_0}$. This lets us define the map $b_k:\binom{\mathbb{N}}{k}\to\big\{\lambda\in P:|\lambda|\leq k\}$ on $\mathbf{j}$ to be $b_{k,n}(\mathbf{j})$ for some $n\geq j_k$. Then, $b_k$ is also a bijection with $b_k(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
+\end{remark}
+
+We can define the following partial order on the set of all partitions
+\begin{definition} For $\lambda,\lambda'\in P$, we write $\lambda\leq\lambda'$ if $\lambda_i\leq\lambda_i'$ for every $i\in\mathbb{N}$.
+\end{definition}
+\begin{remarks}
+\begin{i_enum}
+\item This is a partial order. Indeed, it is easy to check that $\lambda\leq\lambda$, that $\lambda\leq\lambda'$ and $\lambda'\leq\lambda$ gives $\lambda=\lambda'$ and that $\lambda\leq\lambda'$ and $\lambda'\leq\lambda''$ gives $\lambda\leq\lambda''$.
+\item In the language of Young diagrams, $\lambda\leq\lambda'$ if and only if the corresponding diagram of $\lambda$ is contained fully inside the corresponding diagram of $\lambda'$.
+\end{i_enum}
+\end{remarks}
+
+\begin{proposition} $(P,\leq)$ is a graded poset, with grading $\rho(\lambda)=m$, where $\lambda\vdash m$.
+\end{proposition}
+\begin{proof} First of all, we have to prove that $\rho$ is order preserving. Let $\lambda,\lambda'\in P$ with $\lambda\leq\lambda'$. Then $\sum_{i=1}^{|\lambda|}\lambda_i\leq\sum_{i=1}^{|\lambda'|}\lambda_i'$ and thus $\rho(\lambda)\leq\rho(\lambda')$. Moreover, we have to show that for $\lambda,\lambda'\in P$ with $[\lambda,\lambda']=\{\lambda,\lambda'\}$, $\rho(\lambda)=\rho(\lambda')$. Let $\lambda,\lambda'\in P$ with $\lambda<\lambda'$, $\lambda\vdash m$ and $\lambda'\vdash m'$. Notice that if $m'-m\geq2$, then there exists at least one $\lambda''\in P$ with $\lambda<\lambda''<\lambda'$. Indeed, in the young diagram of $\lambda$ is missing at least $2$ boxes, compared to the one of $\lambda'$ and by attaching just one of them we create some $\lambda''$ strictly between $\lambda$ and $\lambda'$.
+\end{proof}
+
+The poset up to degree $6$ looks like this:
+\begin{center}
+\begin{tikzpicture}[scale=1.3, yscale=1.3]
+\ytableausetup{boxsize=0.3em,aligntableaux=top}
+\node[elt] (0) at (0,0) {};
+\node[elt] (1) at (0,1) {\ydiagram{1}};
+\node[elt] (2) at (-0.5,2) {\ydiagram{2}};
+\node[elt] (11) at (0.5,2) {\ydiagram{1,1}};
+\node[elt] (3) at (-1,3) {\ydiagram{3}};
+\node[elt] (21) at (0,3) {\ydiagram{2,1}};
+\node[elt] (111) at (1,3) {\ydiagram{1,1,1}};
+\node[elt] (4) at (-2,4) {\ydiagram{4}};
+\node[elt] (31) at (-1,4) {\ydiagram{3,1}};
+\node[elt] (22) at (0,4) {\ydiagram{2,2}};
+\node[elt] (211) at (1,4) {\ydiagram{2,1,1}};
+\node[elt] (1111) at (2,4) {\ydiagram{1,1,1,1}};
+\node[elt] (5) at (-3,5) {\ydiagram{5}};
+\node[elt] (41) at (-2,5) {\ydiagram{4,1}};
+\node[elt] (32) at (-1,5) {\ydiagram{3,2}};
+\node[elt] (311) at (0,5) {\ydiagram{3,1,1}};
+\node[elt] (221) at (1,5) {\ydiagram{2,2,1}};
+\node[elt] (2111) at (2,5) {\ydiagram{2,1,1,1}};
+\node[elt] (11111) at (3,5) {\ydiagram{1,1,1,1,1}};
+\node[elt] (5) at (-3,5) {\ydiagram{5}};
+\node[elt] (41) at (-2,5) {\ydiagram{4,1}};
+\node[elt] (32) at (-1,5) {\ydiagram{3,2}};
+\node[elt] (311) at (0,5) {\ydiagram{3,1,1}};
+\node[elt] (221) at (1,5) {\ydiagram{2,2,1}};
+\node[elt] (2111) at (2,5) {\ydiagram{2,1,1,1}};
+\node[elt] (11111) at (3,5) {\ydiagram{1,1,1,1,1}};
+\node[elt] (6) at (-5,6) {\ydiagram{6}};
+\node[elt] (51) at (-4,6) {\ydiagram{5,1}};
+\node[elt] (42) at (-3,6) {\ydiagram{4,2}};
+\node[elt] (411) at (-2,6) {\ydiagram{4,1,1}};
+\node[elt] (33) at (-1,6) {\ydiagram{3,3}};
+\node[elt] (321) at (0,6) {\ydiagram{3,2,1}};
+\node[elt] (222) at (1,6) {\ydiagram{2,2,2}};
+\node[elt] (3111) at (2,6) {\ydiagram{3,1,1,1}};
+\node[elt] (2211) at (3,6) {\ydiagram{2,2,1,1}};
+\node[elt] (21111) at (4,6) {\ydiagram{2,1,1,1,1}};
+\node[elt] (111111) at (5,6) {\ydiagram{1,1,1,1,1,1}};
+\draw (111111)--(11111);
+\draw (21111)--(11111);
+\draw (21111)--(2111);
+\draw (2211)--(2111);
+\draw (2211)--(221);
+\draw (222)--(221);
+\draw (3111)--(2111);
+\draw (3111)--(311);
+\draw (321)--(221);
+\draw (321)--(311);
+\draw (321)--(32);
+\draw (411)--(311);
+\draw (411)--(41);
+\draw (33)--(32);
+\draw (42)--(32);
+\draw (42)--(41);
+\draw (51)--(41);
+\draw (51)--(5);
+\draw (6)--(5);
+\draw (11111)--(1111);
+\draw (2111)--(1111);
+\draw (2111)--(211);
+\draw (221)--(211);
+\draw (221)--(22);
+\draw (311)--(211);
+\draw (311)--(31);
+\draw (32)--(22);
+\draw (32)--(31);
+\draw (41)--(31);
+\draw (41)--(4);
+\draw (5)--(4);
+\draw (1111)--(111);
+\draw (211)--(111);
+\draw (211)--(21);
+\draw (22)--(21);
+\draw (31)--(21);
+\draw (31)--(3);
+\draw (4)--(3);
+\draw (111)--(11);
+\draw (21)--(11);
+\draw (21)--(2);
+\draw (3)--(2);
+\draw (11)--(1);
+\draw (2)--(1);
+\draw (1)--(0);
+\end{tikzpicture}
+\end{center}
+
+\begin{proposition} For $k,n\in\mathbb{N}$, $\binom{[n]}{k}\cong[\lambda_{\emptyset},(n-k)^k]$ as graded posets, where $(n-k)^k=(n-k,\ldots,n-k)\in\mathbb{N}^k$ is the $k\times(n-k)$ young diagram. The partial order on $\binom{[n]}{k}$ is defined by $\mathbf{j},\mathbf{j}'\in\binom{[n]}{k}$, $\mathbf{j}\leq\mathbf{j}'$ if and only if $j_i\leq j_i'$ for all $i\in[k]$ and the grading is given by $\rho(\mathbf{j})=\mathrm{d}(\mathbf{j})$.
+\end{proposition}
+\begin{proof} Notice that $[\lambda_{\emptyset},(n-k)^k]=\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\}$, so we have already established a bijection $b_{k,n}$ in Proposition~\ref{prop:poset_bijection}, which is easy to see that is also an order preserving map. Moreover, since we also have that the grading agrees, since $\rho(b_{k,n}(\mathbf{j}))=\mathrm{d}(\mathbf{j})=\rho(\mathbf{j})$.
+\end{proof}
 
 
 %TODO: remove $\vec{}$

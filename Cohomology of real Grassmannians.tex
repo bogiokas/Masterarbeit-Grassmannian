@@ -25,6 +25,7 @@
 \usepackage{remreset} %remove control of a counter over another
 \usepackage{blindtext} %produce crap
 \usepackage{mfirstuc} %make first upper case
+\usepackage{ytableau}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  TIKZ 4 LIFE  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikz}
@@ -63,6 +64,9 @@
 		preaction={draw,line width=#1 + #2},
 		white,fill,draw,line width=#1,
 	},%
+	elt/.style={
+		draw, circle
+	}
 }
 \pgfdeclarelayer{background}
 \pgfsetlayers{background,main}
@@ -292,8 +296,8 @@ with coefficients from $\mathbb{F}_2$}
 	\include{chapters/vector_bundles}
 	\include{chapters/cohomology}
 	\begin{myappendix}
-	\include{appendices/topology}
-	\include{appendices/fiber_bundles}
+%	\include{appendices/topology}
+%	\include{appendices/fiber_bundles}
 	\end{myappendix}
 \backmatter
 	\bibliographystyle{alpha}
