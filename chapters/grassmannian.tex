@@ -10,8 +10,8 @@ $P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}$,
 where two vectors are equivalent, if they span the same line. Notice that in this definition a proper subset of the whole vector space is required, in order for the quotient to be well defined. Namely the set of all vectors, which span a line. In accordance with that, for the case of the Grassmannians, the discussion starts at the space of all $k$-tuples of vectors in $\mathbb{R}^n$, spanning a $k$-dimensional vector space.
 
 \section{Stiefel Manifolds}
-\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ as:
-\[\St{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim\left<v_1,\ldots,v_k\right>=k\right\}\]
+\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ as
+$\St{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim\left<v_1,\ldots,v_k\right>=k\right\}$
 equipped with the subspace topology. Every point in this set is called a \ul{$k$-frame} of $\mathbb{R}^n$.
 \end{definition}
 This is actually an open subspace of the space of all $k$-tuples of vectors in $\mathbb{R}^n$:
@@ -28,18 +28,18 @@ v_1&\cdots&v_k\\[-.3em]
 \end{align*}
 Since the topology on both spaces is the product topology and $\Phi$ respects it, $\Phi$ is a homeomorphism.
 
-Define now the subset $D$ of all $n\times k$ matrices having at least one non-zero $k\times k$ minor:
-\[D:=\left\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\text{ s.t. }\det(A_I)\neq0\right\}\]
-where, given some $I\in\binom{[n]}{k}$, $A_I\in\mathbb{R}^{k\times k}$ is the matrix formed from the $k$ rows of $A$ indexed by $I$. Then, we have:
-\[\St{k}{n}=\Phi^{-1}(D)\cong D\]
+Define now the subset $D$ of all $n\times k$ matrices having at least one non-zero $k\times k$ minor
+$D:=\left\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\text{ s.t. }\det(A_I)\neq0\right\}$
+where, given some $I\in\binom{[n]}{k}$, $A_I\in\mathbb{R}^{k\times k}$ is the matrix formed from the $k$ rows of $A$ indexed by $I$. Then, we have
+$\St{k}{n}=\Phi^{-1}(D)\cong D$
 and since $D$ is an open submanifold of $\mathbb{R}^{n\times k}$, we also get that $\St{k}{n}$ is an open submanifold of ${\left(\mathbb{R}^n\right)}^k$.
 \end{proof}
 \begin{remark} In particular, this proves that $\St{k}{n}$ is a real manifold of dimension $kn$.
 \end{remark}
 
-We can now define the Stiefel manifold as the space of all \ul{orthonormal} $k$-frames:
-\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define the \ul{Stiefel} space $\StO{k}{n}{\mathbb{R}}=\StO{k}{n}$ as:
-\[\StO{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\vec{v}_i^t\vec{v}_j=\delta_{i,j}\right\}\]
+We now define the Stiefel manifold as the space of all \ul{orthonormal} $k$-frames:
+\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define the \ul{Stiefel} space $\StO{k}{n}{\mathbb{R}}=\StO{k}{n}$ as
+$\StO{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\vec{v}_i^t\vec{v}_j=\delta_{i,j}\right\}$
 equipped with the subspace topology. Every point in this set is called an \ul{orthonormal $k$-frame} of $\mathbb{R}^n$.
 \end{definition}
 Notice that we obviously have $\StO{k}{n}\subseteq\St{k}{n}$.
@@ -48,14 +48,15 @@ Notice that we obviously have $\StO{k}{n}\subseteq\St{k}{n}$.
 \end{proposition}
 %TODO: Write this better
 \begin{proof}
-We need again the homeomorphism $\Phi:{\left(\mathbb{R}^n\right)}^k\to\mathbb{R}^{n\times k}$ taking a $k$-tuple in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{k\times n}$ having these vectors as columns. This time, define the subset $S$ of all $n\times k$ semi-orthogonal matrices:
-\[S:=\left\{A\in\mathbb{R}^{n\times k}:A^t A=I_k\right\}\]
-Then, we have:
-\[\StO{k}{n}=\Phi^{-1}(S)\cong S\]
-$S$ is a subset of $\mathbb{R}^{n\times k}$, defined by $\binom{k+1}{2}$ (linearly independent) equations. This makes $S$ a closed submanifold of $\mathbb{R}^{n\times k}$, of dimension $nk-\binom{k+1}{2}$. Thus, $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of the same dimension.
+We need again the homeomorphism $\Phi:{\left(\mathbb{R}^n\right)}^k\to\mathbb{R}^{n\times k}$ taking a $k$-tuple in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{k\times n}$ having these vectors as columns. This time, define the subset $S$ of all $n\times k$ semi-orthogonal matrices
+$S:=\left\{A\in\mathbb{R}^{n\times k}:A^t A=I_k\right\}$
+
+Then, we have
+$\StO{k}{n}=\Phi^{-1}(S)\cong S$,
+where $S$ is a subset of $\mathbb{R}^{n\times k}$, defined by $\binom{k+1}{2}$ (linearly independent) equations. This makes $S$ a closed submanifold of $\mathbb{R}^{n\times k}$, of dimension $nk-\binom{k+1}{2}$. Thus, $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of the same dimension.
 \end{proof}
-\begin{remark} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is a bounded subset of ${\left(\mathbb{R}^n\right)}^k$, with the metric induced by the isomorphism ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$. Indeed, if $f=(v_1,\ldots,v_k)\in{\left(\mathbb{R}^n\right)}^k$ is an orthonormal $k$-frame of $\mathbb{R}^n$, then:
-\[\left\|f\right\|_2^2=\sum_{i=1}^k\left\|v_i\right\|_2^2=k\]
+\begin{remark} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is a bounded subset of ${\left(\mathbb{R}^n\right)}^k$, with the metric induced by the isomorphism ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$. Indeed, if $f=(v_1,\ldots,v_k)\in{\left(\mathbb{R}^n\right)}^k$ is an orthonormal $k$-frame of $\mathbb{R}^n$, then
+$\left\|f\right\|_2^2=\sum_{i=1}^k\left\|v_i\right\|_2^2=k$
 \end{remark}
 
 \begin{lemma}\label{lem:StO_compact} Let $0<k\leq n$ be some natural numbers. Then $\StO{k}{n}$ is compact. Indeed the previous Proposition and Remark prove that $\StO{k}{n}$ is a closed and bounded subset of ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$, which proves the assertion.
@@ -76,8 +77,9 @@ f_L\ar[r,phantom,":"]&[-3.5em](\mathbb{R}^n)^k\ar[r,"R_{(-)}"]&\mathbb{R}^k\ar[r
 &(x_1,\ldots,x_k)\ar[r,mapsto]&(e_1,\ldots,e_k)\ar[r,mapsto]&(Le_1,\ldots,Le_k)\ar[r,mapsto]&\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}
 \end{tikzcd}
 \end{center}
-and notice that for every fixed $L$, $f_L$ is linear: $f_L\big(\lambda(x_1,\ldots,x_k)+\mu(y_1,\ldots,y_k)\big)=\left(\sum_{j=1}^ke_i^t(Le_j)(\lambda x_j+\mu y_j)\right)_{i\in[k]}=\lambda\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}+\mu\left(\sum_{j=1}^ke_i^t(Le_j)y_j\right)_{i\in[k]}=\lambda f_L(x_1,\ldots,x_k)+\mu f_L(y_1,\ldots,y_k)$. Also, $f_L$ is injective: indeed $f_L(x_1,\ldots,x_k)=0$ means $\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}=0$ which can be written as $\big(x_1|\cdots|x_k\big)\cdot\big(e_i^t(Le_j)\big)=0$. Since the matrix $\big(e_i^t(Le_j)\big)$ is the the matrix of $L$ on the basis $e_1,\ldots,e_k$ which is invertible, this gives $x_1=\cdots=x_k=0$. So, $f_L$ is an injective linear endomorphism and thus a linear isomorphism. Next, we will prove that
-\[\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)\]
+and notice that for every fixed $L$, $f_L$ is linear: $f_L\big(\lambda(x_1,\ldots,x_k)+\mu(y_1,\ldots,y_k)\big)=\left(\sum_{j=1}^ke_i^t(Le_j)(\lambda x_j+\mu y_j)\right)_{i\in[k]}=\lambda\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}+\mu\left(\sum_{j=1}^ke_i^t(Le_j)y_j\right)_{i\in[k]}=\lambda f_L(x_1,\ldots,x_k)+\mu f_L(y_1,\ldots,y_k)$. Also, $f_L$ is injective: indeed $f_L(x_1,\ldots,x_k)=0$ means $\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}=0$ which can be written as $\big(x_1|\cdots|x_k\big)\cdot\big(e_i^t(Le_j)\big)=0$. Since the matrix $\big(e_i^t(Le_j)\big)$ is the the matrix of $L$ on the basis $e_1,\ldots,e_k$ which is invertible, this gives $x_1=\cdots=x_k=0$. So, $f_L$ is an injective linear endomorphism and thus a linear isomorphism. Next, we prove that
+$\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)$
+
 For some $(u_1,\ldots,u_k)\in(\mathbb{R}^n)^k$, we have $(u_1,\ldots,u_k)\in\tilde{U}$ if and only if there exists $(x_1,\ldots,x_k)\in U$ with $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$. This is equivalent to the existence of $\{\lambda_{i,j}\}_{i,j\in[k]}\in\mathbb{R}$ such that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i\in[k]$. On the one hand, if the $\lambda_{i,j}$ are defined, then we can also define $L_0\in GL(k)$ by $L_0e_j:=\sum_{i=1}^k\lambda_{i,j}e_i$ for every $j\in[k]$, which gives $f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}=\left(\sum_{j=1}^k\lambda_{i,j}x_j\right)_{i\in[k]}=(u_i)_{i\in[k]}$, i.e. $(u_1,\ldots,u_k)\in f_{L_0}(U)$. On the other hand, if $(u_1,\ldots,u_k)\in f_{L_0}(U)$ for some $L_0\in GL(k)$, then $(u_1,\ldots,u_k)=f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}$. Hence, we can define $\lambda_{i,j}:=e_i^t(L_0e_j)$ for every $i,j\in[k]$, which gives that $u_i=\sum_{j=1}^ke_i^t(L_0e_j)x_j$.
 \end{proof}
 
