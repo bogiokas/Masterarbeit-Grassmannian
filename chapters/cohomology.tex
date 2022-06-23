@@ -2,13 +2,59 @@
 This chapter starts by a direct combination of the Grassmannians discussed in Chapter~1 and the vector bundles discussed in Chapter~2. Namely, the tautological vector bundle is defined over the Grassmannian and additionaly it is proven that this is a universal bundle, in the sense that any other vector bundle over almost any topological space is a subbundle of the tautological bundle. Then, using the universal line bundles we define the Stiefel-Whitney class of any vector bundle to be a sequence of elements in the cohomology of the base space and prove that it is invariant under bundle isomorphisms. At the end of the chapter, we compute the Stiefel-Whitney classes of the tautological vector bundle and prove that it generates the Cohomology of the Grassmannian.
 
 \section{Tautological vector bundle}
-\begin{proposition} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover let $\xi:\big\{(H,v)\in\Gr{k}{n}\times\mathbb{R}^n:v\in H\}\to\Gr{k}{n}$ be the function with $\xi(H,v)=H$. Then $\xi$ is a $k$-plane vector bundle.
+\begin{proposition} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover let $\xi:\big\{(H,v)\in\Gr{k}{n}\times\mathbb{R}^n:v\in H\}\to\Gr{k}{n}$ be the function with $\xi(H,v)=H$. Also, for $H_0\in\Gr{k}{n}$ identify $\xi^{-1}(H_0)=\{H_0\}\times H_0$ with $H_0$ as vector spaces. Then $\xi$ is a $k$-plane vector bundle.
 \end{proposition}
-\begin{proof}
+\begin{proof} We only need to show the local triviality of $\xi$. Let $H_0\in\Gr{k}{n}$ and $U_{H_0}:=\{K\in\Gr{k}{n}:K\cap H_0^{\perp}=\{0\}\}$ as we also defined in the proof of \ref{lem:gr_manifold}. Notice that $\xi^{-1}(U_{H_0})=\{(K,v)\in\Gr{k}{n}\times\mathbb{R}^n:K\cap H_0^{\perp}=\{0\}\text{ and }v\in K\}$. Fix $v_1,\ldots,v_k\in H_0$ to be any basis of $H_0$. We define then the map $\phi:\xi^{-1}(U_{H_0})\to U_{H_0}\times\mathbb{R}^k$ as follows: $\phi(K,v):=(K,v^tv_1,v^tv_2,\ldots,v^tv_k)$.
+
+This map is obviously a continuous bundle map. Also, over each fiber it is linear, since $\phi(K,\lambda u+\mu v)=(K,(\lambda u+\mu v)^tv_1,\ldots,(\lambda u+\mu v)^tv_1)=\lambda(K,u)+\mu(K,u)=\lambda\phi(K,u)+\mu\phi(K,v)$. Notice that since $K\cap H_0^{\perp}=\{0\}$, $v^tv_i=0$ for all $i\in[k]$ if and only if $v=0\in K$, so $\phi(K,v)=0$ if and only if $v=0$. This proves that the kernel of the linear map $\phi_K:=\phi(K,-)$ vanishes and since $\dim_{\mathbb{R}}K=k=\dim_{\mathbb{R}}\mathbb{R}^k$, $\phi_K$ is a linear isomorphism. Thus, Proposition~\ref{prop:local_to_global_iso_vector} gives us that $\phi$ is a vector bundle isomorphism, proving the assertion.
+\end{proof}
+\begin{remark} Similarly, for $\xi:\{(H,v)\in\Gr{k}\times\mathbb{R}^{\infty}\}\to\Gr{k}$ with $\xi(H,v)=H$, $\xi$ is a $k$-plane vector bundle over $\Gr{k}$. Indeed, for the local triviality we again define $U_{H_0}=\{K\in\Gr{k}:K\cap H_0^{\perp}=\{0\}\}$, since there is a well defined inner product on $\mathbb{R}^{\infty}$, as we saw in Example~\ref{ex:infinite_euclidean_space} and then, the arguments are exactly the same.
+\end{remark}
+
+\begin{definition} Let $k,n\in\mathbb{N}$, with $0<k<n$. Then the \emph{tautological} vector bundle on $\Gr{k}{n}$ is the map $\gamma_n^k:\big\{(H,v)\in\Gr{k}{n}\times\mathbb{R}^n:v\in H\big\}$ with $\gamma_n^k(H,v)=H$.
+\end{definition}
+\begin{remark} This is a generalization of the tautological line bundle over the projective space we defined at Example~\ref{ex:vector_bundles}~\!\ref{ex:tautological_line_bundle}.
+\end{remark}
+
+\begin{definition} For $k\in\mathbb{N}$, the \emph{tautological}, or \emph{universal} vector bundle on $\Gr{k}$ is the map $\gamma^k:\big\{(H,v)\in\Gr{k}\times\mathbb{R}^{\infty}:v\in H\big\}$ with $\gamma^k(H,v)=H$.
+\end{definition}
+
+\begin{theorem}\label{thm:universal} Let $B$ be any paracompact topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, there exists a continuous function $f:B\to\Gr{k}$ such that $\xi\cong f^*\gamma^k$.
+\end{theorem}
+
+\begin{lemma}\label{lem:injection_from_total_space} Let $\xi:E(\xi)\to B$ be a vector bundle and $\hat{f}:E(\xi)\to\mathbb{R}^{\infty}$ be a continuous map such that its restriction $\hat{f}_x:\xi^{-1}(x)\to\mathbb{R}^{\infty}$ is a linear injection for every $x\in B$. Then, for the function $f:B\to\Gr{k}$ with $f(x):=\hat{f}(\xi^{-1}(x))$ it is true that $\xi\cong f^*\gamma^k$. Conversely, given $f$ the function $\hat{f}$ can be uniquely retrieved.
+\end{lemma}
+\begin{proof} Let $\hat{f}:E(\xi)\to\mathbb{R}^{\infty}$, such that its restriction $\hat{f}_x:\xi^{-1}(x)\to\mathbb{R}^{\infty}$ is a linear injection for every $x\in B$. This means that $\dim_{\mathbb{R}}(h(\xi^{-1}(x)))=k$, which lets us define the function $f:B\to\Gr{k}$ such that $f(x)=h(\xi^{-1}(x))\in\Gr{k}$. In order to prove that this is a continuous function, we will factor $f$ through $q:V{k}\to\Gr{k}$ locally. For $x\in B$, there exists some open $U\subseteq B$ containing $x$, such that $\xi|U$ is a trivial vector bundle. Equivalently, there exist $k$ nowhere dependent sections $s_1,\ldots,s_k:U\to\xi^{-1}(U)$. Notice that $f|_U(x)=q\big(h(s_1(x)),h(s_2(x)),\ldots,h(s_k(x))\big)$, which is continuous. This means that $f:B\to\Gr{k}$ is continuous.
+
+Next, we define $\bar{f}:E(\xi)\to E(\gamma^k)=\big\{(H,v)\in\Gr{k}\times\mathbb{R}^{\infty}:v\in H\big\}$ to be the continuous function $\bar{f}(v):=\big(f(\xi(v)),h(v)\big)$. It is well defined, since $h(v)\in h(\xi^{-1}(\xi(v)))=f(\xi(v))$. Moreover, since $(f\circ\xi)(v)=(\gamma^k\circ\bar{f})(v)$, $\bar{f}(\xi^{-1}(x))\subseteq(\gamma^k)^{-1}(f(x))$. Also, since $h$ is fiber-wise linear, so is $\bar{f}$ as well. Now, define $\phi:E(\xi)\to E(f^*\gamma^k)=\big\{(x,H,v)\in B\times\Gr{k}\times\mathbb{R}^{\infty}:v\in H\text{ and }f(x)=H\big\}$ by $\phi(v):=(\xi(v),\bar{f}(v))=(\xi(v),f(\xi(v)),h(v))$. This is clearly a vector bundle map. For the restriction $\phi_x:\xi^{-1}(x)\to\{x\}\times\{f(x)\}\times f(x)\cong f(x)\subseteq\mathbb{R}^{\infty}$, it is clear that $\phi_x(v)=(x,f(x),\hat{f}(v))$, which is a linear isomorphism, since $\hat{f}$ is injective and $\dim\xi^{-1}(x)=k=\dim f(x)$. Hence, Proposition~\ref{prop:local_to_global_iso_vector} ensures that $\phi$ is a vector bundle isomorphism.
+
+For the converse, given $f:B\to\Gr{k}$ and a vector bundle isomorphism $\phi:E(\xi)\to E(f^*\gamma)$, we can always define the function $\bar{f}:E(f^*\gamma^k)\to E(\gamma_k)$ which completes the pushout square and define $\hat{f}:=\pi_2\circ\bar{f}\circ\phi:E(\xi)\to\mathbb{R}^{\infty}$. It is trivial to check that $\hat{f}$ is a linear injection on each fiber and that $f(x)=\hat{f}(\xi^{-1}(x))$.
 \end{proof}
 
-* tautological vb of Gr\\
-* every vb over paracompact "uniquely" embeds into tautological
+\begin{proof}[Proof of Theorem~\ref{thm:universal}] Because of Lemma~\ref{lem:injection_from_total_space}, it suffices to define a continuous, fiber-wise linear injection map $\hat{f}:E(\xi)\to\mathbb{R}^{\infty}$.
+
+Since $B$ is paracompact, Lemma~\ref{lem:paracompact_countable_cover} gives us a locally finite countable open cover $\{U_i\}_{i\in\mathbb{N}}$ of $B$, such that $\xi|U_i$ is a trivial vector bundle for every $i\in\mathbb{N}$. Let $f_{U_i}:\xi^{-1}(U_i)\to U_i\times\mathbb{R}^k$ be a bundle isomorphism for every $i\in\mathbb{N}$. Also, Theorem~\ref{thm:paracompact_partition_of_unity} lets us find a subcover $\mathcal{V}$ with a subordinate partition of unity $\mathcal{F}=\{u_i\}_{i\in\mathbb{N}}$. Then, $\mathcal{V}$ is also a locally finite countable open cover making $\xi$ trivial, so without loss of generality we will assume that $\mathcal{F}$ is subordinate of $\{U_i\}_{i\in\mathbb{N}}$.
+
+For every $i\in\mathbb{N}$ we define $h_i:\xi^{-1}(U_i)\to\mathbb{R}^k$ by
+\begin{center}
+\begin{tikzcd}
+h_i\ar[r,phantom,":"]&[-2em]\xi^{-1}(U_i)\ar[r,"f_{U_i}","\cong"']&U_i\times\mathbb{R}^k\ar[r,"(u_i\circ\pi_1)\cdot(\pi_2)"]&\mathbb{R}^k\\[-1.5em]
+&v\ar[r,mapsto]&(\xi(v),(\pi_2\circ f_{U_i})(v))\ar[r,mapsto]&u_i(\xi(v))\cdot(\pi_2\circ f_{U_i})(v)
+\end{tikzcd}
+\end{center}
+This map is clearly continuous and linear over $\xi^{-1}(x)$ for $x\in U_i$. We extend $h_i$ to the whole $E(\xi)$ by setting $h_i(v)=0$ for every $v\in E(\xi)\setminus\xi^{-1}(U_i)$. We will abuse the notation and use $h_i$ for the extended function as well. Notice that $h_i$ remains continuous and linear over each fiber as a function $h_i:E(\xi)\to\mathbb{R}^k$.
+
+Then, let $\hat{f}:E(\xi)\to\mathbb{R}^{\infty}$ be the function with $\hat{f}(v):=\big(h_1(v),h_2(v),\ldots\big)$ for every $v\in E(\xi)$. This is well defined, since $\{U_i\}_{i\in\mathbb{N}}$ is a locally finite cover of $B$, which means that for every $v\in E(\xi)$ there are only finitely many indices $i\in\mathbb{N}$ such that $h_i(\xi)\neq0$. This means that for every $v\in E(\xi)$ there exists some $n_0\in\mathbb{N}$ with $\hat{f}(v)\in\mathbb{R}^{kn_0}\subseteq\mathbb{R}^{\infty}$. Moreover, $\hat{f}$ is clearly continuous and its restriction $\hat{f}_x:\xi^{-1}(x)\to\mathbb{R}^{\infty}$ is linear.
+
+Next, notice that $\hat{f}_x:\xi^{-1}(x)\to\mathbb{R}^{\infty}$ is injective. Indeed, let $v\in\ker\hat{f}_x$, i.e. $h_1(v)=h_2(v)=\ldots=0\in\mathbb{R}^k$. Since $\mathcal{F}$ is a partition of unity on $B$, there exists some $i_0\in\mathbb{N}$ with $u_{i_0}(\xi(v))>0$. Then $\xi(v)\in U_{i_0}$ and thus $h_{i_0}(v)=0$ means $f_{U_{i_0}}(v)=(\xi(v),0)$. Since the restriction of $f_{U_{i_0}}|:\xi^{-1}(\xi(v))\to\{\xi(v)\}\times\mathbb{R}^k$ is a homeomorphism, $v=0\in\xi^{-1}(\xi(v))$, which proves the assertion.
+\end{proof}
+
+\begin{theorem} Let $B$ be any paracompact topological space and $f,g:B\to\Gr{k}$ any two continuous maps, such that $f^*\gamma^k\cong g^*\gamma^k$ as vector bundles. Then $f\simeq g$.
+\end{theorem}
+\begin{proof} Let $\xi\cong f^*\gamma^k\cong g^*\gamma^k$ and $\hat{f},\hat{g}:E(\xi)\to\mathbb{R}^{\infty}$ be the associated maps of $f,g$, as defined in Lemma~\ref{lem:injection_from_total_space}. Our strategy is to first prove the existence of a homotopy $\hat{f}\simeq\hat{g}$ and from that to construct the desired homotopy $f\simeq g$.
+
+
+\end{proof}
 
 \section{Stiefel-Whitney classes}
 In this section we will follow the approach of ~\cite{husemoller} in Chapter~17, Sections~3-6.

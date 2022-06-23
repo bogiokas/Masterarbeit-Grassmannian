@@ -34,12 +34,12 @@ Moreover, let $V\subseteq U$ be some other open neighborhood of $x$. Then, $f_V:
 \end{remark}
 
 Let us now list some examples of vector bundles:
-\begin{examples}
+\begin{examples}\label{ex:vector_bundles}
 \begin{i_enum}
 \item For any topological space $B$ and any $n\in\mathbb{N}$ we have the \emph{trivial} vector bundle
 $\varepsilon_B^n:B\times\mathbb{R}^n\to B$,
 which is the projection on the first coordinate.
-\item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the set of equivalence classes 
+\item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the set of equivalence classes
 $T_xM:=\faktor{\left\{\gamma:\mathbb{R}\to M\ |\ \gamma(0)=x\text{ and }\phi\circ\gamma\text{ smooth}\right\}}{\sim}$,
 where $\gamma_1\sim\gamma_2$ iff $(\phi\circ\gamma_1)'(0)=(\phi\circ\gamma_2)'(0)$. This set can be given an $\mathbb{R}$-vector space structure as,
 $\lambda_1\cdot[\gamma_1]+\lambda_2\cdot[\gamma_2]:=\left[\phi^{-1}\circ\big(\lambda_1(\phi\circ\gamma_1)+\lambda_2(\phi\circ\gamma_2)\big)\right]$.
@@ -57,7 +57,7 @@ This induces a topology on $\pi_1^{-1}(U)$ and since the transition maps are ope
 \item Let $M$ be a smooth $n$-manifold embedded in $\mathbb{R}^d$. Then its \emph{normal bundle} $\nu_{M,d}:N_dM\to M$ is the $d-n$-plane bundle \emph{orthogonal} to $\tau_M$, i.e.
 \[N_dM:=\big\{(x,v)\in M\times\mathbb{R}^d:x\in M\text{ and }\forall[\gamma]\in T_xM\ v\perp\gamma'(0)\in\mathbb{R}^d\big\}\]
 and it is easy to see how the fibers are vector spaces and how the total space is topologised. The vector bundle $\nu_{M,d}$ is again the projection on the first coordinate, but notice that this vector bundle depends on the ambient space the $M$ lives in, while the tangent bundle defined above is an intrinsic construction, i.e. independent of any embedding.
-\item There exists a natural $1$-plane bundle (also: \emph{line bundle}) over each $n$ dimensional real projective space: the \emph{tautological} line bundle
+\item\label{ex:tautological_line_bundle} There exists a natural $1$-plane bundle (also: \emph{line bundle}) over each $n$ dimensional real projective space: the \emph{tautological} line bundle
 \begin{center}
 \begin{tikzcd}
 \gamma_n^1:\big\{(l,v)\in\mathbb{R}P^n\times\mathbb{R}^{n+1}:v\in l\big\}\ar[r]&\mathbb{R}P^n\\[-1.5em]
@@ -66,7 +66,7 @@ and it is easy to see how the fibers are vector spaces and how the total space i
 \end{center}
 The total space of this bundle is topologised as a subspace of $\mathbb{R}P^n\times\mathbb{R}^{n+1}$, where the $n$-dimensional projective space is defined to be the set of all lines through the origin in $\mathbb{R}^{n+1}$, topologized as the following quotient:
 \[\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong\faktor{S^n}{x\sim-x}\]
-We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as 
+We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as
 $f_U(l',v')=(l',v'^tv)$.
 This is continuous and linear over each fiber and since $v'^tv\neq0$ for $v'\neq0$, $f_U$ is also a homeomorphism.
 \end{i_enum}
@@ -107,7 +107,7 @@ with $\phi_x(v)=\phi(v)$ is a vector space isomorphism for every $x\in B$. Then 
 \end{proposition}
 \begin{proof} First of all, it is easy to see that $\phi$ is a bijection:
 \begin{itemize}
-\item Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a vector bundle map, 
+\item Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a vector bundle map,
 $\xi_1(u_1)=\xi_2(\phi(u_1))=\xi_2(\phi(u_2))=\xi_1(u_2)=:x_0$.
 So, $u_1,u_2\in\xi_1^{-1}(x_0)$ and $\phi_{x_0}(u_1)=\phi(u_1)=\phi(u_2)=\phi_{x_0}(u_2)$. Since $\phi_{x_0}$ is injective, $u_1=u_2$, which proves that $\phi$ is injective as well.
 \item Let $v\in E_2$. For $x_0:=p_2(v)$, $v\in\xi)2^{-1}(x_0)$. Since $\phi_{x_0}$ is surjective, there exists some $u\in\xi_1^{-1}(x_0)\subseteq E_1$ with $\phi(u)=\phi_{x_0}(u)=v$, proving that $\phi$ is also surjective.
@@ -326,6 +326,12 @@ At this point it is natural to wonder if given two bundles $\xi\leq\eta$ it is a
 \begin{definition} Let $V$ be an $\mathbb{R}$ vector space. Then $V$ is an \emph{Euclidean vector space}, if there exists a symmetric, bilinear function $\beta:V\times V\to\mathbb{R}$ such that $\beta(v,v)\geq0$ and $\beta(v,v)=0$ only if $v=0$. In this case $\beta$ is called \emph{inner product} and $\beta(u,v)$ denoted by $u\cdot v$.
 \end{definition}
 
+\begin{examples}\label{ex:infinite_euclidean_space}
+\begin{i_enum}\item For every $n\in\mathbb{N}$, the usual inner product on $\mathbb{R}^n$ is defined by $\beta_n(u,v)=u^tv$.
+\item Notice that the inclusion $\mathbb{R}^n\subseteq\mathbb{R}^{n+1}$ taking $v$ to $\bar{v}:=(v^t|0)^t$ respects the usual inner product, i.e. $\beta_n(u,v)=\beta_{n+1}(\bar{u},\bar{v})$. This means, that for every $u,v\in\mathbb{R}^{\infty}$, we can define the inner product $u^tv=\beta(u,v):=\beta_n(u,v)$ for some $n$ big enough such that $u,v\in\mathbb{R}^n\subseteq\mathbb{R}^{\infty}$. This makes $\mathbb{R}^{\infty}$ a euclidean space.
+\end{i_enum}
+\end{examples}
+
 \begin{definition} Let $\xi:E\to B$ be a vector bundle. Then $\xi$ is a \emph{Euclidean vector bundle}, if there exists a continuous function $\beta:E(\xi\oplus\xi)\to\mathbb{R}$ the restriction of which on $(\xi\oplus\xi)^{-1}(x)$ makes $\xi^{-1}(x)$ a euclidean vector space for each $x\in B$.
 \end{definition}
 
@@ -394,7 +400,11 @@ At this point the question about decomposing a vector bundle is positively answe
 \begin{definition} A topological space $X$ is \emph{paracompact} if $X$ is Hausdorff and for every open cover $\mathcal{U}$ of $X$ there exists some locally finite open cover $\mathcal{V}$ of $X$ that is a refinement of $\mathcal{U}$.
 \end{definition}
 
-A very important property of paracompact spaces is the connection with the partitions of unity, as presented in the next well-known result. The proof of it is out of the scope of this thesis and the reader can refer to \cite{bredon}, where it is stated and proven as Theorem~12.8.
+Paracompact spaces were first defined in \cite{paracompactness}, where it was also proven that they are at least $T_4$:
+\begin{theorem}[Dieudonn\'e] Let $X$ be a paracompact space, then $X$ is normal.
+\end{theorem}
+
+Using the fact that paracompact spaces are normal together with Urysohn's lemma, it can be proven that any given cover not only has a finite open subcover, but there exists one such subcover that also has a subordinate partition of unity. For the proof of this, the reader can refer to Theorem~12.8 of \cite{bredon}.
 \begin{definition} Let $X$ be a topological space and $\mathcal{F}=\{f_i:X\to[0,1]\}_{i\in I}$ be a collection of continuous maps. Then, $\mathcal{F}$ is a \emph{partition of unity of $X$} if for every $x\in X$ there exists some open $U\subseteq X$ containing $x$ such that $f_i|_U\equiv0$ for all but finitely many $i\in I$ and $\sum_{i\in I}f_i(x)=1$.
 \end{definition}
 \begin{remark} For every $f\in\mathcal{F}$ we are usually interested in the \emph{support of $f$}, which is defined as $\mathrm{supp}(f):=\left\{x\in X:f(x)\neq0\right\}^-$.
@@ -418,6 +428,19 @@ If we fix some $x\in V_i$, $\beta_i$ restricted on $\xi^{-1}(x)\times\xi^{-1}(x)
 Define now $a=\min_{j\in[k]}\left\{\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|\right\}$ and notice that $a>0$, since $\pi_2\circ f_{V_i}$ is a linear isomorphism for every $i\in I$ and $v\neq0$. Hence, $\beta(v,v)\geq a^2\sum_{j=1}^kh_{i_j}(\xi(v))=a^2\sum_{i\in I}h_i(\xi(v))=a^2>0$, since $\mathcal{F}$ is a partition of unity.
 \end{proof}
 
+\begin{lemma}\label{lem:paracompact_countable_cover} Let $B$ be a paracompact space and $\xi:E(\xi)\to B$ any vector bundle. Then, there exists some locally finite countable open cover $\{U_k\}_{k\in\mathbb{N}}$ of $B$ such that $\xi|U_k$ is a trivial vector bundle for every $k\in\mathbb{N}$.
+\end{lemma}
+\begin{proof} Since $\xi$ is a vector bundle, there exists some open cover $\{U_x\}_{x\in B}$ such that $\xi|U_x$ is trivial for every $x\in B$. Using theorem~\ref{thm:paracompact_partition_of_unity}, we can find a locally finite open cover $\mathcal{V}=\{V_{\alpha}\}_{\alpha\in A}$ of $B$ that is a refinement of $\{U_x\}_{x\in B}$ and a partition of unity $\mathcal{F}=\{u_{\alpha}:B\to[0,1]\}$, that is subordinate of $\mathcal{V}$. Notice that Remark~\ref{rem:vector_subcover} gives us that $\xi|V$ is a trivial vector bundle for every $V\in\mathcal{V}$, since it is a subcover of $\{U_x\}_{x\in B}$. If $A$ is finite, $\mathcal{V}$ is a bundle with the desired properties. Otherwise, for every finite $S\subseteq A$ we define now
+\[U(S):=\big\{x\in B: \forall\alpha\in S\ \forall\beta\in A\setminus S\ u_{\alpha}(x)>u_{\beta}(x)\big\}\]
+Notice that $U(S)$ is open. Indeed, for $x\in U(S)$, since $\mathcal{F}$ is a partition of unity, there exists an open $X\subseteq B$ and only finitely many indices $\alpha\in A$ such that $u_{\alpha}|_X>0$, say $\{\alpha_1,\ldots,\alpha_k\}$. Hence, $S\subseteq\{\alpha_1,\ldots,\alpha_k\}$ and if we set $T=\{\alpha_1,\ldots,\alpha_k\}\setminus S$, we get that $x\in X\cap\bigcap_{\alpha\in S,\beta\in T}(u_{\alpha}|_X-u_{\beta}|_X)^{-1}\big((0,1]\big)\subseteq U(S)$ and since $S,T$ are finite, this is an open set. Since this is true for every $x\in U(S)$, $U(S)$ is open.
+
+Moreover, notice that $\{U(S)\}_{S\in\mathcal{S}}$ covers $B$, where $\mathcal{S}:=\{S\subseteq A:|S|\in\mathbb{N}\}$ is the set of all finite subsets of $A$. Indeed, for every $x\in B$ there exist only finitely many indices $\{\alpha_1,\ldots,\alpha_k\}\subseteq A$ with $u_{\alpha}(x)>0$, as we argued before and thus $x\in U(\{\alpha_1,\ldots,\alpha_k\})$. Also, it is true that $U(S)\subseteq V_{\alpha}$ for every $\alpha\in S$. Indeed, if $\alpha\in S$ and $x\in U(S)$, then it should be true that $u_{\alpha}(x)>0$, because otherwise we would have $S=A$, but $A$ is not finite. So, $\{U_S\}_{S\in\mathcal{S}}$ is an open subcover of $\mathcal{V}$ and thus, it is a locally finite open cover of $B$ and again due to Remark~\ref{rem:vector_subcover} $\xi|_{U(S)}$ is a trivial vector bundle for every $S\in\mathcal{S}$.
+
+Last, for every $k\in\mathbb{N}$ we define $U_k:=\bigcup_{S\in\mathcal{S}_k}U(S)$, where $\mathcal{S}_k=\{S\in\mathcal{S}:|S|=k\}$. Then, $\{U_k\}_{k\in\mathbb{N}}$ is clearly a cover of $B$ with $U_k$ open for every $k\in\mathbb{N}$. Moreover, it is true that $U_k$ is the disjoint union of all $U(S)$ for $S\in\mathcal{S}_k$. Indeed, for any two $S,S'\in\mathcal{S}_k$ with $S\neq S'$, there exist $\alpha\in S\setminus S'$ and $\beta\in S'\setminus S$. If there was some $x\in U(S)\cap U(S')$, then for this $x$ we would have simultaneously that $u_{\alpha}(x)>u_{\beta}(x)$ and $u_{\beta}(x)>u_{\alpha}(x)$, which is impossible. So, $\xi|U_k\cong\amalg_{S\in\mathcal{S}_k}\xi|_{U(S)}$ and thus is a trivial vector bundle. Also, for every $x\in B$ there exists some $X\subseteq B$ containing $x$, such that $X\cap U(S)\neq\emptyset$ only for finitely many $S\in\mathcal{S}$, since $\{U(S)\}_{S\in\mathcal{S}}$. This means that $X\cap U_k\neq\emptyset$ only for finitely many $k\in\mathbb{N}$. Hence $\{U_k\}_{k\in\mathbb{N}}$ is a locally finite, countable, open cover of $B$ making $\xi$ locally trivial.
+\end{proof}
+
+
+%TODO: obviously/trivially -> clearly
 %TODO_MAYBE: tangent and normal vb
 %TODO_MAYBE: define parallelizable spaces
 %TODO_MAYBE: counterexample of vb over non-paracompact space w/o inner product
