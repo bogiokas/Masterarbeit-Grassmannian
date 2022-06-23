@@ -83,15 +83,65 @@ Hence, using Lemma~\ref{lem:injection_from_total_space} again, we can now define
 \end{proof}
 
 \section{Stiefel-Whitney classes}
-In this section we will follow the approach of ~\cite{husemoller} in Chapter~17, Sections~3-6.
+\begin{axioms} Let $B$ be a topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, for each $i\in\mathbb{N}_0$ $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$ is called the \emph{$i$-th Stiefel-Whitney class of $\xi$} if it satisfies the following Axioms. In this case
+\[w(\xi):=w_0(\xi)+w_1(\xi)+\cdots\in H^{\prod}(B;\mathbb{Z}_2)\]
+is called the \emph{total Stiefel-Whitney class of $\xi$}.
+\begin{b_item}
+\item[(SW0)] $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$, for every $k$-plane $\xi:E(\xi)\to B$.
+\item[(SW1)] $w(f^*\xi)=f^*w(\xi)$, for every $f:B'\to B$ and every $\xi:E(\xi)\to B$.
+\item[(SW2)] $w(\eta\oplus\xi)=w(\eta)w(\xi)$, for every $\eta:E(\eta)\to B$ and every $\xi:E(\xi)\to B$.
+\item[(SW3)] $w(\gamma_1^1)\neq0$.
+\end{b_item}
+\end{axioms}
+
+\begin{proposition}\label{prop:trivial_sw} For all $k\in\mathbb{N}$, $w(\varepsilon_B^k)=1$, i.e. $w_i(\varepsilon_B^k)=0$ for every $i>0$.
+\end{proposition}
+\begin{proof} Let $c_B:B\to\{*\}$ be the map to the one-point set. Then $\varepsilon_B^n\cong c_B^*\varepsilon_{\{*\}}^n$. Indeed, $E(c_B^*\varepsilon_{\{*\}}^n)\cong B\times\mathbb{R}^n=E(\varepsilon_B^n)$. Let $i>0$, then using (SW1) we then get $w_i(\varepsilon_B^n)=c_B^*w_i(\varepsilon_{\{*\}}^n)=0$, since $w_i(\varepsilon_{\{*\}}^n)\in H^i(\{*\},\mathbb{Z}_2)=0$.
+\end{proof}
+
+\begin{proposition} Let $\eta:E(\eta)\to B$, $\xi:E(\xi)\to B$ two vector bundles such that $\eta\cong\xi$. Then $w(\eta)=w(\xi)$.
+\end{proposition}
+\begin{proof} Let $\phi:E(\eta)\to E(\xi)$ be a vector bundle isomorphism, then $\eta=(id)^*\xi$. Then, (SW1) gives $w(\eta)=w((id)^*\xi)=(id)^*w(\xi)=w(\xi)$.
+\end{proof}
+
+\begin{proposition} Let $\xi:E(\xi)\to B$ and $n\in\mathbb{N}$, then $w(\xi\oplus\varepsilon_B^n)=w(\xi)$.
+\end{proposition}
+\begin{proof} Using (SW2) and Proposition~\ref{prop:trivial_sw} we get $w(\xi\oplus\varepsilon_B^n)=w(\xi)w(\varepsilon_B^n)=w(\xi)$.
+\end{proof}
+
+\begin{corollary} Let $\eta:E(\eta)\to B$, $\xi:E(\xi)\to B$ two vector bundles such that $\eta\oplus\varepsilon_B^k\cong\xi\oplus\varepsilon_B^n$ for some $k,n\in\mathbb{N}$. Then $w(\eta)=w(\eta\oplus\varepsilon_B^k)=w(\xi\oplus\varepsilon_B^n)=w(\xi)$.
+\end{corollary}
+
+\begin{proposition} Let $\xi:E(\xi)\to B$ be an $n$-plane euclidean vector bundle and $s_1,\ldots,s_k:B\to E(\xi)$ $k$ nowhere linearly dependent sections. Then $w_{n-k+1}(\xi)=w_{n-k+2}=\cdots=w_n(\xi)=0$.
+\end{proposition}
+\begin{proof} Given $k$ nowhere linearly dependent sections of $\xi$, we can define a $k$-plane trivial vector bundle $\eta$ with $\eta\leq\xi$. Indeed, let $E(\eta)=\big\{v\in E(\xi):v\in\mathrm{span}\{s_1(\xi(v)),\ldots,s_k(\xi(v))\}\subseteq E(\xi)$ and $\eta(v)=\xi(v)$. Then $\phi:E(\eta)\to E(\varepsilon_B^k)$ takes $v=a_1s_1(\xi(v))+\cdots+a_ks_k(\xi(v))$ to $(\xi(v),a_1,\ldots,a_k)$. Since $\xi$ is euclidean, Lemma~\ref{prop:vb_decomposition} gives us that $\xi\cong\eta\oplus\eta^{\perp_{\xi}}$. Thus, (SW2) and Proposition~\ref{prop:trivial_sw} give: $w(\xi)=w(\eta)w(\eta^{\perp_{\xi}})=w(\eta^{\perp_{\xi}})$ and (SW0) gives $w_i(\eta^{\perp_{\xi}})=0$ for every $i>n-k$, since $\eta^{\perp_{\xi}}$ is an $(n-k)$-plane vector bundle.
+\end{proof}
+
+\begin{lemma} For any topological space $B$, the space $\big\{1+a_1+a_2+\cdots\in H^{\prod}(B;\mathbb{Z}_2)\big\}$ is a group with respect to the cup product.
+\end{lemma}
+\begin{proof} We only have to check that every $1+a_1+a_2+\cdots\in H^{\prod}(B;\mathbb{Z}_2)$ is invertible. We can construct the inverse element $1+\bar{a}_1+\bar{a}_2+\cdots$ inductively by:
+\[\bar{a}_n=-a_n-\sum_{i=k}^{n-1}a_k\bar{a}_{n-k}\qedhere\]
+\end{proof}
+
+\begin{definition} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Then, we define the \emph{dual of the stiefel whitney classes of $\xi$} to be $\bar{w}(\xi):=(\bar{w}(\xi))^{-1}\in H^{\prod}(B;\mathbb{Z}_2)$.
+\end{definition}
+
+\begin{proposition} Let $M$ be a smooth manifold embedded in $\mathbb{R}^d$, $\tau_M:TM\to M$ be its tangent bundle and $\nu_{M,d}:N_dM\to M$ its normal bundle. Then $\bar{w}(\tau_M)=w(\nu_{M,d})$
+\end{proposition}
+\begin{proof} Proposition~\ref{prop:tangent_normal_vb} gives us that $\nu_{M,d}=\tau_M^{\perp_{\mathbb{R}^d}}$ and thus, because of Proposition~\ref{prop:vb_decomposition}, we have that $\varepsilon_M^d\cong\tau_M\oplus\nu_{M,d}$. Using (SW2) we get $w(\tau_M)w(\nu_{M,d})=1$, i.e. $\bar{w}(\tau_M)=w(\nu_{M,d})$.
+\end{proof}
 
 
-* 4 axioms\\
-* lem invariant under cong\\
-* def total SW class\\
+
+
+
+
+In this section we will follow the approach of ~\cite{husemoller} in Chapter~17, Sections~2-6.
+
+
+
 * axiom check\\
 * uniqueness\\
-* lem cohomology ring with a0=1 inverting total classes\\
 * examples: tangent of sphere, tautological, tangent of projective
 
 

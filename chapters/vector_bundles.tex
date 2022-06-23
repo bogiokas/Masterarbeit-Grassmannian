@@ -363,6 +363,12 @@ Define $D:U\to\mathbb{R}$ to be $D(x):=\det\big(v_1(x),\ldots,v_k(x),v_{k+1},\ld
 \begin{definition} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then, the \emph{orthogonal complement of $\xi$ in $\eta$} is $\xi^{\perp_{\eta}}:E\to B$ (or just $\xi^{\perp}$, when $\eta$ is clear) where $E:=\{v\in E(\eta):\forall u\in\xi^{-1}(\eta(v))\ v\cdot u=0\}$ and $\xi^{\perp_{\eta}}(v)=\eta(v)$.
 \end{definition}
 
+\begin{proposition}\label{prop:tangent_normal_vb} Let $M$ be a smooth manifold, embedded in $\mathbb{R}^d$, $\tau_M:TM\to M$ its tangent bundle and $\nu_{M,d}:N_dM\to M$ its normal bundle. Then $\nu_{M,d}\cong\tau_M^{\perp_{\varepsilon_M^d}}$
+\end{proposition}
+\begin{proof}
+%TODO
+\end{proof}
+
 \begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\xi^{\perp_{\eta}}\cong\sfrac{\eta}{\xi}$.
 \end{lemma}
 \begin{proof} Using Proposition~\ref{prop:quotient_bundle}, we write $E(\sfrac{\eta}{\xi})=\sfrac{E(\eta)}{\sim}$ for $v_1\sim v_2$ iff $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v_1))$. Moreover, we also write $\sfrac{eta}{\xi}([v])=\eta(v)$. Let us then define the following map:
@@ -376,8 +382,8 @@ This is a bundle map, linear on each fiber. In order to prove that this is in fa
 \end{proof}
 
 This lets us decompose some euclidean vector bundle to a whitney sum, provided we find some vector subbundle of it:
-\begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\eta\cong\xi\oplus\xi^{\perp_{\eta}}$.
-\end{lemma}
+\begin{proposition}\label{prop:vb_decomposition} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\eta\cong\xi\oplus\xi^{\perp_{\eta}}$.
+\end{proposition}
 \begin{proof} Let us define the following map:
 \begin{center}
 \begin{tikzcd}
