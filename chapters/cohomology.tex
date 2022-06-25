@@ -1,6 +1,14 @@
 \chapter{Cohomology computation}
 This chapter starts by a direct combination of the Grassmannians discussed in Chapter~1 and the vector bundles discussed in Chapter~2. Namely, the tautological vector bundle is defined over the Grassmannian and additionaly it is proven that this is a universal bundle, in the sense that any other vector bundle over almost any topological space is a subbundle of the tautological bundle. Then, using the universal line bundles we define the Stiefel-Whitney class of any vector bundle to be a sequence of elements in the cohomology of the base space and prove that it is invariant under bundle isomorphisms. At the end of the chapter, we compute the Stiefel-Whitney classes of the tautological vector bundle and prove that it generates the Cohomology of the Grassmannian.
 
+\begin{theorem}\label{thm:projective_spaces_cohomology} There exist the following isomorphisms of graded $\mathbb{Z}_2$-algebras:
+\begin{b_item}
+\item $H^*(\mathbb{R}P^{\infty};\mathbb{Z}_2)\cong\mathbb{Z}_2[z]$, where $\deg(z)=1$ and
+\item $H^*(\mathbb{R}P^n;\mathbb{Z}_2)\cong\mathbb{Z}_2[z_n]/(z_n^{n+1})$, where $\deg(z_n)=1$, for every $n\in\mathbb{N}$.
+\end{b_item}
+Moreover, for every $n\in\mathbb{N}$, the inclusion $\iota_{1,n+1}:\mathbb{R}P^n\hookrightarrow\mathbb{R}P^{\infty}$ induces an epimorphism $\mathbb{Z}_2[z]\to\mathbb{Z}_2[z_n]/(z_n^{n+1})$ with $\iota_{1,n+1}^*z=z_n$.
+\end{theorem}
+
 \section{Tautological vector bundle}
 \begin{proposition} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover let $\xi:\big\{(H,v)\in\Gr{k}{n}\times\mathbb{R}^n:v\in H\}\to\Gr{k}{n}$ be the function with $\xi(H,v)=H$. Also, for $H_0\in\Gr{k}{n}$ identify $\xi^{-1}(H_0)=\{H_0\}\times H_0$ with $H_0$ as vector spaces. Then $\xi$ is a $k$-plane vector bundle.
 \end{proposition}
@@ -18,6 +26,11 @@ This map is obviously a continuous bundle map. Also, over each fiber it is linea
 
 \begin{definition} For $k\in\mathbb{N}$, the \emph{tautological}, or \emph{universal} vector bundle on $\Gr{k}$ is the map $\gamma^k:\big\{(H,v)\in\Gr{k}\times\mathbb{R}^{\infty}:v\in H\big\}$ with $\gamma^k(H,v)=H$.
 \end{definition}
+
+\begin{proposition}\label{prop:restriction} For any $k,n\in\mathbb{N}$, with $0<k<n$ it is true that $\gamma_n^k\cong\iota^*_{k,n}\gamma^k$, where $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}$.
+\end{proposition}
+\begin{proof} Notice that $E(\iota_{k,n}^*\gamma^k)=\big\{(H,H',v)\in\Gr{k}{n}\times\Gr{k}\times\mathbb{R}^{\infty}:v\in H'\text{ and }H=H'\big\}\cong\big\{(H,v)\in\Gr{k}{n}\times\mathbb{R}^{\infty}:v\in H\big\}\cong\big\{(H,v)\in\Gr{k}{n}\times\mathbb{R}^n:v\in H\big\}=E(\gamma_n^k)$, where the homeomorphism is clearly a bundle isomorphism and linear over each fiber.
+\end{proof}
 
 \begin{theorem}\label{thm:universal} Let $B$ be any paracompact topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, there exists a continuous function $f:B\to\Gr{k}$ such that $\xi\cong f^*\gamma^k$.
 \end{theorem}
@@ -83,9 +96,9 @@ Hence, using Lemma~\ref{lem:injection_from_total_space} again, we can now define
 \end{proof}
 
 \section{Stiefel-Whitney classes}
-\begin{axioms} Let $B$ be a topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, for each $i\in\mathbb{N}_0$ $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$ is called the \emph{$i$-th Stiefel-Whitney class of $\xi$} if it satisfies the following Axioms. In this case
+\begin{axioms} Let $B$ be a topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, for each $i\in\mathbb{N}_0$ $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$ is called an \emph{axiomatic $i$-th Stiefel-Whitney class of $\xi$} if it satisfies the following Axioms. Then,
 \[w(\xi):=w_0(\xi)+w_1(\xi)+\cdots\in H^{\prod}(B;\mathbb{Z}_2)\]
-is called the \emph{total Stiefel-Whitney class of $\xi$}.
+is called a \emph{total axiomatic Stiefel-Whitney class of $\xi$}.
 \begin{b_item}
 \item[(SW0)] $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$, for every $k$-plane $\xi:E(\xi)\to B$.
 \item[(SW1)] $w(f^*\xi)=f^*w(\xi)$, for every $f:B'\to B$ and every $\xi:E(\xi)\to B$.
@@ -94,6 +107,9 @@ is called the \emph{total Stiefel-Whitney class of $\xi$}.
 \end{b_item}
 \end{axioms}
 
+For our discussion about Stiefel-Whitney classes, we are heavily relying on ~\cite{husemoller}, Chapter~17, Sections~2-6.
+
+\subsection{Basic properties of Stiefel Whitney classes}
 \begin{proposition}\label{prop:trivial_sw} For all $k\in\mathbb{N}$, $w(\varepsilon_B^k)=1$, i.e. $w_i(\varepsilon_B^k)=0$ for every $i>0$.
 \end{proposition}
 \begin{proof} Let $c_B:B\to\{*\}$ be the map to the one-point set. Then $\varepsilon_B^n\cong c_B^*\varepsilon_{\{*\}}^n$. Indeed, $E(c_B^*\varepsilon_{\{*\}}^n)\cong B\times\mathbb{R}^n=E(\varepsilon_B^n)$. Let $i>0$, then using (SW1) we then get $w_i(\varepsilon_B^n)=c_B^*w_i(\varepsilon_{\{*\}}^n)=0$, since $w_i(\varepsilon_{\{*\}}^n)\in H^i(\{*\},\mathbb{Z}_2)=0$.
@@ -131,18 +147,95 @@ is called the \emph{total Stiefel-Whitney class of $\xi$}.
 \begin{proof} Proposition~\ref{prop:tangent_normal_vb} gives us that $\nu_{M,d}=\tau_M^{\perp_{\mathbb{R}^d}}$ and thus, because of Proposition~\ref{prop:vb_decomposition}, we have that $\varepsilon_M^d\cong\tau_M\oplus\nu_{M,d}$. Using (SW2) we get $w(\tau_M)w(\nu_{M,d})=1$, i.e. $\bar{w}(\tau_M)=w(\nu_{M,d})$.
 \end{proof}
 
+\subsection{Definition of Stiefel Whitney classes}
+\begin{definition} A fiber bundle $p:E\to B$ is \emph{of finite type}, if there exists a finite open cover $\{U_i\}_{i\in[n]}$ such that $p|U_i$ is the trivial fiber bundle.
+\end{definition}
+\begin{theorem}[Leray-Hirsch]\label{thm:leray_hirsch} Let $B$ be a topological space and $p:E(p)\to B$ be a fiber bundle of finite type with fiber $F$. For each $x\in B$ fix some homeomorphism $j_x:F\to p^{-1}(x)$. Let $a_1\in H^{n_1}(E;\mathbb{Z}_2),\ldots,a_r\in H^{n_r}(E;\mathbb{Z}_2)$ such that for every $x\in B$
+\begin{b_item}
+\item the elements $j_x^*a_1,\ldots,j_x^*a_r$ are $\mathbb{Z}_2$-linearly independent in $H^*(F;\mathbb{Z}_2)$ and
+\item $\mathbb{Z}_2\left<j_x^*a_1,\ldots,j_x^*a_r\right>\cong H^*(F;\mathbb{Z}_2)$ as $\mathbb{Z}_2$-modules.
+\end{b_item}
+Then,
+\begin{b_item}
+\item the elements $a_1,\ldots,a_r$ are $H^*(B;\mathbb{Z}_2)$-linearly independent in $H^*(E;\mathbb{Z}_2)$ and
+\item $H^*(B;\mathbb{Z}_2)\left<a_1,\ldots,a_r\right>\cong H^*(E;\mathbb{Z}_2)$ as $H^*(B;\mathbb{Z}_2)$-modules,
+\end{b_item}
+where the $H^*(B;\mathbb{Z}_2)$-module structure on $H^*(E;\mathbb{Z}_2)$ is defined by $p^*:H^*(B;\mathbb{Z}_2)\to H^*(E;\mathbb{Z}_2)$. This means that the isomorphism is given by
+\begin{center}
+\begin{tikzcd}
+H^*(B;\mathbb{Z}_2)\left<a_1,\ldots,a_r\right>\ar[r]&H^*(E;\mathbb{Z}_2)\\[-1.5em]
+\displaystyle\sum_{i=0}^{k-1}x_i\cdot a_{\xi}^i\ar[r,mapsto]&p^*(x_i)a_{\xi}^i
+\end{tikzcd}
+\end{center}
+In particular, $p^*$ is a monomorphism.
+\end{theorem}
+\begin{proof}
+%TODO
+\end{proof}
 
+\begin{proposition}\label{prop:proj_bundle} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Moreover, let $E_0:=\{v\in E:v\neq 0\}$ and $q_E:E_0\to\sfrac{E_0}{\sim}$, where $v\sim v'$ if and only if $\xi(v)=\xi(v')$ and $v=\lambda v'$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Also, let $p:E':=\sfrac{E_0}{\sim}\to B$ be the function $p([v])=\xi(v)$. Then $p$ is a fiber bundle with fiber $\mathbb{R}P^{k-1}$. Moreover, if for some $x\in B$ we fix a linear isomorphism $f_x:\xi^{-1}(x)\to\mathbb{R}^k$, then there exists an induced homeomorphism $g_x:p^{-1}(x)\to\mathbb{R}P^{k-1}$ such that $q\circ f_x(v)=g_x([v])$ for every $v\in E_0\cap\xi^{-1}(b)$, where $q:\mathbb{R}^k\to\mathbb{R}P^{k-1}$ is the usual quotient map.
+\end{proposition}
+\begin{proof} First of all $p$ is well defined and continuous, since $v\sim v'$ means in particular that $\xi(v)=\xi(v')$. So, it only remains to show that $p$ is locally trivial. Let $x\in B$, then since $\xi$ is locally trivial, there exists some open $U\subseteq B$ containing $x$ and a vector bundle isomorphism $f_U:\xi^{-1}(U)\to U\times\mathbb{R}^k$. Then, for the function $(id\times q)\circ f_U:E_0\cap\xi^{-1}(U)\to U\times\mathbb{R}P^{k-1}$ and for any $v\sim v'$ it is true that $((id\times q)\circ f_U)(v)=((id\times q)\circ f_U)(v')$, since $f_U$ is linear on each fiber and $q(a)=q(\lambda a)$. So there exists a unique continuous function $g_U:p^{-1}(U)\to U\times\mathbb{R}P^{k-1}$ such that $g_U([v])=((id\times q)\circ f_U)(v)$. The map $g_U$ is a homeomorphism, since its inverse is: $g_U^{-1}(x,[a]):=[f_U^{-1}(x,a)]$. Indeed, this is well defined and continuous, since for $q(a)=q(a')$ we have that $a=\lambda a'$ for some $\lambda\in\mathbb{R}\setminus\{0\}$ and $f_U^{-1}$ is linear over each fiber.
 
+Let us fix some $x\in B$ and a linear isomorphism $f_x:\mathbb{R}^n\to\xi^{-1}(x)$. Then, using the same arguments as for $f_U$, the function $g_x:p^{-1}(x)\to\mathbb{R}P^{k-1}$ with $g_x([v]):=q\circ f_x(v)$ is well defined and continuous. To prove that this is a homeomorphism, we notice that its inverse $g_x^{-1}([a])=[f_x^{-1}(a)]$ is also continuous and well defined.
+\end{proof}
 
+\begin{definition} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Then, the \emph{projective bundle associated with $\xi$} is the fiber bundle $P\xi:E(P\xi)\to B$ with fiber $\mathbb{R}P^{k-1}$, where $E(P\xi)=\sfrac{\{v\in E:v\neq0\}}{\sim}$, $v\sim v'$ if and only if $\xi(v)=\xi(v')$ and $v=\lambda v'$ for some $\lambda\in\mathbb{R}\setminus\{0\}$ and $(P\xi)([v])=\xi(v)$.
+\end{definition}
 
+\begin{definition} For any $k$-plane vector bundle $\xi:E(\xi)\to B$, we define the line bundle $\lambda_{\xi}:E(\lambda_\xi)\to E(P\xi)$ as follows. First, notice that we can write $E(P\xi)=\big\{L\subseteq E(\xi):\exists v\in E(\xi)\text{ such that }L=\mathrm{span}(v)\big\}$. Then, we construct the induced vector bundle $(P\xi)^*\xi:E((P\xi)^*\xi)\to E(P\xi)$. Recall that
+\[E((P\xi)^*\xi)=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\big\}\]
+and define $\lambda_{\xi}\leq(P\xi)^*\xi$ with $E(\lambda_{\xi}):=\big\{(L,v)\in E(P\xi)\times E(\xi):v\in L\big\}\subseteq E((P\xi)^*\xi)$ and $\lambda_{\xi}(L,v)=\xi(v)$.
+\begin{center}
+\begin{tikzcd}
+E(\lambda_{\xi})\ar[dr,"\lambda_{\xi}"']\ar[r,"inc",hook]&E((P\xi)^*\xi)\ar[d,"(P\xi)^*\xi"']\ar[r,"\pi_2"]\ar[dr,phantom,"\lrcorner",near start]&E(\xi)\ar[d,"\xi"]\\[1.7em]
+&B\ar[r,"id"]&B
+\end{tikzcd}
+\end{center}
+\end{definition}
 
-In this section we will follow the approach of ~\cite{husemoller} in Chapter~17, Sections~2-6.
+\begin{lemma}\label{lem:projective_paracompact} Let $B$ be a paracompact space and $\xi:E(\xi)\to B$ a vector bundle. Then $E(P\xi)$ is also paracompact.
+\end{lemma}
+\begin{proof} Since $B$ is paracompact, Proposition~\ref{lem:paracompact_countable_cover} gives us a locally finite, countable open cover $\mathcal{U}=\{U_i\}_{i\in\mathbb{N}}$ of $B$, such that $\xi|U_i$ is a trivial vector bundle. Let $f_{U_i}:\xi^{-1}(U_i)\to U_i\times\mathbb{R}^k$. Next, we use \ref{thm:paracompact_partition_of_unity} to find a subordinate partition of unity $\mathcal{F}=\{u_i\}_{i\in\mathbb{N}}$ of an open subcover of $\mathcal{U}$. Without loss of generality, we suppose that $\mathcal{F}$ is directly subordinate of $\mathcal{U}$, since it is already locally finite. In particular, if we let $V_i:=\mathrm{supp}(u_i)$, then $\mathcal{V}$ is a closed locally finite countable cover of $B$ such that $\xi|V_i$ is a trivial vector bundle and $\{V_i^{\circ}\}_{i\in\mathbb{N}}$ also covers $B$. This means that $\xi^{-1}(V_i)\cong V_i\times\mathbb{R}^k$. As we proved in Proposition~\ref{prop:proj_bundle}, this gives us a homeomorphism $p^{-1}(V_i)\cong V_i\times\mathbb{R}P^{k-1}$. Proposition~\ref{prop:paracompact_closed_subset} gives us that $V_i$ is paracompact and then, Proposition~\ref{prop:paracompact_times_compact} gives us that $V_i\times\mathbb{R}P^{k-1}\cong p^{-1}(V_i)$ is paracompact. If we write $E(P\xi)=\bigcup_{i\in\mathbb{N}}p^{-1}(V_i)$ and notice that $\{p^{-1}(V_i)^{\circ}\}_{i\in\mathbb{N}}$ also covers $E(P\xi)$, then we get that $E(P\xi)$ is paracompact.%TODO write this better
+\end{proof}
 
+\begin{remark} Let $B$ be paracompact, $\xi:E(\xi)\to B$ be any $k$-plane vector bundle and $\lambda_{\xi}:E(\lambda_{\xi})\to E(P\xi)$ the line bundle with $E(\lambda_{\xi})=\big\{(L,v)\in E(P\xi)\times E(\xi):v\in L\big\}$ as defined above. Since $B$ is paracompact, Lemma~\ref{lem:projective_paracompact} gives us that $E(P\xi)$ is paracompact as well. Then, using Theorem~\ref{thm:universal} we find a map $u_{\xi}:E(P\xi)\to\Gr{1}\cong\mathbb{R}P^{\infty}$ such that $\lambda_{\xi}\cong u_{\xi}^*\gamma^1$.
+\begin{center}
+\begin{tikzcd}
+E(\lambda_{\xi})\ar[d,"\lambda_{\xi}\cong u_{\xi}^*\gamma^1"']\ar[r,"\bar{f}_{\xi}"]\ar[dr,phantom,"\lrcorner",near start]&E(\gamma^1)\ar[d,"\gamma^1"]\\[1.7em]
+E(P\xi)\ar[r,"u_{\xi}"]&\mathbb{R}P^{\infty}
+\end{tikzcd}
+\end{center}
+Define now $a_{\xi}:=u_{\xi}^*(z)\in H^*(E(P\xi);\mathbb{Z}_2)$, where $z$ is the generator of $H^*(\mathbb{RP}^{\infty};\mathbb{Z}_2)$, as defined in Theorem~\ref{thm:projective_spaces_cohomology}. Then Theorem~\ref{thm:universal_uniqueness} gives us that $u_{\xi}$ is unique, up to homotopy and thus $a_{\xi}\in H^*(E(P\xi);\mathbb{Z}_2)$ is well defined.
+\end{remark}
 
+\begin{proposition}\label{prop:basis_of_EP} Let $B$ be paracompact and $\xi:E(\xi)\to B$ any $k$-plane vector bundle and also let $a_{\xi}:=u_{\xi}^*z\in H^*(E(P\xi);\mathbb{Z}_2)$ as defined in the previous remark. Then the elements $1,a_{\xi},a_{\xi}^2,\ldots,a_{\xi}^{k-1}$ are a basis of the $H^*(B;\mathbb{Z}_2)$-module $H^*(E(P\xi);\mathbb{Z}_2)$, where the $H^*(B;\mathbb{Z}_2)$-module structure on $H^*(E(P\xi);\mathbb{Z}_2)$ is defined by the function $(P\xi)^*$.
+\end{proposition}
+\begin{proof} The strategy is to use Leray-Hirsch Theorem (\ref{thm:leray_hirsch}) for the fiber bundle $P\xi:E(P\xi)\to B$, which has fiber $F=\mathbb{R}P^{k-1}$. Since $B$ is paracompact, so is $E(P\xi)$ as well, as we saw in Lemma~\ref{lem:projective_paracompact}. So, we need to construct for every $x\in B$ a homeomorphism $j_x:\mathbb{R}P^{k-1}\to(P\xi)^{-1}(x)$, such that $\{j_x^*(1),j_x^*(a_{\xi}),\ldots,j_x^*(a_{\xi}^{k-1})\}$ is a $\mathbb{Z}_2$-basis of $H^*(\mathbb{R}^{k-1};\mathbb{Z}_2)$.
 
-* axiom check\\
-* uniqueness\\
-* examples: tangent of sphere, tautological, tangent of projective
+Let $x\in B$. We fix a linear isomorphism $f_x:\xi^{-1}(x)\to\mathbb{R}^k$ and then we define the homeomorphism $j_x([a]):=g_x^{-1}([a])=[f_x^{-1}(a)]$, as in Proposition~\ref{prop:proj_bundle}. We examine now the line bundle $j_x^*u_{\xi}^*\gamma^1=j_x^*\lambda_{\xi}:E(j_x^*\lambda_{\xi})\to\mathbb{R}P^{k-1}$. Notice that $j_x(\mathbb{R}P^{k-1})=(P\xi)^{-1}(x)\subseteq E(P\xi)$ and thus $j_x^*\lambda_{\xi}=j_x^*(inc^*(\lambda_{\xi}))$:
+\begin{center}
+\begin{tikzcd}
+E(j_x^*\lambda_{\xi})\ar[d,"j_x^*\lambda_{\xi}"']\ar[r,"\bar{j}_x"]\ar[dr,phantom,"\lrcorner",near start]&E(inc^*\lambda_{\xi})\ar[d,"inc^*\lambda_{\xi}"']\ar[r,"inc",hook]\ar[dr,phantom,"\lrcorner",near start]&E(\lambda_{\xi})\ar[d,"\lambda_{\xi}"']\ar[r,"\bar{u}_{
+\xi}"]\ar[dr,phantom,"\lrcorner",near start]&E(\gamma^1)\ar[d,"\gamma^1"]\\[1.7em]
+\mathbb{R}P^{k-1}\ar[r,"j_x"]&(P\xi)^{-1}(x)\ar[r,"inc",hook]&E(P\xi)\ar[r,"u_{\xi}"]&\mathbb{R}P^{\infty}
+\end{tikzcd}
+\end{center}
+Notice that we can write $E(inc^*\lambda_{\xi})=\big\{(L,v)\in (P\xi)^{-1}\times\xi^{-1}:v\in L\big\}$ and thus $E(j^*\lambda_{\xi})=\big\{([a],L,v)\in\mathbb{R}P^{k-1}\times(P\xi)^{-1}(x)\times\xi^{-1}(x):v\in L\text{ and }j_x([a])=L\big\}\cong\big\{([a],v)\in\mathbb{R}P^{k-1}\times\xi^{-1}(x):v\in j_x([a])\big\}\cong\big\{([a],b)\in\mathbb{R}P^{k-1}\times\mathbb{R}^k:f_x^{-1}(b)\in j_x([a])\big\}$. But $f_x^{-1}(b)\in j_x([a])$ if and only if $[f_x^{-1}(b)]=j_x([a])$ and since $j_x$ is induced by $f_x$, this is equivallent to $j_x([b])=j_x([a])$, i.e. $[b]=[a]$ since $j_x$ is a homemorphism which is equivalent to $b\in[a]$. This proves that $j_x^*\lambda_{\xi}\cong\gamma_k^1$, i.e. $(u_{\xi}\circ j_x)^*(\gamma^1)\cong\gamma_k^1=\iota_{1,k}^*(\gamma^1)$, because of Proposition~\ref{prop:restriction}. So, using Theorem~\ref{thm:universal_uniqueness} $u_{\xi}\circ j_x\simeq\iota_{1,k}$ and thus $j_x^*u_{\xi}^*=\iota_{1,k}^*:H^*(\mathbb{R}P^{\infty};\mathbb{Z}_2)\to H^*(\mathbb{R}P^{k-1};\mathbb{Z}_2)$. Thus, due to the definition of $a_{\xi}$ and Theorem~\ref{thm:projective_spaces_cohomology}, we get $j_x^*(a_{\xi})=j_x^*(u_{\xi}^*(z))=\iota_{1,k}(z)=z_{k-1}\in H^1(\mathbb{R}P^{k-1};\mathbb{Z}_2)$ and hence $j_x^*(a_{\xi}^i)=j_x^*(a_{\xi})^i=z_{k-1}^i$. This means that $\{j_x^*(1),j_x^*(a_{\xi}),j_x^*(a_{\xi}^2),\ldots,j_x^*(a_{\xi}^{k-1})\}=\{1,z_{k-1},z_{k-1}^2,\ldots,z_{k-1}^{k-1}\}$ is a $\mathbb{Z}_2$-linear independent set that generates the $\mathbb{Z}_2$-module $H^*(\mathbb{R}P^{k-1})$.
+
+Leray-Hirsch theorem gives us now that the set $\{1,a_{\xi},\ldots,a_{\xi}^{k-1}\}$ is a $H^*(B;\mathbb{Z}_2)$-linearly independent set in $H^*(E(P\xi);\mathbb{Z}_2)$ and that
+\[H^*(B;\mathbb{Z}_2)\left<1,a_{\xi},a_{\xi}^2,\ldots,a_{\xi}^{k-1}\right>\cong H^*(E(P\xi);\mathbb{Z}_2)\]
+as $H^*(B;\mathbb{Z}_2)$-modules, where the isomorphism is given by:
+\[\sum_{i=0}^{k-1}x_i\cdot a_{\xi}^i\ \longmapsto\ \sum_{i=0}^{k-1}(P\xi)^*(x_i)a_{\xi}^i\qedhere\]
+\end{proof}
+
+\begin{definition} Let $B$ be paracompact and $\xi:E(\xi)\to B$ any $k$-plane vector bundle and also let $a_{\xi}:=u_{\xi}^*z\in H^*(E(P\xi);\mathbb{Z}_2)$ as before. Then, because of Proposition~\ref{prop:basis_of_EP}, for each $i\in[k]$ there exists a $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$, such that
+\[a_{\xi}^k=\sum_{i=0}^{k-1}\Big((P\xi)^*\big(-w_{k-i}(\xi)\big)\Big)a_{\xi}^i\]
+Then, $w_i(\xi)$ is called \emph{the $i$-th Stiefel-Whitney class of $\xi$} and $1+w_1(\xi)+\ldots+w_k(\xi)$ is called the \emph{total Stiefel-Whitney class of $\xi$}.
+\end{definition}
+\subsection{Uniqueness of Stiefel Whitney classes}
+
+\subsection{Existence of Stiefel Whitney classes}
 
 
 %* elementary schubert calculus?

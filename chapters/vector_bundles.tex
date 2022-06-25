@@ -406,7 +406,17 @@ At this point the question about decomposing a vector bundle is positively answe
 \begin{definition} A topological space $X$ is \emph{paracompact} if $X$ is Hausdorff and for every open cover $\mathcal{U}$ of $X$ there exists some locally finite open cover $\mathcal{V}$ of $X$ that is a refinement of $\mathcal{U}$.
 \end{definition}
 
-Paracompact spaces were first defined in \cite{paracompactness}, where it was also proven that they are at least $T_4$:
+\begin{proposition}\label{prop:paracompact_closed_subset} Let $X$ be a paracompact space and $A\subset X$ any closed subset. Then $A$ is paracompact.
+\end{proposition}
+\begin{proof} Indeed, let $\{U_i\}_{i\in I}$ be an open cover of $A$, i.e. there exists some open collection $\{V_i\}_i$ of subsets of $X$, such that $U_i=A\cap V_i$. Let $W_i:=V_i\cup(X\setminus A)$. Then $\{W_i\}_{i\in I}$ is an open cover of $X$. Since $X$ is paracompact, there exists some locally finite open cover $\{Z_j\}_{j\in J}$ of $X$, that is a refinement of $\{W_i\}_{i\in I}$. Then $\{Z_j\cap A\}_{j\in J}$ is a locally finite open cover of $A$, that is a refinement of $\{U_i\}_{i\in I}$.
+\end{proof}
+
+\begin{proposition}\label{prop:paracompact_times_compact} Let $X$ be a paracompact space and $K$ a compact space. Then $X\times K$ is a paracompact space.
+\end{proposition}
+\begin{proof} Let $\{U_i\}_{i\in I}$ be an open cover of $X\times K$. Then, for each $(x,a)\in X\times K$ there exists some open $U_i\ni(x,k)$. So, there exists some open $A_{x,k}\subseteq X$ and open $B_{x,k}\subseteq K$, such that $A_{x,k}\times B_{x,k}\subseteq U_i$. Notice that $\{A_{x,k}\times B_{x,k}\}_{(x,k)\in X\times K}$ is an open cover of $X\times K$ that is a refinement of $\{U_i\}_{i\in I}$. Let us now fix some $x_0\in X$ and notice that the family $\{B_{x_0,k}\}_{k\in K}$ is an open cover of $K$. Since $K$ is compact, there exist only finitely many $k_1(x_0),\ldots,k_{r(x_0)}(x_0)\in K$ such that $\{B_{x_0,k}\}_{k\in\{k_1(x_0),\ldots,k_{r(x_0)}(x_0)\}}$ is an open cover of $K$. Define now $A_{x_0}:=\bigcap_{k\in\{k_1(x_0),\ldots,k_{r(x_0)}(x_0)\}}A_{x_0,k}\subseteq X$. This is a finite intersection of open sets, which contains $x_0$, so it is an open set. So, we get an open cover $\{A_x\}_{x\in X}$ of $X$. Since $X$ is paracompact, there exists some locally finite open cover $\{L_j\}_{j\in J}$ of $X$ that is a refinement of $\{A_x\}_{x\in X}$, i.e. for every $j\in J$ there exists some $x=x(j)\in X$ such that $L_j\subseteq A_{x(j)}$. So, we now define $\big\{L_j\times B_{x(j),k}\big\}_{j\in J, k\in\{k_1(x(j)),\ldots,k_{r(x(j))}(x(j))\}}$, which is a locally finite open cover of $X\times K$ and a refinement of $\{A_{x,k}\times B_{x,k}\}_{(x,k)\in X\times K}$.
+\end{proof}
+
+Paracompact spaces were first defined in \cite{paracompactness}, where it was also proven that they are $T_4$:
 \begin{theorem}[Dieudonn\'e] Let $X$ be a paracompact space, then $X$ is normal.
 \end{theorem}
 
@@ -444,9 +454,12 @@ Moreover, notice that $\{U(S)\}_{S\in\mathcal{S}}$ covers $B$, where $\mathcal{S
 
 Last, for every $k\in\mathbb{N}$ we define $U_k:=\bigcup_{S\in\mathcal{S}_k}U(S)$, where $\mathcal{S}_k=\{S\in\mathcal{S}:|S|=k\}$. Then, $\{U_k\}_{k\in\mathbb{N}}$ is clearly a cover of $B$ with $U_k$ open for every $k\in\mathbb{N}$. Moreover, it is true that $U_k$ is the disjoint union of all $U(S)$ for $S\in\mathcal{S}_k$. Indeed, for any two $S,S'\in\mathcal{S}_k$ with $S\neq S'$, there exist $\alpha\in S\setminus S'$ and $\beta\in S'\setminus S$. If there was some $x\in U(S)\cap U(S')$, then for this $x$ we would have simultaneously that $u_{\alpha}(x)>u_{\beta}(x)$ and $u_{\beta}(x)>u_{\alpha}(x)$, which is impossible. So, $\xi|U_k\cong\amalg_{S\in\mathcal{S}_k}\xi|_{U(S)}$ and thus is a trivial vector bundle. Also, for every $x\in B$ there exists some $X\subseteq B$ containing $x$, such that $X\cap U(S)\neq\emptyset$ only for finitely many $S\in\mathcal{S}$, since $\{U(S)\}_{S\in\mathcal{S}}$. This means that $X\cap U_k\neq\emptyset$ only for finitely many $k\in\mathbb{N}$. Hence $\{U_k\}_{k\in\mathbb{N}}$ is a locally finite, countable, open cover of $B$ making $\xi$ locally trivial.
 \end{proof}
+\begin{remark}\label{lem:paracompact_countable_cover_fb} At no point in this proof did we need that $\xi$ is linear over each fiber, so exactly the same proof can be done for a fiber bundle $p:E(p)\to B$. Namely, if $B$ is paracompact, then there exists some locally finite countable open cover $\{U_k\}_{k\in\mathbb{N}}$ of $B$ such that $p|U_k$ is a trivial fiber bundle for every $k\in\mathbb{N}$.
+\end{remark}
 
-
+%TODO: base/basis uniform
 %TODO: obviously/trivially -> clearly
+%TODO: linear injection -> linear monomorphism
 %TODO_MAYBE: tangent and normal vb
 %TODO_MAYBE: define parallelizable spaces
 %TODO_MAYBE: counterexample of vb over non-paracompact space w/o inner product
