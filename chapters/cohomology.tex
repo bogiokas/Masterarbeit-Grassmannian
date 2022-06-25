@@ -101,7 +101,8 @@ Hence, using Lemma~\ref{lem:injection_from_total_space} again, we can now define
 where $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$ for every $i\in\mathbb{N}_0$ \emph{satisfies the Stiefel-Whitney Axioms} if it satisfies the following four Axioms:
 \begin{b_item}
 \item[(SW1)] $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$, for every $k$-plane $\xi:E(\xi)\to B$.
-\item[(SW2)] $w(f^*\xi)=f^*w(\xi)$, for every $f:B'\to B$ and every $\xi:E(\xi)\to B$.
+\item[(SW2)] $w(f^*\xi)=f^*w(\xi)$, for every $f:B'\to B$ and every $\xi:E(\xi)\to B$ and\\[0.2em]
+$w(\xi)=w(\eta)$, for every $\xi\cong\eta$.
 \item[(SW3)] $w(\eta\oplus\xi)=w(\eta)w(\xi)$, for every $\eta:E(\eta)\to B$ and every $\xi:E(\xi)\to B$.
 \item[(SW4)] $w(\gamma_1^1)\neq0$.
 \end{b_item}
@@ -114,11 +115,6 @@ In this subsection, we assume that there exists some $w(\xi)$ satisfying the Sti
 \begin{proposition}\label{prop:trivial_sw} For all $k\in\mathbb{N}$, $w(\varepsilon_B^k)=1$, i.e. $w_i(\varepsilon_B^k)=0$ for every $i>0$.
 \end{proposition}
 \begin{proof} Let $c_B:B\to\{*\}$ be the map to the one-point set. Then $\varepsilon_B^n\cong c_B^*\varepsilon_{\{*\}}^n$. Indeed, $E(c_B^*\varepsilon_{\{*\}}^n)\cong B\times\mathbb{R}^n=E(\varepsilon_B^n)$. Let $i>0$, then using (SW1) we then get $w_i(\varepsilon_B^n)=c_B^*w_i(\varepsilon_{\{*\}}^n)=0$, since $w_i(\varepsilon_{\{*\}}^n)\in H^i(\{*\},\mathbb{Z}_2)=0$.
-\end{proof}
-
-\begin{proposition} Let $\eta:E(\eta)\to B$, $\xi:E(\xi)\to B$ two vector bundles such that $\eta\cong\xi$. Then $w(\eta)=w(\xi)$.
-\end{proposition}
-\begin{proof} Let $\phi:E(\eta)\to E(\xi)$ be a vector bundle isomorphism, then $\eta=(id)^*\xi$. Then, (SW1) gives $w(\eta)=w((id)^*\xi)=(id)^*w(\xi)=w(\xi)$.
 \end{proof}
 
 \begin{proposition} Let $\xi:E(\xi)\to B$ and $n\in\mathbb{N}$, then $w(\xi\oplus\varepsilon_B^n)=w(\xi)$.
@@ -185,7 +181,7 @@ Let us fix some $x\in B$ and a linear isomorphism $f_x:\mathbb{R}^n\to\xi^{-1}(x
 \begin{definition} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Then, the \emph{projective bundle associated with $\xi$} is the fiber bundle $P\xi:E(P\xi)\to B$ with fiber $\mathbb{R}P^{k-1}$, where $E(P\xi)=\sfrac{\{v\in E:v\neq0\}}{\sim}$, $v\sim v'$ if and only if $\xi(v)=\xi(v')$ and $v=\lambda v'$ for some $\lambda\in\mathbb{R}\setminus\{0\}$ and $(P\xi)([v])=\xi(v)$.
 \end{definition}
 
-\begin{definition} For any $k$-plane vector bundle $\xi:E(\xi)\to B$, we define the line bundle $\lambda_{\xi}:E(\lambda_\xi)\to E(P\xi)$ as follows. First, notice that we can write $E(P\xi)=\big\{L\subseteq E(\xi):\exists v\in E(\xi)\text{ such that }L=\mathrm{span}(v)\big\}$. Then, we construct the induced vector bundle $(P\xi)^*\xi:E((P\xi)^*\xi)\to E(P\xi)$. Recall that
+\begin{definition}\label{def:lambda_xi} For any $k$-plane vector bundle $\xi:E(\xi)\to B$, we define the line bundle $\lambda_{\xi}:E(\lambda_\xi)\to E(P\xi)$ as follows. First, notice that we can write $E(P\xi)=\big\{L\subseteq E(\xi):\exists v\in E(\xi)\text{ such that }L=\mathrm{span}(v)\big\}$. Then, we construct the induced vector bundle $(P\xi)^*\xi:E((P\xi)^*\xi)\to E(P\xi)$. Recall that
 \[E((P\xi)^*\xi)=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\big\}\]
 and define $\lambda_{\xi}\leq(P\xi)^*\xi$ with $E(\lambda_{\xi}):=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\big\}\subseteq E((P\xi)^*\xi)$ and $\lambda_{\xi}(L,v)=\xi(v)$.
 \begin{center}
@@ -215,7 +211,7 @@ E(P\xi)\ar[r,"u_{\xi}"]&\mathbb{R}P^{\infty}
 Define now $a_{\xi}:=u_{\xi}^*(z)\in H^*(E(P\xi);\mathbb{Z}_2)$, where $z$ is the generator of $H^*(\mathbb{RP}^{\infty};\mathbb{Z}_2)$, as defined in Theorem~\ref{thm:projective_spaces_cohomology}. Then Theorem~\ref{thm:universal_uniqueness} gives us that $u_{\xi}$ is unique, up to homotopy and thus $a_{\xi}\in H^*(E(P\xi);\mathbb{Z}_2)$ is well defined.
 \end{remark}
 
-\begin{proposition}\label{prop:basis_of_EP} Let $B$ be paracompact and $\xi:E(\xi)\to B$ any $k$-plane vector bundle and also let $a_{\xi}:=u_{\xi}^*z\in H^*(E(P\xi);\mathbb{Z}_2)$ as defined in the previous remark. Then the elements $1,a_{\xi},a_{\xi}^2,\ldots,a_{\xi}^{k-1}$ are a basis of the $H^*(B;\mathbb{Z}_2)$-module $H^*(E(P\xi);\mathbb{Z}_2)$, where the $H^*(B;\mathbb{Z}_2)$-module structure on $H^*(E(P\xi);\mathbb{Z}_2)$ is defined by the function $(P\xi)^*$.
+\begin{proposition}\label{prop:basis_of_EP} Let $B$ be paracompact and $\xi:E(\xi)\to B$ any $k$-plane vector bundle and also let $a_{\xi}:=u_{\xi}^*z\in H^*(E(P\xi);\mathbb{Z}_2)$ as defined in the previous remark. Then the elements $1,a_{\xi},a_{\xi}^2,\ldots,a_{\xi}^{k-1}$ are a basis of the $H^*(B;\mathbb{Z}_2)$-module $H^*(E(P\xi);\mathbb{Z}_2)$, where the $H^*(B;\mathbb{Z}_2)$-module structure on $H^*(E(P\xi);\mathbb{Z}_2)$ is defined by the function $(P\xi)^*$. In particular, $(P\xi)^*$ is a monomorphism.
 \end{proposition}
 \begin{proof} The strategy is to use Leray-Hirsch Theorem (\ref{thm:leray_hirsch}) for the fiber bundle $P\xi:E(P\xi)\to B$, which has fiber $F=\mathbb{R}P^{k-1}$. Since $B$ is paracompact, so is $E(P\xi)$ as well, as we saw in Lemma~\ref{lem:projective_paracompact}. So, we need to construct for every $x\in B$ a homeomorphism $j_x:\mathbb{R}P^{k-1}\to(P\xi)^{-1}(x)$, such that $\{j_x^*(1),j_x^*(a_{\xi}),\ldots,j_x^*(a_{\xi}^{k-1})\}$ is a $\mathbb{Z}_2$-basis of $H^*(\mathbb{R}^{k-1};\mathbb{Z}_2)$.
 
@@ -243,7 +239,26 @@ Then, $w_i(\xi)$ is called \emph{the $i$-th Stiefel-Whitney class of $\xi$} and 
 \subsection{Uniqueness of Stiefel Whitney classes}
 In this subsection we prove that if some $w(\xi)$ satisfies the the Stiefel-Whitney axioms, then this is unique.
 
+\begin{definition} Let $B',B$ be any topological spaces and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, a \emph{splitting map of $\xi$} is a map $f:B'\to B$ such that $f^*\xi\cong\lambda_1\oplus\cdots\oplus\lambda_k$ for some line bundles $\lambda_1,\ldots,\lambda_k$ and $f^*:H^*(B;\mathbb{Z}_2)\to H^*(B';\mathbb{Z}_2)$ is a monomorphism.
+\end{definition}
 
+\begin{proposition}\label{prop:splitting_map} Let $B$ be a paracompact topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundles. Then, there exists a splitting map of $\xi$.
+\end{proposition}
+\begin{proof} For the proof we do induction on $k$. In the base case $k=1$, $\xi$ is already decomposed in a whitney sum of line bundles and since $id^*$ is a monomorphism, $id_B:B\to B$ is a splitting map.
+
+For $k\geq2$, let $(P\xi):E(P\xi)\to B$ be the projective bundle associated with $\xi$. Then, $\lambda_{\xi}:E(\lambda_{\xi})\to E(P\xi)$, as defined in \ref{def:lambda_xi} is a line bundle with $\lambda_{\xi}\leq(P\xi)^*\xi$. Let $\sigma_{\xi}:=((P\xi)^*\xi)/\lambda_{\xi}:E((P\xi)^*\xi)\to E(P\xi)$ be the $(k-1)$-plane vector bundle over $E(P\xi)$, which is paracompact due to Lemma~\ref{lem:projective_paracompact}. Because of the induction hypothesis, there exists a splitting map of $\sigma_{\xi}$, i.e. some topological space $B'$ and a continuous function $f:B'\to E(P\xi)$ such that $f^*:H^*(E(P\xi);\mathbb{Z}_2)\to H^*(B';\mathbb{Z}_2)$ is a monomorphism and $f^*\sigma_{\xi}\cong\lambda_1\oplus\cdots\oplus\lambda_{k-1}$ for some line bundles $\lambda_1,\ldots,\lambda_{k-1}$.
+
+Since $E(P\xi)$ is paracompact, Proposition~\ref{prop:paracompact_is_euclidean} gives that $\xi$ is a euclidean vector bundle and thus, because of Remark~\ref{rem:vb_decomposition}, we have that $(P\xi)^*\xi\cong\lambda_{\xi}\oplus\sigma_{\xi}$. Then, $(P\xi\circ f)^*\xi\cong f^*(\lambda_{\xi}\oplus\sigma_{\xi})\cong f^*(\lambda_{\xi})\oplus\lambda_1\oplus\cdots\oplus\lambda_{k-1}$, where we could to distribute $f^*$ to the whitney summands because of Lemma~\ref{lem:induced_sum}. Notice that $f^*\lambda_{\xi}$ is a line bundle as well and that $(P\xi)^*$ is a monomorphism, as it was proven in Proposition~\ref{prop:basis_of_EP}. Thus, $(P\xi\circ f)^*=f^*(P\xi)^*$ is also a monomorphism, which means that $P\xi\circ f:B'\to B$ is a splitting map of $\xi$.
+\end{proof}
+
+\begin{theorem} For a paracompact space $B$ let $w$ and $w'$ be two mappings of finite vector bundles in $H^{\prod}(B;\mathbb{Z}_2)$ that satisfy the Stiefel-Whitney axioms. Then $w(\xi)=w'(\xi)$ for every $k$-plane vector bundle $\xi:E(\xi)\to B$.
+\end{theorem}
+\begin{proof} First we prove the assertion for the line bundle $\gamma^1:E(\gamma^1)\to B$. Notice that Proposition~\ref{prop:restriction} gives $\iota_{1,2}^*\gamma^1=\gamma_1^1$. Then, $w_1(\gamma^1)=\iota^*w_1(\gamma_1^1)\neq0$ by using (SW2) and (SW4). This means that $\gamma^1\neq0$ as well and since $w_1(\gamma^1)\in H^1(\mathbb{R}P^{\infty})\cong\mathbb{Z}_2$, there is only one choice for $w_1(\gamma^1)$, namely $w_1(\gamma^1)=z$, where $H^*(\mathbb{R}P^{\infty},\mathbb{Z}_2)\cong\mathbb{Z}_2[z]$. Moreover, because of (SW1), $w_i(\gamma^1)=0$ for every $i>1$ and $w_0=1$. This means that $w(\gamma^1)=w'(\gamma^1)=1+z$.
+
+Next, we prove the uniqueness for every line bundle $\lambda:E\to B$. Since $B$ is paracompact, we use Theorem~\ref{thm:universal} and Theorem~\ref{thm:universal_uniqueness} to write $\lambda=u_{\lambda}^*\gamma^1$ for some unique $u_{\lambda}:B\to\mathbb{R}P^{\infty}$, up to homotopy. So, using (SW2), $w(\lambda)=w(u_{\lambda}^*\gamma^1)=u_{\lambda}^*w(\gamma^1)$ and thus, $w(\lambda)=w'(\lambda)=u_{\lambda}^*(1+z)$.
+
+And finally, we prove it for a general $k$-plane vector bundle $\xi:E\to B$. Since $B$ is paracompact, Proposition~\ref{prop:splitting_map} gives us a space $B'$ and a continuous map $f:B'\to B$ such that $f^*:H^*(B;\mathbb{Z}_2)\to H^*(B';\mathbb{Z}_2)$ is a monomorphism and $f^*\xi\cong\lambda_1\oplus\lambda_k$ for some line bundles $\lambda_1,\ldots,\lambda_k$. Then, (SW2) and (SW3) give us that $f^*w(\xi)=w(f^*\xi)=w(\lambda_1\oplus\cdots\oplus\lambda_k)=w(\lambda_1)\cdots w(\lambda_k)=w'(\lambda_1)\cdots w'(\lambda_k)=w'(\lambda_1\oplus\cdots\lambda_k)=w'(f^*\xi)=f^*w'(\xi)$. Since $f^*$ is a monomorphism, we get $w(\xi)=w'(\xi)$.
+\end{proof}
 
 \subsection{Existence of Stiefel Whitney classes}
 In this subsection we prove that the Stiefel-Whitney classes defined previously satisfy the Stiefel-Whitney axioms.
@@ -254,7 +269,7 @@ In this subsection we prove that the Stiefel-Whitney classes defined previously 
 
 \begin{proposition} Let $B',B$ be two paracompact spaces, $f:B'\to B$ be any continuous function and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w(f^*\xi)=f^*w(\xi)$.
 \end{proposition}
-\begin{proof} Recall that $E(f^*\xi)=\big\{(x,v)\in B'\times E(\xi):f(x)=\xi(v)\big\}$ and define $\bar{f}:E(f^*\xi)\to E(\xi)$ with $\bar{f}(x,v):=v$, completing the pullback square. Then, define $g:E(P(f^*\xi))\to E(P\xi)$ with $g([(x,v)]):=[\bar{f}(x,v)]=[v]$. This is continuous and well defined. Indeed, let $(x_1,v_1),(x_2,v_2)\in E(f^*\xi)$ with $v_1,v_2\neq 0$ and $[(x_1,v_1)]=[(x_2,v_2)]$ in $E(P(f^*\xi))$. Then $x_1=x_2$, i.e. $\xi(v_1)=f(x_1)=f(x_2)=\xi(v_2)$ and $v_1=\lambda v_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Thus, $[v_1]=[v_2]$ in $E(Pf)$. So, we have the following two commutative diagrams:
+\begin{proof} Recall that $E(f^*\xi)=\big\{(x,v)\in B'\times E(\xi):f(x)=\xi(v)\big\}$ and define $\bar{f}:E(f^*\xi)\to E(\xi)$ with $\bar{f}(x,v):=v$, completing the pullback square. Then, define $g:E(P(f^*\xi))\to E(P\xi)$ with $g([(x,v)]):=[\bar{f}(x,v)]=[v]$. This is continuous and well defined. Indeed, let $(x_1,v_1),(x_2,v_2)\in E(f^*\xi)$ with $v_1,v_2\neq 0$ and $[(x_1,v_1)]=[(x_2,v_2)]$ in $E(P(f^*\xi))$. Then $x_1=x_2$, i.e. $\xi(v_1)=f(x_1)=f(x_2)=\xi(v_2)$ and $v_1=\lambda v_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Thus, $[v_1]=[v_2]$ in $E(P\xi)$. So, we have the following two commutative diagrams:
 \begin{center}
 \begin{tikzcd}
 &[-7em]&[-3em]&[-10em]\faktor{\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\text{ and }v\neq0\big\}}{\left\{\substack{(x_1,v_1)\sim(x_2,v_2)\text{ iff }\\[0.2em]x_1=x_2\text{ and }v_1=\lambda v_2}\right\}}\ar[dd,phantom,"\cong"{yshift=1em,rotate=90}]&[-10em]\\[-3.2em]

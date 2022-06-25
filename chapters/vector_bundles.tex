@@ -298,6 +298,11 @@ $E(d^*(\xi_1\times\xi_2))=\big\{(x,v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):(
 where the homeomorphism is a vector bundle isomorphism.
 \end{proof}
 This is the description used in the remainder of the thesis.
+\begin{lemma}\label{lem:induced_sum} Let $\eta,\xi$ be vector bundles over $B$ and $f:B'\to B$ be any continuous function. Then $f^*(\eta\oplus\xi)\cong(f^*\eta)\oplus(f^*\xi)$.
+\end{lemma}
+\begin{proof} Notice that $E\big((f^*\eta)\oplus(f^*\xi)\big)=\big\{(x,a,y,b)\in B'\times E(\eta)\times B'\times E(\xi):f(x)=\eta(a)\text{ and }f(y)=\xi(b)\text{ and }x=y\big\}\cong\big\{(x,a,b)\in B'\times E(\eta)\times E(\xi):\eta(a)=\xi(b)=x\big\}=E\big(f^*(\eta\oplus\xi)\big)$, where the homeomorphism is a bundle map and a linear isomorphism fiber-wise. So, using Proposition~\ref{prop:local_to_global_iso_vector} it is a vector bundle isomorphism.
+\end{proof}
+
 \begin{proposition} Let $\xi_1,\xi_2,\eta_1,\eta_2$ be vector bundles over $B$ and $\phi_1:E(\xi_1)\to E(\eta_1)$, $\phi_2:E(\xi_2)\to E(\eta_2)$ vector bundle maps. Moreover, let $\phi_1\oplus\phi_2:E(\xi_1\oplus\xi_2)\to E(\eta_1\oplus\eta_2)$ be the function taking $(v_1,v_2)$ to $(\phi_1(v_1),\phi_2(v_2))$. Then $\phi_1\oplus\phi_2$ is a vector bundle map.
 \end{proposition}
 \begin{proof} First of all, $\phi_1\oplus\phi_2$ is well defined, since $(\eta_1\circ\phi_1)(v_1)=\xi_1(v_1)=\xi_2(v_2)=(\eta_2\circ\phi_2)(v_2)$. Also it is a bundle map, since $\big((\eta_1\oplus\eta_2)\circ(\phi_1\oplus\phi_2)\big)(v_1,v_2)=(\eta_1\circ\phi_1)(v_1)=\xi_1(v_1)=(\xi_1\oplus\xi_2)(v_1,v_2)$. It is also trivial to check that $\phi_1\oplus\phi_2$ is linear on each fiber.
@@ -393,7 +398,7 @@ E(\xi\oplus\xi^{\perp_{\eta}})\ar[r,"\phi"]&E(\eta)\\[-1.5em]
 \end{center}
 It is easy to see that this is a bundle map which is also a linear isomorphism on each fiber. Thus, due to Proposition~\ref{prop:local_to_global_iso_vector}, $\phi$ is a vector bundle isomorphism.
 \end{proof}
-\begin{remark} For every euclidean vector bundle $\eta$ and for any $\xi\leq\eta$ we have the following decomposition $\eta\cong\xi\oplus\sfrac{\eta}{\xi}$.
+\begin{remark}\label{rem:vb_decomposition} For every euclidean vector bundle $\eta$ and for any $\xi\leq\eta$ we have the following decomposition $\eta\cong\xi\oplus\sfrac{\eta}{\xi}$.
 \end{remark}
 
 At this point the question about decomposing a vector bundle is positively answered, provided that the vector bundle in question is a euclidean vector bundle. A very natural question now is how restrictive the notion of a euclidean vector is. As it is shown at the end of the next section, a vector bundle admits a euclidean vector bundle structure at least when the base space is paracompact.
@@ -430,7 +435,7 @@ Using the fact that paracompact spaces are normal together with Urysohn's lemma,
 \begin{theorem}\label{thm:paracompact_partition_of_unity} Let $X$ be a paracompact topological space and let $\mathcal{U}$ be an open cover of $X$, then there exists some locally finite open cover $\mathcal{V}$ of $X$ that is a refinement of $\mathcal{U}$ and a partition of unity $\mathcal{F}$ that is subordinate of $\mathcal{V}$.
 \end{theorem}
 
-\begin{proposition} Let $B$ be a paracompact topological space and $\xi:E(\xi)\to B$ an $n$-plane vector bundle. Then, $\xi$ is a euclidean vector bundle.
+\begin{proposition}\label{prop:paracompact_is_euclidean} Let $B$ be a paracompact topological space and $\xi:E(\xi)\to B$ an $n$-plane vector bundle. Then, $\xi$ is a euclidean vector bundle.
 \end{proposition}
 \begin{proof} Our goal is to define a continuous $\beta:E(\xi\oplus\xi)\to\mathbb{R}$, the restriction of which on $(\xi\oplus\xi)^{-1}(x)$ is an inner product in $\xi^{-1}(x)$. For each $x\in B$ there exists some open $U_x\subseteq B$ containing $x$ and a vector bundle isomorphism $f_{U_x}:\xi^{-1}(U_x)\to U_x\times\mathbb{R}^n$. Notice that $\{U_x\}_{x\in B}$ is an open cover of $X$. Since $B$ is paracompact, Theorem~\ref{thm:paracompact_partition_of_unity} gives us a locally finite open cover $\mathcal{V}=\{V_i\}_{i\in I}$ of $X$ that is a refinement of $\{U_x\}_{x\in B}$ and a partition of unity $\mathcal{F}=\{h_i\}_{i\in I}$ that is subordinate of $\mathcal{V}$. Since $\mathcal{V}$ is a refinement, every $V_i\in\mathcal{V}$ is contained inside some $U_x$ and thus, using Remark~\ref{rem:vector_subcover} the restriction $f_{V_i}:\xi^{-1}(V_i)\to V_i\times\mathbb{R}^n$ of $f_{U_x}$ is a vector bundle isomorphism. Recall that we can write $E(\xi\oplus\xi)=\left\{(v_1,v_2)\in E(\xi)\times E(\xi):\xi(v_1)=\xi(v_2)\right\}$ and $(\xi\oplus\xi)(v_1,v_2)=\xi(v_1)$. Then, notice that $(\xi\oplus\xi)^{-1}(V_i)=E(\xi|V_i\oplus\xi|V_i)$ and let $f_{V_i}\oplus f_{V_i}:E(\xi|V_i\oplus\xi|V_i)\to V_i\times\mathbb{R}^n\times\mathbb{R}^n$ as in Definition~\ref{def:wh_sum_map}, taking $(v_1,v_2)$ to $(\xi_1(v_1),(\pi_2\circ f_{V_i})(v_1),(\pi_2\circ f_{V_i})(v_2))$. Moreover, let $\gamma:\mathbb{R}^n\times\mathbb{R}^n\to\mathbb{R}$ be the usual dot product of $\mathbb{R}^n$, i.e. $\gamma(u_1,u_2)=u_1^tu_2$. Then, we can define the following continuous map:
 \begin{center}
@@ -457,6 +462,7 @@ Last, for every $k\in\mathbb{N}$ we define $U_k:=\bigcup_{S\in\mathcal{S}_k}U(S)
 \begin{remark}\label{lem:paracompact_countable_cover_fb} At no point in this proof did we need that $\xi$ is linear over each fiber, so exactly the same proof can be done for a fiber bundle $p:E(p)\to B$. Namely, if $B$ is paracompact, then there exists some locally finite countable open cover $\{U_k\}_{k\in\mathbb{N}}$ of $B$ such that $p|U_k$ is a trivial fiber bundle for every $k\in\mathbb{N}$.
 \end{remark}
 
+%TODO: (SWi) changed
 %TODO: pushout-> pullback
 %TODO: base/basis uniform
 %TODO: obviously/trivially -> clearly
