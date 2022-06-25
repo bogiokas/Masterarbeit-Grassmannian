@@ -96,20 +96,21 @@ Hence, using Lemma~\ref{lem:injection_from_total_space} again, we can now define
 \end{proof}
 
 \section{Stiefel-Whitney classes}
-\begin{axioms} Let $B$ be a topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, for each $i\in\mathbb{N}_0$ $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$ is called an \emph{axiomatic $i$-th Stiefel-Whitney class of $\xi$} if it satisfies the following Axioms. Then,
-\[w(\xi):=w_0(\xi)+w_1(\xi)+\cdots\in H^{\prod}(B;\mathbb{Z}_2)\]
-is called a \emph{total axiomatic Stiefel-Whitney class of $\xi$}.
+\begin{axioms} Let $B$ be a topological space and $\xi:E(\xi)\to B$ any $k$-plane vector bundle. Then, an element
+\[w(\xi)=w_0(\xi)+w_1(\xi)+w_2(\xi)+\cdots\in H^{\prod}(B;\mathbb{Z}_2)\]
+where $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$ for every $i\in\mathbb{N}_0$ \emph{satisfies the Stiefel-Whitney Axioms} if it satisfies the following four Axioms:
 \begin{b_item}
-\item[(SW0)] $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$, for every $k$-plane $\xi:E(\xi)\to B$.
-\item[(SW1)] $w(f^*\xi)=f^*w(\xi)$, for every $f:B'\to B$ and every $\xi:E(\xi)\to B$.
-\item[(SW2)] $w(\eta\oplus\xi)=w(\eta)w(\xi)$, for every $\eta:E(\eta)\to B$ and every $\xi:E(\xi)\to B$.
-\item[(SW3)] $w(\gamma_1^1)\neq0$.
+\item[(SW1)] $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$, for every $k$-plane $\xi:E(\xi)\to B$.
+\item[(SW2)] $w(f^*\xi)=f^*w(\xi)$, for every $f:B'\to B$ and every $\xi:E(\xi)\to B$.
+\item[(SW3)] $w(\eta\oplus\xi)=w(\eta)w(\xi)$, for every $\eta:E(\eta)\to B$ and every $\xi:E(\xi)\to B$.
+\item[(SW4)] $w(\gamma_1^1)\neq0$.
 \end{b_item}
 \end{axioms}
 
 For our discussion about Stiefel-Whitney classes, we are heavily relying on ~\cite{husemoller}, Chapter~17, Sections~2-6.
 
 \subsection{Basic properties of Stiefel Whitney classes}
+In this subsection, we assume that there exists some $w(\xi)$ satisfying the Stiefel-Whitney axioms and examine the nice properties that it also satisfies.
 \begin{proposition}\label{prop:trivial_sw} For all $k\in\mathbb{N}$, $w(\varepsilon_B^k)=1$, i.e. $w_i(\varepsilon_B^k)=0$ for every $i>0$.
 \end{proposition}
 \begin{proof} Let $c_B:B\to\{*\}$ be the map to the one-point set. Then $\varepsilon_B^n\cong c_B^*\varepsilon_{\{*\}}^n$. Indeed, $E(c_B^*\varepsilon_{\{*\}}^n)\cong B\times\mathbb{R}^n=E(\varepsilon_B^n)$. Let $i>0$, then using (SW1) we then get $w_i(\varepsilon_B^n)=c_B^*w_i(\varepsilon_{\{*\}}^n)=0$, since $w_i(\varepsilon_{\{*\}}^n)\in H^i(\{*\},\mathbb{Z}_2)=0$.
@@ -148,6 +149,7 @@ For our discussion about Stiefel-Whitney classes, we are heavily relying on ~\ci
 \end{proof}
 
 \subsection{Definition of Stiefel Whitney classes}
+In this subsection we define the Stiefel-Whitney classes for every $k$-plane bundle over a paracompact space.
 \begin{definition} A fiber bundle $p:E\to B$ is \emph{of finite type}, if there exists a finite open cover $\{U_i\}_{i\in[n]}$ such that $p|U_i$ is the trivial fiber bundle.
 \end{definition}
 \begin{theorem}[Leray-Hirsch]\label{thm:leray_hirsch} Let $B$ be a topological space and $p:E(p)\to B$ be a fiber bundle of finite type with fiber $F$. For each $x\in B$ fix some homeomorphism $j_x:F\to p^{-1}(x)$. Let $a_1\in H^{n_1}(E;\mathbb{Z}_2),\ldots,a_r\in H^{n_r}(E;\mathbb{Z}_2)$ such that for every $x\in B$
@@ -185,21 +187,25 @@ Let us fix some $x\in B$ and a linear isomorphism $f_x:\mathbb{R}^n\to\xi^{-1}(x
 
 \begin{definition} For any $k$-plane vector bundle $\xi:E(\xi)\to B$, we define the line bundle $\lambda_{\xi}:E(\lambda_\xi)\to E(P\xi)$ as follows. First, notice that we can write $E(P\xi)=\big\{L\subseteq E(\xi):\exists v\in E(\xi)\text{ such that }L=\mathrm{span}(v)\big\}$. Then, we construct the induced vector bundle $(P\xi)^*\xi:E((P\xi)^*\xi)\to E(P\xi)$. Recall that
 \[E((P\xi)^*\xi)=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\big\}\]
-and define $\lambda_{\xi}\leq(P\xi)^*\xi$ with $E(\lambda_{\xi}):=\big\{(L,v)\in E(P\xi)\times E(\xi):v\in L\big\}\subseteq E((P\xi)^*\xi)$ and $\lambda_{\xi}(L,v)=\xi(v)$.
+and define $\lambda_{\xi}\leq(P\xi)^*\xi$ with $E(\lambda_{\xi}):=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\big\}\subseteq E((P\xi)^*\xi)$ and $\lambda_{\xi}(L,v)=\xi(v)$.
 \begin{center}
 \begin{tikzcd}
 E(\lambda_{\xi})\ar[dr,"\lambda_{\xi}"']\ar[r,"inc",hook]&E((P\xi)^*\xi)\ar[d,"(P\xi)^*\xi"']\ar[r,"\pi_2"]\ar[dr,phantom,"\lrcorner",near start]&E(\xi)\ar[d,"\xi"]\\[1.7em]
-&B\ar[r,"id"]&B
+&E(P\xi)\ar[r,"P\xi"]&B
 \end{tikzcd}
 \end{center}
 \end{definition}
+\begin{remark}\label{rem:lambda_for_line_bundle} If $\xi:E(\xi)\to B$ is a line bundle, then $\lambda_\xi\cong\xi$.
+\end{remark}
+\begin{proof} First, notice that for every $x\in B$ and $v_1,v_2\in\xi^{-1}(x)$ with $v_1,v_2\neq 0$ it is true that $[v_1]=[v_2]$. So $P\xi:E(\xi)\to \{*\}\times B$ is a bundle isomorphism and thus $(P\xi)^*\xi\cong(id_B)^*\xi\cong\xi$. Then, since $\lambda_{\xi}$ is also a line bundle with $\lambda_{\xi}\leq\xi$, $\lambda_{\xi}\cong\xi$.
+\end{proof}
 
 \begin{lemma}\label{lem:projective_paracompact} Let $B$ be a paracompact space and $\xi:E(\xi)\to B$ a vector bundle. Then $E(P\xi)$ is also paracompact.
 \end{lemma}
 \begin{proof} Since $B$ is paracompact, Proposition~\ref{lem:paracompact_countable_cover} gives us a locally finite, countable open cover $\mathcal{U}=\{U_i\}_{i\in\mathbb{N}}$ of $B$, such that $\xi|U_i$ is a trivial vector bundle. Let $f_{U_i}:\xi^{-1}(U_i)\to U_i\times\mathbb{R}^k$. Next, we use \ref{thm:paracompact_partition_of_unity} to find a subordinate partition of unity $\mathcal{F}=\{u_i\}_{i\in\mathbb{N}}$ of an open subcover of $\mathcal{U}$. Without loss of generality, we suppose that $\mathcal{F}$ is directly subordinate of $\mathcal{U}$, since it is already locally finite. In particular, if we let $V_i:=\mathrm{supp}(u_i)$, then $\mathcal{V}$ is a closed locally finite countable cover of $B$ such that $\xi|V_i$ is a trivial vector bundle and $\{V_i^{\circ}\}_{i\in\mathbb{N}}$ also covers $B$. This means that $\xi^{-1}(V_i)\cong V_i\times\mathbb{R}^k$. As we proved in Proposition~\ref{prop:proj_bundle}, this gives us a homeomorphism $p^{-1}(V_i)\cong V_i\times\mathbb{R}P^{k-1}$. Proposition~\ref{prop:paracompact_closed_subset} gives us that $V_i$ is paracompact and then, Proposition~\ref{prop:paracompact_times_compact} gives us that $V_i\times\mathbb{R}P^{k-1}\cong p^{-1}(V_i)$ is paracompact. If we write $E(P\xi)=\bigcup_{i\in\mathbb{N}}p^{-1}(V_i)$ and notice that $\{p^{-1}(V_i)^{\circ}\}_{i\in\mathbb{N}}$ also covers $E(P\xi)$, then we get that $E(P\xi)$ is paracompact.%TODO write this better
 \end{proof}
 
-\begin{remark} Let $B$ be paracompact, $\xi:E(\xi)\to B$ be any $k$-plane vector bundle and $\lambda_{\xi}:E(\lambda_{\xi})\to E(P\xi)$ the line bundle with $E(\lambda_{\xi})=\big\{(L,v)\in E(P\xi)\times E(\xi):v\in L\big\}$ as defined above. Since $B$ is paracompact, Lemma~\ref{lem:projective_paracompact} gives us that $E(P\xi)$ is paracompact as well. Then, using Theorem~\ref{thm:universal} we find a map $u_{\xi}:E(P\xi)\to\Gr{1}\cong\mathbb{R}P^{\infty}$ such that $\lambda_{\xi}\cong u_{\xi}^*\gamma^1$.
+\begin{remark} Let $B$ be paracompact, $\xi:E(\xi)\to B$ be any $k$-plane vector bundle and $\lambda_{\xi}:E(\lambda_{\xi})\to E(P\xi)$ the line bundle with $E(\lambda_{\xi})=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\big\}$ as defined above. Since $B$ is paracompact, Lemma~\ref{lem:projective_paracompact} gives us that $E(P\xi)$ is paracompact as well. Then, using Theorem~\ref{thm:universal} we find a map $u_{\xi}:E(P\xi)\to\Gr{1}\cong\mathbb{R}P^{\infty}$ such that $\lambda_{\xi}\cong u_{\xi}^*\gamma^1$.
 \begin{center}
 \begin{tikzcd}
 E(\lambda_{\xi})\ar[d,"\lambda_{\xi}\cong u_{\xi}^*\gamma^1"']\ar[r,"\bar{f}_{\xi}"]\ar[dr,phantom,"\lrcorner",near start]&E(\gamma^1)\ar[d,"\gamma^1"]\\[1.7em]
@@ -229,15 +235,64 @@ as $H^*(B;\mathbb{Z}_2)$-modules, where the isomorphism is given by:
 \[\sum_{i=0}^{k-1}x_i\cdot a_{\xi}^i\ \longmapsto\ \sum_{i=0}^{k-1}(P\xi)^*(x_i)a_{\xi}^i\qedhere\]
 \end{proof}
 
-\begin{definition} Let $B$ be paracompact and $\xi:E(\xi)\to B$ any $k$-plane vector bundle and also let $a_{\xi}:=u_{\xi}^*z\in H^*(E(P\xi);\mathbb{Z}_2)$ as before. Then, because of Proposition~\ref{prop:basis_of_EP}, for each $i\in[k]$ there exists a $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$, such that
-\[a_{\xi}^k=\sum_{i=0}^{k-1}\Big((P\xi)^*\big(-w_{k-i}(\xi)\big)\Big)a_{\xi}^i\]
-Then, $w_i(\xi)$ is called \emph{the $i$-th Stiefel-Whitney class of $\xi$} and $1+w_1(\xi)+\ldots+w_k(\xi)$ is called the \emph{total Stiefel-Whitney class of $\xi$}.
+\begin{definition}\label{def:SW} Let $B$ be paracompact and $\xi:E(\xi)\to B$ any $k$-plane vector bundle and also let $a_{\xi}:=u_{\xi}^*z\in H^*(E(P\xi);\mathbb{Z}_2)$ as before. Then, because of Proposition~\ref{prop:basis_of_EP}, for each $i\in[k]$ there exists a $w_i(\xi)\in H^i(B;\mathbb{Z}_2)$, such that
+\[a_{\xi}^k=\sum_{i=0}^{k-1}\Big((P\xi)^*\big(w_{k-i}(\xi)\big)\Big)a_{\xi}^i\]
+Then, $w_i(\xi)$ is called \emph{the $i$-th Stiefel-Whitney class of $\xi$} and $w(\xi):=1+w_1(\xi)+\ldots+w_k(\xi)$ is called the \emph{total Stiefel-Whitney class of $\xi$}.
 \end{definition}
+
 \subsection{Uniqueness of Stiefel Whitney classes}
+In this subsection we prove that if some $w(\xi)$ satisfies the the Stiefel-Whitney axioms, then this is unique.
+
+
 
 \subsection{Existence of Stiefel Whitney classes}
+In this subsection we prove that the Stiefel-Whitney classes defined previously satisfy the Stiefel-Whitney axioms.
+\begin{proposition} Let $B$ be paracompact and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$.
+\end{proposition}
+\begin{proof} This is immediate from the definition.
+\end{proof}
+
+\begin{proposition} Let $B',B$ be two paracompact spaces, $f:B'\to B$ be any continuous function and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w(f^*\xi)=f^*w(\xi)$.
+\end{proposition}
+\begin{proof} Recall that $E(f^*\xi)=\big\{(x,v)\in B'\times E(\xi):f(x)=\xi(v)\big\}$ and define $\bar{f}:E(f^*\xi)\to E(\xi)$ with $\bar{f}(x,v):=v$, completing the pullback square. Then, define $g:E(P(f^*\xi))\to E(P\xi)$ with $g([(x,v)]):=[\bar{f}(x,v)]=[v]$. This is continuous and well defined. Indeed, let $(x_1,v_1),(x_2,v_2)\in E(f^*\xi)$ with $v_1,v_2\neq 0$ and $[(x_1,v_1)]=[(x_2,v_2)]$ in $E(P(f^*\xi))$. Then $x_1=x_2$, i.e. $\xi(v_1)=f(x_1)=f(x_2)=\xi(v_2)$ and $v_1=\lambda v_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Thus, $[v_1]=[v_2]$ in $E(Pf)$. So, we have the following two commutative diagrams:
+\begin{center}
+\begin{tikzcd}
+&[-7em]&[-3em]&[-10em]\faktor{\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\text{ and }v\neq0\big\}}{\left\{\substack{(x_1,v_1)\sim(x_2,v_2)\text{ iff }\\[0.2em]x_1=x_2\text{ and }v_1=\lambda v_2}\right\}}\ar[dd,phantom,"\cong"{yshift=1em,rotate=90}]&[-10em]\\[-3.2em]
+&\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\big\}\ar[d,phantom,"\cong"rotate=90]&\\[-1.2em]
+&E(f^*\xi)\ar[r,"\bar{f}"]\ar[d,"f^*\xi"']&E(\xi)\ar[d,"\xi"]&[4em]E(P(f^*\xi))\ar[r,"g"]\ar[d,"P(f^*\xi)"']&E(P\xi)\ar[d,"P\xi"]\\[1.3em]
+&B'\ar[r,"f"]&B&B'\ar[r,"f"]&B
+\end{tikzcd}
+\end{center}
+Next, we will prove that $\lambda_{f^*\xi}\cong g^*\lambda_{\xi}$, i.e. we will define a map $\phi:E(\lambda_{f^*\xi})\to E(g^*\lambda_{\xi})$, where
+\begin{align*}
+E(\lambda_{f^*\xi})&=\big\{(L',v')\in E(P(f^*\xi))\times E(f^*\xi):(P(f^*\xi))(L')=f^*\xi(v')\text{ and }v'\in L'\big\},\\
+E(g^*\lambda_{\xi})&=\big\{(L',L,v)\in E(P(f^*\xi))\times E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\text{ and }g(L')=L\big\}\\
+&\cong\big\{(L',v)\in E(P(f^*\xi))\times E(\xi):(P\xi)(g(L'))=\xi(v)\text{ and }v\in g(L')\big\}.
+\end{align*}
+Let $\phi(L',v'):=(L',\bar{f}(v'))$. Then, $\phi$ is well defined. Indeed, for $(L',v')\in E(\lambda_{f^*\xi})$ we first have $(P\xi)(g(L'))=f(P(f^*\xi(L')))=f(f^*\xi(v'))=\xi(\bar{f}(v'))$ and if we write $v'=(x,a)$ and $L'=[(y,b)]$, then we also have that $v'\in L'$ means $[(x,a)]=[(y,b)]$ which gives that $[a]=[b]$. It is clear that $\phi$ is a fiber bundle map, which is a linear isomorphism fiber-wise, since $\bar{f}$ is a linear isomorphism fiber-wise. So, the following diagram is commutative and both squares are pullback squares:
+\begin{center}
+\begin{tikzcd}
+E(\lambda_{f^*\xi})\ar[r]\ar[d,"\lambda_{f^*\xi}=g^*\lambda_{\xi}"']\ar[dr,phantom,"\lrcorner",near start]&[2em]E(\lambda_{\xi})\ar[r]\ar[d,"\lambda_{\xi}"']\ar[dr,phantom,"\lrcorner",near start]&[2em]E(\gamma^1)\ar[d,"\gamma^1"]\\[1.3em]
+E(P(f^*\xi))\ar[r,"g"]\ar[rr,dotted,bend right=10,"u_{f^*\xi}"']&E(P\xi)\ar[r,"u_{\xi}"]&\mathbb{R}P^{\infty}
+\end{tikzcd}
+\end{center}
+So, it is true that $\lambda_{f^*\xi}=g^*\lambda_{\xi}=g^*u_{\xi}^*\gamma^1=(u_{\xi}\circ g)^*\gamma^1$, but we also have that $\lambda_{f^*\xi}=u^*_{f^*\xi}\gamma^1$, so Theorem~\ref{thm:universal_uniqueness} gives us that $u_{\xi}\circ g\simeq u_{f^*\xi}$, which means that $g^*u^*_{\xi}=u^*_{f^*\xi}:H^*(\mathbb{R}P;\mathbb{Z}_2)\to H^*(E(P(f^*\xi));\mathbb{Z}_2)$. This gives: $a_{f^*\xi}=u_{f^*\xi}z=g^*u^*_{\xi}z=g^*a_{\xi}$ and thus:
+\[g^*a^k_{\xi}=a^k_{f^*\xi}=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*w_{k-i}(f^*\xi)\Big)a_{f^*\xi}^i=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*w_{k-i}(f^*\xi)\Big)g^*a_{\xi}^i\]
+On the other hand:
+\[g^*a^k_{\xi}=g^*\left(\sum_{i=0}^{k-1}\Big((P\xi)^*w_{k-i}(\xi)\Big)a_{\xi}^i\right)=\sum_{i=0}^{k-1}\Big(g^*(P\xi)^*w_{k-i}(\xi)\Big)g^*a_{\xi}^i=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*f^*w_{k-i}(\xi)\Big)g^*a_{\xi}^i\]
+which gives $w_i(f^*\xi)=f^*w_i(\xi)$ for all $i\in[k]$.
+\end{proof}
+
+\begin{proposition} Let $B$ be a paracompact space, $\eta:E(\eta)\to B$ be any $k_1$-plane vector bundle and $\xi:E(\xi)\to B$ be any $k_2$-plane vector bundle. Then, $w(\eta\oplus\xi)=w(\eta)w(\xi)$.
+\end{proposition}
+
+\begin{proposition} For the tautological line bundle $\gamma_1^1:\big\{(L,v)\in\mathbb{R}P^1\times\mathbb{R}^2:v\in L\big\}\to$ with $\gamma_1^1(L,v)=L$ it is true that $w(\gamma_1^1)\neq0$.
+\end{proposition}
+\begin{proof} First, using Remark~\ref{rem:lambda_for_line_bundle}, we get that the map $(P\gamma_1^1)^*:H^*(\mathbb{R}P^1;\mathbb{Z}_2)\to H^*(E(P\gamma_1^1);\mathbb{Z}_2)$ is an isomorphism and that $\lambda_{\gamma_1^1}\cong\gamma_1^1$. Then, using Proposition~\ref{prop:restriction}, we are able to express $\lambda_{\gamma_1^1}$ as a pullback: $\gamma_1^1=\iota_{1,2}^*\gamma^1$. By the uniqueness Thereom~\ref{thm:universal_uniqueness}, $u_{\gamma_1^1}\sim\iota_{1,2}$ and thus $u_{\gamma_1^1}^*=\iota_{1,2}^*:H^*(\mathbb{R}P^{\infty};\mathbb{Z}_2)\to H^*(\mathbb{R}P^1;\mathbb{Z}_2)$. So, using Theorem~\ref{thm:projective_spaces_cohomology}, we can explicitly compute $a_{\gamma_1^1}=u_{\gamma_1^1}z=\iota_{1,2}z=z_1$, which gives us $z_1=a_{\gamma_1^1}=\sum_{i=0}^0(P\gamma_1^1)^*(w_{1-i}(\gamma_1^1))a_{\gamma_1^1}^k=(P\gamma_1^1)^*w_1(\gamma_1^1)$, i.e. $w_1(\gamma_1^1)=z_1\in\mathbb{Z}_2[z_1]\cong H^*(E(P\gamma_1^1);\mathbb{Z}_2)$. In particular, $w_1(\gamma_1^1)\neq0$.
+\end{proof}
 
 
+\section{Computation of the Cohomology}
 %* elementary schubert calculus?
 
 
