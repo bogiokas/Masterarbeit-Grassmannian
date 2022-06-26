@@ -175,15 +175,14 @@ This is a continuous map, which depends only on the spanned $k$-plane, i.e.\ if 
 \end{tikzcd}
 \end{center}
 
-Moreover, $\psi_v(H)=0$ iff $v\in H$, because $\phi_v(v_1,\ldots,v_k)=0$ iff $v\in \left<v_1,\ldots,v_k\right>$.
+Moreover, $\psi_v(H)=0$ if and only if $v\in H$, because $\phi_v(v_1,\ldots,v_k)=0$ if and only if $v\in \left<v_1,\ldots,v_k\right>$.
 Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$.
 Since $\psi_v(H_1)=0\neq\psi_v(H_2)$, $\Gr{k}{n}$ is completely Hausdorff.
 
 \item Next it is proven that for every $H\in\Gr{k}{n}$, the subset $\mathcal{U}_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}$ of $\mathbb{R}^n$ is a neighborhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$.
 
 Firstly, one can fix an orthonormal basis $\{u_1,\ldots,u_k\}$ of $H$ and an orthonormal basis $\{\bar{u}_1,\ldots,\bar{u}_{n-k}\}$ of $H^{\perp}$. For the rest of this proof regard $\mathbb{R}^n$ as the direct sum $H\oplus H^{\perp}$. Define also the orthogonal projections $p_H,p_{H^{\perp}}$ from $H\oplus H^{\perp}$ to each component.
-%Dialexe an tha xrhsimopoieis iff h if and only if kai kan to pantou.
-Consider now $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, iff $\left.p_H\right|_K$ is not injective, iff $\left.p_H\right|_K$ is not surjective.
+Consider now $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, if and only if $\left.p_H\right|_K$ is not injective, if and only if $\left.p_H\right|_K$ is not surjective.
 
 Each $K\in\mathcal{U}_H$ can now be considered as the graph of some linear transformation $T_K$ inside $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ (which has the desired dimension as a vector space over $\mathbb{R}$). We procceed to define rigorously the function taking $K$ to $T_K$ and prove that this is bicontinuous. In particular, we prove that $T_K$ depends continuously on $K$ and vice versa, through a rather technical approach.
 
@@ -204,9 +203,9 @@ Notice that $\tilde T$ is well defined, since $q^{-1}\left(\mathcal{U}_H\right)$
 In order to argue that $\tilde T$ is a continuous map, remember how $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is topologized.
 Having fixed the bases ${\{u_i\}}_{i\in[k]}$ and ${\{\bar{u}_j\}}_{j\in[n-k]}$, we define an isomorphism of vector spaces $\phi$, which takes a linear map $L$ to
 $\phi(L)={\left(\bar{u}_j^t\cdot L(u_i)\right)}_{(i,j)\in[k]\times[n-k]}\in\mathbb{R}^{[k]\times[n-k]}$.
-Then, the natural topology on $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is the induced topology by $\phi$. This means that our $\tilde T$ is continuous iff $f:=\phi\circ\tilde T$ is continuous.
+Then, the natural topology on $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is the induced topology by $\phi$. This means that our $\tilde T$ is continuous if and only if $f:=\phi\circ\tilde T$ is continuous.
 
-Finally, since $\mathbb{R}^{[k]\times[n-k]}=\prod_{(i,j)\in[k]\times[n-k]}\mathbb{R}$ is a categorical product, $\mathbb{R}^{[k]\times[n-k]}$ is equipped with the initial topology, with respect to all orthogonal projections ${\left(\pi_{i,j}\right)}_{(i,j)\in[k]\times[n-k]}$. Hence, the function $f$ that interests us is continuous iff every $f_{i,j}:=\pi_{i,j}\circ f$ is continuous. In order to show that every $f_{i,j}$ is a continuous map, we express it through linear algebra:
+Finally, since $\mathbb{R}^{[k]\times[n-k]}=\prod_{(i,j)\in[k]\times[n-k]}\mathbb{R}$ is a categorical product, $\mathbb{R}^{[k]\times[n-k]}$ is equipped with the initial topology, with respect to all orthogonal projections ${\left(\pi_{i,j}\right)}_{(i,j)\in[k]\times[n-k]}$. Hence, the function $f$ that interests us is continuous if and only if every $f_{i,j}:=\pi_{i,j}\circ f$ is continuous. In order to show that every $f_{i,j}$ is a continuous map, we express it through linear algebra:
 
 First, define $A$ to be the matrix of the linear function taking $u_i$ to $a_i$ for each $i\in[k]$, expressed in the bases $\{u_i\}$ and $\{\bar{u}_j\}$:
 \[A=\left(\begin{array}{ccc}
@@ -242,7 +241,7 @@ This means, that the map $f_{ij}$ takes the element $\left(a_1,\ldots,a_k\right)
 \end{array}\]
 Since inner product, matrix multiplication and inversion are continuous, $f_{ij}$ is a continuous function for every $i,j\in[k]\times[n-k]$. This proves that $f$ is continuous as well, and hence $\tilde T$ is also continuous. Since $\tilde T$ is a continuous function which depends only on the $k$-plane spanned by its input, the universal property of the quotient spaces ensures the existence of a continuous map $T:\mathcal{U}_H\to\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ such that $T\circ \left.q\right|=\tilde T$. The uniqueness condition of this property ensures that the map $T$ is indeed the one taking $K$ to $p_{H^{\perp}}\circ{\left(\left.p_H\right|_K\right)}^{-1}$.
 
-Through viewing this function as taking $K$ to the linear function, whose graph is $K$, we see that this function is both one to one and onto, since two linear maps are different iff they have different graphs. This makes $T$ a homeomorphism, proving that there exists the homeomorphism
+Through viewing this function as taking $K$ to the linear function, whose graph is $K$, we see that this function is both one to one and onto, since two linear maps are different if and only if they have different graphs. This makes $T$ a homeomorphism, proving that there exists the homeomorphism
 $\mathcal{U}_H\overset{\phi\circ T}{\cong}\mathbb{R}^{n(n-k)}$
 which concludes the proof of this lemma.\qedhere
 \end{b_item}

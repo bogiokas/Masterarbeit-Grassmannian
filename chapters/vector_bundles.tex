@@ -41,7 +41,7 @@ $\varepsilon_B^n:B\times\mathbb{R}^n\to B$,
 which is the projection on the first coordinate.
 \item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the set of equivalence classes
 $T_xM:=\faktor{\left\{\gamma:\mathbb{R}\to M\ |\ \gamma(0)=x\text{ and }\phi\circ\gamma\text{ smooth}\right\}}{\sim}$,
-where $\gamma_1\sim\gamma_2$ iff $(\phi\circ\gamma_1)'(0)=(\phi\circ\gamma_2)'(0)$. This set can be given an $\mathbb{R}$-vector space structure as,
+where $\gamma_1\sim\gamma_2$ if and only if $(\phi\circ\gamma_1)'(0)=(\phi\circ\gamma_2)'(0)$. This set can be given an $\mathbb{R}$-vector space structure as,
 $\lambda_1\cdot[\gamma_1]+\lambda_2\cdot[\gamma_2]:=\left[\phi^{-1}\circ\big(\lambda_1(\phi\circ\gamma_1)+\lambda_2(\phi\circ\gamma_2)\big)\right]$.
 
 Notice that $T_xM$ does not depend on the choice of $(U,\phi)\in\mathcal{A}$. Indeed, since the atlas is smooth and $U_{\alpha}$ are open, every transition map $\phi_{\alpha}\circ\phi_{\beta}:\mathbb{R}^n\to\mathbb{R}^n$ has an invertible Jacobi matrix and thus the equivalence relation is the same under any $\phi$. Then, we define the total space of the tangent bundle of $M$ to be the set of all possible tangent vectors at any point of $M$, i.e. the set
@@ -88,7 +88,7 @@ E_1\ar[rd,"\xi_1"']\ar[rr,"\phi"]&[-2em]&[-2em]E_2\ar[ld,"\xi_2"]\\
 \item $\phi|_{\xi_1^{-1}(x)}:\xi_1^{-1}(x)\to\xi_2^{-1}(x)$ is linear for every $x\in B$.
 \end{i_enum}
 \end{definition}
-\begin{remark} Due to Proposition~\ref{prop:fiberwise}, vector bundle maps can be characterized by their local behavior: Let $\phi:E_1\to E_2$ be a continuous map. Then, $\phi$ is a vector bundle map iff
+\begin{remark} Due to Proposition~\ref{prop:fiberwise}, vector bundle maps can be characterized by their local behavior: Let $\phi:E_1\to E_2$ be a continuous map. Then, $\phi$ is a vector bundle map if and only if
 \begin{i_enum}
 \item $\phi|_{\xi_1^{-1}(x)}(\xi_1^{-1}(x))\subseteq\xi_2^{-1}(x)$ for every $x\in B$ and
 \item $\phi|_{\xi_1^{-1}}:\xi_1^{-1}(x)\to\xi_2^{-1}(x)$ is linear for every $x\in B$.
@@ -135,7 +135,7 @@ Hence the map $\psi$ is continuous and a bijection. Moreover for every $x\in U$ 
 \mathbb{R}^n\ar[r,"\cong"']\ar[rrrrr,bend left=15,"\psi_x"]&\{x\}\times\mathbb{R}^n\ar[r,"\cong"']&\xi_1^{-1}(x)\ar[r,"\cong"',"\phi_x"]&\xi_2^{-1}(x)\ar[r,"\cong"']&\{x\}\times\mathbb{R}^n\ar[r,"\cong"']&\mathbb{R}^n
 \end{tikzcd}
 \end{center}
-Also, $\phi^{-1}|_{\xi_2^{-1}(U)}=(\phi|_{\xi_1^{-1}(U)})^{-1}$ is continuous iff $\psi^{-1}$ is continuous.
+Also, $\phi^{-1}|_{\xi_2^{-1}(U)}=(\phi|_{\xi_1^{-1}(U)})^{-1}$ is continuous if and only if $\psi^{-1}$ is continuous.
 
 Essentially, the problem is reduced to the case of $E_1,E_2$ both being the trivial vector bundle $U\times\mathbb{R}^n$ and $\psi:U\times\mathbb{R}^n\to U\times\mathbb{R}^n$.
 
@@ -353,7 +353,7 @@ If $V$ is a finitely dimensional euclidean vector space, then we can always tran
 \[t_l(x):=\frac{1}{\left\|s_l(x)-\sum_{i=1}^{l-1}(t_i(x)\cdot s_i(x))t_i(x)\right\|}\left(s_l(x)-\sum_{i=1}^{l-1}(t_i(x)\cdot s_i(x))t_i(x)\right)\]
 where the linear operations are well defined, since $s_i(x),t_i(x)\in\xi^{-1}(x)$. Since $t_i:B\to E$ is continuous for every $i$, $t_1,\ldots,t_k$ are $k$ sections for which $t_i(x)\cdot t_j(x)=\delta_{i,j}$ by the properties of the Gram-Schmidt process, which proves the assertion.
 \end{proof}
-\begin{remark}\label{rem:trivial_euclidian} In particular, using Lemma~\ref{lem:n_sections_makes_trivial}, we get that an $n$-plane euclidean vector bundle $\xi$ is trivial, i.e. $\xi\cong\varepsilon_B^n$ iff there exist $n$ orthonormal sections of $\xi$.
+\begin{remark}\label{rem:trivial_euclidian} In particular, using Lemma~\ref{lem:n_sections_makes_trivial}, we get that an $n$-plane euclidean vector bundle $\xi$ is trivial, i.e. $\xi\cong\varepsilon_B^n$ if and only if there exist $n$ orthonormal sections of $\xi$.
 \end{remark}
 
 In the particular case of euclidean vector bundles, we can always define a natural complementary bundle of a given subbundle:
@@ -376,7 +376,7 @@ Define $D:U\to\mathbb{R}$ to be $D(x):=\det\big(v_1(x),\ldots,v_k(x),v_{k+1},\ld
 
 \begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\xi^{\perp_{\eta}}\cong\sfrac{\eta}{\xi}$.
 \end{lemma}
-\begin{proof} Using Proposition~\ref{prop:quotient_bundle}, we write $E(\sfrac{\eta}{\xi})=\sfrac{E(\eta)}{\sim}$ for $v_1\sim v_2$ iff $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v_1))$. Moreover, we also write $\sfrac{eta}{\xi}([v])=\eta(v)$. Let us then define the following map:
+\begin{proof} Using Proposition~\ref{prop:quotient_bundle}, we write $E(\sfrac{\eta}{\xi})=\sfrac{E(\eta)}{\sim}$ for $v_1\sim v_2$ if and only if $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v_1))$. Moreover, we also write $\sfrac{eta}{\xi}([v])=\eta(v)$. Let us then define the following map:
 \begin{center}
 \begin{tikzcd}
 E(\xi^{\perp_{\eta}})\ar[r,"\phi"]&\faktor{E}{\sim}\\[-1.5em]
