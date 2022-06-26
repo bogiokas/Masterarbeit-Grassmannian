@@ -145,10 +145,10 @@ In this subsection, we assume that there exists some $w(\xi)$ satisfying the Sti
 \end{proof}
 
 \subsection{Definition of Stiefel Whitney classes}
-In this subsection we define the Stiefel-Whitney classes for every $k$-plane bundle over a paracompact space.
+In this subsection we define the Stiefel-Whitney classes for every $k$-plane bundle over a paracompact space. For this, we use the Leray-Hirsch theorem, which is true for paracompact spaces, but we only will prove it for fiber bundles which are of finite type. For a full discussion on the theorem, refer to Theorem 4D.1 in \cite{hatcher}. The proof we will present here is based on the proof of the Theorem~1.1 in the Chapter 17 of \cite{husemoller}.
 \begin{definition} A fiber bundle $p:E\to B$ is \emph{of finite type}, if there exists a finite open cover $\{U_i\}_{i\in[n]}$ such that $p|U_i$ is the trivial fiber bundle.
 \end{definition}
-\begin{theorem}[Leray-Hirsch]\label{thm:leray_hirsch} Let $B$ be a topological space and $p:E(p)\to B$ be a fiber bundle of finite type with fiber $F$. For each $x\in B$ fix some homeomorphism $j_x:F\to p^{-1}(x)$. Let $a_1\in H^{n_1}(E;\mathbb{Z}_2),\ldots,a_r\in H^{n_r}(E;\mathbb{Z}_2)$ such that for every $x\in B$
+\begin{theorem}[Leray-Hirsch]\label{thm:leray_hirsch} Let $B$ be a topological space and $p:E\to B$ be a fiber bundle of finite type with fiber $F$. For each $x\in B$ fix some homeomorphism $j_x:F\to p^{-1}(\{x\})$. Let $a_1\in H^{n_1}(E;\mathbb{Z}_2),\ldots,a_r\in H^{n_r}(E;\mathbb{Z}_2)$ such that for every $x\in B$
 \begin{b_item}
 \item the elements $j_x^*a_1,\ldots,j_x^*a_r$ are $\mathbb{Z}_2$-linearly independent in $H^*(F;\mathbb{Z}_2)$ and
 \item $\mathbb{Z}_2\left<j_x^*a_1,\ldots,j_x^*a_r\right>\cong H^*(F;\mathbb{Z}_2)$ as $\mathbb{Z}_2$-modules.
@@ -167,9 +167,39 @@ H^*(B;\mathbb{Z}_2)\left<a_1,\ldots,a_r\right>\ar[r]&H^*(E;\mathbb{Z}_2)\\[-1.5e
 \end{center}
 In particular, $p^*$ is a monomorphism.
 \end{theorem}
-\begin{proof}
-%TODO
+\begin{proof} For this proof, we will always regard cohomology with $\mathbb{Z}_2$ coefficients. Let us fix some $t_i\in H^{n_i}(F)$ for every $i\in[r]$, such that $H^*(F)\cong\mathbb{Z}_2\left<t_1,\ldots,t_r\right>$ and notice that $j_x^*a_i=t_i$ for every $x\in B$. We will prove that $H^*(B)\otimes_{\mathbb{Z}_2}H^*(F)\cong H^*(E)$ as $H^*(B)$-modules, where the module structure on the tensor is by multiplication on the left and on $H^*(E)$ is by the action with $p^*$. This suffices, since $H^*(B)\otimes_{\mathbb{Z}_2}H^*(F)\cong H^*(B)\left<t_1,\ldots,t_r\right>$ as $H^*(B)$-modules with the isomorphism taking $\sum_{i=1}^rc_i\otimes t_i$ to $\sum_{i=1}^rc_it^i$. This is well defined, because any element of the tensor can be written in this form.
+
+In order to prove this, we define for every $n\in\mathbb{N}_0$ the functors $K^n,L^n$ taking open subsets $U$ of $B$ to $H^*(B)$-modules as well as the $H^*(B)$-morphisms $\theta_U^n:K^n(U)\to L^n(U)$, as follows:
+\begin{center}
+\begin{tikzcd}
+\displaystyle K^n(U)\ar[r,phantom,"="]&[-2em]\displaystyle\big(H^*(U)\otimes_{\mathbb{Z}_2}H^*(F)\big)^n\ar[r,"\theta_U^n"]&[3em]\displaystyle H^n\big(p^{-1}(U)\big)&[-2em]\displaystyle L^n(U)\ar[l,phantom,"="]\\[-1.7em]
+&\displaystyle\sum_{i=1}^rc_i\otimes t_i\ar[r,mapsto]&\displaystyle i^*\sum_{i=1}^rp^*(c_i)a_i
+\end{tikzcd}
+\end{center}
+where $i:p^{-1}(U)\hookrightarrow E$ is the inclusion. This is well defined, since $t_i\in H^{n_i}(F)$ and thus $c_i\in H^{n-n_i}(U)$, i.e. $p^*(c_i)a_i\in H^n(p^{-1}(U))$. We will show that $\theta^*_U$ is in fact a module isomorphism.
+
+Let $U\subseteq B$ be open such that $p|U$ is trivial, i.e. there exists a bundle isomorphism $f_U:p^{-1}(U)\to U\times F$. Then, K\"unneth formula gives us the following $H^*(B)$-module isomorphism
+\begin{center}
+\begin{tikzcd}
+\displaystyle\big(H^*(U)\otimes_{\mathbb{Z}_2}H^*(F)\big)^n\ar[r,"\times"]&\displaystyle H^n\big(U\times F\big)\ar[r,"f_U"]&\displaystyle H^n\big(p^{-1}(U)\big)\\[-1.7em]
+\displaystyle\sum_{i=1}^rc_i\otimes t_i\ar[r,mapsto]&\displaystyle\sum_{i=1}^rc_i\times t_i\ar[r,mapsto]& \displaystyle\sum_{i=1}^rf_U^*(c_i\times t_i)
+\end{tikzcd}
+\end{center}
+Because of the naturality of the cross product, we have $f^*_U(c_i\times t_i)=f^*_U\pi_1^*(c_i)f^*_U\pi_2^*(t_i)$, where $\pi_1:U\times F\to U$ and $\pi_2:U\times F\to F$ are the usual projections. Then we have $f_U^*\pi_1^*=i^*p^*$ because $p|_{p^{-1}(U)}$ is a bundle map. Moreover, notice that we can write $t_i=j_x^*(a_i)$ for some $x\in U$ and that we also have $f_U^*\pi_2^*j_x^*=i^*$. Thus, $f^*_U\pi_1^*(c_i)f^*_U\pi_2^*(t_i)=i^*p^*(c_i)i^*a_i$, which proves that $\theta_U^*$ is the isomorphism we get from K\"unneth formula.
+
+Since $p:E\to B$ is of finite type, there exists some finite open cover $\{U_i\}_{i\in[m]}$ of $B$, such that $p|U_i$ is a trivial fiber bundle. Thus, $\theta_{U_i}^n$ is a module isomorphism for every $i\in[m]$ and $n\in\mathbb{N}_0$. Notice that $p|(U\cap V)$ is also trivial if $p|U,p|V$ are trivial, which means that for every open $U,V\subseteq B$ such that $\theta_U^*,\theta_V^*$ are isomorphisms, then $\theta_{U\cap V}^*$ is also an isomorphism. We will now use the Mayer-Vietoris sequence to prove that the same is true for every $U\cup V$.
+
+Notice that for both $K_n$ and $L_n$ the Mayer-Vietoris sequence exists and is exact and thus we get the following commutative diagram with exact rows:%TODO: prove this claim
+\begin{center}
+\begin{tikzcd}
+K^n(U\cap V)\ar[d,"\theta_{U\cap V}^n"',"\cong"]&[-1em]K^n(U)\oplus K^n(V)\ar[l]\ar[d,"\theta_U^n\oplus\theta_V^n"',"\cong"]&[-1em]K^n(U\cup V)\ar[l]\ar[d,"\theta_{U\cup V}^n"']&[-1em]K^{n-1}(U\cap V)\ar[l]\ar[d,"\theta_{U\cap V}^{n-1}","\cong"']&[-1em]K^{n-1}(U)\oplus K^{n-1}(V)\ar[l]\ar[d,"\theta_U^{n-1}\oplus\theta_V^{n-1}","\cong"']\\
+L^n(U\cap V)&L^n(U)\oplus L^n(V)\ar[l]& L^n(U\cup V)\ar[l]&L^{n-1}(U\cap V)\ar[l]&L^{n-1}(U)\oplus L^{n-1}(V)\ar[l]\\
+\end{tikzcd}
+\end{center}
+So, the 5-lemma gives us that $\theta_{U\cup V}^n$ is an $H^*(B)$-module isomorphism for every $n\in\mathbb{N}_0$, given that $f_U^n$ and $f_V^n$ are. By induction we see that the same is true for every finite union and thus also for $\theta_B^*:H^*(B)\otimes_{\mathbb{Z}_2}H^*(F)\to H^*(E)$, which proves the assertion.
 \end{proof}
+\begin{remark} Notice that although $H^*(B)\otimes_{\mathbb{Z}_2}H^*(F)\cong H^*(E)$ as $H^*(B)$-modules, they are not necessarily isomorphic as $H^*(B)$-algebras, i.e. the isomorphism defined here does not necessarily respect the ring structure.
+\end{remark}
 
 \begin{proposition}\label{prop:proj_bundle} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Moreover, let $E_0:=\{v\in E:v\neq 0\}$ and $q_E:E_0\to\sfrac{E_0}{\sim}$, where $v\sim v'$ if and only if $\xi(v)=\xi(v')$ and $v=\lambda v'$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Also, let $p:E':=\sfrac{E_0}{\sim}\to B$ be the function $p([v])=\xi(v)$. Then $p$ is a fiber bundle with fiber $\mathbb{R}P^{k-1}$. Moreover, if for some $x\in B$ we fix a linear isomorphism $f_x:\xi^{-1}(x)\to\mathbb{R}^k$, then there exists an induced homeomorphism $g_x:p^{-1}(x)\to\mathbb{R}P^{k-1}$ such that $q\circ f_x(v)=g_x([v])$ for every $v\in E_0\cap\xi^{-1}(b)$, where $q:\mathbb{R}^k\to\mathbb{R}P^{k-1}$ is the usual quotient map.
 \end{proposition}
