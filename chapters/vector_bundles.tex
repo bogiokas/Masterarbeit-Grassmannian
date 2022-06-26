@@ -64,8 +64,9 @@ and it is easy to see how the fibers are vector spaces and how the total space i
 (l,v)\ar[r,mapsto]&l
 \end{tikzcd}
 \end{center}
-The total space of this bundle is topologised as a subspace of $\mathbb{R}P^n\times\mathbb{R}^{n+1}$, where the $n$-dimensional projective space is defined to be the set of all lines through the origin in $\mathbb{R}^{n+1}$, topologized as the following quotient:
-\[\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong\faktor{S^n}{x\sim-x}\]
+The total space of this bundle is topologised as a subspace of $\mathbb{R}P^n\times\mathbb{R}^{n+1}$, where the $n$-dimensional projective space is defined to be the set of all lines through the origin in $\mathbb{R}^{n+1}$, topologized as the quotient
+$\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong\faktor{S^n}{x\sim-x}$.
+
 We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as
 $f_U(l',v')=(l',v'^tv)$.
 This is continuous and linear over each fiber and since $v'^tv\neq0$ for $v'\neq0$, $f_U$ is also a homeomorphism.
@@ -105,13 +106,12 @@ Up to this point, our discussion about vector bundles mirrors the discussion on 
 $\phi_x:\xi_1^{-1}(x)\to\xi_2^{-1}(x)$
 with $\phi_x(v)=\phi(v)$ is a vector space isomorphism for every $x\in B$. Then $\phi$ is also a homeomorphism and thus a vector bundle isomorphism.
 \end{proposition}
-\begin{proof} First of all, it is easy to see that $\phi$ is a bijection:
-\begin{itemize}
-\item Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a vector bundle map,
+\begin{proof} First of all, it is easy to see that $\phi$ is a bijection.
+Let $u_1,u_2\in E_1$ and $\phi(u_1)=\phi(u_2)$. Since $\phi$ is a vector bundle map,
 $\xi_1(u_1)=\xi_2(\phi(u_1))=\xi_2(\phi(u_2))=\xi_1(u_2)=:x_0$.
 So, $u_1,u_2\in\xi_1^{-1}(x_0)$ and $\phi_{x_0}(u_1)=\phi(u_1)=\phi(u_2)=\phi_{x_0}(u_2)$. Since $\phi_{x_0}$ is injective, $u_1=u_2$, which proves that $\phi$ is injective as well.
-\item Let $v\in E_2$. For $x_0:=p_2(v)$, $v\in\xi)2^{-1}(x_0)$. Since $\phi_{x_0}$ is surjective, there exists some $u\in\xi_1^{-1}(x_0)\subseteq E_1$ with $\phi(u)=\phi_{x_0}(u)=v$, proving that $\phi$ is also surjective.
-\end{itemize}
+Let $v\in E_2$. For $x_0:=p_2(v)$, $v\in\xi)2^{-1}(x_0)$. Since $\phi_{x_0}$ is surjective, there exists some $u\in\xi_1^{-1}(x_0)\subseteq E_1$ with $\phi(u)=\phi_{x_0}(u)=v$, proving that $\phi$ is also surjective.
+
 It now remains to prove that $\phi^{-1}$ is continuous as well. For every $x\in B$, there exist open neighborhoods $U_1,U_2$ of $x$, such that $\xi_1^{-1}(U_1)$ is isomorphic to $U_1\times\mathbb{R}^n$ and $\xi_2^{-1}(U_2)$ is isomorphic to $U_2\times\mathbb{R}^n$, satisfying the commutative diagrams of the Definition~\ref{def:vector_bundle}. Let $U_x:=U_1\cap U_2$. Then, as seen in Remark~\ref{rem:vector_subcover}, $U$ satisfies the requirements of the \ref{def:vector_bundle}. This means that there exist homeomorphisms $(f_1)_{U_x}:\xi_1^{-1}(U_x)\to U_x\times\mathbb{R}^n$ and $(f_2)_{U_x}:\xi_2^{-1}(U_x)\to U_x\times\mathbb{R}^n$ making the following diagrams commute and being linear over each fiber:
 \begin{center}
 \begin{tikzcd}
