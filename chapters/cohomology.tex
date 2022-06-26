@@ -236,6 +236,96 @@ as $H^*(B;\mathbb{Z}_2)$-modules, where the isomorphism is given by:
 Then, $w_i(\xi)$ is called \emph{the $i$-th Stiefel-Whitney class of $\xi$} and $w(\xi):=1+w_1(\xi)+\ldots+w_k(\xi)$ is called the \emph{total Stiefel-Whitney class of $\xi$}.
 \end{definition}
 
+\subsection{Existence of Stiefel Whitney classes}
+In this subsection we prove that the Stiefel-Whitney classes defined previously satisfy the Stiefel-Whitney axioms.
+\begin{proposition} Let $B$ be paracompact and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$.
+\end{proposition}
+\begin{proof} This is immediate from the definition.
+\end{proof}
+
+\begin{proposition} Let $B',B$ be two paracompact spaces, $f:B'\to B$ be any continuous function and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w(f^*\xi)=f^*w(\xi)$.
+\end{proposition}
+\begin{proof} Write $E(f^*\xi)=\big\{(x,v)\in B'\times E(\xi):f(x)=\xi(v)\big\}$ and define $\bar{f}:E(f^*\xi)\to E(\xi)$ with $\bar{f}(x,v):=v$, completing the pullback square. Then, define $g:E(P(f^*\xi))\to E(P\xi)$ with $g([(x,v)]):=[\bar{f}(x,v)]=[v]$. This is continuous and well defined. Indeed, let $(x_1,v_1),(x_2,v_2)\in E(f^*\xi)$ with $v_1,v_2\neq 0$ and $[(x_1,v_1)]=[(x_2,v_2)]$ in $E(P(f^*\xi))$. Then $x_1=x_2$, i.e. $\xi(v_1)=f(x_1)=f(x_2)=\xi(v_2)$ and $v_1=\lambda v_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Thus, $[v_1]=[v_2]$ in $E(P\xi)$. So, we have the following two commutative diagrams:
+\begin{center}
+\begin{tikzcd}
+&[-7em]&[-3em]&[-10em]\faktor{\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\text{ and }v\neq0\big\}}{\left\{\substack{(x_1,v_1)\sim(x_2,v_2)\text{ iff }\\[0.2em]x_1=x_2\text{ and }v_1=\lambda v_2}\right\}}\ar[dd,phantom,"\cong"{yshift=1em,rotate=90}]&[-10em]\\[-3.2em]
+&\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\big\}\ar[d,phantom,"\cong"rotate=90]&\\[-1.2em]
+&E(f^*\xi)\ar[r,"\bar{f}"]\ar[d,"f^*\xi"']&E(\xi)\ar[d,"\xi"]&[4em]E(P(f^*\xi))\ar[r,"g"]\ar[d,"P(f^*\xi)"']&E(P\xi)\ar[d,"P\xi"]\\[1.3em]
+&B'\ar[r,"f"]&B&B'\ar[r,"f"]&B
+\end{tikzcd}
+\end{center}
+Next, we will prove that $\lambda_{f^*\xi}\cong g^*\lambda_{\xi}$, i.e. we will define a map $\phi:E(\lambda_{f^*\xi})\to E(g^*\lambda_{\xi})$, where
+\begin{align*}
+E(\lambda_{f^*\xi})&=\big\{(L',v')\in E(P(f^*\xi))\times E(f^*\xi):(P(f^*\xi))(L')=f^*\xi(v')\text{ and }v'\in L'\big\},\\[0.5em]
+E(g^*\lambda_{\xi})&=\big\{(L',L,v)\in E(P(f^*\xi))\times E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\text{ and }g(L')=L\big\}\\
+&\cong\big\{(L',v)\in E(P(f^*\xi))\times E(\xi):(P\xi)(g(L'))=\xi(v)\text{ and }v\in g(L')\big\}.
+\end{align*}
+Let $\phi(L',v'):=(L',\bar{f}(v'))$. Then, $\phi$ is well defined. Indeed, for $(L',v')\in E(\lambda_{f^*\xi})$ we first have $(P\xi)(g(L'))=f((P(f^*\xi))(L'))=f(f^*\xi(v'))=\xi(\bar{f}(v'))$ and if we write $v'=(x,a)$ and $L'=[(y,b)]$, then we also have that $v'\in L'$ means $[(x,a)]=[(y,b)]$ which gives that $[a]=[b]$. It is clear that $\phi$ is a fiber bundle map, which is a linear isomorphism fiber-wise, since $\bar{f}$ is a linear isomorphism fiber-wise. So, using \ref{prop:local_to_global_iso_vector}, $\phi$ is a vector space isomorphism. Hence, the following diagram is commutative and both squares are pullback squares:
+\begin{center}
+\begin{tikzcd}
+E(\lambda_{f^*\xi})\ar[r]\ar[d,"\lambda_{f^*\xi}=g^*\lambda_{\xi}"']\ar[dr,phantom,"\lrcorner",near start]&[2em]E(\lambda_{\xi})\ar[r]\ar[d,"\lambda_{\xi}"']\ar[dr,phantom,"\lrcorner",near start]&[2em]E(\gamma^1)\ar[d,"\gamma^1"]\\[1.3em]
+E(P(f^*\xi))\ar[r,"g"]\ar[rr,dotted,bend right=10,"u_{f^*\xi}"']&E(P\xi)\ar[r,"u_{\xi}"]&\mathbb{R}P^{\infty}
+\end{tikzcd}
+\end{center}
+So, it is true that $\lambda_{f^*\xi}=g^*\lambda_{\xi}=g^*u_{\xi}^*\gamma^1=(u_{\xi}\circ g)^*\gamma^1$, but we also have that $\lambda_{f^*\xi}=u^*_{f^*\xi}\gamma^1$, so Theorem~\ref{thm:universal_uniqueness} gives us that $u_{\xi}\circ g\simeq u_{f^*\xi}$, which means that $g^*u^*_{\xi}=u^*_{f^*\xi}:H^*(\mathbb{R}P;\mathbb{Z}_2)\to H^*(E(P(f^*\xi));\mathbb{Z}_2)$. This gives: $a_{f^*\xi}=u_{f^*\xi}z=g^*u^*_{\xi}z=g^*a_{\xi}$ and thus:
+\[g^*a^k_{\xi}=a^k_{f^*\xi}=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*w_{k-i}(f^*\xi)\Big)a_{f^*\xi}^i=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*w_{k-i}(f^*\xi)\Big)g^*a_{\xi}^i\]
+On the other hand:
+\[g^*a^k_{\xi}=g^*\left(\sum_{i=0}^{k-1}\Big((P\xi)^*w_{k-i}(\xi)\Big)a_{\xi}^i\right)=\sum_{i=0}^{k-1}\Big(g^*(P\xi)^*w_{k-i}(\xi)\Big)g^*a_{\xi}^i=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*f^*w_{k-i}(\xi)\Big)g^*a_{\xi}^i\]
+which gives $w_i(f^*\xi)=f^*w_i(\xi)$ for all $i\in[k]$.
+\end{proof}
+
+\begin{proposition} Let $B$ be a paracompact space, $\xi:E(\xi)\to B$ be any $k$-plane vector bundle and $\eta:E(\eta)\to B$ be any $\ell$-plane vector bundle. Then, $w(\xi\oplus\eta)=w(\eta)w(\xi)$.
+\end{proposition}
+\begin{proof} Write $E(\xi\oplus\eta)=\big\{(a,b)\in E(\xi)\times E(\eta):\xi(a)=\eta(b)\big\}$ and define $f_{\xi}:E(\xi)\to E(\xi\oplus\eta)$ with $f_{\xi}(a)=(a,0_{\eta^{=1}(\xi(a))})=:(a,0)$ and $f_{\eta}:E(\eta)\to E(\xi\oplus\eta)$ with $f_{\eta}(b)=(0_{\xi^{-1}(\eta(b))},b)=:(0,b)$, where $0_V$ denotes the zero element in the vector space $V$, making $f_{\xi}$ and $f_{\eta}$ well defined. Notice that $f_{\xi}$ and $f_{\eta}$ are embeddings. Then, we define $g_{\xi}:E(P\xi)\to E(P(\xi\oplus\eta))$ with $g_{\xi}([a])=[f_{\xi}(a)]=[(a,0)]$ and $g_{\eta}:E(P\eta)\to E(P(\xi\oplus\eta))$ with $g_{\eta}([b])=[f_{\eta}(b)]$. Notice that $g_{\xi}$ and $g_{\eta}$ are continuous and well defined. Indeed, let $a_1,a_2\in E(\xi)$ with $a_1,a_2\neq0$ and $[a_1]=[a_2]$ in $E(P\xi)$. Then $\xi(a_1)=\xi(a_2)$, i.e. $\xi\oplus\eta(a_1,0)=\xi\oplus\eta(a_2,0)$ and $a_1=\lambda a_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$, i.e. $(a_1,0)=\lambda(a_2,0)$. Thus, $[(a_1,0)]=[(a_2,0)]$ in $E(P(\xi\oplus\eta))$ and the proof is exactly the same for $g_{\eta}$. Moreover, notice that the homeomorphism $E(\xi)\cong f_{\xi}(E(\xi))\subseteq E(\xi\oplus\eta)$ respects the equivalence relations in both spaces, so $g_{\xi}$ and $g_{\eta}$ are also embeddings. So, we have the following two commutative diagrams:
+\begin{center}
+\begin{tikzcd}
+E(\xi)\ar[r,"f_{\xi}",hook]\ar[dr,"\xi"']&E(\xi\oplus\eta)\ar[d,"\xi\oplus\eta"',near start]&E(\eta)\ar[l,"f_{\eta}"',hook']\ar[dl,"\eta"]&[2em]E(P\xi)\ar[r,"g_{\xi}",hook]\ar[dr,"P\xi"']&E(P(\xi\oplus\eta))\ar[d,"P(\xi\oplus\eta)"',near start]&E(P\eta)\ar[l,"g_{\eta}"',hook']\ar[dl,"P\eta"]\\[1.3em]
+&B&&&B
+\end{tikzcd}
+\end{center}
+Next, we have $\lambda_{\xi}\cong g_{\xi}^*\lambda_{\xi\oplus\eta}$ and $\lambda_{\eta}\cong g_{\eta}^*\lambda_{\xi\oplus\eta}$. Indeed, we will define $\phi:E(\lambda_{\xi})\to E(g_{\xi}^*\lambda_{\xi\oplus\eta})$, where
+\begin{align*}
+E(\lambda_{\xi})&=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\big\},\\[0.5em]
+E(g_{\xi}^*\lambda_{\xi\oplus\eta})&=\big\{(L,L',v')\in E(P\xi)\times E(P(\xi\oplus\eta))\times E(\xi\oplus\eta):\\
+&\qquad\qquad\qquad\qquad(P(\xi\oplus\eta))(L')=(\xi\oplus\eta)(v')\text{ and }v'\in L'\text{ and }g_{\xi}(L)=L'\big\}\\
+&\cong\big\{(L,v')\in E(P\xi)\times E(\xi\oplus\eta):(P(\xi\oplus\eta))(g_{\xi}(L))=(\xi\oplus\eta)(v')\text{ and }v'\in g_{\xi}(L)\big\}\\
+\end{align*}
+and $\phi(L,v):=(L,f_{\xi}(v))$. Then, notice that $\phi$ is well defined. Indeed, for $(L,v)\in E(\lambda_{\xi})$ we first have $(P(\xi\oplus\eta))(g_{\xi}(L))=(P\xi)(L)=\xi(v)=(\xi\oplus\eta)(f_{\xi}(v))$ and if we write $L=[a]$, then we also have that $v\in L$ means $[v]=[a]$, which gives that $[f_{\xi}]=[(v,0)]=[(a,0)]=g_{\xi}(L)$. It is clear that $\phi$ is a fiber bundle map, which is a linear isomorphism fiber-wise, since $f_{\xi}$ is a linear monomorphism over each fiber and over each $L\in E(P\xi)$ the fibers are one dimensional in both spaces. So, using \ref{prop:local_to_global_iso_vector}, $\phi$ is a vector space isomorphism. The case of $\lambda_{\eta}\cong g^*_{\eta}\lambda_{\xi\oplus\eta}$ is identical. Hence, the following diagrams are commutative and all squares are pullback squares:
+\begin{center}
+\begin{tikzcd}
+E(\lambda_{\xi})\ar[r]\ar[d,"\lambda_{\xi}=g_{\xi}^*\lambda_{\xi\oplus\eta}"']\ar[dr,phantom,"\lrcorner",near start]&E(\lambda_{\xi\oplus\eta})\ar[r]\ar[d,"\lambda_{\xi\oplus\eta}"']\ar[dr,phantom,"\lrcorner",near start]&E(\gamma^1)\ar[d,"\gamma^1"]&[2em]E(\lambda_{\eta})\ar[r]\ar[d,"\lambda_{\eta}=g_{\eta}^*\lambda_{\xi\oplus\eta}"']\ar[dr,phantom,"\lrcorner",near start]&E(\lambda_{\xi\oplus\eta})\ar[r]\ar[d,"\lambda_{\xi\oplus\eta}"']\ar[dr,phantom,"\lrcorner",near start]&E(\gamma^1)\ar[d,"\gamma^1"]\\[1.3em]
+E(P\xi)\ar[r,"g_{\xi}"]\ar[rr,dotted,bend right=10,"u_{\xi}"']&E(P(\xi\oplus\eta))\ar[r,"u_{\xi\oplus\eta}"]&\mathbb{R}P^{\infty}&
+E(P\eta)\ar[r,"g_{\eta}"]\ar[rr,dotted,bend right=10,"u_{\eta}"']&E(P(\xi\oplus\eta))\ar[r,"u_{\xi\oplus\eta}"]&\mathbb{R}P^{\infty}
+\end{tikzcd}
+\end{center}
+So, it is true that $\lambda_{\xi}=g_{\xi}^*\lambda_{\xi\oplus\eta}=g_{\xi}^*u_{\xi\oplus\eta}^*\gamma^1=(u_{\xi\oplus\eta}\circ g)^*\gamma^1$, but we also have that $\lambda_{\xi}=u^*_{\xi}\gamma^1$, so Theorem~\ref{thm:universal_uniqueness} gives us that $u_{\xi\oplus\eta}\circ g_{\xi}\simeq u_{\xi}$, which means that $g_{\xi}^*u^*_{\xi\oplus\eta}=u^*_{\xi}:H^*(\mathbb{R}P;\mathbb{Z}_2)\to H^*(E(P(\xi));\mathbb{Z}_2)$. Also, for exactly the same reason we have $g_{\eta}^*u^*_{\xi\oplus\eta}=u^*_{\eta}:H^*(\mathbb{R}P;\mathbb{Z}_2)\to H^*(E(P(\eta));\mathbb{Z}_2)$. This gives: $a_{\xi}=u_{\xi}z=g_{\xi}^*u^*_{\xi\oplus}z=g_{\xi}^*a_{\xi\oplus\eta}$ and $a_{\eta}=g_{\eta}a_{\xi\oplus\eta}$.
+
+For the rest of the proof, we will use the notation: $n:=k+\ell$, $P:=P(\xi\oplus\eta):E(P)\to B$, $a:=a_{\xi\oplus\eta}\in H^1(E(P);\mathbb{Z}_2)$ and $w_i:=w_i{\xi\oplus\eta}\in H^i(B;\mathbb{Z}_2)$. So, we write the definition of $w_i$ as:
+\[a^n=\sum_{r=0}^{n-1}P^*w_{n-r}a^r\in H^n(E(P);\mathbb{Z}_2)\]
+Now we define the elements
+\begin{align}
+x:=&\sum_{i=0}^{k-1}P^*w_{k-i}(\xi)a^i+a^k=\sum_{i=0}^kP^*w_{k-i}(\xi)a^i\in H^k(E(P);\mathbb{Z}_2),\\
+y:=&\sum_{j=0}^{\ell-1}P^*w_{\ell-j}(\eta)a^i+a^{\ell}=\sum_{j=0}^{\ell}P^*w_{\ell-j}(\eta)a^i\in H^{\ell}(E(P);\mathbb{Z}_2)
+\end{align}
+Our goal now is to prove that $xy=0$. Notice that $g_{\xi}^*(x)=\sum_{i=0}^kg_{\xi}^*P^*w_{k-i}(\xi)g_{\xi}^*a^i=P_{\xi}^*w_{k-i}(\xi)a_{\xi}^i=0\in H^k(E(P\xi);\mathbb{Z}_2)$. Since $g_{\xi}$ is an embedding, $g_{\xi}^*$ is part of the long exact sequence of the nice pair $(E(P),E(P\xi))$ and thus there exists some $\bar{x}\in H^k(E(P),E(P\xi);\mathbb{Z}_2)$ with $i_{\xi}^*\bar{x}=x$, where $i_{\xi}:E(P)\hookrightarrow(E(P),E(P\xi))$ is the usual inclusion map. Similarly, since $g_{\eta}^*(y)=0\in H^{\ell}(E(P\eta);\mathbb{Z}_2)$, there exists some $\bar{y}\in H^{\ell}(E(P),E(P\eta);\mathbb{Z}_2)$, with $i_{\eta}^*\bar{y}=y$.
+
+The naturality of the cup product, gives the following commutative diagram:
+\begin{center}
+\begin{tikzcd}
+H^k(E(P),E(P\xi);\mathbb{Z}_2)\otimes H^{\ell}(E(P),E(P\eta);\mathbb{Z}_2)\ar[r,"\smile"]\ar[d,"i_{\xi}^*\otimes i_{\eta}^*"]&H^n(E(P),E(P\xi)\cup E(P\eta);\mathbb{Z}_2)\ar[d,"i^*"]\\[2em]
+H^k(E(P);\mathbb{Z}_2)\otimes H^{\ell}(E(P);\mathbb{Z}_2)\ar[r,"\smile"]&H^n(E(P);\mathbb{Z}_2)
+\end{tikzcd}
+\end{center}
+Notice now that $g_{\xi}(E(P\xi))\cap g_{\eta}(E(P\eta))=\emptyset$ and also that there exist deformation retractions $E(P)\setminus g_{\eta}(E(P\eta))\to g_{\xi}(E(P\xi))$ and $E(P)\setminus g_{\xi}(E(P\xi))\to g_{\eta}(E(P\eta))$, which means that we have the following homotopy: $(E(P),E(P\xi)\cup E(P\eta))\simeq\big(E(P),(E(P)\setminus E(P\eta))\cup(E(P)\setminus E(P\xi))\big)\simeq(E(P),E(P))$, i.e. that $H^n(E(P),E(P\xi)\cup E(P\eta);\mathbb{Z}_2)=0$. Thus, $xy=i^*(\bar{x}\bar{y})=0$, i.e. $\big(\sum_{i=0}^kP^*w_{k-i}(\xi)a^i\big)\big(\sum_{j=0}^{\ell}P^*w_{\ell-i}(\eta)a^j\big)=0$, which gives:
+\[\sum_{r=0}^n\left(P^*\sum_{i=0}^rw_i(\xi)w_{r-i}(\eta)\right)a^{n-r}=0=\sum_{r=0}^nP^*w_ra^{n-r}\]
+which exactly is $w(\xi)w(\eta)=w(\xi\oplus\eta)$.
+\end{proof}
+
+\begin{proposition} For the tautological line bundle $\gamma_1^1:\big\{(L,v)\in\mathbb{R}P^1\times\mathbb{R}^2:v\in L\big\}\to$ with $\gamma_1^1(L,v)=L$ it is true that $w(\gamma_1^1)\neq0$.
+\end{proposition}
+\begin{proof} First, using Remark~\ref{rem:lambda_for_line_bundle}, we get that the map $(P\gamma_1^1)^*:H^*(\mathbb{R}P^1;\mathbb{Z}_2)\to H^*(E(P\gamma_1^1);\mathbb{Z}_2)$ is an isomorphism and that $\lambda_{\gamma_1^1}\cong\gamma_1^1$. Then, using Proposition~\ref{prop:restriction}, we are able to express $\lambda_{\gamma_1^1}$ as a pullback: $\gamma_1^1=\iota_{1,2}^*\gamma^1$. By the uniqueness Thereom~\ref{thm:universal_uniqueness}, $u_{\gamma_1^1}\sim\iota_{1,2}$ and thus $u_{\gamma_1^1}^*=\iota_{1,2}^*:H^*(\mathbb{R}P^{\infty};\mathbb{Z}_2)\to H^*(\mathbb{R}P^1;\mathbb{Z}_2)$. So, using Theorem~\ref{thm:projective_spaces_cohomology}, we can explicitly compute $a_{\gamma_1^1}=u_{\gamma_1^1}z=\iota_{1,2}z=z_1$, which gives us $z_1=a_{\gamma_1^1}=\sum_{i=0}^0(P\gamma_1^1)^*(w_{1-i}(\gamma_1^1))a_{\gamma_1^1}^k=(P\gamma_1^1)^*w_1(\gamma_1^1)$, i.e. $w_1(\gamma_1^1)=z_1\in\mathbb{Z}_2[z_1]\cong H^*(E(P\gamma_1^1);\mathbb{Z}_2)$. In particular, $w_1(\gamma_1^1)\neq0$.
+\end{proof}
+
 \subsection{Uniqueness of Stiefel Whitney classes}
 In this subsection we prove that if some $w(\xi)$ satisfies the the Stiefel-Whitney axioms, then this is unique.
 
@@ -258,52 +348,6 @@ Since $E(P\xi)$ is paracompact, Proposition~\ref{prop:paracompact_is_euclidean} 
 Next, we prove the uniqueness for every line bundle $\lambda:E\to B$. Since $B$ is paracompact, we use Theorem~\ref{thm:universal} and Theorem~\ref{thm:universal_uniqueness} to write $\lambda=u_{\lambda}^*\gamma^1$ for some unique $u_{\lambda}:B\to\mathbb{R}P^{\infty}$, up to homotopy. So, using (SW2), $w(\lambda)=w(u_{\lambda}^*\gamma^1)=u_{\lambda}^*w(\gamma^1)$ and thus, $w(\lambda)=w'(\lambda)=u_{\lambda}^*(1+z)$.
 
 And finally, we prove it for a general $k$-plane vector bundle $\xi:E\to B$. Since $B$ is paracompact, Proposition~\ref{prop:splitting_map} gives us a space $B'$ and a continuous map $f:B'\to B$ such that $f^*:H^*(B;\mathbb{Z}_2)\to H^*(B';\mathbb{Z}_2)$ is a monomorphism and $f^*\xi\cong\lambda_1\oplus\lambda_k$ for some line bundles $\lambda_1,\ldots,\lambda_k$. Then, (SW2) and (SW3) give us that $f^*w(\xi)=w(f^*\xi)=w(\lambda_1\oplus\cdots\oplus\lambda_k)=w(\lambda_1)\cdots w(\lambda_k)=w'(\lambda_1)\cdots w'(\lambda_k)=w'(\lambda_1\oplus\cdots\lambda_k)=w'(f^*\xi)=f^*w'(\xi)$. Since $f^*$ is a monomorphism, we get $w(\xi)=w'(\xi)$.
-\end{proof}
-
-\subsection{Existence of Stiefel Whitney classes}
-In this subsection we prove that the Stiefel-Whitney classes defined previously satisfy the Stiefel-Whitney axioms.
-\begin{proposition} Let $B$ be paracompact and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w_0(\xi)=1$ and $w_{k+1}(\xi)=w_{k+2}(\xi)=\cdots=0$.
-\end{proposition}
-\begin{proof} This is immediate from the definition.
-\end{proof}
-
-\begin{proposition} Let $B',B$ be two paracompact spaces, $f:B'\to B$ be any continuous function and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w(f^*\xi)=f^*w(\xi)$.
-\end{proposition}
-\begin{proof} Recall that $E(f^*\xi)=\big\{(x,v)\in B'\times E(\xi):f(x)=\xi(v)\big\}$ and define $\bar{f}:E(f^*\xi)\to E(\xi)$ with $\bar{f}(x,v):=v$, completing the pullback square. Then, define $g:E(P(f^*\xi))\to E(P\xi)$ with $g([(x,v)]):=[\bar{f}(x,v)]=[v]$. This is continuous and well defined. Indeed, let $(x_1,v_1),(x_2,v_2)\in E(f^*\xi)$ with $v_1,v_2\neq 0$ and $[(x_1,v_1)]=[(x_2,v_2)]$ in $E(P(f^*\xi))$. Then $x_1=x_2$, i.e. $\xi(v_1)=f(x_1)=f(x_2)=\xi(v_2)$ and $v_1=\lambda v_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Thus, $[v_1]=[v_2]$ in $E(P\xi)$. So, we have the following two commutative diagrams:
-\begin{center}
-\begin{tikzcd}
-&[-7em]&[-3em]&[-10em]\faktor{\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\text{ and }v\neq0\big\}}{\left\{\substack{(x_1,v_1)\sim(x_2,v_2)\text{ iff }\\[0.2em]x_1=x_2\text{ and }v_1=\lambda v_2}\right\}}\ar[dd,phantom,"\cong"{yshift=1em,rotate=90}]&[-10em]\\[-3.2em]
-&\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\big\}\ar[d,phantom,"\cong"rotate=90]&\\[-1.2em]
-&E(f^*\xi)\ar[r,"\bar{f}"]\ar[d,"f^*\xi"']&E(\xi)\ar[d,"\xi"]&[4em]E(P(f^*\xi))\ar[r,"g"]\ar[d,"P(f^*\xi)"']&E(P\xi)\ar[d,"P\xi"]\\[1.3em]
-&B'\ar[r,"f"]&B&B'\ar[r,"f"]&B
-\end{tikzcd}
-\end{center}
-Next, we will prove that $\lambda_{f^*\xi}\cong g^*\lambda_{\xi}$, i.e. we will define a map $\phi:E(\lambda_{f^*\xi})\to E(g^*\lambda_{\xi})$, where
-\begin{align*}
-E(\lambda_{f^*\xi})&=\big\{(L',v')\in E(P(f^*\xi))\times E(f^*\xi):(P(f^*\xi))(L')=f^*\xi(v')\text{ and }v'\in L'\big\},\\
-E(g^*\lambda_{\xi})&=\big\{(L',L,v)\in E(P(f^*\xi))\times E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\text{ and }g(L')=L\big\}\\
-&\cong\big\{(L',v)\in E(P(f^*\xi))\times E(\xi):(P\xi)(g(L'))=\xi(v)\text{ and }v\in g(L')\big\}.
-\end{align*}
-Let $\phi(L',v'):=(L',\bar{f}(v'))$. Then, $\phi$ is well defined. Indeed, for $(L',v')\in E(\lambda_{f^*\xi})$ we first have $(P\xi)(g(L'))=f(P(f^*\xi(L')))=f(f^*\xi(v'))=\xi(\bar{f}(v'))$ and if we write $v'=(x,a)$ and $L'=[(y,b)]$, then we also have that $v'\in L'$ means $[(x,a)]=[(y,b)]$ which gives that $[a]=[b]$. It is clear that $\phi$ is a fiber bundle map, which is a linear isomorphism fiber-wise, since $\bar{f}$ is a linear isomorphism fiber-wise. So, the following diagram is commutative and both squares are pullback squares:
-\begin{center}
-\begin{tikzcd}
-E(\lambda_{f^*\xi})\ar[r]\ar[d,"\lambda_{f^*\xi}=g^*\lambda_{\xi}"']\ar[dr,phantom,"\lrcorner",near start]&[2em]E(\lambda_{\xi})\ar[r]\ar[d,"\lambda_{\xi}"']\ar[dr,phantom,"\lrcorner",near start]&[2em]E(\gamma^1)\ar[d,"\gamma^1"]\\[1.3em]
-E(P(f^*\xi))\ar[r,"g"]\ar[rr,dotted,bend right=10,"u_{f^*\xi}"']&E(P\xi)\ar[r,"u_{\xi}"]&\mathbb{R}P^{\infty}
-\end{tikzcd}
-\end{center}
-So, it is true that $\lambda_{f^*\xi}=g^*\lambda_{\xi}=g^*u_{\xi}^*\gamma^1=(u_{\xi}\circ g)^*\gamma^1$, but we also have that $\lambda_{f^*\xi}=u^*_{f^*\xi}\gamma^1$, so Theorem~\ref{thm:universal_uniqueness} gives us that $u_{\xi}\circ g\simeq u_{f^*\xi}$, which means that $g^*u^*_{\xi}=u^*_{f^*\xi}:H^*(\mathbb{R}P;\mathbb{Z}_2)\to H^*(E(P(f^*\xi));\mathbb{Z}_2)$. This gives: $a_{f^*\xi}=u_{f^*\xi}z=g^*u^*_{\xi}z=g^*a_{\xi}$ and thus:
-\[g^*a^k_{\xi}=a^k_{f^*\xi}=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*w_{k-i}(f^*\xi)\Big)a_{f^*\xi}^i=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*w_{k-i}(f^*\xi)\Big)g^*a_{\xi}^i\]
-On the other hand:
-\[g^*a^k_{\xi}=g^*\left(\sum_{i=0}^{k-1}\Big((P\xi)^*w_{k-i}(\xi)\Big)a_{\xi}^i\right)=\sum_{i=0}^{k-1}\Big(g^*(P\xi)^*w_{k-i}(\xi)\Big)g^*a_{\xi}^i=\sum_{i=0}^{k-1}\Big((P(f^*\xi))^*f^*w_{k-i}(\xi)\Big)g^*a_{\xi}^i\]
-which gives $w_i(f^*\xi)=f^*w_i(\xi)$ for all $i\in[k]$.
-\end{proof}
-
-\begin{proposition} Let $B$ be a paracompact space, $\eta:E(\eta)\to B$ be any $k_1$-plane vector bundle and $\xi:E(\xi)\to B$ be any $k_2$-plane vector bundle. Then, $w(\eta\oplus\xi)=w(\eta)w(\xi)$.
-\end{proposition}
-
-\begin{proposition} For the tautological line bundle $\gamma_1^1:\big\{(L,v)\in\mathbb{R}P^1\times\mathbb{R}^2:v\in L\big\}\to$ with $\gamma_1^1(L,v)=L$ it is true that $w(\gamma_1^1)\neq0$.
-\end{proposition}
-\begin{proof} First, using Remark~\ref{rem:lambda_for_line_bundle}, we get that the map $(P\gamma_1^1)^*:H^*(\mathbb{R}P^1;\mathbb{Z}_2)\to H^*(E(P\gamma_1^1);\mathbb{Z}_2)$ is an isomorphism and that $\lambda_{\gamma_1^1}\cong\gamma_1^1$. Then, using Proposition~\ref{prop:restriction}, we are able to express $\lambda_{\gamma_1^1}$ as a pullback: $\gamma_1^1=\iota_{1,2}^*\gamma^1$. By the uniqueness Thereom~\ref{thm:universal_uniqueness}, $u_{\gamma_1^1}\sim\iota_{1,2}$ and thus $u_{\gamma_1^1}^*=\iota_{1,2}^*:H^*(\mathbb{R}P^{\infty};\mathbb{Z}_2)\to H^*(\mathbb{R}P^1;\mathbb{Z}_2)$. So, using Theorem~\ref{thm:projective_spaces_cohomology}, we can explicitly compute $a_{\gamma_1^1}=u_{\gamma_1^1}z=\iota_{1,2}z=z_1$, which gives us $z_1=a_{\gamma_1^1}=\sum_{i=0}^0(P\gamma_1^1)^*(w_{1-i}(\gamma_1^1))a_{\gamma_1^1}^k=(P\gamma_1^1)^*w_1(\gamma_1^1)$, i.e. $w_1(\gamma_1^1)=z_1\in\mathbb{Z}_2[z_1]\cong H^*(E(P\gamma_1^1);\mathbb{Z}_2)$. In particular, $w_1(\gamma_1^1)\neq0$.
 \end{proof}
 
 
