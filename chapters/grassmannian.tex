@@ -1,51 +1,27 @@
 %!TEX root = Cohomology of real Grassmannians.tex
 \chapter{Grassmannians}
-Since the topology of projective spaces has been thoroughly studied and characterized, a logical generalization is imposing a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$, which are called a \ul{Grassmannian}.
-
-This chapter presents basic properties of Grassmannians, and is used as a point of reference throughout this thesis.
-Through this chapter the reader gets to know the combinatorial structure of a Grassmannian and do basic computations using the Schubert decomposition of these manifolds.
+Since the topology of projective spaces has been thoroughly studied and characterized, a logical generalization is imposing a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$, which are called a \emph{Grassmannian}.
 
 Recall the definition of the real projective spaces as topological spaces,
-$P\mathbb{R}^n\cong\faktor{\mathbb{R}^{n+1}\setminus\{0\}}{\sim}$,
+$P\mathbb{R}^n\cong\big(\mathbb{R}^{n+1}\setminus\{0\}\big)/\sim$,
 where two vectors are equivalent, if they span the same line. Notice that in this definition a proper subset of the whole vector space is required, for the quotient to be well defined. Namely the set of all vectors, which span a line. In accordance to that, for the case of Grassmannians, the discussion starts at the space of all $k$-tuples of vectors in $\mathbb{R}^n$, spanning a $k$-dimensional vector space.
 
 \section{Stiefel Manifolds}
-\begin{definition} Let $0<k\leq n$ be natural numbers. Then, define $\St{k}{n}{\mathbb{R}}=\St{k}{n}$ as
-$\St{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim\left<v_1,\ldots,v_k\right>=k\right\}$
-equipped with the subspace topology. Every point in this set is called a \ul{$k$-frame} of $\mathbb{R}^n$.
+\begin{definition} For $k,n\in\mathbb{N}$ such that $k\leq n$, the space
+\[\St{k}{n}:=\big\{\left(v_1,\ldots,v_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim_{\mathbb{R}}\mathrm{span}\{v_1,\ldots,v_k\}=k\big\}\]
+equipped with the subspace topology is the \emph{noncompact Stiefel manifold}. Every element in $\St{k}{n}$ is called a \emph{$k$-frame of $\mathbb{R}^n$}.
 \end{definition}
-This is actually an open subspace of the space of all $k$-tuples of vectors in $\mathbb{R}^n$:
-\begin{proposition}\label{prop:St_open} Let $0<k\leq n$ be natural numbers. Then $\St{k}{n}$ is an open submanifold of ${\left(\mathbb{R}^n\right)}^k$.
+\begin{proposition}\label{prop:St_open} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\St{k}{n}$ is open in ${\left(\mathbb{R}^n\right)}^k$.
 \end{proposition}
-\begin{proof} Define the map $\Phi$ taking a $k$-tuple of vectors in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{n\times k}$ having these vectors as columns:
-$\Phi:{\left(\mathbb{R}^n\right)}^k\to \mathbb{R}^{n\times k}$,
-$(v_1,\ldots,v_k)\mapsto \left(\begin{array}{ccc}
-	|&&|\\[-.3em]
-	v_1&\cdots&v_k\\[-.3em]
-	|&&|\\
-\end{array}\right)$.
-
-Since the topology on both spaces is the product topology and $\Phi$ respects it, $\Phi$ is a homeomorphism.
-
-Define now the subset $D$ of all $n\times k$ matrices having at least one non-zero $k\times k$ minor
-$D:=\left\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\text{ s.t. }\det(A_I)\neq0\right\}$
-where, given some $I\in\binom{[n]}{k}$, $A_I\in\mathbb{R}^{k\times k}$ is the matrix formed from the $k$ rows of $A$ indexed by $I$. Then, we have
-$\St{k}{n}=\Phi^{-1}(D)\cong D$
-and since $D$ is an open submanifold of $\mathbb{R}^{n\times k}$, we also get that $\St{k}{n}$ is an open submanifold of ${\left(\mathbb{R}^n\right)}^k$.
+\begin{proof} Define the homeomorphism $\phi:{\left(\mathbb{R}^n\right)}^k\to \mathbb{R}^{n\times k}$ such that $\phi(v_1,\ldots,v_k)=(v_1|\cdots|v_k)$, where $\mathbb{R}^{n\times k}$ is equipped with the usual topology of $\mathbb{R}^{nk}$. Moreover, let $D:=\big\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\text{ such that }\det(A_I)\neq0\big\}$, where given some $I\in\binom{[n]}{k}$, $A_I\in\mathbb{R}^{k\times k}$ is the matrix formed from the $k$ rows of $A$ indexed by $I$. Notice that $\St{k}{n}=\phi^{-1}(D)\cong D$ and since $D$ is open in $\mathbb{R}^{n\times k}$, so is $\St{k}{n}$ in ${\left(\mathbb{R}^n\right)}^k$.
 \end{proof}
-\begin{remark} In particular, this proves that $\St{k}{n}$ is a real manifold of dimension $kn$.
-\end{remark}
+In particular, this proves that $\St{k}{n}$ is a real manifold of dimension $kn$.
 
-We now define the Stiefel manifold as the space of all \ul{orthonormal} $k$-frames:
-\begin{definition} Let $0<k\leq n$ be some natural numbers. Then, define the \ul{Stiefel} space $\StO{k}{n}{\mathbb{R}}=\StO{k}{n}$ as
-$\StO{k}{n}{\mathbb{R}}:=\left\{\left(\vec{v}_1,\ldots,\vec{v}_k\right)\in{\left(\mathbb{R}^n\right)}^k:\vec{v}_i^t\vec{v}_j=\delta_{i,j}\right\}$
-equipped with the subspace topology. Every point in this set is called an \ul{orthonormal $k$-frame} of $\mathbb{R}^n$.
+\begin{definition} For $k,n\in\mathbb{N}$ such that $k\leq n$, the space $\StO{k}{n}:=\big\{\left(v_1,\ldots,v_k\right)\in{\left(\mathbb{R}^n\right)}^k:v_i^tv_j=\delta_{i,j}\big\}$ equipped with the subspace topology is the \emph{Stiefel manifold}. Every element in $\StO{k}{n}$ is called an \emph{orthonormal $k$-frame of $\mathbb{R}^n$}.
 \end{definition}
-Notice that we obviously have $\StO{k}{n}\subseteq\St{k}{n}$.
-
-\begin{proposition}\label{prop:StO_dim_closed} Let $0<k\leq n$ be natural numbers. Then $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of dimension $nk-\frac{k(k+1)}{2}$.
-\end{proposition}
 %TODO: Write this better
+\begin{proposition}\label{prop:StO_dim_closed} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\StO{k}{n}$ is closed in ${\left(\mathbb{R}^n\right)}^k$. of dimension $nk-\frac{k(k+1)}{2}$.
+\end{proposition}
 \begin{proof}
 We need again the homeomorphism $\Phi:{\left(\mathbb{R}^n\right)}^k\to\mathbb{R}^{n\times k}$ taking a $k$-tuple in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{k\times n}$ having these vectors as columns. This time, define the subset $S$ of all $n\times k$ semi-orthogonal matrices
 $S:=\left\{A\in\mathbb{R}^{n\times k}:A^t A=I_k\right\}$
@@ -54,51 +30,47 @@ Then,
 $\StO{k}{n}=\Phi^{-1}(S)\cong S$,
 where $S$ is a subset of $\mathbb{R}^{n\times k}$, defined by $\binom{k+1}{2}$ (linearly independent) equations. This makes $S$ a closed submanifold of $\mathbb{R}^{n\times k}$, of dimension $nk-\binom{k+1}{2}$. Thus, $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of the same dimension.
 \end{proof}
-\begin{remark} Let $0<k\leq n$ be natural numbers. Then $\StO{k}{n}$ is a bounded subset of ${\left(\mathbb{R}^n\right)}^k$, with the metric induced by the isomorphism ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$. Indeed, if $f=(v_1,\ldots,v_k)\in{\left(\mathbb{R}^n\right)}^k$ is an orthonormal $k$-frame of $\mathbb{R}^n$, then
-$\left\|f\right\|_2^2=\sum_{i=1}^k\left\|v_i\right\|_2^2=k$.
-\end{remark}
 
-\begin{lemma}\label{lem:StO_compact} Let $0<k\leq n$ be natural numbers. Then $\StO{k}{n}$ is compact. Indeed the previous Proposition and Remark prove that $\StO{k}{n}$ is a closed and bounded subset of ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$, which proves the assertion.
+\begin{lemma}\label{lem:StO_compact} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\StO{k}{n}$ is compact.
 \end{lemma}
+\begin{proof} Due to Proposition~\ref{prop:StO_dim_closed}, $\StO{k}{n}$ is a closed subset of ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$. Moreover, notice that $\StO{k}{n}$ is bounded in ${\left(\mathbb{R}^n\right)}^k$, with the usual metric of $\mathbb{R}^{kn}$. Indeed, for every $f=(v_1,\ldots,v_k)\in\StO{k}{n}$, $\left\|f\right\|_2^2=\sum_{i=1}^k\left\|v_i\right\|_2^2=k$. Hence, $\StO{k}{n}$ is compact.
+\end{proof}
 
-%TODO: change to: "Let k,n\in\mathbb N such that 0<k<n"
-\begin{definition} Let $0<k<n$ be natural numbers. Then, the real \ul{Grassmann space} $\Gr{k}{n}{\mathbb{R}}=\Gr{k}{n}$ is the set of all linear $k$-dimensional subspaces of $\mathbb{R}^n$, equipped with the quotient topology,
-$\Gr{k}{n}{\mathbb{R}}:=\faktor{\St{k}{n}{\mathbb{R}}}{\sim}$,
-where $(\vec{v}_1,\ldots,\vec{v}_k)\sim(\vec{u}_1,\ldots,\vec{u}_k)$, if $\left<\vec{v}_1,\ldots,\vec{v}_k\right>=\left<\vec{u}_1,\ldots,\vec{u}_k\right>$.
+\begin{definition} For $k,n\in\mathbb{N}$, such that $k<n$ the space $\Gr{k}{n}:=\big(\St{k}{n}{\mathbb{R}}\big)/\sim$, where $(v_1,\ldots,v_k)\sim(u_1,\ldots,u_k)$, if $\mathrm{span}\{v_1,\ldots,v_k\}=\mathrm{span}\{u_1,\ldots,u_k\}$, equipped with the quotient topology is the \emph{Grassmann space}. Every element $H\in\Gr{k}{n}$ is called an \emph{$k$-plane in $\mathbb{R}^n$}.
 \end{definition}
 
-\begin{lemma}\label{lem:q_open} Let $0<k<n$ be natural numbers. Then the quotient map $q:\St{k}{n}\to\Gr{k}{n}$ is an open map.
+\begin{lemma}\label{lem:q_open} For $k,n\in\mathbb{N}$ such that $k<n$, the quotient map $q:\St{k}{n}\to\Gr{k}{n}$ is open.
 \end{lemma}
-\begin{proof} Let $U\subseteq\St{k}{n}$ be an open set in $\St{k}{n}$, then $q(U)$ is open in $\Gr{k}{n}$ if and only if $q^{-1}(q(U))$ is open in $\St{k}{n}$, since $q$ is a quotient map. Moreover, $q^{-1}(q(U))$ is open in $\St{k}{n}$ if and only if it is open in $(\mathbb{R}^{n})^k$, since $\St{k}{n}$ is open in $(\mathbb{R}^{n})^k$. This means that it suffices to prove that $\tilde{U}:=q^{-1}(q(U))$ is open in $(\mathbb{R}^{n})^k$. In order to do this, we first construct a linear isomorphism $f_L:(\mathbb{R}^n)^k\to(\mathbb{R}^n)^k$ for every $L\in GL(k)$, as follows: Let $(x_1,\ldots,x_k)\in(\mathbb{R}^n)^k$ and define the linear maps $R_{(x_1,\ldots,x_k)}:\mathbb{R}^n\to\mathbb{R}^k$ and $S_{(x_1,\ldots,x_k)}:\mathbb{R}^k\to\mathbb{R}^n$ such that $R_{(x_1,\ldots,x_k)}(x_i)=e_i$ for every $i\in[k]$, $R_{(x_1,\ldots,x_k)}(v)=0$ for every $v\in\mathrm{span}\{x_1,\ldots,x_k\}^{\perp}$ and $S_{(x_1,\ldots,x_k)}(e_i)=x_i$ for every $i\in[k]$, where $e_1,\ldots,e_k$ is the usual basis of $\mathbb{R}^k$. Then, define
+\begin{proof} Let $U\subseteq\St{k}{n}$ be an open set in $\St{k}{n}$, then $q(U)$ is open in $\Gr{k}{n}$ if and only if $q^{-1}(q(U))$ is open in $\St{k}{n}$, since $q$ is a quotient map. Moreover, $q^{-1}(q(U))$ is open in $\St{k}{n}$ if and only if it is open in $(\mathbb{R}^{n})^k$, since $\St{k}{n}$ is open in $(\mathbb{R}^{n})^k$. This means that it suffices to prove that $\tilde{U}:=q^{-1}(q(U))$ is open in $(\mathbb{R}^{n})^k$. In order to do this, we first construct a linear isomorphism $f_L:(\mathbb{R}^n)^k\to(\mathbb{R}^n)^k$ for every $L\in GL(k)$ and then we show that
+$\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)$.
+
+For every $(x_1,\ldots,x_k)\in(\mathbb{R}^n)^k$ let $R_{(x_1,\ldots,x_k)}:\mathbb{R}^n\to\mathbb{R}^k$ and $S_{(x_1,\ldots,x_k)}:\mathbb{R}^k\to\mathbb{R}^n$ be the linear maps such that $R_{(x_1,\ldots,x_k)}(x_i)=e_i$ for every $i\in[k]$, $R_{(x_1,\ldots,x_k)}(v)=0$ for every $v\in\mathrm{span}\{x_1,\ldots,x_k\}^{\perp}$ and $S_{(x_1,\ldots,x_k)}(e_i)=x_i$ for every $i\in[k]$, where $e_1,\ldots,e_k$ is the usual basis of $\mathbb{R}^k$. Then, for every $L\in GL(k)$, define
 \begin{center}
 \begin{tikzcd}
 f_L\ar[r,phantom,":"]&[-3.5em](\mathbb{R}^n)^k\ar[r,"R_{(-)}"]&\mathbb{R}^k\ar[r,"L^{\oplus k}"]&\mathbb{R}^k\ar[r,"S_{(-)}"]&(\mathbb{R}^n)^k\\[-1.5em]
 &(x_1,\ldots,x_k)\ar[r,mapsto]&(e_1,\ldots,e_k)\ar[r,mapsto]&(Le_1,\ldots,Le_k)\ar[r,mapsto]&\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}
 \end{tikzcd}
 \end{center}
-and notice that for every fixed $L$, $f_L$ is linear: $f_L\big(\lambda(x_1,\ldots,x_k)+\mu(y_1,\ldots,y_k)\big)=\left(\sum_{j=1}^ke_i^t(Le_j)(\lambda x_j+\mu y_j)\right)_{i\in[k]}=\lambda\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}+\mu\left(\sum_{j=1}^ke_i^t(Le_j)y_j\right)_{i\in[k]}=\lambda f_L(x_1,\ldots,x_k)+\mu f_L(y_1,\ldots,y_k)$. Also, $f_L$ is injective: indeed $f_L(x_1,\ldots,x_k)=0$ means $\left(\sum_{j=1}^ke_i^t(Le_j)x_j\right)_{i\in[k]}=0$ which can be written as $\big(x_1|\cdots|x_k\big)\cdot\big(e_i^t(Le_j)\big)=0$. Since the matrix $\big(e_i^t(Le_j)\big)$ is the the matrix of $L$ on the basis $e_1,\ldots,e_k$ which is invertible, this gives $x_1=\cdots=x_k=0$. So, $f_L$ is an injective linear endomorphism and thus a linear isomorphism. Next, we prove that
-$\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)$
+which clearly is linear for every fixed $L$. Moreover, notice that $\big(\sum_{j=1}^ke_i^t(Le_j)x_j\big)_{i\in[k]}=0$ can be written as $\big(x_1|\cdots|x_k\big)\cdot\big(e_i^t(Le_j)\big)=0$. Since $\big(e_i^t(Le_j)\big)_{i,j\in[k]}$ is the the matrix of the invertible $L$ on the basis $e_1,\ldots,e_k$, $x_1=\cdots=x_k=0$. So, $f_L$ is an injective linear endomorphism and thus a linear isomorphism.
 
-For some $(u_1,\ldots,u_k)\in(\mathbb{R}^n)^k$, we have $(u_1,\ldots,u_k)\in\tilde{U}$ if and only if there exists $(x_1,\ldots,x_k)\in U$ with $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$. This is equivalent to the existence of $\{\lambda_{i,j}\}_{i,j\in[k]}\in\mathbb{R}$ such that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i\in[k]$. On the one hand, if the $\lambda_{i,j}$ are defined, then we can also define $L_0\in GL(k)$ by $L_0e_j:=\sum_{i=1}^k\lambda_{i,j}e_i$ for every $j\in[k]$, which gives $f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}=\left(\sum_{j=1}^k\lambda_{i,j}x_j\right)_{i\in[k]}=(u_i)_{i\in[k]}$, i.e. $(u_1,\ldots,u_k)\in f_{L_0}(U)$. On the other hand, if $(u_1,\ldots,u_k)\in f_{L_0}(U)$ for some $L_0\in GL(k)$, then $(u_1,\ldots,u_k)=f_{L_0}(x_1,\ldots,x_k)=\left(\sum_{j=1}^ke_i^t(L_0e_j)x_j\right)_{i\in[k]}$. Hence, we can define $\lambda_{i,j}:=e_i^t(L_0e_j)$ for every $i,j\in[k]$, which gives that $u_i=\sum_{j=1}^ke_i^t(L_0e_j)x_j$.
+Let $(u_1,\ldots,u_k)\in\tilde{U}$. Then there exists $(x_1,\ldots,x_k)\in U$ with $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$. Thus, there exist $\{\lambda_{i,j}\}_{i,j\in[k]}\in\mathbb{R}$ such that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i\in[k]$. Define $L_0\in GL(k)$ by $L_0e_j:=\sum_{i=1}^k\lambda_{i,j}e_i$ for every $j\in[k]$. Notice that $f_{L_0}(x_1,\ldots,x_k)=\big(\sum_{j=1}^ke_i^t(L_0e_j)x_j\big)_{i\in[k]}=\big(\sum_{j=1}^k\lambda_{i,j}x_j\big)_{i\in[k]}=(u_1,\ldots,u_k)$, i.e. $(u_1,\ldots,u_k)\in f_{L_0}(U)$. Moreover, let $(u_1,\ldots,u_k)\in f_{L_0}(U)$ for some $L_0\in GL(k)$. Then there exists some $(x_1,\ldots,x_k)\in U$ with $(u_1,\ldots,u_k)=f_{L_0}(x_1,\ldots,x_k)=\big(\sum_{j=1}^ke_i^t(L_0e_j)x_j\big)_{i\in[k]}$. Define $\lambda_{i,j}:=e_i^tL_0e_j$ for every $i,j\in[k]$. This means that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i$, and hence $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$, i.e. $(u_1,\ldots,u_k)\in\tilde{U}$. This proves that $\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)$ and thus that it is open.
 \end{proof}
 
 Having the case of projective spaces in mind, it is natural to also provide an alternative definition of Grassmannians.
 Specifically, the projective space of some dimension is also defined as the quotient over the unit sphere, rather than over the set of every nonzero vector.
 In this case the Stiefel manifold $\StO{k}{n}$, is the analog needed.
 
-\begin{proposition} Let $0<k<n$ be natural numbers. Let $q:\St{k}{n}\to\Gr{k}{n}$ be the quotient map used in the definition of the Grassmannians and let $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ be its restriction to the Stiefel manifold. Then $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
+\begin{proposition} For $k,n\in\mathbb{N}$ such that $k<n$, let $q_0:=q|_{\StO{k}{n}}:\StO{k}{n}\to\Gr{k}{n}$ be the restriction of the quotient map $q:\St{k}{n}\to\Gr{k}{n}$. Then $q_0$ is surjective and continuous. In other words, $q_0$ and $q$ induce the same quotient topology on the set of all $k$-planes in $\mathbb{R}^n$.
 \end{proposition}
 \begin{proof}
-Let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ be the Gram-Schmidt process. Then, the following diagram commutes:
+Let $i:\StO{k}{n}\to\St{k}{n}$ be the inclusion and $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ be the Gram-Schmidt process. Then, the diagram
 \begin{center}
 \begin{tikzcd}
 \StO{k}{n}\ar[r,hook,"i"]\ar[rd,"q_0"']&\St{k}{n}\ar[r,"\mathfrak{gs}"]\ar[d,two heads,"q"']&\StO{k}{n}\ar[dl,"q_0"]\\
 &\Gr{k}{n}
 \end{tikzcd}
 \end{center}
-The left part of this diagram implies $q_0=q\circ i$, and hence that $q_0$ is continuous. Moreover, the right part gives $q=q_0\circ\mathfrak{gs}$, which results in two conclusions: First that $q_0$ is a surjective map as well, since $q$ is surjective and second that $q_0$ is an open map, since $\mathfrak{gs}$ is surjective and $q$ is open, as proved in \ref{lem:q_open}.
-
-Thus, the map $q_0$ is a quotient map. In other words, the maps $q$ and $q_0$ induce the same quotient topology on the set of all $k$-dim subspaces of $\mathbb{R}^n$.
+commutes. The left triangle implies $q_0=q\circ i$, and hence that $q_0$ is continuous. Moreover, from right triangle, $q=q_0\circ\mathfrak{gs}$, which results in two conclusions. First that $q_0$ is a surjective map, since $q$ is surjective and second that $q_0$ is an open map, since $\mathfrak{gs}$ is surjective and $q$ is open, as proved in \ref{lem:q_open}. Thus, the map $q_0$ is a quotient map.
 \end{proof}
 
 \section{Infinite Grassmannian}
@@ -280,22 +252,22 @@ For this, we define a cell decomposition of each Grassmannian. Before laying out
 \[\left\{l\subseteq\mathbb{R}^1\right\}\cong\mathbb{R}^0\ ,\ \left\{l\subseteq\mathbb{R}^2\setminus\mathbb{R}^1\right\}\cong\mathbb{R}^1\ ,\ \ldots\ ,\ \left\{l\subseteq\mathbb{R}^n\setminus\mathbb{R}^{n-1}\right\}\cong\mathbb{R}^{n-1}\]
 This cell decomposition seems natural, but it depends heavily on our basis choice for $\mathbb{R}^n$. This however doesn't cause a problem, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role towards the end of this chapter, when different decompositions are used (i.e.\ depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmannians. The definition of flags in an $n$-dimensional vector space follows.
 
-\begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \ul{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and
+\begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \emph{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and
 $0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=V$.
-Given a flag $\mathbb{F}_{\bullet}$ of $V$, denote an orthonormal basis $f_{\bullet}=(f_1,\ldots,f_n)$ of $V$ to be \ul{compatible} with $\mathbb{F}_{\bullet}$, if
+Given a flag $\mathbb{F}_{\bullet}$ of $V$, denote an orthonormal basis $f_{\bullet}=(f_1,\ldots,f_n)$ of $V$ to be \emph{compatible} with $\mathbb{F}_{\bullet}$, if
 $f_i\in\mathbb{F}_i$
 for every $i\in[n]$.
 \end{definition}
 %giati exei toso megalo keno sto pdf edw? (genika s ayth th selida)
 For the rest of this thesis ${[n]}_0$ is used to denote the set $[n]\cup\{0\}=\{0,1,\ldots,n\}$.
 
-An obvious example of flag is the one used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\left<e_1,\ldots,e_i\right>$. This is sometimes referred to as \ul{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, every flag is treated equally.
+An obvious example of flag is the one used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\left<e_1,\ldots,e_i\right>$. This is sometimes referred to as \emph{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, every flag is treated equally.
 
 Note that given a flag, one can always find a compatible basis with this flag. In fact, there always exist $2^n$ different compatible orthonormal bases and fixing one is like fixing an ``orientation'' of the flag.
 
 Notice, that the role of the flags on the example above is to distinguish between all the different ways a line can intersect this flag. This is exactly the role a flag plays in the general definition of Schubert cells.
 
-\begin{definition} Let $0<k<n$ be natural numbers. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$ of $[n]$ the \ul{Schubert cell} $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is defined to be the following subset of $\Gr{k}{n}$:
+\begin{definition} Let $0<k<n$ be natural numbers. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$ of $[n]$ the \emph{Schubert cell} $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is defined to be the following subset of $\Gr{k}{n}$:
 \[\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right):=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{\ell\in{[k]}_0:j_{\ell}\leq i\}\ \ \forall i\in{[n]}_0\big\}\]
 where $j_0$ is defined to be $0$.
 \end{definition}

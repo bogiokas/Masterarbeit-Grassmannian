@@ -6,7 +6,7 @@ The discussion in this chapter is based on the Chapters 2,3,4 of \cite{char_clas
 \section{Basic Notions}
 Let us begin with the definition of a vector bundle. This is the same as Definition~\ref{def:fiber_bundle}, differing only on two aspects. First, the fibers here are vector spaces, and secondly the homeomorphisms making the total space locally trivial are here linear isomorphisms over each fiber:
 
-\begin{definition}\label{def:vector_bundle} Let $E$ and $B$ be some topological spaces and $n\in\mathbb{N}$. A continuous map $\xi:E\to B$ is called an \ul{$\mathbb{R}^n$-vector bundle} or \ul{$n$-plane bundle}, if for every $x\in B$ the set $\xi^{-1}(x)$ is a vector space and also for every $x\in B$ there exists an open neighborhood $x\in U\subseteq B$, and a continuous map $f_U:\xi^{-1}(U)\to U\times\mathbb{R}^n$ (where $\xi^{-1}(U)$ has the subspace topology and $U\times\mathbb{R}^n$ the product topology), such that:
+\begin{definition}\label{def:vector_bundle} Let $E$ and $B$ be some topological spaces and $n\in\mathbb{N}$. A continuous map $\xi:E\to B$ is called an \emph{$\mathbb{R}^n$-vector bundle} or \emph{$n$-plane bundle}, if for every $x\in B$ the set $\xi^{-1}(x)$ is a vector space and also for every $x\in B$ there exists an open neighborhood $x\in U\subseteq B$, and a continuous map $f_U:\xi^{-1}(U)\to U\times\mathbb{R}^n$ (where $\xi^{-1}(U)$ has the subspace topology and $U\times\mathbb{R}^n$ the product topology), such that:
 \begin{i_enum}
 \item $f_U$ is a homeomorphism.
 \item  $\xi|_{\xi^{-1}(U)}=\pi_1\circ f_U$, i.e. the following diagram commutes:
@@ -18,7 +18,7 @@ B\ar[r,"\supseteq",phantom]&U
 \end{center}
 \item $f_U|_{\xi^{-1}(x)}:\xi^{-1}(x)\to\{x\}\times\mathbb{R}^n$ is linear for every $x\in U$.
 \end{i_enum}
-$B=B(\xi)$ is then called \ul{base space} and $E=E(\xi)$ \ul{total space} of the vector bundle. Moreover, for every $x\in B$, the space $\xi^{-1}(x)$ is called \ul{the fiber over $x$}.
+$B=B(\xi)$ is then called \emph{base space} and $E=E(\xi)$ \emph{total space} of the vector bundle. Moreover, for every $x\in B$, the space $\xi^{-1}(x)$ is called \emph{the fiber over $x$}.
 \end{definition}
 \begin{remark} Since for every $x\in B$ $f_U:U\to U\times\mathbb{R}^n$ is a homeomorphism, Proposition~\ref{prop:same_fiber} gives us that $\xi^{-1}(x)\cong\mathbb{R}$ as topological spaces through $f_U|_{\xi^{-1}(x)}$ and since $f_U|_{\xi^{-1}(x)}$ is also linear, $\xi^{-1}(x)\cong\mathbb{R}^n$ as vector spaces. So, the total space $E$ of the fiber bundle $\xi$ can be visualized as a collection of $n$-planes, parametrized continuously by elements of $B$.
 \end{remark}
@@ -76,7 +76,7 @@ This is continuous and linear over each fiber and since $v'^tv\neq0$ for $v'\neq
 After seeing some examples for the objects we are interested in, it is time to define morphisms between these objects, in order to be able to differentiate them and construct new ones from old. Compared to the Definition~\ref{def:bundle_map} of the bundle map, we also need for it to respect the vector space structure over each fiber.
 
 \begin{definition}
-Let $\xi_1:E_1\to B$ be an $n$-plane vector bundle and $\xi_2:E_2\to B$ be an $m$-plane vector bundle. A continuous map $\phi:E_1\to E_2$ is a \ul{vector bundle map from $\xi_1$ to $\xi_2$ over $B$}, if
+Let $\xi_1:E_1\to B$ be an $n$-plane vector bundle and $\xi_2:E_2\to B$ be an $m$-plane vector bundle. A continuous map $\phi:E_1\to E_2$ is a \emph{vector bundle map from $\xi_1$ to $\xi_2$ over $B$}, if
 \begin{i_enum}
 \item $\xi_1=\xi_2\circ\phi$, i.e. if the following diagram commutes:
 \begin{center}
