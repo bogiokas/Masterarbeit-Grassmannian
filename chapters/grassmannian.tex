@@ -8,27 +8,22 @@ where two vectors are equivalent, if they span the same line. Notice that in thi
 
 \section{Stiefel Manifolds}
 \begin{definition} For $k,n\in\mathbb{N}$ such that $k\leq n$, the space
-\[\St{k}{n}:=\big\{\left(v_1,\ldots,v_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim_{\mathbb{R}}\mathrm{span}\{v_1,\ldots,v_k\}=k\big\}\]
-equipped with the subspace topology is the \emph{noncompact Stiefel manifold}. Every element in $\St{k}{n}$ is called a \emph{$k$-frame of $\mathbb{R}^n$}.
+\[\St{k}{n}:=\big\{\left(v_1,\ldots,v_k\right)\in{\left(\mathbb{R}^n\right)}^k:\dim_{\mathbb{R}}\spans\{v_1,\ldots,v_k\}=k\big\}\]
+equipped with the subspace topology is the \emph{non-compact Stiefel manifold}. Every element in $\St{k}{n}$ is called a \emph{$k$-frame of $\mathbb{R}^n$}.
 \end{definition}
-\begin{proposition}\label{prop:St_open} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\St{k}{n}$ is open in ${\left(\mathbb{R}^n\right)}^k$.
+\begin{proposition}\label{prop:St_open} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\St{k}{n}$ is open in ${\left(\mathbb{R}^n\right)}^k$. In particular, $\St{k}{n}$ is a real manifold of dimension $kn$.
 \end{proposition}
-\begin{proof} Define the homeomorphism $\phi:{\left(\mathbb{R}^n\right)}^k\to \mathbb{R}^{n\times k}$ such that $\phi(v_1,\ldots,v_k)=(v_1|\cdots|v_k)$, where $\mathbb{R}^{n\times k}$ is equipped with the usual topology of $\mathbb{R}^{nk}$. Moreover, let $D:=\big\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\text{ such that }\det(A_I)\neq0\big\}$, where given some $I\in\binom{[n]}{k}$, $A_I\in\mathbb{R}^{k\times k}$ is the matrix formed from the $k$ rows of $A$ indexed by $I$. Notice that $\St{k}{n}=\phi^{-1}(D)\cong D$ and since $D$ is open in $\mathbb{R}^{n\times k}$, so is $\St{k}{n}$ in ${\left(\mathbb{R}^n\right)}^k$.
+\begin{proof} Define the homeomorphism $\phi:{\left(\mathbb{R}^n\right)}^k\to \mathbb{R}^{n\times k}$ with $\phi(v_1,\ldots,v_k)=(v_1|\cdots|v_k)$, where $\mathbb{R}^{n\times k}$ is equipped with the usual topology of $\mathbb{R}^{nk}$. Let $D:=\big\{A\in\mathbb{R}^{n\times k}:\exists I\in\binom{[n]}{k}\ \det(A_I)\neq0\big\}$, where $A_I\in\mathbb{R}^{k\times k}$ is the $k\times k$ submatrix of $A$ formed by the $k$ rows indexed by $I$ for any $I\in\binom{[n]}{k}$. Notice that $\St{k}{n}=\phi^{-1}(D)\cong D$ and $D$ is open in $\mathbb{R}^{n\times k}$, so is $\St{k}{n}$ in ${\left(\mathbb{R}^n\right)}^k$.
 \end{proof}
-In particular, this proves that $\St{k}{n}$ is a real manifold of dimension $kn$.
 
 \begin{definition} For $k,n\in\mathbb{N}$ such that $k\leq n$, the space $\StO{k}{n}:=\big\{\left(v_1,\ldots,v_k\right)\in{\left(\mathbb{R}^n\right)}^k:v_i^tv_j=\delta_{i,j}\big\}$ equipped with the subspace topology is the \emph{Stiefel manifold}. Every element in $\StO{k}{n}$ is called an \emph{orthonormal $k$-frame of $\mathbb{R}^n$}.
 \end{definition}
-%TODO: Write this better
-\begin{proposition}\label{prop:StO_dim_closed} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\StO{k}{n}$ is closed in ${\left(\mathbb{R}^n\right)}^k$. of dimension $nk-\frac{k(k+1)}{2}$.
-\end{proposition}
-\begin{proof}
-We need again the homeomorphism $\Phi:{\left(\mathbb{R}^n\right)}^k\to\mathbb{R}^{n\times k}$ taking a $k$-tuple in $\mathbb{R}^n$ to the matrix in $\mathbb{R}^{k\times n}$ having these vectors as columns. This time, define the subset $S$ of all $n\times k$ semi-orthogonal matrices
-$S:=\left\{A\in\mathbb{R}^{n\times k}:A^t A=I_k\right\}$
 
-Then,
-$\StO{k}{n}=\Phi^{-1}(S)\cong S$,
-where $S$ is a subset of $\mathbb{R}^{n\times k}$, defined by $\binom{k+1}{2}$ (linearly independent) equations. This makes $S$ a closed submanifold of $\mathbb{R}^{n\times k}$, of dimension $nk-\binom{k+1}{2}$. Thus, $\StO{k}{n}$ is a closed submanifold of ${\left(\mathbb{R}^n\right)}^k$ of the same dimension.
+\begin{proposition}\label{prop:StO_dim_closed} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\StO{k}{n}$ is closed in ${\left(\mathbb{R}^n\right)}^k$. Moreover, $\StO{k}{k}$ is a real manifold of dimension $nk-\frac{k^2}{2}-\frac{k}{2}$.
+\end{proposition}
+\begin{proof} Let $\phi:{\left(\mathbb{R}^n\right)}^k\to\mathbb{R}^{n\times k}$ be the homeomorphism $\phi(v_1,\ldots,v_k)=(v_1|\cdots|v_k)$. Moreover, let $S:=\left\{A\in\mathbb{R}^{n\times k}:A^t A=I_k\right\}$ be the set of all $n\times k$ semi-orthogonal matrices. Notice that $S$ is closed in $\mathbb{R}^{n\times k}$ and thus $\StO{k}{n}=\Phi^{-1}(S)\cong S$ is also closed in ${\left(\mathbb{R}^n\right)}^k$.
+
+The set of equations $E=\{v_i^tv_j=0:i,j\in[k]\text{ with }i<j\}\cup\{v_i^tv_i=1:i\in[k]\}$ on $nk$ variables is linearly independent, since for any subset $R$ of them, it is clear that there exist $k$-tuples in $\mathbb{R}^n$ satisfying $R$ and not $E\setminus R$. Each remaining restriction in the definition of $\StO{k}{n}$, i.e.\ that $v_i^tv_j=0$ for every $i,j\in[k]$ with $i>j$ is linearly dependent on the ones in $E$, since $u^tv=v^tu$. This means that $\StO{k}{n}$ is an $nk-\frac{k^2}{2}-\frac{k}{2}$ dimensional manifold.
 \end{proof}
 
 \begin{lemma}\label{lem:StO_compact} For $k,n\in\mathbb{N}$ such that $k\leq n$, $\StO{k}{n}$ is compact.
@@ -36,7 +31,7 @@ where $S$ is a subset of $\mathbb{R}^{n\times k}$, defined by $\binom{k+1}{2}$ (
 \begin{proof} Due to Proposition~\ref{prop:StO_dim_closed}, $\StO{k}{n}$ is a closed subset of ${\left(\mathbb{R}^n\right)}^k\cong\mathbb{R}^{kn}$. Moreover, notice that $\StO{k}{n}$ is bounded in ${\left(\mathbb{R}^n\right)}^k$, with the usual metric of $\mathbb{R}^{kn}$. Indeed, for every $f=(v_1,\ldots,v_k)\in\StO{k}{n}$, $\left\|f\right\|_2^2=\sum_{i=1}^k\left\|v_i\right\|_2^2=k$. Hence, $\StO{k}{n}$ is compact.
 \end{proof}
 
-\begin{definition} For $k,n\in\mathbb{N}$, such that $k<n$ the space $\Gr{k}{n}:=\big(\St{k}{n}{\mathbb{R}}\big)/\sim$, where $(v_1,\ldots,v_k)\sim(u_1,\ldots,u_k)$, if $\mathrm{span}\{v_1,\ldots,v_k\}=\mathrm{span}\{u_1,\ldots,u_k\}$, equipped with the quotient topology is the \emph{Grassmann space}. Every element $H\in\Gr{k}{n}$ is called an \emph{$k$-plane in $\mathbb{R}^n$}.
+\begin{definition} For $k,n\in\mathbb{N}$ such that $k<n$, the topological space $\Gr{k}{n}:=\big(\St{k}{n}{\mathbb{R}}\big)/\sim$, where $(v_1,\ldots,v_k)\sim(u_1,\ldots,u_k)$, if $\spans\{v_1,\ldots,v_k\}=\spans\{u_1,\ldots,u_k\}$, equipped with the quotient topology is the \emph{Grassmann space}. Every element $H\in\Gr{k}{n}$ is called an \emph{$k$-plane in $\mathbb{R}^n$}.
 \end{definition}
 
 \begin{lemma}\label{lem:q_open} For $k,n\in\mathbb{N}$ such that $k<n$, the quotient map $q:\St{k}{n}\to\Gr{k}{n}$ is open.
@@ -44,7 +39,7 @@ where $S$ is a subset of $\mathbb{R}^{n\times k}$, defined by $\binom{k+1}{2}$ (
 \begin{proof} Let $U\subseteq\St{k}{n}$ be an open set in $\St{k}{n}$, then $q(U)$ is open in $\Gr{k}{n}$ if and only if $q^{-1}(q(U))$ is open in $\St{k}{n}$, since $q$ is a quotient map. Moreover, $q^{-1}(q(U))$ is open in $\St{k}{n}$ if and only if it is open in $(\mathbb{R}^{n})^k$, since $\St{k}{n}$ is open in $(\mathbb{R}^{n})^k$. This means that it suffices to prove that $\tilde{U}:=q^{-1}(q(U))$ is open in $(\mathbb{R}^{n})^k$. In order to do this, we first construct a linear isomorphism $f_L:(\mathbb{R}^n)^k\to(\mathbb{R}^n)^k$ for every $L\in GL(k)$ and then we show that
 $\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)$.
 
-For every $(x_1,\ldots,x_k)\in(\mathbb{R}^n)^k$ let $R_{(x_1,\ldots,x_k)}:\mathbb{R}^n\to\mathbb{R}^k$ and $S_{(x_1,\ldots,x_k)}:\mathbb{R}^k\to\mathbb{R}^n$ be the linear maps such that $R_{(x_1,\ldots,x_k)}(x_i)=e_i$ for every $i\in[k]$, $R_{(x_1,\ldots,x_k)}(v)=0$ for every $v\in\mathrm{span}\{x_1,\ldots,x_k\}^{\perp}$ and $S_{(x_1,\ldots,x_k)}(e_i)=x_i$ for every $i\in[k]$, where $e_1,\ldots,e_k$ is the usual basis of $\mathbb{R}^k$. Then, for every $L\in GL(k)$, define
+For every $(x_1,\ldots,x_k)\in(\mathbb{R}^n)^k$ let $R_{(x_1,\ldots,x_k)}:\mathbb{R}^n\to\mathbb{R}^k$ and $S_{(x_1,\ldots,x_k)}:\mathbb{R}^k\to\mathbb{R}^n$ be the linear maps such that $R_{(x_1,\ldots,x_k)}(x_i)=e_i$ for every $i\in[k]$, $R_{(x_1,\ldots,x_k)}(v)=0$ for every $v\in\spans\{x_1,\ldots,x_k\}^{\perp}$ and $S_{(x_1,\ldots,x_k)}(e_i)=x_i$ for every $i\in[k]$, where $e_1,\ldots,e_k$ is the usual basis of $\mathbb{R}^k$. Then, for every $L\in GL(k)$, define
 \begin{center}
 \begin{tikzcd}
 f_L\ar[r,phantom,":"]&[-3.5em](\mathbb{R}^n)^k\ar[r,"R_{(-)}"]&\mathbb{R}^k\ar[r,"L^{\oplus k}"]&\mathbb{R}^k\ar[r,"S_{(-)}"]&(\mathbb{R}^n)^k\\[-1.5em]
@@ -53,7 +48,7 @@ f_L\ar[r,phantom,":"]&[-3.5em](\mathbb{R}^n)^k\ar[r,"R_{(-)}"]&\mathbb{R}^k\ar[r
 \end{center}
 which clearly is linear for every fixed $L$. Moreover, notice that $\big(\sum_{j=1}^ke_i^t(Le_j)x_j\big)_{i\in[k]}=0$ can be written as $\big(x_1|\cdots|x_k\big)\cdot\big(e_i^t(Le_j)\big)=0$. Since $\big(e_i^t(Le_j)\big)_{i,j\in[k]}$ is the the matrix of the invertible $L$ on the basis $e_1,\ldots,e_k$, $x_1=\cdots=x_k=0$. So, $f_L$ is an injective linear endomorphism and thus a linear isomorphism.
 
-Let $(u_1,\ldots,u_k)\in\tilde{U}$. Then there exists $(x_1,\ldots,x_k)\in U$ with $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$. Thus, there exist $\{\lambda_{i,j}\}_{i,j\in[k]}\in\mathbb{R}$ such that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i\in[k]$. Define $L_0\in GL(k)$ by $L_0e_j:=\sum_{i=1}^k\lambda_{i,j}e_i$ for every $j\in[k]$. Notice that $f_{L_0}(x_1,\ldots,x_k)=\big(\sum_{j=1}^ke_i^t(L_0e_j)x_j\big)_{i\in[k]}=\big(\sum_{j=1}^k\lambda_{i,j}x_j\big)_{i\in[k]}=(u_1,\ldots,u_k)$, i.e. $(u_1,\ldots,u_k)\in f_{L_0}(U)$. Moreover, let $(u_1,\ldots,u_k)\in f_{L_0}(U)$ for some $L_0\in GL(k)$. Then there exists some $(x_1,\ldots,x_k)\in U$ with $(u_1,\ldots,u_k)=f_{L_0}(x_1,\ldots,x_k)=\big(\sum_{j=1}^ke_i^t(L_0e_j)x_j\big)_{i\in[k]}$. Define $\lambda_{i,j}:=e_i^tL_0e_j$ for every $i,j\in[k]$. This means that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i$, and hence $\mathrm{span}(x_1,\ldots,x_k)=\mathrm{span}(u_1,\ldots,u_k)$, i.e. $(u_1,\ldots,u_k)\in\tilde{U}$. This proves that $\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)$ and thus that it is open.
+Let $(u_1,\ldots,u_k)\in\tilde{U}$. Then there exists $(x_1,\ldots,x_k)\in U$ with $\spans\{x_1,\ldots,x_k\}=\spans\{u_1,\ldots,u_k\}$. Thus, there exist $\{\lambda_{i,j}\}_{i,j\in[k]}\in\mathbb{R}$ such that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i\in[k]$. Define $L_0\in GL(k)$ by $L_0e_j:=\sum_{i=1}^k\lambda_{i,j}e_i$ for every $j\in[k]$. Notice that $f_{L_0}(x_1,\ldots,x_k)=\big(\sum_{j=1}^ke_i^t(L_0e_j)x_j\big)_{i\in[k]}=\big(\sum_{j=1}^k\lambda_{i,j}x_j\big)_{i\in[k]}=(u_1,\ldots,u_k)$, i.e.\ $(u_1,\ldots,u_k)\in f_{L_0}(U)$. Moreover, let $(u_1,\ldots,u_k)\in f_{L_0}(U)$ for some $L_0\in GL(k)$. Then there exists some $(x_1,\ldots,x_k)\in U$ with $(u_1,\ldots,u_k)=f_{L_0}(x_1,\ldots,x_k)=\big(\sum_{j=1}^ke_i^t(L_0e_j)x_j\big)_{i\in[k]}$. Define $\lambda_{i,j}:=e_i^tL_0e_j$ for every $i,j\in[k]$. This means that $u_i=\sum_{j=1}^k\lambda_{i,j}x_j$ for every $i$, and hence $\spans\{x_1,\ldots,x_k\}=\spans\{u_1,\ldots,u_k\}$, i.e.\ $(u_1,\ldots,u_k)\in\tilde{U}$. This proves that $\tilde{U}=\bigcup_{L\in GL(k)}f_L(U)$ and thus that it is open.
 \end{proof}
 
 Having the case of projective spaces in mind, it is natural to also provide an alternative definition of Grassmannians.
@@ -76,28 +71,22 @@ commutes. The left triangle implies $q_0=q\circ i$, and hence that $q_0$ is cont
 \section{Infinite Grassmannian}
 So far, we presented the Grassmannians separately for each $k$ and $n$. In fact, there is a natural embedding of $\Gr{k}{n}$ into $\Gr{k}{n+1}$, since every $k$-plane in $\mathbb{R}^n$ is also a $k$-plane in $\mathbb{R}^{n+1}$. This naturally leads to the construction of a so called infinite Grassmannian for each $k$.
 
-\begin{definition} Let $(X,\tau)$ be a topological space and $\{X_i\}_{i\in\mathbb{N}}$ a collection of subsets of $X$, such that $X_1\subseteq X_2\subseteq X_3\subseteq\cdots$. Then, $X$ is the \emph{direct limit} of $X_1,X_2,\ldots$ and $\tau$ is the \emph{direct limit topology on $\mathbb{X}$} if $X=\bigcup_{i=1}^{\infty}X_i$ and $\tau$ is the final topology with respect to all inclusions. In this case, we write $X=\varinjlim X_i$.
+\begin{definition} Let $(X,\tau)$ be a topological space and $\{X_i\}_{i\in\mathbb{N}}$ a collection of subsets of $X$, such that $X_1\subseteq X_2\subseteq X_3\subseteq\cdots$. Then, $X$ is the \emph{direct limit} of $X_1,X_2,\ldots$ and $\tau$ the \emph{direct limit topology on $X$}, if $X=\bigcup_{i=1}^{\infty}X_i$ and $\tau$ is the final topology with respect to all inclusions. This is denoted by $X=\varinjlim X_i$.
 \end{definition}
-\begin{remark} This means that
-\begin{b_item}
-\item for every $x\in X$ there exists some $i\in\mathbb{N}$ with $x\in X_i$ and
-\item for any subset $A\subseteq X$, $A$ is open in $X$ if and only if $A\cap X_i$ is open in $X_i$ for every $i\in\mathbb{N}$.
-\end{b_item}
+\begin{remark} $X=\varinjlim X_i$ means that for every $x\in X$ there exists some $i\in\mathbb{N}$ with $x\in X_i$ and also for any subset $A\subseteq X$, $A$ is open in $X$ if and only if $A\cap X_i$ is open in $X_i$ for every $i\in\mathbb{N}$.
 \end{remark}
 
-\begin{definition} Let $\mathbb{R}^1\subseteq\mathbb{R}^2\subseteq\cdots$ be the usual inclusions and let $\mathbb{R}^{\infty}:=\bigcup_{i=1}^{\infty}\mathbb{R}^i=\big\{(x_1,x_2,\ldots):\exists i\in\mathbb{N}\text{ s.t. }\forall n\geq i\ x_n=0\big\}$. Then $\mathbb{R}^{\infty}$ equipped with the direct limit topology and the vector space structure inherited by the inclusions is the \emph{infinite coordinate space}.
+\begin{definition} Let $\mathbb{R}^1\subseteq\mathbb{R}^2\subseteq\cdots$ be the usual inclusions and let $\mathbb{R}^{\infty}:=\bigcup_{i=1}^{\infty}\mathbb{R}^i=\big\{(x_1,x_2,\ldots):\exists i\in\mathbb{N}\text{ s.t. }\forall n\geq i\ x_n=0\big\}$. Then $\mathbb{R}^{\infty}$ equipped with the direct limit topology and with the vector space structure inherited by the inclusions is the \emph{infinite coordinate space}.
 \end{definition}
-\begin{remark} Notice that $\mathbb{R}^{\infty}$ does not contain arbitrary sequences of real numbers, i.e. that $\mathbb{R}^{\infty}\cong\bigoplus_{i=1}^{\infty}\mathbb{R}\not\cong\prod_{i=1}^{\infty}\mathbb{R}\cong l_2$ as vector spaces.
+\begin{remark} Notice that $\mathbb{R}^{\infty}\cong\bigoplus_{i=1}^{\infty}\mathbb{R}\not\cong\prod_{i=1}^{\infty}\mathbb{R}\cong l_2$ as vector spaces, since $\mathbb{R}^{\infty}$ does not contain infinite sequences.
 \end{remark}
 
-\begin{lemma} Let $0<k<n$ be natural numbers. Then, there exists a natural embedding $i_{k,n}:\St{k}{n}\hookrightarrow\St{k}{n+1}$ induced by $inc_{k,n}:(\mathbb{R}^n)^k\hookrightarrow(\mathbb{R}^{n+1})^k$ with $inc_{k,n}(u_1,\ldots,u_k)=(\bar{u}_1,\ldots,\bar{u}_k)$ and $\bar{u}_i=(u_i^t|0)^t$ for every $i\in[k]$.
+\begin{lemma} For $k,n\in\mathbb{N}$ such that $k<n$, there exist embeddings $i_{k,n}:\St{k}{n}\hookrightarrow\St{k}{n+1}$ and $i^0_{k,n}:\StO{k}{n}\hookrightarrow\StO{k}{n+1}$ induced by $inc_{k,n}:(\mathbb{R}^n)^k\hookrightarrow(\mathbb{R}^{n+1})^k$ with $inc_{k,n}(u_1,\ldots,u_k)=(\bar{u}_1,\ldots,\bar{u}_k)$ and $\bar{u}_i=(u_i^t|0)^t$ for every $i\in[k]$.
 \end{lemma}
-\begin{proof} Let $(u_1,\ldots,u_k)\in\St{k}{n}$. Then $\dim\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=k$, which means that $inc_{k,n}(u_1,\ldots,u_k)\in\St{k}{n}$, so $i_{k,n}=inc_{k,n}|_{\St{k}{n}}:\St{k}{n}\to\St{k}{n+1}$ is well defined. Let $A$ be some open subset of $\St{k}{n}$, i.e. there exists some $B$, open subset of $(\mathbb{R}^n)^k$ such that $A=B\cap\St{k}{n}$. Since $inc_{k,n}$ is an embedding, there exists some $C$, open subset of $(\mathbb{R}^{n+1})^k$ such that $B=inc_{k,n}^{-1}(C)$, i.e. $A=inc_{k,n}^{-1}(C)\cap\St{k}{n}=inc_{k,n}^{-1}(C\cap\St{k}{n+1})=i_{k,n}(C\cap\St{k}{n+1})$ which proves that $i_{k,n}$ is an embedding.
+\begin{proof} Let $(u_1,\ldots,u_k)\in\St{k}{n}$. Then $\dim_{\mathbb{R}}\spans\{\bar{u}_1,\ldots,\bar{u}_k\}=k$, which means $inc_{k,n}(u_1,\ldots,u_k)\in\St{k}{n}$, so $i_{k,n}=inc_{k,n}|_{\St{k}{n}}:\St{k}{n}\to\St{k}{n+1}$ is well defined. Let $A$ be some open subset of $\St{k}{n}$, i.e.\ there exists some open $B\subseteq(\mathbb{R}^n)^k$ such that $A=B\cap\St{k}{n}$. Since $inc_{k,n}$ is an embedding, there exists some open $C\subseteq(\mathbb{R}^{n+1})^k$ such that $B=inc_{k,n}^{-1}(C)$, i.e.\ $A=inc_{k,n}^{-1}(C)\cap\St{k}{n}=inc_{k,n}^{-1}(C\cap\St{k}{n+1})=i_{k,n}(C\cap\St{k}{n+1})$ which proves that $i_{k,n}$ is an embedding. The same arguments prove that $i_{k,n}^0$ is an embedding.
 \end{proof}
-\begin{remark} The same arguments let us define a natural embedding $i_{k,n}:\StO{k}{n}\hookrightarrow\StO{k}{n+1}$.
-\end{remark}
 
-\begin{proposition}\label{prop:gr_embedding} Let $0<k<n$ be natural numbers. Then, there exists a natural embedding $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ making the following diagram commute:
+\begin{proposition}\label{prop:gr_embedding} For $k,n\in\mathbb{N}$ such that $k<n$, there exists an embedding $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ making the following diagram commute.
 \begin{center}
 \begin{tikzcd}
 \St{k}{n}\ar[d,two heads,"q"]\ar[r,hook,"i_{k,n}"]&\St{k}{n+1}\ar[d,two heads,"q"]\\
@@ -105,152 +94,55 @@ So far, we presented the Grassmannians separately for each $k$ and $n$. In fact,
 \end{tikzcd}
 \end{center}
 \end{proposition}
-\begin{proof} Let $(u_1,\ldots,u_k),(u_1',\ldots,u_k')\in\St{k}{n}$ with $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{u_1',\ldots,u_k'\}$, then it is also true that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{u}_1',\ldots,\bar{u}_k'\}$, where $\bar{u}_i=(u^t|0)^t$. Since $q\circ i_{k,n}(u_1,\ldots,u_k)$ depends only on $q(u_1,\ldots,u_k)$, the universal property of the quotient ensures the existence of a unique $\iota_{k,n}:\Gr{k}{n}\to\Gr{k}{n+1}$ making the diagram commute. Let $A$ be an open subset of $\Gr{k}{n}$, then $q^{-1}(A)$ is an open subset of $\St{k}{n}$. Since $i_{k,n}$ is an embedding, there exists some open $B\in\St{k}{n+1}$ with $q^{-1}(A)=i_{k,n}^{-1}(B)$. Since $q$ is an open map, as proved in Lemma~\ref{lem:q_open}, $q(B)$ is also open, which makes $\iota_{k,n}^{-1}(q(B))\subseteq\Gr{k}{n}$ open. It suffices now to show that $A=\iota_{k,n}^{-1}(q(B))$. Let $H\in A$, then $H=q(u_1,\ldots,u_k)$ for some $(u_1,\ldots,u_k)\in q^{-1}(A)=i_{k,n}^{-1}(B)$. Which means that $(\bar{u}_1,\ldots,\bar{u}_k)\in B$, and by the commutativity of the diagram, we get $\iota_{k,n}(H)=(\iota_{k,n}\circ q)(u_1,\ldots,u_k)=q(\bar{u}_1,\ldots,\bar{u}_k)\in q(B)$, i.e. $H\in\iota_{k,n}^{-1}(q(B))$.
+\begin{proof} Let $(u_1,\ldots,u_k),(v_1,\ldots,v_k)\in\St{k}{n}$ such that $\spans\{u_1,\ldots,u_k\}=\spans\{v_1,\ldots,v_k\}$. Then $\spans\{\bar{u}_1,\ldots,\bar{u}_k\}=\spans\{\bar{v}_1,\ldots,\bar{v}_k\}$, where $\bar{u}_i=(u^t|0)^t$. Since $q\circ i_{k,n}(u_1,\ldots,u_k)$ depends only on $q(u_1,\ldots,u_k)$, the universal property of the quotient ensures the existence of a unique $\iota_{k,n}:\Gr{k}{n}\to\Gr{k}{n+1}$ making the diagram commute. It remains to show that for every open $A\subseteq\Gr{k}{n}$ there exists some open $C\subseteq\Gr{k}{n+1}$ such that $A=\iota_{k,n}^{-1}(C)$. For any open $A\subseteq\Gr{k}{n}$, $q^{-1}(A)$ is an open subset of $\St{k}{n}$. Since $i_{k,n}$ is an embedding, there exists some open $B\subseteq\St{k}{n+1}$ with $q^{-1}(A)=i_{k,n}^{-1}(B)$. Since $q$ is an open map, as proved in Lemma~\ref{lem:q_open}, $q(B)$ is also open, which makes $\iota_{k,n}^{-1}(q(B))\subseteq\Gr{k}{n}$ open. It suffices now to show that $A=\iota_{k,n}^{-1}(q(B))$.
 
-For the other direction, let $H\in\iota_{k,n}^{-1}(q(B))$. This means that there exists some $(a_1,\ldots,a_k)\in\St{k}{n+1}$ with $\iota_{k,n}(H)=\mathrm{span}(a_1,\ldots,a_k)$. Since $q$ is a surjection, there exists some $(u_1,\ldots,u_k)\in\St{k}{n}$ such that $\mathrm{span}(u_1,\ldots,u_k)=H$. Because of the commutativity of the diagram, this gives $\mathrm{span}(a_1,\ldots,a_k)=\mathrm{span}(\bar{u}_1,\ldots,\bar{u}_k)$. Notice now that this can only be the case if the last coordinate of each $a_i$ is equal to $0$, i.e. if there exist some $(x_1,\ldots,x_k)\in\St{k}{n}$ with $\bar{x}_i=a_i$ for every $i$. This gives that $\mathrm{span}\{\bar{u}_1,\ldots,\bar{u}_k\}=\mathrm{span}\{\bar{x}_1,\ldots,\bar{x}_k\}$ which can only be the case if $\mathrm{span}\{u_1,\ldots,u_k\}=\mathrm{span}\{x_1,\ldots,x_k\}$. Also, because of the definition of $B$, $(x_1,\ldots,x_k)\in i_{k,n}^{-1}(B)=q^{-1}(A)$ and thus we finally get $H=\mathrm{span}(u_1,\ldots,u_k)=\mathrm{span}(x_1,\ldots,x_k)\in A$.
+Let $H\in A$, then $H=q(u_1,\ldots,u_k)$ for some $(u_1,\ldots,u_k)\in q^{-1}(A)=i_{k,n}^{-1}(B)$. Which means that $(\bar{u}_1,\ldots,\bar{u}_k)\in B$, and by the commutativity, $\iota_{k,n}(H)=(\iota_{k,n}\circ q)(u_1,\ldots,u_k)=q(\bar{u}_1,\ldots,\bar{u}_k)\in q(B)$, i.e.\ $H\in\iota_{k,n}^{-1}(q(B))$. For the other direction, let $H\in\iota_{k,n}^{-1}(q(B))$. This means that there exists some $(a_1,\ldots,a_k)\in\St{k}{n+1}$ with $\iota_{k,n}(H)=\spans\{a_1,\ldots,a_k\}$. Since $q$ is a surjection, there exists some $(u_1,\ldots,u_k)\in\St{k}{n}$ such that $\spans\{u_1,\ldots,u_k\}=H$. Because of the commutativity of the diagram, $\spans\{a_1,\ldots,a_k\}=\spans\{\bar{u}_1,\ldots,\bar{u}_k\}$. Notice now that this can only be the case if the last coordinate of each $a_i$ is equal to $0$, i.e.\ if there exist some $(x_1,\ldots,x_k)\in\St{k}{n}$ with $\bar{x}_i=a_i$ for every $i$. Then $\spans\{\bar{u}_1,\ldots,\bar{u}_k\}=\spans\{\bar{x}_1,\ldots,\bar{x}_k\}$ which can only be the case if $\spans\{u_1,\ldots,u_k\}=\spans\{x_1,\ldots,x_k\}$. Also, because of the definition of $B$, $(x_1,\ldots,x_k)\in i_{k,n}^{-1}(B)=q^{-1}(A)$ and thus we finally get $H=\spans\{u_1,\ldots,u_k\}=\spans\{x_1,\ldots,x_k\}\in A$.
 \end{proof}
-\begin{remark}\label{rem:gr_inclusions} Topologically there is no difference between an embedding and a subspace, so from now on we are going to write $\Gr{k}{n}\subseteq\Gr{k}{n+1}$ and mean the embedding $\iota_{k,n}$ which, as described in \ref{prop:gr_embedding}, takes a $k$-plane $H\subseteq\mathbb{R}^n$ to $H\subseteq\mathbb{R}^{n+1}$ by embedding $\mathbb{R}^n$ into $\mathbb{R}^{n+1}$ the usual way. Similarly for $\St{k}{n}\subseteq\St{k}{n+1}$ and $\StO{k}{n}\subseteq\StO{k}{n+1}$.
+\begin{remark} Whenever $\Gr{k}{n}\subseteq\Gr{k}{n+1}$ is written, the embedding $\iota_{k,n}$ is implied. As described in \ref{prop:gr_embedding}, $\iota_{k,n}$ takes a $k$-plane $H\subseteq\mathbb{R}^n$ to $H\subseteq\mathbb{R}^{n+1}$ by embedding $\mathbb{R}^n$ into $\mathbb{R}^{n+1}$ the usual way. Similarly for $\St{k}{n}\subseteq\St{k}{n+1}$ and $\StO{k}{n}\subseteq\StO{k}{n+1}$.
 \end{remark}
 
-\begin{definition} Let $k\in\mathbb{N}$ and $\Gr{k}{k+1}\subseteq\Gr{k}{k+2}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\Gr{k}:=\bigcup_{n=k+1}^{\infty}\Gr{k}{n}$. Then $\Gr{k}$ equipped with the direct limit topology is the \emph{infinite Grassmannian}.
+\begin{definition} For $k\in\mathbb{N}$, $\Gr{k}:=\bigcup_{n=k+1}^{\infty}\Gr{k}{n}$ equipped with the direct limit topology is the \emph{infinite Grassmannian}.
 \end{definition}
 
-\begin{definition} Let $k\in\mathbb{N}$ and $\St{k}{k}\subseteq\St{k}{k+1}\subseteq\cdots$ be the inclusions as described in Remark~\ref{rem:gr_inclusions} and let $\St{k}:=\bigcup_{n=k}^{\infty}\St{k}{n}$. Then $\St{k}$ equipped with the direct limit topology is the \emph{infinite Stiefel manifold}. Analogously the \emph{infinite compact Stiefel manifold} $\StO{k}=\varinjlim\StO{k}{n}$ is defined.
+\begin{definition} For $k\in\mathbb{N}$, $\St{k}:=\bigcup_{n=k+1}^{\infty}\St{k}{n}$ equipped with the direct limit topology is the \emph{infinite non-compact Stiefel manifold}. Also, $\StO{k}:=\bigcup_{n=k+1}^{\infty}\StO{k}{n}$ equipped with the direct limit topology is the \emph{infinite Stiefel manifold}.
 \end{definition}
-\begin{remark}\label{rem:st_inclusion} Notice that $\StO{k}\subseteq\St{k}$. Indeed, we define the inclusion map as follows: Let $(u_1,\ldots,u_k)\in\StO{k}$, then there exists some $n\in\mathbb{N}$ such that $(u_1,\ldots,u_k)\in\StO{k}{n}\subseteq\St{k}{n}\subseteq\St{k}$.
+\begin{remark}\label{rem:st_inclusion} Notice that $\StO{k}\subseteq\St{k}$, since for $(u_1,\ldots,u_k)\in\StO{k}$, there exists some $n\in\mathbb{N}$ such that $(u_1,\ldots,u_k)\in\StO{k}{n}\subseteq\St{k}{n}\subseteq\St{k}$.
 \end{remark}
 
-\begin{proposition} Let $k\in\mathbb{N}$ and also let $q:\St{k}\to\Gr{k}$ be the map induced by all the inclusions, i.e. $q(u_1,\ldots,u_k)=q|_{\St{k}{n}}(u_1,\ldots,u_k)$, for some $n$ sufficiently large. Moreover, let $q_0:\StO{k}\to\Gr{k}$ be the restriction $q|_{\StO{k}}$. Then, $\Gr{k}\cong\faktor{\St{k}}{\sim}\cong\faktor{\StO{k}}{\sim}$, where the equivalence relation is the same as in $\St{k}{n}$ for some large enough $n$.
+\begin{proposition} Let $k\in\mathbb{N}$ and also let $q:\St{k}\to\Gr{k}$ be the map induced by all the inclusions, i.e.\ $q(u_1,\ldots,u_k)=q|_{\St{k}{n}}(u_1,\ldots,u_k)$, for some $n$ sufficiently large. Moreover, let $q_0:\StO{k}\to\Gr{k}$ be the restriction $q|_{\StO{k}}$. Then, $\Gr{k}\cong{\St{k}/\sim}\cong{\StO{k}/\sim}$, where the equivalence relation is the same as in $\St{k}{n}$ for some large enough $n$.
 \end{proposition}
-\begin{proof} First of all, $q$ is a surjection. Indeed, let $H\in\Gr{k}{n}$, then there exists some $(u_1,\ldots,u_k)\in\St{k}{n}\subseteq\St{k}$ with $q(u_1,\ldots,u_k)=H$. Next, in order to prove that $q$ is in fact a quotient map, let $U\subseteq\Gr{k}$ such that $q^{-1}(U)$ is open in $\St{k}$. We want to prove that $U$ is open in $\Gr{k}$. For that, we will use the definition of the direct limit topology and fix some $n\in\mathbb{N}$ with $n>k$. Then, since $\St{k}$ is equipped with the direct limit topology and $q^{-1}(U)$ is open, $q^{-1}(U)\cap\St{k}{n}=q^{-1}(U\cap\Gr{k}{n})$ is open as well. Since $q$ is a quotient map, this means that $U\cap\Gr{k}{n}$ is open as well. Hence, $U\cap\Gr{k}{n}$ is open for every $n>k$ and thus $U$ is open in $\Gr{k}$.
-
-For the case of $q_0:\StO{k}\to\Gr{k}$ notice that the map is well defined, since Reark~\ref{rem:st_inclusion} guaranties that $\StO{k}\subseteq\St{k}$. Then, the arguments are exactly the same as in the previous case.
+\begin{proof} First of all, $q$ is a surjection. Indeed, for $H\in\Gr{k}{n}$, there exists some $(u_1,\ldots,u_k)\in\St{k}{n}\subseteq\St{k}$ with $q(u_1,\ldots,u_k)=H$. Next, in order to prove that $q$ is in fact a quotient map, let $U\subseteq\Gr{k}$ such that $q^{-1}(U)$ is open in $\St{k}$. We want to prove that $U$ is open in $\Gr{k}$. For that, we will use the definition of the direct limit topology and fix some $n\in\mathbb{N}$ with $n>k$. Then, since $\St{k}$ is equipped with the direct limit topology and $q^{-1}(U)$ is open, $q^{-1}(U)\cap\St{k}{n}=q^{-1}(U\cap\Gr{k}{n})$ is open as well. Since $q$ is a quotient map, this means that $U\cap\Gr{k}{n}$ is open as well. Hence, $U\cap\Gr{k}{n}$ is open for every $n>k$ and thus $U$ is open in $\Gr{k}$. For the case of $q_0:\StO{k}\to\Gr{k}$ notice that the map is well defined, since Remark~\ref{rem:st_inclusion} guaranties that $\StO{k}\subseteq\St{k}$. Then, the arguments are exactly the same as in the previous case.
 \end{proof}
-\begin{remark} This proves that the infinite Grassmannian is the set of all $k$-planes inside $\mathbb{R}^{\infty}$. Notice that these planes never contain a vector with infinitely many non-zero entries, since such vectors do not exist inside $\mathbb{R}^{\infty}$.
-\end{remark}
+This proves that the infinite Grassmannian is the set of all $k$-planes inside $\mathbb{R}^{\infty}$. Notice that these planes never contain a vector with infinitely many non-zero entries, since such vectors do not exist inside $\mathbb{R}^{\infty}$.
 
 \section{Grassmannians are Manifolds}
-In this section it is proven that Grassmannians are in fact compact topological manifolds.
-\begin{lemma}\label{lem:gr_manifold} For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is compact, Hausdorff and locally homeomorphic to $\mathbb{R}^{k(n-k)}$.
+\begin{lemma} For $k,n\in\mathbb{N}$, such that $k<n$, $\Gr{k}{n}$ is a compact Hausdorff space.
+\end{lemma}
+\begin{proof} As we saw in Lemma~\ref{lem:StO_compact}, $\StO{k}{n}$ is compact and thus $\Gr{k}{n}=q_0\left(\StO{k}{n}\right)$ is also compact, since $q_0$ is continuous. In order to show that $\Gr{k}{n}$ is Hausdorff, it suffices to show that it is completely Hausdorff, i.e.\ that any two distinct points in $\Gr{k}{n}$ can be separated by a continuous function $\Gr{k}{n}\to\mathbb{R}$. For every $v\in\mathbb{R}^n$, we define $\phi_v:\StO{k}{n}\to\mathbb{R}$ such that $\phi_v(v_1,\ldots,v_k)=v^tv-\sum_{i=1}^k{\left(v^tv_i\right)}^2$. This is a continuous map, which depends only on the spanned $k$-plane. The universal property of the quotient map $q_0$ implies that there exists a unique continuous map $\psi_v:\Gr{k}{n}\to\mathbb{R}$ such that $\psi_v\circ q_0=\phi_v$. Notice that $\psi_v(H)=0$ if and only if $v\in H$, since $\phi_v(v_1,\ldots,v_k)=0$ if and only if $v\in \spans\{v_1,\ldots,v_k\}$. For $H_1,H_2\in\Gr{k}{n}$ with $H_1\neq H_2$, let $v\in H_1\setminus H_2$ and notice that $\psi_v(H_1)=0\neq\psi_v(H_2)$.
+\end{proof}
+\begin{proposition}\label{prop:gr_manifold} For $k,n\in\mathbb{N}$, such that $k<n$, $\Gr{k}{n}$ is locally homeomorphic to $\mathbb{R}^{k(n-k)}$.
+\end{proposition}
+\begin{proof} For every $H\in\Gr{k}{n}$, we define $U_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}\subseteq\mathbb{R}^n$. Notice that $U_H$ is an open neighborhood of $H$. Let $\{u_1,\ldots,u_k\}$ be an orthonormal basis of $H$ and $\{\bar{u}_1,\ldots,\bar{u}_{n-k}\}$ an orthonormal basis of $H^{\perp}$. Also, let $p_H:\mathbb{R}^n\cong H\oplus H^{\perp}\to H$ and $p_{H^{\perp}}:\mathbb{R}^n\cong H\oplus H^{\perp}\to H^{\perp}$ be the orthogonal projections. Notice that $U_H=\left\{K\in\Gr{k}{n}:p_H|_K:K\to H\text{ is isomorphism}\right\}$. Indeed, $\dim_{\mathbb{R}}(K\cap H^{\perp})>0$ if and only if $p_H|_K$ is not an isomorphism.
+
+Denote with $\Hom_{\mathbb{R}}(H,H^{\perp})$ the set of all linear transformations from $H$ to $H^{\perp}$, topologised with the induced topology from the map $\Hom_{\mathbb{R}}(H,H^{\perp})\to\mathbb{R}^{n(n-k)}$ mapping $L$ to $(\bar{u}_j^tLu_i)_{(i,j)\in[k]\times[n-k]}$. Our goal is to define a homeomorphism $T:U_H\to\Hom_{\mathbb{R}}(H,H^{\perp})$. For that, we first define $\tilde{T}:q^{-1}(U_H)\to\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ with $\tilde{T}(a_1,\ldots,a_k):=(p_{H^{\perp}}|_{\spans\{a_1,\ldots,a_k\}})\circ(p_H|_{\spans\{a_1,\ldots,a_k\}})^{-1}\in\Hom_{\mathbb{R}}(H,H^{\perp})$. Clearly $\tilde T$ is well defined, since $q^{-1}(U_H)$ is exactly the set of all $k$-frames, for which the map $p_H|^{-1}$ exists. Notice that the projection maps involve the vectors $(a_1,\ldots,a_k)$ only in inner products and linear combinations, which means that for every $i\in[k]$ and every $j\in[n-k]$ the map $\tilde{T}_{i,j}:q^{-1}(U_H)\to\mathbb{R}$ with $\tilde{T}_{i,j}(a_1,\ldots,a_k):=\bar{u}_j^t\tilde{T}(a_1,\ldots,a_k)u_i$ is continuous, i.e.\ $\tilde{T}$ is also continuous.
+
+Since $\tilde{T}(a_1,\ldots,a_k)$ depends only on $\spans\{a_1,\ldots,a_k\}$, the universal property of the quotient map ensures the existence of a unique continuous map $T:U_H\to\Hom_{\mathbb{R}}(H,H^{\perp})$ such that $T\circ q|=\tilde T$, which means that $T(K)=(p_{H^{\perp}}|_K)\circ{(p_H|_K)}^{-1}$ is continuous. Notice that for every $K\in q^{-1}(U_H)$, the graph of $T(K)$ in $H\oplus H^{\perp}$ is exactly $K$, which means that $T$ is a bijection. Hence, there exists a homeomorphism $U_H\cong\mathbb{R}^{n(n-k)}$.
+\end{proof}
+In the next section we are going to further examine these spaces topologically and build the appropriate language in order to tackle problems regarding their Homology structure. Before we dive in into this topic though, it would be useful to notice a duality between these spaces, arising from the duality between a $k$-space and its $n-k$ complement inside $\mathbb{R}^n$.
+
+\begin{lemma} \label{lem:gr_duality} For $k,n\in\mathbb{N}$ such that $k<n$, $\Gr{k}{n}\cong\Gr{n-k}{n}$, with the homeomorphism taking some $k$-space $H$ to $H^{\perp}$.
 \end{lemma}
 
-\begin{proof} \begin{b_item}
-\item The Stiefel manifold $\StO{k}{n}$ is a compact topological space, as proven in the Appendix in Lemma~\ref{lem:StO_compact} and $q_0$ is a continuous map. Thus, $\Gr{k}{n}=q_0\left(\StO{k}{n}\right)$ is also compact.
-\item In order to show that $\Gr{k}{n}$ is Hausdorff, it suffices to show that it is completely Hausdorff, i.e.\ that any two distinct points in $\Gr{k}{n}$ can be separated by a continuous function $\Gr{k}{n}\to\mathbb{R}$. First, for every vector $v\in\mathbb{R}^n$, we define $\phi_v:\StO{k}{n}\to\mathbb{R}$ which maps each orthonormal $k$-frame $(v_1,\ldots,v_k)$ to the square of the distance between $v$ and the linear space spanned by $(v_1,\ldots,v_k)$, i.e.
-$\phi_v(v_1,\ldots,v_k)=v^tv-\sum_{i=1}^k{\left(v^tv_i\right)}^2$.
-This is a continuous map, which depends only on the spanned $k$-plane, i.e.\ if two $k$-frames have the same image under $q_0$, they also have the same image under $\phi_v$. The universal property of the quotient map $q_0$ implies that there exists a unique continuous map $\psi_v$ making the following diagram commute:
-
-\begin{center}
-\begin{tikzcd}
-\StO{k}{n}\ar[d,"q_0"']\ar[dr,"\phi_v"]\\
-\Gr{k}{n}\ar[r,"\psi_v"',dotted]&\mathbb{R}
-\end{tikzcd}
-\end{center}
-
-Moreover, $\psi_v(H)=0$ if and only if $v\in H$, because $\phi_v(v_1,\ldots,v_k)=0$ if and only if $v\in \left<v_1,\ldots,v_k\right>$.
-Let now $H_1,H_2\in\Gr{k}{n}$ be two distinct $k$-planes and $v\in H_1\setminus H_2$.
-Since $\psi_v(H_1)=0\neq\psi_v(H_2)$, $\Gr{k}{n}$ is completely Hausdorff.
-
-\item Next it is proven that for every $H\in\Gr{k}{n}$, the subset $\mathcal{U}_H:=\left\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\right\}$ of $\mathbb{R}^n$ is a neighborhood of $H$, homeomorphic to $\mathbb{R}^{k(n-k)}$.
-
-Firstly, one can fix an orthonormal basis $\{u_1,\ldots,u_k\}$ of $H$ and an orthonormal basis $\{\bar{u}_1,\ldots,\bar{u}_{n-k}\}$ of $H^{\perp}$. For the rest of this proof regard $\mathbb{R}^n$ as the direct sum $H\oplus H^{\perp}$. Define also the orthogonal projections $p_H,p_{H^{\perp}}$ from $H\oplus H^{\perp}$ to each component.
-Consider now $\mathcal{U}_H$ to be the set of all $k$-planes $K$ in $H\oplus H^{\perp}$ for which the map $\left.p_H\right|_{K}$ is a homeomorphism. Indeed, the subspace $K\cap H^{\perp}$ is at least one dimensional, if and only if $\left.p_H\right|_K$ is not injective, if and only if $\left.p_H\right|_K$ is not surjective.
-
-Each $K\in\mathcal{U}_H$ can now be considered as the graph of some linear transformation $T_K$ inside $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ (which has the desired dimension as a vector space over $\mathbb{R}$). We procceed to define rigorously the function taking $K$ to $T_K$ and prove that this is bicontinuous. In particular, we prove that $T_K$ depends continuously on $K$ and vice versa, through a rather technical approach.
-
-The construction of the desired function is based on the universal property of the quotient map $q:\St{k}{n}\to\Gr{k}{n}$. Moreover, since we need the topology of $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$, we use the fact that its topology is also an induced topology by an isomorphism to $\mathbb{R}^{k(n-k)}$. Finally, this last space, being a direct product, is also topologized through the initial topology with respect to the orthogonal projections on each coordinate. These steps are summarized in the following commutative diagram:
-
-\begin{center}
-\begin{tikzcd}
-&[-2em]&[-2em] (a_1,\ldots,a_k)\ar[rr,mapsto]&[-1em]&[-7em]\bar{u}_j^t\cdot p_{H^{\perp}}\circ{\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}\left(u_i\right)&[-7em]\\[-2em]
-{\left(\mathbb{R}^n\right)}^k\ar[r,phantom,"\supseteq"]&\St{k}{n}\ar[d,"q"]\ar[r,phantom,"\supseteq"]&q^{-1}\left(\mathcal{U}_H\right)\ar[d,"\left.q\right|"]\ar[dr,dotted,"\tilde{T}"']\ar[drrr,dotted,"f"']\ar[rrr,"f_{i,j}"']&&&\mathbb{R}\\[2em]
-&\Gr{k}{n}\ar[r,phantom,"\supseteq"]&\mathcal{U}_H\ar[r,dotted,"T"]&\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)\ar[rr,"\phi","\cong"']&&\mathbb{R}^{[k]\times[n-k]}\ar[u,"\pi_{i,j}"]\\[-2em]
-&&K\ar[r,mapsto,dotted]&p_{H^{\perp}}\circ\left(\left.p_H\right|_K\right)^{-1}
-\end{tikzcd}
-\end{center}
-Towards defining the map $T$, which takes each $k$-space $K$ to the function with graph $K$, we first define the map $\tilde T$ which is later going to be equal with $T\circ\left.q\right|$.
-\[\tilde T(a_1,\ldots,a_k)=p_{H^{\perp}}\circ{\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}\]
-Notice that $\tilde T$ is well defined, since $q^{-1}\left(\mathcal{U}_H\right)$ is exactly the set of all $k$-frames, for which the map $\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}$ is a homeomorphism. Also, notice that $\tilde T$ has the same value for any two $k$-frames that span the same $k$-space, since on input $(a_1,\ldots,a_k)$ the output only depends on $\left<a_1,\ldots,a_k\right>$.
-
-In order to argue that $\tilde T$ is a continuous map, remember how $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is topologized.
-Having fixed the bases ${\{u_i\}}_{i\in[k]}$ and ${\{\bar{u}_j\}}_{j\in[n-k]}$, we define an isomorphism of vector spaces $\phi$, which takes a linear map $L$ to
-$\phi(L)={\left(\bar{u}_j^t\cdot L(u_i)\right)}_{(i,j)\in[k]\times[n-k]}\in\mathbb{R}^{[k]\times[n-k]}$.
-Then, the natural topology on $\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ is the induced topology by $\phi$. This means that our $\tilde T$ is continuous if and only if $f:=\phi\circ\tilde T$ is continuous.
-
-Finally, since $\mathbb{R}^{[k]\times[n-k]}=\prod_{(i,j)\in[k]\times[n-k]}\mathbb{R}$ is a categorical product, $\mathbb{R}^{[k]\times[n-k]}$ is equipped with the initial topology, with respect to all orthogonal projections ${\left(\pi_{i,j}\right)}_{(i,j)\in[k]\times[n-k]}$. Hence, the function $f$ that interests us is continuous if and only if every $f_{i,j}:=\pi_{i,j}\circ f$ is continuous. In order to show that every $f_{i,j}$ is a continuous map, we express it through linear algebra:
-
-First, define $A$ to be the matrix of the linear function taking $u_i$ to $a_i$ for each $i\in[k]$, expressed in the bases $\{u_i\}$ and $\{\bar{u}_j\}$:
-\[A=\left(\begin{array}{ccc}
-a^t_1u_1&\cdots&a^t_ku_1\\
-\vdots&\ddots&\vdots\\
-a^t_1u_k&\cdots&a^t_k\cdot u_k\\
-\midrule
-a^t_1\bar{u}_1&\cdots&a^t_k\bar{u}_1\\
-\vdots&\ddots&\vdots\\
-a^t_1\bar{u}_{n-k}&\cdots&a^t_k\bar{u}_{n-k}\\
-\end{array}\right)=:
-\left(\begin{array}{c}A_H\\\midrule A_{H^{\perp}}\\
-\end{array}\right)
-\in\mathbb{R}^{n\times{k}}\]
-The two blocks $A_H\in\mathbb{R}^{k\times k}$ and $A_{H^{\perp}}\in\mathbb{R}^{(n-k)\times k}$ of $A$ correspond to the maps taking $u_i$ to the projections of $a_i$ inside $H$ and inside $H^{\perp}$ respectively.
-
-Notice that the matrix corresponding to the linear map $p_{H^{\perp}}$, with regard to the bases fixed is
-$\left(0_{(n-k)\times k}|I_{n-k}\right)\in\mathbb{R}^{(n-k)\times n}$,
-and the matrix corresponding to the linear map ${\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}$, with regard to the same bases is
-$A\cdot A_H^{-1}=\left(\begin{array}{c}
-I_k\\
-\midrule
-A_{H^{\perp}}\cdot A_H^{-1}\\
-\end{array}\right)
-\in\mathbb{R}^{n\times{k}}$.
-Indeed, since $\left<a_1,\ldots,a_k\right>\in\mathcal{U}_H$, $\left\{p_H(a_1),\ldots,p_H(a_k)\right\}$ is a basis of $K$, which means that $A_H$ is invertible and thus $A\cdot A_H^{-1}$ is well defined. Moreover, we can easily compute that the application of this matrix to any $p_H(a_r)$ gives us $a_r$ which is exactly what the map ${\left({\left.p_H\right|}_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}$ does to the same basis, which proves our assertion.
-
-This means, that the map $f_{ij}$ takes the element $\left(a_1,\ldots,a_k\right)$ to the real number
-\[\begin{array}{rcl}f_{ij}\left(a_1,\ldots,a_k\right)
-&=&\bar{u}_j^t\cdot p_{H^{\perp}}\circ{\left(\left.p_H\right|_{\left<a_1,\ldots,a_k\right>}\right)}^{-1}(u_i)\\
-&=&\bar{u}_j^t\cdot\left(\left.0_{(n-k)\times k}\right|I_{n-k}\right)\cdot\left(\begin{array}{c}I_k\\\midrule A_{H^{\perp}}\cdot A_H^{-1}\\\end{array}\right)\cdot u_i\\
-&=&\bar{u}_j^t\cdot A_{H^{\perp}}\cdot A_H^{-1}\cdot u_i\\
-\end{array}\]
-Since inner product, matrix multiplication and inversion are continuous, $f_{ij}$ is a continuous function for every $i,j\in[k]\times[n-k]$. This proves that $f$ is continuous as well, and hence $\tilde T$ is also continuous. Since $\tilde T$ is a continuous function which depends only on the $k$-plane spanned by its input, the universal property of the quotient spaces ensures the existence of a continuous map $T:\mathcal{U}_H\to\Hom_{\mathbb{R}}\left(H,H^{\perp}\right)$ such that $T\circ \left.q\right|=\tilde T$. The uniqueness condition of this property ensures that the map $T$ is indeed the one taking $K$ to $p_{H^{\perp}}\circ{\left(\left.p_H\right|_K\right)}^{-1}$.
-
-Through viewing this function as taking $K$ to the linear function, whose graph is $K$, we see that this function is both one to one and onto, since two linear maps are different if and only if they have different graphs. This makes $T$ a homeomorphism, proving that there exists the homeomorphism
-$\mathcal{U}_H\overset{\phi\circ T}{\cong}\mathbb{R}^{n(n-k)}$
-which concludes the proof of this lemma.\qedhere
-\end{b_item}
-\end{proof}
-In the next section we are going to further examine these spaces topologically and build the appropriate language in order to tackle problems regarding their Homology and Cohomology structures. Before we dive in into this topic though, it would be useful to notice a first duality between these spaces, arising from the duality between a $k$-space inside $\mathbb{R}^n$ and its $n-k$ complement.
-
-In order to prove the following lemma the open sets $\mathcal{U}_H$ defined in the proof of Lemma~\ref{lem:gr_manifold} are used.
-
-\begin{lemma} \label{lem:gr_duality}
-	For each pair of natural numbers $k,n$, with $0<k<n$, the space $\Gr{k}{n}$ is homeomorphic to $\Gr{n-k}{n}$, with the homeomorphism taking some $k$-space to its orthogonal complement inside $\mathbb{R}^n$.
-\end{lemma}
-
-\begin{proof} The orthogonal-complement function $\perp:\Gr{k}{n}\to\Gr{n-k}{n}$ is obviously one to one and onto. Thus, it suffices to show that it is continuous, since ${\left(K^{\perp}\right)}^{\perp}=K$, for all spaces, continuity for every $0<k<n$ implies bicontinuity. We are going to prove first that for any $H\in\Gr{k}{n}$ the restriction of this function in $\mathcal{U}_H$ is continuous. For this proof the following commutative diagram comes in handy:
-\begin{center}
-\begin{tikzcd}
-\left(\mathbb{R}^n\right)^k\ar[r,"\supseteq",phantom]&[-2em]q_0^{-1}\left(\mathcal{U}_H\right)\ar[d,"\left.q_0\right|"]\ar[r,"\mathfrak{gs}'"]\ar[rrd,dotted,"\left.\tilde\perp\right|"]&\StO{n}{n}\ar[r,"\pi_{[k+1,n]}"]&[5em]\StO{n-k}{n}\ar[d,"q_0"]\\[2em]
-&\mathcal{U}_H\ar[rr,dotted,"\left.\perp\right|"]&&\Gr{n-k}{n}\\[-2em]
-&K\ar[rr,mapsto]&&K^{\perp}
-\end{tikzcd}
-\end{center}
-In this diagram, $\mathfrak{gs}'$ is the function that takes an orthonormal $k$-frame $(a_1,\ldots,a_k)$ to the orthonormal $n$-frame constructed after applying the Gram-Schmidt process to the $n$-basis $\left(a_1,\ldots,a_k,\bar{u}_1,\ldots,\bar{u}_{n-k}\right)$ where $\left(\bar{u}_j\right)$ is an orthonormal basis of $H^{\perp}$, just like in Lemma~\ref{lem:gr_manifold}. The next map $\pi_{[k+1,n]}$ is the orthogonal projection in the last $n-k$ coordinates. Both of these maps are continuous and well defined, and thus we get a continuous map $\left.\tilde{\perp}\right|$, like in the diagram. This map depends only on the plane spanned by the input, thus the universal property of the quotient spaces ensures the continuity of the map $\left.\perp\right|$.
-
-After establishing the continuity of $\left.\perp\right|_{\mathcal{U}_H}$ for every $H$, notice that
-$\Gr{k}{n} = \bigcup_{H\in\left\{\left<B\right>:B\in\binom{\{e_1,\ldots,e_n\}}{k}\right\}}\mathcal{U}_H$.
-The union is over all $k$-planes spanned by any $k$ vectors among $\{e_1,\ldots,e_n\}$, where $e_1,\ldots,e_n$ is the standard basis of $\mathbb{R}^n$. This means that $\#\binom{\{e_1,\ldots,e_n\}}{k}=\binom{n}{k}<\infty$ sets are participating in the union and thus one can use the pasting lemma, proving that $\perp$ is continuous as a function from the whole space $\Gr{k}{n}$ to $\Gr{n-k}{n}$.
+\begin{proof} The function $T:\Gr{k}{n}\to\Gr{n-k}{n}$ taking $H$ to $H^{\perp}$ is clearly bijective and its own inverse and thus, it suffices to show that it is continuous. Let $H\in\Gr{k}{n}$, $U_H=\{K\in\Gr{k}{n}:K\cap H^{\perp}=\{0\}\}$ be the open set defined in the proof of Lemma~\ref{prop:gr_manifold}, $\{\bar{u}_1,\ldots,\bar{u}_k\}$ a basis of $H^{\perp}$ and $p_{H^{\perp}}:\mathbb{R}^n\to H^{\perp}$ the orthogonal projection. Then, let $\tilde{T}_H:q_0^{-1}(U_H)\to\Gr{n-k}{n}$ such that $\tilde{T}_H(a_1,\ldots,a_k)=(q_0\circ \pi_{[k+1,n]}\circ\mathfrak{gs})(a_1,\ldots,a_k,\bar{u}_1,\ldots,\bar{u}_k)$, where $\mathfrak{gs}$ is the Gram-Schmidt process and $\pi_{[k+1,n]}$ the usual projection in the last $n-k$ coordinates. This map is well defined, since $\{a_1,\ldots,a_k,\bar{u}_1,\ldots,\bar{u}_{n-k}$ is a basis in $\mathbb{R}^n$, by the definition of $U_H$. Moreover, notice that $\tilde{T}_H(a_1,\ldots,a_k)\subseteq\spans\{a_1,\ldots,a_k\}^{\perp}$, since $\mathfrak{gs}$ only affects the last $n-k$ coordinates, since $a_1,\ldots,a_k$ are already orthonormal. Notice that $\tilde{T}_H(a_1,\ldots,a_k)$ only depends on $\spans\{a_1,\ldots,a_k\}$ and thus the universal property of the quotient map ensures that $T_H:U_H\to\Gr{n-k}{n}$ with $T_H(K)=K^{\perp}$ is continuous. For every $I\in\binom{[n]}{k}$, define $H_I:=\spans\{e_i:i\in I\}$ and notice that $\Gr{k}{n}=\bigcup_{I\in\binom{[n]}{k}}U_{H_I}$. This means that $\Gr{k}{n}$ is the union of finitely many open sets of the form $U_H$. Hence, pasting lemma ensures the existence of a continuous $T:\Gr{k}{n}\to\Gr{n-k}{n}$ such that $T|_{U_{H_i}}\equiv T_{H_i}$, which means that $T(K)=k^{\perp}$ is continuous.
 \end{proof}
 
-It would be helpful at this point to mention what are the ``small'' examples of Grassmannians. It is known that $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and due to Lemma~\ref{lem:gr_duality} $\Gr{n-1}{n}\cong\mathbb{P}^{n-1}$ also holds. This already covers the cases $n=2,3$:
-$\Gr{1}{2}\cong\mathbb{P}^1$, $\Gr{1}{3}\cong\Gr{2}{3}\cong\mathbb{P}^2$.
-
-Hence, $\Gr{2}{4}$ is considered as the smallest non-trivial case further in this thesis.
+It is helpful at this point to mention what are the ``small'' examples of Grassmannians. Clearly $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and due to Lemma~\ref{lem:gr_duality}, $\Gr{n-1}{n}\cong\Gr{1}{n}\mathbb{P}^{n-1}$. This already covers the cases $n=2,3$. Hence, $\Gr{2}{4}$ is considered the smallest interesting example of a Grassmannian.
 
 \section{They are also CW-Complexes}
 Now that the fact that Grassmannians are compact topological manifolds is proven we procceed in showing in this section that they are in fact finite CW complexes.
 For this, we define a cell decomposition of each Grassmannian. Before laying out the formal definition, it is useful to also mention the analogous cell decomposition of the projective space $\mathbb{P}^{n-1}\cong\Gr{1}{n}$, consisting of the following $n$ cells:
 \[\left\{l\subseteq\mathbb{R}^1\right\}\cong\mathbb{R}^0\ ,\ \left\{l\subseteq\mathbb{R}^2\setminus\mathbb{R}^1\right\}\cong\mathbb{R}^1\ ,\ \ldots\ ,\ \left\{l\subseteq\mathbb{R}^n\setminus\mathbb{R}^{n-1}\right\}\cong\mathbb{R}^{n-1}\]
-This cell decomposition seems natural, but it depends heavily on our basis choice for $\mathbb{R}^n$. This however doesn't cause a problem, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role towards the end of this chapter, when different decompositions are used (i.e.\ depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmannians. The definition of flags in an $n$-dimensional vector space follows.
+This cell decomposition is natural, but it depends on our basis choice for $\mathbb{R}^n$. This however doesn't cause a problem, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role towards the end of this chapter, when different decompositions are used (i.e.\ depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmannians. The definition of flags in an $n$-dimensional vector space follows.
 
 \begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \emph{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and
 $0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=V$.
@@ -261,14 +153,14 @@ for every $i\in[n]$.
 %giati exei toso megalo keno sto pdf edw? (genika s ayth th selida)
 For the rest of this thesis ${[n]}_0$ is used to denote the set $[n]\cup\{0\}=\{0,1,\ldots,n\}$.
 
-An obvious example of flag is the one used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\left<e_1,\ldots,e_i\right>$. This is sometimes referred to as \emph{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, every flag is treated equally.
+An obvious example of flag is the one used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\spans\{e_1,\ldots,e_i\}$. This is sometimes referred to as \emph{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, every flag is treated equally.
 
 Note that given a flag, one can always find a compatible basis with this flag. In fact, there always exist $2^n$ different compatible orthonormal bases and fixing one is like fixing an ``orientation'' of the flag.
 
 Notice, that the role of the flags on the example above is to distinguish between all the different ways a line can intersect this flag. This is exactly the role a flag plays in the general definition of Schubert cells.
 
-\begin{definition} Let $0<k<n$ be natural numbers. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$ of $[n]$ the \emph{Schubert cell} $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is defined to be the following subset of $\Gr{k}{n}$:
-\[\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right):=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{\ell\in{[k]}_0:j_{\ell}\leq i\}\ \ \forall i\in{[n]}_0\big\}\]
+\begin{definition} Let $0<k<n$ be natural numbers. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$ of $[n]$ the \emph{Schubert cell} $\grcell{j}$ is defined to be the following subset of $\Gr{k}{n}$:
+\[\grcell{j}:=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{\ell\in{[k]}_0:j_{\ell}\leq i\}\ \ \forall i\in{[n]}_0\big\}\]
 where $j_0$ is defined to be $0$.
 \end{definition}
 
@@ -303,11 +195,11 @@ This gives a serial way to think of the cells of a particular projective space, 
 When examining the closure of these cells, we investigate more precisely this structure.
 
 This decomposition of Grassmannians is meaningful since it is proven that it eventually makes every $\Gr{k}{n}$ into a CW complex. In order to do that we first prove that
-${\left\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is indeed a decomposition. The following proof makes sense, if one conceptualizes a $k$-subset of $[n]$, as the $k$ ``jump points'' of the dimension of the intersections $H\cap\mathbb{F}_i$, for the various $i$.
+${\left\{\grcell{j}\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is indeed a decomposition. The following proof makes sense, if one conceptualizes a $k$-subset of $[n]$, as the $k$ ``jump points'' of the dimension of the intersections $H\cap\mathbb{F}_i$, for the various $i$.
 
-\begin{lemma}\label{lem:jump_pts} For any integers $0<k<n$ and for every flag $\mathbb{F}_{\bullet}$ for $\mathbb{R}^n$, the set of all Schubert cells ${\left\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is a partition of the Grassmannian $\Gr{k}{n}$.
+\begin{lemma}\label{lem:jump_pts} For any integers $0<k<n$ and for every flag $\mathbb{F}_{\bullet}$ for $\mathbb{R}^n$, the set of all Schubert cells ${\left\{\grcell{j}\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is a partition of the Grassmannian $\Gr{k}{n}$.
 \end{lemma}
-\begin{proof} It is rather obvious that two cells are disjoint, since each set of $k$ elements in $[n]$ describes uniquely $k$ jump points of the dimensions of $H\cap\mathbb{F}_0,H\cap\mathbb{F}_1,\ldots,H\cap\mathbb{F}_n$. Moreover, the dimensions of a $k$-plane $H$ in this sequence of intersections can increase at most by $1$ in each step. Indeed, because of the short exact sequence
+\begin{proof} It is clear that two cells are disjoint, since each set of $k$ elements in $[n]$ describes uniquely $k$ jump points of the dimensions of $H\cap\mathbb{F}_0,H\cap\mathbb{F}_1,\ldots,H\cap\mathbb{F}_n$. Moreover, the dimensions of a $k$-plane $H$ in this sequence of intersections can increase at most by $1$ in each step. Indeed, because of the short exact sequence
 $0\to H\cap\mathbb{F}_{i-1}\to H\cap\mathbb{F}_i\to\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\to0$
 we get, for every $i\in[n]$,
 $\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_i\right)-\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_{i-1}\right)=\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}$.
@@ -316,11 +208,11 @@ Using the second isomorphism theorem for vector spaces, we get:
 &=&\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_i\cap\mathbb{F}_{i-1}}\cong\faktor{(H\cap\mathbb{F}_i)+\mathbb{F}_{i-1}}{\mathbb{F}_{i-1}}\\[1.5em]
 &\cong&\faktor{(H+\mathbb{F}_{i-1})\cap(\mathbb{F}_i+\mathbb{F}_{i-1})}{\mathbb{F}_{i-1}}\cong\faktor{(H+\mathbb{F}_{i-1})\cap\mathbb{F}_i}{\mathbb{F}_{i-1}}\\
 \end{array}\]
-with the last vector space being obviously a subspace of $\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}$, which gives finally,
+with the last vector space being clearly a subspace of $\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}$, which gives finally,
 $\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\leq\dim_{\mathbb{R}}\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}=1$.
 
 This means that there exist exactly $k$ jump points in the sequence of the dimensions of $H\cap\mathbb{F}_0,\ldots,H\cap\mathbb{F}_n$, putting $H$ in some Schubert cell.
-For every $H\in\Gr{k}{n}$ the sequence of its jump points $\mathbf{j}\in\binom{[n]}{k}$, i.e. the $\mathbf{j}$ for which $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ is given explicitly by
+For every $H\in\Gr{k}{n}$ the sequence of its jump points $\mathbf{j}\in\binom{[n]}{k}$, i.e.\ the $\mathbf{j}$ for which $H\in\grcell{j}$ is given explicitly by
 $j_{\ell}=\min\{j\in[n]:\dim(H\cap\mathbb{F}_j)\geq\ell\}$.
 \end{proof}
 
@@ -339,18 +231,18 @@ In fact, every matrix of a given form gives a unique plane in the according cell
 
 In order to compute the dimension in general, given a set $\mathbf{j}=\{j_1<\cdots<j_k\}\in\binom{[n]}{k}$, define the number
 \[\mathrm{d}(\mathbf{j})=(j_1-1)+(j_2-2)+\cdots+(j_k-k)\]
-Using the reduced echelon form for a matrix written in a suitable base of $\mathbb{R}^n$, depending on the flag $\mathbb{F}_{\bullet}$, one can easily argue that $\mathcal{C}_{\mathbf{j}}\left(\mathbb{F}_{\bullet}\right)$ is an open cell of dimension $\mathrm{d}(\mathbf{j})$, for any $\mathbf{j}\in\binom{[n]}{k}$, but our goal is to eventually prove that these open cells also give the Grassmannian a CW structure. For this it is required to find maps from the closed cells of the appropriate dimensions into the Grassmannian and unfortunately it is not easy to work with the closure of the matrices defined above. Thus, the approach in the bibliography may seem more artificial but it is also the one employed here:
+Using the reduced echelon form for a matrix written in a suitable basis of $\mathbb{R}^n$, depending on the flag $\mathbb{F}_{\bullet}$, one can easily argue that $\grcell{j}$ is an open cell of dimension $\mathrm{d}(\mathbf{j})$, for any $\mathbf{j}\in\binom{[n]}{k}$, but our goal is to eventually prove that these open cells also give the Grassmannian a CW structure. For this it is required to find maps from the closed cells of the appropriate dimensions into the Grassmannian and unfortunately it is not easy to work with the closure of the matrices defined above. Thus, the approach in the bibliography may seem more artificial but it is also the one employed here:
 
 The approach to prove Theorem~\ref{thm:cw_complex} is:
 \begin{i_enum}
 \item First to define appropriate sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ living in the Stiefel manifold, each one ``above'' the matching Schubert cell (Definition~\ref{def:lift_of_Schubert_cells}).
 \item Then to prove that each $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet}\right)}^-$ is topologically a closed disk of the right dimension and to understand the interior and the boundary of this disc (Lemma~\ref{lem:shub_dim}).
-\item Finally, to prove that $q_0$ maps the interior of $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})^-$ homeomorphically onto $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ and its boundary inside cells of lower dimension (Lemma~\ref{lem:cells_from_stiefel_to_gr}).
+\item Finally, to prove that $q_0$ maps the interior of $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})^-$ homeomorphically onto $\grcell{j}$ and its boundary inside cells of lower dimension (Lemma~\ref{lem:cells_from_stiefel_to_gr}).
 \end{i_enum}
 Let us begin with the definition:
 
-\begin{definition}\label{def:lift_of_Schubert_cells} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ an orthonormal basis of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}=\{j_1<j_2<\cdots<j_k\}\in\binom{[n]}{k}$ define $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})=\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ to be the following subset of $\StO{k}{n}$:
-\[\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet}):=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})\ \forall\ell\in[k]\right\}\]
+\begin{definition}\label{def:lift_of_Schubert_cells} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ an orthonormal basis of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}=\{j_1<j_2<\cdots<j_k\}\in\binom{[n]}{k}$ define $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})=\stcell{j}$ to be the following subset of $\StO{k}{n}$:
+\[\stcell{j}:=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})\ \forall\ell\in[k]\right\}\]
 where $\mathbb{H}(F,f)$ is defined to be the ``positive open halfspace'' of the vector space $F$, w.r.t.\ the orientation defined by $f\in F$,
 $\mathbb{H}(F,f):=\left\{v\in F:v^tf>0\right\}$,
 for every $i\in[n]$.
@@ -360,13 +252,13 @@ Although as we are going to prove the images of these subspaces of $\StO{k}{n}$ 
 
 Let us prove now that these sets have the right dimension and that their closure (now much easier to handle than the matrices in echelon form) is homeomorphic to a closed cell of this dimension. In order to do so in Lemma~\ref{lem:shub_dim}, we first need the following trivial (but lengthy) assertion:
 
-\begin{lemma}\label{lem:closure_of_cells} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$ the closure of $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}$ inside ${\left(\mathbb{R}^n\right)}^k$ is:
-\[{\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\]
+\begin{lemma}\label{lem:closure_of_cells} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$ the closure of $\stcell{j}$ inside ${\left(\mathbb{R}^n\right)}^k$ is:
+\[\stcell{j}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\]
 where
 ${\mathbb{H}(F,f)}^-:=\left\{v\in F:v^tf\geq 0\right\}$.
 \end{lemma}
 \begin{proof} Using simple point-set topology and the fact that $\StO{k}{n}$ is closed inside ${\left(\mathbb{R}^n\right)}^k$ as proven in Proposition~\ref{prop:StO_dim_closed}, we have:
-\[\begin{array}{rcl}\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-
+\[\begin{array}{rcl}\stcell{j}^-
 &=&{\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})\ \forall\ell\in[k]\right\}}^-\\
 &=&{\big(\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\\
 &\subseteq&\StO{k}{n}\cap{\big(\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\\
@@ -393,19 +285,19 @@ $(v_1,\ldots,v_k)\in{\big(\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\tim
 \end{proof}
 The approach used to prove Lemma~\ref{lem:shub_dim} is the one of Hatcher~\cite{vec_bundles} (p.37), in order to already familiarize ourselves with the notion of a trivial fiber bundle. For this the following lemma is used.
 \begin{lemma}\label{lem:trivial_fb} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, the projection to the first coordinate
-$\pi_1:\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\to S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$
+$\pi_1:\stcell{j}^-\to S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$
 is a trivial fiber bundle.
 \end{lemma}
 \begin{proof} Due to Lemma~\ref{lem:closure_of_cells} the map $\pi_1$ is well defined, since it takes $(v_1,\ldots,v_k)$ to $v_1$, which is a unit vector and also an element of $\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$. Notice that since $f_{j_1}\in\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$, it suffices to prove that there exists a homeomorphism $\phi$ making the following diagram commute:
 \begin{equation}\label{eq:phi_for_trivial}
 \begin{tikzcd}
-\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r,"\phi","\cong"']\ar[d,"\pi_1"']&\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
+\stcell{j}^-\ar[r,"\phi","\cong"']\ar[d,"\pi_1"']&\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
 S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-
 \end{tikzcd}
 \end{equation}
 First, we define a transformation $\rho_{v}\in SO(n)$ for every $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$, which takes $v$ to $f_{j_1}$ and is the identity in the orthogonal complement of the plane spanned by $v$ and $f_{j_1}$. Next we define $\phi$ and argue that it is continuous. We then use $\rho_{v}$ to map homeomorphically $\pi_1^{-1}(v)$ to $\pi_1^{-1}(f_{j_1})$ for each $v$. Finally we glue all of $\rho_v$ to a homeomorphism $\phi$.
 
-As proven in Computation~\ref{com:rotation}, for any $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\setminus\{f_{j_1}\}$, the rotation on the plane $\left<v,f_{j_1}\right>$ in $\mathbb{R}^n$ which takes $v$ to $f_{j_1}$ is given by
+As proven in Computation~\ref{com:rotation}, for any $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\setminus\{f_{j_1}\}$, the rotation on the plane $\spans\{v,f_{j_1}\spans\}$ in $\mathbb{R}^n$ which takes $v$ to $f_{j_1}$ is given by
 $\rho_v:=\rho_{v\to f_{j_1}}=I_n+2f_{j_1}v^t-\frac{(v+f_{j_1})(v+f_{j_1})^t}{v^tf_{j_1}+1}\in SO(n)$.
 Notice that this depends continuously on $v$. Moreover, we define $\rho_{f_{j_1}}=I_n$, and hence $\lim_{v\to f_{j_1}}\rho_v=\rho_{f_{j_1}}$. These mean that the following map is continuous
 \begin{center}
@@ -417,28 +309,28 @@ v\ar[r,mapsto]&\rho_v
 Since $SO(n)$ acts continuously on $\mathbb{R}^n$, the following map is also continuous:
 \begin{center}
 \begin{tikzcd}
-SO(n)\times \tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r,hook]&SO(n)\times(\mathbb{R}^n)^k\ar[r,"\mathrm{ev}^k"]&(\mathbb{R}^n)^k\\[-1.5em]
+SO(n)\times \stcell{j}^-\ar[r,hook]&SO(n)\times(\mathbb{R}^n)^k\ar[r,"\mathrm{ev}^k"]&(\mathbb{R}^n)^k\\[-1.5em]
 (A,u_1,\ldots,u_k)\ar[r,mapsto]&(A,u_1,\ldots,u_k)\ar[r,mapsto]&(Au_1,\ldots,Au_k)
 \end{tikzcd}
 \end{center}
 So, we define the following continuous map:
 \begin{center}
 \begin{tikzcd}
-\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r, "\left<\rho\circ\pi_1{,}id\right>"]&SO(n)\times \tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r,"\mathrm{ev}^k"]&(\mathbb{R}^n)^k\\[-1.5em]
+\stcell{j}^-\ar[r, "\left<\rho\circ\pi_1{,}id\right>"]&SO(n)\times \stcell{j}^-\ar[r,"\mathrm{ev}^k"]&(\mathbb{R}^n)^k\\[-1.5em]
 (v_1,\ldots,v_k)\ar[r,mapsto]&(\rho_{v_1},v_1,\ldots,v_k)\ar[r,mapsto]&(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)
 \end{tikzcd}
 \end{center}
-We now prove that the image of this map is contained in $\pi_1^{-1}(f_{j_1})$. Let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$. Since $\rho_{v_1}\in SO(n)$ and $(v_1,\ldots,v_k)\in\StO{k}{n}$, we have that $(\rho_{v_1}v_i)^t\rho_{v_1}v_j=v_i^tv_j=\delta_{i,j}$, which means that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\StO{k}{n}$. Moreover, for any $\ell\in[k]$, $v_{\ell}\in\mathbb{F}_{j_{\ell}}$. Let us define $H:=\left<v_1,f_{j_1}\right>\subseteq\mathbb{F}_{j_1}\subseteq\mathbb{F}_{j_{\ell}}$ and then express it as the following decomposition $v_{\ell}=P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}$, where $P_H$ and $P_{H^{\perp}}$ are the linear projections on $H$ and $H^{\perp}$ respectively. Since $v_{\ell}\in\mathbb{F}_{j_{\ell}}$ and $H\subseteq\mathbb{F}_{j_{\ell}}$, we have that $P_{H^{\perp}}v_{\ell}\in H^{\perp}\cap\mathbb{F}_{j_{\ell}}$. Moreover, as proved in Computation~\ref{com:rotation}, $\rho_{v_1}P_Hv_{\ell}\in H$ and $\rho_{v_1}P_{H^{\perp}}v_{\ell}=P_{H^{\perp}}v_{\ell}$. By putting all these together we get
+We now prove that the image of this map is contained in $\pi_1^{-1}(f_{j_1})$. Let $(v_1,\ldots,v_k)\in\stcell{j}^-$. Since $\rho_{v_1}\in SO(n)$ and $(v_1,\ldots,v_k)\in\StO{k}{n}$, we have that $(\rho_{v_1}v_i)^t\rho_{v_1}v_j=v_i^tv_j=\delta_{i,j}$, which means that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\StO{k}{n}$. Moreover, for any $\ell\in[k]$, $v_{\ell}\in\mathbb{F}_{j_{\ell}}$. Let us define $H:=\spans\{v_1,f_{j_1}\spans\}\subseteq\mathbb{F}_{j_1}\subseteq\mathbb{F}_{j_{\ell}}$ and then express it as the following decomposition $v_{\ell}=P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}$, where $P_H$ and $P_{H^{\perp}}$ are the linear projections on $H$ and $H^{\perp}$ respectively. Since $v_{\ell}\in\mathbb{F}_{j_{\ell}}$ and $H\subseteq\mathbb{F}_{j_{\ell}}$, we have that $P_{H^{\perp}}v_{\ell}\in H^{\perp}\cap\mathbb{F}_{j_{\ell}}$. Moreover, as proved in Computation~\ref{com:rotation}, $\rho_{v_1}P_Hv_{\ell}\in H$ and $\rho_{v_1}P_{H^{\perp}}v_{\ell}=P_{H^{\perp}}v_{\ell}$. By putting all these together we get
 $\rho_{v_1}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+\rho_{v_1}P_{H^{\perp}}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}\in H+\mathbb{F}_{j_{\ell}}=\mathbb{F}_{j_{\ell}}$.
 
 Next, notice that in general $\rho_{x\to y}^t=\rho_{x\to y}^{-1}=\rho_{y\to x}$, so $\rho_{v_1}^ta=a$ for every $a\in H^{\perp}$. Thus,
 $(\rho_{v_1}v_{\ell})^tf_{j_{\ell}}=v_{\ell}^t\rho_{v_1}^tf_{j_{\ell}}=v_{\ell}^tf_{j_{\ell}}\geq0$,
-since $v_{\ell}\in\mathbb{H}{\left(\mathbb{F}_{j_{\ell}},f_{j_{\ell}}\right)}^-$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also holds that $\pi_1(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)=f_{j_1}$, which proves the claim.
+since $v_{\ell}\in\mathbb{H}{\left(\mathbb{F}_{j_{\ell}},f_{j_{\ell}}\right)}^-$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\stcell{j}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also holds that $\pi_1(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)=f_{j_1}$, which proves the claim.
 
 Let us now define $\phi=\left<\pi_1,\mathrm{ev}^k\circ\left<\rho\circ\pi_1,id\right>\right>$, i.e.:
 \begin{equation}\label{eq:trivial_fb}
 \begin{tikzcd}
-\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-\ar[r, "\left<\pi_1{,}\mathrm{ev}^k\circ\left<\rho\circ\pi_1{,}id\right>\right>"]&[4em]\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\\[-1.5em]
+\stcell{j}^-\ar[r, "\left<\pi_1{,}\mathrm{ev}^k\circ\left<\rho\circ\pi_1{,}id\right>\right>"]&[4em]\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\\[-1.5em]
 (v_1,\ldots,v_k)\ar[r,mapsto]&\big(v_1,(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\big)
 \end{tikzcd}
 \end{equation}
@@ -458,22 +350,22 @@ We easily see that the above arguments let us also construct a continuous map
 \end{center}
 and notice that these two are inverses of each other. Thus $\phi|_{\pi^{-1}(v)}$ is a homeomorphism for each $v$.
 
-Since $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$ is a closed subset of the compact $\StO{k}{n}$, it is also compact. The space $\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})$ is obviously Hausdorff, and $\phi$ is also a homeomorphism, i.e. $\pi_1$ is a trivial fiber bundle due to Proposition~\ref{prop:extend_fb}.
+Since $\stcell{j}^-$ is a closed subset of the compact $\StO{k}{n}$, it is also compact. The space $\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})$ is clearly Hausdorff, and $\phi$ is also a homeomorphism, i.e.\ $\pi_1$ is a trivial fiber bundle due to Proposition~\ref{prop:extend_fb}.
 \end{proof}
-\begin{remark}\label{rem:trivial_fb_interior} Following the same arguments as in Lemma~\ref{lem:trivial_fb}, we prove that the restriction of $\pi_1$, $\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}:\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\to S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})$
+\begin{remark}\label{rem:trivial_fb_interior} Following the same arguments as in Lemma~\ref{lem:trivial_fb}, we prove that the restriction of $\pi_1$, $\pi_1|_{\stcell{j}}:\stcell{j}\to S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})$
 is also a trivial fiber bundle and the homeomorphism to the respective product is given by the restriction of the homeomorphism $\phi$ in the commutative diagram \eqref{eq:phi_for_trivial}:
 \begin{center}
 \begin{tikzcd}
-\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}\ar[r,"\phi|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}","\cong"']\ar[d,"\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}"']&\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}\big)\times\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
+\stcell{j}\ar[r,"\phi|_{\stcell{j}}","\cong"']\ar[d,"\pi_1|_{\stcell{j}}"']&\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}\big)\times\pi_1|_{\stcell{j}}^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
 S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}
 \end{tikzcd}
 \end{center}
 \end{remark}
 
-\begin{computation}\label{com:rotation} Let $x,y\in S^{n-1}$ be any two unit vectors in $\mathbb{R}^n$ such that $x\neq y$ and $x\neq -y$. Let $\rho_{x\to y}$ be the rotation taking $x$ to $y$ and fixing the $n-2$ dimension subspace $\left<x,y\right>^{\perp}$. Then:
+\begin{computation}\label{com:rotation} Let $x,y\in S^{n-1}$ be any two unit vectors in $\mathbb{R}^n$ such that $x\neq y$ and $x\neq -y$. Let $\rho_{x\to y}$ be the rotation taking $x$ to $y$ and fixing the $n-2$ dimension subspace $\spans\{x,y\}^{\perp}$. Then:
 \[\rho_{x\to y}=I_n+2yx^t-\frac{(x+y)(x+y)^t}{x^ty+1}\in SO(n)\]
 \end{computation}
-\begin{proof} Let $\theta\in(0,\pi)$ be the angle between $x$ and $y$ and $H=\left<x,y\right>$ the plane spanned by $x,y$. It is easy to compute that $u=x$, $v=\frac{1}{\sin\theta}(y-\cos\theta x)$ is an orthonormal basis of $H$.
+\begin{proof} Let $\theta\in(0,\pi)$ be the angle between $x$ and $y$ and $H=\spans\{x,y\}$ the plane spanned by $x,y$. It is easy to compute that $u=x$, $v=\frac{1}{\sin\theta}(y-\cos\theta x)$ is an orthonormal basis of $H$.
 
 Let $P_H$ be the linear projection on $H$. Then for any $a\in\mathbb{R}^n$,
 \begin{align*}
@@ -527,9 +419,9 @@ which proves that $\rho_{x\to y}\in SO(n)$.
 \end{proof}
 
 \begin{lemma}\label{lem:shub_dim} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, there exists a homeomorphism
-$\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-$,
-such that $\tilde{\Phi}_{\mathbf{j}}\left({\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\right)\subseteq\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$, and
-$\tilde{\Phi}_{\mathbf{j}}|_{{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}}:{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\to\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$
+$\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\stcell{j}^-$,
+such that $\tilde{\Phi}_{\mathbf{j}}\left({\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\right)\subseteq\stcell{j}$, and
+$\tilde{\Phi}_{\mathbf{j}}|_{{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}}:{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\to\stcell{j}$
 is also a homeomorphism.
 \end{lemma}
 \begin{proof}
@@ -542,19 +434,19 @@ with a homeomorphism being the linear projection on $\mathbb{F}_{j_1-1}$. Moreov
 \begin{split}
 \pi_1^{-1}(f_{j_1})&=\big\{(f_{j_1},v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})^-\ \forall\ell\in[k]\setminus\{1\}\big\}\\
 &\cong\Big\{(v'_2,\ldots,v'_k)\in\StO{k-1}{n-1}
-:v'_{\ell}\in\mathbb{H}\left(\faktor{\mathbb{F}_{j_{\ell}}}{\left<f_{j_1}\right>},\pi_{\hat{j}_1}(f_{j_{\ell}})\right)^-\ \forall\ell\in[k]\setminus\{1\}\Big\}\\
+:v'_{\ell}\in\mathbb{H}\left(\faktor{\mathbb{F}_{j_{\ell}}}{\spans\{f_{j_1}\}},\pi_{\hat{j}_1}(f_{j_{\ell}})\right)^-\ \forall\ell\in[k]\setminus\{1\}\Big\}\\
 &=\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}'_{\bullet},f'_{\bullet}\right)}^-
 \end{split}\label{eq:induction_step}
 \end{align}
 where $\pi_{\hat{j}_1}$ is the projection on the $n-1$ coordinates $\{1,\ldots,j_1-1,j_1+1,\ldots,n\}$ and
 \begin{align*}
 \mathbf{j}'&:=\{1\leq j_2-1<\cdots<j_k-1\leq n-1\}\\
-\mathbb{F}'_i&:=\left\{\begin{array}{ll}\mathbb{F}_i&,0\leq i<j_1\\\faktor{\mathbb{F}_{i+1}}{\left<f_{j_1}\right>}&,j_1\leq i<n\end{array}\right.\\
+\mathbb{F}'_i&:=\left\{\begin{array}{ll}\mathbb{F}_i&,0\leq i<j_1\\\faktor{\mathbb{F}_{i+1}}{\spans\{f_{j_1}\}}&,j_1\leq i<n\end{array}\right.\\
 f'_i&:=\left\{\begin{array}{ll}\pi_{\hat{j}_1}(f_i)&,0\leq i<j_1\\\pi_{\hat{j}_1}(f_{i+1})&,j_1\leq i<n\end{array}\right.
 \end{align*}
 So, $\tilde{\Phi}_{\mathbf{j}}$ is constructed inductively, using \eqref{eq:trivial_fb}:
 \begin{align*}
-\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}^-&\cong D^{j_1-1}\times\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}_{\bullet}',f_{\bullet}'\right)}^-\\
+\stcell{j}^-&\cong D^{j_1-1}\times\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}_{\bullet}',f_{\bullet}'\right)}^-\\
 &\cong D^{j_1-1}\times D^{j_2-2}\times \tilde{\mathcal{C}}_{\mathbf{j}''}{\left(\mathbb{F}_{\bullet}'',f_{\bullet}''\right)}^-\\
 &\ \,\vdots\\
 &\cong D^{j_1-1}\times D^{j_2-2}\times\cdots\times D^{j_k-k}\\
@@ -563,31 +455,31 @@ So, $\tilde{\Phi}_{\mathbf{j}}$ is constructed inductively, using \eqref{eq:triv
 For the second claim, notice that
 $S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\cong\big(D^{j_1-1}\big)^{\circ}$
 through the same linear projection as in \eqref{eq:linear_proj_disc} and
-$\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}^{-1}(f_{j_1})\cong\tilde{\mathcal{C}}_{\mathbf{j}'}(\mathbb{F}_{\bullet}',f_{\bullet}')$
+$\pi_1|_{\stcell{j}}^{-1}(f_{j_1})\cong\tilde{\mathcal{C}}_{\mathbf{j}'}(\mathbb{F}_{\bullet}',f_{\bullet}')$
 through the same map as in \eqref{eq:induction_step}. Using Remark~\ref{rem:trivial_fb_interior} we get
-$\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\cong\big(S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\big)\times\pi_1|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}^{-1}(f_{j_1})$
+$\stcell{j}\cong\big(S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\big)\times\pi_1|_{\stcell{j}}^{-1}(f_{j_1})$
 through the same map as in \eqref{eq:trivial_fb}.
 So, the inductive construction above gives us that
-$\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\cong\big(D^{\mathrm{d}(\mathbf{j})}\big)^{\circ}$,
+$\stcell{j}\cong\big(D^{\mathrm{d}(\mathbf{j})}\big)^{\circ}$,
 with the homeomorphism being a restriction of $\tilde{\Phi}_{\mathbf{j}}^{-1}$, which proves the assertion.
 \end{proof}
 
-In order to examine the CW structure of $\Gr{k}{n}$, we need to connect the sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ defined to the cells $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$:
+In order to examine the CW structure of $\Gr{k}{n}$, we need to connect the sets $\stcell{j}$ defined to the cells $\grcell{j}$:
 \begin{lemma}\label{lem:cells_from_stiefel_to_gr} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ be an orthonormal basis of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}\in\binom{[n]}{k}$ the following restriction of $q_0:\StO{k}{n}\to\Gr{k}{n}$ is a homeomorphism:
 \begin{center}
 \begin{tikzcd}
-\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\ar[r,"q_0"]&\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\\[-1.5em]
-(v_1,\ldots,v_k)\ar[r,mapsto]&\left<v_1,\ldots,v_k\right>
+\stcell{j}\ar[r,"q_0"]&\grcell{j}\\[-1.5em]
+(v_1,\ldots,v_k)\ar[r,mapsto]&\spans\{v_1,\ldots,v_k\}
 \end{tikzcd}
 \end{center}
 \end{lemma}
-\begin{proof} First notice that $q_0$ is well defined. Indeed, let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and
-$H:=q_0(v_1,\ldots,v_k)=\left<v_1,\ldots,v_k\right>\in\Gr{k}{n}$.
-Fix some $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$,  $v_{\ell}\in\mathbb{F}_{j_{\ell}}\subseteq\mathbb{F}_i$. On the other hand, if $j_{\ell}>i$, then $v_{\ell}\cdot f_{j_{\ell}}>0$, i.e. $v_{\ell}\not\in\mathbb{F}_i$ since $f_{j_{\ell}}\perp\mathbb{F}_i$. Hence,
-$\dim(H\cap\mathbb{F}_i)=\dim\left(\left<\big\{v_{\ell}:j_{\ell}\leq i\big\}\right>\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$
-where $j_0=0$ as before, that proves that $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$.
+\begin{proof} First notice that $q_0$ is well defined. Indeed, let $(v_1,\ldots,v_k)\in\stcell{j}$ and
+$H:=q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\spans\}\in\Gr{k}{n}$.
+Fix some $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$,  $v_{\ell}\in\mathbb{F}_{j_{\ell}}\subseteq\mathbb{F}_i$. On the other hand, if $j_{\ell}>i$, then $v_{\ell}\cdot f_{j_{\ell}}>0$, i.e.\ $v_{\ell}\not\in\mathbb{F}_i$ since $f_{j_{\ell}}\perp\mathbb{F}_i$. Hence,
+$\dim(H\cap\mathbb{F}_i)=\dim\left(\spans\{\big\{v_{\ell}:j_{\ell}\leq i\big\}\}\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$
+where $j_0=0$ as before, that proves that $H\in\grcell{j}$.
 
-In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Then, for any $\ell\in[k]$,
+In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\grcell{j}\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\grcell{j}$. Then, for any $\ell\in[k]$,
 \begin{align*}
 \dim\big(\left(H\cap\mathbb{F}_{j_{\ell}}\right)\cap\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)&=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)+\dim\big(\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)-n\\
 &=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)-\dim\big(H\cap\mathbb{F}_{j_{\ell}-1}\big)=1
@@ -598,28 +490,28 @@ Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if $
 
 First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$,
 $u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}$
-i.e. $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e. $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\tilde{\mathcal{C}}_{\mathbf{j}(\mathbb{F}_{\bullet},f_{\bullet})}$.
+i.e.\ $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e.\ $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\stcell{j}$.
 
-Then, notice that for $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$,
-$q_0(r_0(H))=q_0(u_1,\ldots,u_k)=\left<u_1,\ldots,u_k\right>=H$.
-Moreover, for $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$,
-$v_{\ell}\in\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}}\text{ and } v_{\ell}\perp\left<v_1,\ldots,v_k\right>\cap\mathbb{F}_{j_{\ell}-1}\text{ and }v_{\ell}\in S^{n-1}\text{ and }v_{\ell}^tf_{j_{\ell}}>0$
+Then, notice that for $H\in\grcell{j}$,
+$q_0(r_0(H))=q_0(u_1,\ldots,u_k)=\spans\{u_1,\ldots,u_k\}=H$.
+Moreover, for $(v_1,\ldots,v_k)\in\stcell{j}$,
+$v_{\ell}\in\spans\{v_1,\ldots,v_k\}\cap\mathbb{F}_{j_{\ell}}\text{ and } v_{\ell}\perp\spans\{v_1,\ldots,v_k\}\cap\mathbb{F}_{j_{\ell}-1}\text{ and }v_{\ell}\in S^{n-1}\text{ and }v_{\ell}^tf_{j_{\ell}}>0$
 which means that
-$r_0(q_0(v_1,\ldots,v_k))=r_0(\left<v_1,\ldots,v_k\right>)=(v_1,\ldots,v_k)$,
+$r_0(q_0(v_1,\ldots,v_k))=r_0(\spans\{v_1,\ldots,v_k\})=(v_1,\ldots,v_k)$,
 since there is a unique choice for $r_0$, as proven above.
 \end{proof}
 
 \begin{lemma}\label{lem:q0_on_bdr} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ be an orthonormal basis of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}\in\binom{[n]}{k}$ the restriction of $q_0:\StO{k}{n}\to\Gr{k}{n}$ has the following property:
-\[q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\]
+\[q_0\big(\stcell{j}^-\setminus\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\]
 \end{lemma}
-\begin{proof} Let $(v_1,\ldots,v_k)\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$ and set $H=q_0(v_1,\ldots,v_k)=\left<v_1,\ldots,v_k\right>$. Due to Lemma~\ref{lem:jump_pts} there exists some $\mathbf{j}'\in\binom{[n]}{k}$ such that $H\in\mathcal{C}_{\mathbf{j}'}(\mathbb{H}_{\bullet})$. For this $\mathbf{j}'$,
+\begin{proof} Let $(v_1,\ldots,v_k)\in\stcell{j}^-\setminus\stcell{j}$ and set $H=q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\}$. Due to Lemma~\ref{lem:jump_pts} there exists some $\mathbf{j}'\in\binom{[n]}{k}$ such that $H\in\mathcal{C}_{\mathbf{j}'}(\mathbb{H}_{\bullet})$. For this $\mathbf{j}'$,
 $j_{\ell}'=\min\{j\in[n]:\dim(H\cap\mathbb{F}_j)\geq\ell\}$.
 
-Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})^-\setminus\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})$, i.e. $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}<j_{\ell_0}$, i.e. $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we get
+Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\stcell{j}$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})^-\setminus\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})$, i.e.\ $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}<j_{\ell_0}$, i.e.\ $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we get
 $\mathrm{d}(\mathbf{j}')=\sum_{\ell\in[k]}(j'_{\ell}-\ell)<\sum_{\ell\in[k]}(j_{\ell}-\ell)=\mathrm{d}(\mathbf{j})$.
 \end{proof}
 
-\begin{theorem}\label{thm:gr_is_cw} Let $k,n\in\mathbb{N}$ such that $0<k<n$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^n$. Moreover for every integer $m\in[k(n-k)]_0\cup\{-1\}$ let \[X_m^{k,n}:=\bigcup_{\substack{\mathbf{j}\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j})\leq m}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\]
+\begin{theorem}\label{thm:gr_is_cw} Let $k,n\in\mathbb{N}$ such that $0<k<n$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^n$. Moreover for every integer $m\in[k(n-k)]_0\cup\{-1\}$ let \[X_m^{k,n}:=\bigcup_{\substack{\mathbf{j}\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j})\leq m}}\grcell{j}\]
 Then, the filtration $\emptyset=X_{-1}^{k,n}\subseteq X_0^{k,n}\subseteq\cdots\subseteq X_{k(n-k)}^{k,n}=\Gr{k}{n}$ is a CW structure of $\Gr{k}{n}$. It is helpful for later to define $X_m^{k,n}:=X_{k(n-k)}^{k,n}$ for every $m>k(n-k)$.
 \end{theorem}
 \begin{proof}
@@ -630,32 +522,32 @@ Since the filtration is finite, $\Gr{k}{n}$ trivially has the direct limit topol
 \coprod_{\mathbf{j}\in I_m}D^m\ar[r,"\amalg_{\mathbf{j}\in I_m}\Phi_{\mathbf{j}}"']&X_m^{k,n}
 \end{tikzcd}
 \end{center}
-Let $I_m=\big\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})=m\big\}$ be the set of indices. Moreover, let $\Phi_{\mathbf{j}}=q_0\circ\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to \Gr{k}{n}$ be the characteristic maps, where $\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\subseteq\StO{k}{n}$ are the homeomorphisms defined in Lemma~\ref{lem:shub_dim} and $q_0:\StO{k}{n}\to\Gr{k}{n}$ is the usual quotient map. Also, let $\phi_{\mathbf{j}}=\Phi_{\mathbf{j}}|_{\partial D^{\mathrm{d}(\mathbf{j})}}$ just be the restriction on the boundary of the closed disk.
+Let $I_m=\big\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})=m\big\}$ be the set of indices. Moreover, let $\Phi_{\mathbf{j}}=q_0\circ\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to \Gr{k}{n}$ be the characteristic maps, where $\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\stcell{j}^-\subseteq\StO{k}{n}$ are the homeomorphisms defined in Lemma~\ref{lem:shub_dim} and $q_0:\StO{k}{n}\to\Gr{k}{n}$ is the usual quotient map. Also, let $\phi_{\mathbf{j}}=\Phi_{\mathbf{j}}|_{\partial D^{\mathrm{d}(\mathbf{j})}}$ just be the restriction on the boundary of the closed disk.
 First, the maps in the diagram are well defined:
 \begin{i_enum}
-\item $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$. Indeed, $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)=q_0\big(\tilde{\Phi}_{\mathrm{j}}(D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemmata~\ref{lem:cells_from_stiefel_to_gr} and~\ref{lem:q0_on_bdr}, we get that $q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\big)=q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\cup q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\cup\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$.
-\item $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$. Indeed, $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)=q_0\big(\tilde{\Phi}_{\mathbf{j}}(\partial D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemma~\ref{lem:q0_on_bdr}, we get that $q_0\big(\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})^-\setminus\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$.
+\item $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$. Indeed, $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)=q_0\big(\tilde{\Phi}_{\mathrm{j}}(D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\stcell{j}^-\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemmata~\ref{lem:cells_from_stiefel_to_gr} and~\ref{lem:q0_on_bdr}, we get that $q_0\big(\stcell{j}^-\big)=q_0\big(\stcell{j}^-\setminus\stcell{j}\big)\cup q_0\big(\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\cup\grcell{j}\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$.
+\item $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$. Indeed, $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)=q_0\big(\tilde{\Phi}_{\mathbf{j}}(\partial D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\stcell{j}^-\setminus\stcell{j}\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemma~\ref{lem:q0_on_bdr}, we get that $q_0\big(\stcell{j}^-\setminus\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$.
 \end{i_enum}
 Next, the commutativity of the diagram is clear, since $\phi_{\mathbf{j}}$ is a restriction of $\Phi_{\mathbf{j}}$ and the two vertical maps are inclusions.
 Last, using Lemma~\ref{lem:shub_dim} and Lemma~\ref{lem:cells_from_stiefel_to_gr}, we get that both of the functions involved in the following composition are homeomorphisms
 \begin{center}
 \begin{tikzcd}
-\Phi_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}\ar[r,phantom,":"]&[-2.6em](D^{\mathrm{d}(\mathbf{j})})^{\circ}\ar[r,"\tilde{\Phi}_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}","\cong"']&[3em]\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})\ar[r,"q_0|_{\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet},f_{\bullet})}","\cong"']&[3em]\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})
+\Phi_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}\ar[r,phantom,":"]&[-2.6em](D^{\mathrm{d}(\mathbf{j})})^{\circ}\ar[r,"\tilde{\Phi}_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}","\cong"']&[3em]\stcell{j}\ar[r,"q_0|_{\stcell{j}}","\cong"']&[3em]\grcell{j}
 \end{tikzcd}
 \end{center}
-Also, $\Phi_{\mathbf{j}}((D^{\mathrm{d}(\mathbf{j})})^{\circ})=\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq X_m\setminus X_{m-1}$, which proves that it is a pushout diagram.
+Also, $\Phi_{\mathbf{j}}((D^{\mathrm{d}(\mathbf{j})})^{\circ})=\grcell{j}\subseteq X_m\setminus X_{m-1}$, which proves that it is a pushout diagram.
 \end{proof}
 
-\begin{proposition}\label{prop:included_cell} For $k,n\in\mathbb{N}$, the inclusion $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ respects the cell structure, i.e. for every $\mathbf{j}\in\binom{[n]}{k}$, it is also true that $\mathbf{j}\in\binom{[n+1]}{k}$ and then $\iota_{k,n}(\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet}))=\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n+1}$.
+\begin{proposition}\label{prop:included_cell} For $k,n\in\mathbb{N}$, the inclusion $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ respects the cell structure, i.e.\ for every $\mathbf{j}\in\binom{[n]}{k}$, it is also true that $\mathbf{j}\in\binom{[n+1]}{k}$ and then $\iota_{k,n}(\grcell{j})=\grcell{j}\subseteq\Gr{k}{n+1}$.
 \end{proposition}
-\begin{proof} If $\mathbf{j}=\{1\leq j_1<j_2<\cdots<j_k\leq n\}$, then trivially $j_k\leq n+1$, i.e. $\{1\leq j_1<\cdots<j_k\leq n+1\}\in\binom{[n+1]}{k}$. Moreover, if $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n}$ then $\dim(H\cap\mathbb{F}_{n+1})=j_k=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$, i.e. $\iota_{k,n}(H)=H\subseteq\mathbb{R}^{n+1}$ is an element of $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n+1}$. Inversely, for $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n+1}$, then $H\in\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\Gr{k}{n}$ since $j_k\leq n$ and thus $\iota_{k,n}(H)=H$.
+\begin{proof} If $\mathbf{j}=\{1\leq j_1<j_2<\cdots<j_k\leq n\}$, then trivially $j_k\leq n+1$, i.e.\ $\{1\leq j_1<\cdots<j_k\leq n+1\}\in\binom{[n+1]}{k}$. Moreover, if $H\in\grcell{j}\subseteq\Gr{k}{n}$ then $\dim(H\cap\mathbb{F}_{n+1})=j_k=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$, i.e.\ $\iota_{k,n}(H)=H\subseteq\mathbb{R}^{n+1}$ is an element of $\grcell{j}\subseteq\Gr{k}{n+1}$. Inversely, for $H\in\grcell{j}\subseteq\Gr{k}{n+1}$, then $H\in\grcell{j}\subseteq\Gr{k}{n}$ since $j_k\leq n$ and thus $\iota_{k,n}(H)=H$.
 \end{proof}
 
 \begin{lemma}\label{lem:stable_filtration} Let $k,m\in\mathbb{N}$, then there exists some $n_0\in\mathbb{N}$ such that
 \[X_m^{k,k+1}\subseteq X_m^{k,k+2}\subseteq\cdots\subseteq X_m^{k,n_0}=X_m^{k,n_0+1}=X_m^{k,n_0+2}=\cdots\]
-i.e. $X_m^{k,n}=X_m^{k,n_0}$ for every $n\geq n_0$.
+i.e.\ $X_m^{k,n}=X_m^{k,n_0}$ for every $n\geq n_0$.
 \end{lemma}
-\begin{proof} If $I_m^{k,n}=\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})\leq m\}$, then $X_m^{k,n}=\bigcup_{\mathbf{j}\in I_m^{k,n}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Using Proposition~\ref{prop:included_cell}, we have $X_m^{k,n}=\bigcup_{I_m^{k,n}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\bigcup_{I_m^{k,n+1}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})=X_m^{k,n+1}$ for every $n\in\mathbb{N}$. Let $n>m+k$ and $\mathbf{j}\in I_m^{k,n}$. Notice then that $j_1-1+j_2-2+\cdots+j_k-k\leq m$ i.e. $j_k\leq m+k-\big((j_1-1)+\cdots+(j_{k-1}-k+1)\big)\leq m+k<n$, since for every $i\in[k-1]$ $j_i\geq i$. This means that $\mathbf{j}\in I_m^{k,n-1}$ and so $X_m^{k,n-1}\subseteq X_m^{k,n}$. This means that for $n_0:=m+k$ the assertion is true.
+\begin{proof} If $I_m^{k,n}=\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})\leq m\}$, then $X_m^{k,n}=\bigcup_{\mathbf{j}\in I_m^{k,n}}\grcell{j}$. Using Proposition~\ref{prop:included_cell}, we have $X_m^{k,n}=\bigcup_{I_m^{k,n}}\grcell{j}\subseteq\bigcup_{I_m^{k,n+1}}\grcell{j}=X_m^{k,n+1}$ for every $n\in\mathbb{N}$. Let $n>m+k$ and $\mathbf{j}\in I_m^{k,n}$. Notice then that $j_1-1+j_2-2+\cdots+j_k-k\leq m$ i.e.\ $j_k\leq m+k-\big((j_1-1)+\cdots+(j_{k-1}-k+1)\big)\leq m+k<n$, since for every $i\in[k-1]$ $j_i\geq i$. This means that $\mathbf{j}\in I_m^{k,n-1}$ and so $X_m^{k,n-1}\subseteq X_m^{k,n}$. This means that for $n_0:=m+k$ the assertion is true.
 \end{proof}
 
 \begin{theorem}\label{thm:gr_inf_cw} Let $k\in\mathbb{N}$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^{\infty}$. Moreover, for every integer $m\geq-1$ let $X_m^k:=\bigcup_{n=k+1}^{\infty}X_m^{k,n}$. Then, the filtration
@@ -673,7 +565,7 @@ So, $\Gr{k}{n}$ is a CW complex and each cell is indexed by some $\mathbf{j}=\{1
 \begin{definition} For $m,r\in\mathbb{N}$, $\lambda=(\lambda_1,\ldots,\lambda_r)\in\mathbb{N}^r$ is a \emph{partition of $m$ of size $r$} if $\lambda_1\geq\lambda_2\geq\cdots\geq\lambda_r\geq1$ and $\lambda_1+\lambda_2+\cdots+\lambda_r=m$. In this case, we write $\lambda\vdash m$ and $|\lambda|=r$. For $m=0$, we define $P_0:=\{\lambda_{\emptyset}\}$, where $\lambda_{\emptyset}:=()$ is the \emph{empty partition} with $\lambda_{\emptyset}\vdash0$ and $|\lambda|=0$. Let $P_m$ be the set of all partitions of $m$ and $P:=\bigcup_{m=0}^{\infty}P_m$ the set of all partitions.
 \end{definition}
 \begin{remark}
-In order to make the notation easier, any number of trailing zeros at the end of a partition are allowed, without this affecting the size of the partition, i.e. $\lambda=(5,4,4,2,0,0,0)=(5,4,4,2)$, with $\lambda\vdash15$ and $|\lambda|=4$.
+In order to make the notation easier, any number of trailing zeros at the end of a partition are allowed, without this affecting the size of the partition, i.e.\ $\lambda=(5,4,4,2,0,0,0)=(5,4,4,2)$, with $\lambda\vdash15$ and $|\lambda|=4$.
 \end{remark}
 \begin{example} There are exactly $7$ partitions of $m=5$:
 $(5)$, $(4,1)$, $(3,2)$, $(3,1,1)$, $(2,2,1)$, $(2,1,1,1)$, $(1,1,1,1,1)$
@@ -696,7 +588,7 @@ b_{k,n}\ar[r,phantom,":"]&[-7em]\binom{[n]}{k}\ar[r]&\big\{\lambda\in P:|\lambda
 \end{center}
 is a bijection with $b_{k,n}(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
 \end{proposition}
-\begin{proof} First of all notice that for $\lambda=b_{k,n}(\mathbf{j})$ we have $|\lambda|\leq|\mathbf{j}|=k$, $\lambda_1=j_k-k\leq n-k$, $\lambda_k=j_1-1\geq 0$ and for every $i\in[k-1]$ $\lambda_i=j_{k-i+1}-(k-i+1)>j_{k-i}-(k-i)-1=\lambda_{i+1}-1$, i.e. $\lambda_i\geq\lambda_{i+1}$. These mean that $b_{k,n}$ is well defined.
+\begin{proof} First of all notice that for $\lambda=b_{k,n}(\mathbf{j})$ we have $|\lambda|\leq|\mathbf{j}|=k$, $\lambda_1=j_k-k\leq n-k$, $\lambda_k=j_1-1\geq 0$ and for every $i\in[k-1]$ $\lambda_i=j_{k-i+1}-(k-i+1)>j_{k-i}-(k-i)-1=\lambda_{i+1}-1$, i.e.\ $\lambda_i\geq\lambda_{i+1}$. These mean that $b_{k,n}$ is well defined.
 
 In order to prove that $b_{k,n}$ is a bijection, we will prove that this is its inverse map:
 \begin{center}
@@ -705,7 +597,7 @@ c_{n,k}\ar[r,phantom,":"]&[-2.5em]\big\{\lambda\in P:|\lambda|\leq k\text{ and }
 &(\lambda_1,\lambda_2,\ldots,\lambda_k)\ar[r,mapsto]&\{\lambda_k+1,\lambda_{k-1}+2,\ldots,\lambda_1+k\}
 \end{tikzcd}
 \end{center}
-Notice that for $\mathbf{j}=c_{k,n}(\lambda)$ we have $|\mathbf{j}|=k$, $j_1=\lambda_k+1\geq1$, $j_k=\lambda_1+k\leq n$ and for ever $i\in[k-1]$ $j_i=\lambda_{k-i+1}+i\leq\lambda_{k-i}+(i+1)-1=j_{i+1}-1$, i.e. $j_i<j_{i+1}$. These mean that $c_{k,n}$ is well defined.
+Notice that for $\mathbf{j}=c_{k,n}(\lambda)$ we have $|\mathbf{j}|=k$, $j_1=\lambda_k+1\geq1$, $j_k=\lambda_1+k\leq n$ and for ever $i\in[k-1]$ $j_i=\lambda_{k-i+1}+i\leq\lambda_{k-i}+(i+1)-1=j_{i+1}-1$, i.e.\ $j_i<j_{i+1}$. These mean that $c_{k,n}$ is well defined.
 
 Moreover $c_{k,n}=b_{k,n}^{-1}$, since $c_{k,n}\big(b_{k,n}(\mathbf{j})\big)=c_{k,n}(j_k-k,\ldots,j_1-1)=\{j_1<\cdots<j_k\}=\mathbf{j}$ and $b_{k,n}\big(c_{k,n}(\lambda)\big)=b_{k,n}\big(\{\lambda_k+1<\cdots<\lambda_1+k\}\big)=(\lambda_1,\ldots,\lambda_k)=\lambda$.
 
@@ -824,9 +716,3 @@ The poset up to degree $6$ looks like this:
 \end{proof}
 
 
-%TODO: remove $\vec{}$
-%TODO: ake span uniform
-%TODO: name the stiefel consistently
-%TODO: make old proofs smaller and less categorical
-%TODO: spellcheck - decide on the spelling of Gr
-%TODO: Introduce paragraphs during big proofs?

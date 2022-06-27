@@ -77,7 +77,7 @@
 %\usepackage[Glenn]{fncychap} %fancy chapters, with option Glenn
 %\ChNameVar{\bfseries\Large} %edits word "chapter"
 \usepackage{geometry} %page size and margins
-\geometry{headheight=15pt, left=20mm, right=20mm}
+\geometry{headheight=15pt, left=20mm, right=20mm, bottom=3cm, top=3cm}
 \setlength\parindent{0pt} %no indentation
 \setlength\parskip{0.5em} %hspace between par
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,6 +173,9 @@
 \newcommand\coim{\mathrm{coim }}
 \newcommand\coker{\mathrm{coker }}
 \newcommand\cupdot{\mathbin{\mathaccent\cdot\cup}}
+\newcommand\spans{\mathrm{span}}
+\newcommand\grcell[1]{\mathcal{C}_{\mathbf{#1}}\left(\mathbb{F}_{\bullet}\right)}
+\newcommand\stcell[1]{\tilde{\mathcal{C}}_{\mathbf{#1}}\left(\mathbb{F}_{\bullet},f_{\bullet}\right)}
 \NewDocumentCommand\StO{mgg}{%
 	\mathrm{V_0}
 	\IfNoValueTF{#3}{}{_{,#3}}
@@ -297,8 +300,8 @@ with coefficients from $\mathbb{Z}_2$}
 \mainmatter
 	\include{chapters/intro}
 	\include{chapters/grassmannian}
-	\include{chapters/vector_bundles}
-	\include{chapters/cohomology}
+%	\include{chapters/vector_bundles}
+%	\include{chapters/cohomology}
 	\begin{myappendix}
 %	\include{appendices/topology}
 %	\include{appendices/fiber_bundles}

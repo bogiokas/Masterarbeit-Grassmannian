@@ -67,7 +67,7 @@ and it is easy to see how the fibers are vector spaces and how the total space i
 The total space of this bundle is topologised as a subspace of $\mathbb{R}P^n\times\mathbb{R}^{n+1}$, where the $n$-dimensional projective space is defined to be the set of all lines through the origin in $\mathbb{R}^{n+1}$, topologized as the quotient
 $\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong\faktor{S^n}{x\sim-x}$.
 
-We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{lem:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as
+We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{prop:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as
 $f_U(l',v')=(l',v'^tv)$.
 This is continuous and linear over each fiber and since $v'^tv\neq0$ for $v'\neq0$, $f_U$ is also a homeomorphism.
 \end{i_enum}
@@ -167,13 +167,13 @@ Notice that the same definition of a section applies generally for fiber bundles
 \begin{definition} Let $\xi:E\to B$ be a vector bundle and $s_1,\ldots,s_k:B\to E$ $k$ sections of $\xi$. Then $s_1,\ldots,s_k$ are \emph{nowhere dependent sections} if for each $x\in B$ the vectors $s_1(x),\ldots,s_k(x)$ are linearly independent. In particular, a nowhere dependent section $s$ is also called \emph{nowhere zero section}.
 \end{definition}
 
-Obviously, an $n$-plane vector bundle cannot have more than $n$ nowhere dependent sections and the next lemma asserts that the interesting cases arise when there exist less than $n$ nowhere dependent sections.
+Clearly, an $n$-plane vector bundle cannot have more than $n$ nowhere dependent sections and the next lemma asserts that the interesting cases arise when there exist less than $n$ nowhere dependent sections.
 
 \begin{lemma}\label{lem:n_sections_makes_trivial} Let $\xi:E\to B$ be an $n$-plane vector bundle. Then $\xi\cong\varepsilon_B^n$ if and only if there exist $n$ nowhere dependent sections of $\xi$.
 \end{lemma}
 \begin{proof} First of all, it is easy to construct $n$ nowhere dependent sections of $\varepsilon_B^n=B\times\mathbb{R}^n$. Indeed, fix some basis $(e_1,\ldots,e_n)$ of $\mathbb{R}^n$ and let $s_i(x):=(x,e_i)$ for every $x\in B$ and every $i\in[n]$.
 
-On the other hand, let $s_1,\ldots,s_n$ be $n$ nowhere dependent sections of $\xi$. Then, define $\phi:B\times\mathbb{R}^n\to\varepsilon_B^n$ as follows: Fix $e_1,\ldots,e_n$ to be a base of $\mathbb{R}^n$, define $\phi(x,e_i):=s_i(x)\in\xi^{-1}(x)$. Then extend $\phi$ linearly over each $x\in B$,
+On the other hand, let $s_1,\ldots,s_n$ be $n$ nowhere dependent sections of $\xi$. Then, define $\phi:B\times\mathbb{R}^n\to\varepsilon_B^n$ as follows: Fix $e_1,\ldots,e_n$ to be a basis of $\mathbb{R}^n$, define $\phi(x,e_i):=s_i(x)\in\xi^{-1}(x)$. Then extend $\phi$ linearly over each $x\in B$,
 $\phi\left(x,\sum_{i\in[n]}a_ie_i\right)=\sum_{i\in[n]}a_i\phi(x,e_i)=\sum_{i\in[n]}a_is_i(x)\in\xi^{-1}(x)$
 which is by definition linear over each fiber and continuous, since every section is continuous, i.e. $\phi$ is a vector bundle map. Each restriction $\phi_x:\{x\}\times\mathbb{R}^n\to\xi^{-1}(x)$ is a linear isomorphism, since $s_1(x),\ldots,s_n(x)$ are linearly independent and $\xi^{-1}(x)$ is $n$-dimensional. Thus, using Proposition~\ref{prop:local_to_global_iso_vector} we get that $\phi$ is a vector bundle isomorphism.
 \end{proof}
@@ -189,7 +189,7 @@ Let us now use sections to prove that the tautological bundle of a projective sp
 l\ar[r,mapsto]&(l,\tilde{s}(l))
 \end{tikzcd}
 \end{center}
-where $\tilde{s}:=\pi_2\circ s$ and $\tilde{s}(l)\in l\setminus\{0\}$ for every $l\in\mathbb{R}P^n$. Let us now precompose $\tilde{s}$ with the quotient map $q:S^n\to\mathbb{R}P^n$ which sends $v\in S^n$ to $\mathrm{span}\{v\}\in\mathbb{R}P^n$ to get $\hat{s}=\tilde{s}\circ q:S^n\to\mathbb{R}^{n+1}$. Notice that $\hat{s}(v)$ is a non-zero vector in the line spanned by $v$, which means in particular that its inner product with $v$ is not zero. This lets us finally define the following continuous map $t:S^n\to\mathbb{R}\setminus\{0\}$:
+where $\tilde{s}:=\pi_2\circ s$ and $\tilde{s}(l)\in l\setminus\{0\}$ for every $l\in\mathbb{R}P^n$. Let us now precompose $\tilde{s}$ with the quotient map $q:S^n\to\mathbb{R}P^n$ which sends $v\in S^n$ to $\spans\{v\}\in\mathbb{R}P^n$ to get $\hat{s}=\tilde{s}\circ q:S^n\to\mathbb{R}^{n+1}$. Notice that $\hat{s}(v)$ is a non-zero vector in the line spanned by $v$, which means in particular that its inner product with $v$ is not zero. This lets us finally define the following continuous map $t:S^n\to\mathbb{R}\setminus\{0\}$:
 \begin{center}
 \begin{tikzcd}
 t\ar[r,phantom,":"]&[-2em]S^n\ar[r,"\left<\hat{s}{,}id\right>"]&\mathbb{R}^{n+1}\times S^n\ar[r,"-^t-"]&\mathbb{R}\setminus\{0\}\\[-1.5em]
@@ -197,7 +197,7 @@ t\ar[r,phantom,":"]&[-2em]S^n\ar[r,"\left<\hat{s}{,}id\right>"]&\mathbb{R}^{n+1}
 \end{tikzcd}
 \end{center}
 Notice now that for any $v\in\mathbb{R}^n$,
-$t(-v)=\hat{s}(-v)^t(-v)=-\tilde{s}(\mathrm{span}\{-v\})^tv=-\tilde{s}(\mathrm{span}\{v\})^tv=-\hat{s}(v)^tv=-t(v)$,
+$t(-v)=\hat{s}(-v)^t(-v)=-\tilde{s}(\spans\{-v\})^tv=-\tilde{s}(\spans\{v\})^tv=-\hat{s}(v)^tv=-t(v)$,
 i.e. $t:S^n\to\mathbb{R}\setminus\{0\}$ is an antipodal map. Since $n\geq1$, $S^n$ is connected and the existence of such a continuous $t$ leads to a contradiction due to the intermediate value theorem. Notice that this is the easiest case of the (BU1b)-version of the Borsuk Ulam theorem as stated in Theorem~2.1.1 in \cite{BU_Matousek}.
 \end{proof}
 
@@ -219,7 +219,7 @@ Then $g^*p:E'\to B'$ is a fiber bundle with fiber $F$.
 \begin{proof} We have to show that $g^*p$ as defined above is locally trivial. Let $x\in B'$, then, since $p$ is a fiber bundle, there exists some open $U$ with $g(x)\in U\subseteq B$ and a homeomorphism $f_U:p^{-1}(U)\to U\times F$ such that $p=\pi_1\circ f_U$. Let $U':=g^{-1}(U)$. This contains $x$ and is open, since $g$ is continuous. Notice that
 $(g^*p)^{-1}(U')=\{(x,v)\in U'\times E: g(x)=p(v)\}
 =\{(x,v)\in U'\times p^{-1}(U):g(x)=p(v)\}$.
-So, we define $f'_{U'}:= id\times(\pi_2\circ f_U):(g^*p)^{-1}(U')\to U'\times F$. This is a continuous map and obviously satisfies the equation $g^*p(x,a)=x=\pi_1\circ f'_{U'}$. In order to prove that it is also a homeomorphism, we prove that it has a continuous inverse map. Define $h_{U'}:U'\times F\to (g^*p)^{-1}(U')$ as follows:
+So, we define $f'_{U'}:= id\times(\pi_2\circ f_U):(g^*p)^{-1}(U')\to U'\times F$. This is a continuous map and clearly satisfies the equation $g^*p(x,a)=x=\pi_1\circ f'_{U'}$. In order to prove that it is also a homeomorphism, we prove that it has a continuous inverse map. Define $h_{U'}:U'\times F\to (g^*p)^{-1}(U')$ as follows:
 \begin{center}
 \begin{tikzcd}
 h_{U'}\ar[r,phantom,":"]&[-2em]U'\times F\ar[r,"\left<id_{U'}{,}g\right>\times id_F"]&[3em]U'\times U\times F\ar[r,"id_{U'}\times f_U^{-1}"]&[3em](g^*p)^{-1}(U')\\[-1.5em]
@@ -469,11 +469,6 @@ Last, for every $k\in\mathbb{N}$ we define $U_k:=\bigcup_{S\in\mathcal{S}_k}U(S)
 \begin{remark}\label{lem:paracompact_countable_cover_fb} At no point in this proof did we need that $\xi$ is linear over each fiber, so exactly the same proof can be done for a fiber bundle $p:E(p)\to B$. Namely, if $B$ is paracompact, then there exists some locally finite countable open cover $\{U_k\}_{k\in\mathbb{N}}$ of $B$ such that $p|U_k$ is a trivial fiber bundle for every $k\in\mathbb{N}$.
 \end{remark}
 
-%TODO: (SWi) changed
-%TODO: pushout-> pullback
-%TODO: base/basis uniform
-%TODO: obviously/trivially -> clearly
-%TODO: linear injection -> linear monomorphism
 %TODO_MAYBE: tangent and normal vb
 %TODO_MAYBE: define parallelizable spaces
 %TODO_MAYBE: counterexample of vb over non-paracompact space w/o inner product
