@@ -86,7 +86,7 @@ So far, we presented the Grassmannians separately for each $k$ and $n$. In fact,
 \begin{proof} Let $(u_1,\ldots,u_k)\in\St{k}{n}$. Then $\dim_{\mathbb{R}}\spans\{\bar{u}_1,\ldots,\bar{u}_k\}=k$, which means $inc_{k,n}(u_1,\ldots,u_k)\in\St{k}{n}$, so $i_{k,n}=inc_{k,n}|_{\St{k}{n}}:\St{k}{n}\to\St{k}{n+1}$ is well defined. Let $A$ be some open subset of $\St{k}{n}$, i.e.\ there exists some open $B\subseteq(\mathbb{R}^n)^k$ such that $A=B\cap\St{k}{n}$. Since $inc_{k,n}$ is an embedding, there exists some open $C\subseteq(\mathbb{R}^{n+1})^k$ such that $B=inc_{k,n}^{-1}(C)$, i.e.\ $A=inc_{k,n}^{-1}(C)\cap\St{k}{n}=inc_{k,n}^{-1}(C\cap\St{k}{n+1})=i_{k,n}(C\cap\St{k}{n+1})$ which proves that $i_{k,n}$ is an embedding. The same arguments prove that $i_{k,n}^0$ is an embedding.
 \end{proof}
 
-\begin{proposition}\label{prop:gr_embedding} For $k,n\in\mathbb{N}$ such that $k<n$, there exists an embedding $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ making the following diagram commute.
+\begin{proposition}\label{prop:gr_embedding} For $k,n\in\mathbb{N}$ such that $k<n$, there is an embedding $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ making the following diagram commute.
 \begin{center}
 \begin{tikzcd}
 \St{k}{n}\ar[d,two heads,"q"]\ar[r,hook,"i_{k,n}"]&\St{k}{n+1}\ar[d,two heads,"q"]\\
@@ -138,284 +138,92 @@ In the next section we are going to further examine these spaces topologically a
 
 It is helpful at this point to mention what are the ``small'' examples of Grassmannians. Clearly $\Gr{1}{n}\cong\mathbb{P}^{n-1}$ and due to Lemma~\ref{lem:gr_duality}, $\Gr{n-1}{n}\cong\Gr{1}{n}\mathbb{P}^{n-1}$. This already covers the cases $n=2,3$. Hence, $\Gr{2}{4}$ is considered the smallest interesting example of a Grassmannian.
 
-\section{They are also CW-Complexes}
-Now that the fact that Grassmannians are compact topological manifolds is proven we procceed in showing in this section that they are in fact finite CW complexes.
-For this, we define a cell decomposition of each Grassmannian. Before laying out the formal definition, it is useful to also mention the analogous cell decomposition of the projective space $\mathbb{P}^{n-1}\cong\Gr{1}{n}$, consisting of the following $n$ cells:
+\section{Cell decomposition of the Grassmannian}
+In this section we define a cell decomposition of each Grassmannian. Before laying out the formal definition, it is useful to mention the usual cell decomposition of the projective space $\mathbb{P}^{n-1}\cong\Gr{1}{n}$, consisting of the following $n$ cells:
 \[\left\{l\subseteq\mathbb{R}^1\right\}\cong\mathbb{R}^0\ ,\ \left\{l\subseteq\mathbb{R}^2\setminus\mathbb{R}^1\right\}\cong\mathbb{R}^1\ ,\ \ldots\ ,\ \left\{l\subseteq\mathbb{R}^n\setminus\mathbb{R}^{n-1}\right\}\cong\mathbb{R}^{n-1}\]
-This cell decomposition is natural, but it depends on our basis choice for $\mathbb{R}^n$. This however doesn't cause a problem, since for a different choice we get essentially the same decomposition, in terms of the homology classes we are going to eventually compute. This freedom of choice is going to play an important role towards the end of this chapter, when different decompositions are used (i.e.\ depending on different bases) in order to understand the multiplicative structure of the cohomology ring of the Grassmannians. The definition of flags in an $n$-dimensional vector space follows.
+The fact that this cell decomposition depends on our basis choice for $\mathbb{R}^n$, doesn't cause a problem, since for different base choices we get essentially the same decomposition. To illustrate this fact, we are going to define a cell decomposition for any flag of $\mathbb{R}^n$.
 
-\begin{definition} Let $V$ be an $n$-dimensional vector space over a field $k$. A \emph{flag} $\mathbb{F}_{\bullet}$ for $V$ is a sequence $\left(\mathbb{F}_0,\mathbb{F}_1,\mathbb{F}_2,\ldots,\mathbb{F}_n\right)$, such that $\dim_k\mathbb{F}_i = i$ for all $i\in\{0,1,\ldots,n\}$ and
-$0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=V$.
-Given a flag $\mathbb{F}_{\bullet}$ of $V$, denote an orthonormal basis $f_{\bullet}=(f_1,\ldots,f_n)$ of $V$ to be \emph{compatible} with $\mathbb{F}_{\bullet}$, if
-$f_i\in\mathbb{F}_i$
-for every $i\in[n]$.
+\begin{definition} A \emph{flag} $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$ is a sequence $0=\mathbb{F}_0\subset\mathbb{F}_1\subset\mathbb{F}_2\subset\cdots\subset\mathbb{F}_n=\mathbb{R}^n$, such that $\dim_k\mathbb{F}_i = i$ for every $i\in[n]_0$. An orthonormal basis $f_{\bullet}=(f_1,\ldots,f_n)$ of $\mathbb{R}^n$ is \emph{compatible with $\mathbb{F}_{\bullet}$}, if $f_i\in\mathbb{F}_i$ for every $i\in[n]$.
 \end{definition}
-%giati exei toso megalo keno sto pdf edw? (genika s ayth th selida)
-For the rest of this thesis ${[n]}_0$ is used to denote the set $[n]\cup\{0\}=\{0,1,\ldots,n\}$.
-
-An obvious example of flag is the one used above, namely the flag with $\mathbb{F}_i=\mathbb{R}_i=\spans\{e_1,\ldots,e_i\}$. This is sometimes referred to as \emph{standard flag}, but since we avoid to fix some basis of $\mathbb{R}^n$ in this section, every flag is treated equally.
 
 Note that given a flag, one can always find a compatible basis with this flag. In fact, there always exist $2^n$ different compatible orthonormal bases and fixing one is like fixing an ``orientation'' of the flag.
 
-Notice, that the role of the flags on the example above is to distinguish between all the different ways a line can intersect this flag. This is exactly the role a flag plays in the general definition of Schubert cells.
-
-\begin{definition} Let $0<k<n$ be natural numbers. Moreover let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$. Then, for each $k$-element subset $\mathbf{j}=\left\{j_1<j_2<\cdots<j_k\right\}$ of $[n]$ the \emph{Schubert cell} $\grcell{j}$ is defined to be the following subset of $\Gr{k}{n}$:
+\begin{definition} For $k,n\in\mathbb{N}$, such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$,
 \[\grcell{j}:=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{\ell\in{[k]}_0:j_{\ell}\leq i\}\ \ \forall i\in{[n]}_0\big\}\]
-where $j_0$ is defined to be $0$.
+is the \emph{Schubert cell with symbol $\mathbf{j}$}, where $j_0$ is defined to be $0$.
 \end{definition}
 
-Before examining mathematically this definition, let us write down the Schubert cells of the first non-trivial example, $\Gr{2}{4}$, with respect to the standard flag of $\mathbb{R}^4$:
-\[\begin{array}{rcl}
-\mathcal{C}_{\{1,2\}}&=&\big\{H:\ \dim(H\cap\mathbb{R}^{0})=0,\ \dim(H\cap\mathbb{R}^{1})=1,\ \dim(H\cap\mathbb{R}^{2,3,4})=2\big\}\\
-&=&\big\{\mathbb{R}^2\big\}\\[.6em]
-\mathcal{C}_{\{1,3\}}&=&\big\{H:\ \dim(H\cap\mathbb{R}^{0})=0,\ \dim(H\cap\mathbb{R}^{1,2})=1,\ \dim(H\cap\mathbb{R}^{3,4})=2\big\}\\
-&=&\big\{H:\ \mathbb{R}^1\subseteq H\subseteq\mathbb{R}^3,\ H\neq\mathbb{R}^2\big\}\\[.6em]
-\mathcal{C}_{\{1,4\}}&=&\big\{H:\ \dim(H\cap\mathbb{R}^{0})=0,\ \dim(H\cap\mathbb{R}^{1,2,3})=1,\ \dim(H\cap\mathbb{R}^{4})=2\big\}\\
-&=&\big\{H:\ \mathbb{R}^1\subseteq H,\ H\not\subseteq\mathbb{R}^3\big\}\\[.6em]
-\mathcal{C}_{\{2,3\}}&=&\big\{H:\ \dim(H\cap\mathbb{R}^{0,1})=0,\ \dim(H\cap\mathbb{R}^{2})=1,\ \dim(H\cap\mathbb{R}^{3,4})=2\big\}\\
-&=&\big\{H:\ H\subseteq\mathbb{R}^3,\ \mathbb{R}^1\not\subseteq H\big\}\\[.6em]
-\mathcal{C}_{\{2,4\}}&=&\big\{H:\ \dim(H\cap\mathbb{R}^{0,1})=0,\ \dim(H\cap\mathbb{R}^{2,3})=1,\ \dim(H\cap\mathbb{R}^{4})=2\big\}\\
-&=&\big\{H:\ \dim(H\cap\mathbb{R}^2)=1,\ \mathbb{R}^1\not\subseteq H,\ H\not\subseteq\mathbb{R}^3\big\}\\[.6em]
-\mathcal{C}_{\{3,4\}}&=&\big\{H:\ \dim(H\cap\mathbb{R}^{0,1,2})=0,\ \dim(H\cap\mathbb{R}^{3})=1,\ \dim(H\cap\mathbb{R}^{4})=2\big\}\\
-&=&\big\{H:\ H\cap\mathbb{R}^2=\{0\}\big\}\\[.6em]
-\end{array}\]
-Although there exists dimension restrictions in the definitions of the cells which can be omitted (for example that $H\cap\mathbb{R}^0=0$), the final form doesn't feel intuitive either. Let us take a step back for a moment and see what the Schubert cell decomposition of the (well-known) projective space is. Take for example $\Gr{1}{4}\cong\mathbb{P}^2$:
-\[\begin{array}{rcl}
-\mathcal{C}_{\{1\}}&=&\big\{l:\ \dim(l\cap\mathbb{R}^{0})=0,\ \dim(l\cap\mathbb{R}^{1,2,3,4})=1\big\}\\
-&=&\big\{\mathbb{R}^1\big\}\\[.6em]
-\mathcal{C}_{\{2\}}&=&\big\{l:\ \dim(l\cap\mathbb{R}^{0,1})=0,\ \dim(l\cap\mathbb{R}^{2,3,4})=1\big\}\\
-&=&\big\{l:\ l\subseteq\mathbb{R}^2,\ l\neq\mathbb{R}^1\big\}\\[.6em]
-\mathcal{C}_{\{3\}}&=&\big\{l:\ \dim(l\cap\mathbb{R}^{0,1,2})=0,\ \dim(l\cap\mathbb{R}^{3,4})=1\big\}\\
-&=&\big\{l:\ l\subseteq\mathbb{R}^3,\ l\not\subseteq\mathbb{R}^2\big\}\\[.6em]
-\mathcal{C}_{\{4\}}&=&\big\{l:\ \dim(l\cap\mathbb{R}^{0,1,2,3})=0,\ \dim(l\cap\mathbb{R}^{4})=1\big\}\\
-&=&\big\{l:\ l\not\subseteq\mathbb{R}^3\big\}\\[.6em]
-\end{array}\]
-Notice that the general Schubert cell (with respect to some flag $\mathbb{F}_{\bullet}$) is the set of all lines contained in $\mathbb{F}_k\setminus\mathbb{F}_{k-1}$.
-This gives a serial way to think of the cells of a particular projective space, which is the result of the total order that the set $\binom{[n]}{1}$ naturally has. Since $\binom{[n]}{k}$ is in general naturally a poset (inheriting the coordinate-wise ordering on the set of $k$ element sequences ${[n]}^k$), it is now of no surprise that the same poset structure lies behind the Schubert decomposition.
-When examining the closure of these cells, we investigate more precisely this structure.
+Let us now write down the Schubert cells of the first non-trivial example, $\Gr{2}{4}$, with respect to the standard flag of $\mathbb{R}^4$.
+\begin{align*}
+\mathcal{C}_{\{1,2\}}&=\big\{\mathbb{R}^2\big\}&
+\mathcal{C}_{\{1,3\}}&=\big\{H:\ \mathbb{R}^1\subseteq H\subseteq\mathbb{R}^3,\ H\neq\mathbb{R}^2\big\}\\
+\mathcal{C}_{\{1,4\}}&=\big\{H:\ \mathbb{R}^1\subseteq H\ H\not\subseteq\mathbb{R}^3\big\}&
+\mathcal{C}_{\{2,3\}}&=\big\{H:\ H\subseteq\mathbb{R}^3,\ \mathbb{R}^1\not\subseteq H\big\}\\
+\mathcal{C}_{\{2,4\}}&=\big\{H:\ \dim(H\cap\mathbb{R}^2)=1,\ \mathbb{R}^1\not\subseteq H,\ H\not\subseteq\mathbb{R}^3\big\}&
+\mathcal{C}_{\{3,4\}}&=\big\{H:\ H\cap\mathbb{R}^2=\{0\}\big\}
+\end{align*}
+Notice that this cell structure doesn't feel as intuitive as the one defined for the projective spaces. This happens, because the set $\binom{[n]}{1}$ has a natural total order, whereas the more general set $\binom{[n]}{k}$ is naturally a poset, with respect to the coordinate-wise ordering on the set of $k$ element sequences ${[n]}^k$.
 
-This decomposition of Grassmannians is meaningful since it is proven that it eventually makes every $\Gr{k}{n}$ into a CW complex. In order to do that we first prove that
-${\left\{\grcell{j}\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is indeed a decomposition. The following proof makes sense, if one conceptualizes a $k$-subset of $[n]$, as the $k$ ``jump points'' of the dimension of the intersections $H\cap\mathbb{F}_i$, for the various $i$.
-
-\begin{lemma}\label{lem:jump_pts} For any integers $0<k<n$ and for every flag $\mathbb{F}_{\bullet}$ for $\mathbb{R}^n$, the set of all Schubert cells ${\left\{\grcell{j}\right\}}_{\mathbf{j}\in\binom{[n]}{k}}$ is a partition of the Grassmannian $\Gr{k}{n}$.
-\end{lemma}
-\begin{proof} It is clear that two cells are disjoint, since each set of $k$ elements in $[n]$ describes uniquely $k$ jump points of the dimensions of $H\cap\mathbb{F}_0,H\cap\mathbb{F}_1,\ldots,H\cap\mathbb{F}_n$. Moreover, the dimensions of a $k$-plane $H$ in this sequence of intersections can increase at most by $1$ in each step. Indeed, because of the short exact sequence
-$0\to H\cap\mathbb{F}_{i-1}\to H\cap\mathbb{F}_i\to\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\to0$
-we get, for every $i\in[n]$,
-$\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_i\right)-\dim_{\mathbb{R}}\left(H\cap\mathbb{F}_{i-1}\right)=\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}$.
-Using the second isomorphism theorem for vector spaces, we get:
-\[\begin{array}{>{\displaystyle}r>{\displaystyle}c>{\displaystyle}l}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}
-&=&\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_i\cap\mathbb{F}_{i-1}}\cong\faktor{(H\cap\mathbb{F}_i)+\mathbb{F}_{i-1}}{\mathbb{F}_{i-1}}\\[1.5em]
-&\cong&\faktor{(H+\mathbb{F}_{i-1})\cap(\mathbb{F}_i+\mathbb{F}_{i-1})}{\mathbb{F}_{i-1}}\cong\faktor{(H+\mathbb{F}_{i-1})\cap\mathbb{F}_i}{\mathbb{F}_{i-1}}\\
-\end{array}\]
-with the last vector space being clearly a subspace of $\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}$, which gives finally,
-$\dim_{\mathbb{R}}\faktor{H\cap\mathbb{F}_i}{H\cap\mathbb{F}_{i-1}}\leq\dim_{\mathbb{R}}\faktor{\mathbb{F}_i}{\mathbb{F}_{i-1}}=1$.
-
-This means that there exist exactly $k$ jump points in the sequence of the dimensions of $H\cap\mathbb{F}_0,\ldots,H\cap\mathbb{F}_n$, putting $H$ in some Schubert cell.
-For every $H\in\Gr{k}{n}$ the sequence of its jump points $\mathbf{j}\in\binom{[n]}{k}$, i.e.\ the $\mathbf{j}$ for which $H\in\grcell{j}$ is given explicitly by
-$j_{\ell}=\min\{j\in[n]:\dim(H\cap\mathbb{F}_j)\geq\ell\}$.
-\end{proof}
-
-We are now ready to prove that these cells are indeed useful building blocks, i.e.\ that they are in fact homeomorphic to open balls of various dimensions. Before writing down the formula for the dimension of a general Schubert cell, let us revisit the case of $\Gr{2}{4}$ and try to compute the dimension of the cells by hand-waving:
-
-\begin{example} In $\Gr{2}{4}$ we have the Schubert decomposition we discussed earlier, w.r.t.\ the standard flag. Let us represent each plane $H$ in $\mathbb{R}^4$ by the unique corresponding $2\times 4$ matrix whose rows span $H$ and the matrix is in its reduced echelon form. Then, we get the following picture if we consider the form of the matrices for each cell. Remember, that the index $\mathbf{j}\subseteq\binom{[4]}{2}$ refers to the dimension jump points:
-\begin{center}
-\begin{tikzcd}
-\mathcal{C}_{1,2}\ar[r,leftrightarrow]&\tworows{1}{0}{0}{0}{0}{1}{0}{0}&\mathcal{C}_{1,3}\ar[r,leftrightarrow]&\tworows{1}{0}{0}{0}{0}{*}{1}{0}\\
-\mathcal{C}_{1,4}\ar[r,leftrightarrow]&\tworows{1}{0}{0}{0}{0}{*}{*}{1}&\mathcal{C}_{2,3}\ar[r,leftrightarrow]&\tworows{*}{1}{0}{0}{*}{0}{1}{0}\\
-\mathcal{C}_{2,4}\ar[r,leftrightarrow]&\tworows{*}{1}{0}{0}{*}{0}{*}{1}&\mathcal{C}_{3,4}\ar[r,leftrightarrow]&\tworows{*}{*}{1}{0}{*}{*}{0}{1}\\
-\end{tikzcd}
-\end{center}
-In fact, every matrix of a given form gives a unique plane in the according cell. Thus, we get a bijection and the dimension of the cells equals the number of the choices we have in each matrix, i.e.\ the number of stars. Notice how the jumps in the dimensions now correspond to pivot elements of the rows. Moreover, notice that the first row has always $j_1-1$ stars and the second $j_2-2$.
-\end{example}
-
-In order to compute the dimension in general, given a set $\mathbf{j}=\{j_1<\cdots<j_k\}\in\binom{[n]}{k}$, define the number
-\[\mathrm{d}(\mathbf{j})=(j_1-1)+(j_2-2)+\cdots+(j_k-k)\]
-Using the reduced echelon form for a matrix written in a suitable basis of $\mathbb{R}^n$, depending on the flag $\mathbb{F}_{\bullet}$, one can easily argue that $\grcell{j}$ is an open cell of dimension $\mathrm{d}(\mathbf{j})$, for any $\mathbf{j}\in\binom{[n]}{k}$, but our goal is to eventually prove that these open cells also give the Grassmannian a CW structure. For this it is required to find maps from the closed cells of the appropriate dimensions into the Grassmannian and unfortunately it is not easy to work with the closure of the matrices defined above. Thus, the approach in the bibliography may seem more artificial but it is also the one employed here:
-
-The approach to prove Theorem~\ref{thm:cw_complex} is:
-\begin{i_enum}
-\item First to define appropriate sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ living in the Stiefel manifold, each one ``above'' the matching Schubert cell (Definition~\ref{def:lift_of_Schubert_cells}).
-\item Then to prove that each $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet}\right)}^-$ is topologically a closed disk of the right dimension and to understand the interior and the boundary of this disc (Lemma~\ref{lem:shub_dim}).
-\item Finally, to prove that $q_0$ maps the interior of $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})^-$ homeomorphically onto $\grcell{j}$ and its boundary inside cells of lower dimension (Lemma~\ref{lem:cells_from_stiefel_to_gr}).
-\end{i_enum}
-Let us begin with the definition:
-
-\begin{definition}\label{def:lift_of_Schubert_cells} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ an orthonormal basis of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}=\{j_1<j_2<\cdots<j_k\}\in\binom{[n]}{k}$ define $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})=\stcell{j}$ to be the following subset of $\StO{k}{n}$:
-\[\stcell{j}:=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})\ \forall\ell\in[k]\right\}\]
-where $\mathbb{H}(F,f)$ is defined to be the ``positive open halfspace'' of the vector space $F$, w.r.t.\ the orientation defined by $f\in F$,
-$\mathbb{H}(F,f):=\left\{v\in F:v^tf>0\right\}$,
-for every $i\in[n]$.
-\end{definition}
-
-Although as we are going to prove the images of these subspaces of $\StO{k}{n}$ are the Schubert decomposition of $\Gr{k}{n}$, notice that for a fixed basis $f_{\bullet}$, they do not even cover $\StO{k}{n}$ and when regarding all possible compatible bases, they do cover the whole space, but we take most of these sets multiple times.
-
-Let us prove now that these sets have the right dimension and that their closure (now much easier to handle than the matrices in echelon form) is homeomorphic to a closed cell of this dimension. In order to do so in Lemma~\ref{lem:shub_dim}, we first need the following trivial (but lengthy) assertion:
-
-\begin{lemma}\label{lem:closure_of_cells} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$ the closure of $\stcell{j}$ inside ${\left(\mathbb{R}^n\right)}^k$ is:
-\[\stcell{j}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\]
-where
-${\mathbb{H}(F,f)}^-:=\left\{v\in F:v^tf\geq 0\right\}$.
-\end{lemma}
-\begin{proof} Using simple point-set topology and the fact that $\StO{k}{n}$ is closed inside ${\left(\mathbb{R}^n\right)}^k$ as proven in Proposition~\ref{prop:StO_dim_closed}, we have:
-\[\begin{array}{rcl}\stcell{j}^-
-&=&{\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})\ \forall\ell\in[k]\right\}}^-\\
-&=&{\big(\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\\
-&\subseteq&\StO{k}{n}\cap{\big(\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-\\
-&=&\StO{k}{n}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\times\cdots\times\mathbb{H}{\left(\mathbb{F}_{j_k},f_{j_k}\right)}^-\\
-&=&\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in{\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})}^-\ \forall\ell\in[k]\right\}\\
-\end{array}\]
-The inclusion in the third line is actually an equality. Indeed, let $(v_1,\ldots,v_k)\in\StO{k}{n}\cap{\big(\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-$. This means that there exists a sequence ${(v_1^m,\ldots,v_k^m)}_m\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ converging to $(v_1,\ldots,v_k)\in\StO{k}{n}\subseteq\St{k}{n}$, inside ${\left(\mathbb{R}^n\right)}^k$. Since $\St{k}{n}$ is open, as proven in Proposition~\ref{prop:St_open}, there exists some $m_0\in\mathbb{N}$, such that ${(v_1^m,\ldots,v_k^m)}_m\in\St{k}{n}$ for all $m\geq m_0$. For each such tuple, define now ${(w_1^m,\ldots,w_k^m)}_m\in\StO{k}{n}$ to be the result of the Gram-Schmidt process on input ${(v_1^m,\ldots,v_k^m)}_m$ for every $m\geq m_0$,
-${(w_1^m,\ldots,w_k^m)}_m:=\mathfrak{gs}\big({(v_1^m,\ldots,v_k^m)}_m\big)$
-
-First of all, $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ is a continuous map, which means that
-\[{(w_1^m,\ldots,w_k^m)}_m=\mathfrak{gs}\big({(v_1^m,\ldots,v_k^m)}_m\big)\overset{m\to\infty}{\to}\mathfrak{gs}(v_1,\ldots,v_k)=(v_1,\ldots,v_k)\]
-It now suffices to show that $\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ for any $(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$. We show this using the recursive nature of the Gram-Schmidt process. Assume that the assertion holds for every dimension between $1$ and $k-1$, let $(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ and let also $(w_1',\ldots,w_{k-1}')=\mathfrak{gs}(v_1',\ldots,v_{k-1}')$. Then:
-\[\mathfrak{gs}(v_1',\ldots,v_k')=\left(w_1',\ldots,w_{k-1}',\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^t v_k')w_{\ell}'\right\|}\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right)\right)\]
-Because of the inductive hypothesis, we only consider the last vector, which we denote as $w_k'$. Because $\mathbb{F}_{\bullet}$ is a flag, we have that $\mathbb{F}_{j_1}\subseteq\mathbb{F}_{j_2}\subseteq\cdots\subseteq\mathbb{F}_{j_k}$ and thus: $w_1',w_2',\ldots,w_{k-1}'\in\mathbb{F}_{j_k}$. Since $v_k'\in\mathbb{F}_{j_k}$ as well,
-$w_k'=\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right\|}\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^t v_k')w_{\ell}'\right)\in\mathbb{F}_{j_k}$
-
-Moreover, it is true that $v^tf_i=0$, if $v\in\mathbb{F}_{i-1}$ for some $i\in[n]$. Indeed, $f_{\bullet}$ is compatible with $\mathbb{F}_{\bullet}$, which means that $v\perp f_i$ for every $v\in\mathbb{F}_{i-1}$. Since $w_1',\ldots,w_{k-1}'\in\mathbb{F}_{j_{k-1}}$,
-$(w_k')^tf_{j_k}=\frac{1}{\left\|v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right\|}(v_k')^tf_{j_k}>0$.
-
-This proves that $w_k'\in\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$, which due to the induction assumption leads to
-$\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$.
-Thus the sequence ${(w_1^m,\ldots,w_k^m)}_m$ is inside $\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})$ converging to $(v_1,\ldots,v_k)$, which proves the desired inclusion since
-$(v_1,\ldots,v_k)\in{\big(\StO{k}{n}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\times\cdots\times\mathbb{H}(\mathbb{F}_{j_k},f_{j_k})\big)}^-$.
-\end{proof}
-The approach used to prove Lemma~\ref{lem:shub_dim} is the one of Hatcher~\cite{vec_bundles} (p.37), in order to already familiarize ourselves with the notion of a trivial fiber bundle. For this the following lemma is used.
-\begin{lemma}\label{lem:trivial_fb} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, the projection to the first coordinate
-$\pi_1:\stcell{j}^-\to S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$
-is a trivial fiber bundle.
-\end{lemma}
-\begin{proof} Due to Lemma~\ref{lem:closure_of_cells} the map $\pi_1$ is well defined, since it takes $(v_1,\ldots,v_k)$ to $v_1$, which is a unit vector and also an element of $\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$. Notice that since $f_{j_1}\in\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$, it suffices to prove that there exists a homeomorphism $\phi$ making the following diagram commute:
-\begin{equation}\label{eq:phi_for_trivial}
-\begin{tikzcd}
-\stcell{j}^-\ar[r,"\phi","\cong"']\ar[d,"\pi_1"']&\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
-S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-
-\end{tikzcd}
-\end{equation}
-First, we define a transformation $\rho_{v}\in SO(n)$ for every $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$, which takes $v$ to $f_{j_1}$ and is the identity in the orthogonal complement of the plane spanned by $v$ and $f_{j_1}$. Next we define $\phi$ and argue that it is continuous. We then use $\rho_{v}$ to map homeomorphically $\pi_1^{-1}(v)$ to $\pi_1^{-1}(f_{j_1})$ for each $v$. Finally we glue all of $\rho_v$ to a homeomorphism $\phi$.
-
-As proven in Computation~\ref{com:rotation}, for any $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\setminus\{f_{j_1}\}$, the rotation on the plane $\spans\{v,f_{j_1}\spans\}$ in $\mathbb{R}^n$ which takes $v$ to $f_{j_1}$ is given by
-$\rho_v:=\rho_{v\to f_{j_1}}=I_n+2f_{j_1}v^t-\frac{(v+f_{j_1})(v+f_{j_1})^t}{v^tf_{j_1}+1}\in SO(n)$.
-Notice that this depends continuously on $v$. Moreover, we define $\rho_{f_{j_1}}=I_n$, and hence $\lim_{v\to f_{j_1}}\rho_v=\rho_{f_{j_1}}$. These mean that the following map is continuous
-\begin{center}
-\begin{tikzcd}
-S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\ar[r,"\rho"]&[2em]SO(n)\\[-1.5em]
-v\ar[r,mapsto]&\rho_v
-\end{tikzcd}
-\end{center}
-Since $SO(n)$ acts continuously on $\mathbb{R}^n$, the following map is also continuous:
-\begin{center}
-\begin{tikzcd}
-SO(n)\times \stcell{j}^-\ar[r,hook]&SO(n)\times(\mathbb{R}^n)^k\ar[r,"\mathrm{ev}^k"]&(\mathbb{R}^n)^k\\[-1.5em]
-(A,u_1,\ldots,u_k)\ar[r,mapsto]&(A,u_1,\ldots,u_k)\ar[r,mapsto]&(Au_1,\ldots,Au_k)
-\end{tikzcd}
-\end{center}
-So, we define the following continuous map:
-\begin{center}
-\begin{tikzcd}
-\stcell{j}^-\ar[r, "\left<\rho\circ\pi_1{,}id\right>"]&SO(n)\times \stcell{j}^-\ar[r,"\mathrm{ev}^k"]&(\mathbb{R}^n)^k\\[-1.5em]
-(v_1,\ldots,v_k)\ar[r,mapsto]&(\rho_{v_1},v_1,\ldots,v_k)\ar[r,mapsto]&(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)
-\end{tikzcd}
-\end{center}
-We now prove that the image of this map is contained in $\pi_1^{-1}(f_{j_1})$. Let $(v_1,\ldots,v_k)\in\stcell{j}^-$. Since $\rho_{v_1}\in SO(n)$ and $(v_1,\ldots,v_k)\in\StO{k}{n}$, we have that $(\rho_{v_1}v_i)^t\rho_{v_1}v_j=v_i^tv_j=\delta_{i,j}$, which means that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\StO{k}{n}$. Moreover, for any $\ell\in[k]$, $v_{\ell}\in\mathbb{F}_{j_{\ell}}$. Let us define $H:=\spans\{v_1,f_{j_1}\spans\}\subseteq\mathbb{F}_{j_1}\subseteq\mathbb{F}_{j_{\ell}}$ and then express it as the following decomposition $v_{\ell}=P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}$, where $P_H$ and $P_{H^{\perp}}$ are the linear projections on $H$ and $H^{\perp}$ respectively. Since $v_{\ell}\in\mathbb{F}_{j_{\ell}}$ and $H\subseteq\mathbb{F}_{j_{\ell}}$, we have that $P_{H^{\perp}}v_{\ell}\in H^{\perp}\cap\mathbb{F}_{j_{\ell}}$. Moreover, as proved in Computation~\ref{com:rotation}, $\rho_{v_1}P_Hv_{\ell}\in H$ and $\rho_{v_1}P_{H^{\perp}}v_{\ell}=P_{H^{\perp}}v_{\ell}$. By putting all these together we get
-$\rho_{v_1}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+\rho_{v_1}P_{H^{\perp}}v_{\ell}=\rho_{v_1}P_Hv_{\ell}+P_{H^{\perp}}v_{\ell}\in H+\mathbb{F}_{j_{\ell}}=\mathbb{F}_{j_{\ell}}$.
-
-Next, notice that in general $\rho_{x\to y}^t=\rho_{x\to y}^{-1}=\rho_{y\to x}$, so $\rho_{v_1}^ta=a$ for every $a\in H^{\perp}$. Thus,
-$(\rho_{v_1}v_{\ell})^tf_{j_{\ell}}=v_{\ell}^t\rho_{v_1}^tf_{j_{\ell}}=v_{\ell}^tf_{j_{\ell}}\geq0$,
-since $v_{\ell}\in\mathbb{H}{\left(\mathbb{F}_{j_{\ell}},f_{j_{\ell}}\right)}^-$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\stcell{j}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also holds that $\pi_1(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)=f_{j_1}$, which proves the claim.
-
-Let us now define $\phi=\left<\pi_1,\mathrm{ev}^k\circ\left<\rho\circ\pi_1,id\right>\right>$, i.e.:
-\begin{equation}\label{eq:trivial_fb}
-\begin{tikzcd}
-\stcell{j}^-\ar[r, "\left<\pi_1{,}\mathrm{ev}^k\circ\left<\rho\circ\pi_1{,}id\right>\right>"]&[4em]\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})\\[-1.5em]
-(v_1,\ldots,v_k)\ar[r,mapsto]&\big(v_1,(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\big)
-\end{tikzcd}
-\end{equation}
-This is well defined and continuous. We now prove that its restriction on each fiber $\pi_1^{-1}(v)$ is a homeomorphism, so we show that the following map is a homeomorphism for each $v\in S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-$:
-\begin{center}
-\begin{tikzcd}
-\pi_1^{-1}(v)\ar[r, "\mathrm{ev}^k\circ\left<\rho\circ\pi_1{,}id\right>"]&[3em]\pi_1^{-1}(f_{j_1})\\[-1.5em]
-(v,v_2,\ldots,v_k)\ar[r,mapsto]&(f_{j_1},\rho_vv_2,\ldots,\rho_vv_k)
-\end{tikzcd}
-\end{center}
-We easily see that the above arguments let us also construct a continuous map
-\begin{center}
-\begin{tikzcd}
-\pi_1^{-1}(f_{j_1})\ar[r, "\mathrm{ev}^k\circ\left<\rho'\circ\pi_1{,}id\right>"]&[3em]\pi_1^{-1}(v)\\[-1.5em]
-(f_{j_1},v_2,\ldots,v_k)\ar[r,mapsto]&(v,\rho_v^tv_2,\ldots,\rho_v^tv_k)
-\end{tikzcd}
-\end{center}
-and notice that these two are inverses of each other. Thus $\phi|_{\pi^{-1}(v)}$ is a homeomorphism for each $v$.
-
-Since $\stcell{j}^-$ is a closed subset of the compact $\StO{k}{n}$, it is also compact. The space $\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\big)\times\pi_1^{-1}(f_{j_1})$ is clearly Hausdorff, and $\phi$ is also a homeomorphism, i.e.\ $\pi_1$ is a trivial fiber bundle due to Proposition~\ref{prop:extend_fb}.
-\end{proof}
-\begin{remark}\label{rem:trivial_fb_interior} Following the same arguments as in Lemma~\ref{lem:trivial_fb}, we prove that the restriction of $\pi_1$, $\pi_1|_{\stcell{j}}:\stcell{j}\to S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})$
-is also a trivial fiber bundle and the homeomorphism to the respective product is given by the restriction of the homeomorphism $\phi$ in the commutative diagram \eqref{eq:phi_for_trivial}:
-\begin{center}
-\begin{tikzcd}
-\stcell{j}\ar[r,"\phi|_{\stcell{j}}","\cong"']\ar[d,"\pi_1|_{\stcell{j}}"']&\big(S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}\big)\times\pi_1|_{\stcell{j}}^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
-S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}
-\end{tikzcd}
-\end{center}
+\begin{remark} The index $\mathbf{j}\in\binom{[n]}{k}$ of a Schubert cell is the set of \emph{jump points}, i.e. for $H\in\Gr{k}{n}$, $H\in\grcell{j}$ if and only if \[\mathbf{j}=\big\{\min\{i\in[n]:\dim(H\cap\mathbb{F}_i)=1\},\ldots,\min\{i\in[n]:\dim(H\cap\mathbb{F}_i)=k\}\big\}\]
 \end{remark}
 
-\begin{computation}\label{com:rotation} Let $x,y\in S^{n-1}$ be any two unit vectors in $\mathbb{R}^n$ such that $x\neq y$ and $x\neq -y$. Let $\rho_{x\to y}$ be the rotation taking $x$ to $y$ and fixing the $n-2$ dimension subspace $\spans\{x,y\}^{\perp}$. Then:
-\[\rho_{x\to y}=I_n+2yx^t-\frac{(x+y)(x+y)^t}{x^ty+1}\in SO(n)\]
-\end{computation}
-\begin{proof} Let $\theta\in(0,\pi)$ be the angle between $x$ and $y$ and $H=\spans\{x,y\}$ the plane spanned by $x,y$. It is easy to compute that $u=x$, $v=\frac{1}{\sin\theta}(y-\cos\theta x)$ is an orthonormal basis of $H$.
+\begin{lemma}\label{lem:jump_pts} For $k,n\in\mathbb{N}$ such that $k<n$ and for every flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, the collection  $\big\{\grcell{j}\big\}_{\mathbf{j}\in\binom{[n]}{k}}$ is a partition of $\Gr{k}{n}$.
+\end{lemma}
+\begin{proof} It is clear that any two cells are disjoint, since each set of $k$ elements in $[n]$ describes uniquely $k$ jump points of the dimensions of $\{H\cap\mathbb{F}_1,\ldots,H\cap\mathbb{F}_n\}$. Inversely, for any $H\in\Gr{k}{n}$, no two consecutive terms of $(H\cap\mathbb{F}_1,\ldots,H\cap\mathbb{F}_n)$ can differ by more than $1$. Indeed, the short exact sequence $0\to H\cap\mathbb{F}_{i-1}\to H\cap\mathbb{F}_i\to H\cap\mathbb{F}_i/H\cap\mathbb{F}_{i-1}\to0$ gives that $\dim_{\mathbb{R}}(H\cap\mathbb{F}_i)-\dim_{\mathbb{R}}(H\cap\mathbb{F}_{i-1})=\dim_{\mathbb{R}}(H\cap\mathbb{F}_i/H\cap\mathbb{F}_{i-1})$ for every $i\in[n]$. Next, using the second isomorphism theorem for vector spaces, we compute $H\cap\mathbb{F}_i/H\cap\mathbb{F}_{i-1}=H\cap\mathbb{F}_i/H\cap\mathbb{F}_i\cap\mathbb{F}_{i-1}\cong((H\cap\mathbb{F}_i)+\mathbb{F}_{i-1})/\mathbb{F}_{i-1}\cong(H+\mathbb{F}_{i-1})\cap(\mathbb{F}_i+\mathbb{F}_{i-1})/\mathbb{F}_{i-1}\cong((H+\mathbb{F}_{i-1})\cap\mathbb{F}_i)/\mathbb{F}_{i-1}$, which is clearly a subspace of $\mathbb{F}_i/\mathbb{F}_{i-1}$. Hence, $\dim_{\mathbb{R}}(H\cap\mathbb{F}_i/H\cap\mathbb{F}_{i-1})\leq\dim_{\mathbb{R}}(\mathbb{F}_i/\mathbb{F}_{i-1})=1$, which means that there exist exactly $k$ jump points in the sequence, putting $H$ in some Schubert cell.
+\end{proof}
 
-Let $P_H$ be the linear projection on $H$. Then for any $a\in\mathbb{R}^n$,
-\begin{align*}
-P_Ha&=(u^ta)u+(v^ta)v
-=(x^ta)x+\frac{1}{\sin^2\theta}\big((y^ta)-(x^ta)\cos\theta)\big)\big(y-\cos\theta x\big)\\
-&=\Big((x^ta)-\frac{\cos\theta}{\sin^2\theta}(y^ta)+\frac{\cos^2\theta}{\sin^2\theta}(x^ta)\Big)x+\Big(\frac{1}{\sin^2\theta}(y^ta)-\frac{\cos\theta}{\sin^2\theta}(x^ta)\Big)y\\
-&=\frac{(x^ta)-(y^ta)\cos\theta}{\sin^2\theta}x+\frac{(y^ta)-(x^ta)\cos\theta}{\sin^2\theta}y
-\end{align*}
-For the rotation $\rho_{x\to y}$ we have
-$\rho_{x\to y}(a-P_Ha)=a-P_Ha$, $\rho_{x\to y}x=y$, $\rho_{x\to y}y=z$,
-where we compute that $z=2\cos\theta y-x$, which give the desired formula,
-\begingroup
-\allowdisplaybreaks
-\begin{align*}
-\rho_{x\to y}a&=\rho_{x\to y}(a-P_Ha)+\rho_{x\to y}(P_Ha)\\
-&=a-P_Ha+\frac{(x^ta)-(y^ta)\cos\theta}{\sin^2\theta}y+\frac{(y^ta)-(x^ta)\cos\theta}{\sin^2\theta}(2\cos\theta y-x)\\
-&=a\begin{aligned}[t]&+\frac{(y^ta)\cos\theta-(x^ta)}{\sin^2\theta}x+\frac{(x^ta)\cos\theta-(y^ta)}{\sin^2\theta}y\\
-&+\frac{(x^ta)-(y^ta)\cos\theta}{\sin^2\theta}y+\frac{(y^ta)-(x^ta)\cos\theta}{\sin^2\theta}(2\cos\theta y-x)\end{aligned}\\
-&=a\begin{aligned}[t]&+\frac{(\cos\theta-1)(x^ta)+(\cos\theta-1)(y^ta)}{\sin^2\theta}x\\
-&+\frac{(-2\cos^2\theta+\cos\theta+1)(x^ta)+(\cos\theta-1)(y^ta)}{\sin^2\theta}y\end{aligned}\\
-&=a-\frac{1}{\cos\theta+1}\left((x^ta)x+(y^ta)x-\frac{2\cos^2\theta-\cos\theta-1}{\cos\theta-1}(x^ta)y+(y^ta)y\right)\\
-&=a-\frac{1}{\cos\theta+1}\big(xx^t+xy^t-(2\cos\theta+1)yx^t+yy^t\big)a\\
-&=\left(I_n+2yx^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)a
-\end{align*}
-\endgroup
-At this point it is easy to do a sanity check and verify that indeed
-$\rho_{x\to y}x=y$,$\rho_{x\to y}y=2\cos\theta y-x$,$\forall a\perp H\ \ \rho_{x\to y}a=a$.
-Moreover, we also verify that
-\begin{align*}
-\rho_{x\to y}\rho_{x\to y}^t&=\left(I_n+2yx^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)\left(I_n+2xy^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)\\
-&=\begin{aligned}[t]&I_n+2xy^t-\frac{(x+y)(x+y)^t}{\cos\theta+1}+2yx^t+4yy^t-2\frac{y(1+\cos\theta)(x+y)^t}{\cos\theta+1}\\
-&-\frac{(x+y)(x+y)^t}{\cos\theta+1}-2\frac{(x+y)(1+\cos\theta)y^t}{\cos\theta+1}+\frac{(x+y)(2+2\cos\theta)(x+y)^t}{(\cos\theta+1)^2}\end{aligned}\\
-&=I_n
-\end{align*}
-which proves that $\rho_{x\to y}\in O(n)$. To compute the determinant of $\rho_{x\to y}$, first let $A=I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}$ and use the Matrix determinant lemma to get,
-$\det(A)=\det\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)=1-\frac{(x+y)^t(x+y)}{\cos\theta+1}=-1$
-and hence $A$ is invertible. Using the Sherman–Morrison formula we compute $A^{-1}$:
-\begin{align*}
-A^{-1}&=\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)^{-1}
-=I_n+\frac{1}{1-\frac{\mathrm{tr}\left((x+y)(x+y)^t\right)}{\cos\theta+1}}\frac{(x+y)(x+y)^t}{\cos\theta+1}
-=I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}
-\end{align*}
-Lastly, using the Matrix determinant lemma again, we have
-\begin{align*}
-\det(\rho_{x\to y})&=\det\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}+2yx^t\right)
-=\left(1+2x^tA^{-1}y\right)\det(A)\\
-&=-\left(1+2x^t\left(I_n-\frac{(x+y)(x+y)^t}{\cos\theta+1}\right)y\right)
-=-1-2\cos\theta+2\frac{(1+\cos\theta)(\cos\theta+1)}{\cos\theta+1}=1
-\end{align*}
-which proves that $\rho_{x\to y}\in SO(n)$.
+These cells are in fact homeomorphic to open balls of various dimensions. Their dimension corresponds to the ``degrees of freedom'' each cell provides. This becomes more clear in the next example.
+
+\begin{example} For every plane $H$ in $\mathbb{R}^4$, there exists a unique $2\times 4$ matrix in reduced echelon form, the rows of which span $H$. Then, matrices with the same pivot points are in the same Schubert cell, since they have equal jump points. Notice that the dimension of each cell is the number of unspecified elements in each matrix.
+\begin{center}
+\begin{tikzcd}
+\mathcal{C}_{1,2}\ar[r,leftrightarrow]&[-0.5em]\tworows{1}{0}{0}{0}{0}{1}{0}{0}&\mathcal{C}_{1,3}\ar[r,leftrightarrow]&[-0.5em]\tworows{1}{0}{0}{0}{0}{*}{1}{0}&\mathcal{C}_{1,4}\ar[r,leftrightarrow]&[-0.5em]\tworows{1}{0}{0}{0}{0}{*}{*}{1}\\[-2em]
+\mathcal{C}_{2,3}\ar[r,leftrightarrow]&\tworows{*}{1}{0}{0}{*}{0}{1}{0}&\mathcal{C}_{2,4}\ar[r,leftrightarrow]&\tworows{*}{1}{0}{0}{*}{0}{*}{1}&\mathcal{C}_{3,4}\ar[r,leftrightarrow]&\tworows{*}{*}{1}{0}{*}{*}{0}{1}
+\end{tikzcd}
+\end{center}
+\end{example}
+
+\begin{remark} For $k,n\in\mathbb{N}$ such that $k<n$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, let $\mathrm{d}(\mathbf{j})=(j_1-1)+(j_2-2)+\cdots+(j_k-k)$. Then, $\dim_{\mathbb{R}}\grcell{j}=\mathrm{d}(\mathbf{j})$. Indeed, defining the matrices as in the example, written in a basis compatible with the flag, the number of unspecified elements is equal to $\mathrm{d}(\mathbf{j})$.
+\end{remark}
+
+Since we are aiming to prove in Theorem~\ref{thm:gr_is_cw} that the Grassmannians have a CW structure, this matrix representation of the cells will not be helpful any more, as it is not clear how the boundary of these cells is glued to the cells of smaller dimension. So, the approach we employ here may seem more artificial but it is the canonical approach in the bibliography. First, in Definition~\ref{def:lift_of_Schubert_cells} we define appropriate sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ living in the Stiefel manifold, each one ``above'' the matching Schubert cell. Then, in Lemma~\ref{lem:shub_dim} we prove that each $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet}\right)}^-$ is topologically a closed disk of the right dimension. Finally, in Lemma~\ref{lem:cells_from_stiefel_to_gr} we prove that $q_0$ maps the interior of $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})^-$ homeomorphically onto $\grcell{j}$ and its boundary inside cells of lower dimension.
+
+\begin{definition}\label{def:lift_of_Schubert_cells} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$ and $\mathbf{j}=\{1\leq j_1<j_2<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, define
+\[\stcell{j}:=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}\ \forall\ell\in[k]\right\},\]
+where $\mathbb{H}_i:=\left\{v\in\mathbb{F}_i:v^tf_i>0\right\}$ is the \emph{positive open halfspace of $\mathbb{F}_{\bullet}$, with respect to $f_{\bullet}$} for every $i\in[n]$.
+\end{definition}
+
+Notice that for a fixed flag and a fixed basis compatible with the flag, these sets do not cover $\StO{k}{n}$, so they are not a cell decomposition, but if we regard all possible compatible bases and then only choose some of these sets for each basis, then we can create a cell decomposition of the Stiefel manifold. This however is not in the scope of this thesis.
+
+\begin{lemma}\label{lem:closure_of_cells} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and a set of indices $\mathbf{j}\in\binom{[n]}{k}$, the closure of $\stcell{j}$ inside ${\left(\mathbb{R}^n\right)}^k$ is $\stcell{j}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}^-\ \forall\ell\in[k]\right\}$, where $\mathbb{H}_i^-:=\{v\in\mathbb{F}_i:v^tf_i\geq 0\}$.
+\end{lemma}
+\begin{proof} As we saw in Proposition~\ref{prop:StO_dim_closed}, $\StO{k}{n}$ is closed in ${\left(\mathbb{R}^n\right)}^k$. This means that $\stcell{j}^-={\big(\StO{k}{n}\cap\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k}\big)}^-\subseteq\StO{k}{n}\cap{(\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k})}^-=\StO{k}{n}\cap\mathbb{H}_{j_1}^-\times\cdots\times\mathbb{H}_{j_k}^-$. We show that this inclusion is actually an equality.
+
+Let $(v_1,\ldots,v_k)\in\StO{k}{n}\cap(\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k})^-$. This means that there exists a sequence ${(v_1^m,\ldots,v_k^m)}_m\in\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k}$ converging to $(v_1,\ldots,v_k)\in\StO{k}{n}\subseteq\St{k}{n}$, inside ${\left(\mathbb{R}^n\right)}^k$. Since $\St{k}{n}$ is open, as proven in Proposition~\ref{prop:St_open}, there exists some $m_0\in\mathbb{N}$, such that ${(v_1^m,\ldots,v_k^m)}_m\in\St{k}{n}$ for all $m\geq m_0$. For each $m\geq m_0$, define now ${(w_1^m,\ldots,w_k^m)}_m:=\mathfrak{gs}({(v_1^m,\ldots,v_k^m)}_m)\in\StO{k}{n}$, where $\mathfrak{gs}$ is the Gram-Schmidt process. Since $\mathfrak{gs}:\St{k}{n}\to\StO{k}{n}$ is a continuous map, $\lim_{m\to\infty}(w_1^m,\ldots,w_k^m)_m=(v_1,\ldots,v_k)$, so it suffices to show that $\mathfrak{gs}(v_1',\ldots,v_k')\in\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k}$ for any $(v_1',\ldots,v_k')\in\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k}$.
+
+Without loss of generality, we only show this for the last vector. Let $(w_1',\ldots,w_{k-1}')=\mathfrak{gs}(v_1',\ldots,v_{k-1}')$ and assume that $w_i'\in\mathbb{H}_{j_i}$ for every $i\in[k-1]$. Then $w_k'=\lambda\left(v_k'-\sum_{\ell=1}^{k-1}((w_{\ell}')^tv_k')w_{\ell}'\right)$, for some $\lambda>0$. Notice that $w_i'\in\mathbb{F}_{j_i}\subseteq\mathbb{F}_{j_k}$ for every $i\in[k-1]$ and that $v_k'\in\mathbb{F}_{j_k}$, which means that $w_k'\in\mathbb{F}_{j_k}$. Moreover, for every $v\in\mathbb{F}_{j_k-1}$ it is true that $v^tf_{j_k-1}=0$. Hence $(w_k')^tf_{j_k}=\lambda(v_k')^tf_{j_k}>0$, which proves that ${(w_1^m,\ldots,w_k^m)}_m\in\StO{k}{n}\cap\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k}$ and thus
+$(v_1,\ldots,v_k)\in{\big(\StO{k}{n}\cap\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k}\big)}^-$.
+\end{proof}
+
+In order to prove Lemma~\ref{lem:shub_dim}, we use the notion of the fiber bundles and follow the proof in \cite{vec_bundles} (p.37). If the reader is not familiar with this notion, they may want to look into Definitions~\ref{def:fiber_bundle} and~\ref{def:trivial_fiber_bundle}, before proceeding to the next lemma.
+\begin{lemma}\label{lem:trivial_fb} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, the projection $\pi_1:\stcell{j}^-\to S^{n-1}\cap\mathbb{H}_{j_1}^-$ is a trivial fiber bundle.
+\end{lemma}
+\begin{proof} Due to Lemma~\ref{lem:closure_of_cells} the map $\pi_1$ is well defined, since it takes $(v_1,\ldots,v_k)$ to $v_1$, which is a unit vector and also an element of $\mathbb{H}_{j_1}^-$. Notice that since $f_{j_1}\in\mathbb{H}_{j_1}^-$, it suffices to prove that there exists a homeomorphism $\phi$ making the following diagram commute.
+\begin{equation}\label{eq:phi_for_trivial}
+\begin{tikzcd}
+\stcell{j}^-\ar[r,"\phi","\cong"']\ar[d,"\pi_1"']&\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
+S^{n-1}\cap\mathbb{H}_{j_1}^-
+\end{tikzcd}
+\end{equation}
+For every $v\in S^{n-1}\cap\mathbb{H}_{j_1}^-$ define the linear map $\rho_v:=I_n+2f_{j_1}v^t-\frac{(v+f_{j_1})(v+f_{j_1})^t}{v^tf_{j_1}+1}:\mathbb{R}^n\to\mathbb{R}^n$, where $I_n$ is the identity on $\mathbb{R}^n$ and $xy^t$ is the linear map taking $a\in\mathbb{R}^n$ to $(y^ta)x$. Notice that $\rho_v$ is the rotation on the plane $H:=\spans\{v,f_{j_1}\}$ taking $v$ to $f_{j_1}$, i.e. $\rho_v\in O(n)$, $\rho_v(H)=H$, $\rho_v|_{H^{\perp}}=I_n$ and $\rho_vv=f_{j_1}$.
+
+Moreover, notice that $\rho_v$ depends continuously on $v$ and for $\rho_{f_{j_1}}:=I_n$, we get that $\lim_{v\to f_{j_1}}\rho_v=\rho_{f_{j_1}}$.This means that the map $\rho:S^{n-1}\cap\mathbb{H}_{j_1}^-\to O(n)$ with $\rho(v)=\rho_v$ is continuous. Since $O(n)$ acts continuously on $\mathbb{R}^n$, the map $ev^k:O(n)\times\stcell{j}^-\to(\mathbb{R}^n)^k$ with $ev^k(A,u_1,\ldots,u_k)=(Au_1,\ldots,Au_k)$ is also continuous. Thus, the composition that rotates a $k$-tuple by the rotation corresponding to the first vector, i.e. $ev^k\circ\left<\rho\circ\pi_1,id\right>:\stcell{j}^-\to(\mathbb{R}^n)^k$ with $ev^k\circ\left<\rho\circ\pi_1,id\right>(v_1,\ldots,v_k)=(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)$ is continuous.
+
+We now prove that the image of this map is contained in $\pi_1^{-1}(f_{j_1})$. Let $(v_1,\ldots,v_k)\in\stcell{j}^-$. Since $\rho_{v_1}\in O(n)$ and $(v_1,\ldots,v_k)\in\StO{k}{n}$, we have that $(\rho_{v_1}v_i)^t\rho_{v_1}v_j=v_i^tv_j=\delta_{i,j}$, which means that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\StO{k}{n}$. It remains to show that $\rho_vv_{\ell}\in\mathbb{H}_{j_{\ell}}$ for $v_{\ell}\in\mathbb{H}_{j_{\ell}}$. Decompose $v_{\ell}$ in two orthogonal parts $v_{\ell}=p_Hv_{\ell}+p_{H^{\perp}}v_{\ell}$, where $p_H$ and $p_{H^{\perp}}$ are the orthogonal projections on $H$ and $H^{\perp}$ respectively. Since $v_{\ell}\in\mathbb{F}_{j_{\ell}}$ and $H\subseteq\mathbb{F}_{j_{\ell}}$, we have that $p_{H^{\perp}}v_{\ell}\in H^{\perp}\cap\mathbb{F}_{j_{\ell}}$. Moreover, since $\rho_{v_1}$ is a rotation on $H$, $\rho_{v_1}p_Hv_{\ell}\in H$ and $\rho_{v_1}p_{H^{\perp}}v_{\ell}=p_{H^{\perp}}v_{\ell}$. Thus, $\rho_{v_1}v_{\ell}=\rho_{v_1}p_Hv_{\ell}+\rho_{v_1}p_{H^{\perp}}v_{\ell}=\rho_{v_1}p_Hv_{\ell}+p_{H^{\perp}}v_{\ell}\in H+\mathbb{F}_{j_{\ell}}=\mathbb{F}_{j_{\ell}}$. Next, notice that $(\rho_{v_1}v_{\ell})^tf_{j_{\ell}}=v_{\ell}^t\rho_{v_1}^tf_{j_{\ell}}=v_{\ell}^tf_{j_{\ell}}\geq0$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\stcell{j}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also holds that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\pi_1^{-1}(f_{j_1})$.
+
+Let us define $\phi:=\left<\pi_1,\mathrm{ev}^k\circ\left<\rho\circ\pi_1,id\right>\right>:\stcell{j}\to\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})$ with $\phi(v_1,\ldots,v_k)=\big(v_1,(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\big)$. Notice that $\phi$ is well defined and continuous. Moreover, the restriction on each fiber $\phi|_{\pi_1^{-1}(v)}:\pi_1^{-1}(v)\to\pi^{-1}(f_{j_1})$ is a homeomorphism. Indeed, the map $\mathrm{ev}^k\circ\left<\rho'\circ\pi_1{,}id\right>:\pi_1^{-1}(f_{j_1})\to\pi_1^{-1}(v)$ taking $(f_{j_1},v_2,\ldots,v_k)$ to $(v,\rho_v^tv_2,\ldots,\rho_v^tv_k)$ is its inverse.
+
+Since $\stcell{j}^-$ is a closed subset of the compact $\StO{k}{n}$, it is also compact. Moreover, the space $\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})$ is clearly Hausdorff, and $\phi$ is also a homeomorphism, i.e.\ $\pi_1$ is a trivial fiber bundle due to Proposition~\ref{prop:extend_fb}.
 \end{proof}
 
 \begin{lemma}\label{lem:shub_dim} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, there exists a homeomorphism
@@ -427,12 +235,12 @@ is also a homeomorphism.
 \begin{proof}
 Notice that
 \begin{equation}\label{eq:linear_proj_disc}
-S^{n-1}\cap\mathbb{H}{\left(\mathbb{F}_{j_1},f_{j_1}\right)}^-\cong D^{j_1-1}
+S^{n-1}\cap\mathbb{H}_{j_1}^-\cong D^{j_1-1}
 \end{equation}
 with a homeomorphism being the linear projection on $\mathbb{F}_{j_1-1}$. Moreover,
 \begin{align}
 \begin{split}
-\pi_1^{-1}(f_{j_1})&=\big\{(f_{j_1},v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})^-\ \forall\ell\in[k]\setminus\{1\}\big\}\\
+\pi_1^{-1}(f_{j_1})&=\big\{(f_{j_1},v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}^-\ \forall\ell\in[k]\setminus\{1\}\big\}\\
 &\cong\Big\{(v'_2,\ldots,v'_k)\in\StO{k-1}{n-1}
 :v'_{\ell}\in\mathbb{H}\left(\faktor{\mathbb{F}_{j_{\ell}}}{\spans\{f_{j_1}\}},\pi_{\hat{j}_1}(f_{j_{\ell}})\right)^-\ \forall\ell\in[k]\setminus\{1\}\Big\}\\
 &=\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}'_{\bullet},f'_{\bullet}\right)}^-
@@ -453,11 +261,11 @@ So, $\tilde{\Phi}_{\mathbf{j}}$ is constructed inductively, using \eqref{eq:triv
 &\cong D^{\mathrm{d}(\mathbf{j})}
 \end{align*}
 For the second claim, notice that
-$S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\cong\big(D^{j_1-1}\big)^{\circ}$
+$S^{n-1}\cap\mathbb{H}_{j_1}\cong\big(D^{j_1-1}\big)^{\circ}$
 through the same linear projection as in \eqref{eq:linear_proj_disc} and
 $\pi_1|_{\stcell{j}}^{-1}(f_{j_1})\cong\tilde{\mathcal{C}}_{\mathbf{j}'}(\mathbb{F}_{\bullet}',f_{\bullet}')$
 through the same map as in \eqref{eq:induction_step}. Using Remark~\ref{rem:trivial_fb_interior} we get
-$\stcell{j}\cong\big(S^{n-1}\cap\mathbb{H}(\mathbb{F}_{j_1},f_{j_1})\big)\times\pi_1|_{\stcell{j}}^{-1}(f_{j_1})$
+$\stcell{j}\cong\big(S^{n-1}\cap\mathbb{H}_{j_1}\big)\times\pi_1|_{\stcell{j}}^{-1}(f_{j_1})$
 through the same map as in \eqref{eq:trivial_fb}.
 So, the inductive construction above gives us that
 $\stcell{j}\cong\big(D^{\mathrm{d}(\mathbf{j})}\big)^{\circ}$,
@@ -490,7 +298,7 @@ Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if $
 
 First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$,
 $u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}$
-i.e.\ $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e.\ $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}(\mathbb{F}_{j_{\ell}},f_{j_{\ell}})$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\stcell{j}$.
+i.e.\ $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e.\ $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}_{j_{\ell}}$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\stcell{j}$.
 
 Then, notice that for $H\in\grcell{j}$,
 $q_0(r_0(H))=q_0(u_1,\ldots,u_k)=\spans\{u_1,\ldots,u_k\}=H$.
@@ -507,7 +315,7 @@ since there is a unique choice for $r_0$, as proven above.
 \begin{proof} Let $(v_1,\ldots,v_k)\in\stcell{j}^-\setminus\stcell{j}$ and set $H=q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\}$. Due to Lemma~\ref{lem:jump_pts} there exists some $\mathbf{j}'\in\binom{[n]}{k}$ such that $H\in\mathcal{C}_{\mathbf{j}'}(\mathbb{H}_{\bullet})$. For this $\mathbf{j}'$,
 $j_{\ell}'=\min\{j\in[n]:\dim(H\cap\mathbb{F}_j)\geq\ell\}$.
 
-Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\stcell{j}$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})^-\setminus\mathbb{H}(\mathbb{F}_{j_{\ell_0}},f_{j_{\ell_0}})$, i.e.\ $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}<j_{\ell_0}$, i.e.\ $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we get
+Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\stcell{j}$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}_{j_{\ell_0}}^-\setminus\mathbb{H}_{j_{\ell_0}}$, i.e.\ $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}<j_{\ell_0}$, i.e.\ $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we get
 $\mathrm{d}(\mathbf{j}')=\sum_{\ell\in[k]}(j'_{\ell}-\ell)<\sum_{\ell\in[k]}(j_{\ell}-\ell)=\mathrm{d}(\mathbf{j})$.
 \end{proof}
 
