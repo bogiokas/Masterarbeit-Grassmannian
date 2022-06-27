@@ -10,6 +10,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  OTHER PACKAGES  %%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc} %encoding
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
 \usepackage{makeidx} %indexing
 \usepackage{tabularx} %tabular + expand cols
 \usepackage{booktabs} %hlines in tabular
@@ -233,6 +235,8 @@
 \mynewtheorem{problems}
 \mynewtheorem{proposition}
 \mynewtheorem{propositions}
+\mynewtheorem{remark}
+\mynewtheorem{remarks}
 \mynewtheorem{question}
 \mynewtheorem{questions}
 \mynewtheorem{reminder}
@@ -246,11 +250,9 @@
 \mynewtheorem{definition}
 \mynewtheorem{definitions}
 %%theoremstyle
-\theoremstyle{remark}
+\theoremstyle{note}
 \mynewtheorem{goal}
 \mynewtheorem{goals}
-\mynewtheorem{remark}
-\mynewtheorem{remarks}
 \mynewtheorem{note}
 \mynewtheorem{notes}
 %% when adding foo, add also \begin{foo} inside [user]\AppData\Roaming\texstudio\completion\user
