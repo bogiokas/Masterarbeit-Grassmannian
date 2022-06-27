@@ -277,7 +277,7 @@ Aiming to exploit the vector space structure of the fibers, we fix some base spa
 \begin{definition} Let $\xi_1:E(\xi_1)\to B$ be an $n_1$-plane vector bundle, $\xi_2:E(\xi_2)\to B$ an $n_2$-plane vector bundle and $\eta:E(\eta)\to B$ an $n$-plane vector bundle, where $E(\xi_1),E(\xi_2)\subseteq E(\eta)$. Then $\eta$ is the \emph{whitney sum of $\xi_1$ and $\xi_2$} and we write $\eta=\xi_1\oplus\xi_2$, if $\eta^{-1}(x)=\xi_1^{-1}(x)\oplus\xi_2^{-1}(x)$ as vector spaces, for every $x\in B$. Notice that in this case $n_1+n_2=n$.
 \end{definition}
 
-Next we examine how to explicitly describe the whitney sum of two given bundles:
+The next two propositions exhibit the connection between products and whitney sums of fiber bundles.
 \begin{proposition} Let $\xi_1:E(\xi_1)\to B$ be an $n_1$-plane vector bundle and $\xi_2:E(\xi_2)\to B$ an $n_2$-plane vector bundle. Then, $\xi_1\oplus\xi_2\cong d^*(\xi_1\times\xi_2)$, where $d:B\to B\times B$ is the diagonal map taking $x\in B$ to $(x,x)\in B\times B$.
 \end{proposition}
 \begin{proof} Notice that $E(d^*(\xi_1\times\xi_2)=\big\{(x,v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):(x,x)=(\xi_1(v_1),\xi_2(v_2))\big\}$ and define the following map:
@@ -298,6 +298,13 @@ $E(d^*(\xi_1\times\xi_2))=\big\{(x,v_1,v_2)\in B\times E(\xi_1)\times E(\xi_2):(
 where the homeomorphism is a vector bundle isomorphism.
 \end{proof}
 This is the description used in the remainder of the thesis.
+%TODO: move this after the def of induced and change the text above
+\begin{proposition}\label{prop:product_bundle_to_whitney_sum} Let $\xi_1:E(\xi_1)\to B_1$ be an $n_1$-plane vector bundle and $\xi_2:E(\xi_2)\to B_2$ an $n_2$-plane vector bundle. Then, $\xi_1\times\xi_2\cong (\pi_1^*\xi_1)\oplus(\pi_2^*\xi_2)$, where $\pi_1:B_1\times B_2\to B_1$ and $\pi_2:B_1\times B_2\to B_2$ are the usual projections.
+\end{proposition}
+\begin{proof} Note that $E((\pi_1^*\xi_1)\oplus(\pi_2^*\xi_2))=\big\{(x_1,x_2,v_1,y_1,y_2,v_2)\in B_1\times B_2\times E(\xi_1)\times B_1\times B_2\times E(\xi_2):\pi_1(x_1,x_2)=\xi_1(v_1)\text{ and }\pi_2(y_1,y_2)=\xi_2(v_2)\text{ and }(x_1,x_2)=(y_1,y_2)\big\}\cong\big\{(x_1,x_2,v_1,v_2)\in B_1\times B_2\times E(\xi_1)\times E(\xi_2):x_1=\xi_1(v_1)\text{ and }x_2=\xi_2(v_2)\}=E(\xi_1\times\xi_2)$.
+Clearly, this homeomorphism is a bundle map and a linear isomorphism over each fiber.
+\end{proof}
+
 \begin{lemma}\label{lem:induced_sum} Let $\eta,\xi$ be vector bundles over $B$ and $f:B'\to B$ be any continuous function. Then $f^*(\eta\oplus\xi)\cong(f^*\eta)\oplus(f^*\xi)$.
 \end{lemma}
 \begin{proof} Notice that $E\big((f^*\eta)\oplus(f^*\xi)\big)=\big\{(x,a,y,b)\in B'\times E(\eta)\times B'\times E(\xi):f(x)=\eta(a)\text{ and }f(y)=\xi(b)\text{ and }x=y\big\}\cong\big\{(x,a,b)\in B'\times E(\eta)\times E(\xi):\eta(a)=\xi(b)=x\big\}=E\big(f^*(\eta\oplus\xi)\big)$, where the homeomorphism is a bundle map and a linear isomorphism fiber-wise. So, using Proposition~\ref{prop:local_to_global_iso_vector} it is a vector bundle isomorphism.

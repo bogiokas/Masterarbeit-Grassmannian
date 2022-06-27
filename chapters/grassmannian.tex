@@ -1,5 +1,5 @@
 %!TEX root = Cohomology of real Grassmannians.tex
-\chapter{Grassmannians}
+\chapter{Grassmannians}\label{chap:grassmannians}
 Since the topology of projective spaces has been thoroughly studied and characterized, a logical generalization is imposing a natural topology on the set of $k$-dimensional subspaces of a vector space for any $k\geq1$, which are called a \emph{Grassmannian}.
 
 Recall the definition of the real projective spaces as topological spaces,
@@ -658,7 +658,7 @@ i.e. $X_m^{k,n}=X_m^{k,n_0}$ for every $n\geq n_0$.
 \begin{proof} If $I_m^{k,n}=\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})\leq m\}$, then $X_m^{k,n}=\bigcup_{\mathbf{j}\in I_m^{k,n}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$. Using Proposition~\ref{prop:included_cell}, we have $X_m^{k,n}=\bigcup_{I_m^{k,n}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})\subseteq\bigcup_{I_m^{k,n+1}}\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})=X_m^{k,n+1}$ for every $n\in\mathbb{N}$. Let $n>m+k$ and $\mathbf{j}\in I_m^{k,n}$. Notice then that $j_1-1+j_2-2+\cdots+j_k-k\leq m$ i.e. $j_k\leq m+k-\big((j_1-1)+\cdots+(j_{k-1}-k+1)\big)\leq m+k<n$, since for every $i\in[k-1]$ $j_i\geq i$. This means that $\mathbf{j}\in I_m^{k,n-1}$ and so $X_m^{k,n-1}\subseteq X_m^{k,n}$. This means that for $n_0:=m+k$ the assertion is true.
 \end{proof}
 
-\begin{theorem} Let $k\in\mathbb{N}$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^{\infty}$. Moreover, for every integer $m\geq-1$ let $X_m^k:=\bigcup_{n=k+1}^{\infty}X_m^{k,n}$. Then, the filtration
+\begin{theorem}\label{thm:gr_inf_cw} Let $k\in\mathbb{N}$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^{\infty}$. Moreover, for every integer $m\geq-1$ let $X_m^k:=\bigcup_{n=k+1}^{\infty}X_m^{k,n}$. Then, the filtration
 $\emptyset=X_{-1}^k\subseteq X_0^k\subseteq X_1^k\subseteq X_2^k\subseteq\cdots\subseteq\Gr{k}$
 is a CW structure of $\Gr{k}$.
 \end{theorem}
@@ -711,7 +711,7 @@ Moreover $c_{k,n}=b_{k,n}^{-1}$, since $c_{k,n}\big(b_{k,n}(\mathbf{j})\big)=c_{
 
 Finally, we have that $b_{k,n}(\mathbf{j})\vdash (j_k-k)+(j_{k-1}-(k-1))+\cdots+(j_1-1)=\mathrm{d}(\mathbf{j})$.
 \end{proof}
-\begin{remark} Fix some $k\in\mathbb{N}$ and notice that if $\mathbf{j}\in\binom{[n]}{k}$ and $j_k\leq n-1$, then $b_{k,n}(\mathbf{j})=b_{k,n-1}(\mathbf{j})$, so for $n\geq n_0$, $b_{k,n}|_{\binom{[n_0]}{k}}=b_{k,n_0}$. This lets us define the map $b_k:\binom{\mathbb{N}}{k}\to\big\{\lambda\in P:|\lambda|\leq k\}$ on $\mathbf{j}$ to be $b_{k,n}(\mathbf{j})$ for some $n\geq j_k$. Then, $b_k$ is also a bijection with $b_k(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
+\begin{remark}\label{rem:inf_poset_bijection} Fix some $k\in\mathbb{N}$ and notice that if $\mathbf{j}\in\binom{[n]}{k}$ and $j_k\leq n-1$, then $b_{k,n}(\mathbf{j})=b_{k,n-1}(\mathbf{j})$, so for $n\geq n_0$, $b_{k,n}|_{\binom{[n_0]}{k}}=b_{k,n_0}$. This lets us define the map $b_k:\binom{\mathbb{N}}{k}\to\big\{\lambda\in P:|\lambda|\leq k\}$ on $\mathbf{j}$ to be $b_{k,n}(\mathbf{j})$ for some $n\geq j_k$. Then, $b_k$ is also a bijection with $b_k(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
 \end{remark}
 
 We can define the following partial order on the set of all partitions

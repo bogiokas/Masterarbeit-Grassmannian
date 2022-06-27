@@ -136,7 +136,7 @@ In this subsection, we assume that there exists some $w(\xi)$ satisfying the Sti
 \[\bar{a}_n=-a_n-\sum_{i=k}^{n-1}a_k\bar{a}_{n-k}\qedhere\]
 \end{proof}
 
-\begin{definition} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Then, we define the \emph{dual of the stiefel whitney classes of $\xi$} to be $\bar{w}(\xi):=(\bar{w}(\xi))^{-1}\in H^{\prod}(B;\mathbb{Z}_2)$.
+\begin{definition}\label{def:dual_sw} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Then, we define the \emph{dual of the stiefel whitney classes of $\xi$} to be $\bar{w}(\xi):=(\bar{w}(\xi))^{-1}\in H^{\prod}(B;\mathbb{Z}_2)$.
 \end{definition}
 
 \begin{proposition} Let $M$ be a smooth manifold embedded in $\mathbb{R}^d$, $\tau_M:TM\to M$ be its tangent bundle and $\nu_{M,d}:N_dM\to M$ its normal bundle. Then $\bar{w}(\tau_M)=w(\nu_{M,d})$
@@ -380,71 +380,65 @@ Next, we prove the uniqueness for every line bundle $\lambda:E\to B$. Since $B$ 
 And finally, we prove it for a general $k$-plane vector bundle $\xi:E\to B$. Since $B$ is paracompact, Proposition~\ref{prop:splitting_map} gives us a space $B'$ and a continuous map $f:B'\to B$ such that $f^*:H^*(B;\mathbb{Z}_2)\to H^*(B';\mathbb{Z}_2)$ is a monomorphism and $f^*\xi\cong\lambda_1\oplus\lambda_k$ for some line bundles $\lambda_1,\ldots,\lambda_k$. Then, (SW2) and (SW3) give us that $f^*w(\xi)=w(f^*\xi)=w(\lambda_1\oplus\cdots\oplus\lambda_k)=w(\lambda_1)\cdots w(\lambda_k)=w'(\lambda_1)\cdots w'(\lambda_k)=w'(\lambda_1\oplus\cdots\lambda_k)=w'(f^*\xi)=f^*w'(\xi)$. Since $f^*$ is a monomorphism, we get $w(\xi)=w'(\xi)$.
 \end{proof}
 
+%TODO: prove that Grassmannians are paracompact
 
-\section{Computation of the Cohomology}
-%* elementary schubert calculus?
+\section{Cohomology of the Grassmannian}
+We left the discussion about the Grassmannians at the end of Chapter~\ref{chap:grassmannians}, where we decomposed $\Gr{k}{n}$ into $\mathbb{n}{k}$ cells, each one indexed by some $\mathbf{j}\in\binom{[n]}{k}$ (see Theorem~\ref{thm:gr_is_cw}) and created a bijection between $\binom{[n]}{k}$ and the young diagrams with at most $k$ rows and at most $n-k$ columns (see Proposition~\ref{prop:poset_bijection}). Moreover, we proved that the inclusions of the Grassmannians into the infinite Grassmannian preserve the cell structure, so we decomposed $\Gr{k}$ into cells indexed by $\binom{\mathbb{N}}{k}$ (see Theorem~\ref{thm:gr_inf_cw}) and created a bijection between them and the young diagrams with at most $k$ rows (see Remark~\ref{rem:inf_poset_bijection}). In this section we will use this decomposition to compute the cohomology of $\Gr{k}$, without explicitly computing the boundaries of these cells. Instead we will employ a counting argument.
 
-
-\begin{definition} Let $k\in\mathbb{N}$. Define then the following graded commutative $\mathbb{Z}_2$-algebra:
-\[A_k=\mathbb{Z}_2[w_1,\ldots,w_k]\]
-with $\deg(w_i)=i$ for every $i\in[k]$.
-\end{definition}
-\begin{theorem} For any $k\in\mathbb{N}$, there exists a graded algebra isomorphism:
-\[\phi_k:A_k\to H^*(\Gr{k};\mathbb{Z}_2)\]
-with $\phi_k(w_i)=w_i(\gamma^k)$.
+\begin{theorem}\label{thm:cohomology_gr} For $k\in\mathbb{N}$, there exists a graded $\mathbb{Z}_2$-algebra isomorphism
+\[H^*(\Gr{k};\mathbb{Z}_2)\cong\mathbb{Z}_2[w_1,\ldots,w_2]\]
+where $\deg(w_i)=i$.
 \end{theorem}
-\begin{proof} TODO - Chapter 7 in \cite{char_class}.
-\end{proof}
-\begin{definition} Let $0<k<n$ be some natural numbers. Then, define the following graded commutative $\mathbb{Z}_2$-algebra:
-\[A_{k,n}=\sfrac{\mathbb{Z}_2[w_1,\ldots,w_k,\bar{w}_1,\ldots,\bar{w}_{n-k}]}{I_{k,n}}\]
-where $\deg(w_i)=i$ for every $i\in[k]$, $\deg(\bar{w}_j)=j$ for every $j\in[n-k]$ and
-\[I_{k,n}=\big((1+w_1+\cdots+w_k)(1+\bar{w}_1+\cdots+\bar{w}_{n-k})+1\big)\]
-\end{definition}
-\begin{proposition} We can also think of $A_{k,n}$ as:
-\[A_{k,n}=\sfrac{\mathbb{Z}_2[w_1,w_2,\ldots,w_k,\bar{w}_1,\bar{w}_2,\ldots]}{I_k+(\bar{w}_{n-k+1})+(\bar{w}_{n-k+2})+\cdots+(\bar{w}_{n})}\]
-where
-\[I_k=\big((1+w_1+w_2+\cdots+w_k)(1+\bar{w}_1+\bar{w}_2+\cdots)+1\]
-\end{proposition}
-\begin{proof} Notice that for fixed $k$, for any $j\in[n-k]$, the graded ideal $I_{k,n}$ gives:
-\[\bar{w}_j+\bar{w}_{j-1}w_1+\cdots+\bar{w}_{j-k}w_k=0\]
-i.e. if $k$ consecutive $\bar{w}_j$ are zero, then all $\bar{w}_j$ are zero from that point on.
-\end{proof}
-\begin{theorem} For any natural numbers $0<k<n$, there exists a graded algebra isomorphism:
-\[\phi_{k,n}:A_{k,n}\to H^*(\Gr{k}{n};\mathbb{Z}_2)\]
-with $\phi_{k,n}(w_i)=w_i(\gamma^k_n)$ and $\phi_{k,n}(\bar{w}_j)=w_j({\gamma^k_n}^{\perp})$.
-\end{theorem}
-\begin{proof}\begin{b_item}
-\item $\phi_{k,n}$ is well defined, since the Stiefel-Whitney classes satisfy $I_{k,n}$.
-\item $\phi_{k,n}$ is surjective. TODO Indeed, first of all for the Manifold $\Gr{k}{n}$, we have
-\[|C_i|=|H_i|=|C^i|=|H^i|\]
-for every $i\in[k(n-k)]$. Moreover, one can prove that the inclusion map
-\[i_{k,n}:\Gr{k}{n}\to\Gr{k}\] is a cell map, taking a shubert cell to one with the same symbol. This makes the induced map on the cohomologies surjective:
-\[i^*_{k,n}:H^*(\Gr{k})\to H^*(\Gr{k}{n})\] This inclusion map induces a bundle map $\gamma^k_n\to\gamma^k$ and because of naturality of the SW classes, we get $i^*(w_i)=w_i$, which means that $i^*_{k,n}$ factors through $\phi_{k,n}$.
-\item $\phi_{k,n}$ is injective. For this, it suffices to show that
-\[\dim_{\mathbb{Z}_2}(A_{k,n}^i)=\dim_{\mathbb{Z}_2}(H^i(\Gr{k}{n}))\] for every $i\geq0$, which will be proven in the next lemma.
-\end{b_item}
-\end{proof}
-\begin{lemma} The Hilbert series of the graded algebras $A_{k,n}$ and $H^*(\Gr{k}{n})$ are equal.
+\begin{lemma} For $k\in\mathbb{N}$, the function $\phi^k:\mathbb{Z}_2[w_1,\ldots,w_k]\to\Gr{k}$ with $\phi^k(w_i)=w_i(\gamma^k)$ is a $\mathbb{Z}_2$-algebra monomorphismm that preserves the degree.
 \end{lemma}
-\begin{proof} Let
-\begin{align*}
-p_{k,n}^i:=&\dim_{\mathbb{Z}_2}(H^i(\Gr{k}{n}))=|C_i|\\
-=&\#\{\text{Young tableau of at most }k\text{ rows and at most }n-k\text{ columns.}\}
-\end{align*}
-Which makes its Hilbert series:
-\[P_{k,n}(t):=\sum_{i\geq0}p_{k,n}^it^i=\binom{n}{k}_t\]
-as proven in the Lemma \ref{lem:hilbert_series_of_young}. On the other hand, let
-\[H_{k,n}(t)=\sum_{i\geq0}\dim_{\mathbb{Z}_2}(A_{k,n}^i)t^i\]
-It suffices to prove that $H_{k,n}(t)$ satisfies the same recursive conditions as $P_{k,n}(t)$. First of all, we easily get $H_{1,n}(t)=P_{1,n}(t)$ and then, using the additivity of the following SES:
+\begin{proof} First, notice that since $\mathbb{Z}_2[w_1,\ldots,w_k]$ is a free $\mathbb{Z}_2$-algebra, $\phi^k$ is a well defined algebra homomorphism and since $\deg\phi^k(w_i)=\deg(w_i(\gamma^k))=i$, $\phi^k$ also preserves the degree.
+
+Let $p=p(w_1,\ldots,w_k)\in\mathbb{Z}_2[w_1,\ldots,w_k]$ be a polynomial such that $\phi^k(p)=0$. This means that there is a relation $p(w_1(\gamma^k),\ldots,w_k(\gamma^k))=0$ in $H^*(\Gr{k};\mathbb{Z}_2)$. In order to prove that no non-trivial such relation exists, we will define another $k$-plane vector bundle $\xi:E(\xi)\to B$, write it as a pullback of $\gamma^k$ and prove that $w_i(\xi)$ cannot satisfy any non-trivial relations.
+
+Define the $k$-plane vector bundle $\xi=(\gamma^1)^k:E(\gamma^1)^k\to(\mathbb{R}P^{\infty})^k$. Then, due to Proposition~\ref{prop:product_bundle_to_whitney_sum} $\xi\cong(\pi_1^*\gamma^1)\oplus\cdots\oplus(\pi_k^*\gamma^1)$,  where $\pi_i:(\mathbb{R}P^{\infty})^k\to\mathbb{R}P^{\infty}$ is the usual projection on the $i$-th coordinate, for every $i\in[k]$. Using K\"unneth's formula, we get the $\mathbb{Z}_2$-algebra isomorphism $H^*((\mathbb{R}P^{\infty})^k;\mathbb{Z}_2)\cong\mathbb{Z}_2[a_1,\ldots,a_k]$, where $a_i=\pi_i^*z$ for $z\in H^1(\mathbb{R}P^{\infty};\mathbb{Z}_2)$ the generator of the cohomology, as defined in Theorem~\ref{thm:projective_spaces_cohomology}. Moreover, since $w(\gamma^1)=1+z$, we can explicity compute the total Stiefel-Whitney class of $\xi$. $w(\xi)=w(\pi_1^*(\gamma^1)\oplus\cdots\oplus\pi_k^*(\gamma^1))=w(\pi_k^*(\gamma^1))\cdots w(\pi_k^*(\gamma^1))=\pi_1^*(w(\gamma^1))\cdots\pi_k^*(w(\gamma^1))=\pi_1^*(1+z)\cdots\pi_k^*(1+z)=(1+a_1)\cdots(1+a_k)$.
+
+Since $(\mathbb{R}^{\infty})^k$ is paracompact, because of Theorem~\ref{thm:universal}, there exists a map $u_{\xi}:(\mathbb{R}^{\infty})^k\to\Gr{k}$ such that $\xi\cong u_{\xi}^*\gamma^k$ and thus $u_{\xi}^*w_i(\gamma^k)=w_i(u_{\xi}^*\gamma^k)=w_i(\xi)=\sum_{1\leq j_1<\cdots<j_k\leq k}a_{j_1}\cdots a_{j_k}$, which is the $i$-th elementary symmetric function of $a_i,\ldots,a_k$ and let us denote it with $s_i$. It is well known fact in algebra that $s_1,\ldots,s_k$ are algebraicly independent over $\mathbb{Z}_2$. For a thorough discussion on the topic of symmetric functions, see for example Section 6 of Chapter 4 in \cite{lang} or Chapter 7 in \cite{stanley2}.
+
+So, for the polynomial $p$ we chose at the start of the proof, we have $0=u_{\xi}^*p(w_1(\gamma^k),\ldots,w_k(\gamma^k))=p(u^*_{\xi}w_1(\gamma^k),\ldots,u^*_{\xi}w_k(\gamma^k))=p(s_1,\ldots,s_k)$ which means that $p=0$, since $s_1,\ldots,s_k$ are algebraicly independent, i.e. $\phi^k$ is a monomorphism.
+\end{proof}
+\begin{proof}[Proof of Theorem~\ref{thm:cohomology_gr}] Due to the previous lemma, there exists a $\mathbb{Z}_2$-algebra homomorphism $\phi^k:\mathbb{Z}_2[w_1,\ldots,w_k]\to H^*(\Gr{k};\mathbb{Z}_2)$ that preserves the degree and is injective. So, it suffices to prove that $\dim_{\mathbb{Z}_2}\mathbb{Z}_2[a_1,\ldots,a_k]^n\geq\dim_{\mathbb{Z}_2}H^n(\Gr{k};\mathbb{Z}_2)$ for every $n\in\mathbb{N}_0$.
+
+For any fixed flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^{\infty}$, let $C_n$ be the $\mathbb{Z}_2$-free group of all $n$-cells of $\Gr{k}$, for the cell decomposition we defined in \ref{thm:gr_is_cw} and \ref{thm:gr_inf_cw}. Then, $\dim_{\mathbb{Z}_2}C_n=|\{\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet}):\forall\mathbf{j}\in\binom{\mathbb{N}}{k}\text{ such that }\mathrm{d}(\mathbf{j})=n\}|=|\{\lambda\in P:|\lambda|\leq k,\lambda\vdash n\}|$, as proved in Remark~\ref{rem:inf_poset_bijection}. So, if we define $C^n$ to be the $\mathbb{Z}_2$-group of the dual cells, we get $\dim_{\mathbb{Z}_2}H^n(\Gr{k};\mathbb{Z}_2)\leq\dim_{\mathbb{Z}_2}C^n=\dim_{\mathbb{Z}_2}C_n$. Thus, it suffices to prove that $\dim_{\mathbb{Z}_2}\mathbb{Z}_2[a_1,\ldots,a_k]^n=|\{\lambda\in P:|\lambda|\leq k,\lambda\vdash n\}|$
+
+Notice that $\mathbb{Z}_2[a_1,\ldots,a_k]^n=\mathbb{Z}_2\left<\{w_1^{r_1}w_2^{r_2}\cdots w_k^{r_k}:r_1+2r_2+\cdots+kr_k=n\}\right>$ and define a function $b:\{(r_1,\ldots,r_k)\in\mathbb{N}^k:r_1+2r_2+\cdots+kr_k=n\}\to\{\lambda\in P:|\lambda|\leq k,\lambda\vdash n\}$ with $b(r_1,\ldots,r_k)=(r_k+r_{k-1}+\cdots+r_1,r_{k-1}+r_{k-2}+\cdots+r_1,\ldots,r_2+r_1,r_1)$. Then, it is clear that $b$ is well defined and that its inverse is given by $b^{-1}(\lambda_1,\ldots,\lambda_k)=(\lambda_k,\lambda_{k-1}-\lambda_k,\ldots,\lambda_2-\lambda_3,\lambda_1-\lambda_2)$, so $b$ is a bijection.
+\end{proof}
+\begin{remark}\label{rem:epimorphism} In particular, this proves that $\dim_{\mathbb{Z}_2}C_i=\dim_{\mathbb{Z}_2}H^i(\Gr{k};\mathbb{Z}_2)$, i.e. the dual of each cell is a $\mathbb{Z}_2$-cocycle that is not a $\mathbb{Z}_2$-coboundary and thus each cell $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ represents a class in cohomology, say $x_{\mathbb{j}}$ and since $\iota_{k,n}$ preserves the cell decomposition, $\iota_{k,n}^*x_{\mathbf{j}}=x_{\mathbf{j}}$ for every $\mathbf{j}\in\binom{[n]}{k}$.
+\end{remark}
+The next Theorem is due to A. Borel and was first proven in \cite{borel}. The approach employed here is novice, as far as the writer knows.
+\begin{theorem}\label{thm:cohomology_finite_gr} For $k,n\in\mathbb{N}$ such that $k<n$, there exists a graded $\mathbb{Z}_2$-algebra isomorphism
+\[H^*(\Gr{k};\mathbb{Z}_2)\cong\mathbb{Z}_2[w_1,\ldots,w_2]/I_{k,n}\]
+where $\deg(w_i)=i$, $I_{k,n}=(\bar{w}_{n-k+1},\bar{w}_{n-k+2},\ldots,\bar{w}_n)$ and $(1,\bar{w}_1,\bar{w}_2,\ldots)\in H^{\prod}(\Gr{k};\mathbb{Z}_2)$ is defined to be the multiplicative inverse of $1+w_1+\cdots+w_k$.
+\end{theorem}
+
+\begin{lemma} For $k\in\mathbb{N}$, the function $\phi_n^k:\mathbb{Z}_2[w_1,\ldots,w_k]/I_{k,n}\to\Gr{k}{n}$ with $\phi_n^k(w_i)=w_i(\gamma^k)$ is a $\mathbb{Z}_2$-algebra epimorphism that preserves the degree.
+\end{lemma}
+\begin{proof} First, we show that $\phi_n^k$ is well defined. Since $\Gr{k}{n}$ is paracompact and $\gamma_n^k\leq\varepsilon_{\Gr{k}{n}}^n$, there exists some $(n-k)$-plane vector bundle $(\gamma^k)^{\perp}$ such that $\gamma^k\oplus(\gamma^k)^{\perp}=\varepsilon_{\Gr{k}{n}}^n$, as was proved in Proposition~\ref{prop:vb_decomposition}. Thus, $w(\gamma_n^k)w((\gamma_n^k)^{\perp})=1$, i.e. $\bar{w}_i(\gamma_n^k)=w_i((\gamma_n^k)^{\perp})$ for every $i\in\mathbb{N}$, where $\bar{w}_i(\gamma_n^k)$ is the dual $i$-th Stiefel Whitney class, as defined in \ref{def:dual_sw}. This means that $\bar{w}_i(\gamma_n^k)=0$ for every $i\geq n-k+1$. Moreover, notice that $\phi_n^k(\bar{w})=\bar{w}(\gamma_n^k)$, since $\phi_n^k$ preserves multiplication. So, for every generator of the ideal, we have $\phi_n^k(\bar{w}_{i})=\bar{w}(\gamma_n^k)=0$, i.e. $\phi_n^k$ is well defined.
+
+Notice that since $\iota_{k,n}^*\gamma^k=\gamma_n^k$, the following diagram commutes.
 \begin{center}
 \begin{tikzcd}
-0\ar[r]& A_{k,n-1}^{[-k]}\ar[r,"\cdot w_k", "f"']&A_{k,n}\ar[r,"w_k\mapsto0","g"']&A_{k-1,n-1}\ar[r]&0
+\mathbb{Z}_2[w_1,w_2,\ldots,w_k]\ar[r,"\phi^k","\cong"']\ar[d,two heads]&H^*(\Gr{k};\mathbb{Z}_2)\ar[d,"\iota_{k,n}^*"]\\
+\mathbb{Z}_2[w_1,w_2,\ldots,w_k]/I_{k,n}\ar[r,"\phi_n^k"]&H^*(\Gr{k}{n};\mathbb{Z}_2)
 \end{tikzcd}
 \end{center}
-we get:
-\[H_{k,n}(t)=t^kH_{k,n-1}(t)+H_{k-1,n-1}(t)\]
-which is the same recursion that defines $P_{k,n}(t)$. The fact that this is indeed a SES is proven in the following lemma:
+which proves that $\phi_n^k$ is an epimorphism, since $\iota^*$ is an epimorphism, as proved in Remark~\ref{rem:epimorphism}.
 \end{proof}
+\begin{proof}[Proof of Theorem~\ref{thm:cohomology_finite_gr}] For this proof we will denote the $\mathbb{Z}_2$-algebra $\mathbb{Z}_2[w_1,\ldots,w_k]/I_{k,n}$ by $A_{k,n}$.
+
+Due to the previous lemma, there exists a $\mathbb{Z}_2$-algebra homomorphism $\phi_n^k:A_{k,n}\to H^*(\Gr{k}{k};\mathbb{Z}_2)$ that preserves the degree and is surjective. So, it suffices to prove that $\dim_{\mathbb{Z}_2}A_{k,n}^i\leq\dim_{\mathbb{Z}_2}H^i(\Gr{k}{n};\mathbb{Z}_2)$ for every $i\in\mathbb{N}_0$.
+
+For any fixed flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^{\infty}$, let $C_i$ be the $\mathbb{Z}_2$-free group of all $i$-cells of $\Gr{k}{n}$, for the cell decomposition we defined in \ref{thm:gr_is_cw}. Then, due to Remark~\ref{rem:epimorphism},  $\dim_{\mathbb{Z}_2}H^i(\Gr{k}{n};\mathbb{Z}_2)=\dim_{\mathbb{Z}_2}C_i=|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$, as proved in Proposition~\ref{prop:poset_bijection}. Thus, it suffices to prove that $\dim_{\mathbb{Z}_2}A_{k,n}^i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$.
+
+We prove this, by showing that the Hilbert series $H_{k,n}(t):=\sum_{i\geq0}\dim_{\mathbb{Z}_2}A_{k,n}^it^i$ of the algebra $A_{k,n}$ is the same as the generating function $P_{k,n}(t)$ of the sequence $p_i$, where $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$. In Computation~\ref{com:gen_function} we prove that $P_{k,n}(t)=\binom{n}{k}_t$, which satisfies the recursive relation $P_{k,n}(t)=t^kH_{k,n-1}(t)+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$, as proven in Proposition~\ref{prop:recursive_relation}. Notice that it suffices to show that $H_{1,n}(t)=\binom{n}{1}_t$, $H_{n-1,n}(t)=\binom{n}{n-1}_t$ and $H_{k,n}(t)=t^kH_{k,n-1}+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$.
+\end{proof}
+
+%------------------------
+
 \begin{lemma} The following is a SES of graded commutative $\mathbb{Z}_2$-algebras:
 \begin{center}
 \begin{tikzcd}
@@ -478,3 +472,7 @@ where:
 and:
 \[[x]_t!=[x]_t\cdot[x-1]_t\cdots[1]_t\]
 \end{definition}
+
+
+
+%* elementary schubert calculus?
