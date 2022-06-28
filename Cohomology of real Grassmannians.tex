@@ -273,14 +273,33 @@ with coefficients from $\mathbb{Z}_2$}
 \renewcommand{\maketitle}{%
 	\begin{titlepage}
 	\newgeometry{left=0cm, right=0cm, top=0cm, bottom=0cm}
-	\vspace*{0.3\textheight}
+	\vspace*{0.1\textheight}
 	\begin{center}
 	\rule{400pt}{.5mm}\\
 	\vspace{10pt}
 	\LARGE\mytitle\\
 	\rule{400pt}{.5mm}\\
+	\ \\
+	Dimitrios Bogiokas\\
+	\ \\
+	\ \\
+	Erstgutachter:\\
+	Zweitgutachter:\\
+	\ \\
+	\ \\
+	\ \\
+	\ \\
+	\ \\
+	\ \\
+	\large{Freie Universit\"{a}t Berlin\\
+	Fachbereich Mathematik und Informatik\\
+	Institut f\"{u}r Mathematik\\
+	Arminalle 3, 14195, Berlin, Germany}
 	\end{center}
-	\end{titlepage}
+\begin{center}
+	\includegraphics[width=20mm, scale=0.5]{chapters/Fub_siegel.png} %be sure that alma.png is in the cover folder
+\end{center}
+\end{titlepage}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%  BEGIN DOCUMENT  %%%%%%%%%%%%%%%%%%%%%%%%
@@ -292,11 +311,20 @@ with coefficients from $\mathbb{Z}_2$}
 	\newpage
 	\thispagestyle{empty}
 %everything that goes in the beginning
+\pagenumbering{gobble}
+\chapter*{Eidesstattliche Erkl\"{a}rung}
+Hiermit erkl\"{a}re ich, die vorliegende Arbeit selbst\"{a}ndig und nur unter Benutzung der angegebenen Hilfsmittel angefertigt zu haben.
+Die Arbeit hat in gleicher oder \"{a}nlicher Form noch keiner Pr\"{u}fungsbeh\"{o}rde vorgelegen und ist noch nicht ver\"{o}ffentlicht.
+
+Berlin, den 28. Juni 2022.
+\chapter*{Abstract}
+\chapter*{Zusammenfassung}
 \frontmatter
 	\pagenumbering{roman}
 	%\\\vspace{100pt}\include{intro}
 	\tableofcontents
 %main document
+	\pagenumbering{gobble}
 \mainmatter
 	\include{chapters/intro}
 	\include{chapters/grassmannian}
