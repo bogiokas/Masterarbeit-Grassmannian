@@ -56,7 +56,7 @@ Now we can already give the trivial example for both vector and fiber bundles.
 \begin{definition}\label{def:trivial_fb} Let $F,B$ be two topological spaces and $p:E(p)\to B$ a fiber bundle, then $p$ is a \emph{trivial fiber bundle over $B$ with fiber $F$}, if $p\cong\varepsilon_B^F$, where $\varepsilon_B^F:B\times F\to B$ with $\varepsilon_B^F(x,a)=x$.
 \end{definition}
 
-At this point we will prove a very useful proposition that is true for the vector bundles but not for the fiber bundles in general. This proposition lets us construct vector bundle isomorphisms locally, if we already have a bundle map. The reason that this proof does not work for general fiber bundles is that it boils down to inverting automorphisms of the fiber continuously. Since the group of automorphisms of a real vector space, is $GL(n)$, i.e. a topological group, continuously inverting is successful. For an example of a space $F$, whose group of automorphisms can be topologised, but the inverse map is not continuous refer to \cite{counterexample}. From this, one can build a trivial fiber bundle and a continuous bijection to itself that is a counterexample for the next proposition.
+At this point we prove a very useful proposition that is true for the vector bundles but not for the fiber bundles in general. This proposition lets us construct vector bundle isomorphisms locally, if we already have a bundle map. The reason that this proof does not work for general fiber bundles is that it boils down to inverting automorphisms of the fiber continuously. Since the group of automorphisms of a real vector space, is $GL(n)$, i.e. a topological group, continuously inverting is successful. For an example of a space $F$, whose group of automorphisms can be topologised, but the inverse map is not continuous refer to \cite{counterexample}. From this, one can build a trivial fiber bundle and a continuous bijection to itself that is a counterexample for the next proposition.
 \begin{proposition}\label{prop:local_to_global_iso_vector} Let $\xi_1:E_1\to B$ and $\xi_2:E_2\to B$ be two $n$-plane vector bundles. Moreover, let $\phi:E_1\to E_2$ be a vector bundle map such that its restriction $\phi_x:\xi_1^{-1}(x)\to\xi_2^{-1}(x)$ with $\phi_x(v)=\phi(v)$ is a vector space isomorphism for every $x\in B$. Then $\phi$ is also a homeomorphism and thus a vector bundle isomorphism.
 \end{proposition}
 \begin{proof} First of all, it is easy to see that $\phi$ is a bijection.
@@ -117,8 +117,8 @@ Clearly, an $n$-plane vector bundle cannot have more than $n$ nowhere dependent 
 
 \begin{examples}\label{ex:vector_bundles}
 \begin{i_enum}
-\item Let $M$ be a smooth $n$-manifold then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the set of equivalence classes
-$T_xM:=\faktor{\left\{\gamma:\mathbb{R}\to M\ |\ \gamma(0)=x\text{ and }\phi\circ\gamma\text{ smooth}\right\}}{\sim}$,
+\item Let $M$ be a smooth $n$-manifold. Then its \emph{tangent bundle} $\tau_M:TM\to M$ is the $n$-plane bundle constructed as follows: Let $(U_{\alpha})_{\alpha\in I}$ be an open cover of $M$ and $\mathcal{A}=\big\{(U_{\alpha},\phi_{\alpha}:U_{\alpha}\to\mathbb{R}^n)_{\alpha\in I}\big\}$ be a smooth atlas of $M$. Fix any point $x\in M$ and some $(U,\phi)\in\mathcal{A}$ such that $x\in U$. Then define the tangent space at $x$ to be the set of all possible \emph{tangent vectors} at $x$ inside $M$, i.e. the set of equivalence classes
+$T_xM:=\left\{\gamma:\mathbb{R}\to M\ |\ \gamma(0)=x\text{ and }\phi\circ\gamma\text{ smooth}\right\}/\sim$,
 where $\gamma_1\sim\gamma_2$ if and only if $(\phi\circ\gamma_1)'(0)=(\phi\circ\gamma_2)'(0)$. This set can be given an $\mathbb{R}$-vector space structure as,
 $\lambda_1\cdot[\gamma_1]+\lambda_2\cdot[\gamma_2]:=\left[\phi^{-1}\circ\big(\lambda_1(\phi\circ\gamma_1)+\lambda_2(\phi\circ\gamma_2)\big)\right]$.
 
@@ -135,7 +135,7 @@ This induces a topology on $\pi_1^{-1}(U)$ and since the transition maps are ope
 \item Let $M$ be a smooth $n$-manifold embedded in $\mathbb{R}^d$. Then its \emph{normal bundle} $\nu_{M,d}:N_dM\to M$ is the $d-n$-plane bundle \emph{orthogonal} to $\tau_M$, i.e.
 \[N_dM:=\big\{(x,v)\in M\times\mathbb{R}^d:x\in M\text{ and }\forall[\gamma]\in T_xM\ v\perp\gamma'(0)\in\mathbb{R}^d\big\}\]
 and it is easy to see how the fibers are vector spaces and how the total space is topologised. The vector bundle $\nu_{M,d}$ is again the projection on the first coordinate, but notice that this vector bundle depends on the ambient space the $M$ lives in, while the tangent bundle defined above is an intrinsic construction, i.e. independent of any embedding.
-\item\label{ex:tautological_line_bundle} There exists a natural $1$-plane bundle (also: \emph{line bundle}) over each $n$ dimensional real projective space: the \emph{tautological} line bundle
+\item\label{ex:tautological_line_bundle} There exists a natural $1$-plane bundle (also \emph{line bundle}) over each $n$ dimensional real projective space, the \emph{tautological} line bundle
 \begin{center}
 \begin{tikzcd}
 \gamma_n^1:\big\{(l,v)\in\mathbb{R}P^n\times\mathbb{R}^{n+1}:v\in l\big\}\ar[r]&\mathbb{R}P^n\\[-1.5em]
@@ -143,7 +143,7 @@ and it is easy to see how the fibers are vector spaces and how the total space i
 \end{tikzcd}
 \end{center}
 The total space of this bundle is topologised as a subspace of $\mathbb{R}P^n\times\mathbb{R}^{n+1}$, where the $n$-dimensional projective space is defined to be the set of all lines through the origin in $\mathbb{R}^{n+1}$, topologized as the quotient
-$\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong\faktor{S^n}{x\sim-x}$.
+$\mathbb{R}P^n=\{l\subseteq\mathbb{R}^{n+1}:l\text{ vector space with }\dim l=1\}\cong S^n/x\sim-x$.
 
 We need to show that the total space is locally homeomorphic to a trivial bundle with the homeomorphism being linear isomorphism on each fiber. We use the standard open cover of $\mathbb{R}P^n$ which makes it a manifold, the one also used in Lemma~\ref{prop:gr_manifold}: Let $l\in\mathbb{R}P^n$ and define $U:=\{l'\in\mathbb{R}P:l'\cap l^{\perp}=\{0\}\}$. Fix also some $v\in l\setminus\{0\}$. Then, define $f_U:(\gamma_n^1)^{-1}(U)\to\mathbb{R}P^n\times\mathbb{R}$ as
 $f_U(l',v')=(l',v'^tv)$.
@@ -214,7 +214,7 @@ Notice that $p|A$ has fiber $F$, which means that we restricted $B$ but not $F$.
 \begin{definition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles with fibers $F_1$ and $F_2$ respectively. Then, the \emph{product fiber bundle of $p_1$ and $p_2$} is the usual product map $p_1\times p_2:E_1\times E_2\to B_1\times B_2$.
 \end{definition}
 
-\begin{proposition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles both with fiber $F$ and $F$ respectively. Then $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$ is a fiber bundle with fiber $F$.
+\begin{proposition} Let $p_1:E_1\to B_1$ and $p_2:E_2\to B_2$ be two fiber bundles both with fiber $F$. Then $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$ is a fiber bundle with fiber $F$.
 \end{proposition}
 \begin{proof} We have to show that $p_1\amalg p_2:E_1\amalg E_2\to B_1\amalg B_2$ is locally trivial. Let $x\in B_1\amalg B_2$. Then $x\in B_i$ for some $i\in\{1,2\}$ and there exists some open $U\subseteq B_i$ containing $x$ and a homeomorphism $f_U:p_i^{-1}(U)\to U\times F$. Notice that $(p_1\amalg p_2)^{-1}(U)=p_i^{-1}(U)$, so $f_U$ itself is a local homeomorphism for $p_1\amalg p_2$.
 \end{proof}
@@ -272,22 +272,22 @@ Clearly, this homeomorphism is a bundle map and a linear isomorphism over each f
 \begin{definition}\label{def:wh_sum_map} Let $\xi_1,\xi_2,\eta_1,\eta_2$ be vector bundles over $B$ and $\phi_1:E(\xi_1)\to E(\eta_1)$, $\phi_2:E(\xi_2)\to E(\eta_2)$ vector bundle maps. Then the \emph{whitney sum of $\phi_1,\phi_2$} is $\phi_1\oplus\phi_2:E(\xi_1\oplus\xi_2)\to E(\eta_1\oplus\eta_2)$, where $\phi_1\oplus\phi_2(v_1,v_2)=(\phi_1(v_1),\phi_2(v_2))$.
 \end{definition}
 
-\begin{definition} Let $\eta:E(\eta)\to B$ be an $n$-plane vector bundle, $\xi:E(\xi)\to B$ a $k$-plane vector bundle and $\theta:E(\theta)\to B$ an $m$-plane vector bundle, where $E(\xi)\subseteq E(\eta)$. Then $\theta$ is the \emph{quotient vector bundle of $\eta$ and $\xi$} and we write $\theta=\sfrac{\eta}{\xi}$, if $\theta^{-1}(x)=\sfrac{\eta^{-1}(x)}{\xi^{-1}(x)}$ as vector spaces, for every $x\in B$. Notice that in this case $n-k=m$.
+\begin{definition} Let $\eta:E(\eta)\to B$ be an $n$-plane vector bundle, $\xi:E(\xi)\to B$ a $k$-plane vector bundle and $\theta:E(\theta)\to B$ an $m$-plane vector bundle, where $E(\xi)\subseteq E(\eta)$. Then $\theta$ is the \emph{quotient vector bundle of $\eta$ and $\xi$} and we write $\theta=\eta/\xi$, if $\theta^{-1}(x)=\eta^{-1}(x)/\xi^{-1}(x)$ as vector spaces, for every $x\in B$. Notice that in this case $n-k=m$.
 \end{definition}
 Next we examine how to explicitly define the quotient bundles given a bundle and a subbundle.
-\begin{proposition}\label{prop:quotient_bundle} Let $\eta:E(\eta)\to B$ be an $n$-plane vector bundle and $\xi:E(\xi)\to B$ a $k$-plane vector subbundle, i.e. $\xi\leq\eta$. Moreover, let $\zeta:\sfrac{E(\eta)}{\sim}\to B$, where $v_1\sim v_2$ if and only if $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v))$ be the vector bundle with $\zeta([v])=\xi(v)$. Then, $\sfrac{\eta}{\xi}\cong\zeta$.
+\begin{proposition}\label{prop:quotient_bundle} Let $\eta:E(\eta)\to B$ be an $n$-plane vector bundle and $\xi:E(\xi)\to B$ a $k$-plane vector subbundle, i.e. $\xi\leq\eta$. Moreover, let $\zeta:E(\eta)/\sim\to B$, where $v_1\sim v_2$ if and only if $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v))$ be the vector bundle with $\zeta([v])=\xi(v)$. Then, $\eta/\xi\cong\zeta$.
 \end{proposition}
 \begin{proof} First of all notice that $\zeta$ is well defined, since $\xi(v)$ is the same for every choice of class representative $v$. Next, define the following map:
 \begin{center}
 \begin{tikzcd}
-\sfrac{E(\eta)}{\sim}\ar[r,"\phi"]&E(\sfrac{\eta}{\xi})\\[-1.5em]
+ E(\eta)/\sim\ar[r,"\phi"]&E(\eta/\xi)\\[-1.5em]
 [v]\ar[r,mapsto]&v+\xi^{-1}(\eta(v))
 \end{tikzcd}
 \end{center}
-Notice that this is well defined, by the definition of the equivalence relation. Moreover it is easy to see that it is a bundle map and also linear over each fiber. Next, we prove that it is in fact a vector isomorphism over each fiber. To do this, we define for every $x\in B$ a continuous map $\psi_x:(\sfrac{\eta}{\xi})^{-1}(x)\to\zeta^{-1}(x)$ and prove that it is the inverse of $\phi_x$. Let $v+\xi^{-1}(x)\in\sfrac{\eta^{-1}(x)}{\xi^{-1}(x)}$, then we define $\psi_x(v+\xi^{-1}(x))=[v]$. This is again well defined and is easy to see that it is the desired inverse. Using remark~\ref{rem:subcover} we get that $\phi$ is a vector bundle isomorphism.
+Notice that this is well defined, by the definition of the equivalence relation. Moreover it is easy to see that it is a bundle map and also linear over each fiber. Next, we prove that it is in fact a vector isomorphism over each fiber. To do this, we define for every $x\in B$ a continuous map $\psi_x:(\eta/\xi)^{-1}(x)\to\zeta^{-1}(x)$ and prove that it is the inverse of $\phi_x$. Let $v+\xi^{-1}(x)\in \eta^{-1}(x)/\xi^{-1}(x)$, then we define $\psi_x(v+\xi^{-1}(x))=[v]$. This is again well defined and is easy to see that it is the desired inverse. Using remark~\ref{rem:subcover} we get that $\phi$ is a vector bundle isomorphism.
 \end{proof}
 
-At this point it is natural to wonder if given two bundles $\xi\leq\eta$ it is always possible to decompose $\eta$ in the whitney sum of $\xi$ and $\sfrac{\eta}{\xi}$. Trying to build a vector bundle isomorphism from $\xi\sfrac{\eta}{\xi}$ to $\eta$, we see however that we need to be able to choose an inner product on each fiber that changes continuously. So the next question arises naturally:
+At this point it is natural to wonder if given two bundles $\xi\leq\eta$ it is always possible to decompose $\eta$ in the whitney sum of $\xi$ and $\eta/\xi$. Trying to build a vector bundle isomorphism from $\xi(\eta/\xi)$ to $\eta$, we see however that we need to be able to choose an inner product on each fiber that changes continuously. So the next question arises naturally:
 
 \section{Do we always have a dot product?}
 \begin{definition} Let $V$ be an $\mathbb{R}$ vector space. Then $V$ is an \emph{Euclidean vector space}, if there exists a symmetric, bilinear function $\beta:V\times V\to\mathbb{R}$ such that $\beta(v,v)\geq0$ and $\beta(v,v)=0$ only if $v=0$. In this case $\beta$ is called \emph{inner product} and $\beta(u,v)$ denoted by $u\cdot v$.
@@ -336,13 +336,13 @@ Define $D:U\to\mathbb{R}$ to be $D(x):=\det\big(v_1(x),\ldots,v_k(x),v_{k+1},\ld
 %TODO
 \end{proof}
 
-\begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\xi^{\perp_{\eta}}\cong\sfrac{\eta}{\xi}$.
+\begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\xi^{\perp_{\eta}}\cong \eta/\xi$.
 \end{lemma}
-\begin{proof} Using Proposition~\ref{prop:quotient_bundle}, we write $E(\sfrac{\eta}{\xi})=\sfrac{E(\eta)}{\sim}$ for $v_1\sim v_2$ if and only if $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v_1))$. Moreover, we also write $\sfrac{eta}{\xi}([v])=\eta(v)$. Let us then define the following map:
+\begin{proof} Using Proposition~\ref{prop:quotient_bundle}, we write $E(\eta/\xi)=E(\eta)/\sim$ for $v_1\sim v_2$ if and only if $\eta(v_1)=\eta(v_2)$ and $v_1-v_2\in\xi^{-1}(\eta(v_1))$. Moreover, we also write $\eta/\xi([v])=\eta(v)$ and define the map
 \begin{center}
 \begin{tikzcd}
-E(\xi^{\perp_{\eta}})\ar[r,"\phi"]&\faktor{E}{\sim}\\[-1.5em]
-v\ar[r,mapsto]&\left[v\right]
+E(\xi^{\perp_{\eta}})\ar[r,"\phi"]&E/\sim\\[-1.5em]
+v\ar[r,mapsto]&\left[v\right].
 \end{tikzcd}
 \end{center}
 This is a bundle map, linear on each fiber. In order to prove that this is in fact a linear isomorphism fiberwise, notice that $\phi_x(v)=0$ means that $v\in\xi^{-1}(x)$, but since $v\in E(\xi^{\perp_{\eta}})$, we also have that $v\cdot u=0$ for every $u\in\xi^{-1}(x)$. Thus, $u=0$. Hence, $\ker\phi_x=\{0\}$ and since $\dim_{\mathbb{R}}(\xi^{\perp_{\eta}})^{-1}(x)=\dim_{\mathbb{R}}(\sfrac{\eta}{\xi})^{-1}(x)=n-k$, $\phi_x$ is a linear isomorphism. Due to Proposition~\ref{prop:local_to_global_iso_vector} $\phi$ is a vector bundle isomorphism.
@@ -351,16 +351,16 @@ This is a bundle map, linear on each fiber. In order to prove that this is in fa
 This lets us decompose some euclidean vector bundle to a whitney sum, provided we find some vector subbundle of it:
 \begin{proposition}\label{prop:vb_decomposition} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\eta\cong\xi\oplus\xi^{\perp_{\eta}}$.
 \end{proposition}
-\begin{proof} Let us define the following map:
+\begin{proof} Let us define the map
 \begin{center}
 \begin{tikzcd}
 E(\xi\oplus\xi^{\perp_{\eta}})\ar[r,"\phi"]&E(\eta)\\[-1.5em]
-(v_1,v_2)\ar[r,mapsto]&v_1+v_2
+(v_1,v_2)\ar[r,mapsto]&v_1+v_2.
 \end{tikzcd}
 \end{center}
 It is easy to see that this is a bundle map which is also a linear isomorphism on each fiber. Thus, due to Proposition~\ref{prop:local_to_global_iso_vector}, $\phi$ is a vector bundle isomorphism.
 \end{proof}
-\begin{remark}\label{rem:vb_decomposition} For every euclidean vector bundle $\eta$ and for any $\xi\leq\eta$ we have the following decomposition $\eta\cong\xi\oplus\sfrac{\eta}{\xi}$.
+\begin{remark}\label{rem:vb_decomposition} For every euclidean vector bundle $\eta$ and for any $\xi\leq\eta$ we have the following decomposition $\eta\cong\xi\oplus\eta/\xi$.
 \end{remark}
 
 At this point the question about decomposing a vector bundle is positively answered, provided that the vector bundle in question is a euclidean vector bundle. A very natural question now is how restrictive the notion of a euclidean vector is. As it is shown at the end of the next section, a vector bundle admits a euclidean vector bundle structure at least when the base space is paracompact.
@@ -414,7 +414,7 @@ Define now $a=\min_{j\in[k]}\left\{\big\|(\pi_2\circ f_{V_{i_j}})(v)\big\|\right
 \begin{lemma}\label{lem:paracompact_countable_cover} Let $B$ be a paracompact space and $\xi:E(\xi)\to B$ any vector bundle. Then, there exists some locally finite countable open cover $\{U_k\}_{k\in\mathbb{N}}$ of $B$ such that $\xi|U_k$ is a trivial vector bundle for every $k\in\mathbb{N}$.
 \end{lemma}
 \begin{proof} Since $\xi$ is a vector bundle, there exists some open cover $\{U_x\}_{x\in B}$ such that $\xi|U_x$ is trivial for every $x\in B$. Using theorem~\ref{thm:paracompact_partition_of_unity}, we can find a locally finite open cover $\mathcal{V}=\{V_{\alpha}\}_{\alpha\in A}$ of $B$ that is a refinement of $\{U_x\}_{x\in B}$ and a partition of unity $\mathcal{F}=\{u_{\alpha}:B\to[0,1]\}$, that is subordinate of $\mathcal{V}$. Notice that Remark~\ref{rem:subcover} gives us that $\xi|V$ is a trivial vector bundle for every $V\in\mathcal{V}$, since it is a subcover of $\{U_x\}_{x\in B}$. If $A$ is finite, $\mathcal{V}$ is a bundle with the desired properties. Otherwise, for every finite $S\subseteq A$ we define now
-\[U(S):=\big\{x\in B: \forall\alpha\in S\ \forall\beta\in A\setminus S\ u_{\alpha}(x)>u_{\beta}(x)\big\}\]
+\[U(S):=\big\{x\in B: \forall\alpha\in S\ \forall\beta\in A\setminus S\ u_{\alpha}(x)>u_{\beta}(x)\big\}.\]
 Notice that $U(S)$ is open. Indeed, for $x\in U(S)$, since $\mathcal{F}$ is a partition of unity, there exists an open $X\subseteq B$ and only finitely many indices $\alpha\in A$ such that $u_{\alpha}|_X>0$, say $\{\alpha_1,\ldots,\alpha_k\}$. Hence, $S\subseteq\{\alpha_1,\ldots,\alpha_k\}$ and if we set $T=\{\alpha_1,\ldots,\alpha_k\}\setminus S$, we get that $x\in X\cap\bigcap_{\alpha\in S,\beta\in T}(u_{\alpha}|_X-u_{\beta}|_X)^{-1}\big((0,1]\big)\subseteq U(S)$ and since $S,T$ are finite, this is an open set. Since this is true for every $x\in U(S)$, $U(S)$ is open.
 
 Moreover, notice that $\{U(S)\}_{S\in\mathcal{S}}$ covers $B$, where $\mathcal{S}:=\{S\subseteq A:|S|\in\mathbb{N}\}$ is the set of all finite subsets of $A$. Indeed, for every $x\in B$ there exist only finitely many indices $\{\alpha_1,\ldots,\alpha_k\}\subseteq A$ with $u_{\alpha}(x)>0$, as we argued before and thus $x\in U(\{\alpha_1,\ldots,\alpha_k\})$. Also, it is true that $U(S)\subseteq V_{\alpha}$ for every $\alpha\in S$. Indeed, if $\alpha\in S$ and $x\in U(S)$, then it should be true that $u_{\alpha}(x)>0$, because otherwise we would have $S=A$, but $A$ is not finite. So, $\{U_S\}_{S\in\mathcal{S}}$ is an open subcover of $\mathcal{V}$ and thus, it is a locally finite open cover of $B$ and again due to Remark~\ref{rem:subcover} $\xi|_{U(S)}$ is a trivial vector bundle for every $S\in\mathcal{S}$.
