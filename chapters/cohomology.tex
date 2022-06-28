@@ -139,10 +139,10 @@ In this subsection, we assume that there exists some $w(\xi)$ satisfying the Sti
 \begin{definition}\label{def:dual_sw} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Then, we define the \emph{dual of the stiefel whitney classes of $\xi$} to be $\bar{w}(\xi):=(\bar{w}(\xi))^{-1}\in H^{\prod}(B;\mathbb{Z}_2)$.
 \end{definition}
 
-\begin{proposition} Let $M$ be a smooth manifold embedded in $\mathbb{R}^d$, $\tau_M:TM\to M$ be its tangent bundle and $\nu_{M,d}:N_dM\to M$ its normal bundle. Then $\bar{w}(\tau_M)=w(\nu_{M,d})$
-\end{proposition}
-\begin{proof} Proposition~\ref{prop:tangent_normal_vb} gives us that $\nu_{M,d}=\tau_M^{\perp_{\mathbb{R}^d}}$ and thus, because of Proposition~\ref{prop:vb_decomposition}, we have that $\varepsilon_M^d\cong\tau_M\oplus\nu_{M,d}$. Using (SW3) we get $w(\tau_M)w(\nu_{M,d})=1$, i.e. $\bar{w}(\tau_M)=w(\nu_{M,d})$.
-\end{proof}
+%\begin{proposition} Let $M$ be a smooth manifold embedded in $\mathbb{R}^d$, $\tau_M:TM\to M$ be its tangent bundle and $\nu_{M,d}:N_dM\to M$ its normal bundle. Then $\bar{w}(\tau_M)=w(\nu_{M,d})$
+%\end{proposition}
+%\begin{proof} Proposition~\ref{prop:tangent_normal_vb} gives us that $\nu_{M,d}=\tau_M^{\perp_{\mathbb{R}^d}}$ and thus, because of Proposition~\ref{prop:vb_decomposition}, we have that $\varepsilon_M^d\cong\tau_M\oplus\nu_{M,d}$. Using (SW3) we get $w(\tau_M)w(\nu_{M,d})=1$, i.e. $\bar{w}(\tau_M)=w(\nu_{M,d})$.
+%\end{proof}
 
 \subsection{Definition of Stiefel Whitney classes}
 In this subsection we define the Stiefel-Whitney classes for every $k$-plane bundle over a paracompact space. For this, we use the Leray-Hirsch theorem, which is true for paracompact spaces, but we only will prove it for fiber bundles which are of finite type. For a full discussion on the theorem, refer to Theorem 4D.1 in \cite{hatcher}. The proof we will present here is based on the proof of the Theorem~1.1 in the Chapter 17 of \cite{husemoller}.
@@ -380,8 +380,6 @@ Next, we prove the uniqueness for every line bundle $\lambda:E\to B$. Since $B$ 
 And finally, we prove it for a general $k$-plane vector bundle $\xi:E\to B$. Since $B$ is paracompact, Proposition~\ref{prop:splitting_map} gives us a space $B'$ and a continuous map $f:B'\to B$ such that $f^*:H^*(B;\mathbb{Z}_2)\to H^*(B';\mathbb{Z}_2)$ is a monomorphism and $f^*\xi\cong\lambda_1\oplus\lambda_k$ for some line bundles $\lambda_1,\ldots,\lambda_k$. Then, (SW2) and (SW3) give us that $f^*w(\xi)=w(f^*\xi)=w(\lambda_1\oplus\cdots\oplus\lambda_k)=w(\lambda_1)\cdots w(\lambda_k)=w'(\lambda_1)\cdots w'(\lambda_k)=w'(\lambda_1\oplus\cdots\lambda_k)=w'(f^*\xi)=f^*w'(\xi)$. Since $f^*$ is a monomorphism, we get $w(\xi)=w'(\xi)$.
 \end{proof}
 
-%TODO: prove that Grassmannians are paracompact
-
 \section{Cohomology of the Grassmannian}
 We left the discussion about the Grassmannians at the end of Chapter~\ref{chap:grassmannians}, where we decomposed $\Gr{k}{n}$ into $\mathbb{n}{k}$ cells, each one indexed by some $\mathbf{j}\in\binom{[n]}{k}$ (see Theorem~\ref{thm:gr_is_cw}) and created a bijection between $\binom{[n]}{k}$ and the young diagrams with at most $k$ rows and at most $n-k$ columns (see Proposition~\ref{prop:poset_bijection}). Moreover, we proved that the inclusions of the Grassmannians into the infinite Grassmannian preserve the cell structure, so we decomposed $\Gr{k}$ into cells indexed by $\binom{\mathbb{N}}{k}$ (see Theorem~\ref{thm:gr_inf_cw}) and created a bijection between them and the young diagrams with at most $k$ rows (see Remark~\ref{rem:inf_poset_bijection}). In this section we will use this decomposition to compute the cohomology of $\Gr{k}$, without explicitly computing the boundaries of these cells. Instead we will employ a counting argument.
 
@@ -409,15 +407,16 @@ Notice that $\mathbb{Z}_2[a_1,\ldots,a_k]^n=\mathbb{Z}_2\left<\{w_1^{r_1}w_2^{r_
 \end{proof}
 \begin{remark}\label{rem:epimorphism} In particular, this proves that $\dim_{\mathbb{Z}_2}C_i=\dim_{\mathbb{Z}_2}H^i(\Gr{k};\mathbb{Z}_2)$, i.e. the dual of each cell is a $\mathbb{Z}_2$-cocycle that is not a $\mathbb{Z}_2$-coboundary and thus each cell $\mathcal{C}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ represents a class in cohomology, say $x_{\mathbb{j}}$ and since $\iota_{k,n}$ preserves the cell decomposition, $\iota_{k,n}^*x_{\mathbf{j}}=x_{\mathbf{j}}$ for every $\mathbf{j}\in\binom{[n]}{k}$.
 \end{remark}
-The next Theorem is due to A. Borel and was first proven in \cite{borel}. The approach employed here is novice, as far as the writer knows.
+
+For the case of the finite Grassmannians, the following Theorem holds. A proof of this can be found in \cite{borel}. The approach employed here is unfortunately not complete.
 \begin{theorem}\label{thm:cohomology_finite_gr} For $k,n\in\mathbb{N}$ such that $k<n$, there exists a graded $\mathbb{Z}_2$-algebra isomorphism
-\[H^*(\Gr{k};\mathbb{Z}_2)\cong\mathbb{Z}_2[w_1,\ldots,w_2]/I_{k,n}\]
+\[H^*(\Gr{k};\mathbb{Z}_2)\cong\mathbb{Z}_2[w_1,\ldots,w_k]/I_{k,n}\]
 where $\deg(w_i)=i$, $I_{k,n}=(\bar{w}_{n-k+1},\bar{w}_{n-k+2},\ldots,\bar{w}_n)$ and $(1,\bar{w}_1,\bar{w}_2,\ldots)\in H^{\prod}(\Gr{k};\mathbb{Z}_2)$ is defined to be the multiplicative inverse of $1+w_1+\cdots+w_k$.
 \end{theorem}
 
 \begin{lemma} For $k\in\mathbb{N}$, the function $\phi_n^k:\mathbb{Z}_2[w_1,\ldots,w_k]/I_{k,n}\to\Gr{k}{n}$ with $\phi_n^k(w_i)=w_i(\gamma^k)$ is a $\mathbb{Z}_2$-algebra epimorphism that preserves the degree.
 \end{lemma}
-\begin{proof} First, we show that $\phi_n^k$ is well defined. Since $\Gr{k}{n}$ is paracompact and $\gamma_n^k\leq\varepsilon_{\Gr{k}{n}}^n$, there exists some $(n-k)$-plane vector bundle $(\gamma^k)^{\perp}$ such that $\gamma^k\oplus(\gamma^k)^{\perp}=\varepsilon_{\Gr{k}{n}}^n$, as was proved in Proposition~\ref{prop:vb_decomposition}. Thus, $w(\gamma_n^k)w((\gamma_n^k)^{\perp})=1$, i.e. $\bar{w}_i(\gamma_n^k)=w_i((\gamma_n^k)^{\perp})$ for every $i\in\mathbb{N}$, where $\bar{w}_i(\gamma_n^k)$ is the dual $i$-th Stiefel Whitney class, as defined in \ref{def:dual_sw}. This means that $\bar{w}_i(\gamma_n^k)=0$ for every $i\geq n-k+1$. Moreover, notice that $\phi_n^k(\bar{w})=\bar{w}(\gamma_n^k)$, since $\phi_n^k$ preserves multiplication. So, for every generator of the ideal, we have $\phi_n^k(\bar{w}_{i})=\bar{w}(\gamma_n^k)=0$, i.e. $\phi_n^k$ is well defined.
+\begin{proof} First, we show that $\phi_n^k$ is well defined. Since $\Gr{k}{n}$ is paracompact, as we saw in \ref{rem:Gr_paracompact}, and $\gamma_n^k\leq\varepsilon_{\Gr{k}{n}}^n$, there exists some $(n-k)$-plane vector bundle $(\gamma^k)^{\perp}$ such that $\gamma^k\oplus(\gamma^k)^{\perp}=\varepsilon_{\Gr{k}{n}}^n$, as was proved in Proposition~\ref{prop:vb_decomposition}. Thus, $w(\gamma_n^k)w((\gamma_n^k)^{\perp})=1$, i.e. $\bar{w}_i(\gamma_n^k)=w_i((\gamma_n^k)^{\perp})$ for every $i\in\mathbb{N}$, where $\bar{w}_i(\gamma_n^k)$ is the dual $i$-th Stiefel Whitney class, as defined in \ref{def:dual_sw}. This means that $\bar{w}_i(\gamma_n^k)=0$ for every $i\geq n-k+1$. Moreover, notice that $\phi_n^k(\bar{w})=\bar{w}(\gamma_n^k)$, since $\phi_n^k$ preserves multiplication. So, for every generator of the ideal, we have $\phi_n^k(\bar{w}_{i})=\bar{w}(\gamma_n^k)=0$, i.e. $\phi_n^k$ is well defined.
 
 Notice that since $\iota_{k,n}^*\gamma^k=\gamma_n^k$, the following diagram commutes.
 \begin{center}
@@ -434,50 +433,44 @@ Due to the previous lemma, there exists a $\mathbb{Z}_2$-algebra homomorphism $\
 
 For any fixed flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^{\infty}$, let $C_i$ be the $\mathbb{Z}_2$-free group of all $i$-cells of $\Gr{k}{n}$, for the cell decomposition we defined in \ref{thm:gr_is_cw}. Then, due to Remark~\ref{rem:epimorphism},  $\dim_{\mathbb{Z}_2}H^i(\Gr{k}{n};\mathbb{Z}_2)=\dim_{\mathbb{Z}_2}C_i=|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$, as proved in Proposition~\ref{prop:poset_bijection}. Thus, it suffices to prove that $\dim_{\mathbb{Z}_2}A_{k,n}^i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$.
 
-We prove this, by showing that the Hilbert series $H_{k,n}(t):=\sum_{i\geq0}\dim_{\mathbb{Z}_2}A_{k,n}^it^i$ of the algebra $A_{k,n}$ is the same as the generating function $P_{k,n}(t)$ of the sequence $p_i$, where $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$. In Lemma~\ref{lem:gen_function} we prove that $P_{k,n}(t)=\binom{n}{k}_t$, which satisfies the recursive relation $P_{k,n}(t)=t^kH_{k,n-1}(t)+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$, as proven in Proposition~\ref{prop:recursive_relation}. Notice that it suffices to show that $H_{1,n}(t)=\binom{n}{1}_t$, $H_{n-1,n}(t)=\binom{n}{n-1}_t$ and $H_{k,n}(t)=t^kH_{k,n-1}+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$.
-\end{proof}
+We prove this, by showing that the Hilbert series $H_{k,n}(t):=\sum_{i\geq0}\dim_{\mathbb{Z}_2}A_{k,n}^it^i$ of the algebra $A_{k,n}$ is the same as the generating function $P_{k,n}(t)$ of the sequence $p_i$, where $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$. In Lemma~\ref{prop:gen_function} we prove that $P_{k,n}(t)=\binom{n}{k}_t$, which satisfies the recursive relation $P_{k,n}(t)=t^kP_{k,n-1}(t)+P_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$, as proven in Proposition~\ref{lem:recursive_relation}. Notice that it suffices to show that $H_{1,n}(t)=\binom{n}{1}_t$, $H_{n-1,n}(t)=\binom{n}{n-1}_t$ and $H_{k,n}(t)=t^kH_{k,n-1}+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$.
 
-\begin{lemma}\label{lem:gen_function} Let $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$, be a sequence of natural numbers, then $P(t)=\binom{n}{k}_t$ is the generating function of $(p_i)$.
-\end{lemma}
-\begin{proof} We have $P(t)=\sum_{i\geq0}p_it^i=\sum_{\lambda\in P,|\lambda|\leq k,\lambda_1\leq n-k}t^{s(\lambda)}=$, where $\lambda\vdash s(\lambda)$.
-\end{proof}
+For the initial conditions fix some $n\in\mathbb{N}$ and first notice that $\binom{n}{1}_t=\binom{n}{n-1}_t=\frac{[n]_t!}{[1]_t!\cdot[n-1]_t!}=[n]_t=1+t+\cdots+t^{n-1}$. Then, we have $A_{1,n}=\mathbb{Z}_2[w_1]/(\bar{w}_1^n)$, where $\bar{w}_1=w_1$, i.e. $H_{1,n}(t)=1+t+\cdots+t^{n-1}=P_{1,n}(t)$. And moreover, we have $A_{n-1,n}=\mathbb{Z}_2[w_1,\cdots,w_{n-1}]/(\bar{w}_2,\ldots,\bar{w}_n)$, where $\bar{w}_1=w_1,\  \bar{w}_1^2=w_2,\ \cdots,\bar{w}_1^k=w_k$., i.e. $H_{n-1,n}(t)=1+t+\cdots+t^{n-1}=P_{n-1,n}(t)$.
 
-%------------------------
-
-\begin{lemma} The following is a SES of graded commutative $\mathbb{Z}_2$-algebras:
+For the recursive relation, Lemma~\ref{lem:SES} gives us that $A_{k,n}$ satisfy the following short exact sequence of graded, commutative $\mathbb{Z}_2$-algebras, where $A^{[k]}$ is the shifted graded algebra with $(A^{[k]})^i=A^{i-k}$
 \begin{center}
 \begin{tikzcd}
-0\ar[r]& A_{k,n-1}^{[-k]}\ar[r,"\cdot w_k", "f"']&A_{k,n}\ar[r,"w_k\mapsto0","g"']&A_{k-1,n-1}\ar[r]&0
+0\ar[r]& A_{k,n-1}^{[k]}\ar[r]&A_{k,n}\ar[r]&A_{k-1,n-1}\ar[r]&0
 \end{tikzcd}
 \end{center}
-where ${A_{k,n}^{[-k]}}^i:=A_{k,n}^{i-k}$ is the proper shift to make $f$ a homomorphism of graded algebras.
+The additivity of the short exact sequence gives $H_{k,n}(t)=t^kH_{k,n-1}(t)+H_{k-1,n-1}(t)$, which is exactly the desired recursive relation.
+\end{proof}
+
+This is a well known fact from combinatorics.
+\begin{proposition}\label{prop:gen_function} For $k,n\in\mathbb{N}$ such that $k<n$, let $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$, be a sequence of natural numbers, then $P(t)=\binom{n}{k}_t$ is the generating function of $(p_i)$, where $\binom{n}{k}_t:=\frac{[n]_t!}{[k]_t!\cdot[n-k]_t!}$, $[x]_t:=\sum_{i=0}^{x-1}t^i=\frac{t^x-1}{t-1}$, $[x]_t!=[x]_t\cdot[x-1]_t\cdots[1]_t$.
+\end{proposition}
+
+\begin{lemma}\label{lem:recursive_relation} For $k,n\in\mathbb{N}$ such that $k<n$, then $\binom{n}{k}_t=t^k\binom{n-1}{k}_t+\binom{n-1}{k-1}$.
+\end{lemma}
+\begin{proof} Indeed, notice  $t^k\binom{n-1}{k}_t+\binom{n-1}{k-1}_t=t^k\frac{[n-1]_t!}{[k]_t![n-k-1]_t!}+\frac{[n-1]_t!}{[k-1]_t![n-k]_t!}=\frac{[n-1]_t!}{[k]_t![n-k]_t!}\left(t^k[n-k]_t+[k]_t\right)=\frac{[n-1]_t!}{[k]_t![n-k]_t!}\left(\sum_{i=0}^{n-k-1}t^{i+k}+\sum_{j=0}^{k-1}t^j\right)=\frac{[n-1]_t!}{[k]_t![n-k]_t!}\sum_{i=0}^{n-1}t^{i+k}=\binom{n}{k}_t$
+\end{proof}
+
+Unfortunately, this lemma is not complete
+\begin{lemma}\label{lem:SES} For $k,n\in\mathbb{N}$ such that $k<n$, the following is a short exact sequence of graded commutative $\mathbb{Z}_2$-algebras:
+\begin{center}
+\begin{tikzcd}
+0\ar[r]&[-0.3em](\mathbb{Z}_2[w_1,\ldots,w_k]/I_{k,n-1})^{[k]}\ar[r,"\cdot w_k", "f"']&[-0.3em]\mathbb{Z}_2[w_1,\ldots,w_k]/I_{k,n}\ar[r,"w_i\mapsto\omega_i","g"']&[-0.3em]\mathbb{Z}_2[\omega_1,\ldots,\omega_{k-1}]/I_{k-1,n-1}\ar[r]&[-0.3em]0
+\end{tikzcd}
+\end{center}
+where ${A_{k,n-1}^{[k]}}^i:=A_{k,n-1}^{i-k}$. Notice that this means that $f,g$ are graded morphisms.
 \end{lemma}
 \begin{proof}
-Let
-\[R_{k,n}:=\sfrac{\mathbb{Z}_2[w_1,w_2,\ldots,w_k,\bar{w}_1,\bar{w}_2,\ldots]}{I_k+(\bar{w}_{n-k+1})+(\bar{w}_{n-k+2})+\cdots+(\bar{w}_{n-1})}\]
-then, the algebras can be written as:
-\begin{center}
-\begin{tikzcd}
-0\ar[r]& \sfrac{R_{k,n}}{(\bar{w}_{n-k})}^{[-k]}\ar[r,"\cdot w_k", "f"']&\sfrac{R_{k,n}}{(\bar{w}_{n})}\ar[r,"w_k\mapsto0","g"']&\sfrac{R_{k,n}}{(w_k)}\ar[r]&0
-\end{tikzcd}
-\end{center}
 \begin{b_item}
-\item $f,g$ are well defined. Indeed, notice that
-\[\bar{w}_{n}=\bar{w}_{n-1}w_1+\bar{w}_{n-2}w_2+\cdots+\bar{w}_{n-k+1}w_{k-1}+\bar{w}_{n-k}w_k=\bar{w}_{n-k}w_k,\text{ inside }R_{k,n}\]
-\item $g$ is surjective and $\im(f)\subseteq\ker(g)$ are easy to prove.
-\item $f$ is injective and $\im(f)\supseteq\ker(g)$ -- TODO!!
+\item $f$ is well defined. Indeed, for $i\in\{n-k+1,\ldots,n-1\}$ notice that  $w_k\bar{w}_i\in(\bar{w}_i)\subseteq I_{k,n}$ and for $w_k\bar{w}_{n-k}=\bar{w}_n+w_1\bar{w}_{n-1}+\cdots+w_{k-1}\bar{w}_{n-k+1}\in I_{k,n}$.
+\item $g$ is well defined. It suffices to show that $g(\bar{w}_i)=\bar{\omega}_i$ for every $i$. This can be proven inductively. For the base case, notice that $g(\bar{w}_1)=g(w_1)=\omega_1=\bar{\omega}_1$. Then, for any $i\in\mathbb{N}$, $g(\bar{w}_i)=g(\bar{w}_{i-1}w_1+\cdots+\bar{w}_{i-k}w_k)=\bar{x}_{i-1}x_1+\cdots+\bar{x}_{i-k}x_k=\bar{x}_{i-1}x_1+\cdots+\bar{x}_{i-k+1}x_{k-1}=\bar{x}_i$.
+\item $g$ surjective. This is clear by the definition of $g$.
+\item $\im f\subseteq\ker g$. This is also clear from the definitions.
 \end{b_item}
+For the proof to be complete, it remains to show that $\ker g\subseteq\im f$. and that $f$ injective.
 \end{proof}
 
-
-\begin{definition} We write:
-\[\binom{n}{k}_t:=\frac{[n]_t!}{[k]_t!\cdot[n-k]_t!}\]
-where:
-\[[x]_t:=\sum_{i=0}^{x-1}t^i=\frac{t^x-1}{t-1}\]
-and:
-\[[x]_t!=[x]_t\cdot[x-1]_t\cdots[1]_t\]
-\end{definition}
-
-
-
-%* elementary schubert calculus?

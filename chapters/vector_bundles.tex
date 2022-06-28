@@ -330,11 +330,11 @@ Define $D:U\to\mathbb{R}$ to be $D(x):=\det\big(v_1(x),\ldots,v_k(x),v_{k+1},\ld
 \begin{definition} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then, the \emph{orthogonal complement of $\xi$ in $\eta$} is $\xi^{\perp_{\eta}}:E\to B$ (or just $\xi^{\perp}$, when $\eta$ is clear) where $E:=\{v\in E(\eta):\forall u\in\xi^{-1}(\eta(v))\ v\cdot u=0\}$ and $\xi^{\perp_{\eta}}(v)=\eta(v)$.
 \end{definition}
 
-\begin{proposition}\label{prop:tangent_normal_vb} Let $M$ be a smooth manifold, embedded in $\mathbb{R}^d$, $\tau_M:TM\to M$ its tangent bundle and $\nu_{M,d}:N_dM\to M$ its normal bundle. Then $\nu_{M,d}\cong\tau_M^{\perp_{\varepsilon_M^d}}$
-\end{proposition}
-\begin{proof}
-%TODO
-\end{proof}
+%\begin{proposition}\label{prop:tangent_normal_vb} Let $M$ be a smooth manifold, embedded in $\mathbb{R}^d$, $\tau_M:TM\to M$ its tangent bundle and $\nu_{M,d}:N_dM\to M$ its normal bundle. Then $\nu_{M,d}\cong\tau_M^{\perp_{\varepsilon_M^d}}$
+%\end{proposition}
+%\begin{proof}
+%%TODO
+%\end{proof}
 
 \begin{lemma} Let $\eta:E(\eta)\to B$ be an $n$-plane euclidean vector bundle and $\xi:E(\xi)\to B$ a $k$-plane euclidean vector subbundle of $\eta$. Then $\xi^{\perp_{\eta}}\cong \eta/\xi$.
 \end{lemma}
@@ -384,8 +384,17 @@ At this point the question about decomposing a vector bundle is positively answe
 \end{proof}
 
 Paracompact spaces were first defined in \cite{paracompactness}, where it was also proven that they are $T_4$:
-\begin{theorem}[Dieudonn\'e] Let $X$ be a paracompact space, then $X$ is normal.
+\begin{theorem}[Dieudonn\'e] Every paracompact space is normal.
 \end{theorem}
+
+Paracompact spaces are quite common. For example, we quote here two well known results about them. For more information refer to \cite{paracompactKelley}.
+\begin{theorem}[Stone] Every metric space is paracompact.
+\end{theorem}
+
+\begin{theorem}[Morita] If a regular topological space is the countable union of compact subsets, then it is paracompact
+\end{theorem}
+\begin{remark}\label{rem:Gr_paracompact} For $k,n\in\mathbb{N}$ such that $k<n$, $\Gr{k}{n}$ and $\StO{k}{n}$ are paracompact.
+\end{remark}
 
 Using the fact that paracompact spaces are normal together with Urysohn's lemma, it can be proven that any given cover not only has a finite open subcover, but there exists one such subcover that also has a subordinate partition of unity. For the proof of this, the reader can refer to Theorem~12.8 of \cite{bredon}.
 \begin{definition} Let $X$ be a topological space and $\mathcal{F}=\{f_i:X\to[0,1]\}_{i\in I}$ be a collection of continuous maps. Then, $\mathcal{F}$ is a \emph{partition of unity of $X$} if for every $x\in X$ there exists some open $U\subseteq X$ containing $x$ such that $f_i|_U\equiv0$ for all but finitely many $i\in I$ and $\sum_{i\in I}f_i(x)=1$.
@@ -421,8 +430,8 @@ Moreover, notice that $\{U(S)\}_{S\in\mathcal{S}}$ covers $B$, where $\mathcal{S
 
 Last, for every $k\in\mathbb{N}$ we define $U_k:=\bigcup_{S\in\mathcal{S}_k}U(S)$, where $\mathcal{S}_k=\{S\in\mathcal{S}:|S|=k\}$. Then, $\{U_k\}_{k\in\mathbb{N}}$ is clearly a cover of $B$ with $U_k$ open for every $k\in\mathbb{N}$. Moreover, it is true that $U_k$ is the disjoint union of all $U(S)$ for $S\in\mathcal{S}_k$. Indeed, for any two $S,S'\in\mathcal{S}_k$ with $S\neq S'$, there exist $\alpha\in S\setminus S'$ and $\beta\in S'\setminus S$. If there was some $x\in U(S)\cap U(S')$, then for this $x$ we would have simultaneously that $u_{\alpha}(x)>u_{\beta}(x)$ and $u_{\beta}(x)>u_{\alpha}(x)$, which is impossible. So, $\xi|U_k\cong\amalg_{S\in\mathcal{S}_k}\xi|_{U(S)}$ and thus is a trivial vector bundle. Also, for every $x\in B$ there exists some $X\subseteq B$ containing $x$, such that $X\cap U(S)\neq\emptyset$ only for finitely many $S\in\mathcal{S}$, since $\{U(S)\}_{S\in\mathcal{S}}$. This means that $X\cap U_k\neq\emptyset$ only for finitely many $k\in\mathbb{N}$. Hence $\{U_k\}_{k\in\mathbb{N}}$ is a locally finite, countable, open cover of $B$ making $\xi$ locally trivial.
 \end{proof}
-\begin{remark}\label{lem:paracompact_countable_cover_fb} At no point in this proof did we need that $\xi$ is linear over each fiber, so exactly the same proof can be done for a fiber bundle $p:E(p)\to B$. Namely, if $B$ is paracompact, then there exists some locally finite countable open cover $\{U_k\}_{k\in\mathbb{N}}$ of $B$ such that $p|U_k$ is a trivial fiber bundle for every $k\in\mathbb{N}$.
-\end{remark}
+
+
 
 %TODO_MAYBE: tangent and normal vb
 %TODO_MAYBE: define parallelizable spaces
