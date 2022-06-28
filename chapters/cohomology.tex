@@ -85,7 +85,7 @@ It now remains to define a homotopy $h:\Gr{k}\times[0,1]\to\Gr{k}$, such that $h
 \end{center}
 Next, let $\hat{h}:E(\gamma^k)\times[0,1]\to\mathbb{R}^{\infty}$ be the homotopy $\hat{h}(v,t)=(1-t)v+tb_i(v)$. Notice that each $\hat{h}_t:E(\gamma^k)\to\mathbb{R}^{\infty}$ is continuous and its restriction $(\hat{h}_t)_H:(\gamma^k)^{-1}(H)\to\mathbb{R}^{\infty}$ is linear. In fact $(\hat{h}_t)_H$ is injective. We already this is the case for $t=0$ and $t=1$ so fix a $t\in(0,1)$ and let $v\in(\gamma^k)^{-1}(H)$ such that $(1-t)v+tb_i(v)=0$, i.e. $b_i(v)=\frac{t-1}{t}v$. Since $v\in\mathbb{R}^{\infty}$, there exists some $n_0$ such that $v_n=0$ for every $n\geq n_0$, where $v_n$ is the $n$-th coordinate of $v$. Let us choose the minimum such $n_0$. This means that $b_i(v)_n=0$ for every $n\geq n_0$. For the case of $b_0$ this means that $v_n=0$ for $n\geq\left\lceil\frac{n_0}{2}\right\rceil$ but if $n_0>1$, then $n_0>\left\lceil\frac{n_0}{2}\right\rceil$ which contradicts the minimality of $n_0$. So we have that $n_0=1$ and $v=0$. For the case of $b_1$ this means that $v_n=0$ for $n\geq\left\lceil\frac{n_0+1}{2}\right\rceil$ but if $n_0>2$, then $n_0>\left\lceil\frac{n_0+1}{2}\right\rceil$ which contradicts the minimality of $n_0$. If $n_0\leq2$, then we have that $v_1=\frac{t-1}{t}v_1$, which again means $n_0=1$ and $v=0$.
 
-Using Lemma~\ref{lem:injection_from_total_space} again, we can thus define continuous $h_t:\Gr{k}\to\Gr{k}$ by $h_t(H):=\hat{h}_t((\gamma^k)^{-1}(H))$ and finally, we define $h:\Gr{k}\times[0,1]\to\Gr{k}$ by $h(H,t)=\hat{h}(\xi^{-1}(H),t)$, which is a homotopy between $d_i$ and $id$.
+Using Lemma~\ref{lem:injection_from_total_space} again, we define the continuous function $h_t:\Gr{k}\to\Gr{k}$ such that $h_t(H):=\hat{h}_t((\gamma^k)^{-1}(H))$ and finally, we define $h:\Gr{k}\times[0,1]\to\Gr{k}$ by $h(H,t)=\hat{h}(\xi^{-1}(H),t)$, which is a homotopy between $d_i$ and $id$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:universal_uniqueness}] We will use the maps $d_0,d_1:\Gr{k}\to\Gr{k}$ defined in Lemma~\ref{lem:even_odd}. Since $d_i\simeq id$, it is true that $f\simeq d_0\circ f$ and $g\simeq d_1\circ g$. Moreover, since $d_i^*\gamma^k\cong\gamma^k$, it is also true that $(d_i\circ f)^*\gamma^k=f^*\gamma^k$ and similarly $(d_i\circ g)^*\gamma^k=g^*\gamma^k$. So, without loss of generality we will suppose that $f(x)\subseteq\{(x_1,x_2,\ldots)\in\mathbb{R}^{\infty}:\forall n\in\mathbb{N}\ x_{2n}=0\}$ and $g(x)\subseteq\{(x_1,x_2,\ldots)\in\mathbb{R}^{\infty}:\forall n\in\mathbb{B}\ x_{2n-1}=0\}$. Let $\xi\cong f^*\gamma^k\cong g^*\gamma^k$ and $\hat{f},\hat{g}:E(\xi)\to\mathbb{R}^{\infty}$ be the associated maps of $f,g:B\to\Gr{k}$, as defined in Lemma~\ref{lem:injection_from_total_space}.
@@ -211,7 +211,7 @@ Let us fix some $x\in B$ and a linear isomorphism $f_x:\mathbb{R}^n\to\xi^{-1}(x
 \begin{definition} Let $\xi:E(\xi)\to B$ be a $k$-plane vector bundle. Then, the \emph{projective bundle associated with $\xi$} is the fiber bundle $P\xi:E(P\xi)\to B$ with fiber $\mathbb{R}P^{k-1}$, where $E(P\xi)=\sfrac{\{v\in E:v\neq0\}}{\sim}$, $v\sim v'$ if and only if $\xi(v)=\xi(v')$ and $v=\lambda v'$ for some $\lambda\in\mathbb{R}\setminus\{0\}$ and $(P\xi)([v])=\xi(v)$.
 \end{definition}
 
-\begin{definition}\label{def:lambda_xi} For any $k$-plane vector bundle $\xi:E(\xi)\to B$, we define the line bundle $\lambda_{\xi}:E(\lambda_\xi)\to E(P\xi)$ as follows. First, notice that we can write $E(P\xi)=\big\{L\subseteq E(\xi):\exists v\in E(\xi)\text{ such that }L=\spans\{v\}\big\}$. Then, we construct the induced vector bundle $(P\xi)^*\xi:E((P\xi)^*\xi)\to E(P\xi)$. Recall that
+\begin{definition}\label{def:lambda_xi} For any $k$-plane vector bundle $\xi:E(\xi)\to B$, we define the line bundle $\lambda_{\xi}:E(\lambda_\xi)\to E(P\xi)$ as follows. First, notice that $E(P\xi)=\big\{L\subseteq E(\xi):\exists v\in E(\xi)\text{ such that }L=\spans\{v\}\big\}$. Then, we construct the induced vector bundle $(P\xi)^*\xi:E((P\xi)^*\xi)\to E(P\xi)$. Recall that
 \[E((P\xi)^*\xi)=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\big\}\]
 and define $\lambda_{\xi}\leq(P\xi)^*\xi$ with $E(\lambda_{\xi}):=\big\{(L,v)\in E(P\xi)\times E(\xi):(P\xi)(L)=\xi(v)\text{ and }v\in L\big\}\subseteq E((P\xi)^*\xi)$ and $\lambda_{\xi}(L,v)=\xi(v)$.
 \begin{center}
@@ -275,7 +275,7 @@ In this subsection we prove that the Stiefel-Whitney classes defined previously 
 
 \begin{proposition} Let $B',B$ be two paracompact spaces, $f:B'\to B$ be any continuous function and $\xi:E(\xi)\to B$ be any $k$-plane vector bundle. Then, $w(f^*\xi)=f^*w(\xi)$.
 \end{proposition}
-\begin{proof} Write $E(f^*\xi)=\big\{(x,v)\in B'\times E(\xi):f(x)=\xi(v)\big\}$ and define $\bar{f}:E(f^*\xi)\to E(\xi)$ with $\bar{f}(x,v):=v$, completing the pullback square. Then, define $g:E(P(f^*\xi))\to E(P\xi)$ with $g([(x,v)]):=[\bar{f}(x,v)]=[v]$. This is continuous and well defined. Indeed, let $(x_1,v_1),(x_2,v_2)\in E(f^*\xi)$ with $v_1,v_2\neq 0$ and $[(x_1,v_1)]=[(x_2,v_2)]$ in $E(P(f^*\xi))$. Then $x_1=x_2$, i.e. $\xi(v_1)=f(x_1)=f(x_2)=\xi(v_2)$ and $v_1=\lambda v_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Thus, $[v_1]=[v_2]$ in $E(P\xi)$. So, we have the following two commutative diagrams:
+\begin{proof} Write $E(f^*\xi)=\big\{(x,v)\in B'\times E(\xi):f(x)=\xi(v)\big\}$ and define $\bar{f}:E(f^*\xi)\to E(\xi)$ with $\bar{f}(x,v):=v$, completing the pullback square. Then, define $g:E(P(f^*\xi))\to E(P\xi)$ such that $g([(x,v)]):=[\bar{f}(x,v)]=[v]$. This is continuous and well defined. Indeed, let $(x_1,v_1),(x_2,v_2)\in E(f^*\xi)$ with $v_1,v_2\neq 0$ and $[(x_1,v_1)]=[(x_2,v_2)]$ in $E(P(f^*\xi))$. Then $x_1=x_2$, i.e. $\xi(v_1)=f(x_1)=f(x_2)=\xi(v_2)$ and $v_1=\lambda v_2$ for some $\lambda\in\mathbb{R}\setminus\{0\}$. Thus, $[v_1]=[v_2]$ in $E(P\xi)$. So, we have the following two commutative diagrams:
 \begin{center}
 \begin{tikzcd}
 &[-7em]&[-3em]&[-10em]\faktor{\big\{(x,v)\in B'\times E(\xi):f(b)=\xi(v)\text{ and }v\neq0\big\}}{\left\{\substack{(x_1,v_1)\sim(x_2,v_2)\text{ iff }\\[0.2em]x_1=x_2\text{ and }v_1=\lambda v_2}\right\}}\ar[dd,phantom,"\cong"{yshift=1em,rotate=90}]&[-10em]\\[-3.2em]
@@ -333,10 +333,10 @@ So, it is true that $\lambda_{\xi}=g_{\xi}^*\lambda_{\xi\oplus\eta}=g_{\xi}^*u_{
 For the rest of the proof, we will use the notation: $n:=k+\ell$, $P:=P(\xi\oplus\eta):E(P)\to B$, $a:=a_{\xi\oplus\eta}\in H^1(E(P);\mathbb{Z}_2)$ and $w_i:=w_i{\xi\oplus\eta}\in H^i(B;\mathbb{Z}_2)$. So, we write the definition of $w_i$ as:
 \[a^n=\sum_{r=0}^{n-1}P^*w_{n-r}a^r\in H^n(E(P);\mathbb{Z}_2)\]
 Now we define the elements
-\begin{align}
+\begin{align*}
 x:=&\sum_{i=0}^{k-1}P^*w_{k-i}(\xi)a^i+a^k=\sum_{i=0}^kP^*w_{k-i}(\xi)a^i\in H^k(E(P);\mathbb{Z}_2),\\
 y:=&\sum_{j=0}^{\ell-1}P^*w_{\ell-j}(\eta)a^i+a^{\ell}=\sum_{j=0}^{\ell}P^*w_{\ell-j}(\eta)a^i\in H^{\ell}(E(P);\mathbb{Z}_2)
-\end{align}
+\end{align*}
 Our goal now is to prove that $xy=0$. Notice that $g_{\xi}^*(x)=\sum_{i=0}^kg_{\xi}^*P^*w_{k-i}(\xi)g_{\xi}^*a^i=P_{\xi}^*w_{k-i}(\xi)a_{\xi}^i=0\in H^k(E(P\xi);\mathbb{Z}_2)$. Since $g_{\xi}$ is an embedding, $g_{\xi}^*$ is part of the long exact sequence of the nice pair $(E(P),E(P\xi))$ and thus there exists some $\bar{x}\in H^k(E(P),E(P\xi);\mathbb{Z}_2)$ with $i_{\xi}^*\bar{x}=x$, where $i_{\xi}:E(P)\hookrightarrow(E(P),E(P\xi))$ is the usual inclusion map. Similarly, since $g_{\eta}^*(y)=0\in H^{\ell}(E(P\eta);\mathbb{Z}_2)$, there exists some $\bar{y}\in H^{\ell}(E(P),E(P\eta);\mathbb{Z}_2)$, with $i_{\eta}^*\bar{y}=y$.
 
 The naturality of the cup product, gives the following commutative diagram:
@@ -346,7 +346,7 @@ H^k(E(P),E(P\xi);\mathbb{Z}_2)\otimes H^{\ell}(E(P),E(P\eta);\mathbb{Z}_2)\ar[r,
 H^k(E(P);\mathbb{Z}_2)\otimes H^{\ell}(E(P);\mathbb{Z}_2)\ar[r,"\smile"]&H^n(E(P);\mathbb{Z}_2)
 \end{tikzcd}
 \end{center}
-Notice now that $g_{\xi}(E(P\xi))\cap g_{\eta}(E(P\eta))=\emptyset$ and also that there exist deformation retractions $E(P)\setminus g_{\eta}(E(P\eta))\to g_{\xi}(E(P\xi))$ and $E(P)\setminus g_{\xi}(E(P\xi))\to g_{\eta}(E(P\eta))$, which means that we have the following homotopy: $(E(P),E(P\xi)\cup E(P\eta))\simeq\big(E(P),(E(P)\setminus E(P\eta))\cup(E(P)\setminus E(P\xi))\big)\simeq(E(P),E(P))$, i.e. that $H^n(E(P),E(P\xi)\cup E(P\eta);\mathbb{Z}_2)=0$. Thus, $xy=i^*(\bar{x}\bar{y})=0$, i.e. $\big(\sum_{i=0}^kP^*w_{k-i}(\xi)a^i\big)\big(\sum_{j=0}^{\ell}P^*w_{\ell-i}(\eta)a^j\big)=0$, which gives:
+Notice now that $g_{\xi}(E(P\xi))\cap g_{\eta}(E(P\eta))=\emptyset$ and also that there exist deformation retractions $E(P)\setminus g_{\eta}(E(P\eta))\to g_{\xi}(E(P\xi))$ and $E(P)\setminus g_{\xi}(E(P\xi))\to g_{\eta}(E(P\eta))$, which means that we have the following homotopy: $(E(P),E(P\xi)\cup E(P\eta))\simeq\big(E(P),(E(P)\setminus E(P\eta))\cup(E(P)\setminus E(P\xi))\big)\simeq(E(P),E(P))$, i.e. that $H^n(E(P),E(P\xi)\cup E(P\eta);\mathbb{Z}_2)=0$. Thus, $xy=i^*(\bar{x}\bar{y})=0$, i.e. So, we can expand $x$ and $y$ to get $\big(\sum_{i=0}^kP^*w_{k-i}(\xi)a^i\big)\big(\sum_{j=0}^{\ell}P^*w_{\ell-i}(\eta)a^j\big)=0$, which gives:
 \[\sum_{r=0}^n\left(P^*\sum_{i=0}^rw_i(\xi)w_{r-i}(\eta)\right)a^{n-r}=0=\sum_{r=0}^nP^*w_ra^{n-r}\]
 which exactly is $w(\xi)w(\eta)=w(\xi\oplus\eta)$.
 \end{proof}
@@ -430,11 +430,16 @@ which proves that $\phi_n^k$ is an epimorphism, since $\iota^*$ is an epimorphis
 \end{proof}
 \begin{proof}[Proof of Theorem~\ref{thm:cohomology_finite_gr}] For this proof we will denote the $\mathbb{Z}_2$-algebra $\mathbb{Z}_2[w_1,\ldots,w_k]/I_{k,n}$ by $A_{k,n}$.
 
-Due to the previous lemma, there exists a $\mathbb{Z}_2$-algebra homomorphism $\phi_n^k:A_{k,n}\to H^*(\Gr{k}{k};\mathbb{Z}_2)$ that preserves the degree and is surjective. So, it suffices to prove that $\dim_{\mathbb{Z}_2}A_{k,n}^i\leq\dim_{\mathbb{Z}_2}H^i(\Gr{k}{n};\mathbb{Z}_2)$ for every $i\in\mathbb{N}_0$.
+Due to the previous lemma, there exists a $\mathbb{Z}_2$-algebra homomorphism $\phi_n^k:A_{k,n}\to H^*(\Gr{k}{k};\mathbb{Z}_2)$ that preserves the degree and is surjective. So, it suffices to show that $\dim_{\mathbb{Z}_2}H^i(\Gr{k}{n};\mathbb{Z}_2)\geq\dim_{\mathbb{Z}_2}A_{k,n}^i$ for every $i\in\mathbb{N}_0$.
 
 For any fixed flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^{\infty}$, let $C_i$ be the $\mathbb{Z}_2$-free group of all $i$-cells of $\Gr{k}{n}$, for the cell decomposition we defined in \ref{thm:gr_is_cw}. Then, due to Remark~\ref{rem:epimorphism},  $\dim_{\mathbb{Z}_2}H^i(\Gr{k}{n};\mathbb{Z}_2)=\dim_{\mathbb{Z}_2}C_i=|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$, as proved in Proposition~\ref{prop:poset_bijection}. Thus, it suffices to prove that $\dim_{\mathbb{Z}_2}A_{k,n}^i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$.
 
-We prove this, by showing that the Hilbert series $H_{k,n}(t):=\sum_{i\geq0}\dim_{\mathbb{Z}_2}A_{k,n}^it^i$ of the algebra $A_{k,n}$ is the same as the generating function $P_{k,n}(t)$ of the sequence $p_i$, where $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$. In Computation~\ref{com:gen_function} we prove that $P_{k,n}(t)=\binom{n}{k}_t$, which satisfies the recursive relation $P_{k,n}(t)=t^kH_{k,n-1}(t)+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$, as proven in Proposition~\ref{prop:recursive_relation}. Notice that it suffices to show that $H_{1,n}(t)=\binom{n}{1}_t$, $H_{n-1,n}(t)=\binom{n}{n-1}_t$ and $H_{k,n}(t)=t^kH_{k,n-1}+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$.
+We prove this, by showing that the Hilbert series $H_{k,n}(t):=\sum_{i\geq0}\dim_{\mathbb{Z}_2}A_{k,n}^it^i$ of the algebra $A_{k,n}$ is the same as the generating function $P_{k,n}(t)$ of the sequence $p_i$, where $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$. In Lemma~\ref{lem:gen_function} we prove that $P_{k,n}(t)=\binom{n}{k}_t$, which satisfies the recursive relation $P_{k,n}(t)=t^kH_{k,n-1}(t)+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$, as proven in Proposition~\ref{prop:recursive_relation}. Notice that it suffices to show that $H_{1,n}(t)=\binom{n}{1}_t$, $H_{n-1,n}(t)=\binom{n}{n-1}_t$ and $H_{k,n}(t)=t^kH_{k,n-1}+H_{k-1,n-1}(t)$ for every $k,n\in\mathbb{N}$ such that $2\leq k<n$.
+\end{proof}
+
+\begin{lemma}\label{lem:gen_function} Let $p_i=|\{\lambda\in P:|\{\lambda\in P:|\lambda|\leq k,\lambda_1\leq n-k\text{ and }\lambda\vdash i\}|$, be a sequence of natural numbers, then $P(t)=\binom{n}{k}_t$ is the generating function of $(p_i)$.
+\end{lemma}
+\begin{proof} We have $P(t)=\sum_{i\geq0}p_it^i=\sum_{\lambda\in P,|\lambda|\leq k,\lambda_1\leq n-k}t^{s(\lambda)}=$, where $\lambda\vdash s(\lambda)$.
 \end{proof}
 
 %------------------------
