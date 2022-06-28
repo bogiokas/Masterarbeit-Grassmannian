@@ -149,7 +149,7 @@ The fact that this cell decomposition depends on our basis choice for $\mathbb{R
 Note that given a flag, one can always find a compatible basis with this flag. In fact, there always exist $2^n$ different compatible orthonormal bases and fixing one is like fixing an ``orientation'' of the flag.
 
 \begin{definition} For $k,n\in\mathbb{N}$, such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$,
-\[\grcell{j}:=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{\ell\in{[k]}_0:j_{\ell}\leq i\}\ \ \forall i\in{[n]}_0\big\}\]
+\[\grcell{j}:=\big\{H\in\Gr{k}{n}:\ \dim\left(H\cap\mathbb{F}_i\right)=\max\{\ell\in{[k]}_0:j_{\ell}\leq i\}\text{ for every }i\in{[n]}_0\big\}\]
 is the \emph{Schubert cell with symbol $\mathbf{j}$}, where $j_0$ is defined to be $0$.
 \end{definition}
 
@@ -189,13 +189,13 @@ These cells are in fact homeomorphic to open balls of various dimensions. Their 
 Since we are aiming to prove in Theorem~\ref{thm:gr_is_cw} that the Grassmannians have a CW structure, this matrix representation of the cells will not be helpful any more, as it is not clear how the boundary of these cells is glued to the cells of smaller dimension. So, the approach we employ here may seem more artificial but it is the canonical approach in the bibliography. First, in Definition~\ref{def:lift_of_Schubert_cells} we define appropriate sets $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})$ living in the Stiefel manifold, each one ``above'' the matching Schubert cell. Then, in Lemma~\ref{lem:shub_dim} we prove that each $\tilde{\mathcal{C}}_{\mathbf{j}}{\left(\mathbb{F}_{\bullet}\right)}^-$ is topologically a closed disk of the right dimension. Finally, in Lemma~\ref{lem:cells_from_stiefel_to_gr} we prove that $q_0$ maps the interior of $\tilde{\mathcal{C}}_{\mathbf{j}}(\mathbb{F}_{\bullet})^-$ homeomorphically onto $\grcell{j}$ and its boundary inside cells of lower dimension.
 
 \begin{definition}\label{def:lift_of_Schubert_cells} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$ and $\mathbf{j}=\{1\leq j_1<j_2<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, define
-\[\stcell{j}:=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}\ \forall\ell\in[k]\right\},\]
+\[\stcell{j}:=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}\text{ for every }\ell\in[k]\right\},\]
 where $\mathbb{H}_i:=\left\{v\in\mathbb{F}_i:v^tf_i>0\right\}$ is the \emph{positive open halfspace of $\mathbb{F}_{\bullet}$, with respect to $f_{\bullet}$} for every $i\in[n]$.
 \end{definition}
 
 Notice that for a fixed flag and a fixed basis compatible with the flag, these sets do not cover $\StO{k}{n}$, so they are not a cell decomposition, but if we regard all possible compatible bases and then only choose some of these sets for each basis, then we can create a cell decomposition of the Stiefel manifold. This however is not in the scope of this thesis.
 
-\begin{lemma}\label{lem:closure_of_cells} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and a set of indices $\mathbf{j}\in\binom{[n]}{k}$, the closure of $\stcell{j}$ inside ${\left(\mathbb{R}^n\right)}^k$ is $\stcell{j}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}^-\ \forall\ell\in[k]\right\}$, where $\mathbb{H}_i^-:=\{v\in\mathbb{F}_i:v^tf_i\geq 0\}$.
+\begin{lemma}\label{lem:closure_of_cells} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and a set of indices $\mathbf{j}\in\binom{[n]}{k}$, the closure of $\stcell{j}$ inside ${\left(\mathbb{R}^n\right)}^k$ is $\stcell{j}^-=\left\{(v_1,v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}^-\text{ for every }\ell\in[k]\right\}$, where $\mathbb{H}_i^-:=\{v\in\mathbb{F}_i:v^tf_i\geq 0\}$.
 \end{lemma}
 \begin{proof} As we saw in Proposition~\ref{prop:StO_dim_closed}, $\StO{k}{n}$ is closed in ${\left(\mathbb{R}^n\right)}^k$. This means that $\stcell{j}^-={\big(\StO{k}{n}\cap\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k}\big)}^-\subseteq\StO{k}{n}\cap{(\mathbb{H}_{j_1}\times\cdots\times\mathbb{H}_{j_k})}^-=\StO{k}{n}\cap\mathbb{H}_{j_1}^-\times\cdots\times\mathbb{H}_{j_k}^-$. We show that this inclusion is actually an equality.
 
@@ -209,121 +209,59 @@ In order to prove Lemma~\ref{lem:shub_dim}, we use the notion of the fiber bundl
 \begin{lemma}\label{lem:trivial_fb} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, the projection $\pi_1:\stcell{j}^-\to S^{n-1}\cap\mathbb{H}_{j_1}^-$ is a trivial fiber bundle.
 \end{lemma}
 \begin{proof} Due to Lemma~\ref{lem:closure_of_cells} the map $\pi_1$ is well defined, since it takes $(v_1,\ldots,v_k)$ to $v_1$, which is a unit vector and also an element of $\mathbb{H}_{j_1}^-$. Notice that since $f_{j_1}\in\mathbb{H}_{j_1}^-$, it suffices to prove that there exists a homeomorphism $\phi$ making the following diagram commute.
-\begin{equation}\label{eq:phi_for_trivial}
+\begin{center}
 \begin{tikzcd}
 \stcell{j}^-\ar[r,"\phi","\cong"']\ar[d,"\pi_1"']&\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})\ar[dl,"\pi_1"]\\
 S^{n-1}\cap\mathbb{H}_{j_1}^-
 \end{tikzcd}
-\end{equation}
+\end{center}
 For every $v\in S^{n-1}\cap\mathbb{H}_{j_1}^-$ define the linear map $\rho_v:=I_n+2f_{j_1}v^t-\frac{(v+f_{j_1})(v+f_{j_1})^t}{v^tf_{j_1}+1}:\mathbb{R}^n\to\mathbb{R}^n$, where $I_n$ is the identity on $\mathbb{R}^n$ and $xy^t$ is the linear map taking $a\in\mathbb{R}^n$ to $(y^ta)x$. Notice that $\rho_v$ is the rotation on the plane $H:=\spans\{v,f_{j_1}\}$ taking $v$ to $f_{j_1}$, i.e. $\rho_v\in O(n)$, $\rho_v(H)=H$, $\rho_v|_{H^{\perp}}=I_n$ and $\rho_vv=f_{j_1}$.
 
 Moreover, notice that $\rho_v$ depends continuously on $v$ and for $\rho_{f_{j_1}}:=I_n$, we get that $\lim_{v\to f_{j_1}}\rho_v=\rho_{f_{j_1}}$.This means that the map $\rho:S^{n-1}\cap\mathbb{H}_{j_1}^-\to O(n)$ with $\rho(v)=\rho_v$ is continuous. Since $O(n)$ acts continuously on $\mathbb{R}^n$, the map $ev^k:O(n)\times\stcell{j}^-\to(\mathbb{R}^n)^k$ with $ev^k(A,u_1,\ldots,u_k)=(Au_1,\ldots,Au_k)$ is also continuous. Thus, the composition that rotates a $k$-tuple by the rotation corresponding to the first vector, i.e. $ev^k\circ\left<\rho\circ\pi_1,id\right>:\stcell{j}^-\to(\mathbb{R}^n)^k$ with $ev^k\circ\left<\rho\circ\pi_1,id\right>(v_1,\ldots,v_k)=(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)$ is continuous.
 
 We now prove that the image of this map is contained in $\pi_1^{-1}(f_{j_1})$. Let $(v_1,\ldots,v_k)\in\stcell{j}^-$. Since $\rho_{v_1}\in O(n)$ and $(v_1,\ldots,v_k)\in\StO{k}{n}$, we have that $(\rho_{v_1}v_i)^t\rho_{v_1}v_j=v_i^tv_j=\delta_{i,j}$, which means that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\StO{k}{n}$. It remains to show that $\rho_vv_{\ell}\in\mathbb{H}_{j_{\ell}}$ for $v_{\ell}\in\mathbb{H}_{j_{\ell}}$. Decompose $v_{\ell}$ in two orthogonal parts $v_{\ell}=p_Hv_{\ell}+p_{H^{\perp}}v_{\ell}$, where $p_H$ and $p_{H^{\perp}}$ are the orthogonal projections on $H$ and $H^{\perp}$ respectively. Since $v_{\ell}\in\mathbb{F}_{j_{\ell}}$ and $H\subseteq\mathbb{F}_{j_{\ell}}$, we have that $p_{H^{\perp}}v_{\ell}\in H^{\perp}\cap\mathbb{F}_{j_{\ell}}$. Moreover, since $\rho_{v_1}$ is a rotation on $H$, $\rho_{v_1}p_Hv_{\ell}\in H$ and $\rho_{v_1}p_{H^{\perp}}v_{\ell}=p_{H^{\perp}}v_{\ell}$. Thus, $\rho_{v_1}v_{\ell}=\rho_{v_1}p_Hv_{\ell}+\rho_{v_1}p_{H^{\perp}}v_{\ell}=\rho_{v_1}p_Hv_{\ell}+p_{H^{\perp}}v_{\ell}\in H+\mathbb{F}_{j_{\ell}}=\mathbb{F}_{j_{\ell}}$. Next, notice that $(\rho_{v_1}v_{\ell})^tf_{j_{\ell}}=v_{\ell}^t\rho_{v_1}^tf_{j_{\ell}}=v_{\ell}^tf_{j_{\ell}}\geq0$. This proves that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\stcell{j}^-$. Also, since $\rho_{v_1}v_1=f_{j_1}$, it is also holds that $(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\in\pi_1^{-1}(f_{j_1})$.
 
-Let us define $\phi:=\left<\pi_1,\mathrm{ev}^k\circ\left<\rho\circ\pi_1,id\right>\right>:\stcell{j}\to\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})$ with $\phi(v_1,\ldots,v_k)=\big(v_1,(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\big)$. Notice that $\phi$ is well defined and continuous. Moreover, the restriction on each fiber $\phi|_{\pi_1^{-1}(v)}:\pi_1^{-1}(v)\to\pi^{-1}(f_{j_1})$ is a homeomorphism. Indeed, the map $\mathrm{ev}^k\circ\left<\rho'\circ\pi_1{,}id\right>:\pi_1^{-1}(f_{j_1})\to\pi_1^{-1}(v)$ taking $(f_{j_1},v_2,\ldots,v_k)$ to $(v,\rho_v^tv_2,\ldots,\rho_v^tv_k)$ is its inverse.
+Let us define $\phi:=\left<\pi_1,\mathrm{ev}^k\circ\left<\rho\circ\pi_1,id\right>\right>:\stcell{j}^-\to\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})$ with $\phi(v_1,\ldots,v_k)=\big(v_1,(\rho_{v_1}v_1,\ldots,\rho_{v_1}v_k)\big)$. Notice that $\phi$ is well defined and continuous. Moreover, the restriction on each fiber $\phi|_{\pi_1^{-1}(v)}:\pi_1^{-1}(v)\to\pi^{-1}(f_{j_1})$ is a homeomorphism. Indeed, the map $\mathrm{ev}^k\circ\left<\rho'\circ\pi_1{,}id\right>:\pi_1^{-1}(f_{j_1})\to\pi_1^{-1}(v)$ taking $(f_{j_1},v_2,\ldots,v_k)$ to $(v,\rho_v^tv_2,\ldots,\rho_v^tv_k)$ is its inverse.
 
 Since $\stcell{j}^-$ is a closed subset of the compact $\StO{k}{n}$, it is also compact. Moreover, the space $\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})$ is clearly Hausdorff, and $\phi$ is also a homeomorphism, i.e.\ $\pi_1$ is a trivial fiber bundle due to Proposition~\ref{prop:extend_fb}.
 \end{proof}
 
-\begin{lemma}\label{lem:shub_dim} For any integers $0<k<n$, for any flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, for any orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and for any set $\mathbf{j}\in\binom{[n]}{k}$, there exists a homeomorphism
-$\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\stcell{j}^-$,
-such that $\tilde{\Phi}_{\mathbf{j}}\left({\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\right)\subseteq\stcell{j}$, and
-$\tilde{\Phi}_{\mathbf{j}}|_{{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}}:{\left(D^{\mathrm{d}(\mathbf{j})}\right)}^{\circ}\to\stcell{j}$
-is also a homeomorphism.
+\begin{lemma}\label{lem:shub_dim} For $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, there exists a homeomorphism $\tilde{\Phi}_{\mathbf{j}}:D^{\mathrm{d}(\mathbf{j})}\to\stcell{j}^-$.
 \end{lemma}
-\begin{proof}
-Notice that
-\begin{equation}\label{eq:linear_proj_disc}
-S^{n-1}\cap\mathbb{H}_{j_1}^-\cong D^{j_1-1}
-\end{equation}
-with a homeomorphism being the linear projection on $\mathbb{F}_{j_1-1}$. Moreover,
-\begin{align}
-\begin{split}
-\pi_1^{-1}(f_{j_1})&=\big\{(f_{j_1},v_2,\ldots,v_k)\in\StO{k}{n}:v_{\ell}\in\mathbb{H}_{j_{\ell}}^-\ \forall\ell\in[k]\setminus\{1\}\big\}\\
-&\cong\Big\{(v'_2,\ldots,v'_k)\in\StO{k-1}{n-1}
-:v'_{\ell}\in\mathbb{H}\left(\faktor{\mathbb{F}_{j_{\ell}}}{\spans\{f_{j_1}\}},\pi_{\hat{j}_1}(f_{j_{\ell}})\right)^-\ \forall\ell\in[k]\setminus\{1\}\Big\}\\
-&=\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}'_{\bullet},f'_{\bullet}\right)}^-
-\end{split}\label{eq:induction_step}
-\end{align}
-where $\pi_{\hat{j}_1}$ is the projection on the $n-1$ coordinates $\{1,\ldots,j_1-1,j_1+1,\ldots,n\}$ and
-\begin{align*}
-\mathbf{j}'&:=\{1\leq j_2-1<\cdots<j_k-1\leq n-1\}\\
-\mathbb{F}'_i&:=\left\{\begin{array}{ll}\mathbb{F}_i&,0\leq i<j_1\\\faktor{\mathbb{F}_{i+1}}{\spans\{f_{j_1}\}}&,j_1\leq i<n\end{array}\right.\\
-f'_i&:=\left\{\begin{array}{ll}\pi_{\hat{j}_1}(f_i)&,0\leq i<j_1\\\pi_{\hat{j}_1}(f_{i+1})&,j_1\leq i<n\end{array}\right.
-\end{align*}
-So, $\tilde{\Phi}_{\mathbf{j}}$ is constructed inductively, using \eqref{eq:trivial_fb}:
-\begin{align*}
-\stcell{j}^-&\cong D^{j_1-1}\times\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}_{\bullet}',f_{\bullet}'\right)}^-\\
-&\cong D^{j_1-1}\times D^{j_2-2}\times \tilde{\mathcal{C}}_{\mathbf{j}''}{\left(\mathbb{F}_{\bullet}'',f_{\bullet}''\right)}^-\\
-&\ \,\vdots\\
-&\cong D^{j_1-1}\times D^{j_2-2}\times\cdots\times D^{j_k-k}\\
-&\cong D^{\mathrm{d}(\mathbf{j})}
-\end{align*}
-For the second claim, notice that
-$S^{n-1}\cap\mathbb{H}_{j_1}\cong\big(D^{j_1-1}\big)^{\circ}$
-through the same linear projection as in \eqref{eq:linear_proj_disc} and
-$\pi_1|_{\stcell{j}}^{-1}(f_{j_1})\cong\tilde{\mathcal{C}}_{\mathbf{j}'}(\mathbb{F}_{\bullet}',f_{\bullet}')$
-through the same map as in \eqref{eq:induction_step}. Using Remark~\ref{rem:trivial_fb_interior} we get
-$\stcell{j}\cong\big(S^{n-1}\cap\mathbb{H}_{j_1}\big)\times\pi_1|_{\stcell{j}}^{-1}(f_{j_1})$
-through the same map as in \eqref{eq:trivial_fb}.
-So, the inductive construction above gives us that
-$\stcell{j}\cong\big(D^{\mathrm{d}(\mathbf{j})}\big)^{\circ}$,
-with the homeomorphism being a restriction of $\tilde{\Phi}_{\mathbf{j}}^{-1}$, which proves the assertion.
+\begin{proof} We construct $\tilde{\Phi}_{\mathbf{j}}$ inductively on $k$. First, using Lemma~\ref{lem:trivial_fb}, there exists a homeomorphism $\phi:\stcell{j}^-\to\big(S^{n-1}\cap\mathbb{H}_{j_1}^-\big)\times\pi_1^{-1}(f_{j_1})$. Since $S^{n-1}\cap\mathbb{H}_{j_1}^-$ is a $(j_1-1)$-hemisphere, $p_{\mathbb{F}_{j_1-1}}|_{S^{n-1}\cap\mathbb{H}_{j_1}}:S^{n-1}\cap\mathbb{H}_{j_1}^-\to D^{j_1-1}$ is a homeomorphism, where $p_{\mathbb{F}_{j_1-1}}$ is the orthogonal projection on $\mathbb{F}_{j_1-1}$.
+
+Let $\hat{\pi}_{j_i}:\mathbb{R}^n\to\spans\{f_{j_i}\}^{\perp}$ be the orthogonal projection on $\spans\{f_{j_i}\}^{\perp}$. Then, fix some linear isomorphism $L:\spans\{f_{j_i}\}^{\perp}\to\mathbb{R}^{n-1}$ and create the following elements in $\mathbb{R}^{n-1}$. For every $i\in[j_1-1]_0$ define $\mathbb{F}_i':=L\circ\hat{\pi}_{j_1}(\mathbb{F}_{i})$ and $f_i':=L\circ\hat{\pi}_{j_1}(f_i)$. For every $i\in[n-1]\setminus[j_1-1]$ define $\mathbb{F}_i':=L\circ\hat{\pi}_{j_1}(\mathbb{F}_{i+1})$ and $f_i':=L\circ\hat{\pi}_{j_1}(f_{i+1})$. Then, define also $\mathbf{j}':=\{1\leq j_2-1<\cdots<j_k-1\leq n-1\}\in\binom{[n-1]}{k-1}$. Notice that $\mathbb{F}_{\bullet}'$ is a flag in $\mathbb{R}^{n-1}$ and $f_{\bullet}$ is an orthonormal basis in $\mathbb{R}^{n-1}$, compatible with $\mathbb{F}_{\bullet}'$, since $\hat{\pi}_{j_1}|_{\spans\{f_{j_i}\}^{\perp}}=I_n$.
+
+Notice that for every $(v_1,\ldots,v_k)\in\pi_1^{-1}(f_{j_1})$, $v_i\in\spans\{f_{j_1}\}^{\perp}$ for all $i\in[k]\setminus\{1\}$. Thus, $\pi_1^{-1}(f_{j_1})\cong(L\circ\hat{\pi}_{j_1})^k(\pi_1^{-1}(f_{j_1}))=\big\{(0,v_1',\ldots,v_{k-1}')\in\{0\}\times\StO{k-1}{n-1}:v_{\ell}'\in(\mathbb{H}_{j'_{\ell}}')^-\text{ for all }\ell\in[k-1]\big\}\cong\tilde{\mathcal{C}}_{\mathbf{j'}}(\mathbb{F}_{\bullet}',f_{\bullet}')^-g$. Then, create $\tilde{\Phi}_{\mathbf{j}}^{-1}$ inductively through a sequence of homeomorphisms $\stcell{j}^-\cong D^{j_1-1}\times\tilde{\mathcal{C}}_{\mathbf{j}'}{\left(\mathbb{F}_{\bullet}',f_{\bullet}'\right)}^-\cong D^{j_1-1}\times D^{j_2-2}\times \tilde{\mathcal{C}}_{\mathbf{j}''}{\left(\mathbb{F}_{\bullet}'',f_{\bullet}''\right)}^-\cong\cdots\cong D^{j_1-1}\times\cdots\times D^{j_k-k}\cong D^{\mathrm{d}(\mathbf{j})}$
 \end{proof}
 
-In order to examine the CW structure of $\Gr{k}{n}$, we need to connect the sets $\stcell{j}$ defined to the cells $\grcell{j}$:
-\begin{lemma}\label{lem:cells_from_stiefel_to_gr} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ be an orthonormal basis of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}\in\binom{[n]}{k}$ the following restriction of $q_0:\StO{k}{n}\to\Gr{k}{n}$ is a homeomorphism:
-\begin{center}
-\begin{tikzcd}
-\stcell{j}\ar[r,"q_0"]&\grcell{j}\\[-1.5em]
-(v_1,\ldots,v_k)\ar[r,mapsto]&\spans\{v_1,\ldots,v_k\}
-\end{tikzcd}
-\end{center}
+\begin{lemma}\label{lem:cells_from_stiefel_to_gr} Let $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$. Then $q_0|_{\stcell{j}}:\stcell{j}\to\grcell{j}$ with $q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\}$ is a homeomorphism.
 \end{lemma}
-\begin{proof} First notice that $q_0$ is well defined. Indeed, let $(v_1,\ldots,v_k)\in\stcell{j}$ and
-$H:=q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\spans\}\in\Gr{k}{n}$.
-Fix some $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$,  $v_{\ell}\in\mathbb{F}_{j_{\ell}}\subseteq\mathbb{F}_i$. On the other hand, if $j_{\ell}>i$, then $v_{\ell}\cdot f_{j_{\ell}}>0$, i.e.\ $v_{\ell}\not\in\mathbb{F}_i$ since $f_{j_{\ell}}\perp\mathbb{F}_i$. Hence,
-$\dim(H\cap\mathbb{F}_i)=\dim\left(\spans\{\big\{v_{\ell}:j_{\ell}\leq i\big\}\}\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$
-where $j_0=0$ as before, that proves that $H\in\grcell{j}$.
+\begin{proof} First notice that $q_0$ is well defined. Indeed, let $(v_1,\ldots,v_k)\in\stcell{j}$,
+$H:=q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\}\in\Gr{k}{n}$ and $i\in[n]$. For every $\ell\in[k]$ with $j_{\ell}\leq i$,  $v_{\ell}\in\mathbb{H}_{j_{\ell}}\subseteq\mathbb{F}_i$. Also, if $j_{\ell}>i$, then $v_{\ell}\cdot f_{j_{\ell}}>0$, i.e.\ $v_{\ell}\not\in\mathbb{F}_i$ since $f_{j_{\ell}}\perp\mathbb{F}_i$. Hence,
+$\dim(H\cap\mathbb{F}_i)=\dim\left(\spans\{v_{\ell}:j_{\ell}\leq i\}\right)=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$
+where $j_0=0$ as before, which proves that $H\in\grcell{j}$.
 
-In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\grcell{j}\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\grcell{j}$. Then, for any $\ell\in[k]$,
-\begin{align*}
-\dim\big(\left(H\cap\mathbb{F}_{j_{\ell}}\right)\cap\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)&=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)+\dim\big(\left(H\cap\mathbb{F}_{j_{\ell}-1}\right)^{\perp}\big)-n\\
-&=\dim\big(H\cap\mathbb{F}_{j_{\ell}}\big)-\dim\big(H\cap\mathbb{F}_{j_{\ell}-1}\big)=1
-\end{align*}
-so, there exist exactly two vectors $-a,a$ such that
-\[-a,a\in H\cap\mathbb{F}_{j_{\ell}}\qquad\text{ and }\qquad-a,a\perp H\cap\mathbb{F}_{j_{\ell}-1}\qquad\text{ and }\qquad-a,a\in S^{n-1}\]
-Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if $a\in\mathbb{F}_{j_{\ell}}$ and $a^tf_{j_{\ell}}=0$, then $a\in\mathbb{F}_{j_{\ell}-1}$, which leads to a contradiction since $a\perp H\cap\mathbb{F}_{j_{\ell}-1}$. We now define $u_{\ell}\in\{a,-a\}$ to be the unique vector that satisfies all the above and $u_{\ell}^tf_{j_{\ell}}>0$ and then also define $r_0(H):=(u_1,\ldots,u_k)$.
+In order to prove that this is a homeomorphism, we construct its inverse map $r_0:\grcell{j}\to\tilde{\mathcal{C}}(\mathbb{F}_{\bullet},f_{\bullet})$ as follows: Let $H\in\grcell{j}$. Then, for any $\ell\in[k]$, $\dim\left((H\cap\mathbb{F}_{j_{\ell}})\cap(H\cap\mathbb{F}_{j_{\ell}-1})^{\perp}\right)=\dim(H\cap\mathbb{F}_{j_{\ell}})+\dim((H\cap\mathbb{F}_{j_{\ell}-1})^{\perp})-n=\dim(H\cap\mathbb{F}_{j_{\ell}})-\dim(H\cap\mathbb{F}_{j_{\ell}-1})=1$ so, there exist exactly two vectors $-a,a$ such that $-a,a\in H\cap\mathbb{F}_{j_{\ell}}$ and $-a,a\perp H\cap\mathbb{F}_{j_{\ell}-1}$ and $-a,a\in S^{n-1}$. Notice that $a$ and $-a$ cannot be perpendicular to $f_{j_{\ell}}$: Indeed, if $a\in\mathbb{F}_{j_{\ell}}$ and $a^tf_{j_{\ell}}=0$, then $a\in\mathbb{F}_{j_{\ell}-1}$, which leads to a contradiction since $a\perp H\cap\mathbb{F}_{j_{\ell}-1}$. We now define $u_{\ell}\in\{a,-a\}$ to be the unique vector that satisfies all of the above and $u_{\ell}^tf_{j_{\ell}}>0$. So, this lets us define $r_0(H):=(u_1,\ldots,u_k)$.
 
-First notice $r_0$ is well defined, since for $1\leq\ell_1<\ell_2\leq k$,
+First notice $r_0$ is well defined, since for $\ell_1,\ell_2\in[k]$ such that $\ell_1<\ell_2$,
 $u_{\ell_2}\perp H\cap\mathbb{F}_{j_{\ell}-1}\supseteq H\cap\mathbb{F}_{j_{\ell-1}}\ni u_{\ell_1}$
-i.e.\ $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e.\ $u_{\ell}^tu_{\ell}=1$. Also, $v_{\ell}\in\mathbb{H}_{j_{\ell}}$ by the construction of $v_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\stcell{j}$.
+i.e.\ $u_{\ell_1}^tu_{\ell_2}=0$. Moreover, for $\ell\in[k]$, $u_{\ell}\in S^{n-1}$, i.e.\ $u_{\ell}^tu_{\ell}=1$. Also, $u_{\ell}\in\mathbb{H}_{j_{\ell}}$ by the construction of $u_{\ell}$. This proves that $r_0(H)=(u_1,\ldots,u_k)\in\stcell{j}$.
 
-Then, notice that for $H\in\grcell{j}$,
-$q_0(r_0(H))=q_0(u_1,\ldots,u_k)=\spans\{u_1,\ldots,u_k\}=H$.
-Moreover, for $(v_1,\ldots,v_k)\in\stcell{j}$,
-$v_{\ell}\in\spans\{v_1,\ldots,v_k\}\cap\mathbb{F}_{j_{\ell}}\text{ and } v_{\ell}\perp\spans\{v_1,\ldots,v_k\}\cap\mathbb{F}_{j_{\ell}-1}\text{ and }v_{\ell}\in S^{n-1}\text{ and }v_{\ell}^tf_{j_{\ell}}>0$
-which means that
-$r_0(q_0(v_1,\ldots,v_k))=r_0(\spans\{v_1,\ldots,v_k\})=(v_1,\ldots,v_k)$,
-since there is a unique choice for $r_0$, as proven above.
+Then, notice that for $H\in\grcell{j}$, $q_0(r_0(H))=q_0(u_1,\ldots,u_k)=\spans\{u_1,\ldots,u_k\}=H$. Moreover, for $(v_1,\ldots,v_k)\in\stcell{j}$, $v_{\ell}\in\spans\{v_1,\ldots,v_k\}\cap\mathbb{F}_{j_{\ell}}\text{ and } v_{\ell}\perp\spans\{v_1,\ldots,v_k\}\cap\mathbb{F}_{j_{\ell}-1}\text{ and }v_{\ell}\in S^{n-1}\text{ and }v_{\ell}^tf_{j_{\ell}}>0$ which means that $r_0(q_0(v_1,\ldots,v_k))=r_0(\spans\{v_1,\ldots,v_k\})=(v_1,\ldots,v_k)$, since there is a unique choice for $r_0$, as proven above.
 \end{proof}
 
-\begin{lemma}\label{lem:q0_on_bdr} Let $k,n\in\mathbb{N}$, with $0<k<n$. Moreover, let $\mathbb{F}_{\bullet}$ be a flag of $\mathbb{R}^n$ and $f_{\bullet}$ be an orthonormal basis of $\mathbb{R}^n$ compatible with $\mathbb{F}_{\bullet}$. Then, for each $\mathbf{j}\in\binom{[n]}{k}$ the restriction of $q_0:\StO{k}{n}\to\Gr{k}{n}$ has the following property:
-\[q_0\big(\stcell{j}^-\setminus\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\]
+\begin{lemma}\label{lem:q0_on_bdr} Let $k,n\in\mathbb{N}$ such that $k<n$, a flag $\mathbb{F}_{\bullet}$ of $\mathbb{R}^n$, an orthonormal basis $f_{\bullet}$ of $\mathbb{R}^n$, compatible with $\mathbb{F}_{\bullet}$ and $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$. Then $q_0:\StO{k}{n}\to\Gr{k}{n}$ has the following property:
+\[q_0\big(\partial\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\]
 \end{lemma}
-\begin{proof} Let $(v_1,\ldots,v_k)\in\stcell{j}^-\setminus\stcell{j}$ and set $H=q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\}$. Due to Lemma~\ref{lem:jump_pts} there exists some $\mathbf{j}'\in\binom{[n]}{k}$ such that $H\in\mathcal{C}_{\mathbf{j}'}(\mathbb{H}_{\bullet})$. For this $\mathbf{j}'$,
-$j_{\ell}'=\min\{j\in[n]:\dim(H\cap\mathbb{F}_j)\geq\ell\}$.
-
-Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\stcell{j}$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}_{j_{\ell_0}}^-\setminus\mathbb{H}_{j_{\ell_0}}$, i.e.\ $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}<j_{\ell_0}$, i.e.\ $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we get
-$\mathrm{d}(\mathbf{j}')=\sum_{\ell\in[k]}(j'_{\ell}-\ell)<\sum_{\ell\in[k]}(j_{\ell}-\ell)=\mathrm{d}(\mathbf{j})$.
+\begin{proof} Let $(v_1,\ldots,v_k)\in\partial\stcell{j}$ and set $H=q_0(v_1,\ldots,v_k)=\spans\{v_1,\ldots,v_k\}$. Then, there exists some $\mathbf{j}'\in\binom{[n]}{k}$ such that $H\in\mathcal{C}_{\mathbf{j}'}(\mathbb{F}_{\bullet})$, as we proved in Lemma~\ref{lem:jump_pts}. For this $\mathbf{j}'$, notice that $j_{\ell}'=\min\{j\in[n]:\dim(H\cap\mathbb{F}_j)\geq\ell\}$. Since $v_1,\ldots,v_{\ell}\in H\cap\mathbb{F}_{j_{\ell}}$ and are linearly independent, $j_{\ell}'\leq j_{\ell}$ for every $l\in[k]$. Moreover, since $(v_1,\ldots,v_k)\not\in\stcell{j}$, there exists some $\ell_0\in[k]$ such that $v_{\ell_0}\in\mathbb{H}_{j_{\ell_0}}^-\setminus\mathbb{H}_{j_{\ell_0}}$, i.e.\ $v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}}$ and $v_{\ell_0}^tf_{j_{\ell_0}}=0$. This means that $v_1,\ldots,v_{\ell_0}\in\mathbb{F}_{j_{\ell_0}-1}\subsetneq\mathbb{F}_{j_{\ell_0}}$, i.e.\ $j_{\ell_0}'\leq j_{\ell_0}-1$. Combining these, we get $\mathrm{d}(\mathbf{j}')=\sum_{\ell=1}^k(j'_{\ell}-\ell)<\sum_{\ell=1}^k(j_{\ell}-\ell)=\mathrm{d}(\mathbf{j})$.
 \end{proof}
 
-\begin{theorem}\label{thm:gr_is_cw} Let $k,n\in\mathbb{N}$ such that $0<k<n$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^n$. Moreover for every integer $m\in[k(n-k)]_0\cup\{-1\}$ let \[X_m^{k,n}:=\bigcup_{\substack{\mathbf{j}\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j})\leq m}}\grcell{j}\]
-Then, the filtration $\emptyset=X_{-1}^{k,n}\subseteq X_0^{k,n}\subseteq\cdots\subseteq X_{k(n-k)}^{k,n}=\Gr{k}{n}$ is a CW structure of $\Gr{k}{n}$. It is helpful for later to define $X_m^{k,n}:=X_{k(n-k)}^{k,n}$ for every $m>k(n-k)$.
+\begin{theorem}\label{thm:gr_is_cw} Let $k,n\in\mathbb{N}$ such that $k<n$ and $\mathbb{F}_{\bullet}$ be any flag of $\mathbb{R}^n$. Moreover for every integer $m\in[k(n-k)]_0\cup\{-1\}$ let \[X_m^{k,n}:=\bigcup_{\substack{\mathbf{j}\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j})\leq m}}\grcell{j}\]
+Then, the filtration $\emptyset=X_{-1}^{k,n}\subseteq X_0^{k,n}\subseteq\cdots\subseteq X_{k(n-k)}^{k,n}=X_{k(n-k)+1}^{k,n}=X_{k(n-k)+2}^{k,n}=\cdots=\Gr{k}{n}$ is a CW structure of $\Gr{k}{n}$.
 \end{theorem}
 \begin{proof}
-Since the filtration is finite, $\Gr{k}{n}$ trivially has the direct limit topology with respect to the filtration, so we only need to prove the existence of a pushout square for every $m\in[k(n-k)]$:
+Since the filtration is finite, $\Gr{k}{n}$ trivially has the direct limit topology with respect to the filtration, so we only need to prove the existence of a pushout square for every $m\in[k(n-k)]$.
 \begin{center}
 \begin{tikzcd}
 \coprod_{\mathbf{j}\in I_m}S^{m-1}\ar[d,hook,"\amalg_{\mathbf{j}\in I_m}inc_{\mathbf{j}}"']\ar[r,"\amalg_{\mathbf{j}\in I_m}\phi_{\mathbf{j}}"]\ar[dr,phantom,near end,"\ulcorner"]&[3em]X_{m-1}^{k,n}\ar[d,hook,"inc_m"]\\[2em]
@@ -334,19 +272,12 @@ Let $I_m=\big\{\mathbf{j}\in\binom{[n]}{k}:\mathrm{d}(\mathbf{j})=m\big\}$ be th
 First, the maps in the diagram are well defined:
 \begin{i_enum}
 \item $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$. Indeed, $\Phi_{\mathbf{j}}\big(D^{\mathrm{d}(\mathbf{j})}\big)=q_0\big(\tilde{\Phi}_{\mathrm{j}}(D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\stcell{j}^-\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemmata~\ref{lem:cells_from_stiefel_to_gr} and~\ref{lem:q0_on_bdr}, we get that $q_0\big(\stcell{j}^-\big)=q_0\big(\stcell{j}^-\setminus\stcell{j}\big)\cup q_0\big(\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\cup\grcell{j}\subseteq X_{\mathrm{d}(\mathbf{j})}^{k,n}$.
-\item $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$. Indeed, $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)=q_0\big(\tilde{\Phi}_{\mathbf{j}}(\partial D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\stcell{j}^-\setminus\stcell{j}\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Moreover, because of Lemma~\ref{lem:q0_on_bdr}, we get that $q_0\big(\stcell{j}^-\setminus\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$.
+\item $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$. Indeed, $\phi_{\mathbf{j}}\big(S^{\mathrm{d}(\mathbf{j})-1}\big)=q_0\big(\tilde{\Phi}_{\mathbf{j}}(\partial D^{\mathrm{d}(\mathbf{j})})\big)=q_0\big(\partial\stcell{j}\big)$, since $\tilde{\Phi}_{\mathbf{j}}$ is a homeomorphism. Also, from Lemma~\ref{lem:q0_on_bdr}, we have $q_0\big(\partial\stcell{j}\big)\subseteq\bigcup_{\substack{\mathbf{j}'\in\binom{[n]}{k}\\\mathrm{d}(\mathbf{j}')<\mathrm{d}(\mathbf{j})}}\grcell{j'}\subseteq X_{\mathrm{d}(\mathbf{j})-1}^{k,n}$.
 \end{i_enum}
-Next, the commutativity of the diagram is clear, since $\phi_{\mathbf{j}}$ is a restriction of $\Phi_{\mathbf{j}}$ and the two vertical maps are inclusions.
-Last, using Lemma~\ref{lem:shub_dim} and Lemma~\ref{lem:cells_from_stiefel_to_gr}, we get that both of the functions involved in the following composition are homeomorphisms
-\begin{center}
-\begin{tikzcd}
-\Phi_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}\ar[r,phantom,":"]&[-2.6em](D^{\mathrm{d}(\mathbf{j})})^{\circ}\ar[r,"\tilde{\Phi}_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}","\cong"']&[3em]\stcell{j}\ar[r,"q_0|_{\stcell{j}}","\cong"']&[3em]\grcell{j}
-\end{tikzcd}
-\end{center}
-Also, $\Phi_{\mathbf{j}}((D^{\mathrm{d}(\mathbf{j})})^{\circ})=\grcell{j}\subseteq X_m\setminus X_{m-1}$, which proves that it is a pushout diagram.
+Next, the commutativity of the diagram is clear, since $\phi_{\mathbf{j}}$ is a restriction of $\Phi_{\mathbf{j}}$ and the two vertical maps are inclusions. Last, using Lemma~\ref{lem:shub_dim} and Lemma~\ref{lem:cells_from_stiefel_to_gr}, we get that $\Phi_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}=q_0|_{\stcell{j}}\circ\tilde{\Phi}_{\mathbf{j}}|_{(D^{\mathrm{d}(\mathbf{j})})^{\circ}}:(D^{\mathrm{d}(\mathbf{j})})^{\circ}\to\grcell{j}$ is a homeomorphisms as the composition of homeomorphisms. Also, $\Phi_{\mathbf{j}}((D^{\mathrm{d}(\mathbf{j})})^{\circ})=\grcell{j}\subseteq X_m\setminus X_{m-1}$, which proves that it is a pushout diagram.
 \end{proof}
 
-\begin{proposition}\label{prop:included_cell} For $k,n\in\mathbb{N}$, the inclusion $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ respects the cell structure, i.e.\ for every $\mathbf{j}\in\binom{[n]}{k}$, it is also true that $\mathbf{j}\in\binom{[n+1]}{k}$ and then $\iota_{k,n}(\grcell{j})=\grcell{j}\subseteq\Gr{k}{n+1}$.
+\begin{proposition}\label{prop:included_cell} For $k,n\in\mathbb{N}$, the inclusion $\iota_{k,n}:\Gr{k}{n}\hookrightarrow\Gr{k}{n+1}$ respects the cell structure, i.e.\ for every $\mathbf{j}\in\binom{[n]}{k}$, it is also true that $\mathbf{j}\in\binom{[n+1]}{k}$ and that $\iota_{k,n}(\grcell{j})=\grcell{j}\subseteq\Gr{k}{n+1}$.
 \end{proposition}
 \begin{proof} If $\mathbf{j}=\{1\leq j_1<j_2<\cdots<j_k\leq n\}$, then trivially $j_k\leq n+1$, i.e.\ $\{1\leq j_1<\cdots<j_k\leq n+1\}\in\binom{[n+1]}{k}$. Moreover, if $H\in\grcell{j}\subseteq\Gr{k}{n}$ then $\dim(H\cap\mathbb{F}_{n+1})=j_k=\max\{\ell\in[k]_0:j_{\ell}\leq i\}$, i.e.\ $\iota_{k,n}(H)=H\subseteq\mathbb{R}^{n+1}$ is an element of $\grcell{j}\subseteq\Gr{k}{n+1}$. Inversely, for $H\in\grcell{j}\subseteq\Gr{k}{n+1}$, then $H\in\grcell{j}\subseteq\Gr{k}{n}$ since $j_k\leq n$ and thus $\iota_{k,n}(H)=H$.
 \end{proof}
@@ -370,13 +301,13 @@ It remains to show that $\Gr{k}$ has the direct limit topology with respect to t
 So, $\Gr{k}{n}$ is a CW complex and each cell is indexed by some $\mathbf{j}=\{1\leq j_1<\cdots<j_k\leq n\}\in\binom{[n]}{k}$, while $\Gr{k}$ is a CW complex and each cell is indexed by some $\mathbf{j}=\{1\leq j_1<j_2<\cdots\}\in\binom{\mathbb{N}}{k}$. In either case the dimension of the cell indexed by $\mathbf{j}$ is equal to $\mathrm{d}(\mathbf{j})=(j_1-1)+(j_2-2)+\cdots+(j_k-k)$.
 
 \section{Enumerating the cells}
-\begin{definition} For $m,r\in\mathbb{N}$, $\lambda=(\lambda_1,\ldots,\lambda_r)\in\mathbb{N}^r$ is a \emph{partition of $m$ of size $r$} if $\lambda_1\geq\lambda_2\geq\cdots\geq\lambda_r\geq1$ and $\lambda_1+\lambda_2+\cdots+\lambda_r=m$. In this case, we write $\lambda\vdash m$ and $|\lambda|=r$. For $m=0$, we define $P_0:=\{\lambda_{\emptyset}\}$, where $\lambda_{\emptyset}:=()$ is the \emph{empty partition} with $\lambda_{\emptyset}\vdash0$ and $|\lambda|=0$. Let $P_m$ be the set of all partitions of $m$ and $P:=\bigcup_{m=0}^{\infty}P_m$ the set of all partitions.
+\begin{definition} For $m,r\in\mathbb{N}$, $\lambda=(\lambda_1,\ldots,\lambda_r)\in\mathbb{N}^r$ is a \emph{partition of $m$ of size $r$} if $\lambda_1\geq\lambda_2\geq\cdots\geq\lambda_r\geq1$ and $\lambda_1+\lambda_2+\cdots+\lambda_r=m$ and we write $\lambda\vdash m$ and $|\lambda|=r$. For $m=0$, we define $P_0:=\{\lambda_{\emptyset}\}$, where $\lambda_{\emptyset}:=()$ is the \emph{empty partition} with $\lambda_{\emptyset}\vdash0$ and $|\lambda|=0$. Let $P_m$ be the set of all partitions of $m$ and $P:=\bigcup_{m=0}^{\infty}P_m$ the set of all partitions.
 \end{definition}
 \begin{remark}
 In order to make the notation easier, any number of trailing zeros at the end of a partition are allowed, without this affecting the size of the partition, i.e.\ $\lambda=(5,4,4,2,0,0,0)=(5,4,4,2)$, with $\lambda\vdash15$ and $|\lambda|=4$.
 \end{remark}
-\begin{example} There are exactly $7$ partitions of $m=5$:
-$(5)$, $(4,1)$, $(3,2)$, $(3,1,1)$, $(2,2,1)$, $(2,1,1,1)$, $(1,1,1,1,1)$
+\begin{example} There are exactly $7$ partitions of $m=5$.
+\[(5), (4,1), (3,2), (3,1,1), (2,2,1), (2,1,1,1), (1,1,1,1,1)\]
 \end{example}
 
 \begin{notation} For every partition $\lambda$ of $m$ in $r$ parts, we define the \emph{Young diagram} corresponding to $\lambda$ to be the shape consisting of $r$ left-justified rows of boxes, where row $i$ has $\lambda_i$ boxes.
@@ -387,29 +318,9 @@ $(5)$, $(4,1)$, $(3,2)$, $(3,1,1)$, $(2,2,1)$, $(2,1,1,1)$, $(1,1,1,1,1)$
 \end{center}
 \end{example}
 
-\begin{proposition}\label{prop:poset_bijection} For $k,n\in\mathbb{N}$ such that $0<k<n$, the map
-\begin{center}
-\begin{tikzcd}
-b_{k,n}\ar[r,phantom,":"]&[-7em]\binom{[n]}{k}\ar[r]&\big\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\big\}\\[-1.5em]
-&\big\{1\leq j_1<\cdots<j_k\leq n\big\}\ar[r,mapsto]&\big(j_k-k\ ,\ j_{k-1}-(k-1)\ ,\ \ldots\ ,\ j_1-1\big)
-\end{tikzcd}
-\end{center}
-is a bijection with $b_{k,n}(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
+\begin{proposition}\label{prop:poset_bijection} For $k,n\in\mathbb{N}$ such that $k<n$, the map $b_{k,n}:\binom{[n]}{k}\to\big\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\big\}$ such that $b_{k,n}(\{1\leq j_1<\cdots<j_k\leq n\})=(j_k-k\ ,\ j_{k-1}-(k-1)\ ,\ \ldots\ ,\ j_1-1)$ is a bijection with $b_{k,n}(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
 \end{proposition}
-\begin{proof} First of all notice that for $\lambda=b_{k,n}(\mathbf{j})$ we have $|\lambda|\leq|\mathbf{j}|=k$, $\lambda_1=j_k-k\leq n-k$, $\lambda_k=j_1-1\geq 0$ and for every $i\in[k-1]$ $\lambda_i=j_{k-i+1}-(k-i+1)>j_{k-i}-(k-i)-1=\lambda_{i+1}-1$, i.e.\ $\lambda_i\geq\lambda_{i+1}$. These mean that $b_{k,n}$ is well defined.
-
-In order to prove that $b_{k,n}$ is a bijection, we will prove that this is its inverse map:
-\begin{center}
-\begin{tikzcd}
-c_{n,k}\ar[r,phantom,":"]&[-2.5em]\big\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\big\}\ar[r]&[-1em]\binom{[n]}{k}\\[-1.5em]
-&(\lambda_1,\lambda_2,\ldots,\lambda_k)\ar[r,mapsto]&\{\lambda_k+1,\lambda_{k-1}+2,\ldots,\lambda_1+k\}
-\end{tikzcd}
-\end{center}
-Notice that for $\mathbf{j}=c_{k,n}(\lambda)$ we have $|\mathbf{j}|=k$, $j_1=\lambda_k+1\geq1$, $j_k=\lambda_1+k\leq n$ and for ever $i\in[k-1]$ $j_i=\lambda_{k-i+1}+i\leq\lambda_{k-i}+(i+1)-1=j_{i+1}-1$, i.e.\ $j_i<j_{i+1}$. These mean that $c_{k,n}$ is well defined.
-
-Moreover $c_{k,n}=b_{k,n}^{-1}$, since $c_{k,n}\big(b_{k,n}(\mathbf{j})\big)=c_{k,n}(j_k-k,\ldots,j_1-1)=\{j_1<\cdots<j_k\}=\mathbf{j}$ and $b_{k,n}\big(c_{k,n}(\lambda)\big)=b_{k,n}\big(\{\lambda_k+1<\cdots<\lambda_1+k\}\big)=(\lambda_1,\ldots,\lambda_k)=\lambda$.
-
-Finally, we have that $b_{k,n}(\mathbf{j})\vdash (j_k-k)+(j_{k-1}-(k-1))+\cdots+(j_1-1)=\mathrm{d}(\mathbf{j})$.
+\begin{proof} First of all notice that for $\lambda=b_{k,n}(\mathbf{j})$ we have $|\lambda|\leq|\mathbf{j}|=k$, $\lambda_1=j_k-k\leq n-k$, $\lambda_k=j_1-1\geq 0$ and for every $i\in[k-1]$ $\lambda_i=j_{k-i+1}-(k-i+1)>j_{k-i}-(k-i)-1=\lambda_{i+1}-1$, i.e.\ $\lambda_i\geq\lambda_{i+1}$. These mean that $b_{k,n}$ is well defined. In order to prove that $b_{k,n}$ is a bijection, we will prove that $c_{k,n}:\big\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\big\}\to\binom{[n]}{k}$ such that $c_{k,n}(\lambda_1,\lambda_2,\ldots,\lambda_k)=\{\lambda_k+1,\lambda_{k-1}+2,\ldots,\lambda_1+k\}$ is its inverse map. Notice that for $\mathbf{j}=c_{k,n}(\lambda)$ we have $|\mathbf{j}|=k$, $j_1=\lambda_k+1\geq1$, $j_k=\lambda_1+k\leq n$ and for ever $i\in[k-1]$ $j_i=\lambda_{k-i+1}+i\leq\lambda_{k-i}+(i+1)-1=j_{i+1}-1$, i.e.\ $j_i<j_{i+1}$. These mean that $c_{k,n}$ is well defined. Moreover $c_{k,n}=b_{k,n}^{-1}$, since $c_{k,n}\big(b_{k,n}(\mathbf{j})\big)=c_{k,n}(j_k-k,\ldots,j_1-1)=\{j_1<\cdots<j_k\}=\mathbf{j}$ and $b_{k,n}\big(c_{k,n}(\lambda)\big)=b_{k,n}\big(\{\lambda_k+1<\cdots<\lambda_1+k\}\big)=(\lambda_1,\ldots,\lambda_k)=\lambda$. Finally, we have that $b_{k,n}(\mathbf{j})\vdash (j_k-k)+(j_{k-1}-(k-1))+\cdots+(j_1-1)=\mathrm{d}(\mathbf{j})$.
 \end{proof}
 \begin{remark}\label{rem:inf_poset_bijection} Fix some $k\in\mathbb{N}$ and notice that if $\mathbf{j}\in\binom{[n]}{k}$ and $j_k\leq n-1$, then $b_{k,n}(\mathbf{j})=b_{k,n-1}(\mathbf{j})$, so for $n\geq n_0$, $b_{k,n}|_{\binom{[n_0]}{k}}=b_{k,n_0}$. This lets us define the map $b_k:\binom{\mathbb{N}}{k}\to\big\{\lambda\in P:|\lambda|\leq k\}$ on $\mathbf{j}$ to be $b_{k,n}(\mathbf{j})$ for some $n\geq j_k$. Then, $b_k$ is also a bijection with $b_k(\mathbf{j})\vdash\mathrm{d}(\mathbf{j})$.
 \end{remark}
@@ -431,7 +342,7 @@ We can define the following partial order on the set of all partitions
 
 The poset up to degree $6$ looks like this:
 \begin{center}
-\begin{tikzpicture}[scale=1.3, yscale=1.3]
+\begin{tikzpicture}[scale=1.3, yscale=1.2]
 \ytableausetup{boxsize=0.3em,aligntableaux=top}
 \node[elt] (0) at (0,0) {};
 \node[elt] (1) at (0,1) {\ydiagram{1}};
@@ -517,10 +428,5 @@ The poset up to degree $6$ looks like this:
 \draw (1)--(0);
 \end{tikzpicture}
 \end{center}
-
-\begin{proposition} For $k,n\in\mathbb{N}$, $\binom{[n]}{k}\cong[\lambda_{\emptyset},(n-k)^k]$ as graded posets, where $(n-k)^k=(n-k,\ldots,n-k)\in\mathbb{N}^k$ is the $k\times(n-k)$ young diagram. The partial order on $\binom{[n]}{k}$ is defined by $\mathbf{j},\mathbf{j}'\in\binom{[n]}{k}$, $\mathbf{j}\leq\mathbf{j}'$ if and only if $j_i\leq j_i'$ for all $i\in[k]$ and the grading is given by $\rho(\mathbf{j})=\mathrm{d}(\mathbf{j})$.
-\end{proposition}
-\begin{proof} Notice that $[\lambda_{\emptyset},(n-k)^k]=\{\lambda\in P:|\lambda|\leq k\text{ and }\lambda_1\leq n-k\}$, so we have already established a bijection $b_{k,n}$ in Proposition~\ref{prop:poset_bijection}, which is easy to see that is also an order preserving map. Moreover, since we also have that the grading agrees, since $\rho(b_{k,n}(\mathbf{j}))=\mathrm{d}(\mathbf{j})=\rho(\mathbf{j})$.
-\end{proof}
 
 
